@@ -3,7 +3,7 @@ package dataservice.managementdataservice;
 import java.util.ArrayList;
 
 import po.PriceAndCityPO;
-import po.PricePO;
+
 
 public interface PriceAndCityDataService {
 
@@ -40,11 +40,6 @@ public interface PriceAndCityDataService {
 	 * @return
 	 */
 	public boolean update(PriceAndCityPO p);
-	/**
-	 * 前置：该PO存在于数据库中
-	 * 后置：修改一个PO
-	 * @param p
-	 * @return
-	 */
-	public boolean setPrice(PricePO p);
+	
+	
 }

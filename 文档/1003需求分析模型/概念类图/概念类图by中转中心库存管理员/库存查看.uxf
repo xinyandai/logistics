@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>20</x>
+      <y>160</y>
+      <w>150</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>中转中心库存管理人员
+--
+工号
+身份
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>180</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>发起</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>210</x>
+      <y>160</y>
+      <w>70</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>库存查看
+--
+开始时间
+结束时间
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>410</x>
+      <y>160</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>库存
+--
+货物标识
+数量
+金额
+位置</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>180</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>使用</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>250</y>
+      <w>50</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>使用</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>390</x>
+      <y>300</y>
+      <w>90</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>位置
+--
+区号
+排号
+架号
+位号
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

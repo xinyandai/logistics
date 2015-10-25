@@ -1,0 +1,43 @@
+package businesslogicservice.ticketBLservice;
+
+import java.util.ArrayList;
+
+import vo.OutBoundListVO;
+
+/**
+ * 出库管理
+ * @author 颜
+ *
+ */
+public interface OutBoundBLService {
+	/**
+	 * 前置：选择新建
+	 * 后置：更新
+	 * @param t
+	 * @return
+	 */
+	public boolean creatTicket(OutBoundListVO t);
+	/**
+	 * 前置：选择订单进行修改，并输入新信息
+	 * 后置：更新
+	 * @param old
+	 * @param newOne
+	 * @return
+	 */
+	public boolean modifyTicket(OutBoundListVO newOne);
+	/**
+	 * 前置：选择时间段查看ticket
+	 * 后置：显示ticket
+	 * @param timeStart
+	 * @param timeEnd
+	 * @return
+	 */
+	public ArrayList<OutBoundListVO> findTicketByTime(long timeStart,long timeEnd);
+	/**
+	 *前置：选择起初建账户进行初始化
+	 *后置：清空订单
+	 * @return
+	 */
+	public boolean clear();
+	
+}

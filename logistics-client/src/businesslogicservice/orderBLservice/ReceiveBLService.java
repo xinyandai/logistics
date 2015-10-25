@@ -23,4 +23,10 @@ public interface ReceiveBLService {
 	 * @return
 	 */
 	public ArrayList<ReceiveListVO> getAll();
+	/**
+	 *前置：选择起初建账户进行初始化
+	 *后置：清空订单
+	 * @return
+	 */
+	public boolean clear();
 }
