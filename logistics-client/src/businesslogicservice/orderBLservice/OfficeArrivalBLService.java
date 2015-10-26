@@ -2,7 +2,7 @@ package businesslogicservice.orderBLservice;
 
 import java.util.ArrayList;
 
-import vo.ReceiveListVO;
+import vo.OfficeArrivalListVO;
 
 /**
  * 
@@ -17,14 +17,14 @@ public interface OfficeArrivalBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(ReceiveListVO o);
+	public boolean creat(OfficeArrivalListVO o);
 	/**
 	 * 前置：选择查看所有营业厅接收单
 	 * 后置：显示所有营业厅接收单
 	 * 依赖：OfficeArrivalListService.getAll 返回所有的营业厅接受单
 	 * @return
 	 */
-	public ArrayList<ReceiveListVO> getAll();
+	public ArrayList<OfficeArrivalListVO> getAll();
 	/**
 	 *前置：选择起初建账户进行初始化
 	 *后置：清空订单
