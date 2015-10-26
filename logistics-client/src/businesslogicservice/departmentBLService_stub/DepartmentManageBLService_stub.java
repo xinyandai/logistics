@@ -6,10 +6,10 @@ import vo.DepartmentVO;
 import businesslogicservice.departmentBLservice.DepartmentManageBLService;
 
 public class DepartmentManageBLService_stub implements DepartmentManageBLService {
-
+	DepartmentVO dpvo;
 	@Override
 	public ArrayList<DepartmentVO> showAll() {
-		System.out.println("展示所有部门信息");
+		System.out.println("show all departments");
 		return null;
 	}
 
