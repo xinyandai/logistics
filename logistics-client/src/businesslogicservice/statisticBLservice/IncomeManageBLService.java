@@ -9,7 +9,7 @@ import vo.ReceiptListVO;
  * @author 
  *
  */
-public interface IncomeManageService {
+public interface IncomeManageBLService {
 
 	/**
 	 * 前置：选择查看所有收款

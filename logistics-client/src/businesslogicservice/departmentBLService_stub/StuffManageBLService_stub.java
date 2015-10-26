@@ -35,19 +35,24 @@ public class StuffManageBLService_stub implements StuffManageBLService{
 	@Override
 	public boolean delete(ArrayList<StuffVO> ald) {
 		// TODO 自动生成的方法存根
-		
+		//待修改方法
 		return false;
 	}
 
 	@Override
 	public boolean modify(StuffVO newone) {
 		// TODO 自动生成的方法存根
+		if(newone.getIdentity().equals("140010001")){
+			System.out.println("can change");
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public ArrayList<StuffVO> fuzzySearch(String s) {
 		// TODO 自动生成的方法存根
+		//待修改
 		return null;
 	}
 	

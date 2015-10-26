@@ -9,7 +9,7 @@ import vo.AccountVO;
  * @author 
  *
  */
-public interface AccountManageService {
+public interface AccountManageBLService {
 
 	/**
 	 * 前置：输入关键字查找账户

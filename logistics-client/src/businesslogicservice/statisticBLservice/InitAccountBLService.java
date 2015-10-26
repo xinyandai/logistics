@@ -1,6 +1,6 @@
 package businesslogicservice.statisticBLservice;
 
-public interface InitAccountService {
+public interface InitAccountBLService {
 
 	/**
 	 * 前置：选择期初建账

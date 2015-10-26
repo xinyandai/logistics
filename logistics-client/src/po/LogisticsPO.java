@@ -3,14 +3,14 @@ package po;
 public class LogisticsPO {
 
 	private String origin;
-	private String estination;
+	private String destination;
 	private String location;
 	private String orderId;
-	public LogisticsPO(String origin, String estination, String location,
+	public LogisticsPO(String origin, String destination, String location,
 			String orderId) {
 		super();
 		this.origin = origin;
-		this.estination = estination;
+		this.destination = destination;
 		this.location = location;
 		this.orderId = orderId;
 	}
@@ -21,10 +21,10 @@ public class LogisticsPO {
 		this.origin = origin;
 	}
 	public String getEstination() {
-		return estination;
+		return destination;
 	}
-	public void setEstination(String estination) {
-		this.estination = estination;
+	public void setEstination(String destination) {
+		this.destination = destination;
 	}
 	public String getLocation() {
 		return location;

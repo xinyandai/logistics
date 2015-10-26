@@ -9,7 +9,7 @@ import vo.SendingListVO;
  * @author 华硕
  *
  */
-public interface TranCenterArrivalService {
+public interface TranCenterArrivalBLService {
 	/**
 	 * 前置：新建中转中心接收单
 	 * 后置：更新

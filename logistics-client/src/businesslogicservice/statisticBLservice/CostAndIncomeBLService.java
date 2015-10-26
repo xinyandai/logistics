@@ -6,7 +6,7 @@ package businesslogicservice.statisticBLservice;
  * @author 
  *
  */
-public interface CostAndIncomeService {
+public interface CostAndIncomeBLService {
 
 	/**
 	 * 前置： 选择查看成本收益表

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import vo.TranCenterLoadingListVO;
 
-public interface TranCenterLoadingService {
+public interface TranCenterLoadingBLService {
 
 	/**
 	 * 前置：新建装车单

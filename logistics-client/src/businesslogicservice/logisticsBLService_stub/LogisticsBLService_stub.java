@@ -2,14 +2,19 @@ package businesslogicservice.logisticsBLService_stub;
 
 import java.util.ArrayList;
 
+import po.LogisticsPO;
 import vo.LogisticsVO;
 import businesslogicservice.logisticsBLservice.LogisticsBLService;
 
 public class LogisticsBLService_stub implements LogisticsBLService{
-
+	LogisticsPO lgpo;
 	@Override
 	public LogisticsVO showState(String id) {
 		// TODO 自动生成的方法存根
+		if(id.equals("140010001")){
+			lgpo.getLocation();
+			System.out.println("state");
+		}
 		return null;
 	}
 

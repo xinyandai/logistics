@@ -10,7 +10,7 @@ import vo.CostListVO;
  * @author 
  *
  */
-public interface CostManageService {
+public interface CostManageBLService {
 
 	/**
 	 * 前置：新建付款单并输入信息

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import vo.OfficeLoadingListVO;
 
-public interface OfficeLoadingService {
+public interface OfficeLoadingBLService {
 	/**
 	 * 前置：新建装车单
 	 * 后置：更新
