@@ -7,13 +7,10 @@ public class ReceiveListVO {
 	//ÊÕ¼þµ¥
 		private String date;
 		private String location;
-		LogisticsVO logistics;
-		public ReceiveListVO(String date, String location, LogisticsVO logistics) {
-			super();
-			this.date = date;
-			this.location = location;
-			this.logistics = logistics;
-		}
+		//LogisticsVO logistics;
+		private String origin;
+		private String estination;
+		private String orderId;
 		public String getDate() {
 			return date;
 		}
@@ -26,12 +23,33 @@ public class ReceiveListVO {
 		public void setLocation(String location) {
 			this.location = location;
 		}
-		public LogisticsVO getLogistics() {
-			return logistics;
+		public String getOrigin() {
+			return origin;
 		}
-		public void setLogistics(LogisticsVO logistics) {
-			this.logistics = logistics;
+		public void setOrigin(String origin) {
+			this.origin = origin;
 		}
-
+		public String getEstination() {
+			return estination;
+		}
+		public void setEstination(String estination) {
+			this.estination = estination;
+		}
+		public String getOrderId() {
+			return orderId;
+		}
+		public void setOrderId(String orderId) {
+			this.orderId = orderId;
+		}
+		public ReceiveListVO(String date, String location, String origin,
+				String estination, String orderId) {
+			super();
+			this.date = date;
+			this.location = location;
+			this.origin = origin;
+			this.estination = estination;
+			this.orderId = orderId;
+		}
+		
 
 }

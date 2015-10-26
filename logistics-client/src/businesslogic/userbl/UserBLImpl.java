@@ -3,13 +3,13 @@ package businesslogic.userbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import dataservice.userdataservice.UserDataService;
 import javaRMI.RmiClient;
 import po.UserPO;
 import vo.UserVO;
-import dataservice.userdataservice.UserDataService;
 
 public class UserBLImpl implements businesslogicservice.userBLservice.UserBLservice {
-    UserDataService user = new RmiClient().getUserDataService();
+	UserDataService user = new RmiClient().getUserDataService();
 	@Override
 	public boolean login(UserVO u) {
 		try {
