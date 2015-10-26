@@ -7,7 +7,7 @@ public class CollectionBLService_Driver {
 	public void drive(CollectionBLService collectionBLService){
 		ReceiptListVO d=new ReceiptListVO( "date", "money", "courier",
 				"orderId");
-		boolean creat=collectionBLService.creatTicket(d);
+		boolean creat=collectionBLService.createTicket(d);
 		boolean modify=collectionBLService.modifyTicket(d);
 		if(creat)
 			System.out.println("creat successfully!");

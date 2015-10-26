@@ -9,14 +9,11 @@ import businesslogicservice.orderBLservice.OfficeArrivalBLService;
 
 public class OfficeArrivalBLService_stub implements OfficeArrivalBLService{
 	OfficeArrivalListPO oalpo;
-	@Override
-	public boolean creat(ReceiveListVO o) {
-		// TODO 自动生成的方法存根
-		return false;
-	}
+	
+	
 
 	@Override
-	public ArrayList<ReceiveListVO> getAll() {
+	public ArrayList<OfficeArrivalListVO> getAll() {
 		// TODO 自动生成的方法存根
 		return null;
 	}
