@@ -34,7 +34,7 @@ public class DepartmentManageBLService_stub implements DepartmentManageBLService
 	}
 
 	@Override
-	public boolean modify(DepartmentVO old, DepartmentVO newone) {
+	public boolean modify(DepartmentVO newone) {
 		// TODO 自动生成的方法存根
 		System.out.println("modify successfully");
 		return false;

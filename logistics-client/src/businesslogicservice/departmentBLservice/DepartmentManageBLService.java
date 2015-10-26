@@ -51,7 +51,7 @@ public interface DepartmentManageBLService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean modify(DepartmentVO old,DepartmentVO newone);
+	public boolean modify(DepartmentVO newone);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果
