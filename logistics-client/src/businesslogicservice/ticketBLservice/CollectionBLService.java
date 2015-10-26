@@ -18,7 +18,7 @@ public interface CollectionBLService {
 	 * @param t
 	 * @return
 	 */
-	public boolean creatTicket(ReceiptListVO t);
+	public boolean createTicket(ReceiptListVO t);
 	/**
 	 * 前置：选择收款单进行修改，并输入新信息
 	 * 后置：更新

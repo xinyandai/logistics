@@ -17,7 +17,7 @@ public interface OutBoundBLService {
 	 * @param t
 	 * @return
 	 */
-	public boolean creatTicket(OutBoundListVO t);
+	public boolean createTicket(OutBoundListVO t);
 	/**
 	 * 前置：选择出库单进行修改，并输入新信息
 	 * 后置：更新

@@ -6,13 +6,21 @@ public class LogisticsPO {
 	private String destination;
 	private String location;
 	private String orderId;
+	private String state;
 	public LogisticsPO(String origin, String destination, String location,
-			String orderId) {
+			String orderId,String state) {
 		super();
+		this.state = state;
 		this.origin = origin;
 		this.destination = destination;
 		this.location = location;
 		this.orderId = orderId;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	public String getOrigin() {
 		return origin;

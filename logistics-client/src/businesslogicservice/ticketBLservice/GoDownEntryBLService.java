@@ -17,7 +17,7 @@ public interface GoDownEntryBLService {
 	 * @param t
 	 * @return
 	 */
-	public boolean creatTicket(GoDownEntryListVO t);
+	public boolean createTicket(GoDownEntryListVO t);
 	/**
 	 * 前置：选择入库单进行修改，并输入新信息
 	 * 后置：更新

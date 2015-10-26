@@ -15,7 +15,7 @@ public class GoDownEntryListPO {
 		Courier = courier;
 		this.date = date;
 		this.destination = destination;
-		this.qu = qu;
+		this.qu = qu;//Çø¼ÜÅÅÎ»
 		this.pai = pai;
 		this.jia = jia;
 		this.wei = wei;

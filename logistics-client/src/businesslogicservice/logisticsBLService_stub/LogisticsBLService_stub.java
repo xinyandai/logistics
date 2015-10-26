@@ -21,7 +21,12 @@ public class LogisticsBLService_stub implements LogisticsBLService{
 	@Override
 	public boolean setState(String id, String state) {
 		// TODO 自动生成的方法存根
-		return false;
+		if(id.equals("")){
+			lgpo.setLocation(state);
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
