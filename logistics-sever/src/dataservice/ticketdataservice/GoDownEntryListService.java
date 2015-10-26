@@ -40,5 +40,5 @@ public interface GoDownEntryListService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean updata(GoDownEntryListPO newone);
+	public boolean update(GoDownEntryListPO newone);
 }

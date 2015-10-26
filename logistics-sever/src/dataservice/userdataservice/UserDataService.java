@@ -25,6 +25,13 @@ interface UserDataService {
 	 */
 	public boolean add(UserPO user);
 	/**
+	 * 前置：无
+	 * 后置：返回用户信息
+	 * @param id
+	 * @return PO
+	 */
+	public UserPO find(String id);
+	/**
 	 * 前置：存在该UserPO
 	 * 后置：删除一个PO
 	 * @param user
@@ -37,5 +44,5 @@ interface UserDataService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean updata(UserPO old,UserPO newone);
+	public boolean updata(UserPO old);
 }

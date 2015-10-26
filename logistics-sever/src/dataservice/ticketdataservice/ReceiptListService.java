@@ -6,7 +6,6 @@ import po.ReceiptListPO;
 
 /**
  * 20151022
- * 单据信息:(寄件单、)装车单、营业厅到达单、收款单、派件单、中转中心到达单 、入库单、(中转单)、出库单、付款单(收件单)
  * @author 颜
  *
  */
@@ -48,5 +47,5 @@ public interface ReceiptListService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean updata(ReceiptListPO newone);
+	public boolean update(ReceiptListPO newone);
 }

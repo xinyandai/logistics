@@ -40,5 +40,5 @@ public interface OutBoundListService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean updata(OutBoundListPO newone);
+	public boolean update(OutBoundListPO newone);
 }

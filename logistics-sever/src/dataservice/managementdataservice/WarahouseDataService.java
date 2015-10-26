@@ -37,6 +37,11 @@ public interface WarahouseDataService {
      * @param newone
      * @return
      */
-	public boolean updata(WarehousePO old,WarehousePO newone);
-	
+	public boolean update(WarehousePO old,WarehousePO newone);
+	/**
+	 * 前置：无
+	 * 后置：更新
+	 * @param a
+	 */
+	public void setBorderline(double a); 
 }

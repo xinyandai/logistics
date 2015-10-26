@@ -35,9 +35,8 @@ public interface DriversDataService {
 	/**
 	 * 前置：数据库中存在原PO
 	 * 后置：修改该PO
-	 * @param old
-	 * @param newone
+	 * @param
 	 * @return
 	 */
-	public boolean updata(DriverPO old,DriverPO newone);
+	public boolean updata(DriverPO newone);
 }
