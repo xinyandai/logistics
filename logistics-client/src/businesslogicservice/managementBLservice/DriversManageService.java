@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import vo.DriverVO;
 
-public interface DriversMangeService {
+public interface DriversManageService {
 
 	/**
 	 * 前置：选择司机信息管理

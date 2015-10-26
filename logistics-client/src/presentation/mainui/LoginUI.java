@@ -53,7 +53,7 @@ import businesslogicservice.userblservice.login.LoginBLService;
 public class LoginUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
+	//´÷·å
 	JPanel jp;
 	JPasswordField jpw;// ÃÜÂë¿ò
 	JComboBox<String> jc, jtjc;// ×Ô¶¯²¹È«

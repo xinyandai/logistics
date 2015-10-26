@@ -2,7 +2,7 @@ package businesslogicservice.managementBLservice;
 
 import java.util.ArrayList;
 
-public interface TicketAndOrderManagerService {
+public interface TicketAndOrderManageService {
 
 	/**
 	 * 前置：总经理登陆后则重复判断
