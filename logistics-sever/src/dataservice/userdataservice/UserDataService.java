@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import po.UserPO;
 
-interface UserDataService {
+public interface UserDataService {
 
 	
 	/**
@@ -44,5 +44,5 @@ interface UserDataService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean updata(UserPO old);
+	public boolean update(UserPO old);
 }
