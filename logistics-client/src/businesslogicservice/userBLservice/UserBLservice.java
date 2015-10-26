@@ -1,5 +1,7 @@
 package businesslogicservice.userBLservice;
 
+import java.util.ArrayList;
+
 import vo.UserVO;
 
 public interface UserBLservice {
@@ -29,11 +31,18 @@ public interface UserBLservice {
 	 */
 	public boolean addUser(UserVO u);
 	/**
-	 * 前置：用户更改账户信息
+	 * 前置：更改账户信息
 	 * 后置：更新
 	 * 依赖: UserDataService.update 修改一个账号信息
 	 * @param u
 	 * @return
 	 */
 	public boolean update(UserVO u);
+	/**
+	 * 前置：无
+	 * 后置：管理员查看所有账号信息
+	 * 依赖: UserDataService.allUsers 返回所有账号信息
+	 * @return
+	 */
+	public ArrayList<UserVO> allUsers();
 }

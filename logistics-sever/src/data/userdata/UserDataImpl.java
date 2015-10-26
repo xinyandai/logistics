@@ -6,13 +6,28 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import po.UserPO;
+import dataservice.MyList;
 import dataservice.userdataservice.UserDataService;
 
 
-public class UserDataImpl implements UserDataService {
+public class UserDataImpl extends UnicastRemoteObject implements UserDataService {
+
+	public UserDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	
 
 	private String spt = ":%:%:";
 	
@@ -37,8 +52,8 @@ public class UserDataImpl implements UserDataService {
 	}
 	
 	@Override
-	public ArrayList<UserPO> allUsers() {
-		ArrayList<UserPO> re = new ArrayList<UserPO>();
+	public MyList<UserPO> allUsers() {
+		MyList<UserPO> re = new MyList<UserPO>();
 		File file = new File("file"+File.separator+"user.txt");
 		try {
 			FileReader fr = new FileReader(file);
@@ -60,7 +75,7 @@ public class UserDataImpl implements UserDataService {
 		ArrayList<UserPO> re = this.allUsers();
 		re.add(user);
 		this.write(re);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -74,14 +89,11 @@ public class UserDataImpl implements UserDataService {
 
 	@Override
 	public boolean delete(UserPO user) {
-		try{
+		
 			ArrayList<UserPO> re = this.allUsers();
 			re.remove(user);
 			this.write(re);
-			return true;
-		}catch(Exception e){
-			return false;
-		}
+		    return true;
 		
 		
 		
@@ -89,23 +101,21 @@ public class UserDataImpl implements UserDataService {
 
 	@Override
 	public boolean update(UserPO old) {
-		try{
-			ArrayList<UserPO> re = this.allUsers();
-			for (UserPO userPO : re) {
-				if(old.getId().equals(userPO.getId())){
-					re.remove(userPO);
-					break;
-				}
+		ArrayList<UserPO> re = this.allUsers();
+		for (UserPO userPO : re) {
+			if(old.getId().equals(userPO.getId())){
+				re.remove(userPO);
+				re.add(old);
+				break;
 			}
-			this.write(re);
-			return true;
-		}catch(Exception e){
-			return false;
 		}
-	
+        this.write(re);
+        return true;
 	}
     
 	
 
 	
 }
+
+
