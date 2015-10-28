@@ -5,6 +5,11 @@ import java.util.Collection;
 
 public class MyList<E> extends ArrayList<E> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public MyList() {
 		// TODO Auto-generated constructor stub
 	}

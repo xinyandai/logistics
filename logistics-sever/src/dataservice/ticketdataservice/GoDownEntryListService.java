@@ -1,5 +1,6 @@
 package dataservice.ticketdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.GoDownEntryListPO;
@@ -10,14 +11,14 @@ public interface GoDownEntryListService {
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public ArrayList<GoDownEntryListPO> getAll();
+	public ArrayList<GoDownEntryListPO> getAll()throws RemoteException;
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO
 	 * @param   欲增加的持久化对象
 	 * @return  添加成功返回true
 	 */
-	public boolean add(GoDownEntryListPO ticket);
+	public boolean add(GoDownEntryListPO ticket)throws RemoteException;
 	
 	/**
 	 * 前置：数据库中含有该PO
@@ -26,19 +27,19 @@ public interface GoDownEntryListService {
 	 * @return  添加成功返回true
 	 */
 	
-	public boolean delete(GoDownEntryListPO ticket);
+	public boolean delete(GoDownEntryListPO ticket)throws RemoteException;
 	/**
 	 * 前置：无
 	 * 后置：删除这些PO
 	 * @param ticket
 	 * @return
 	 */
-	public boolean clear();
+	public boolean clear()throws RemoteException;
 	/**
 	 * 前置：该PO存在于数据库
 	 * 后置：修改一个PO
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean update(GoDownEntryListPO newone);
+	public boolean update(GoDownEntryListPO newone)throws RemoteException;
 }

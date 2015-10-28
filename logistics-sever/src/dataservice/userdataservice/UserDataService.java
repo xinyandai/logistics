@@ -6,8 +6,8 @@ package dataservice.userdataservice;
  */
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import dataservice.MyList;
 import po.UserPO;
 
 public interface UserDataService extends Remote{
@@ -18,7 +18,7 @@ public interface UserDataService extends Remote{
 	 * 后置：返回所有PO
 	 * @return 所有的用户信息
 	 */
-	public ArrayList<UserPO> allUsers()throws RemoteException;
+	public MyList<UserPO> allUsers()throws RemoteException;
 	/**
 	 * 前置：不存在该PO的ID
 	 * 后置：增加一个PO

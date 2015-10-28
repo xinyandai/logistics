@@ -30,13 +30,11 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	
 
 	private String spt = ":%:%:";
+	private String path = "file"+File.separator+"user.txt";
 	
-	public UserPO toPO(String s){
-		return new UserPO(s.split(spt));
-	}
 	public boolean write(ArrayList<UserPO> r){
 
-		File file = new File("file"+File.separator+"user.txt");
+		File file = new File(path);
 		try {
 			FileWriter fW = new FileWriter(file);
 			BufferedWriter br = new BufferedWriter(fW);
@@ -47,6 +45,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
@@ -54,13 +53,13 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	@Override
 	public MyList<UserPO> allUsers() {
 		MyList<UserPO> re = new MyList<UserPO>();
-		File file = new File("file"+File.separator+"user.txt");
+		File file = new File(path);
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String record = null;
 			while ((record = br.readLine()) != null) {
-				re.add(this.toPO(record));
+				re.add(new UserPO(record.split(spt)));
 			}
 			br.close();
 		} catch (IOException e) {
@@ -74,8 +73,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 		
 		ArrayList<UserPO> re = this.allUsers();
 		re.add(user);
-		this.write(re);
-		return true;
+		return this.write(re);
 	}
 
 	@Override
@@ -89,14 +87,9 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
 	@Override
 	public boolean delete(UserPO user) {
-		
-			ArrayList<UserPO> re = this.allUsers();
-			re.remove(user);
-			this.write(re);
-		    return true;
-		
-		
-		
+		ArrayList<UserPO> re = this.allUsers();
+		re.remove(user);
+		return this.write(re);
 	}
 
 	@Override
@@ -109,8 +102,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 				break;
 			}
 		}
-        this.write(re);
-        return true;
+		return this.write(re);
 	}
     
 	

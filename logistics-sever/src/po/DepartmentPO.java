@@ -11,6 +11,9 @@ public class DepartmentPO {
 		this.category = category;
 		this.location = location;
 	}
+	public DepartmentPO(String[] s) {
+		this(s[0],s[1],s[2]);
+	}
 	public String getName() {
 		return name;
 	}
