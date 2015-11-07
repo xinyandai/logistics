@@ -19,6 +19,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.JTextField;
 
 public class AccountPanel extends JPanel {
 
@@ -29,6 +30,7 @@ public class AccountPanel extends JPanel {
 			{"row1-col1", "row1-col2","add"},{"row1-col1", "row1-col2","add"}};
 	String[] columnNames = {"账号", "余额",""};
 	private JTable table;
+	private JTextField textField;
 	public AccountPanel() {
 		setLayout(new BorderLayout(0, 0));
 		
@@ -42,29 +44,43 @@ public class AccountPanel extends JPanel {
 		JButton button_2 = new JButton("改");
 		
 		JButton button_3 = new JButton("同步");
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		JButton button_4 = new JButton("搜索");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(58)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_3)
-					.addContainerGap())
+					.addContainerGap()
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(12)
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addGap(2)
+							.addComponent(button_3))
+						.addComponent(button_4))
+					.addGap(6))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button)
-						.addComponent(button_1)
+						.addComponent(button_3)
 						.addComponent(button_2)
-						.addComponent(button_3))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(button_1)
+						.addComponent(button))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(button_4)))
 		);
 		panel.setLayout(gl_panel);
 		
@@ -99,5 +115,4 @@ public class AccountPanel extends JPanel {
 		//table.getColumn(0).setCellEditor(new DefaultCellEditor(new JCheckBox()));
 		scrollPane.setViewportView(table);
 	}
-
 }

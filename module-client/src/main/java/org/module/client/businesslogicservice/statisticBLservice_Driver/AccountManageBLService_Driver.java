@@ -6,12 +6,12 @@ import org.module.client.vo.AccountVO;
 
 public class AccountManageBLService_Driver {
 	public void drive(AccountManageBLService accountManageBLService){
-		AccountVO d=new AccountVO("id", "money");
-		boolean add=accountManageBLService.add(d);
-		boolean delete=accountManageBLService.delete(d);
-		boolean update=accountManageBLService.updata(d);
-		boolean income=accountManageBLService.income(d, 10);
-		boolean pay=accountManageBLService.pay(d, 10);
+//	AccountVO d=new AccountVO("id", "money");
+		boolean add=accountManageBLService.add("id", 10);
+		boolean delete=accountManageBLService.delete("id");
+		boolean update=accountManageBLService.updata("id", 100);
+		boolean income=accountManageBLService.income("id", 1000);
+		boolean pay=accountManageBLService.pay("id", 10);
 		if(add)
 			System.out.println("add successfully!");
 		if(delete)

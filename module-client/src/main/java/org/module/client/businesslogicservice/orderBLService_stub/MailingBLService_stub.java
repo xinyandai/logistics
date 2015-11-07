@@ -8,27 +8,35 @@ import org.module.client.vo.MailingListVO;
 
 public class MailingBLService_stub implements MailingBLService{
 
-	public double calculatePrice(String senderCity, String receiveCity,
+	public double price(String senderCity, String receiveCity,
 			String counts, String weight, String volume,
 			String costOfDecoration, String type) {
 		System.out.println("price");
 		return 10;
 	}
 
-	public double calculateTime(String senderCity, String receiveCity) {
+	public double time(String senderCity, String receiveCity) {
 		System.out.println("time");
 		return 10;
 	}
 
-	public boolean creat(MailingListVO o) {
-		// TODO �Զ����ɵķ������
-		System.out.println("mail");
-		return false;
-	}
 
 	public ArrayList<MailingListVO> getAll() {
 		// TODO �Զ����ɵķ������
 		return null;
+	}
+
+
+
+	public boolean handleMailingList(String senderName, String senderCompany,
+			String senderMobile, String senderPhone, String senderCity,
+			String senderPosition, String receiveName, String receiveCompany,
+			String receiveMobile, String receivePhone, String receiveCity,
+			String receivePosition, String nameOfGood, String counts,
+			String weight, String volume, String costOfDecoration, String type,
+			String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

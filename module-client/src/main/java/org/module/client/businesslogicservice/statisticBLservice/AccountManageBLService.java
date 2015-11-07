@@ -20,15 +20,15 @@ public interface AccountManageBLService {
 	 * @param s
 	 * @return
 	 */
-	public boolean fuzzySearch(String s);
+	public AccountVO fuzzySearch(String s);
 	/**
 	 * 前置：新建一个账户并输入信息
 	 * 后置：显示新账户列表
 	 * 依赖：AccountDataService.add 增加一个账户PO
-	 * @param a
+	 * @param 
 	 * @return
 	 */
-	public boolean add(AccountVO a);
+	public boolean add(String id,double rest);
 	/**
 	 * 前置：选择账户删除
 	 * 后置：显示新账户列表 
@@ -36,7 +36,7 @@ public interface AccountManageBLService {
 	 * @param a
 	 * @return
 	 */
-	public boolean delete(AccountVO a);
+	public boolean delete(String id);
 	/**
 	 * 前置：选择账户删除
 	 * 后置：显示新账户列表
@@ -44,7 +44,7 @@ public interface AccountManageBLService {
 	 * @param a
 	 * @return
 	 */
-	public boolean delete(ArrayList<AccountVO> a);
+	public boolean delete(ArrayList<String> a);
 	/**
 	 * 前置：选择账户修改信息
 	 * 后置：显示新账户列表
@@ -52,7 +52,7 @@ public interface AccountManageBLService {
 	 * @param a
 	 * @return
 	 */
-	public boolean updata(AccountVO a);
+	public boolean updata(String id,double rest);
 	/**
 	 * 前置：新建收款单
 	 * 后置：更新余额
@@ -61,14 +61,14 @@ public interface AccountManageBLService {
 	 * @param b
 	 * @return
 	 */
-	public boolean income(AccountVO a,double b);
+	public boolean income(String id,double rest);
 	/**
 	 * 前置：新建付款单
 	 * 后置：更新余额
 	 * 依赖：AccountDataService.update 更改账户信息
-	 * @param a
+	 * @param id
 	 * @param b
 	 * @return
 	 */
-	public boolean pay(AccountVO a,double b);
+	public boolean pay(String id,double b);
 }

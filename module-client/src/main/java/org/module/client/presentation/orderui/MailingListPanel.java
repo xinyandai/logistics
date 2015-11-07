@@ -1,43 +1,30 @@
 package org.module.client.presentation.orderui;
 
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JButton;
-
-import java.awt.GridLayout;
-
-import javax.swing.border.EtchedBorder;
-import javax.swing.BoxLayout;
-import javax.swing.JTextField;
-
-import java.awt.FlowLayout;
 import java.awt.Color;
-
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
-
-import org.module.client.controller.order.MailingListControl;
-import org.module.client.controllerService.order.InputMailingListService;
-
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-import javax.swing.event.CaretListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.regex.Pattern;
+import org.module.client.businesslogic.orderbl.MailingListControl;
+import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 
 public class MailingListPanel extends JPanel {
 	
-	private InputMailingListService inputMailingList = new MailingListControl();
+	private MailingBLService inputMailingList = new MailingListControl();
 	private String[] stringOfType = {"经济快递","标准快递","特快"};
 	private String[] cities = {"南京","北京","上海","广州"};
 	
@@ -517,13 +504,13 @@ public class MailingListPanel extends JPanel {
 	
 	
 	private void handleTime(){
-		int time = inputMailingList.time(senderCity.getSelectedItem().toString(),
+		int time = (int) inputMailingList.time(senderCity.getSelectedItem().toString(),
 				receiveCity.getSelectedItem().toString());
 		this.time = time;
 	}
 	
 	private void handlePrice(){
-		this.money = inputMailingList.price(
+		this.money = (int) inputMailingList.price(
 				senderCity.getSelectedItem().toString(),
                 receiveCity.getSelectedItem().toString(), 
                 counts.getText(), weight.getText(), 

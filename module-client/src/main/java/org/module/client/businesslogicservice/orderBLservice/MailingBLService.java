@@ -17,7 +17,7 @@ public interface MailingBLService {
 	 *
 	 * @return
 	 */
-	public double calculatePrice(String senderCity,
+	public double price(String senderCity,
     		String receiveCity,
     		String  counts,
 			String  weight,
@@ -32,7 +32,7 @@ public interface MailingBLService {
 	 * @param m
 	 * @return
 	 */
-	public double calculateTime(String senderCity,String receiveCity);
+	public double time(String senderCity,String receiveCity);
 	/**
 	 * 前置：新建寄件单
 	 * 后置：更新信息
@@ -40,13 +40,31 @@ public interface MailingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(MailingListVO o);
+	public boolean handleMailingList(String  senderName,
+			String  senderCompany,
+			String  senderMobile,
+			String  senderPhone,
+			String  senderCity,
+			String  senderPosition,
+			String  receiveName,
+			String  receiveCompany,
+			String  receiveMobile,
+			String  receivePhone,
+			String  receiveCity,
+			String  receivePosition,
+			String  nameOfGood,
+			String  counts,
+			String  weight,
+			String  volume,
+			String  costOfDecoration,
+			String  type,
+			String  id);
 	/**
 	 * 前置：选择查看所有订单
 	 * 后置：显示所有订单
 	 * 依赖：MailingListService.getAll 返回所有PO
 	 * @return
 	 */
-	public ArrayList<MailingListVO> getAll();
+	//public ArrayList<MailingListVO> getAll();
 	
 }

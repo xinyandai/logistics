@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.vo.MailingListVO;
 
-public class MailingBLImpl implements MailingBLService {
+public class MailingBLImpl  {
 
 	
 

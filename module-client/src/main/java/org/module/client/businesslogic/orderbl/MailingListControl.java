@@ -1,12 +1,14 @@
-package org.module.client.controller.order;
+package org.module.client.businesslogic.orderbl;
 
-import org.module.client.businesslogicservice.orderBLService_stub.MailingBLService_stub;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
-import org.module.client.controllerService.order.InputMailingListService;
 import org.module.client.vo.MailingListVO;
 
-public class MailingListControl implements InputMailingListService{
-	private MailingBLService mailingBLImpl = new MailingBLService_stub();
+
+public class MailingListControl implements MailingBLService{
+	private MailingBLImpl mailingBLImpl;
+	
+	
+	
 	public boolean handleMailingList(String senderName, String senderCompany,
 			String senderMobile, String senderPhone, String senderCity,
 			String senderPosition, String receiveName, String receiveCompany,
@@ -36,19 +38,22 @@ public class MailingListControl implements InputMailingListService{
 
 	
 
-	public int time(String senderCity, String receiveCity) {
+	public double time(String senderCity, String receiveCity) {
 		
 		return (int)mailingBLImpl.calculateTime(senderCity, receiveCity);
 	}
 
 
 
-	public int price(String senderCity, String receiveCity, String counts,
+	public double price(String senderCity, String receiveCity, String counts,
 			String weight, String volume, String costOfDecoration, String type) {
 		
 		return (int)mailingBLImpl.calculatePrice(senderCity, receiveCity, counts, 
 				weight, volume, costOfDecoration, type);
 	}
+
+
+
 	
 
 }
