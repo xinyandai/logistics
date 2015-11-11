@@ -58,7 +58,7 @@ public class WarehouseFrame extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel label = new JLabel("财务人员");
+		JLabel label = new JLabel("仓库管理员");
 		panel.add(label);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
