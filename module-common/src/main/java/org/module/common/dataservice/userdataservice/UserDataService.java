@@ -37,7 +37,7 @@ public interface UserDataService extends Remote{
 	 * @param user
 	 * @return
 	 */
-	public boolean delete(UserPO user)throws RemoteException;
+	public boolean delete(String id)throws RemoteException;
 	/**
 	 * 前置：存在该PO的id
 	 * 后置：更新一个PO

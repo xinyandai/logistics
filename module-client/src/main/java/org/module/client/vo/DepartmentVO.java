@@ -5,11 +5,16 @@ public class DepartmentVO {
 	private String name;
 	private String category;
 	private String location;
-	public DepartmentVO(String name, String category, String location) {
+	private String identity;
+	
+	
+	public DepartmentVO(String name, String category, String location,
+			String identity) {
 		super();
 		this.name = name;
 		this.category = category;
 		this.location = location;
+		this.identity = identity;
 	}
 	public String getName() {
 		return name;
@@ -29,5 +34,12 @@ public class DepartmentVO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public String getIdentity() {
+		return identity;
+	}
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+	
 
 }

@@ -5,14 +5,23 @@ import org.module.client.businesslogicservice.statisticBLservice.CostAndIncomeBL
 
 public class CostAndIncomeBLService_stub implements CostAndIncomeBLService{
 
-	public double getCost() {
-		// TODO �Զ����ɵķ������
-		return 0;
+	public double getCost(double startTime, double endTime) {
+		// TODO Auto-generated method stub
+		return 100;
 	}
 
-	public double getIncome() {
-		// TODO �Զ����ɵķ������
-		return 0;
+	public double getIncome(double startTime, double endTime) {
+		// TODO Auto-generated method stub
+		return 10;
 	}
+
+	
+
+	public double getPureIncome(double startTime, double endTime) {
+		
+		return this.getIncome(startTime, endTime)-this.getCost(startTime, endTime);
+	}
+
+	
 
 }

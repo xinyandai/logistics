@@ -8,9 +8,8 @@ import org.module.client.vo.ReceiptListVO;
 
 public class IncomeManageBLService_stub implements  IncomeManageBLService{
 
-	public ArrayList<ReceiptListVO> showIncomeList(double startTime,
+	public ArrayList<ReceiptListVO> showIncomeList(String office, double startTime,
 			double endTime) {
-		// TODO �Զ����ɵķ������
 		return null;
 	}
 

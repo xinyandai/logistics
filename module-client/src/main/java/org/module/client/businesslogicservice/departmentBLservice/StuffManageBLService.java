@@ -20,7 +20,7 @@ public interface StuffManageBLService {
 	 * @param d
 	 * @return
 	 */
-	public boolean add(StuffVO d);
+	public boolean add(String name, String age, String category, String identity);
 	/**
 	 * 前置：选择删除员工
 	 * 后置：更新员工信息
@@ -28,7 +28,7 @@ public interface StuffManageBLService {
 	 * @param d
 	 * @return
 	 */
-	public boolean delete(StuffVO d);
+	public boolean delete(String identity);
 	
 	/**
 	 * 前置：选择删除员工
@@ -37,7 +37,7 @@ public interface StuffManageBLService {
 	 * @param ald
 	 * @return
 	 */
-	public boolean delete(ArrayList<StuffVO> ald);
+	public boolean delete(ArrayList<String> ids);
 	/**
 	 * 前置：选择修改员工，输入员工新信息
 	 * 后置：更新员工信息
@@ -46,7 +46,7 @@ public interface StuffManageBLService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean modify(StuffVO  newone);
+	public boolean modify(String name, String age, String category, String identity);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

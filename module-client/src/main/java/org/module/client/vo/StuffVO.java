@@ -8,6 +8,7 @@ public class StuffVO {
 	private String age;
 	private String category;
 	private String identity;
+	private int slaray;
 	public StuffVO(String name, String age, String category, String identity) {
 		super();
 		this.name = name;

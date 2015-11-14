@@ -18,17 +18,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import org.module.client.businesslogic.userbl.UserBLImpl;
-import org.module.client.businesslogicservice.userBLservice.UserBLservice;
-import org.module.client.presentation.userui.AdministratorUI;
-import org.module.client.vo.UserVO;
+import org.module.client.businesslogic.userbl.Login;
+import org.module.client.businesslogic.userbl.LoginController;
+import org.module.client.businesslogicservice.userBLservice.UserLoginBLService;
 
 public class MainFrame extends JFrame {
 
 	/**
 	 * 
 	 */
-	private UserBLservice user = new UserBLImpl();
+	private UserLoginBLService longiner = new LoginController(new Login());
+	
 	private Image imgBackground = new ImageIcon("pic/login.png").getImage();
 	private Image imgClose = new ImageIcon("pic/close.png").getImage();
 	private CloseButton closeBtn;
@@ -124,10 +124,10 @@ public class MainFrame extends JFrame {
 		for (char c : ch) {
 			s+=c;
 		}
-		if(user.login(new UserVO(textField.getText(),s,array[comboBox.getSelectedIndex()]))){
+		if(longiner.login(textField.getText(),s,array[comboBox.getSelectedIndex()])){
 			System.out.println("success to login");
 			frame.dispose();
-			new AdministratorUI(user.allUsers()).setVisible(true);;
+	//		new AdministratorUI(user.allUsers()).setVisible(true);;
 
 		}else{
 			JOptionPane.showConfirmDialog(frame, "账号信息错误", "登录失败", JOptionPane.OK_CANCEL_OPTION);

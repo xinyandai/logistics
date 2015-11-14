@@ -27,7 +27,8 @@ public interface DepartmentManageBLService {
 	 * @param d
 	 * @return
 	 */
-	public boolean add(DepartmentVO d);
+	public boolean add(String name, String category, String location,
+			String identity);
 	/**
 	 * 前置：选择删除机构
 	 * 后置：更新机构信息
@@ -35,7 +36,7 @@ public interface DepartmentManageBLService {
 	 * @param d
 	 * @return
 	 */
-	public boolean delete(DepartmentVO d);
+	public boolean delete(String identity);
 	/**
 	 * 前置：选择欲删除的机构
 	 * 后置：更新机构信息
@@ -43,7 +44,7 @@ public interface DepartmentManageBLService {
 	 * @param ald
 	 * @return
 	 */
-	public boolean delete(ArrayList<DepartmentVO> ald);
+	public boolean delete(ArrayList<String> ids);
 	/**
 	 * 前置：选择机构进行修改，输入修改后的新信息
 	 * 后置：更新机构信息
@@ -52,7 +53,8 @@ public interface DepartmentManageBLService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean modify(DepartmentVO newone);
+	public boolean modify(String name, String category, String location,
+			String identity);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

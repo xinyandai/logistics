@@ -8,26 +8,26 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.JButton;
 
-import java.awt.GridLayout;
-
-import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class StuffPanel extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Create the panel.
 	 */
 	Object[][] cellData = {{"row1-col1", "row1-col2","add"},{"row2-col1", "row2-col2","add"},
 			{"row1-col1", "row1-col2","add"},{"row1-col1", "row1-col2","add"}};
-	String[] columnNames = {"名字", "年龄","工作类别","员工号",""};
+	String[] columnNames = {"名字", "年龄","工作类别","员工号","薪水",""};
 	private JTable table;
 	public StuffPanel() {
 		setLayout(new BorderLayout(0, 0));
@@ -72,6 +72,11 @@ public class StuffPanel extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable(new DefaultTableModel(cellData,columnNames){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -5512247425534123881L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

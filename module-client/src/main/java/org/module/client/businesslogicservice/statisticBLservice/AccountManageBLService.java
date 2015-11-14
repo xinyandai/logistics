@@ -52,7 +52,7 @@ public interface AccountManageBLService {
 	 * @param a
 	 * @return
 	 */
-	public boolean updata(String id,double rest);
+	public boolean update(String id,double rest);
 	/**
 	 * 前置：新建收款单
 	 * 后置：更新余额
@@ -61,7 +61,7 @@ public interface AccountManageBLService {
 	 * @param b
 	 * @return
 	 */
-	public boolean income(String id,double rest);
+	//public boolean income(String id,double rest);
 	/**
 	 * 前置：新建付款单
 	 * 后置：更新余额
@@ -70,5 +70,5 @@ public interface AccountManageBLService {
 	 * @param b
 	 * @return
 	 */
-	public boolean pay(String id,double b);
+	//public boolean pay(String id,double b);
 }

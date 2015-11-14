@@ -32,7 +32,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	private String spt = ":%:%:";
 	private String path = "file"+File.separator+"user.txt";
 	
-	public boolean write(ArrayList<UserPO> r){
+	public boolean  write(ArrayList<UserPO> r){
 
 		File file = new File(path);
 		try {
@@ -82,10 +82,8 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 		return null;
 	}
 
-	public boolean delete(UserPO user) {
-		ArrayList<UserPO> re = this.allUsers();
-		re.remove(user);
-		return this.write(re);
+	public boolean delete(String id) {
+		return false;
 	}
 
 	public boolean update(UserPO old) {

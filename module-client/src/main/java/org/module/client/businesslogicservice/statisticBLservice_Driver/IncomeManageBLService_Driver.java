@@ -5,6 +5,6 @@ import org.module.client.businesslogicservice.statisticBLservice.IncomeManageBLS
 
 public class IncomeManageBLService_Driver {
 	public void drive(IncomeManageBLService incomeManageBLService){
-		incomeManageBLService.showIncomeList(10, 20);
+		incomeManageBLService.showIncomeList("全部",10, 20);
 	}
 }

@@ -1,36 +1,18 @@
 package org.module.client.businesslogicservice.userBLService_stub;
 
-import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.userBLservice.UserBLservice;
-import org.module.client.vo.UserVO;
+import org.module.client.businesslogicservice.userBLservice.UserLoginBLService;
 
 
-public class UserBLService_stub implements UserBLservice{
+public class UserBLService_stub implements UserLoginBLService{
 
-	public boolean login(UserVO u) {
-		// TODO �Զ����ɵķ������
+
+	public boolean login(String id, String password,String role) {
+		if(id.equals("admin") && password.equals("admin") && role.equals("管理员"))
+			return true;
 		return false;
 	}
 
-	public boolean deleteUser(UserVO u) {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
-
-	public boolean addUser(UserVO u) {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
-
-	public boolean update(UserVO u) {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
-
-	public ArrayList<UserVO> allUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

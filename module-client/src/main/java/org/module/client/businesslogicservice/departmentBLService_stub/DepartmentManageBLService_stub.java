@@ -13,29 +13,36 @@ public class DepartmentManageBLService_stub implements DepartmentManageBLService
 		return null;
 	}
 
-	public boolean add(DepartmentVO d) {
-		System.out.println("add successfully");
-		return false;
-	}
 
-	public boolean delete(DepartmentVO d) {
-		System.out.println("delete successfully");
-		return false;
-	}
+	
 
-	public boolean delete(ArrayList<DepartmentVO> ald) {
-		System.out.println("delete successfully");
-		return false;
-	}
-
-	public boolean modify(DepartmentVO newone) {
-		System.out.println("modify successfully");
-		return false;
-	}
+	
+	
 
 	public ArrayList<DepartmentVO> fuzzySearch(String s) {
 		System.out.println("find!");
 		return null;
+	}
+
+	public boolean add(String name, String category, String location,
+			String identity) {
+		System.out.println("add successfully");
+		return false;
+	}
+
+	public boolean delete(String identity) {
+		System.out.println("delete successfully");		return false;
+	}
+
+	public boolean delete(ArrayList<String> ids) {
+		System.out.println("delete successfully");
+		return false;
+	}
+
+	public boolean modify(String name, String category, String location,
+			String identity) {
+		System.out.println("modify successfully");
+		return false;
 	}
 
 }

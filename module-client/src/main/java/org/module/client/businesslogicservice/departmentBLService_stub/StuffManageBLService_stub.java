@@ -14,34 +14,42 @@ public class StuffManageBLService_stub implements StuffManageBLService{
 		return null;
 	}
 
-	public boolean add(StuffVO d) {
+
+
+	public ArrayList<StuffVO> fuzzySearch(String s) {
+		return null;
+	}
+
+	public boolean add(String name, String age, String category, String identity) {
 		System.out.println("add successfully");
 		return false;
 	}
 
-	public boolean delete(StuffVO d) {
-		if(d.getIdentity().length() == 9){
-			this.svo = d;
+	public boolean delete(String identity) {
+		if(identity.length() == 9){
 			System.out.println("delete successfully");
 			return true;
 		}
 		return false;
 	}
 
-	public boolean delete(ArrayList<StuffVO> ald) {
+	public boolean delete(ArrayList<String> ids) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean modify(StuffVO newone) {
-		if(newone.getIdentity().equals("140010001")){
+	public boolean modify(String name, String age, String category,
+			String identity) {
+		if(identity.equals("0250000000")){
 			System.out.println("can change");
 			return true;
 		}
 		return false;
 	}
-
-	public ArrayList<StuffVO> fuzzySearch(String s) {
-		return null;
-	}
+	
+	
+	
+	
+	
 	
 }

@@ -29,7 +29,7 @@ public class AccountManageBLService_stub implements AccountManageBLService {
 		return false;
 	}
 
-	public boolean updata(String id, double rest) {
+	public boolean update(String id, double rest) {
 		// TODO Auto-generated method stub
 		return false;
 	}

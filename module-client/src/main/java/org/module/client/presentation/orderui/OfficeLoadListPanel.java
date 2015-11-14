@@ -2,15 +2,21 @@ package org.module.client.presentation.orderui;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class OfficeLoadListPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5708449962639760332L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;

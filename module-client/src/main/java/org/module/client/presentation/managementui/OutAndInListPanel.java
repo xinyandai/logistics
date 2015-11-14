@@ -8,15 +8,11 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.JButton;
 
-import java.awt.GridLayout;
-
-import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JComboBox;
@@ -29,6 +25,10 @@ import java.util.Date;
 
 public class OutAndInListPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 查看此时间段内的出/入库数量/金额，存储位置
 	 */
@@ -85,6 +85,11 @@ public class OutAndInListPanel extends JPanel {
 		panel_1.add(scrollPane);
 		
 		table = new JTable(new DefaultTableModel(cellData,columnNames){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -115,8 +120,8 @@ public class OutAndInListPanel extends JPanel {
 		JPanel panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.NORTH);
 		
-		JComboBox comboBox = new JComboBox(type);
-		
+	//	JComboBox comboBox = new JComboBox(type);
+		JComboBox<String> comboBox = new JComboBox<String>(type);
 		
 		startTimePicker = new JXDatePicker();
 		startTimePicker.setDate(new Date());
