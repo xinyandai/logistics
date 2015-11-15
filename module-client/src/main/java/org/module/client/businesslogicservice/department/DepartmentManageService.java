@@ -20,7 +20,7 @@ public interface DepartmentManageService {
 	 * @param d
 	 * @return
 	 */
-	public boolean add(DepartmentVO d);
+	public boolean add(DepartmentVO vo);
 	/**
 	 * 前置：选择删除机构
 	 * 后置：更新机构信息
@@ -45,7 +45,7 @@ public interface DepartmentManageService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean modify(DepartmentVO newone);
+	public boolean modify(DepartmentVO vo);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

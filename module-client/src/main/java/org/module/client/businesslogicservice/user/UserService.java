@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.vo.UserVO;
 
-public interface UserManageService {
+public interface UserService {
 	/**
 	 * 前置：管理员选择用户删除
 	 * 后置：更新

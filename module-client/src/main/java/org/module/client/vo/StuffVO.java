@@ -8,13 +8,30 @@ public class StuffVO {
 	private String age;
 	private String category;
 	private String identity;
-	private int slaray;
+	private double slaray;
+	
 	public StuffVO(String name, String age, String category, String identity) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.category = category;
 		this.identity = identity;
+	}
+	
+	public StuffVO(String name, String age, String category, String identity,
+			int slaray) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.category = category;
+		this.identity = identity;
+		this.slaray = slaray;
+	}
+	public  void setSlary(double s){
+		this.slaray  =s ;
+	}
+	public  double getSlary(){
+		return this.slaray ;
 	}
 	public String getName() {
 		return name;

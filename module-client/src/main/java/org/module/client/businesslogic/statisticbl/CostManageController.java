@@ -2,23 +2,32 @@ package org.module.client.businesslogic.statisticbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.statistic.CostManageService;
+import org.module.client.businesslogicservice.statistic.CostService;
+import org.module.client.businesslogicservice.statisticBLservice.CostManageBLService;
 import org.module.client.vo.CostListVO;
 
-public class CostManageController implements CostManageService {
+public class CostManageController implements CostManageBLService {
+	private CostService cost;
+	public CostManageController(CostService cost) {
+		super();
+		this.cost = cost;
+	}
 
 	public CostManageController() {
-		// TODO Auto-generated constructor stub
+		cost = new Cost();
 	}
 
-	public boolean creatCostList(CostListVO vo) {
+	public boolean add(String date, String money, String people,
+			String account, String entry, String note) {
 		// TODO Auto-generated method stub
-		return false;
+		return cost.creatCostList(new CostListVO(date,money,people,account,entry,note));
 	}
 
-	public ArrayList<CostListVO> getAllCostList(double startTime, double endTime) {
+	public ArrayList<CostListVO> showAll(double startTime, double endTime) {
 		// TODO Auto-generated method stub
-		return null;
+		return cost.getAllCostList(startTime, endTime);
 	}
+
+	
 
 }

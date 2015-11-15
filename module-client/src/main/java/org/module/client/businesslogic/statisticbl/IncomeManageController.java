@@ -2,19 +2,34 @@ package org.module.client.businesslogic.statisticbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.statistic.IncomeManageService;
+import org.module.client.businesslogicservice.statistic.IncomeService;
+import org.module.client.businesslogicservice.statisticBLservice.IncomeManageBLService;
 import org.module.client.vo.ReceiptListVO;
 
-public class IncomeManageController implements IncomeManageService {
+public class IncomeManageController implements IncomeManageBLService {
 
+	
+	private IncomeService income;
 	public IncomeManageController() {
-		// TODO Auto-generated constructor stub
+		super();
+		this.income = new Income();
 	}
 
-	public ArrayList<ReceiptListVO> getAllIncomeList(String office,
+	public IncomeManageController(IncomeService income) {
+		super();
+		this.income = income;
+	}
+
+
+	public ArrayList<ReceiptListVO> showIncomeList(String office,
 			double startTime, double endTime) {
+		
+		return income.getAllIncomeList(office, startTime, endTime);
+	}
+
+	public boolean add(String date, String money, String courier, String orderId) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }

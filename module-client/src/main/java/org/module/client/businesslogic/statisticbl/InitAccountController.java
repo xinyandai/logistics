@@ -2,14 +2,14 @@ package org.module.client.businesslogic.statisticbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.statistic.InitAccountService;
+import org.module.client.businesslogicservice.statisticBLservice.InitAccountBLService;
 import org.module.client.vo.AccountVO;
 import org.module.client.vo.CarVO;
 import org.module.client.vo.DepartmentVO;
 import org.module.client.vo.StuffVO;
 import org.module.client.vo.WarehouseVO;
 
-public class InitAccountController implements InitAccountService {
+public class InitAccountController implements InitAccountBLService {
 
 	public InitAccountController() {
 		// TODO Auto-generated constructor stub

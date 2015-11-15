@@ -6,7 +6,7 @@ import org.module.client.vo.CostListVO;
 
 public class CostManageBLService_Driver {
 	public void drive(CostManageBLService costManageBLService){
-		boolean creat=costManageBLService.creatCostList("date", "money", "people", "accout",
+		boolean creat=costManageBLService.add("date", "money", "people", "accout",
 				"entry", "note");
 		if(creat)
 			System.out.println("creat successfully!");

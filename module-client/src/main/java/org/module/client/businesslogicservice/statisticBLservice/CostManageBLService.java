@@ -19,7 +19,7 @@ public interface CostManageBLService {
 	 * @param c
 	 * @return
 	 */
-	public boolean creatCostList(String date, String money, String people, String accout,
+	public boolean add(String date, String money, String people, String accout,
 			String entry, String note);
 	/**
 	 * 前置：选择查看所有成本支出
@@ -27,6 +27,6 @@ public interface CostManageBLService {
 	 * 依赖：CostDataService.getAll 返回所有付款单
 	 * @return
 	 */
-	public ArrayList<CostListVO> showCostList(double startTime,double endTime);
+	public ArrayList<CostListVO> showAll(double startTime,double endTime);
 	
 }

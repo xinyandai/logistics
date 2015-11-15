@@ -3,11 +3,11 @@ package org.module.client.vo;
 public class AccountVO {
 
 	private String id;
-	private String money;
-	public AccountVO(String id, String money) {
+	private double money;
+	public AccountVO(String id, String rest) {
 		super();
 		this.id = id;
-		this.money = money;
+		this.money = Double.parseDouble(rest);
 	}
 	public String getId() {
 		return id;
@@ -15,10 +15,10 @@ public class AccountVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getMoney() {
+	public double getMoney() {
 		return money;
 	}
-	public void setMoney(String money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

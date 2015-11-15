@@ -18,5 +18,6 @@ public interface IncomeManageBLService {
 	 * @return
 	 */
 	public ArrayList<ReceiptListVO> showIncomeList(String office,double startTime,double endTime);
-
+	public boolean add(String date, String money, String courier,
+			String orderId);
 }

@@ -17,7 +17,6 @@ public class RmiClient {
 		UserDataService service;   
 		 try {
 			service = (UserDataService)Naming.lookup(url);
-			System.out.print("done");
 			return service;
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

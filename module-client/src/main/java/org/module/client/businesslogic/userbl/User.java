@@ -3,14 +3,14 @@ package org.module.client.businesslogic.userbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.user.UserManageService;
+import org.module.client.businesslogicservice.user.UserService;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.UserVO;
 import org.module.common.dataservice.userdataservice.UserDataService;
 import org.module.common.po.UserPO;
 
 
-public class User implements UserManageService {
+public class User implements UserService {
 	private UserDataService user = new RmiClient().getUserDataService();
 
 	

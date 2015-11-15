@@ -9,12 +9,9 @@ import org.module.common.po.AccountPO;
 
 public class AccountManageBLService_stub implements AccountManageBLService {
 
-	public AccountVO fuzzySearch(String s) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	public boolean add(String id, double rest) {
+	public boolean add(String id, String rest) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -29,7 +26,7 @@ public class AccountManageBLService_stub implements AccountManageBLService {
 		return false;
 	}
 
-	public boolean update(String id, double rest) {
+	public boolean update(String id, String rest) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -42,6 +39,16 @@ public class AccountManageBLService_stub implements AccountManageBLService {
 	public boolean pay(String id, double b) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public ArrayList<AccountVO> showAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<AccountVO> fuzzySearch(String s) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

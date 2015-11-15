@@ -7,9 +7,9 @@ import org.module.client.vo.AccountVO;
 public class AccountManageBLService_Driver {
 	public void drive(AccountManageBLService accountManageBLService){
 //	AccountVO d=new AccountVO("id", "money");
-		boolean add=accountManageBLService.add("id", 10);
+		boolean add=accountManageBLService.add("id", "10");
 		boolean delete=accountManageBLService.delete("id");
-		boolean update=accountManageBLService.update("id", 100);
+		boolean update=accountManageBLService.update("id", "100");
 		//boolean income=accountManageBLService.income("id", 1000);
 		//boolean pay=accountManageBLService.pay("id", 10);
 		if(add)

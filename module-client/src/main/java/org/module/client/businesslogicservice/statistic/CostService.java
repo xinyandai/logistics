@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.vo.CostListVO;
 
-public interface CostManageService {
+public interface CostService {
 	/**
 	 * 前置：新建付款单并输入信息
 	 * 后置：保存付款单
@@ -12,7 +12,7 @@ public interface CostManageService {
 	 * @param c
 	 * @return
 	 */
-	public boolean creatCostList(CostListVO vo);
+	public boolean creatCostList(CostListVO vo );
 	/**
 	 * 前置：选择查看所有成本支出
 	 * 后置：显示所有付款单

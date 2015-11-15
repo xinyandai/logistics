@@ -14,13 +14,21 @@ import org.module.client.vo.AccountVO;
 public interface AccountManageBLService {
 
 	/**
+	 * 前置：查看账户列表
+	 * 后置：显示所有账户列表
+	 * 依赖：AccountDataService.getAll 返回所有账户信息
+	 * @param s
+	 * @return
+	 */
+	public ArrayList<AccountVO> showAll();
+	/**
 	 * 前置：输入关键字查找账户
 	 * 后置：显示模糊查找结果
 	 * 依赖：AccountDataService.getAll 返回所有账户信息
 	 * @param s
 	 * @return
 	 */
-	public AccountVO fuzzySearch(String s);
+	public ArrayList<AccountVO> fuzzySearch(String s);
 	/**
 	 * 前置：新建一个账户并输入信息
 	 * 后置：显示新账户列表
@@ -28,7 +36,7 @@ public interface AccountManageBLService {
 	 * @param 
 	 * @return
 	 */
-	public boolean add(String id,double rest);
+	public boolean add(String id,String rest);
 	/**
 	 * 前置：选择账户删除
 	 * 后置：显示新账户列表 
@@ -52,7 +60,7 @@ public interface AccountManageBLService {
 	 * @param a
 	 * @return
 	 */
-	public boolean update(String id,double rest);
+	public boolean update(String id,String rest);
 	/**
 	 * 前置：新建收款单
 	 * 后置：更新余额

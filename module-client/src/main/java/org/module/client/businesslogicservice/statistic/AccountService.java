@@ -4,7 +4,15 @@ import java.util.ArrayList;
 
 import org.module.client.vo.AccountVO;
 
-public interface AccountManageService {
+public interface AccountService {
+	/**
+	 * 前置：查看账户列表
+	 * 后置：显示所有账户列表
+	 * 依赖：AccountDataService.getAll 返回所有账户信息
+	 * @param s
+	 * @return
+	 */
+	public ArrayList<AccountVO> showAll();
 	/**
 	 * 前置：输入关键字查找账户
 	 * 后置：显示模糊查找结果
@@ -12,7 +20,7 @@ public interface AccountManageService {
 	 * @param s
 	 * @return
 	 */
-	public AccountVO fuzzySearch(String s);
+	public  ArrayList<AccountVO> fuzzySearch(String s);
 	/**
 	 * 前置：新建一个账户并输入信息
 	 * 后置：显示新账户列表
@@ -53,7 +61,7 @@ public interface AccountManageService {
 	 * @param b
 	 * @return
 	 */
-	public boolean income(AccountVO vo);
+	public boolean income(String id,double b);
 	/**
 	 * 前置：新建付款单
 	 * 后置：更新余额

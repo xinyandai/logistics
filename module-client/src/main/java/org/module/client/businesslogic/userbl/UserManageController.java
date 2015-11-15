@@ -2,14 +2,14 @@ package org.module.client.businesslogic.userbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.user.UserManageService;
+import org.module.client.businesslogicservice.user.UserService;
 import org.module.client.businesslogicservice.userBLservice.UserManageBLService;
 import org.module.client.vo.UserVO;
 
 public class UserManageController implements UserManageBLService {
 
-	private UserManageService userManager;
-	public UserManageController(UserManageService userManager) {
+	private UserService userManager;
+	public UserManageController(UserService userManager) {
 		super();
 		this.userManager = userManager;
 	}

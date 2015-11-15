@@ -46,7 +46,7 @@ public interface StuffManageBLService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean modify(String name, String age, String category, String identity);
+	public boolean update(String name, String age, String category, String identity);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

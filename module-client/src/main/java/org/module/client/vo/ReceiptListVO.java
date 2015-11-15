@@ -3,14 +3,14 @@ package org.module.client.vo;
 public class ReceiptListVO {
 	//�տ
 		private String date;
-		private String money;
+		private double money;
 		private String Courier;
 		private String orderId;
 		public ReceiptListVO(String date, String money, String courier,
 				String orderId) {
 			super();
 			this.date = date;
-			this.money = money;
+			this.money = Double.parseDouble(money) ;
 			Courier = courier;
 			this.orderId = orderId;
 		}
@@ -20,10 +20,10 @@ public class ReceiptListVO {
 		public void setDate(String date) {
 			this.date = date;
 		}
-		public String getMoney() {
+		public double getMoney() {
 			return money;
 		}
-		public void setMoney(String money) {
+		public void setMoney(double money) {
 			this.money = money;
 		}
 		public String getCourier() {

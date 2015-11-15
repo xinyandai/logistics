@@ -38,7 +38,7 @@ public class StuffManageBLService_stub implements StuffManageBLService{
 		return false;
 	}
 
-	public boolean modify(String name, String age, String category,
+	public boolean update(String name, String age, String category,
 			String identity) {
 		if(identity.equals("0250000000")){
 			System.out.println("can change");

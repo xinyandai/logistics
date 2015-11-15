@@ -10,7 +10,7 @@ public class StuffManageBLService_Driver {
 		//StuffVO old=new StuffVO("name", "age", "category", "identity");
 		boolean add=stuffManageBLService.add("name", "age", "category", "0250000000");
 		boolean delete=stuffManageBLService.delete("0250000000");
-		boolean modify=stuffManageBLService.modify("name", "age", "category", "0250000000");
+		boolean modify=stuffManageBLService.update("name", "age", "category", "0250000000");
 		if(add)
 			System.out.println("add successfully!\n");
 		if(delete)

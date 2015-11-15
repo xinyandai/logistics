@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.vo.ReceiptListVO;
 
-public interface IncomeManageService {
+public interface IncomeService {
 	/**
 	 * 前置：选择查看所有收款
 	 * 后置：显示所有收款单
@@ -12,4 +12,6 @@ public interface IncomeManageService {
 	 * @return
 	 */
 	public ArrayList<ReceiptListVO> getAllIncomeList(String office,double startTime,double endTime);
+	
+	public boolean add(ReceiptListVO a);
 }

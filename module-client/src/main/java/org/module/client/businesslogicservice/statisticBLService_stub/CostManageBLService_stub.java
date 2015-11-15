@@ -8,13 +8,13 @@ import org.module.client.vo.CostListVO;
 
 public class CostManageBLService_stub implements CostManageBLService{
 
-	public boolean creatCostList(String date, String money, String people,
+	public boolean add(String date, String money, String people,
 			String accout, String entry, String note) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public ArrayList<CostListVO> showCostList(double startTime, double endTime) {
+	public ArrayList<CostListVO> showAll(double startTime, double endTime) {
 		// TODO Auto-generated method stub
 		return null;
 	}

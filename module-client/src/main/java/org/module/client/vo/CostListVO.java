@@ -3,7 +3,7 @@ package org.module.client.vo;
 public class CostListVO {
 
 	private String date;
-	private String money;
+	private double money;
 	private String people;
 	private String accout;
 	private String entry;
@@ -12,7 +12,7 @@ public class CostListVO {
 			String entry, String note) {
 		super();
 		this.date = date;
-		this.money = money;
+		this.money = Double.parseDouble(money);
 		this.people = people;
 		this.accout = accout;
 		this.entry = entry;
@@ -24,10 +24,10 @@ public class CostListVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getMoney() {
+	public double getMoney() {
 		return money;
 	}
-	public void setMoney(String money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 	public String getPeople() {
