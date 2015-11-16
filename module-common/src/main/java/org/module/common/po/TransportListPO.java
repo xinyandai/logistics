@@ -12,13 +12,14 @@ public class TransportListPO {
 		private String Supervision;
 		private String shippingId;
 		private String price;
-		public TransportListPO(String car, String loadingDate, String transId,
-				String carId, String origin, String arrival, String counterId,
-				String supervision, String shippingId, String price) {
+		public TransportListPO(String car, String loadingDate,
+				String transListId, String carId, String origin,
+				String arrival, String counterId, String supervision,
+				String shippingId, String price) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
-			this.transListId = transId;
+			this.transListId = transListId;
 			this.carId = carId;
 			this.origin = origin;
 			this.arrival = arrival;
@@ -39,11 +40,11 @@ public class TransportListPO {
 		public void setLoadingDate(String loadingDate) {
 			LoadingDate = loadingDate;
 		}
-		public String getTransId() {
+		public String getTransListId() {
 			return transListId;
 		}
-		public void setTransId(String transId) {
-			this.transListId = transId;
+		public void setTransListId(String transListId) {
+			this.transListId = transListId;
 		}
 		public String getCarId() {
 			return carId;

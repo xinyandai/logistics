@@ -2,19 +2,24 @@ package org.module.client.businesslogic.orderbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogic.logisticsbl.Logistics;
+import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.businesslogicservice.order.OfficeArrivalService;
 import org.module.client.businesslogicservice.orderBLservice.OfficeArrivalBLService;
 import org.module.client.vo.OfficeArrivalListVO;
 
 public class OfficeArrivalController implements OfficeArrivalBLService{
 	private OfficeArrivalService  officeArrival;
-	public OfficeArrivalController(OfficeArrivalService officeArrival) {
+	private LogisticsService logistics;
+	public OfficeArrivalController(OfficeArrivalService officeArrival,LogisticsService logistics) {
 		super();
 		this.officeArrival = officeArrival;
+		this.logistics = logistics;
 	}
 
 	public OfficeArrivalController() {
 		officeArrival = new OfficeArrival();
+		this.logistics = new Logistics();
 	}
 
 	public boolean creat(String officeid, String date, String transportListId,

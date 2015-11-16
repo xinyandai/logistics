@@ -19,12 +19,12 @@ public class TicketAndOrderMock implements TicketAndOrderManageService{
 
 	public boolean pass(ArrayList<String> id) {
 		// TODO Auto-generated method stub		
-		return id.get(0)=="10086";
+		return id.get(0).equals("10086");
 	}
 
 	public boolean unpass(ArrayList<String> id) {
 		// TODO Auto-generated method stub
-		return id.get(0)=="10086";
+		return id.get(0).equals("10086");
 	}
 
 }

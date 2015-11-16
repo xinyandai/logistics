@@ -1,13 +1,7 @@
 package org.module.common.po;
 
 import java.io.Serializable;
-
-public class UserPO implements Serializable{
-	private String id;
-	private String name;
-	private String password;
-	String  role;
-	/**
+/*
 	 * 用户：00
 	 * 营业厅快递员：01
 	 * 营业厅业务员：02
@@ -18,16 +12,22 @@ public class UserPO implements Serializable{
 	 * 总经理：41
 	 * 管理员: 51
 	 */
-	private String authority;
-	public UserPO(String id,String name,String password,String role,String authority) {
-		// TODO Auto-generated constructor stub
+public class UserPO implements Serializable{
+	private String id;
+	private String name;
+	private String password;
+	private String  role;
+	private String spt = ":%:%:";
+	public UserPO(String id, String name, String password, String role,
+			String authority) {
+		super();
 		this.id = id;
 		this.name = name;
-		this.password=password;
+		this.password = password;
 		this.role = role;
 		this.authority = authority;
 	}
-	public UserPO(String[] s){
+	public UserPO(String[] s) {
 		this(s[0],s[1],s[2],s[3],s[4]);
 	}
 	public String getId() {
@@ -60,8 +60,6 @@ public class UserPO implements Serializable{
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	public String toString(){
-		return this.id+this.spt+this.name+this.spt+this.password+this.spt+this.role+this.spt+this.authority;
-	}
-	private String spt = ":%:%:";
+	private String authority;
 }
+

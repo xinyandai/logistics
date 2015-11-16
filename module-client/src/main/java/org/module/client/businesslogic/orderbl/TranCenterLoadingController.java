@@ -2,6 +2,8 @@ package org.module.client.businesslogic.orderbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogic.logisticsbl.Logistics;
+import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.businesslogicservice.orderBLservice.TranCenterLoadingBLService;
 import org.module.client.vo.TranCenterLoadingListVO;
@@ -9,9 +11,18 @@ import org.module.client.vo.TranCenterLoadingListVO;
 public class TranCenterLoadingController implements TranCenterLoadingBLService {
 
 	private TranCenterLoadingService loading;
+	private LogisticsService logistics;
 	public TranCenterLoadingController() {
 
 		this.loading = new TranCenterLoading();
+		this.logistics = new Logistics();
+	}
+
+	public TranCenterLoadingController(TranCenterLoadingService loading,
+			LogisticsService logistics) {
+		super();
+		this.loading = loading;
+		this.logistics = logistics;
 	}
 
 	public boolean creat(String loadingDate, String transportListId,

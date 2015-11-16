@@ -1,5 +1,7 @@
 package org.module.client.businesslogic.orderbl;
 
+import org.module.client.businesslogic.logisticsbl.Logistics;
+import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.businesslogicservice.order.CalculateDriverCostService;
 import org.module.client.businesslogicservice.order.CalculateTimeService;
 import org.module.client.businesslogicservice.order.MailingService;
@@ -11,19 +13,22 @@ public class MailingListControl implements MailingBLService{
 	private MailingService mailingBLImpl;
 	private CalculateTimeService time;
 	private CalculateDriverCostService driverCost;
+	private LogisticsService logistics;
 	
 	public MailingListControl( ) {
 		super();
 		this.mailingBLImpl = new MailingBLImpl();
 		this.time = new CalculateTime();
 		this.driverCost = new CalculateDriverCost();
+		this.logistics = new Logistics();
 	}
 	public MailingListControl(MailingService mailingBLImpl, CalculateTimeService time,
-	 CalculateDriverCostService driverCost) {
+	 CalculateDriverCostService driverCost, LogisticsService  logistics) {
 		super();
 		this.mailingBLImpl = mailingBLImpl;
 		this.time = time;
 		this.driverCost = driverCost;
+		this.logistics = logistics;
 	}
 
 
@@ -52,7 +57,8 @@ public class MailingListControl implements MailingBLService{
 		for (String string : info) {
 			if(string.isEmpty()) return false;
 		}
-		return mailingBLImpl.creat(mailingListVO);
+		if(mailingBLImpl.creat(mailingListVO) && logistics.setState(id, "快递公司已揽件")) return true;
+		return false;
 	}
 
 	

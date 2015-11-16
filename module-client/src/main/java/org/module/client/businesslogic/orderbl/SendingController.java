@@ -2,6 +2,8 @@ package org.module.client.businesslogic.orderbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogic.logisticsbl.Logistics;
+import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.businesslogicservice.order.SendingService;
 import org.module.client.businesslogicservice.orderBLservice.SendingBLService;
 import org.module.client.vo.SendingListVO;
@@ -9,15 +11,18 @@ import org.module.client.vo.SendingListVO;
 public class SendingController implements SendingBLService {
 
 	private SendingService sending;
+	private LogisticsService logistics;
 
 	public SendingController() {
 
 		this.sending = new Sending();
+		this.logistics = new Logistics();
 	}
 
-	public SendingController(SendingService sending) {
+	public SendingController(SendingService sending,LogisticsService logistics) {
 		super();
 		this.sending = sending;
+		this.logistics = logistics;
 	}
 
 	public boolean creat(String date, String shippingId, String sendMember) {

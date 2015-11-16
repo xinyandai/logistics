@@ -11,7 +11,10 @@ public class MailingTest extends TestCase {
 	private MailingBLService mail;
 	protected void setUp() throws Exception {
 		super.setUp();
-		mail = new MailingListControl(new MailingMock(),new CalculateTimeMock(),new CalculateDriverCostMock());
+		mail = new MailingListControl(new MailingMock(),
+				new CalculateTimeMock(),
+				new CalculateDriverCostMock(),
+				new LogisticsMock());
 	}
 
 	public void testAdd() {
@@ -21,7 +24,7 @@ public class MailingTest extends TestCase {
 				 "receiveMobile",  "receivePhone",  "receiveCity",
 				 "receivePosition",  "nameOfGood",  "counts",
 				 "weight",  "volume",  "costOfDecoration","type",
-				 "id"));
+				 "1400000000"));
 	}
 	
 	public void testPrice(){

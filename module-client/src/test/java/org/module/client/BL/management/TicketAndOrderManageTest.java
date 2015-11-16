@@ -19,9 +19,9 @@ public class TicketAndOrderManageTest extends TestCase {
 		assert(ticketAndOrder.hasTicketToManage());
 	}
 	
-	public void testgetTicket(){
+	/*public void testgetTicket(){
 		assert(ticketAndOrder.getTicket().get(0).equals(null));
-	}
+	}*/
 	
 	public void testpass(){
 		ArrayList<String> st=new ArrayList<String>();

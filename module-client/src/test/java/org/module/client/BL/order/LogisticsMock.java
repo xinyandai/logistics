@@ -1,24 +1,26 @@
-package org.module.client.businesslogic.logisticsbl;
+package org.module.client.BL.order;
 
 import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.vo.LogisticsVO;
 
-public class Logistics implements LogisticsService{
-	
+public class LogisticsMock implements LogisticsService {
+
+	public LogisticsMock() {
+		
+	}
 
 	public LogisticsVO showState(String id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public boolean setState(String id, String state) {
-		// TODO Auto-generated method stub
-		return true;
+		if(id.length() == 10) return true;
+		return false;
 	}
 
 	public boolean setState(LogisticsVO o) {
-		// TODO Auto-generated method stub
-		return true;
+		if(o.getOrderId().length() == 10) return true;
+		return false;
 	}
 
 }

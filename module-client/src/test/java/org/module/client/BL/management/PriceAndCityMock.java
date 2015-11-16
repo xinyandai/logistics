@@ -18,22 +18,22 @@ public class PriceAndCityMock implements PriceAndCityManageService{
 
 	public boolean addCity(String city) {
 		// TODO Auto-generated method stub
-		return city=="nanjing";
+		return city.equals("nanjing");
 	}
 
 	public boolean deleteCity(String city) {
 		// TODO Auto-generated method stub
-		return city=="nanjing";
+		return city.equals("nanjing");
 	}
 
 	public boolean modifyCity(String city) {
 		// TODO Auto-generated method stub
-		return city=="nanjing";
+		return city.equals("nanjing");
 	}
 
 	public boolean setDiretionAndPrice(PriceAndCityVO priceAndcity) {
 		// TODO Auto-generated method stub
-		return priceAndcity.getcityA()=="nanjing";
+		return priceAndcity.getcityA().equals("nanjing");
 	}
 
 }

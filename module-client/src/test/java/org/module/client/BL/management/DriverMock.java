@@ -17,17 +17,17 @@ public class DriverMock implements DriversManageService{
 
 	public boolean add(DriverVO c) {
 		// TODO Auto-generated method stub
-		return (c.getId()=="10086");
+		return (c.getId().equals("10086"));
 	}
 
 	public boolean modify(DriverVO newone) {
 		// TODO Auto-generated method stub
-		return (newone.getId()=="10086");
+		return (newone.getId().equals("10086"));
 	}
 
 	public boolean delete(String id) {
 		// TODO Auto-generated method stub
-		return (id=="10086");
+		return (id.equals("10086"));
 	}
 
 	public boolean delete(ArrayList<String> al) {
