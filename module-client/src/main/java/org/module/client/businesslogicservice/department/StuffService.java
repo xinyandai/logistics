@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.vo.StuffVO;
 
-public interface StuffManageService {
+public interface StuffService {
 	/**
 	 * 前置：选择员工管理
 	 * 后置：显示所有员工

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.vo.DepartmentVO;
 
-public interface DepartmentManageService {
+public interface DepartmentService {
 	/**
 	 * 前置：启动机构管理
 	 * 后置：显示所有机构信息

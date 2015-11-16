@@ -18,16 +18,16 @@ public class UserManageController implements UserManageBLService {
 		this.userManager = new User();
 	}
 	
-	public boolean deleteUser(String id) {
-		return userManager.deleteUser(id);
+	public boolean delete(String id) {
+		return userManager.delete(id);
 	}
 	
-	public ArrayList<UserVO> allUsers() {
+	public ArrayList<UserVO> showAll() {
 		
-		return userManager.allUsers();
+		return userManager.getAll();
 	}
-	public boolean addUser(String id, String name, String role) {
-		return userManager.addUser(new UserVO(id,name,role));
+	public boolean add(String id, String name, String role) {
+		return userManager.add(new UserVO(id,name,role));
 	}
 	public boolean update(String id, String name, String role) {
 		

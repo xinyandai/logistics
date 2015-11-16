@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.presentation.CheckBoxTableModelProxy;
 
 public class IncomePanel extends JPanel {
 
@@ -92,26 +93,8 @@ public class IncomePanel extends JPanel {
 		    }
 
 		});
-		table.getColumnModel().getColumn(columnNames.length-1).setCellRenderer(new TableCellRenderer(){
-
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				// 创建用于返回的渲染组件
-				JCheckBox ck = new JCheckBox();
-				 // 使具有焦点的行对应的复选框选中
-				  ck.setSelected(isSelected);
-				 // 设置单选box.setSelected(hasFocus);
-				  // 使复选框在单元格内居中显示
-				// ck.setHorizontalAlignment((int) 0.5f);
-				 return ck;
-
-			}
-			
-		});
-		//table.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		//table.getColumn(0).setCellEditor(new DefaultCellEditor(new JCheckBox()));
-		scrollPane.setViewportView(table);
+		CheckBoxTableModelProxy a = new CheckBoxTableModelProxy(table.getModel(), "check");
+		scrollPane.setViewportView(new JTable(a));
 		
 		JPanel panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.NORTH);

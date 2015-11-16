@@ -53,7 +53,7 @@ public interface DepartmentManageBLService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean modify(String name, String category, String location,
+	public boolean update(String name, String category, String location,
 			String identity);
 	/**
 	 * 前置：输入关键字模糊查找

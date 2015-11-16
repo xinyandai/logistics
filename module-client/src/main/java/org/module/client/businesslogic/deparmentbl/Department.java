@@ -2,10 +2,10 @@ package org.module.client.businesslogic.deparmentbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.department.DepartmentManageService;
+import org.module.client.businesslogicservice.department.DepartmentService;
 import org.module.client.vo.DepartmentVO;
 
-public class Department implements DepartmentManageService {
+public class Department implements DepartmentService {
 
 	public Department() {
 		// TODO Auto-generated constructor stub

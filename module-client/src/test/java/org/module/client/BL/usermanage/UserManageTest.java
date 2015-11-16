@@ -15,15 +15,15 @@ public class UserManageTest extends TestCase {
 	
 
 	public void testDeleteUser() {
-		assert(ctl.deleteUser("admin"));
+		assert(ctl.delete("admin"));
 	}
 
 	public void testAllUsers() {
-		assert(ctl.allUsers().size()>0);
+		assert(ctl.showAll().size()>0);
 	}
 
 	public void testAddUser() {
-		assert(ctl.addUser("admin","admin","管理员"));
+		assert(ctl.add("admin","admin","管理员"));
 	}
 
 	public void testUpdate() {

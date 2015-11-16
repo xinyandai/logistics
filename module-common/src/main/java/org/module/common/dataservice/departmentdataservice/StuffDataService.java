@@ -45,6 +45,8 @@ public interface StuffDataService {
 	 * @param 
 	 * @return
 	 */
-	public boolean updata(StuffPO old,StuffPO newone);
+	public boolean update(StuffPO one);
+	
+	public ArrayList<StuffPO> fuzzusearch(String key);
 	
 }

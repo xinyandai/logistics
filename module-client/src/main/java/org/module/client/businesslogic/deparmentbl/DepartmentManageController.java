@@ -2,13 +2,13 @@ package org.module.client.businesslogic.deparmentbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.department.DepartmentManageService;
+import org.module.client.businesslogicservice.department.DepartmentService;
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.vo.DepartmentVO;
 
 public class DepartmentManageController implements DepartmentManageBLService{
-	private DepartmentManageService department ;
-	public DepartmentManageController(DepartmentManageService department) {
+	private DepartmentService department ;
+	public DepartmentManageController(DepartmentService department) {
 		super();
 		this.department = department;
 	}
@@ -38,7 +38,7 @@ public class DepartmentManageController implements DepartmentManageBLService{
 		return department.delete(ids);
 	}
 
-	public boolean modify(String name, String category, String location,
+	public boolean update(String name, String category, String location,
 			String identity) {
 		// TODO Auto-generated method stub
 		return department.modify(new DepartmentVO(name,category,location,identity));

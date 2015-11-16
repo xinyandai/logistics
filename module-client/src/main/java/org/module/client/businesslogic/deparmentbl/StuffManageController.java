@@ -3,20 +3,20 @@ package org.module.client.businesslogic.deparmentbl;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.department.CalculateSalaryService;
-import org.module.client.businesslogicservice.department.StuffManageService;
+import org.module.client.businesslogicservice.department.StuffService;
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
 import org.module.client.vo.StuffVO;
 
 public class StuffManageController implements StuffManageBLService{
 
-	private StuffManageService stuff ;
+	private StuffService stuff ;
 	private CalculateSalaryService salary;  
 	public StuffManageController() {
           stuff = new Stuff();
           salary = new CalculateSalary();
 	}
 
-	public StuffManageController(StuffManageService stuff,
+	public StuffManageController(StuffService stuff,
 			CalculateSalaryService salary) {
 		super();
 		this.stuff = stuff;

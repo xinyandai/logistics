@@ -39,7 +39,7 @@ public class DepartmentManageBLService_stub implements DepartmentManageBLService
 		return false;
 	}
 
-	public boolean modify(String name, String category, String location,
+	public boolean update(String name, String category, String location,
 			String identity) {
 		System.out.println("modify successfully");
 		return false;

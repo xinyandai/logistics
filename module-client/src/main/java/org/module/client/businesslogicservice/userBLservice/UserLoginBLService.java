@@ -1,6 +1,5 @@
 package org.module.client.businesslogicservice.userBLservice;
 
-import org.module.client.vo.UserVO;
 
 public interface UserLoginBLService {
 	/**

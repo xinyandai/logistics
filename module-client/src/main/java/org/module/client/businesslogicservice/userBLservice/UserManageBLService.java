@@ -13,7 +13,7 @@ public interface UserManageBLService {
 	 * @param u
 	 * @return
 	 */
-	public boolean deleteUser(String id);
+	public boolean delete(String id);
 	/**
 	 * 前置：管理新增用户
 	 * 后置：更新
@@ -21,7 +21,7 @@ public interface UserManageBLService {
 	 * @param u
 	 * @return
 	 */
-	public boolean addUser(String id,String name,String role);
+	public boolean add(String id,String name,String role);
 	/**
 	 * 前置：更改账户信息
 	 * 后置：更新
@@ -36,5 +36,5 @@ public interface UserManageBLService {
 	 * 依赖: UserDataService.allUsers 返回所有账号信息
 	 * @return
 	 */
-	public ArrayList<UserVO> allUsers();
+	public ArrayList<UserVO> showAll();
 }

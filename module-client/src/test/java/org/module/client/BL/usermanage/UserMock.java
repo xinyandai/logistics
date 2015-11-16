@@ -8,12 +8,12 @@ import org.module.client.vo.UserVO;
 public class UserMock implements UserService {
 
 	
-	public boolean deleteUser(String id) {
+	public boolean delete(String id) {
 		if(id.equals("admin")) return true;
 		return false;
 	}
 	
-	public boolean addUser(UserVO u) {
+	public boolean add(UserVO u) {
 		if(u.getId().equals("admin")) return true;
 		return false;
 	}
@@ -23,7 +23,7 @@ public class UserMock implements UserService {
 		return false;
 	}
 	
-	public ArrayList<UserVO> allUsers() {
+	public ArrayList<UserVO> getAll() {
 		ArrayList<UserVO> re =  new ArrayList<UserVO>();
 		re.add(new UserVO("admin","admin","管理员"));
 		return re;

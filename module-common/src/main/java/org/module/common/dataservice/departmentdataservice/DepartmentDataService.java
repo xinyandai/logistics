@@ -44,5 +44,7 @@ public interface DepartmentDataService {
 	 * @param 
 	 * @return
 	 */
-	public boolean updata(DepartmentPO old,DepartmentPO newone);
+	public boolean update(DepartmentPO one);
+	
+	public ArrayList<DepartmentPO> fuzzusearch(String key);
 }

@@ -2,10 +2,10 @@ package org.module.client.BL.department;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.department.StuffManageService;
+import org.module.client.businesslogicservice.department.StuffService;
 import org.module.client.vo.StuffVO;
 
-public class StuffMock implements StuffManageService {
+public class StuffMock implements StuffService {
 	
 	
 	public ArrayList<StuffVO> showAll() {

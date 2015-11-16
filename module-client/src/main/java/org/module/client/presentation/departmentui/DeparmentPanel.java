@@ -7,7 +7,6 @@ import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.JButton;
-
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
@@ -15,6 +14,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+
+import org.module.client.presentation.CheckBoxTableModelProxy;
 
 public class DeparmentPanel extends JPanel {
 
@@ -72,9 +73,7 @@ public class DeparmentPanel extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable(new DefaultTableModel(cellData,columnNames){
-			/**
-			 * 
-			 */
+			
 			private static final long serialVersionUID = 415253049878599895L;
 
 			@Override
@@ -83,26 +82,8 @@ public class DeparmentPanel extends JPanel {
 		    }
 
 		});
-		table.getColumnModel().getColumn(columnNames.length-1).setCellRenderer(new TableCellRenderer(){
-
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				// 创建用于返回的渲染组件
-				JCheckBox ck = new JCheckBox();
-				 // 使具有焦点的行对应的复选框选中
-				  ck.setSelected(isSelected);
-				 // 设置单选box.setSelected(hasFocus);
-				  // 使复选框在单元格内居中显示
-				// ck.setHorizontalAlignment((int) 0.5f);
-				 return ck;
-
-			}
-			
-		});
-		//table.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		//table.getColumn(0).setCellEditor(new DefaultCellEditor(new JCheckBox()));
-		scrollPane.setViewportView(table);
+		CheckBoxTableModelProxy a = new CheckBoxTableModelProxy(table.getModel(), "check");
+		scrollPane.setViewportView(new JTable(a));
 	}
 
 }

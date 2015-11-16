@@ -10,7 +10,7 @@ public class DepartmentManageBLService_Driver {
 		//DepartmentVO old=new DepartmentVO("name","category","location");
 		boolean add=departmentManageBLService.add("name","category","location", "025000");
 		boolean delete=departmentManageBLService.delete("025000");
-		boolean modify=departmentManageBLService.modify("name","category","location", "025000" );
+		boolean modify=departmentManageBLService.update("name","category","location", "025000" );
 		if(add)
 			System.out.println("add successfully!\n");
 		if(delete)

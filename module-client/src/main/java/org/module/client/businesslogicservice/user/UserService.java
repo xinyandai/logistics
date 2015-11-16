@@ -12,7 +12,7 @@ public interface UserService {
 	 * @param u
 	 * @return
 	 */
-	public boolean deleteUser(String id);
+	public boolean delete(String id);
 	/**
 	 * 前置：管理新增用户
 	 * 后置：更新
@@ -20,7 +20,7 @@ public interface UserService {
 	 * @param u
 	 * @return
 	 */
-	public boolean addUser(UserVO u);
+	public boolean add(UserVO u);
 	/**
 	 * 前置：更改账户信息
 	 * 后置：更新
@@ -35,5 +35,5 @@ public interface UserService {
 	 * 依赖: UserDataService.allUsers 返回所有账号信息
 	 * @return
 	 */
-	public ArrayList<UserVO> allUsers();
+	public ArrayList<UserVO> getAll();
 }

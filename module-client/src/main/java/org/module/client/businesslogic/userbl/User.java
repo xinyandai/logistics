@@ -15,7 +15,7 @@ public class User implements UserService {
 
 	
 
-	public boolean deleteUser(String id) {
+	public boolean delete(String id) {
 		try {
 			return user.delete(id);
 		} catch (RemoteException e) {
@@ -24,7 +24,7 @@ public class User implements UserService {
 		return false;
 	}
 
-	public boolean addUser(UserVO u) {
+	public boolean add(UserVO u) {
 		try {
 			return user.add(new UserPO(u.getId(),u.getName(),u.getPassword(),u.getRole(),u.getAuthority()));
 		} catch (RemoteException e) {
@@ -43,7 +43,7 @@ public class User implements UserService {
 	}
 
 	
-	public ArrayList<UserVO> allUsers() {
+	public ArrayList<UserVO> getAll() {
 		try {
 			ArrayList<UserPO> pos = user.allUsers();
 			ArrayList<UserVO> re = new ArrayList<UserVO>();

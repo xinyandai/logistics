@@ -43,5 +43,7 @@ public interface AccountDataService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean updata(AccountPO newone);
+	public boolean update(AccountPO newone);
+	
+	public ArrayList<AccountPO> fuzzusearch(String key);
 }

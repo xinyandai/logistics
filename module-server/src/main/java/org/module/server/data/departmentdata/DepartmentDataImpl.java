@@ -76,8 +76,14 @@ public class DepartmentDataImpl implements DepartmentDataService {
 		return false;
 	}
 
-	public boolean updata(DepartmentPO old, DepartmentPO newone) {
+	public boolean update(DepartmentPO one) {
 		return false;
+	}
+
+
+	public ArrayList<DepartmentPO> fuzzusearch(String key) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
