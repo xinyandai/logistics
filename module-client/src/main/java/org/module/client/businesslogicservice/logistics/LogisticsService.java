@@ -1,10 +1,9 @@
-package org.module.client.businesslogicservice.logisticsBLservice;
+package org.module.client.businesslogicservice.logistics;
 
 
 import org.module.client.vo.LogisticsVO;
 
-
-public interface LogisticsBLService {
+public interface LogisticsService {
 
 	/**
 	 * 前置：输入物流单号查询物流信息且该单号存在
@@ -30,6 +29,5 @@ public interface LogisticsBLService {
 	 * @param 
 	 * @return
 	 */
-	public boolean setState(String origin, String estination,
-			String location,String orderId, String[][] historyLocationAndTime);
+	public boolean setState(LogisticsVO o);
 }

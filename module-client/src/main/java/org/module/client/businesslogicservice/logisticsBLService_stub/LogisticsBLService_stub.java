@@ -28,17 +28,8 @@ public class LogisticsBLService_stub implements LogisticsBLService{
 		}
 	}
 
-	public boolean setState(LogisticsVO o) {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
-
-	public boolean setState(ArrayList<LogisticsVO> al) {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
-
-	public boolean clear() {
+	public boolean setState(String origin, String estination,
+			String location,String orderId, String[][] historyLocationAndTime) {
 		// TODO �Զ����ɵķ������
 		return false;
 	}
