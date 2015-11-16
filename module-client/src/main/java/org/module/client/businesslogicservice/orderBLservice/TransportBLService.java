@@ -18,7 +18,9 @@ public interface TransportBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(TransportListVO o);
+	public boolean creat(String car, String loadingDate, String transId,
+			String carId, String origin, String arrival, String counterId,
+			String supervision, String shippingId, String price);
 	/**
 	 * 前置：选择查看所有中转单
 	 * 后置：显示所有中转单
@@ -26,12 +28,6 @@ public interface TransportBLService {
 	 * @return
 	 */
 	public ArrayList<TransportListVO> getAll();
-	/**
-	 *前置：选择起初建账户进行初始化
-	 *后置：清空订单
-	 * 依赖：TransportListService.clear 清空数据
-	 * @return
-	 */
-	public boolean clear();
+	
 	
 }

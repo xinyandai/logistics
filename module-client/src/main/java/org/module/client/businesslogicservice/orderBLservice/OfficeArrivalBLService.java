@@ -18,7 +18,8 @@ public interface OfficeArrivalBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(OfficeArrivalListVO o);
+	public boolean creat(String officeid, String date,
+			String transportListId, String origin, String state);
 	/**
 	 * 前置：选择查看所有营业厅接收单
 	 * 后置：显示所有营业厅接收单
@@ -26,11 +27,5 @@ public interface OfficeArrivalBLService {
 	 * @return
 	 */
 	public ArrayList<OfficeArrivalListVO> getAll();
-	/**
-	 *前置：选择起初建账户进行初始化
-	 *后置：清空订单
-	 *依赖：OfficeArrivalListService.clear 清空数据
-	 * @return
-	 */
-	public boolean clear();
+	
 }

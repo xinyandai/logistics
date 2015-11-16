@@ -6,9 +6,8 @@ import org.module.client.vo.OfficeArrivalListVO;
 
 public class OfficeArrivalBLService_Driver {
 	public void drive(OfficeArrivalBLService officeArrivalBLService){
-		OfficeArrivalListVO d=new OfficeArrivalListVO("date", "transportListId",
+		boolean result=officeArrivalBLService.creat("id","date", "transportListId",
 				"origin",  "state");
-		boolean result=officeArrivalBLService.creat(d);
 		if(result)
 			System.out.println("creat suuccessfully!");
 		

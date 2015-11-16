@@ -6,10 +6,9 @@ import org.module.client.vo.OfficeLoadingListVO;
 
 public class OfficeLoadingService_Driver {
 	public void drive(OfficeLoadingBLService officeLoadingService){
-		OfficeLoadingListVO d=new OfficeLoadingListVO("loadingDate", "officeId",
+		boolean result=officeLoadingService.creat("loadingDate", "officeId",
 				"trucksId", "arrival", "carId", "supervision",
 				"escort",  "shippingId",  "price");
-		boolean result=officeLoadingService.creat(d);
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

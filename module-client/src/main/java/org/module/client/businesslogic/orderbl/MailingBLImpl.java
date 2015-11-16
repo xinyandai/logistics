@@ -2,10 +2,10 @@ package org.module.client.businesslogic.orderbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
+import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.vo.MailingListVO;
 
-public class MailingBLImpl  {
+public class MailingBLImpl  implements MailingService{
 
 	
 
@@ -26,7 +26,7 @@ public class MailingBLImpl  {
 		return 0;
 	}
 
-	public double calculateTime(String senderCity, String receiveCity) {
+	public int calculateTime(String senderCity, String receiveCity) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

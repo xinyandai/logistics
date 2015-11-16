@@ -8,19 +8,16 @@ import org.module.client.vo.ReceiveListVO;
 
 public class ReceiveBLService_stub implements ReceiveBLService{
 
-	public boolean creat(ReceiveListVO o) {
-		// TODO �Զ����ɵķ������
+	public boolean creat(String date, String location, String origin,
+			String estination, String orderId) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public ArrayList<ReceiveListVO> getAll() {
-		// TODO �Զ����ɵķ������
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean clear() {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
-
+	
 }

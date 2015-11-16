@@ -18,7 +18,8 @@ public interface ReceiveBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(ReceiveListVO o);
+	public boolean creat(String date, String location, String origin,
+			String estination, String orderId);
 	/**
 	 * 前置：选择查看所有收件单
 	 * 后置：显示所有收件单
@@ -26,11 +27,5 @@ public interface ReceiveBLService {
 	 * @return
 	 */
 	public ArrayList<ReceiveListVO> getAll();
-	/**
-	 *前置：选择起初建账户进行初始化
-	 *后置：清空订单
-	 * 依赖：ReceiveListService.clear 清空数据
-	 * @return
-	 */
-	public boolean clear();
+	
 }

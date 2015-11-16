@@ -15,7 +15,7 @@ public class MailingBLService_stub implements MailingBLService{
 		return 10;
 	}
 
-	public double time(String senderCity, String receiveCity) {
+	public int time(String senderCity, String receiveCity) {
 		System.out.println("time");
 		return 10;
 	}

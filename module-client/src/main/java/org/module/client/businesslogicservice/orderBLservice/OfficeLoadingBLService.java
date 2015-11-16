@@ -13,7 +13,9 @@ public interface OfficeLoadingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(OfficeLoadingListVO o);
+	public boolean creat(String loadingDate, String officeId,
+			String trucksId, String arrival, String carId, String supervision,
+			String escort, String shippingId, String price);
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有收件单
@@ -21,11 +23,13 @@ public interface OfficeLoadingBLService {
 	 * @return
 	 */
 	public ArrayList<OfficeLoadingListVO> getAll();
+	
 	/**
-	 *前置：选择起初建账户进行初始化
-	 *后置：清空订单
-	 * 依赖：OfficeLoadingListService.clear 清空数据
+	 * 计算运费
+	 * @param origin 出发地
+	 * @param target 目的地
 	 * @return
 	 */
-	public boolean clear();
+	public double calculateDriverCost(String origin,String target);
+	
 }

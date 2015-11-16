@@ -1,14 +1,33 @@
 package org.module.client.businesslogic.orderbl;
 
+import org.module.client.businesslogicservice.order.CalculateDriverCostService;
+import org.module.client.businesslogicservice.order.CalculateTimeService;
+import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.vo.MailingListVO;
 
 
 public class MailingListControl implements MailingBLService{
-	private MailingBLImpl mailingBLImpl;
+	private MailingService mailingBLImpl;
+	private CalculateTimeService time;
+	private CalculateDriverCostService driverCost;
 	
-	
-	
+	public MailingListControl( ) {
+		super();
+		this.mailingBLImpl = new MailingBLImpl();
+		this.time = new CalculateTime();
+		this.driverCost = new CalculateDriverCost();
+	}
+	public MailingListControl(MailingService mailingBLImpl, CalculateTimeService time,
+	 CalculateDriverCostService driverCost) {
+		super();
+		this.mailingBLImpl = mailingBLImpl;
+		this.time = time;
+		this.driverCost = driverCost;
+	}
+
+
+
 	public boolean handleMailingList(String senderName, String senderCompany,
 			String senderMobile, String senderPhone, String senderCity,
 			String senderPosition, String receiveName, String receiveCompany,
@@ -38,9 +57,9 @@ public class MailingListControl implements MailingBLService{
 
 	
 
-	public double time(String senderCity, String receiveCity) {
+	public int time(String senderCity, String receiveCity) {
 		
-		return (int)mailingBLImpl.calculateTime(senderCity, receiveCity);
+		return mailingBLImpl.calculateTime(senderCity, receiveCity);
 	}
 
 

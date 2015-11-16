@@ -8,19 +8,16 @@ import org.module.client.vo.SendingListVO;
 
 public class TranCenterArrivalBLService_stub implements TranCenterArrivalBLService{
 
-	public boolean creat(SendingListVO o) {
-		// TODO �Զ����ɵķ������
+	public boolean creat(String date, String shippingId, String sendMember) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public ArrayList<SendingListVO> getAll() {
-		// TODO �Զ����ɵķ������
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean clear() {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
+
 
 }

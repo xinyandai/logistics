@@ -6,10 +6,9 @@ import org.module.client.vo.TransportListVO;
 
 public class TransportBLService_Driver {
 	public void drive(TransportBLService transportBLService){
-		TransportListVO d=new TransportListVO("car", "loadingDate","transId",
+		boolean result=transportBLService.creat("car", "loadingDate","transId",
 				"carId", "origin",  "arrival", "counterId",
 				"supervision", "shippingId","price");
-		boolean result=transportBLService.creat(d);
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

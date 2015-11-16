@@ -14,7 +14,9 @@ public interface TranCenterLoadingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(TranCenterLoadingListVO o);
+	public boolean creat(String loadingDate, String transportListId,
+			String arrival, String carId, String supervision, String escort,
+			String shippingId, String price);
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有装车单
@@ -22,11 +24,12 @@ public interface TranCenterLoadingBLService {
 	 * @return
 	 */
 	public ArrayList<TranCenterLoadingListVO> getAll();
+
 	/**
-	 *前置：选择起初建账户进行初始化
-	 *后置：清空订单
-	 * 依赖：TranCenterLoadingService.clear 清空数据
+	 * 计算运费
+	 * @param origin 出发地
+	 * @param target 目的地
 	 * @return
 	 */
-	public boolean clear();
+	public double calculateDriverCost(String origin,String target);
 }

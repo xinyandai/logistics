@@ -2,17 +2,16 @@ package org.module.client.vo;
 
 public class OfficeArrivalListVO {
 
+	private String officeid;
 	private String date;
 	private String transportListId;
 	private String origin;
 	private String state;
-	public OfficeArrivalListVO(String date, String transportListId,
-			String origin, String state) {
-		super();
-		this.date = date;
-		this.transportListId = transportListId;
-		this.origin = origin;
-		this.state = state;
+	public String getOfficeid() {
+		return officeid;
+	}
+	public void setOfficeid(String officeid) {
+		this.officeid = officeid;
 	}
 	public String getDate() {
 		return date;
@@ -38,5 +37,14 @@ public class OfficeArrivalListVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-
+	public OfficeArrivalListVO(String officeid, String date,
+			String transportListId, String origin, String state) {
+		super();
+		this.officeid = officeid;
+		this.date = date;
+		this.transportListId = transportListId;
+		this.origin = origin;
+		this.state = state;
+	}
+	
 }

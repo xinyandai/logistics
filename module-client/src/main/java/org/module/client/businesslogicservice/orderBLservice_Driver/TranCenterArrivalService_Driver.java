@@ -6,10 +6,9 @@ import org.module.client.vo.TranCenterLoadingListVO;
 
 public class TranCenterArrivalService_Driver {
 	public void drive(TranCenterLoadingBLService tranCenterArrivalService){
-		TranCenterLoadingListVO d=new TranCenterLoadingListVO("loadingDate", "transportListId",
+		boolean result=tranCenterArrivalService.creat("loadingDate", "transportListId",
 				"arrival",  "carId",  "supervision", "escort",
 				"shippingId", "price");
-		boolean result=tranCenterArrivalService.creat(d);
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

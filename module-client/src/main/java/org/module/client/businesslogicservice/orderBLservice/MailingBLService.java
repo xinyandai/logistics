@@ -32,7 +32,7 @@ public interface MailingBLService {
 	 * @param m
 	 * @return
 	 */
-	public double time(String senderCity,String receiveCity);
+	public int time(String senderCity,String receiveCity);
 	/**
 	 * 前置：新建寄件单
 	 * 后置：更新信息

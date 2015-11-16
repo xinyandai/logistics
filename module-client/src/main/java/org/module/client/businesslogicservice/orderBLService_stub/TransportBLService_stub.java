@@ -8,19 +8,17 @@ import org.module.client.vo.TransportListVO;
 
 public class TransportBLService_stub implements TransportBLService{
 
-	public boolean creat(TransportListVO o) {
-		// TODO �Զ����ɵķ������
+	public boolean creat(String car, String loadingDate, String transId,
+			String carId, String origin, String arrival, String counterId,
+			String supervision, String shippingId, String price) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public ArrayList<TransportListVO> getAll() {
-		// TODO �Զ����ɵķ������
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean clear() {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
 
 }

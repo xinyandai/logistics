@@ -6,8 +6,7 @@ import org.module.client.vo.SendingListVO;
 
 public class SendingBLService_Driver {
 	public void drive(SendingBLService sendingBLService){
-		SendingListVO d=new SendingListVO( "date",  "shippingId", "sendMember");
-		boolean result=sendingBLService.creat(d);
+		boolean result=sendingBLService.creat("date",  "shippingId", "sendMember");
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

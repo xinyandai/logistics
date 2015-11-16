@@ -17,13 +17,11 @@ public class OfficeArrivalBLService_stub implements OfficeArrivalBLService{
 		return null;
 	}
 
-	public boolean clear() {
-		// TODO �Զ����ɵķ������
-		return false;
-	}
+	
 
-	public boolean creat(OfficeArrivalListVO o) {
-		// TODO �Զ����ɵķ������
+	public boolean creat(String officeid, String date, String transportListId,
+			String origin, String state) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

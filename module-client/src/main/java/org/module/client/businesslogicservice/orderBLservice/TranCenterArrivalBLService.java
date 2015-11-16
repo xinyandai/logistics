@@ -18,7 +18,7 @@ public interface TranCenterArrivalBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(SendingListVO o);
+	public boolean creat(String date, String shippingId, String sendMember);
 	/**
 	 * 前置：选择查看所有中转中心接收单
 	 * 后置：显示所有收件单
@@ -26,11 +26,5 @@ public interface TranCenterArrivalBLService {
 	 * @return
 	 */
 	public ArrayList<SendingListVO> getAll();
-	/**
-	 *前置：选择起初建账户进行初始化
-	 *后置：清空订单
-	 * 依赖：TranCenterArrivalListService.clear  清空数据
-	 * @return
-	 */
-	public boolean clear();
+	
 }
