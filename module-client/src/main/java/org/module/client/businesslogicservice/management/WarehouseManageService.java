@@ -1,4 +1,4 @@
-package org.module.client.businesslogicservice.managementBLservice;
+package org.module.client.businesslogicservice.management;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,6 @@ import org.module.client.vo.GoDownEntryListVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
 
-/**
- * 仓库库存信息管理
- */
 public interface WarehouseManageService {
 
 	/**
@@ -18,6 +15,9 @@ public interface WarehouseManageService {
 	 * @return
 	 */
 	public ArrayList<WarehouseVO> getAll();
+	
+	public WarehouseVO modify(WarehouseVO ware);
+	
 	/**
 	 * 前置：出库
 	 * 后置：更新库存信息
@@ -40,5 +40,5 @@ public interface WarehouseManageService {
 	 * 依赖：WarahouseDataService.setBorderLint 存储警戒比例
 	 * @param a
 	 */
-	public void setBorderline(double a); 
+	public void setBorderline(String id,String qu,double a); 
 }

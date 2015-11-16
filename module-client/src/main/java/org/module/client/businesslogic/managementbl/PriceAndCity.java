@@ -1,12 +1,11 @@
-package org.module.client.businesslogicservice.managementBLService_stub;
+package org.module.client.businesslogic.managementbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.managementBLservice.PriceAndCityManageBLService;
+import org.module.client.businesslogicservice.management.PriceAndCityManageService;
 import org.module.client.vo.PriceAndCityVO;
 
-
-public class PriceAndCityManageService_stub implements PriceAndCityManageBLService{
+public class PriceAndCity implements PriceAndCityManageService{
 
 	public ArrayList<String> showAllCity() {
 		// TODO Auto-generated method stub
@@ -28,14 +27,9 @@ public class PriceAndCityManageService_stub implements PriceAndCityManageBLServi
 		return false;
 	}
 
-	public boolean setDiretionAndPrice(String cityA, String cityB,
-			String distance, String price) {
+	public boolean setDiretionAndPrice(PriceAndCityVO priceAndcity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
-
-	
 
 }

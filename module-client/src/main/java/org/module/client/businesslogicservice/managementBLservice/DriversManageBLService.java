@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.module.client.vo.DriverVO;
 
 
-public interface DriversManageService {
+public interface DriversManageBLService {
 
 	/**
 	 * 前置：选择司机信息管理
@@ -21,7 +21,8 @@ public interface DriversManageService {
 	 * @param c
 	 * @return
 	 */
-	public boolean add(DriverVO c);
+	public boolean add(String id, String name, String birthday, String idcard,
+			String phone, String gender, String date);
 	/**
 	 * 前置：选择司机进行更改
 	 * 后置：更新
@@ -29,7 +30,16 @@ public interface DriversManageService {
 	 * @param 
 	 * @return
 	 */
-	public boolean modify(DriverVO newone);
+	public boolean modify(String id, String name, String birthday, String idcard,
+			String phone, String gender, String date);
+	/**
+	 * 前置：选择司机信息并删除
+	 * 后置：更新
+	 * 依赖：DriversDataService.delete 删除一些PO
+	 * @param al
+	 * @return
+	 */
+	public boolean delete(String id);
 	/**
 	 * 前置：批量选择司机信息并删除
 	 * 后置：更新
@@ -37,7 +47,7 @@ public interface DriversManageService {
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<DriverVO> al);
+	public boolean delete(ArrayList<String> id);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

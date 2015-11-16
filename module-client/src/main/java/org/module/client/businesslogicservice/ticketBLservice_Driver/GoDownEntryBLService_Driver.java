@@ -8,12 +8,11 @@ public class GoDownEntryBLService_Driver {
 	public void drive(GoDownEntryBLService goDownEntryBLService){
 		GoDownEntryListVO d=new GoDownEntryListVO("courier","date", "destination",
 				"qu", "pai","jia", "wei");
-		boolean creat=goDownEntryBLService.createTicket(d);
-		boolean modify=goDownEntryBLService.modifyTicket(d);
+		boolean creat=goDownEntryBLService.createTicket("courier","date", "destination",
+				"qu", "pai","jia", "wei");
 		if(creat)
 			System.out.println("creat successfully!");
-		if(modify)
-			System.out.println("modify successfully!");
+		
 		
 	}
 }

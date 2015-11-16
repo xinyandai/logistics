@@ -7,12 +7,11 @@ public class OutBoundBLService_Driver {
 	public void drive(OutBoundBLService outBoundBLService){
 		OutBoundListVO d=new OutBoundListVO("courier","date","destination",
 				"car","tansportListId", "carId");
-		boolean creat=outBoundBLService.createTicket(d);
-		boolean modify=outBoundBLService.modifyTicket(d);
+		boolean creat=outBoundBLService.createTicket("courier","date","destination",
+				"car","tansportListId", "carId");
+
 		if(creat)
 			System.out.println("creat successfully!");
-		if(modify)
-			System.out.println("modify successfully!");
 		
 	}
 }

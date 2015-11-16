@@ -1,11 +1,10 @@
-package org.module.client.businesslogicservice.managementBLService_stub;
+package org.module.client.businesslogic.managementbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.managementBLservice.TicketAndOrderManageBLService;
+import org.module.client.businesslogicservice.management.TicketAndOrderManageService;
 
-
-public class TicketAndOrderManageService_stub implements  TicketAndOrderManageBLService{
+public class TicketAndOrder implements TicketAndOrderManageService{
 
 	public boolean hasTicketToManage() {
 		// TODO Auto-generated method stub
@@ -26,7 +25,5 @@ public class TicketAndOrderManageService_stub implements  TicketAndOrderManageBL
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
 
 }

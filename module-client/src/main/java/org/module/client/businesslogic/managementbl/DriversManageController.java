@@ -1,45 +1,53 @@
-package org.module.client.businesslogicservice.managementBLService_stub;
+package org.module.client.businesslogic.managementbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogicservice.management.DriversManageService;
 import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
 import org.module.client.vo.DriverVO;
 
+public class DriversManageController implements DriversManageBLService{
+	
+	private DriversManageService driver ;
+	public DriversManageController(DriversManageService driver) {
+		super();
+		this.driver = driver;
+	}
 
-public class DriversManageService_stub implements DriversManageBLService{
-
+	public DriversManageController() {
+		this.driver = new Driver();
+	}
+	
 	public ArrayList<DriverVO> showAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return driver.showAll();
 	}
 
 	public boolean add(String id, String name, String birthday, String idcard,
 			String phone, String gender, String date) {
 		// TODO Auto-generated method stub
-		return false;
+		return driver.add(new DriverVO(id,name,birthday,idcard,phone, gender, date));
 	}
 
 	public boolean modify(String id, String name, String birthday,
 			String idcard, String phone, String gender, String date) {
 		// TODO Auto-generated method stub
-		return false;
+		return driver.modify(new DriverVO(id,name,birthday,idcard,phone, gender, date));
 	}
 
 	public boolean delete(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return driver.delete(id);
 	}
 
 	public boolean delete(ArrayList<String> id) {
 		// TODO Auto-generated method stub
-		return false;
+		return driver.delete(id);
 	}
 
 	public ArrayList<DriverVO> fuzzySearch(String s) {
 		// TODO Auto-generated method stub
-		return null;
+		return driver.fuzzySearch(s);
 	}
-
-	
 
 }

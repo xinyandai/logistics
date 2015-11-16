@@ -1,20 +1,20 @@
 package org.module.client.businesslogicservice.managementBLservice_Driver;
 
-import org.module.client.businesslogicservice.managementBLservice.PriceAndCityManageService;
+import org.module.client.businesslogicservice.managementBLservice.PriceAndCityManageBLService;
 import org.module.client.vo.PriceAndCityVO;
 
 
 public class PriceAndCityManageService_Driver {
-	public void drive(PriceAndCityManageService priceAndCityManageService){
-		PriceAndCityVO d=new PriceAndCityVO("distance","price");
+	public void drive(PriceAndCityManageBLService priceAndCityManageService){
+		PriceAndCityVO d=new PriceAndCityVO("A","B","distance","price");
 		boolean add=priceAndCityManageService.addCity("nanjing");
-		boolean delete=priceAndCityManageService.setDiretion(d,10);
-		boolean modify=priceAndCityManageService.setPrice(d,10);
+		boolean set=priceAndCityManageService.setDiretionAndPrice("A","B","distance","price");
+		//boolean modify=priceAndCityManageService.setPrice(d,10);
 		if(add)
 			System.out.println("add successfully!\n");
-		if(delete)
+		if(set)
 			System.out.println("delete successfully!\n");		
-		if(modify)
-			System.out.println("modify successfully!\n");
+		/*if(modify)
+			System.out.println("modify successfully!\n");*/
 	}	
 }

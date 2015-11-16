@@ -8,30 +8,11 @@ import org.module.common.po.GoDownEntryListPO;
 
 
 public class GoDownEntryBLService_stub implements GoDownEntryBLService{
-	GoDownEntryListPO gdepo;
-	public boolean createTicket(GoDownEntryListVO t) {
-		// TODO �Զ����ɵķ������
+	
+	public boolean createTicket(String courier, String date,
+			String destination, String qu, String pai, String jia, String wei) {
+		// TODO Auto-generated method stub
 		System.out.println("GodownEntry");
 		return false;
 	}
-
-	public boolean modifyTicket(GoDownEntryListVO newOne) {
-		// TODO �Զ����ɵķ������
-		System.out.println("GodownEntry");
-		return false;
-	}
-
-	public ArrayList<GoDownEntryListVO> findTicketByTime(long timeStart,
-			long timeEnd) {
-		// TODO �Զ����ɵķ������
-		System.out.println("GodownEntry");
-		return null;
-	}
-
-	public boolean clear() {
-		// TODO �Զ����ɵķ������
-		System.out.println("GodownEntry");
-		return false;
-	}
-
 }

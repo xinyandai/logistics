@@ -1,0 +1,39 @@
+package org.module.client.BL.management;
+
+import java.util.ArrayList;
+
+import org.module.client.businesslogicservice.management.PriceAndCityManageService;
+import org.module.client.vo.PriceAndCityVO;
+
+
+public class PriceAndCityMock implements PriceAndCityManageService{
+
+	
+	public ArrayList<String> showAllCity() {
+		// TODO Auto-generated method stub
+		ArrayList<String> s=new ArrayList<String>();
+		s.add("nanjing");
+		return s;
+	}
+
+	public boolean addCity(String city) {
+		// TODO Auto-generated method stub
+		return city=="nanjing";
+	}
+
+	public boolean deleteCity(String city) {
+		// TODO Auto-generated method stub
+		return city=="nanjing";
+	}
+
+	public boolean modifyCity(String city) {
+		// TODO Auto-generated method stub
+		return city=="nanjing";
+	}
+
+	public boolean setDiretionAndPrice(PriceAndCityVO priceAndcity) {
+		// TODO Auto-generated method stub
+		return priceAndcity.getcityA()=="nanjing";
+	}
+
+}

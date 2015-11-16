@@ -3,7 +3,7 @@ package org.module.client.businesslogicservice.managementBLservice;
 import java.util.ArrayList;
 
 
-public interface TicketAndOrderManageService {
+public interface TicketAndOrderManageBLService{
 
 	/**
 	 * 前置：总经理登陆后则重复判断
@@ -11,7 +11,7 @@ public interface TicketAndOrderManageService {
 	 * @return
 	 */
 	public boolean hasTicketToManage();
-	
+
 	/**
 	 * 前置：经理查看未审批单据
 	 * 后置：显示未审批单据
@@ -19,21 +19,21 @@ public interface TicketAndOrderManageService {
 	 * @param state
 	 * @return
 	 */
-	public ArrayList<Object> getTicket(String tickettype,String state);
+	public ArrayList<Object> getTicket();
 	/**
-	 * 前置：经理审批单据
+	 * 前置：经理通过单据
 	 * 后置：更新
 	 * @param type
 	 * @param o
 	 * @return
 	 */
-	public boolean update(String type,Object o);
+	public boolean pass(ArrayList<String> id);
 	/**
-	 * 前置：经理审批单据
+	 * 前置：经理未通过单据
 	 * 后置：更新
 	 * @param type
 	 * @param o
 	 * @return
 	 */
-	public boolean update(ArrayList<Object> al);
+	public boolean unpass(ArrayList<String> id);
 }

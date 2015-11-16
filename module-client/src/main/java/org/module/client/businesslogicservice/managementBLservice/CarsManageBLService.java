@@ -6,7 +6,7 @@ import org.module.client.vo.CarVO;
 
 
 
-public interface CarsManageService {
+public interface CarsManageBLService {
 
 	/**
 	 * 前置：选择汽车信息管理
@@ -22,7 +22,7 @@ public interface CarsManageService {
 	 * @param c
 	 * @return
 	 */
-	public boolean add(CarVO c);
+	public boolean add(String id, String license, String time);
 	/**
 	 * 前置：选择汽车进行更改
 	 * 后置：更新
@@ -30,7 +30,15 @@ public interface CarsManageService {
 	 * @param
 	 * @return
 	 */
-	public boolean modify(CarVO newone);
+	public boolean modify(String id, String license, String time);
+	/**
+	 * 前置：选择汽车信息并删除
+	 * 后置：更新
+	 * 依赖：CarDataService.删除一些PO
+	 * @param al
+	 * @return
+	 */
+	public boolean delete(String id);
 	/**
 	 * 前置：批量选择汽车信息并删除
 	 * 后置：更新
@@ -38,7 +46,7 @@ public interface CarsManageService {
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<CarVO> al);
+	public boolean delete(ArrayList<String> id);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

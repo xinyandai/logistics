@@ -1,26 +1,23 @@
-package org.module.client.businesslogicservice.managementBLService_stub;
+package org.module.client.businesslogic.managementbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
+import org.module.client.businesslogicservice.management.DriversManageService;
 import org.module.client.vo.DriverVO;
 
-
-public class DriversManageService_stub implements DriversManageBLService{
+public class Driver implements DriversManageService{
 
 	public ArrayList<DriverVO> showAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean add(String id, String name, String birthday, String idcard,
-			String phone, String gender, String date) {
+	public boolean add(DriverVO c) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean modify(String id, String name, String birthday,
-			String idcard, String phone, String gender, String date) {
+	public boolean modify(DriverVO newone) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -30,7 +27,7 @@ public class DriversManageService_stub implements DriversManageBLService{
 		return false;
 	}
 
-	public boolean delete(ArrayList<String> id) {
+	public boolean delete(ArrayList<String> al) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -39,7 +36,5 @@ public class DriversManageService_stub implements DriversManageBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }
