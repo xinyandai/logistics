@@ -10,7 +10,7 @@ public class TransportBLService_stub implements TransportBLService{
 
 	public boolean creat(String car, String loadingDate, String transId,
 			String carId, String origin, String arrival, String counterId,
-			String supervision, String shippingId, String price) {
+			String supervision, String[] shippingId, String price) {
 		// TODO Auto-generated method stub
 		return false;
 	}

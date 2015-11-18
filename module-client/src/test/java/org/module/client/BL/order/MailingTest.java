@@ -12,23 +12,24 @@ public class MailingTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		mail = new MailingListControl(new MailingMock(),
-				new CalculateTimeMock(),
-				new CalculateDriverCostMock(),
 				new LogisticsMock());
 	}
 
 	public void testAdd() {
-		assert(mail.handleMailingList("senderName",  "senderCompany",
+		boolean a = mail.handleMailingList("senderName",  "senderCompany",
 				 "senderMobile",  "senderPhone",  "senderCity",
 				 "senderPosition",  "receiveName",  "receiveCompany",
 				 "receiveMobile",  "receivePhone",  "receiveCity",
 				 "receivePosition",  "nameOfGood",  "counts",
 				 "weight",  "volume",  "costOfDecoration","type",
-				 "1400000000"));
+				 "1400000000");
+		//System.out.println(a);
+		assert(a);
 	}
 	
 	public void testPrice(){
 		double a = mail.price("南京", "北京","1" ," 2", "20", "1", "经济快递");
+		//System.out.println(a);
 		assert(a>0);
 	}
 	

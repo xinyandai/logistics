@@ -6,9 +6,10 @@ import org.module.client.vo.TranCenterLoadingListVO;
 
 public class TranCenterLoadingService_Driver {
 	public void drive(TranCenterLoadingBLService tranCenterLoadingService){
+		String[] s = { "shippingId"};
 		boolean result=tranCenterLoadingService.creat( "loadingDate", "transportListId",
 				"arrival", "carId", "supervision","escort",
-				"shippingId", "price");
+				s, "price");
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

@@ -1,5 +1,17 @@
 package org.module.client.vo;
 
+/**
+ * 当营业厅送达货物到中转中心之后业务员生成中转中心到达单。
+ * 中转中心到达单前缀：
+ * 中转中心编号（025城市编码+0中转中心）、
+ * 到达日期、
+ * 中转单编号（若是由营业厅运送过来直接填写装车单）、
+ * 出发地、
+ * 货物到达状态（损坏、完整、丢失））
+ * @author 
+ *
+ */
+
 public class TranCenterArrivalListVO {
 
 	private String transId;

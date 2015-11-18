@@ -13,7 +13,7 @@ public class MailingMock implements MailingService {
 
 	public boolean creat(MailingListVO o) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	public ArrayList<MailingListVO> getAll() {
@@ -25,12 +25,12 @@ public class MailingMock implements MailingService {
 			String counts, String weight, String volume,
 			String costOfDecoration, String type) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 10;
 	}
 
 	public int calculateTime(String senderCity, String receiveCity) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 10;
 	}
 
 }

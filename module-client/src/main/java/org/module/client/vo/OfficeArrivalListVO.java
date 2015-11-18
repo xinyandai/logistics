@@ -1,5 +1,11 @@
 package org.module.client.vo;
-
+/**
+ * 当其它营业厅或中转中心送达货物，首先营业厅业务员生成营业厅到达单。
+ * 营业厅到达单前缀为： 
+ * 包含货物到达信息（到达日期、中转单编号(如果是由中转中心运送过来的话否则直接填写装车单)、出发地、货物到达状态（损坏、完整、丢失））
+ * @author 
+ *
+ */
 public class OfficeArrivalListVO {
 
 	private String officeid;

@@ -7,7 +7,7 @@ public class OutBoundMock implements OutBoundService{
 
 	public boolean createTicket(OutBoundListVO out) {
 		// TODO Auto-generated method stub
-		return out.getCarId()=="10086";
+		return out.getTansportListId().equals( "10086" );
 	}
 
 }

@@ -25,7 +25,9 @@ public class SalaryController implements SalarySettingBLService {
 	public boolean setCourierSalary(String base, String bonusEveryDelivered,
 			String bonusEveryReceive) {
 		// TODO Auto-generated method stub
-		return false;
+		return salary.setCourierSalary(new CourierSalaryVO( Double.parseDouble(base),  
+				Double.parseDouble(bonusEveryDelivered),
+				Double.parseDouble(bonusEveryReceive)));
 	}
 
 	public boolean setDriverSalary(String base, String bonusEveryIncityDriving,

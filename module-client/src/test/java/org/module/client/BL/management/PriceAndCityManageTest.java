@@ -18,7 +18,7 @@ public class PriceAndCityManageTest extends TestCase {
 	}
 	
 	public void testAddCity() {
-		assert(priceAndCity.addCity("nanijng"));
+		assert(priceAndCity.addCity("nanjing"));
 	}
 	
 	public void testModifyCity() {
@@ -26,7 +26,7 @@ public class PriceAndCityManageTest extends TestCase {
 	}
 	
 	public void testDeleteCityString() {
-		assert(priceAndCity.deleteCity("city"));
+		assert(priceAndCity.deleteCity("nanjing"));
 	}
 	
 	public void testsetDiretionAndPrice(){

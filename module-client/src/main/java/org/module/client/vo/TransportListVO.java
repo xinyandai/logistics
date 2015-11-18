@@ -1,5 +1,19 @@
 package org.module.client.vo;
-
+/**
+ * 业务员每天根据库存的状况，录入中转单（包括飞机、铁路、公路）。
+ * 中转单前缀为：
+ * 装车日期、
+ * 本中转中心中转单编号（中转中心编号+日期+0000000七位数字），
+ * 航班号、
+ * 出发地、
+ * 到达地、
+ * 货柜号、
+ * 监装员、
+ * 本次装箱所有托运单号、
+ * 运费（运费根据出发地和目的地自动生成）
+ * @author 
+ *
+ */
 public class TransportListVO {
 
 	//��ת��
@@ -11,11 +25,11 @@ public class TransportListVO {
 		private String arrival;
 		private String counterId;
 		private String Supervision;
-		private String shippingId;
+		private String[] shippingId;
 		private String price;
 		public TransportListVO(String car, String loadingDate, String transId,
 				String carId, String origin, String arrival, String counterId,
-				String supervision, String shippingId, String price) {
+				String supervision, String[] shippingId, String price) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
@@ -76,10 +90,10 @@ public class TransportListVO {
 		public void setSupervision(String supervision) {
 			Supervision = supervision;
 		}
-		public String getShippingId() {
+		public String[] getShippingId() {
 			return shippingId;
 		}
-		public void setShippingId(String shippingId) {
+		public void setShippingId(String[] shippingId) {
 			this.shippingId = shippingId;
 		}
 		public String getPrice() {

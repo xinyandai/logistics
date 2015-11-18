@@ -27,7 +27,7 @@ public class TranCenterLoadingController implements TranCenterLoadingBLService {
 
 	public boolean creat(String loadingDate, String transportListId,
 			String arrival, String carId, String supervision, String escort,
-			String shippingId, String price) {
+			String[] shippingId, String price) {
 		// TODO Auto-generated method stub
 		return this.loading.creat(new TranCenterLoadingListVO( loadingDate,  transportListId,
 			 arrival,  carId,  supervision,  escort,

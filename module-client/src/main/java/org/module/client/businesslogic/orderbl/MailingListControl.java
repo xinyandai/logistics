@@ -11,23 +11,17 @@ import org.module.client.vo.MailingListVO;
 
 public class MailingListControl implements MailingBLService{
 	private MailingService mailingBLImpl;
-	private CalculateTimeService time;
-	private CalculateDriverCostService driverCost;
+	
 	private LogisticsService logistics;
 	
 	public MailingListControl( ) {
 		super();
 		this.mailingBLImpl = new MailingBLImpl();
-		this.time = new CalculateTime();
-		this.driverCost = new CalculateDriverCost();
 		this.logistics = new Logistics();
 	}
-	public MailingListControl(MailingService mailingBLImpl, CalculateTimeService time,
-	 CalculateDriverCostService driverCost, LogisticsService  logistics) {
+	public MailingListControl(MailingService mailingBLImpl, LogisticsService  logistics) {
 		super();
-		this.mailingBLImpl = mailingBLImpl;
-		this.time = time;
-		this.driverCost = driverCost;
+		this.mailingBLImpl = mailingBLImpl;	
 		this.logistics = logistics;
 	}
 
@@ -73,7 +67,7 @@ public class MailingListControl implements MailingBLService{
 	public double price(String senderCity, String receiveCity, String counts,
 			String weight, String volume, String costOfDecoration, String type) {
 		
-		return (int)mailingBLImpl.calculatePrice(senderCity, receiveCity, counts, 
+		return mailingBLImpl.calculatePrice(senderCity, receiveCity, counts, 
 				weight, volume, costOfDecoration, type);
 	}
 

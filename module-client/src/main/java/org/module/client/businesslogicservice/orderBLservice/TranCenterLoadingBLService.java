@@ -16,7 +16,7 @@ public interface TranCenterLoadingBLService {
 	 */
 	public boolean creat(String loadingDate, String transportListId,
 			String arrival, String carId, String supervision, String escort,
-			String shippingId, String price);
+			String[] shippingId, String price);
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有装车单

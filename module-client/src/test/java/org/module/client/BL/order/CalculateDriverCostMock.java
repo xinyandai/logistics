@@ -9,8 +9,8 @@ public class CalculateDriverCostMock implements CalculateDriverCostService {
 	}
 
 	public double calculateDriverCost(String origin, String target) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(!origin.equals(target)) return 3;
+ 		return 0;
 	}
 
 }
