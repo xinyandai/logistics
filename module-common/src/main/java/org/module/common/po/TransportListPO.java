@@ -8,14 +8,20 @@ public class TransportListPO {
 		private String carId;
 		private String origin;
 		private String arrival;
+		/**
+		 * 货柜号
+		 */
 		private String counterId;
+		/**
+		 * 监装员
+		 */
 		private String Supervision;
-		private String shippingId;
+		private String[] shippingId;
 		private String price;
 		public TransportListPO(String car, String loadingDate,
 				String transListId, String carId, String origin,
 				String arrival, String counterId, String supervision,
-				String shippingId, String price) {
+				String[] shippingId, String price) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
@@ -76,10 +82,10 @@ public class TransportListPO {
 		public void setSupervision(String supervision) {
 			Supervision = supervision;
 		}
-		public String getShippingId() {
+		public String[] getShippingId() {
 			return shippingId;
 		}
-		public void setShippingId(String shippingId) {
+		public void setShippingId(String[] shippingId) {
 			this.shippingId = shippingId;
 		}
 		public String getPrice() {

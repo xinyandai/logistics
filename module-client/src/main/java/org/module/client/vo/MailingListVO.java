@@ -1,7 +1,5 @@
 package org.module.client.vo;
 
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 public class MailingListVO {
 

@@ -23,7 +23,13 @@ public class TransportListVO {
 		private String carId;
 		private String origin;
 		private String arrival;
+		/**
+		 * 货柜号
+		 */
 		private String counterId;
+		/**
+		 * 监装员
+		 */
 		private String Supervision;
 		private String[] shippingId;
 		private String price;

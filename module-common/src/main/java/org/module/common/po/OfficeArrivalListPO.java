@@ -1,17 +1,16 @@
 package org.module.common.po;
 
 public class OfficeArrivalListPO {
+	private String officeid;
 	private String date;
 	private String transportListId;
 	private String origin;
 	private String state;
-	public OfficeArrivalListPO(String date, String transportListId,
-			String origin, String state) {
-		super();
-		this.date = date;
-		this.transportListId = transportListId;
-		this.origin = origin;
-		this.state = state;
+	public String getOfficeid() {
+		return officeid;
+	}
+	public void setOfficeid(String officeid) {
+		this.officeid = officeid;
 	}
 	public String getDate() {
 		return date;
@@ -37,6 +36,14 @@ public class OfficeArrivalListPO {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public OfficeArrivalListPO(String officeid, String date,
+			String transportListId, String origin, String state) {
+		super();
+		this.officeid = officeid;
+		this.date = date;
+		this.transportListId = transportListId;
+		this.origin = origin;
+		this.state = state;
+	}
 	
-
 }

@@ -7,11 +7,11 @@ public class TranCenterLoadingListPO {
 	private String carId;
 	private String Supervision;
 	private String escort;
-	private String shippingId;
+	private String[] shippingId;
 	private String price;
 	public TranCenterLoadingListPO(String loadingDate, String transportListId,
 			String arrival, String carId, String supervision, String escort,
-			String shippingId, String price) {
+			String[] shippingId, String price) {
 		super();
 		LoadingDate = loadingDate;
 		this.transportListId = transportListId;
@@ -58,10 +58,10 @@ public class TranCenterLoadingListPO {
 	public void setEscort(String escort) {
 		this.escort = escort;
 	}
-	public String getShippingId() {
+	public String[] getShippingId() {
 		return shippingId;
 	}
-	public void setShippingId(String shippingId) {
+	public void setShippingId(String[] shippingId) {
 		this.shippingId = shippingId;
 	}
 	public String getPrice() {
