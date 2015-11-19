@@ -5,44 +5,43 @@ public class TranCenterArrivalListPO {
 	private String date;
 	private String transportListId;
 	private String origin;
-	private String state;
+	/**
+	 * 货物到达状态
+	 */
+	private String stateOfGoods;
+	/**
+	 * 单据状态
+	 */
+	private State state;
 	public TranCenterArrivalListPO(String transId, String date,
-			String transportListId, String origin, String state) {
+			String transportListId, String origin, String stateOfGoods,
+			String state) {
 		super();
 		this.transId = transId;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
-		this.state = state;
+		this.stateOfGoods = stateOfGoods;
+		this.state = State.getInstance(state);
 	}
 	public String getTransId() {
 		return transId;
 	}
-	public void setTransId(String transId) {
-		this.transId = transId;
-	}
 	public String getDate() {
 		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 	public String getTransportListId() {
 		return transportListId;
 	}
-	public void setTransportListId(String transportListId) {
-		this.transportListId = transportListId;
-	}
 	public String getOrigin() {
 		return origin;
 	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
+	public String getStateOfGoods() {
+		return stateOfGoods;
 	}
-	public String getState() {
+	public State getState() {
 		return state;
 	}
-	public void setState(String state) {
-		this.state = state;
-	}
+	
+	
 }

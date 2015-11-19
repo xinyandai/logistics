@@ -1,18 +1,44 @@
 package org.module.client.vo;
+/**
+ * 
+ *库存入库单（快递编号、入库日期、目的地、区号、排号、架号、位号）
+ */
+public class GoDownEntryVO {
+    /**
+	 * 快递单号
+	 */
+	private String id;
 
-public class GoDownEntryListVO {
-
-	private String Courier;
+	
+	
+	/**
+	 * 入库日期
+	 */
 	private String date;
+	/**
+	 * 目的地
+	 */
 	private String destination;
+	/**
+	 * 区
+	 */
 	private String qu;
+	/**
+	 * 排
+	 */
 	private String pai;
+	/**
+	 * 架
+	 */
 	private String jia;
+	/**
+	 * 位
+	 */
 	private String wei;
-	public GoDownEntryListVO(String courier, String date, String destination,
+	public GoDownEntryVO(String courier, String date, String destination,
 			String qu, String pai, String jia, String wei) {
 		super();
-		Courier = courier;
+		id = courier;
 		this.date = date;
 		this.destination = destination;
 		this.qu = qu;
@@ -21,10 +47,10 @@ public class GoDownEntryListVO {
 		this.wei = wei;
 	}
 	public String getCourier() {
-		return Courier;
+		return id;
 	}
 	public void setCourier(String courier) {
-		Courier = courier;
+		id = courier;
 	}
 	public String getDate() {
 		return date;

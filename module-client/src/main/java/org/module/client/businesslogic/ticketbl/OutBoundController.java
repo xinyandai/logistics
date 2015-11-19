@@ -16,11 +16,11 @@ public class OutBoundController implements OutBoundBLService{
 		this.outBound = new OutBound();
 	}
 	
-	public boolean createTicket(String courier, String date,
-			String destination,String car, String tansportListId, String carId) {
+	public boolean createTicket(String id, String date,
+			String destination,String car, String tansportListId) {
 		// TODO Auto-generated method stub
-		return outBound.createTicket(new OutBoundListVO(courier, date,
-				destination, car, tansportListId,carId));
+		return outBound.createTicket(new OutBoundListVO(id, date,
+				destination, car, tansportListId));
 	}
 
 }

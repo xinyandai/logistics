@@ -5,45 +5,46 @@ public class OfficeArrivalListPO {
 	private String date;
 	private String transportListId;
 	private String origin;
-	private String state;
-	public String getOfficeid() {
-		return officeid;
-	}
-	public void setOfficeid(String officeid) {
-		this.officeid = officeid;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getTransportListId() {
-		return transportListId;
-	}
-	public void setTransportListId(String transportListId) {
-		this.transportListId = transportListId;
-	}
-	public String getOrigin() {
-		return origin;
-	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
+	/**
+	 * 货物到达状态
+	 */
+	private String stateOfGoods;
+	/**
+	 * 单据状态
+	 */
+	private State state;
+	
+	
+	
 	public OfficeArrivalListPO(String officeid, String date,
-			String transportListId, String origin, String state) {
+			String transportListId, String origin, String stateOfGoods,
+			String state) {
 		super();
 		this.officeid = officeid;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
-		this.state = state;
+		this.stateOfGoods = stateOfGoods;
+		this.state = State.getInstance(state);
 	}
+	public String getOfficeid() {
+		return officeid;
+	}
+	public String getDate() {
+		return date;
+	}
+	public String getTransportListId() {
+		return transportListId;
+	}
+	public String getOrigin() {
+		return origin;
+	}
+	public String getStateOfGoods() {
+		return stateOfGoods;
+	}
+	public State getState() {
+		return state;
+	}
+	
 	
 }

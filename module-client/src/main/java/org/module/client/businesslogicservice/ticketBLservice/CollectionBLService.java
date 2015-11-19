@@ -2,7 +2,7 @@ package org.module.client.businesslogicservice.ticketBLservice;
 
 import java.util.ArrayList;
 
-import org.module.client.vo.ReceiptListVO;
+import org.module.client.vo.ReceiptVO;
 
 
 
@@ -19,7 +19,7 @@ public interface CollectionBLService {
 	 * @param t
 	 * @return
 	 */
-	public boolean createTicket(ReceiptListVO t);
+	public boolean createTicket(ReceiptVO t);
 	/**
 	 * 前置：选择收款单进行修改，并输入新信息
 	 * 后置：更新
@@ -28,7 +28,7 @@ public interface CollectionBLService {
 	 * @param newOne
 	 * @return
 	 */
-	public boolean modifyTicket(ReceiptListVO newOne);
+	public boolean modifyTicket(ReceiptVO newOne);
 	/**
 	 * 前置：选择时间段查看ticket
 	 * 后置：显示ticket
@@ -37,7 +37,7 @@ public interface CollectionBLService {
 	 * @param timeEnd
 	 * @return
 	 */
-	public ArrayList<ReceiptListVO> findTicketByTime(long timeStart,long timeEnd);
+	public ArrayList<ReceiptVO> findTicketByTime(long timeStart,long timeEnd);
 	/**
 	 *前置：选择起初建账户进行初始化
 	 *后置：清空订单

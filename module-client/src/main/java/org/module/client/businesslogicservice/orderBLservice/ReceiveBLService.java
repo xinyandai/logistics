@@ -2,7 +2,7 @@ package org.module.client.businesslogicservice.orderBLservice;
 
 import java.util.ArrayList;
 
-import org.module.client.vo.ReceiveListVO;
+import org.module.client.vo.ReceivingListVO;
 
 
 /**
@@ -26,6 +26,6 @@ public interface ReceiveBLService {
 	 * 依赖：ReceiveListService.getAll 返回所有的收件单PO
 	 * @return
 	 */
-	public ArrayList<ReceiveListVO> getAll();
+	public ArrayList<ReceivingListVO> getAll();
 	
 }

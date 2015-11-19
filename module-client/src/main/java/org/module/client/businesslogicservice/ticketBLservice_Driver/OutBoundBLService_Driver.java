@@ -6,9 +6,9 @@ import org.module.client.vo.OutBoundListVO;
 public class OutBoundBLService_Driver {
 	public void drive(OutBoundBLService outBoundBLService){
 		OutBoundListVO d=new OutBoundListVO("courier","date","destination",
-				"car","tansportListId", "carId");
+				"car","tansportListId");
 		boolean creat=outBoundBLService.createTicket("courier","date","destination",
-				"car","tansportListId", "carId");
+				"car","tansportListId");
 
 		if(creat)
 			System.out.println("creat successfully!");

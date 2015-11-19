@@ -1,8 +1,8 @@
-package org.module.common.dataservice.ticketdataservice;
+package org.module.common.dataservice.statisticdataservice;
 
 import java.util.ArrayList;
 
-import org.module.common.po.ReceiptListPO;
+import org.module.common.po.ReceiptPO;
 
 
 /**
@@ -18,14 +18,14 @@ public interface ReceiptListService {
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public ArrayList<ReceiptListPO> getAll();
+	public ArrayList<ReceiptPO> getAll();
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO
 	 * @param   欲增加的持久化对象
 	 * @return  添加成功返回true
 	 */
-	public boolean add(ReceiptListPO ticket);
+	public boolean add(ReceiptPO ticket);
 	
 	/**
 	 * 前置：数据库中含有该PO
@@ -34,7 +34,7 @@ public interface ReceiptListService {
 	 * @return  添加成功返回true
 	 */
 	
-	public boolean delete(ReceiptListPO ticket);
+	public boolean delete(ReceiptPO ticket);
 	/**
 	 * 前置：无
 	 * 后置：删除这些PO
@@ -48,5 +48,5 @@ public interface ReceiptListService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean update(ReceiptListPO newone);
+	public boolean update(ReceiptPO newone);
 }

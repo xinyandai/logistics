@@ -3,6 +3,7 @@ package org.module.common.dataservice.orderdataservice;
 import java.util.ArrayList;
 
 import org.module.common.po.SendingListPO;
+import org.module.common.po.State;
 
 
 
@@ -26,12 +27,12 @@ public interface SendingListService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean updata(SendingListPO newone);
-    /**
-	 * 前置：无
-	 * 后置：删除所有PO
-	 * @return
-	 */
-	public boolean clear();
+	public boolean update(SendingListPO newone);
+	/**
+     * 根据状态查找
+     * @param s
+     * @return
+     */
+	public ArrayList<SendingListPO> getByState(State s);
 }
 

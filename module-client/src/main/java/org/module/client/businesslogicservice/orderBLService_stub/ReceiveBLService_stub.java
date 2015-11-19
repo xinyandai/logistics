@@ -3,7 +3,7 @@ package org.module.client.businesslogicservice.orderBLService_stub;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.orderBLservice.ReceiveBLService;
-import org.module.client.vo.ReceiveListVO;
+import org.module.client.vo.ReceivingListVO;
 
 
 public class ReceiveBLService_stub implements ReceiveBLService{
@@ -14,7 +14,7 @@ public class ReceiveBLService_stub implements ReceiveBLService{
 		return false;
 	}
 
-	public ArrayList<ReceiveListVO> getAll() {
+	public ArrayList<ReceivingListVO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

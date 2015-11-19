@@ -3,6 +3,7 @@ package org.module.common.dataservice.orderdataservice;
 import java.util.ArrayList;
 
 import org.module.common.po.OfficeArrivalListPO;
+import org.module.common.po.State;
 
 
 public interface OfficeArrivalListService {
@@ -25,11 +26,13 @@ public interface OfficeArrivalListService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean updata(OfficeArrivalListPO newone);
-    /**
-	 * 前置：无
-	 * 后置：删除所有PO
-	 * @return
-	 */
-	public boolean clear();
+	public boolean update(OfficeArrivalListPO newone);
+	
+	/**
+     * 根据状态查找
+     * @param s
+     * @return
+     */
+	public ArrayList<OfficeArrivalListPO> getByState(State s);
+    
 }

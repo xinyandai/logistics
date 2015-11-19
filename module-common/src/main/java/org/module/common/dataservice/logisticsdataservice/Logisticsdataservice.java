@@ -33,12 +33,7 @@ public interface Logisticsdataservice {
 		 * @return
 		 */
 		public boolean updata(LogisticsPO old,LogisticsPO newone);
-		/**
-		 * 前置：无
-		 * 后置：删除所有PO
-		 * @return
-		 */
-		public boolean clear();
+		
 	}
 
 }

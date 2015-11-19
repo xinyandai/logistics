@@ -1,12 +1,12 @@
 package org.module.client.vo;
 
-public class ReceiptListVO {
+public class ReceiptVO {
 	//�տ
 		private String date;
 		private double money;
 		private String Courier;
 		private String orderId;
-		public ReceiptListVO(String date, String money, String courier,
+		public ReceiptVO(String date, String money, String courier,
 				String orderId) {
 			super();
 			this.date = date;

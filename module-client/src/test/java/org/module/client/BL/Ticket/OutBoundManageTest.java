@@ -14,6 +14,6 @@ public class OutBoundManageTest extends TestCase {
 	}
 	
 	public void testcreateTicket(){
-		assert(outBound.createTicket("01","2015","beijing","01","10086","100"));
+		assert(outBound.createTicket("01","2015","beijing","01","10086"));
 	}
 }

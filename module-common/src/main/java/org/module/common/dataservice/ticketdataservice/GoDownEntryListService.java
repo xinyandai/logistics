@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.module.common.po.GoDownEntryListPO;
+import org.module.common.po.State;
 
 
 
@@ -28,15 +29,9 @@ public interface GoDownEntryListService {
 	 * @param   欲删除的持久化对象
 	 * @return  添加成功返回true
 	 */
+	/*
+	public boolean delete(GoDownEntryListPO ticket)throws RemoteException;*/
 	
-	public boolean delete(GoDownEntryListPO ticket)throws RemoteException;
-	/**
-	 * 前置：无
-	 * 后置：删除这些PO
-	 * @param ticket
-	 * @return
-	 */
-	public boolean clear()throws RemoteException;
 	/**
 	 * 前置：该PO存在于数据库
 	 * 后置：修改一个PO
@@ -44,4 +39,10 @@ public interface GoDownEntryListService {
 	 * @return
 	 */
 	public boolean update(GoDownEntryListPO newone)throws RemoteException;
+	/**
+     * 根据状态查找
+     * @param s
+     * @return
+     */
+	public ArrayList<GoDownEntryListPO> getByState(State s);
 }

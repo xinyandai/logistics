@@ -13,7 +13,7 @@ public interface OutBoundBLService {
 	 * @param t
 	 * @return
 	 */
-	public boolean createTicket(String courier, String date, String destination,
-			String car, String tansportListId, String carId);
+	public boolean createTicket(String id, String date, String destination,
+			String car, String tansportListId);
 	
 }

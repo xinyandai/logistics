@@ -5,35 +5,27 @@ public class SendingListPO {
 		private String date;
 		private String shippingId;
 		private String SendMember;
-		public SendingListPO(String date, String shippingId, String sendMember) {
+		private State state;
+		public SendingListPO(String date, String shippingId, String sendMember,
+				State state) {
 			super();
 			this.date = date;
 			this.shippingId = shippingId;
 			SendMember = sendMember;
+			this.state = state;
 		}
-		
 		public String getDate() {
 			return date;
 		}
-		
-		public void setDate(String date) {
-			this.date = date;
-		}
-		
 		public String getShippingId() {
 			return shippingId;
 		}
-		
-		public void setShippingId(String shippingId) {
-			this.shippingId = shippingId;
-		}
-		
 		public String getSendMember() {
 			return SendMember;
 		}
-		
-		public void setSendMember(String sendMember) {
-			SendMember = sendMember;
+		public State getState() {
+			return state;
 		}
 		
+
 }

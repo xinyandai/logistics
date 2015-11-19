@@ -39,6 +39,6 @@ public interface DriversDataService {
 	 * @param
 	 * @return
 	 */
-	public boolean updata(DriverPO newone);
+	public boolean update(DriverPO newone);
 }
 

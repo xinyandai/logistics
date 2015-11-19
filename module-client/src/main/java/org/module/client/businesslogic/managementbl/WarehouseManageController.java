@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
-import org.module.client.vo.GoDownEntryListVO;
+import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
 
@@ -37,7 +37,7 @@ public class WarehouseManageController implements WarehouseManageBLService{
 		return warehouse.outBound(w);
 	}
 
-	public WarehouseVO goDown(GoDownEntryListVO w) {
+	public WarehouseVO goDown(GoDownEntryVO w) {
 		// TODO Auto-generated method stub
 		return warehouse.goDown(w);
 	}

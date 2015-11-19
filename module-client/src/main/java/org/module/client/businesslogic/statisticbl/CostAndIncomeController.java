@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.statistic.CostService;
 import org.module.client.businesslogicservice.statisticBLservice.CostAndIncomeBLService;
 import org.module.client.vo.CostListVO;
-import org.module.client.vo.ReceiptListVO;
+import org.module.client.vo.ReceiptVO;
 
 public class CostAndIncomeController implements CostAndIncomeBLService {
 
@@ -38,9 +38,9 @@ public class CostAndIncomeController implements CostAndIncomeBLService {
 	}
 
 	public double getIncome(double startTime, double endTime) {
-		ArrayList<ReceiptListVO> list = income.getAllIncomeList("所有", startTime, endTime);
+		ArrayList<ReceiptVO> list = income.getAllIncomeList("所有", startTime, endTime);
 		double re = 0.0;
-		for (ReceiptListVO v : list) {
+		for (ReceiptVO v : list) {
 			re+=v.getMoney();
 		}
 		this.incomeMoney = re;

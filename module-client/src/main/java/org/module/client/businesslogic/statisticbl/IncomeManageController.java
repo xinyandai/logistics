@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statistic.IncomeService;
 import org.module.client.businesslogicservice.statisticBLservice.IncomeManageBLService;
-import org.module.client.vo.ReceiptListVO;
+import org.module.client.vo.ReceiptVO;
 
 public class IncomeManageController implements IncomeManageBLService {
 
@@ -21,7 +21,7 @@ public class IncomeManageController implements IncomeManageBLService {
 	}
 
 
-	public ArrayList<ReceiptListVO> showIncomeList(String office,
+	public ArrayList<ReceiptVO> showIncomeList(String office,
 			double startTime, double endTime) {
 		
 		return income.getAllIncomeList(office, startTime, endTime);

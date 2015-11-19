@@ -3,6 +3,7 @@ package org.module.common.dataservice.ticketdataservice;
 import java.util.ArrayList;
 
 import org.module.common.po.OutBoundListPO;
+import org.module.common.po.State;
 
 public interface OutBoundListService {
 	/**
@@ -24,16 +25,10 @@ public interface OutBoundListService {
 	 * 后置：删除一个PO
 	 * @param   欲删除的持久化对象
 	 * @return  添加成功返回true
-	 */
+	 *//*
 	
-	public boolean delete(OutBoundListPO ticket);
-	/**
-	 * 前置：无
-	 * 后置：删除这些PO
-	 * @param ticket
-	 * @return
-	 */
-	public boolean clear();
+	public boolean delete(OutBoundListPO ticket);*/
+	
 	/**
 	 * 前置：该PO存在于数据库
 	 * 后置：修改一个PO
@@ -41,4 +36,10 @@ public interface OutBoundListService {
 	 * @return
 	 */
 	public boolean update(OutBoundListPO newone);
+	/**
+     * 根据状态查找
+     * @param s
+     * @return
+     */
+	public ArrayList<OutBoundListPO> getByState(State s);
 }

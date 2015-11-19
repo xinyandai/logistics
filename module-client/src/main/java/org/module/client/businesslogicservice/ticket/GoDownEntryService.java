@@ -1,6 +1,6 @@
 package org.module.client.businesslogicservice.ticket;
 
-import org.module.client.vo.GoDownEntryListVO;
+import org.module.client.vo.GoDownEntryVO;
 
 public interface GoDownEntryService {
     /**
@@ -10,6 +10,6 @@ public interface GoDownEntryService {
 	 * @param t
 	 * @return
 	 */
-	public boolean createTicket(GoDownEntryListVO go);
+	public boolean createTicket(GoDownEntryVO go);
 	
 }

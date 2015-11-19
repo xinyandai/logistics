@@ -1,14 +1,12 @@
 package org.module.client.businesslogicservice.logisticsBLService_stub;
 
-import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.logisticsBLservice.LogisticsBLService;
 import org.module.client.vo.LogisticsVO;
-import org.module.common.po.LogisticsPO;
 
 
 public class LogisticsBLService_stub implements LogisticsBLService{
-	LogisticsPO lgpo;
+	LogisticsVO lgpo;
 	public LogisticsVO showState(String id) {
 		// TODO �Զ����ɵķ������
 		if(id.equals("140010001")){

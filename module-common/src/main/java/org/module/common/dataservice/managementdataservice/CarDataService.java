@@ -45,5 +45,5 @@ public interface CarDataService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean updata(CarPO old,CarPO newone);
+	public boolean update(CarPO old,CarPO newone);
 }

@@ -29,7 +29,7 @@ public class LogisticsController implements LogisticsBLService{
 			String orderId, String[][] historyLocationAndTime) {
 		// TODO Auto-generated method stub
 		return Logistics.setState(new LogisticsVO(origin, estination, location,
-				orderId, historyLocationAndTime));
+				orderId, historyLocationAndTime,false));
 	}
 
 }

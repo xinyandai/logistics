@@ -18,10 +18,14 @@ public class TransportListPO {
 		private String Supervision;
 		private String[] shippingId;
 		private String price;
+		private State state;
+		
+		
+		
 		public TransportListPO(String car, String loadingDate,
 				String transListId, String carId, String origin,
 				String arrival, String counterId, String supervision,
-				String[] shippingId, String price) {
+				String[] shippingId, String price, String state) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
@@ -33,66 +37,40 @@ public class TransportListPO {
 			Supervision = supervision;
 			this.shippingId = shippingId;
 			this.price = price;
+			this.state = State.getInstance(state);
 		}
 		public String getCar() {
 			return car;
 		}
-		public void setCar(String car) {
-			this.car = car;
-		}
 		public String getLoadingDate() {
 			return LoadingDate;
-		}
-		public void setLoadingDate(String loadingDate) {
-			LoadingDate = loadingDate;
 		}
 		public String getTransListId() {
 			return transListId;
 		}
-		public void setTransListId(String transListId) {
-			this.transListId = transListId;
-		}
 		public String getCarId() {
 			return carId;
-		}
-		public void setCarId(String carId) {
-			this.carId = carId;
 		}
 		public String getOrigin() {
 			return origin;
 		}
-		public void setOrigin(String origin) {
-			this.origin = origin;
-		}
 		public String getArrival() {
 			return arrival;
-		}
-		public void setArrival(String arrival) {
-			this.arrival = arrival;
 		}
 		public String getCounterId() {
 			return counterId;
 		}
-		public void setCounterId(String counterId) {
-			this.counterId = counterId;
-		}
 		public String getSupervision() {
 			return Supervision;
-		}
-		public void setSupervision(String supervision) {
-			Supervision = supervision;
 		}
 		public String[] getShippingId() {
 			return shippingId;
 		}
-		public void setShippingId(String[] shippingId) {
-			this.shippingId = shippingId;
-		}
 		public String getPrice() {
 			return price;
 		}
-		public void setPrice(String price) {
-			this.price = price;
+		public State getState() {
+			return state;
 		}
-		
+				
 }

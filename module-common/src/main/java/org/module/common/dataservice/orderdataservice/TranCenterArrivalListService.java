@@ -2,6 +2,7 @@ package org.module.common.dataservice.orderdataservice;
 
 import java.util.ArrayList;
 
+import org.module.common.po.State;
 import org.module.common.po.TranCenterArrivalListPO;
 
 
@@ -26,11 +27,11 @@ public interface TranCenterArrivalListService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean updata(TranCenterArrivalListPO newone);
-    /**
-	 * 前置：无
-	 * 后置：删除所有PO
-	 * @return
-	 */
-	public boolean clear();
+	public boolean update(TranCenterArrivalListPO newone);
+	/**
+     * 根据状态查找
+     * @param s
+     * @return
+     */
+	public ArrayList<TranCenterArrivalListPO> getByState(State s);
 }

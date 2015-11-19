@@ -7,16 +7,16 @@ import org.module.client.businesslogicservice.order.CalculateTimeService;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.vo.MailingListVO;
 
-public class MailingBLImpl  implements MailingService{
+public class Mailing  implements MailingService{
 
 	private CalculateDriverCostService driverCost;
-	public MailingBLImpl(CalculateTimeService time,
+	public Mailing(CalculateTimeService time,
 			CalculateDriverCostService driverCost) {
 		super();
 		this.driverCost = driverCost;
 	}
 
-	public MailingBLImpl(){
+	public Mailing(){
 		this.driverCost = new CalculateDriverCost();
 	}
 	public boolean creat(MailingListVO o) {

@@ -3,7 +3,7 @@ package org.module.client.BL.management;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
-import org.module.client.vo.GoDownEntryListVO;
+import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
 
@@ -28,7 +28,7 @@ public class WarehouseMock implements WarehouseManageService{
 		return re;
 	}
 
-	public WarehouseVO goDown(GoDownEntryListVO w) {
+	public WarehouseVO goDown(GoDownEntryVO w) {
 		// TODO Auto-generated method stub
 		WarehouseVO re = new WarehouseVO("10086","1","1","1","1");
 		return re;

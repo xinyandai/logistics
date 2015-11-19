@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class ReceiveListVO {
+public class ReceivingListVO {
 
 	//�ռ���
 		private String date;
@@ -39,7 +39,7 @@ public class ReceiveListVO {
 		public void setOrderId(String orderId) {
 			this.orderId = orderId;
 		}
-		public ReceiveListVO(String date, String location, String origin,
+		public ReceivingListVO(String date, String location, String origin,
 				String estination, String orderId) {
 			super();
 			this.date = date;

@@ -2,7 +2,7 @@ package org.module.client.businesslogic.ticketbl;
 
 import org.module.client.businesslogicservice.ticket.GoDownEntryService;
 import org.module.client.businesslogicservice.ticketBLservice.GoDownEntryBLService;
-import org.module.client.vo.GoDownEntryListVO;
+import org.module.client.vo.GoDownEntryVO;
 
 public class GoDownEntryController implements GoDownEntryBLService{
 
@@ -19,7 +19,7 @@ public class GoDownEntryController implements GoDownEntryBLService{
 	public boolean createTicket(String courier, String date,
 			String destination, String qu, String pai, String jia, String wei) {
 		// TODO Auto-generated method stub
-		return goDownEntry.createTicket(new GoDownEntryListVO(courier, date,
+		return goDownEntry.createTicket(new GoDownEntryVO(courier, date,
 				destination, qu,pai, jia, wei));
 	}
 

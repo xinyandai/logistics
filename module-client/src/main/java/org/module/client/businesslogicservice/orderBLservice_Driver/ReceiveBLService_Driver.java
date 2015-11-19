@@ -1,7 +1,7 @@
 package org.module.client.businesslogicservice.orderBLservice_Driver;
 
 import org.module.client.businesslogicservice.orderBLservice.ReceiveBLService;
-import org.module.client.vo.ReceiveListVO;
+import org.module.client.vo.ReceivingListVO;
 
 
 public class ReceiveBLService_Driver {

@@ -2,34 +2,33 @@ package org.module.client.businesslogic.orderbl;
 
 import java.util.ArrayList;
 
-import org.module.client.businesslogic.logisticsbl.Logistics;
 import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.businesslogicservice.order.ReceiveService;
 import org.module.client.businesslogicservice.orderBLservice.ReceiveBLService;
-import org.module.client.vo.ReceiveListVO;
+import org.module.client.vo.ReceivingListVO;
 
-public class ReceiveController implements ReceiveBLService {
+public class ReceivingController implements ReceiveBLService {
 	private ReceiveService receive;
-	private LogisticsService logistics;
-	public ReceiveController() {
-         this.receive = new Receive();
-         this.logistics = new Logistics();
+//	private LogisticsService logistics;
+	public ReceivingController() {
+         this.receive = new Receiving();
+//         this.logistics = new Logistics();
 	}
 
-	public ReceiveController(ReceiveService receive,LogisticsService logistics) {
+	public ReceivingController(ReceiveService receive,LogisticsService logistics) {
 		super();
 		this.receive = receive;
-		this.logistics = logistics;
+//		this.logistics = logistics;
 	}
 
 	public boolean creat(String date, String location, String origin,
 			String estination, String orderId) {
 		
-		return this.receive.creat(new ReceiveListVO( date,  location,  origin,
+		return this.receive.creat(new ReceivingListVO( date,  location,  origin,
 			 estination,  orderId));
 	}
 
-	public ArrayList<ReceiveListVO> getAll() {
+	public ArrayList<ReceivingListVO> getAll() {
 		// TODO Auto-generated method stub
 		return this.receive.getAll();
 	}

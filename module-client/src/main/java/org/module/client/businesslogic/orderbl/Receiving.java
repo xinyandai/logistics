@@ -3,20 +3,20 @@ package org.module.client.businesslogic.orderbl;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.ReceiveService;
-import org.module.client.vo.ReceiveListVO;
+import org.module.client.vo.ReceivingListVO;
 
-public class Receive implements ReceiveService {
+public class Receiving implements ReceiveService {
 
-	public Receive() {
+	public Receiving() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public boolean creat(ReceiveListVO o) {
+	public boolean creat(ReceivingListVO o) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public ArrayList<ReceiveListVO> getAll() {
+	public ArrayList<ReceivingListVO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

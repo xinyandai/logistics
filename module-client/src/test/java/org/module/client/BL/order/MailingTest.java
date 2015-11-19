@@ -2,7 +2,7 @@ package org.module.client.BL.order;
 
 import junit.framework.TestCase;
 
-import org.module.client.businesslogic.orderbl.MailingListControl;
+import org.module.client.businesslogic.orderbl.MailingControl;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 
@@ -11,8 +11,7 @@ public class MailingTest extends TestCase {
 	private MailingBLService mail;
 	protected void setUp() throws Exception {
 		super.setUp();
-		mail = new MailingListControl(new MailingMock(),
-				new LogisticsMock());
+		mail = new MailingControl(new MailingMock());
 	}
 
 	public void testAdd() {

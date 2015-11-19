@@ -1,28 +1,25 @@
 package org.module.client.businesslogic.orderbl;
 
-import org.module.client.businesslogic.logisticsbl.Logistics;
-import org.module.client.businesslogicservice.logistics.LogisticsService;
-import org.module.client.businesslogicservice.order.CalculateDriverCostService;
-import org.module.client.businesslogicservice.order.CalculateTimeService;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.vo.MailingListVO;
 
 
-public class MailingListControl implements MailingBLService{
+public class MailingControl implements MailingBLService{
+	
 	private MailingService mailingBLImpl;
 	
-	private LogisticsService logistics;
+//	private LogisticsService logistics;
 	
-	public MailingListControl( ) {
+	public MailingControl( ) {
 		super();
-		this.mailingBLImpl = new MailingBLImpl();
-		this.logistics = new Logistics();
+		this.mailingBLImpl = new Mailing();
+//		this.logistics = new Logistics();
 	}
-	public MailingListControl(MailingService mailingBLImpl, LogisticsService  logistics) {
+	public MailingControl(MailingService mailingBLImpl  ) {
 		super();
 		this.mailingBLImpl = mailingBLImpl;	
-		this.logistics = logistics;
+//		this.logistics = logistics;
 	}
 
 
@@ -51,7 +48,7 @@ public class MailingListControl implements MailingBLService{
 		for (String string : info) {
 			if(string.isEmpty()) return false;
 		}
-		if(mailingBLImpl.creat(mailingListVO) && logistics.setState(id, "快递公司已揽件")) return true;
+		if(mailingBLImpl.creat(mailingListVO)) return true;
 		return false;
 	}
 

@@ -2,7 +2,7 @@ package org.module.client.businesslogicservice.management;
 
 import java.util.ArrayList;
 
-import org.module.client.vo.GoDownEntryListVO;
+import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
 
@@ -33,7 +33,7 @@ public interface WarehouseManageService {
 	 * @param w
 	 * @return
 	 */
-	public WarehouseVO goDown(GoDownEntryListVO w);
+	public WarehouseVO goDown(GoDownEntryVO w);
 	/**
 	 * 前置：设置警戒比例
 	 * 后置：更新

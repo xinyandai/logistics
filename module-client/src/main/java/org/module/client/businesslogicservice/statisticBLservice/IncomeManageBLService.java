@@ -2,7 +2,7 @@ package org.module.client.businesslogicservice.statisticBLservice;
 
 import java.util.ArrayList;
 
-import org.module.client.vo.ReceiptListVO;
+import org.module.client.vo.ReceiptVO;
 
 /**
  * 收款单统计
@@ -17,7 +17,7 @@ public interface IncomeManageBLService {
 	 * 依赖：ReceiptListService.getAll 返回所有的收款单信息
 	 * @return
 	 */
-	public ArrayList<ReceiptListVO> showIncomeList(String office,double startTime,double endTime);
+	public ArrayList<ReceiptVO> showIncomeList(String office,double startTime,double endTime);
 	
 	public boolean add(String date, String money, String courier,
 			String orderId);

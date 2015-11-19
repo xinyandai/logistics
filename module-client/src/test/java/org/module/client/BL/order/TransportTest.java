@@ -11,7 +11,7 @@ public class TransportTest extends TestCase {
 	private TransportBLService t;
 	protected void setUp() throws Exception {
 		super.setUp();
-		t = new TransportController(new TransportMock(), new LogisticsMock());
+		t = new TransportController(new TransportMock());
 	}
 
 	public void testCreat() {

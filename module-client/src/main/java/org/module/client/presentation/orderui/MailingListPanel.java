@@ -19,7 +19,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
-import org.module.client.businesslogic.orderbl.MailingListControl;
+import org.module.client.businesslogic.orderbl.MailingControl;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 
 public class MailingListPanel extends JPanel {
@@ -28,7 +28,7 @@ public class MailingListPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -4285669172960400665L;
-	private MailingBLService inputMailingList = new MailingListControl();
+	private MailingBLService inputMailingList = new MailingControl();
 	private String[] stringOfType = {"经济快递","标准快递","特快"};
 	private String[] cities = {"南京","北京","上海","广州"};
 	

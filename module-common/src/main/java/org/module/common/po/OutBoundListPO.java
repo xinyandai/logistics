@@ -1,57 +1,72 @@
 package org.module.common.po;
 
 public class OutBoundListPO {
-	private String Courier;
+	/**
+	 * 快递编号
+	 */
+	private String id;
+	/**
+	 * 出库日期
+	 */
 	private String date;
+	/**
+	 * 目的地
+	 */
 	private String destination;
-	private String car;
+	/**
+	 * 装运形式
+	 */
+	private String typeOfLoading;
+	/**
+	 * 中转单编号或者货运编号
+	 */
 	private String tansportListId;
-	private String carId;
-	public OutBoundListPO(String courier, String date, String destination,
-			String car, String tansportListId, String carId) {
-		super();
-		Courier = courier;
-		this.date = date;
-		this.destination = destination;
-		this.car = car;
-		this.tansportListId = tansportListId;
-		this.carId = carId;
+//	private String carId;
+
+	/**
+	 * 单据状态
+	 */
+	private State state;
+
+	
+	
+	public OutBoundListPO(String id, String date, String destination,
+		String typeOfLoading, String tansportListId, String state) {
+	super();
+	this.id = id;
+	this.date = date;
+	this.destination = destination;
+	this.typeOfLoading = typeOfLoading;
+	this.tansportListId = tansportListId;
+	this.state = State.getInstance(state);
+}
+
+	public String getId() {
+		return id;
 	}
-	public String getCourier() {
-		return Courier;
-	}
-	public void setCourier(String courier) {
-		Courier = courier;
-	}
+
 	public String getDate() {
 		return date;
 	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+
 	public String getDestination() {
 		return destination;
 	}
-	public void setDestination(String destination) {
-		this.destination = destination;
+
+	public String getTypeOfLoading() {
+		return typeOfLoading;
 	}
-	public String getCar() {
-		return car;
-	}
-	public void setCar(String car) {
-		this.car = car;
-	}
+
 	public String getTansportListId() {
 		return tansportListId;
 	}
-	public void setTansportListId(String tansportListId) {
-		this.tansportListId = tansportListId;
+
+	public State getState() {
+		return state;
 	}
-	public String getCarId() {
-		return carId;
-	}
-	public void setCarId(String carId) {
-		this.carId = carId;
-	}
+	
+	
+
+	
 
 }
