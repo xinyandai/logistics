@@ -3,27 +3,24 @@ package org.module.client.presentation.managementui;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.JButton;
 
-import java.awt.GridLayout;
-
-import javax.swing.DefaultCellEditor;
-import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 import org.module.client.presentation.CheckBoxTableModelProxy;
 
 public class TicketManagePanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
 	 */

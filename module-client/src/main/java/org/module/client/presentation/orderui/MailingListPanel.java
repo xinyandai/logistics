@@ -544,6 +544,9 @@ public class MailingListPanel extends JPanel {
                  type.getSelectedItem().toString(), 
                  id.getText()
 				);
+		if(result){
+			
+		}
 				
 	}
 	

@@ -30,7 +30,8 @@ public class Mailing  implements MailingService{
 	public double calculatePrice(String senderCity, String receiveCity,
 			String counts, String weight, String volume,
 			String costOfDecoration, String type) {
-		return 0;
+		double  re = this.driverCost.calculateDriverCost(senderCity, receiveCity);
+		return re;
 	}
 
 	public int calculateTime(String senderCity, String receiveCity) {

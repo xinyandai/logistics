@@ -12,6 +12,10 @@ import javax.swing.JButton;
 import org.jdesktop.swingx.JXDatePicker;
 
 public class GoDownEntryListPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -425238968522959318L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;

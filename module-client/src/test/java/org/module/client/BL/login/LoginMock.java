@@ -1,11 +1,7 @@
 package org.module.client.BL.login;
 
-import java.rmi.RemoteException;
-
-import org.module.client.businesslogic.userbl.Login;
 import org.module.client.businesslogicservice.user.UserLoginService;
 import org.module.client.vo.UserVO;
-import org.module.common.po.UserPO;
 
 public class LoginMock implements UserLoginService {
 

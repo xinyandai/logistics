@@ -8,6 +8,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class Price extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField textField_1;
 

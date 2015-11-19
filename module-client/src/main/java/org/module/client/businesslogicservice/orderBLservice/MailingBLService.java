@@ -1,8 +1,6 @@
 package org.module.client.businesslogicservice.orderBLservice;
 
-import java.util.ArrayList;
 
-import org.module.client.vo.MailingListVO;
 
 /**
  * 寄件

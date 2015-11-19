@@ -1,12 +1,11 @@
 package org.module.client.businesslogicservice.managementBLservice_Driver;
 
 import org.module.client.businesslogicservice.managementBLservice.PriceAndCityManageBLService;
-import org.module.client.vo.PriceAndCityVO;
 
 
 public class PriceAndCityManageService_Driver {
 	public void drive(PriceAndCityManageBLService priceAndCityManageService){
-		PriceAndCityVO d=new PriceAndCityVO("A","B","distance","price");
+//		PriceAndCityVO d=new PriceAndCityVO("A","B","distance","price");
 		boolean add=priceAndCityManageService.addCity("nanjing");
 		boolean set=priceAndCityManageService.setDiretionAndPrice("A","B","distance","price");
 		//boolean modify=priceAndCityManageService.setPrice(d,10);

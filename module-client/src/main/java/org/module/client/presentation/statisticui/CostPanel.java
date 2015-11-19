@@ -1,29 +1,25 @@
 package org.module.client.presentation.statisticui;
 
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
-import java.awt.Component;
 
-import javax.swing.JTable;
-import javax.swing.JButton;
-
-import java.awt.GridLayout;
-
-import javax.swing.DefaultCellEditor;
-import javax.swing.JCheckBox;
-import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-
+import javax.swing.GroupLayout.Alignment;
 import org.module.client.presentation.CheckBoxTableModelProxy;
+
+
 
 public class CostPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 付款日期、
 	 * 付款金额、

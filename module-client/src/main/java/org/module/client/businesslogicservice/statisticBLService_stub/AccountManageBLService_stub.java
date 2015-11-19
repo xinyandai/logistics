@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statisticBLservice.AccountManageBLService;
 import org.module.client.vo.AccountVO;
-import org.module.common.po.AccountPO;
 
 
 public class AccountManageBLService_stub implements AccountManageBLService {

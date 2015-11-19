@@ -3,28 +3,25 @@ package org.module.client.presentation.managementui;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.JButton;
 
-import java.awt.GridLayout;
-
-import javax.swing.DefaultCellEditor;
-import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 import org.module.client.presentation.CheckBoxTableModelProxy;
 
 public class Cars extends JPanel {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 
 	 * 车辆代号（城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字）、

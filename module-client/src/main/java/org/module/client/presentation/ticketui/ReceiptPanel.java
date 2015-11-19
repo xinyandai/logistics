@@ -16,10 +16,14 @@ import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class ReceiptPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7750747233254196763L;
 	private JTextField textField;
 	private JTextField textField_2;
 	private JLabel label_2;
-	private JTextField timePicker;
+//	private JTextField timePicker;
 
 	/**
 	 * Create the panel.

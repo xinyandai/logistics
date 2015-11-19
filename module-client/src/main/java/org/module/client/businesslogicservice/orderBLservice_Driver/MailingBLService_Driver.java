@@ -1,7 +1,6 @@
 package org.module.client.businesslogicservice.orderBLservice_Driver;
 
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
-import org.module.client.vo.MailingListVO;
 
 
 public class MailingBLService_Driver {

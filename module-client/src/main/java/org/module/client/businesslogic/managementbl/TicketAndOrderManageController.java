@@ -8,6 +8,7 @@ import org.module.client.businesslogicservice.managementBLservice.TicketAndOrder
 public class TicketAndOrderManageController implements TicketAndOrderManageBLService{
 	
 	private TicketAndOrderManageService ticketAndorder ;
+	
 	public TicketAndOrderManageController(TicketAndOrderManageService ticketAndorder) {
 		super();
 		this.ticketAndorder = ticketAndorder;
@@ -18,12 +19,11 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 	}
 	
 	public boolean hasTicketToManage() {
-		// TODO Auto-generated method stub
+		
 		return ticketAndorder.hasTicketToManage();
 	}
 
 	public ArrayList<Object> getTicket() {
-		// TODO Auto-generated method stub
 		return ticketAndorder.getTicket();
 	}
 

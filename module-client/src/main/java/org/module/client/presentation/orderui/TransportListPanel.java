@@ -12,10 +12,15 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
 import org.jdesktop.swingx.JXDatePicker;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class TransportListPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	final private JXDatePicker loadingDate;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -32,7 +37,7 @@ public class TransportListPanel extends JPanel {
 		JLabel lblNewLabel = new JLabel("中转方式");
 		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 18));
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setFont(new Font("宋体", Font.PLAIN, 15));
 		
 		JLabel label = new JLabel("装车日期");

@@ -1,7 +1,6 @@
 package org.module.client.businesslogicservice.orderBLservice_Driver;
 
 import org.module.client.businesslogicservice.orderBLservice.OfficeArrivalBLService;
-import org.module.client.vo.OfficeArrivalListVO;
 
 
 public class OfficeArrivalBLService_Driver {

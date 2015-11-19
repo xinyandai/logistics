@@ -12,7 +12,6 @@ import javax.swing.border.EmptyBorder;
 import org.module.client.presentation.logisticsui.LogisticsPanel;
 import org.module.client.presentation.orderui.MailingListPanel;
 import org.module.client.presentation.orderui.ReceiveListPanel;
-import org.module.client.presentation.ticketui.ReceiptPanel;
 
 public class CourierFrame extends JFrame {
 

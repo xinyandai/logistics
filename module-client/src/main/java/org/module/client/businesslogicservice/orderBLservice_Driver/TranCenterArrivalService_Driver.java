@@ -1,7 +1,6 @@
 package org.module.client.businesslogicservice.orderBLservice_Driver;
 
 import org.module.client.businesslogicservice.orderBLservice.TranCenterLoadingBLService;
-import org.module.client.vo.TranCenterLoadingListVO;
 
 
 public class TranCenterArrivalService_Driver {

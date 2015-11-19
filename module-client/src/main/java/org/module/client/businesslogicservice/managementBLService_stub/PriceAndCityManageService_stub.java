@@ -3,7 +3,6 @@ package org.module.client.businesslogicservice.managementBLService_stub;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.managementBLservice.PriceAndCityManageBLService;
-import org.module.client.vo.PriceAndCityVO;
 
 
 public class PriceAndCityManageService_stub implements PriceAndCityManageBLService{

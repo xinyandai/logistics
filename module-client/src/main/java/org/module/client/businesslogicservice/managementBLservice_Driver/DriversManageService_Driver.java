@@ -1,12 +1,11 @@
 package org.module.client.businesslogicservice.managementBLservice_Driver;
 
 import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
-import org.module.client.vo.DriverVO;
 
 
 public class DriversManageService_Driver {
 	public void drive(DriversManageBLService driversManageService){
-		DriverVO d=new DriverVO("id","name", "birthday","idcard","phone", "gender","date");
+	//	DriverVO d=new DriverVO("id","name", "birthday","idcard","phone", "gender","date");
 		boolean add=driversManageService.add("id","name", "birthday","idcard","phone", "gender","date");
 		boolean modify=driversManageService.modify( "id","name", "birthday","idcard","phone", "gender","date");
 		if(add)

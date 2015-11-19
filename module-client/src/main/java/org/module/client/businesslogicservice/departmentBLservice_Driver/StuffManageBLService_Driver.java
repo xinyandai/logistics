@@ -1,7 +1,6 @@
 package org.module.client.businesslogicservice.departmentBLservice_Driver;
 
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
-import org.module.client.vo.StuffVO;
 
 
 public class StuffManageBLService_Driver {

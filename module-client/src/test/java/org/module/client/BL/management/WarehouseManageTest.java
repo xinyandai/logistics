@@ -3,7 +3,6 @@ package org.module.client.BL.management;
 import org.module.client.businesslogic.managementbl.WarehouseManageController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
 import org.module.client.vo.GoDownEntryVO;
-import org.module.client.vo.OutBoundListVO;
 
 import junit.framework.TestCase;
 

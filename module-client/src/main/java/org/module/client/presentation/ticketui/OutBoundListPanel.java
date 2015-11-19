@@ -16,6 +16,10 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class OutBoundListPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1763726376114638405L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_3;

@@ -3,17 +3,14 @@ package org.module.client.presentation.departmentui;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 import org.module.client.presentation.CheckBoxTableModelProxy;
 

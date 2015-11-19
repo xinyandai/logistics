@@ -12,6 +12,10 @@ import javax.swing.JTabbedPane;
 
 public class AdminFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2413496219282034059L;
 	private JPanel contentPane;
 	private ImageIcon background;
 	 private String path = "pic/login.png";

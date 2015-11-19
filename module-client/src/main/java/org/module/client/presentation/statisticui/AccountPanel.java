@@ -3,28 +3,26 @@ package org.module.client.presentation.statisticui;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.JButton;
 
-import java.awt.GridLayout;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.JTextField;
 
 import org.module.client.presentation.CheckBoxTableModelProxy;
 
 public class AccountPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
 	 */
@@ -90,6 +88,11 @@ public class AccountPanel extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable(new DefaultTableModel(cellData,columnNames){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

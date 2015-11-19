@@ -13,11 +13,15 @@ import java.io.Serializable;
 	 * 管理员: 51
 	 */
 public class UserPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2219996826045915600L;
 	private String id;
 	private String name;
 	private String password;
 	private String  role;
-	private String spt = ":%:%:";
+//	private String spt = ":%:%:";
 	public UserPO(String id, String name, String password, String role,
 			String authority) {
 		super();

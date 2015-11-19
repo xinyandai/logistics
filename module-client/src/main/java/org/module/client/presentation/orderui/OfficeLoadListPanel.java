@@ -8,7 +8,6 @@ import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComboBox;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -52,7 +51,7 @@ public class OfficeLoadListPanel extends JPanel {
 		JLabel label_5 = new JLabel("目的地");
 		label_5.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		
 		textField = new JTextField();
 		textField.setFont(new Font("楷体", Font.PLAIN, 15));

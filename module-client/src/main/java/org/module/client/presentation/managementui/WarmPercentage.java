@@ -8,6 +8,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class WarmPercentage extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField textField_1;
 
@@ -22,7 +26,8 @@ public class WarmPercentage extends JPanel {
 		label.setBounds(69, 42, 67, 21);
 		add(label);
 		
-		JComboBox comboBox = new JComboBox();
+//		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setFont(new Font("楷体", Font.PLAIN, 18));
 		comboBox.setBounds(157, 40, 66, 21);
 		add(comboBox);

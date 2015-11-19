@@ -13,10 +13,6 @@ import org.module.client.presentation.managementui.OutAndInListPanel;
 import org.module.client.presentation.managementui.TicketManagePanel;
 import org.module.client.presentation.managementui.WarehouseCheckPanel;
 import org.module.client.presentation.managementui.WarmPercentage;
-import org.module.client.presentation.statisticui.AccountPanel;
-import org.module.client.presentation.statisticui.CostPanel;
-import org.module.client.presentation.statisticui.IncomePanel;
-import org.module.client.presentation.statisticui.InitAccount;
 import org.module.client.presentation.ticketui.GoDownEntryListPanel;
 import org.module.client.presentation.ticketui.OutBoundListPanel;
 

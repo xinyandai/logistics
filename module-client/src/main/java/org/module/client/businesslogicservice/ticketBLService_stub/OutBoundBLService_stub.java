@@ -1,10 +1,7 @@
 package org.module.client.businesslogicservice.ticketBLService_stub;
 
-import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.ticketBLservice.OutBoundBLService;
-import org.module.client.vo.OutBoundListVO;
-import org.module.common.po.OutBoundListPO;
 
 public class OutBoundBLService_stub implements OutBoundBLService{
 
