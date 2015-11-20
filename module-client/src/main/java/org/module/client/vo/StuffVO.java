@@ -19,7 +19,7 @@ public class StuffVO {
 	}
 	
 	public StuffVO(String name, String age, String category, String identity,
-			int slaray) {
+			double slaray) {
 		super();
 		this.name = name;
 		this.age = age;

@@ -10,6 +10,7 @@ public class LoginMock implements UserLoginService {
 	}
 
 	public boolean login(UserVO u) {
+		
 		if(u.getId().equals("admin") && u.getPassword().equals("admin") && u.getRole().equals("管理员"))
 			return true;
 		return false;

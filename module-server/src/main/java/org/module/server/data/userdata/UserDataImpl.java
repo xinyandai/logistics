@@ -31,13 +31,13 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
 	private String spt = ":%:%:";
 	private String path = "file"+File.separator+"user.txt";
+	File file = new File(path);
 	
 	public boolean  write(ArrayList<UserPO> r){
 
-		File file = new File(path);
 		try {
-			FileWriter fW = new FileWriter(file);
-			BufferedWriter br = new BufferedWriter(fW);
+			FileWriter fw = new FileWriter(file);
+			BufferedWriter br = new BufferedWriter(fw);
 			for (UserPO userPO : r) {
 				br.write(userPO.toString()+"\n");
 			}
@@ -52,7 +52,6 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	
 	public MyList<UserPO> allUsers() {
 		MyList<UserPO> re = new MyList<UserPO>();
-		File file = new File(path);
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -68,10 +67,20 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 	}
 
 	public boolean add(UserPO user) {
+		try {
+			FileWriter fw = new FileWriter(file,true);
+			BufferedWriter br = new BufferedWriter(fw);
+			
+				br.write(user.toString()+"\n");
+			
+			br.flush();
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 		
-		ArrayList<UserPO> re = this.allUsers();
-		re.add(user);
-		return this.write(re);
 	}
 
 	public UserPO find(String id) {

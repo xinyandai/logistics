@@ -4,14 +4,23 @@ public class DepartmentPO {
 	private String name;
 	private String category;
 	private String location;
-	public DepartmentPO(String name, String category, String location) {
+	public String getIdentity() {
+		return identity;
+	}
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+	private String identity;
+	
+	public DepartmentPO(String name, String category, String location, String identity) {
 		super();
 		this.name = name;
 		this.category = category;
 		this.location = location;
 	}
 	public DepartmentPO(String[] s) {
-		this(s[0],s[1],s[2]);
+		
+		this(s[0],s[1],s[2],s[3]);
 	}
 	public String getName() {
 		return name;

@@ -19,7 +19,8 @@ public class LoginTestCase extends TestCase {
 	 */
 	public void testLogin() {
 		UserLoginBLService login  = new LoginController(new LoginMock());
-		assert(login.login("admin", "admin", "管理员"));
+		boolean re = login.login("admin", "admin", "管理员");
+		assert(re);
 	}
 
 }

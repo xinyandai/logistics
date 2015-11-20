@@ -23,6 +23,7 @@ public class AccountMock implements AccountService{
 	}
 
 	public boolean update(AccountVO a) {
+		
 		if( a.getId().equals(vo.getId())){
 			this.vo.setMoney(a.getMoney());
 		}
