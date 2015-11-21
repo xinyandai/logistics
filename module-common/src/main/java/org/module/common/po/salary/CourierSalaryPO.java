@@ -14,6 +14,28 @@ public class CourierSalaryPO {
 	 * 收件提成
 	 */
 	private double bonusEveryReceive;
+	private String split=":%:%:";
+	
+	@Override
+	public String toString(){
+		return this.base+this.split+this.bonusEveryDelivered
+				+this.split+this.bonusEveryReceive;
+		
+	}
+	public CourierSalaryPO(String str){
+		super();
+		String[] strs=str.split(str);
+		this.base = Double.parseDouble(strs[0]);
+		this.bonusEveryDelivered = Double.parseDouble(strs[1]);
+		this.bonusEveryReceive = Double.parseDouble(strs[2]);
+	}	
+	public CourierSalaryPO(double base, double bonusEveryDelivered,
+			double bonusEveryReceive) {
+		super();
+		this.base = base;
+		this.bonusEveryDelivered = bonusEveryDelivered;
+		this.bonusEveryReceive = bonusEveryReceive;
+	}
 	public double getBase() {
 		return base;
 	}
@@ -32,11 +54,5 @@ public class CourierSalaryPO {
 	public void setBonusEveryReceive(double bonusEveryReceive) {
 		this.bonusEveryReceive = bonusEveryReceive;
 	}
-	public CourierSalaryPO(double base, double bonusEveryDelivered,
-			double bonusEveryReceive) {
-		super();
-		this.base = base;
-		this.bonusEveryDelivered = bonusEveryDelivered;
-		this.bonusEveryReceive = bonusEveryReceive;
-	}
+	
 }

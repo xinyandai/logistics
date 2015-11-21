@@ -14,6 +14,27 @@ public class OfficeClerkSalaryPO {
 	 * 收件提成
 	 */
 	private double bonusEveryReceive;
+	private String split=":%:%:";
+	@Override
+	public String toString(){
+		return this.base+this.split
+				+this.bonusEveryDelivered+
+				this.split+this.bonusEveryDelivered;
+	}
+	public OfficeClerkSalaryPO(String str){
+		super();
+		String[] strs=str.split(this.split);
+		this.base = Double.parseDouble(strs[0]);
+		this.bonusEveryDelivered = Double.parseDouble(strs[1]);
+		this.bonusEveryReceive = Double.parseDouble(strs[2]);
+	}
+	public OfficeClerkSalaryPO(double base, double bonusEveryDelivered,
+			double bonusEveryReceive) {
+		super();
+		this.base = base;
+		this.bonusEveryDelivered = bonusEveryDelivered;
+		this.bonusEveryReceive = bonusEveryReceive;
+	}
 	public double getBase() {
 		return base;
 	}
@@ -32,12 +53,6 @@ public class OfficeClerkSalaryPO {
 	public void setBonusEveryReceive(double bonusEveryReceive) {
 		this.bonusEveryReceive = bonusEveryReceive;
 	}
-	public OfficeClerkSalaryPO(double base, double bonusEveryDelivered,
-			double bonusEveryReceive) {
-		super();
-		this.base = base;
-		this.bonusEveryDelivered = bonusEveryDelivered;
-		this.bonusEveryReceive = bonusEveryReceive;
-	}
+	
 
 }

@@ -13,6 +13,26 @@ public class DriverSalaryPO {
 	 * 跨市运货每千米提成
 	 */
 	private double bonusEveryKilometersOutcityDriving;
+	private String split=":%:%:";
+	@Override
+	public String toString(){
+		return this.base+this.split+this.bonusEveryIncityDriving
+				+this.split+this.bonusEveryKilometersOutcityDriving;
+	}
+	public DriverSalaryPO(double base, double bonusEveryIncityDriving,
+			double bonusEveryKilometersOutcityDriving) {
+		super();
+		this.base = base;
+		this.bonusEveryIncityDriving = bonusEveryIncityDriving;
+		this.bonusEveryKilometersOutcityDriving = bonusEveryKilometersOutcityDriving;
+	}
+	public DriverSalaryPO(String str){
+		super();
+		String[] strs=str.split(this.split);
+		this.base = Double.parseDouble(strs[0]);
+		this.bonusEveryIncityDriving = Double.parseDouble(strs[1]);
+		this.bonusEveryKilometersOutcityDriving = Double.parseDouble(strs[2]);
+	}
 	public double getBase() {
 		return base;
 	}
@@ -32,11 +52,5 @@ public class DriverSalaryPO {
 			double bonusEveryKilometersOutcityDriving) {
 		this.bonusEveryKilometersOutcityDriving = bonusEveryKilometersOutcityDriving;
 	}
-	public DriverSalaryPO(double base, double bonusEveryIncityDriving,
-			double bonusEveryKilometersOutcityDriving) {
-		super();
-		this.base = base;
-		this.bonusEveryIncityDriving = bonusEveryIncityDriving;
-		this.bonusEveryKilometersOutcityDriving = bonusEveryKilometersOutcityDriving;
-	}
+	
 }

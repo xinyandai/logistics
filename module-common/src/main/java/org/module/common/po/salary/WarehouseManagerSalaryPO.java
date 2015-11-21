@@ -14,6 +14,20 @@ public class WarehouseManagerSalaryPO {
 	 * 出库提成
 	 */
 	private double bonusEveryOutBound;
+	private String split=":%:%:";
+	@Override
+	public String toString(){
+		return this.base+this.split
+				+this.bonusEveryGodownEntry
+				+this.split+this.bonusEveryOutBound;
+	}
+	public WarehouseManagerSalaryPO(String str){
+		super();
+		String[] strs=str.split(this.split);
+		this.base = Double.parseDouble(strs[0]);
+		this.bonusEveryGodownEntry =Double.parseDouble(strs[1]);
+		this.bonusEveryOutBound = Double.parseDouble(strs[2]);
+	}
 	public WarehouseManagerSalaryPO(double base, double bonusEveryGodownEntry,
 			double bonusEveryOutBound) {
 		super();

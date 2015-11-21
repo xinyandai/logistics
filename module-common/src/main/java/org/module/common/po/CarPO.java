@@ -2,15 +2,35 @@ package org.module.common.po;
 
 public class CarPO {
 
+	private String split =":%:%:";
+	
 	private String id;
 	private String License;
 	private String time;
+	
+	@Override
+	public String toString(){
+		return this.id+this.split
+		+this.License+this.split
+		+this.time;
+	}
+	
+	public CarPO(String str) throws Exception{
+		super();
+		String[] strs = str.split(this.split);
+		this.id = strs[0];
+		this.License = strs[1];
+		this.time = strs[2];
+	}
+	
 	public CarPO(String id, String license, String time) {
 		super();
 		this.id = id;
 		License = license;
 		this.time = time;
 	}
+	
+	
 	public String getId() {
 		return id;
 	}

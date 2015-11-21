@@ -18,8 +18,7 @@ public class FileHelper {
 	}
 	
 	public ArrayList<String> read(){
-		ArrayList<String> re =  new ArrayList<String>();
-		
+		ArrayList<String> re =  new ArrayList<String>();		
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -35,8 +34,7 @@ public class FileHelper {
 		return re;
 	}
 
-	public boolean rewrite(ArrayList<Object> os){
-		
+	public boolean rewrite(ArrayList<Object> os){	
 		try {
 			FileWriter fw = new FileWriter(file);
 			BufferedWriter br = new BufferedWriter(fw);
@@ -51,6 +49,7 @@ public class FileHelper {
 		}
 		return true;
 	}
+	
 	public boolean add(Object object) {
 		try {
 			FileWriter fw = new FileWriter(file,true);
@@ -65,8 +64,6 @@ public class FileHelper {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
-		
-	}
-	
+		return true;		
+	}	
 }

@@ -13,6 +13,27 @@ public class TranCenterClerkSalaryPO {
 	 * 每车装车提成
 	 */
 	private double bonusEveryLoading;
+	private String split=":%:%:";
+	@Override
+	public String toString(){
+		return this.base+this.split
+				+this.bonusEveryArrival
+				+this.split+this.bonusEveryLoading;
+	}
+	public TranCenterClerkSalaryPO(String str){
+		super();
+		String[] Strs=str.split(this.split);
+		this.base = Double.parseDouble(Strs[0]);
+		this.bonusEveryArrival = Double.parseDouble(Strs[1]);
+		this.bonusEveryLoading = Double.parseDouble(Strs[2]);
+	}
+	public TranCenterClerkSalaryPO(double base, double bonusEveryArrival,
+			double bonusEveryLoading) {
+		super();
+		this.base = base;
+		this.bonusEveryArrival = bonusEveryArrival;
+		this.bonusEveryLoading = bonusEveryLoading;
+	}
 	public double getBase() {
 		return base;
 	}
@@ -31,12 +52,6 @@ public class TranCenterClerkSalaryPO {
 	public void setBonusEveryLoading(double bonusEveryLoading) {
 		this.bonusEveryLoading = bonusEveryLoading;
 	}
-	public TranCenterClerkSalaryPO(double base, double bonusEveryArrival,
-			double bonusEveryLoading) {
-		super();
-		this.base = base;
-		this.bonusEveryArrival = bonusEveryArrival;
-		this.bonusEveryLoading = bonusEveryLoading;
-	}
+	
 	
 }
