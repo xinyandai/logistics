@@ -35,13 +35,7 @@ public interface ReceiptListService {
 	 */
 	
 	public boolean delete(ReceiptPO ticket);
-	/**
-	 * 前置：无
-	 * 后置：删除这些PO
-	 * @param ticket
-	 * @return
-	 */
-	public boolean clear();
+
 	/**
 	 * 前置：该PO存在于数据库
 	 * 后置：修改一个PO

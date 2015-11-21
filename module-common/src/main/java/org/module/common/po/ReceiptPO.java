@@ -1,6 +1,9 @@
 package org.module.common.po;
 
+
 public class ReceiptPO {
+	
+	   private String split = ":%:%:";
 	//收款单
 		private String date;
 		private String money;
@@ -8,7 +11,26 @@ public class ReceiptPO {
 		private String orderId;
 		
 		private State state;
+		
 
+		public ReceiptPO(String str){
+			String[] s = str.split(split);
+			this.date = s[0];
+			this.money = s[1];
+			this.Courier = s[2];
+			this.orderId = s[3];
+			this.state = State.getInstance(s[4]);
+		}
+		
+		@Override
+		public String toString(){
+			return this.date + this.split +
+					this.money + this.split +
+					this.Courier + this.split +
+					this.orderId + this.split +
+					this.state.toString();
+		}
+		
 		public String getDate() {
 			return date;
 		}
@@ -38,6 +60,8 @@ public class ReceiptPO {
 			this.orderId = orderId;
 			this.state = State.getInstance(state);
 		}
+
+		
 		
 		
 }
