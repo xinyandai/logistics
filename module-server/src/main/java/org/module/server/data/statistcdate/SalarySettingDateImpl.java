@@ -53,13 +53,13 @@ public class SalarySettingDateImpl implements SalarySettingDateService{
 		return help.rewrite(re);
 	}
 
-	public boolean setOfficeClerkSalary(OfficeClerkSalaryPO o) {
+	public boolean setOfficeClerkSalary(OfficeClerkSalaryPO salarypo) {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"OfficeClerkSalary.txt";
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
-		re.add(o);
+		re.add(salarypo);
 		return help.rewrite(re);
 	}
 

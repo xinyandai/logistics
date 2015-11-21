@@ -30,14 +30,14 @@ public interface DepartmentDataService {
 	 * @param dp
 	 * @return
 	 */
-	public boolean delete(DepartmentPO dp);
+	public boolean delete(String dp);
 	/**
 	 * 前置：这些PO已经存在于数据
 	 * 后置：在数据中删除这些PO
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<DepartmentPO> al);
+	public boolean delete(ArrayList<String> al);
 	/**
 	 * 前置：该PO已经存在于数据
 	 * 后置：在数据中修改一个PO

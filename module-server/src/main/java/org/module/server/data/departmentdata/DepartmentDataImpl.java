@@ -66,13 +66,13 @@ public class DepartmentDataImpl implements DepartmentDataService {
 		
 	}
 
-	public boolean delete(DepartmentPO dp) {
+	public boolean delete(String dp) {
 		ArrayList<DepartmentPO> re = this.getAll();
 		re.remove(dp);
 		return this.write(re);
 	}
 
-	public boolean delete(ArrayList<DepartmentPO> al) {
+	public boolean delete(ArrayList<String> al) {
 		return false;
 	}
 

@@ -12,10 +12,10 @@ public class ReceiptListTest extends TestCase {
 	}
 
 	public void test(){
-		ReceiptListDataImpl r = new ReceiptListDataImpl();
+		ReceiptListDataImpl receiptTest = new ReceiptListDataImpl();
 		ReceiptPO po = new ReceiptPO("2015-10-31", "29.6", "141250023", "1234567890", "通过");
-		r.add(po);
-		ReceiptPO po2 = r.getAll().get(0);
+		receiptTest.add(po);
+		ReceiptPO po2 = receiptTest.getAll().get(0);
 		assert(po.toString().equals(po2.toString()));
 	}
 }

@@ -7,6 +7,28 @@ public class CostListPO {
 	private String accout;
 	private String entry;
 	private String note;
+	
+	final private String split = ":%:%:";
+	
+	@Override
+	public String toString(){
+		return this.date + this.split +
+				this.money + this.split + 
+				this.people + this.split +
+				this.accout + this.split +
+				this.entry + this.split +
+				this.note;
+	}
+	
+	public CostListPO(String string) {
+		String[] s = string.split(split);
+		this.date = s[0];
+		this.money = s[1];
+		this.people = s[2];
+		this.accout = s[3];
+		this.entry = s[4];
+		this.note = s[5];
+	}
 	public CostListPO(String date, String money, String people, String accout,
 			String entry, String note) {
 		super();
@@ -17,6 +39,7 @@ public class CostListPO {
 		this.entry = entry;
 		this.note = note;
 	}
+	
 	public String getDate() {
 		return date;
 	}

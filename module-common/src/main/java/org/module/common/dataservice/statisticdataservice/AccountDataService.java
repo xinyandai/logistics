@@ -29,14 +29,14 @@ public interface AccountDataService {
 	 * @return  添加成功返回true
 	 */
 	
-	public boolean delete(AccountPO ticket);
+	public boolean delete(String ticket);
 	/**
 	 * 前置：数据库中含有这些PO
 	 * 后置：删除这些PO
 	 * @param ticket
 	 * @return
 	 */
-	public boolean delete(ArrayList<AccountPO> ticket);
+	public boolean delete(ArrayList<String> ticket);
 	/**
 	 * 前置：该PO存在于数据库
 	 * 后置：修改一个PO

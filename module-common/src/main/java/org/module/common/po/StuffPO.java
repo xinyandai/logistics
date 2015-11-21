@@ -12,6 +12,7 @@ public class StuffPO {
 	private String category;
 	private String identity;
 	
+	final private String split=":&:&:";
 	
 	public StuffPO(String name, String age, String category, String identity) {
 		super();
@@ -19,6 +20,23 @@ public class StuffPO {
 		this.age = age;
 		this.category = category;
 		this.identity = identity;
+	}
+	
+	@Override
+	public String toString(){
+		return  this.name + this.split + 
+				this.age + this.split + 
+				this.category + this.split + 
+				this.identity;
+	}
+	
+	public StuffPO(String string) {
+		String[] s = string.split(split);
+		this.name = s[0];
+		this.age = s[1];
+		this.category = s[2];
+		this.identity = s[3];
+		
 	}
 	public String getName() {
 		return name;

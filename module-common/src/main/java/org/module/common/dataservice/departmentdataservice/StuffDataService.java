@@ -31,14 +31,14 @@ public interface StuffDataService {
 	 * @param dp
 	 * @return
 	 */
-	public boolean delete(StuffPO dp);
+	public boolean delete(String id);
 	/**
 	 * 前置：这些PO已经存在于数据
 	 * 后置：在数据中删除这些PO
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<StuffPO> al);
+	public boolean delete(ArrayList<String> id);
 	/**
 	 * 前置：该PO已经存在于数据
 	 * 后置：在数据中修改一个PO
