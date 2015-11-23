@@ -1,6 +1,12 @@
 package org.module.common.po.salary;
 
-public class DriverSalaryPO {
+import java.io.Serializable;
+
+public class DriverSalaryPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8420002905347690673L;
 	/**
 	 * 底薪
 	 */

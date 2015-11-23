@@ -1,5 +1,6 @@
 package org.module.common.dataservice.statisticdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import org.module.common.dataservice.MyList;
@@ -8,7 +9,7 @@ import org.module.common.po.AccountPO;
 
 
 
-public interface AccountDataService {
+public interface AccountDataService extends Remote {
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO

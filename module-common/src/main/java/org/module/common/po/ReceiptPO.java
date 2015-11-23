@@ -1,9 +1,15 @@
 package org.module.common.po;
 
+import java.io.Serializable;
 
-public class ReceiptPO {
+
+public class ReceiptPO implements Serializable{
 	
-	   private String split = ":%:%:";
+	   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1488661806746880954L;
+	private String split = ":%:%:";
 	//收款单
 		private String date;
 		private String money;

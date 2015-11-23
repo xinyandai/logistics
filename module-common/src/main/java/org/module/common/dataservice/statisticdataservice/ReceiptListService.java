@@ -1,5 +1,8 @@
 package org.module.common.dataservice.statisticdataservice;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import org.module.common.dataservice.MyList;
 import org.module.common.po.ReceiptPO;
 
@@ -9,7 +12,7 @@ import org.module.common.po.ReceiptPO;
  * @author 颜
  *
  */
-public interface ReceiptListService {
+public interface ReceiptListService extends Remote{
 
 	
 	/**
@@ -17,14 +20,14 @@ public interface ReceiptListService {
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public MyList<ReceiptPO> getAll();
+	public MyList<ReceiptPO> getAll()throws RemoteException;
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO
 	 * @param   欲增加的持久化对象
 	 * @return  添加成功返回true
 	 */
-	public boolean add(ReceiptPO ticket);
+	public boolean add(ReceiptPO ticket)throws RemoteException;
 	
 	/**
 	 * 前置：数据库中含有该PO
@@ -33,7 +36,7 @@ public interface ReceiptListService {
 	 * @return  添加成功返回true
 	 */
 	
-	public boolean delete(ReceiptPO ticket);
+	public boolean delete(ReceiptPO ticket)throws RemoteException;
 
 	/**
 	 * 前置：该PO存在于数据库
@@ -41,5 +44,5 @@ public interface ReceiptListService {
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean update(ReceiptPO newone);
+	public boolean update(ReceiptPO newone)throws RemoteException;
 }

@@ -1,6 +1,8 @@
 package org.module.server.data.departmentdata;
 
 import java.io.File;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
@@ -8,11 +10,19 @@ import org.module.common.dataservice.departmentdataservice.StuffDataService;
 import org.module.common.po.StuffPO;
 import org.module.server.data.FileHelper;
 
-public class StuffDataImpl implements StuffDataService {
+public class StuffDataImpl extends UnicastRemoteObject implements StuffDataService {
 
-	private FileHelper helper = new FileHelper(new File("src"+File.separator+".txt"));
-	public StuffDataImpl() {
+	protected StuffDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private FileHelper helper = new FileHelper(new File("src"+File.separator+"stuff.txt"));
+
 
 	public MyList<StuffPO> getAll() {
 		MyList<StuffPO> re = new MyList<StuffPO>();

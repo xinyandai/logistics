@@ -1,4 +1,7 @@
 package org.module.common.po;
+
+import java.io.Serializable;
+
 /**
  * 员工信息
  * 不包括薪水
@@ -6,7 +9,7 @@ package org.module.common.po;
  * @author 
  *
  */
-public class StuffPO {
+public class StuffPO implements Serializable{
 	private String name;
 	private String age;
 	private String category;

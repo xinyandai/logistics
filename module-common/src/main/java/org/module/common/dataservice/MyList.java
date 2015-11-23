@@ -1,10 +1,11 @@
 package org.module.common.dataservice;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 
-public class MyList<E> extends ArrayList<E> {
+public class MyList<E> extends ArrayList<E> implements Serializable{
 
 	/**
 	 * 

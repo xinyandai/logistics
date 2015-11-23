@@ -1,10 +1,17 @@
 package org.module.common.po;
+
+import java.io.Serializable;
+
 /**
  * 
  *库存入库单（快递编号、入库日期、目的地、区号、排号、架号、位号）
  */
-public class GoDownEntryListPO {
+public class GoDownEntryListPO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4680037496734611274L;
 	/**
 	 * 快递单号
 	 */
@@ -71,6 +78,7 @@ public class GoDownEntryListPO {
 				this.destination + this.spt+
 				this.qu + this.spt+
 				this.pai + this.spt+
+				this.jia + this.spt+
 				this.wei + this.spt+
 				this.state.toString();
 	}

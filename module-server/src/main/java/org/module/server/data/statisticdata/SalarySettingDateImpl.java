@@ -1,7 +1,8 @@
-package org.module.server.data.statistcdate;
+package org.module.server.data.statisticdata;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.statisticdataservice.SalarySettingDateService;
@@ -14,8 +15,13 @@ import org.module.common.po.salary.WarehouseManagerSalaryPO;
 import org.module.server.data.FileHelper;
 
 
-public class SalarySettingDateImpl implements SalarySettingDateService{
+public class SalarySettingDateImpl extends UnicastRemoteObject implements SalarySettingDateService{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6093318053020782343L;
+
 	public SalarySettingDateImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub

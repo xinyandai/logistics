@@ -17,10 +17,10 @@ public class GoDownEntryListDataImpl extends UnicastRemoteObject  implements GoD
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected GoDownEntryListDataImpl() throws RemoteException {
+	public GoDownEntryListDataImpl() throws RemoteException {
 		super();
 	}
-	private FileHelper helper = new FileHelper(new File("src"+File.separator+".txt"));
+	private FileHelper helper = new FileHelper(new File("file"+File.separator+"goDownEntryList.txt"));
 	
 	public MyList<GoDownEntryListPO> getAll() throws RemoteException {
 		
@@ -31,9 +31,11 @@ public class GoDownEntryListDataImpl extends UnicastRemoteObject  implements GoD
 		}
 		return re;
 	}
+	
 	public boolean add(GoDownEntryListPO ticket) throws RemoteException {
 		return this.helper.add(ticket);
 	}
+	
 	public boolean update(GoDownEntryListPO newone) throws RemoteException {
 		MyList<GoDownEntryListPO> all = this.getAll();
 		for (int i = 0; i < all.size(); i++) {

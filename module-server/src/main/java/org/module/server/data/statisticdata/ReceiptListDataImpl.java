@@ -1,6 +1,8 @@
-package org.module.server.data.statistcdate;
+package org.module.server.data.statisticdata;
 
 import java.io.File;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
@@ -8,14 +10,24 @@ import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.po.ReceiptPO;
 import org.module.server.data.FileHelper;
 
-public class ReceiptListDataImpl implements ReceiptListService {
+public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptListService {
 
-	FileHelper dh;
-	
-	public ReceiptListDataImpl() {
-		dh = new FileHelper(new File("file"+File.separator+"receiptlist.txt"));
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public ReceiptListDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
+
+
+	FileHelper dh= new FileHelper(new File("file"+File.separator+"receiptlist.txt"));
+	
+	
 	public MyList<ReceiptPO> getAll() {
 		MyList<ReceiptPO> re = new MyList<ReceiptPO>();
 		ArrayList<String>    strs = dh.read();

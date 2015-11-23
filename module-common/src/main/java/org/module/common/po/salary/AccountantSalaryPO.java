@@ -1,6 +1,12 @@
 package org.module.common.po.salary;
 
-public class AccountantSalaryPO {
+import java.io.Serializable;
+
+public class AccountantSalaryPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3736116747135573163L;
 	/**
 	 * 底薪
 	 */

@@ -1,7 +1,13 @@
 package org.module.common.po.salary;
 
-public class OfficeClerkSalaryPO {
+import java.io.Serializable;
 
+public class OfficeClerkSalaryPO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3795145263202458688L;
 	/**
 	 * 底薪
 	 */

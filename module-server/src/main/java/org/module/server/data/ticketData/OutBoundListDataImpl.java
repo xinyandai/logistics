@@ -11,8 +11,8 @@ import org.module.common.po.OutBoundListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
-public class OutBoundListData extends UnicastRemoteObject implements OutBoundListService {
-	protected OutBoundListData() throws RemoteException {
+public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoundListService {
+	public OutBoundListDataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -21,7 +21,7 @@ public class OutBoundListData extends UnicastRemoteObject implements OutBoundLis
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private FileHelper helper = new FileHelper(new File("src"+File.separator+".txt"));
+	private FileHelper helper = new FileHelper(new File("file"+File.separator+"outBoundList.txt"));
 	
 
 	public MyList<OutBoundListPO> getAll() {

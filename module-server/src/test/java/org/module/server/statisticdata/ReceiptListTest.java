@@ -1,9 +1,11 @@
 package org.module.server.statisticdata;
 
+import java.rmi.RemoteException;
+
 import junit.framework.TestCase;
 
 import org.module.common.po.ReceiptPO;
-import org.module.server.data.statistcdate.ReceiptListDataImpl;
+import org.module.server.data.statisticdata.ReceiptListDataImpl;
 
 public class ReceiptListTest extends TestCase {
 
@@ -12,10 +14,17 @@ public class ReceiptListTest extends TestCase {
 	}
 
 	public void test(){
-		ReceiptListDataImpl receiptTest = new ReceiptListDataImpl();
-		ReceiptPO po = new ReceiptPO("2015-10-31", "29.6", "141250023", "1234567890", "通过");
+		ReceiptListDataImpl receiptTest;
+		try {
+			receiptTest = new ReceiptListDataImpl();
+			ReceiptPO po = new ReceiptPO("2015-10-31", "29.6", "141250023", "1234567890", "通过");
 		receiptTest.add(po);
 		ReceiptPO po2 = receiptTest.getAll().get(0);
 		assert(po.toString().equals(po2.toString()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

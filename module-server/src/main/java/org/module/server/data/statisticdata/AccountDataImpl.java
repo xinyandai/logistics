@@ -1,7 +1,8 @@
-package org.module.server.data.statistcdate;
+package org.module.server.data.statisticdata;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
@@ -9,9 +10,13 @@ import org.module.common.dataservice.statisticdataservice.AccountDataService;
 import org.module.common.po.AccountPO;
 import org.module.server.data.FileHelper;
 
-public class AccountDataImpl implements AccountDataService {
+public class AccountDataImpl extends UnicastRemoteObject implements AccountDataService {
 
-	private FileHelper helper = new FileHelper(new File("src"+File.separator+".txt"));
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private FileHelper helper = new FileHelper(new File("file"+File.separator+"account.txt"));
 	public AccountDataImpl()  throws RemoteException{
 	}
 

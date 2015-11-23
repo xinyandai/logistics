@@ -13,7 +13,7 @@ public class RmiClient {
 	public RmiClient() {	  
 	}
 	public UserDataService getUserDataService(){
-		String url="rmi://127.0.0.1/user";
+		String url="rmi://127.0.0.1/"+UserDataService.class.getName();
 		UserDataService service;   
 		 try {
 			service = (UserDataService)Naming.lookup(url);

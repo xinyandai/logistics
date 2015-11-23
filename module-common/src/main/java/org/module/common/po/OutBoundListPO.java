@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class OutBoundListPO {
+import java.io.Serializable;
+
+public class OutBoundListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1714584997642889925L;
 	/**
 	 * 快递编号
 	 */

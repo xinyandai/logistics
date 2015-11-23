@@ -1,6 +1,7 @@
 package org.module.common.dataservice.ticketdataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.po.OutBoundListPO;
@@ -12,14 +13,14 @@ public interface OutBoundListService extends Remote{
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public MyList<OutBoundListPO> getAll();
+	public MyList<OutBoundListPO> getAll()throws RemoteException;
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO
 	 * @param   欲增加的持久化对象
 	 * @return  添加成功返回true
 	 */
-	public boolean add(OutBoundListPO ticket);
+	public boolean add(OutBoundListPO ticket)throws RemoteException;
 	
 	/**
 	 * 前置：数据库中含有该PO
@@ -28,7 +29,7 @@ public interface OutBoundListService extends Remote{
 	 * @return  添加成功返回true
 	 *//*
 	
-	public boolean delete(OutBoundListPO ticket);*/
+	public boolean delete(OutBoundListPO ticket)throws RemoteException;*/
 	
 	/**
 	 * 前置：该PO存在于数据库
@@ -36,11 +37,11 @@ public interface OutBoundListService extends Remote{
 	 * @param user 修改成功返回true
 	 * @return
 	 */
-	public boolean update(OutBoundListPO newone);
+	public boolean update(OutBoundListPO newone)throws RemoteException;
 	/**
      * 根据状态查找
      * @param s
      * @return
      */
-	public MyList<OutBoundListPO> getByState(State s);
+	public MyList<OutBoundListPO> getByState(State s)throws RemoteException;
 }
