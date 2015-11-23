@@ -27,6 +27,9 @@ public class OfficeArrivalListPO {
 		this.stateOfGoods = stateOfGoods;
 		this.state = State.getInstance(state);
 	}
+	public OfficeArrivalListPO(String[] a){
+		this(a[0],a[1],a[2],a[3],a[4],a[5]);
+	}
 	public String getOfficeid() {
 		return officeid;
 	}
