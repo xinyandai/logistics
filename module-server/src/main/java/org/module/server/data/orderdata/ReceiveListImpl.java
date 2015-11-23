@@ -1,24 +1,29 @@
 package org.module.server.data.orderdata;
 
 import java.io.File;
-import java.util.ArrayList;
-
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.ReceiveListService;
-import org.module.common.po.OfficeArrivalListPO;
-import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.ReceivingListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
-public class ReceiveListImpl implements ReceiveListService{
+public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListService{
+	
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	
 	FileHelper help;
-	public ReceiveListImpl(){
+	public ReceiveListImpl() throws RemoteException{
 		help = new FileHelper(new File("file"+File.separator+"ReceiveList.txt"));
 	}
-	public ArrayList<ReceivingListPO> getAll() {
+	public MyList<ReceivingListPO> getAll() throws RemoteException {
 		// TODO 自动生成的方法存根
-		ArrayList<ReceivingListPO> re = new ArrayList<ReceivingListPO>();
-		ArrayList<String>    strs = help.read();
+		MyList<ReceivingListPO> re = new MyList<ReceivingListPO>();
+		MyList<String>    strs = help.read();
 		for (String string : strs) {
 			String[] temp = string.split(":%:%:");
 			re.add(new ReceivingListPO(temp));
@@ -26,25 +31,23 @@ public class ReceiveListImpl implements ReceiveListService{
 		return re;
 		
 	}
-
-	public boolean add(ReceivingListPO o) {
+	
+	public boolean add(ReceivingListPO o)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		ArrayList<ReceivingListPO> oll = new ArrayList<ReceivingListPO>();
-		oll.add(o);
-		return help.rewrite(oll);
+		return this.help.add(o);
 	}
 
-	public boolean update(ReceivingListPO newone) {
+	public boolean update(ReceivingListPO newone)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
-	public ArrayList<ReceivingListPO> getByState(State s) {
+	public MyList<ReceivingListPO> getByState(State s)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		ArrayList<ReceivingListPO> oal = this.getAll();
-		ArrayList<ReceivingListPO> newone = new ArrayList<ReceivingListPO>();
+		MyList<ReceivingListPO> oal = this.getAll();
+		MyList<ReceivingListPO> newone = new MyList<ReceivingListPO>();
 		for(ReceivingListPO a : oal){
-			if(a.getState().equals(s)){
+			if(a.getState().toString().equals(s.toString())){
 				newone.add(a);
 			}
 		}

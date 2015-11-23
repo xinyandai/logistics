@@ -7,63 +7,57 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.MailingListService;
 import org.module.common.po.DepartmentPO;
 import org.module.common.po.MailingListPO;
+import org.module.common.po.OfficeArrivalListPO;
 import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
-public class MailingListImpl implements MailingListService{
+public class MailingListImpl extends UnicastRemoteObject implements MailingListService{
 	private String spt = ":%:%:";
 	private String path = "file"+File.separator+"mailingList.txt";
 	File file = new File(path);
 	FileHelper help = new FileHelper(file);
-	public MailingListImpl(){
+	public MailingListImpl() throws RemoteException{
 		
 	}
 	//觉得有问题
 	
 	
-	public ArrayList<MailingListPO> getAll() {
+	public MyList<MailingListPO> getAll() throws RemoteException{
 		
-		MyList<MailingListPO> ml = new MyList<MailingListPO>();
-		File file = new File(path);
-		try {
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String record = null;
-			while((record = br.readLine()) != null){
-				ml.add(new MailingListPO(record.split(spt)));
-			}
-			br.close();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
+		MyList<MailingListPO> re = new MyList<MailingListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			String[] temp = string.split(":%:%:");
+			re.add(new MailingListPO(temp));
 		}
-		return ml;
+		return re;
 	}
 
-	public boolean add(MailingListPO o) {
-		ArrayList<MailingListPO> ml = new ArrayList<MailingListPO>();
-		ml.add(o);
-		return help.rewrite(ml);
+	public boolean add(MailingListPO o) throws RemoteException{
+		
+		return this.help.add(o);
 	}
 
-	public boolean update(MailingListPO newone) {
+	public boolean update(MailingListPO newone)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
-	public ArrayList<MailingListPO> getByState(State s) {
+	public MyList<MailingListPO> getByState(State s) throws RemoteException {
 		// TODO 自动生成的方法存根
-		ArrayList<MailingListPO> oal = this.getAll();
-		ArrayList<MailingListPO> newone = new ArrayList<MailingListPO>();
+		MyList<MailingListPO> oal = this.getAll();
+		MyList<MailingListPO> newone = new MyList<MailingListPO>();
 		for(MailingListPO a : oal){
-			if(a.getState().equals(s)){
+			if(a.getState().toString().equals(s.toString())){
 				newone.add(a);
 			}
 		}

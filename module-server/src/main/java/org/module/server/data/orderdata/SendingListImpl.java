@@ -1,6 +1,8 @@
 package org.module.server.data.orderdata;
 
 import java.io.File;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.orderdataservice.SendingListService;
@@ -11,12 +13,12 @@ import org.module.common.po.SendingListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
-public class SendingListImpl implements SendingListService{
+public class SendingListImpl extends UnicastRemoteObject implements SendingListService{
 	FileHelper help;
-	public SendingListImpl(){
+	public SendingListImpl() throws RemoteException{
 		help = new FileHelper(new File("file"+File.separator+"SendingList.txt"));
 	}
-	public ArrayList<SendingListPO> getAll() {
+	public ArrayList<SendingListPO> getAll()  throws RemoteException{
 		// TODO 自动生成的方法存根
 		ArrayList<SendingListPO> re = new ArrayList<SendingListPO>();
 		ArrayList<String>    strs = help.read();
@@ -27,24 +29,24 @@ public class SendingListImpl implements SendingListService{
 		return re;
 	}
 
-	public boolean add(SendingListPO o) {
+	public boolean add(SendingListPO o)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		ArrayList<SendingListPO> oll = new ArrayList<SendingListPO>();
 		oll.add(o);
 		return help.rewrite(oll);
 	}
 
-	public boolean update(SendingListPO newone) {
+	public boolean update(SendingListPO newone)  throws RemoteException{
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
-	public ArrayList<SendingListPO> getByState(State s) {
+	public ArrayList<SendingListPO> getByState(State s) throws RemoteException {
 		// TODO 自动生成的方法存根
 		ArrayList<SendingListPO> oal = this.getAll();
 		ArrayList<SendingListPO> newone = new ArrayList<SendingListPO>();
 		for(SendingListPO a : oal){
-			if(a.getState().equals(s)){
+			if(a.getState().toString().equals(s.toString())){
 				newone.add(a);
 			}
 		}
