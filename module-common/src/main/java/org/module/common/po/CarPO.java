@@ -15,7 +15,7 @@ public class CarPO {
 		+this.time;
 	}
 	
-	public CarPO(String str) throws Exception{
+	public CarPO(String str){
 		super();
 		String[] strs = str.split(this.split);
 		this.id = strs[0];

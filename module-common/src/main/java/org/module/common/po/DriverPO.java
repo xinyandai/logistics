@@ -8,6 +8,25 @@ public class DriverPO {
 	private String phone;
 	private String gender;
 	private String date;
+	private String split=":%:%:";
+	@Override
+	public String toString(){
+		return this.id+this.split+this.name+this.split
+				+this.birthday+this.split+this.Idcard
+				+this.split+this.phone+this.split+this.gender
+				+this.split+this.date;
+	}
+	public DriverPO(String str) {
+		super();
+		String[] strs=str.split(this.split);
+		this.id = strs[0];
+		this.name = strs[1];
+		this.birthday = strs[2];
+		Idcard = strs[3];
+		this.phone = strs[4];
+		this.gender = strs[5];
+		this.date = strs[6];
+	}
 	public DriverPO(String id, String name, String birthday, String idcard,
 			String phone, String gender, String date) {
 		super();

@@ -6,7 +6,22 @@ public class WarehousePO {
 	private String pai;
 	private String jia;
 	private String wei;
-	
+	private String split=":%:%:";
+	@Override
+	public String toString(){
+		return this.number+this.split+this.qu
+				+this.split+this.pai+this.split
+				+this.jia+this.split+this.wei;
+	}
+	public WarehousePO(String str) {
+		super();
+		String[] strs=str.split(this.split);
+		this.number = strs[0];
+		this.qu = strs[1];
+		this.pai = strs[2];
+		this.jia = strs[3];
+		this.wei = strs[4];
+	}
 	public WarehousePO(String number, String qu, String pai, String jia,
 			String wei) {
 		super();
