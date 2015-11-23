@@ -3,16 +3,19 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
 import org.module.common.po.OfficeArrivalListPO;
-import org.module.common.po.ReceiptPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
 public class OfficeArrivalListImpl extends UnicastRemoteObject implements OfficeArrivalListService{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public OfficeArrivalListImpl() throws RemoteException{
 		help = new FileHelper(new File("file"+File.separator+"officeArrivalList.txt"));
@@ -37,7 +40,14 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 	}
 
 	public boolean update(OfficeArrivalListPO newone)  throws RemoteException{
-		// TODO 自动生成的方法存根
+		MyList<OfficeArrivalListPO> all = this.getAll();
+		for (int i = 0; i < all.size(); i++) {
+			if(all.get(i).getTransportListId().equals(newone.getTransportListId())){
+				all.remove(i);
+				all.add(newone);
+				this.help.rewrite(all);
+			}
+		}
 		return false;
 	}
 

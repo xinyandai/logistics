@@ -3,6 +3,7 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.OfficeLoadingListService;
 import org.module.common.po.OfficeLoadingListPO;
@@ -35,7 +36,6 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 	}
 
 	public boolean update(OfficeLoadingListPO newone)  throws RemoteException{
-		// TODO 自动生成的方法存根
 		return false;
 	}
 

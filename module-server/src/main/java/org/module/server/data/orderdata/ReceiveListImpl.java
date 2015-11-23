@@ -3,6 +3,7 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.ReceiveListService;
 import org.module.common.po.ReceivingListPO;
@@ -38,7 +39,14 @@ public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListS
 	}
 
 	public boolean update(ReceivingListPO newone)  throws RemoteException{
-		// TODO 自动生成的方法存根
+		MyList<ReceivingListPO> all = this.getAll();
+		for (int i = 0; i < all.size(); i++) {
+			if(all.get(i).getOrderId().equals(newone.getOrderId())){
+				all.remove(i);
+				all.add(newone);
+				this.help.rewrite(all);
+			}
+		}
 		return false;
 	}
 

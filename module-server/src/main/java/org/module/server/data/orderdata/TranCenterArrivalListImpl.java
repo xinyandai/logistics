@@ -5,21 +5,25 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.TranCenterArrivalListService;
-import org.module.common.po.SendingListPO;
 import org.module.common.po.State;
 import org.module.common.po.TranCenterArrivalListPO;
 import org.module.server.data.FileHelper;
 
 public class TranCenterArrivalListImpl extends UnicastRemoteObject implements TranCenterArrivalListService{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public TranCenterArrivalListImpl() throws RemoteException{
 		help = new FileHelper(new File("file"+File.separator+"TranCenterArrivalList.txt"));
 	}
-	public ArrayList<TranCenterArrivalListPO> getAll()  throws RemoteException{
+	public MyList<TranCenterArrivalListPO> getAll()  throws RemoteException{
 		// TODO 自动生成的方法存根
-		ArrayList<TranCenterArrivalListPO> re = new ArrayList<TranCenterArrivalListPO>();
-		ArrayList<String>    strs = help.read();
+		MyList<TranCenterArrivalListPO> re = new MyList<TranCenterArrivalListPO>();
+		MyList<String>    strs = help.read();
 		for (String string : strs) {
 			String[] temp = string.split(":%:%:");
 			re.add(new TranCenterArrivalListPO(temp));
@@ -29,13 +33,19 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 
 	public boolean add(TranCenterArrivalListPO o)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		ArrayList<TranCenterArrivalListPO> oll = new ArrayList<TranCenterArrivalListPO>();
-		oll.add(o);
-		return help.rewrite(oll);
+		
+		return this.help.add(o);
 	}
 
 	public boolean update(TranCenterArrivalListPO newone) throws RemoteException {
-		// TODO 自动生成的方法存根
+		MyList<TranCenterArrivalListPO> all = this.getAll();
+		for (int i = 0; i < all.size(); i++) {
+			if(all.get(i).getTransId().equals(newone.getTransId())){
+				all.remove(i);
+				all.add(newone);
+				this.help.rewrite(all);
+			}
+		}
 		return false;
 	}
 

@@ -1,27 +1,21 @@
 package org.module.server.data.orderdata;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.MailingListService;
-import org.module.common.po.DepartmentPO;
 import org.module.common.po.MailingListPO;
-import org.module.common.po.OfficeArrivalListPO;
-import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
 public class MailingListImpl extends UnicastRemoteObject implements MailingListService{
-	private String spt = ":%:%:";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String path = "file"+File.separator+"mailingList.txt";
 	File file = new File(path);
 	FileHelper help = new FileHelper(file);
@@ -48,7 +42,14 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 	}
 
 	public boolean update(MailingListPO newone)  throws RemoteException{
-		// TODO 自动生成的方法存根
+		MyList<MailingListPO> all = this.getAll();
+		for (int i = 0; i < all.size(); i++) {
+			if(all.get(i).getId().equals(newone.getId())){
+				all.remove(i);
+				all.add(newone);
+				this.help.rewrite(all);
+			}
+		}
 		return false;
 	}
 
