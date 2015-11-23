@@ -38,9 +38,7 @@ public class DriversDataImpl implements DriversDataService{
 		 for (int i = 0; i < pos.size(); i++) {
 			 if(pos.get(i).getId().equals(cp.getId())){
 				 pos.remove(i);
-				 ArrayList<Object> c =  new ArrayList<Object>();
-					c.add(pos);
-					return help.rewrite(c);
+					return help.rewrite(pos);
 			 }
 		 }
 		return false;
@@ -64,9 +62,7 @@ public class DriversDataImpl implements DriversDataService{
 			if(re.get(i).getId().equals(newone.getId())){
 				re.remove(i);
 				re.add(newone);
-				ArrayList<Object> c =  new ArrayList<Object>();
-				c.add(re);
-				return help.rewrite(c);
+				return help.rewrite(re);
 			}
 		}		
 		return false;

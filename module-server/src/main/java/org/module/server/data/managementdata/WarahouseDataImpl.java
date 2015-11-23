@@ -38,9 +38,7 @@ public class WarahouseDataImpl implements WarahouseDataService {
 		 for (int i = 0; i < pos.size(); i++) {
 			 if(pos.get(i).getNumber().equals(cp.getNumber())){
 				pos.remove(i);
-				ArrayList<Object> c =  new ArrayList<Object>();
-				c.add(pos);
-				return help.rewrite(c);
+				return help.rewrite(pos);
 			 }
 		 }
 		return false;
@@ -53,9 +51,7 @@ public class WarahouseDataImpl implements WarahouseDataService {
 			if(re.get(i).getNumber().equals(newone.getNumber())){
 				re.remove(i);
 				re.add(newone);
-				ArrayList<Object> c =  new ArrayList<Object>();
-				c.add(re);
-				return help.rewrite(c);
+				return help.rewrite(re);
 			}
 		}		
 		return false;

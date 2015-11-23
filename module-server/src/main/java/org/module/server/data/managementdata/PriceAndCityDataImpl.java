@@ -49,9 +49,7 @@ public class PriceAndCityDataImpl implements PriceAndCityDataService {
 			if(re.get(i).getcityA().equals(p.getcityA())){
 				re.remove(i);
 				re.add(p);
-				ArrayList<Object> c =  new ArrayList<Object>();
-				c.add(re);
-				return help.rewrite(c);
+				return help.rewrite(re);
 			}
 		}		
 		return false;

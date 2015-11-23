@@ -37,10 +37,8 @@ public class CarDataImpl implements CarDataService {
 		ArrayList<CarPO> pos = this.getAll();
 		 for (int i = 0; i < pos.size(); i++) {
 			 if(pos.get(i).getId().equals(cp.getId())){
-				 pos.remove(i);
-				 ArrayList<Object> c =  new ArrayList<Object>();
-					c.add(pos);
-					return help.rewrite(c);
+				 pos.remove(i);					
+				 return help.rewrite(pos);
 			 }
 		 }
 		return false;
