@@ -1,7 +1,6 @@
 package org.module.common.dataservice.departmentdataservice;
 
-import java.util.ArrayList;
-
+import org.module.common.dataservice.MyList;
 import org.module.common.po.StuffPO;
 
 
@@ -17,7 +16,7 @@ public interface StuffDataService {
 	 * 后置：返回所有的员工PO信息
 	 * @return
 	 */
-	public ArrayList<StuffPO> getAll();
+	public MyList<StuffPO> getAll();
 	/**
 	 * 前置：同样ID的po在还未存在
 	 * 后置：在数据中增加一个PO
@@ -38,7 +37,7 @@ public interface StuffDataService {
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> id);
+	public boolean delete(MyList<String> id);
 	/**
 	 * 前置：该PO已经存在于数据
 	 * 后置：在数据中修改一个PO
@@ -47,6 +46,6 @@ public interface StuffDataService {
 	 */
 	public boolean update(StuffPO one);
 	
-	public ArrayList<StuffPO> fuzzusearch(String key);
+	public MyList<StuffPO> fuzzusearch(String key);
 	
 }

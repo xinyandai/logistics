@@ -1,22 +1,22 @@
 package org.module.server.data.statistcdate;
 
 import java.io.File;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.statisticdataservice.AccountDataService;
 import org.module.common.po.AccountPO;
-import org.module.common.po.StuffPO;
 import org.module.server.data.FileHelper;
 
 public class AccountDataImpl implements AccountDataService {
 
 	private FileHelper helper = new FileHelper(new File("src"+File.separator+".txt"));
-	public AccountDataImpl() {
-		// TODO Auto-generated constructor stub
+	public AccountDataImpl()  throws RemoteException{
 	}
 
-	public ArrayList<AccountPO> getAll() {
-		ArrayList<AccountPO> re = new ArrayList<AccountPO>();
+	public MyList<AccountPO> getAll() {
+		MyList<AccountPO> re = new MyList<AccountPO>();
 		ArrayList<String> strs = this.helper.read();
 		for (String string : strs) {
 			re.add(new AccountPO(string));
@@ -34,13 +34,14 @@ public class AccountDataImpl implements AccountDataService {
 		 for (int i = 0; i < pos.size(); i++) {
 			 if(pos.get(i).getId().equals(id)){
 				 pos.remove(i);
+				 this.helper.rewrite(pos);
 				 return true;
 			 }
 		 }
 		return false;
 	}
 
-	public boolean delete(ArrayList<String> ticket) {
+	public boolean delete(MyList<String> ticket) {
 		boolean re = true;
 		for (String id : ticket) {
 			if(!this.delete(id)) {
@@ -56,7 +57,7 @@ public class AccountDataImpl implements AccountDataService {
 		return false;
 	}
 
-	public ArrayList<AccountPO> fuzzusearch(String key) {
+	public MyList<AccountPO> fuzzusearch(String key) {
 		return null;
 	}
 

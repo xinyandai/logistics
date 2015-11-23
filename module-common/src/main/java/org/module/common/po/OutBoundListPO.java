@@ -40,6 +40,27 @@ public class OutBoundListPO {
 	this.tansportListId = tansportListId;
 	this.state = State.getInstance(state);
 }
+	private String spt = ":%:%:";
+	
+	@Override
+	public String toString(){
+		return this.id + this.spt+
+				this.date + this.spt+
+				this.destination + this.spt+
+				this.typeOfLoading + this.spt+
+				this.tansportListId + this.spt+
+				this.state.toString();
+	}
+	
+	public OutBoundListPO(String string) {
+		String[] s = string.split(spt);
+		this.id = s[0];
+		this.date = s[1];
+		this.destination = s[2];
+		this.typeOfLoading = s[3];
+		this.tansportListId = s[4];
+		this.state = State.getInstance(s[5]);
+	}
 
 	public String getId() {
 		return id;

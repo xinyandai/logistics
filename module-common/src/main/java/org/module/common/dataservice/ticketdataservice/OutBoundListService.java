@@ -1,17 +1,18 @@
 package org.module.common.dataservice.ticketdataservice;
 
-import java.util.ArrayList;
+import java.rmi.Remote;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.OutBoundListPO;
 import org.module.common.po.State;
 
-public interface OutBoundListService {
+public interface OutBoundListService extends Remote{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public ArrayList<OutBoundListPO> getAll();
+	public MyList<OutBoundListPO> getAll();
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO
@@ -41,5 +42,5 @@ public interface OutBoundListService {
      * @param s
      * @return
      */
-	public ArrayList<OutBoundListPO> getByState(State s);
+	public MyList<OutBoundListPO> getByState(State s);
 }

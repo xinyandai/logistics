@@ -51,7 +51,31 @@ public class GoDownEntryListPO {
 		this.state = State.getInstance(state);
 	}
 
-	public String getCourier() {
+	private String spt = ":%：%：";
+	public GoDownEntryListPO(String string) {
+		String[] s = string.split(spt);
+	    this.id = s[0];
+		this.date = s[1];
+		this.destination = s[2];
+		this.qu = s[3];
+		this.pai = s[4];
+		this.jia = s[5];
+		this.wei = s[6];
+		this.state = State.getInstance(s[7]);
+	}
+	
+	@Override
+	public String toString(){
+		return this.id + this.spt+
+				this.date + this.spt+
+				this.destination + this.spt+
+				this.qu + this.spt+
+				this.pai + this.spt+
+				this.wei + this.spt+
+				this.state.toString();
+	}
+
+	public String getId() {
 		return id;
 	}
 

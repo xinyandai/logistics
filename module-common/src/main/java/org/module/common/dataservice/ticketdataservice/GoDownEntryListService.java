@@ -1,20 +1,22 @@
 package org.module.common.dataservice.ticketdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.GoDownEntryListPO;
 import org.module.common.po.State;
 
 
 
-public interface GoDownEntryListService {
+public interface GoDownEntryListService extends Remote{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public ArrayList<GoDownEntryListPO> getAll()throws RemoteException;
+	public MyList<GoDownEntryListPO> getAll()throws RemoteException;
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO
@@ -43,6 +45,7 @@ public interface GoDownEntryListService {
      * 根据状态查找
      * @param s
      * @return
+	 * @throws RemoteException 
      */
-	public ArrayList<GoDownEntryListPO> getByState(State s);
+	public MyList<GoDownEntryListPO> getByState(State s) throws RemoteException;
 }

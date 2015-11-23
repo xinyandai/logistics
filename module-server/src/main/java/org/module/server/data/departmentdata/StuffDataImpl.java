@@ -3,6 +3,7 @@ package org.module.server.data.departmentdata;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.departmentdataservice.StuffDataService;
 import org.module.common.po.StuffPO;
 import org.module.server.data.FileHelper;
@@ -13,8 +14,8 @@ public class StuffDataImpl implements StuffDataService {
 	public StuffDataImpl() {
 	}
 
-	public ArrayList<StuffPO> getAll() {
-		ArrayList<StuffPO> re = new ArrayList<StuffPO>();
+	public MyList<StuffPO> getAll() {
+		MyList<StuffPO> re = new MyList<StuffPO>();
 		ArrayList<String>  strs = this.helper.read();
 		for (String string : strs) {
 			re.add(new StuffPO(string));
@@ -31,12 +32,15 @@ public class StuffDataImpl implements StuffDataService {
 	
 
 	public boolean update(StuffPO one) {
-		this.delete(one.getIdentity());
-		this.add(one);
+		if(this.delete(one.getIdentity())){
+			if(this.add(one)){
+				return true;
+			}
+		}
 		return false;
 	}
 
-	public ArrayList<StuffPO> fuzzusearch(String key) {
+	public MyList<StuffPO> fuzzusearch(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,7 +56,7 @@ public class StuffDataImpl implements StuffDataService {
 		return false;
 	}
 
-	public boolean delete(ArrayList<String> id) {
+	public boolean delete(MyList<String> id) {
 		boolean re = true;
 		for (int i = 0; i < id.size(); i++) {
 			if(!this.delete(id.get(i))) re = false;

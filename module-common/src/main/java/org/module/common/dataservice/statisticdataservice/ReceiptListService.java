@@ -1,7 +1,6 @@
 package org.module.common.dataservice.statisticdataservice;
 
-import java.util.ArrayList;
-
+import org.module.common.dataservice.MyList;
 import org.module.common.po.ReceiptPO;
 
 
@@ -18,7 +17,7 @@ public interface ReceiptListService {
 	 * 后置：返回所有PO
 	 * @return 所有的列表信息
 	 */
-	public ArrayList<ReceiptPO> getAll();
+	public MyList<ReceiptPO> getAll();
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO

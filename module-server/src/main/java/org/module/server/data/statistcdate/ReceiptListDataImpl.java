@@ -3,6 +3,7 @@ package org.module.server.data.statistcdate;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.po.ReceiptPO;
 import org.module.server.data.FileHelper;
@@ -15,8 +16,8 @@ public class ReceiptListDataImpl implements ReceiptListService {
 		dh = new FileHelper(new File("file"+File.separator+"receiptlist.txt"));
 	}
 
-	public ArrayList<ReceiptPO> getAll() {
-		ArrayList<ReceiptPO> re = new ArrayList<ReceiptPO>();
+	public MyList<ReceiptPO> getAll() {
+		MyList<ReceiptPO> re = new MyList<ReceiptPO>();
 		ArrayList<String>    strs = dh.read();
 		for (String string : strs) {
 			re.add(new ReceiptPO(string));
@@ -34,6 +35,7 @@ public class ReceiptListDataImpl implements ReceiptListService {
 		for (int i = 0; i < re.size(); i++) {
 			if(re.get(i).getOrderId().equals(ticket.getOrderId())){
 				re.remove(i);
+				this.dh.rewrite(re);
 				return true;
 			}
 		}

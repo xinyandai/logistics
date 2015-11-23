@@ -1,7 +1,6 @@
 package org.module.common.dataservice.statisticdataservice;
 
-import java.util.ArrayList;
-
+import org.module.common.dataservice.MyList;
 import org.module.common.po.CostListPO;
 
 
@@ -20,5 +19,5 @@ public interface CostDataService {
 	 * 后置：返回所有IO
 	 * @return
 	 */
-	public ArrayList<CostListPO> getAll();
+	public MyList<CostListPO> getAll();
 }

@@ -2,6 +2,7 @@ package org.module.common.dataservice.departmentdataservice;
 
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.DepartmentPO;
 
 
@@ -16,7 +17,7 @@ public interface DepartmentDataService {
 	 * 后置：返回所有的机构信息
 	 * @return
 	 */
-	public ArrayList<DepartmentPO> getAll();
+	public MyList<DepartmentPO> getAll();
 	/**
 	 * 前置：同样ID的po在还未存在
 	 * 后置：在数据中增加一个PO
@@ -37,7 +38,7 @@ public interface DepartmentDataService {
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> al);
+	public boolean delete(MyList<String> al);
 	/**
 	 * 前置：该PO已经存在于数据
 	 * 后置：在数据中修改一个PO

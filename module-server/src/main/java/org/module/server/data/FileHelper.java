@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
+
 
 public class FileHelper {
 
@@ -17,8 +19,8 @@ public class FileHelper {
 		this.file = file;
 	}
 	
-	public ArrayList<String> read(){
-		ArrayList<String> re =  new ArrayList<String>();		
+	public MyList<String> read(){
+		MyList<String> re =  new MyList<String>();		
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -34,7 +36,8 @@ public class FileHelper {
 		return re;
 	}
 
-	public boolean rewrite(ArrayList<Object> os){	
+	@SuppressWarnings("rawtypes")
+	public boolean rewrite(ArrayList os){	
 		try {
 			FileWriter fw = new FileWriter(file);
 			BufferedWriter br = new BufferedWriter(fw);

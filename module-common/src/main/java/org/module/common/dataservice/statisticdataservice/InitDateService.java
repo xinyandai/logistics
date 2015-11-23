@@ -1,7 +1,6 @@
 package org.module.common.dataservice.statisticdataservice;
 
-import java.util.ArrayList;
-
+import org.module.common.dataservice.MyList;
 import org.module.common.po.AccountPO;
 import org.module.common.po.CarPO;
 import org.module.common.po.DepartmentPO;
@@ -23,33 +22,33 @@ public interface InitDateService {
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
-	public ArrayList<CarPO> getInitCar();
+	public MyList<CarPO> getInitCar();
 	/**
 	 * 前置：选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
-	public ArrayList<StuffPO> getInitStuff();
+	public MyList<StuffPO> getInitStuff();
 	/**
 	 * 前置：选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
-	public ArrayList<DepartmentPO> getInitDepartment();
+	public MyList<DepartmentPO> getInitDepartment();
 	/**
 	 * 前置：选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
-	public ArrayList<AccountPO> getInitAccount();
+	public MyList<AccountPO> getInitAccount();
 	/**
 	 * 前置：选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
-	public ArrayList<WarehousePO> getInitWarehouse();
+	public MyList<WarehousePO> getInitWarehouse();
 }

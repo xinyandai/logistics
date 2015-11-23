@@ -10,7 +10,7 @@ import org.module.server.data.userdata.UserDataImpl;
 public class DataFactoty implements DataFactotyService {
 
 	public Object creatDataObject(String s) throws RemoteException {
-		if(s.equals("user")){
+		if(s.equals("userDataImpl")){
 			return new UserDataImpl();
 		}
 		return null;

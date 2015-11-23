@@ -21,7 +21,7 @@ public class DepartmentDataImpl implements DepartmentDataService {
 	}
 
 	
-	public boolean write(ArrayList<DepartmentPO> r){
+	public boolean write(MyList<DepartmentPO> r){
 
 		File file = new File(path);
 		try {
@@ -41,7 +41,7 @@ public class DepartmentDataImpl implements DepartmentDataService {
 	
 	
 	
-	public ArrayList<DepartmentPO> getAll(){
+	public MyList<DepartmentPO> getAll(){
 		MyList<DepartmentPO> re = new MyList<DepartmentPO>();
 		File file = new File(path);
 		try {
@@ -60,19 +60,19 @@ public class DepartmentDataImpl implements DepartmentDataService {
 	}
 
 	public boolean add(DepartmentPO dp) {
-		ArrayList<DepartmentPO> re = this.getAll();
+		MyList<DepartmentPO> re = this.getAll();
 		re.add(dp);
 		return this.write(re);
 		
 	}
 
 	public boolean delete(String dp) {
-		ArrayList<DepartmentPO> re = this.getAll();
+		MyList<DepartmentPO> re = this.getAll();
 		re.remove(dp);
 		return this.write(re);
 	}
 
-	public boolean delete(ArrayList<String> al) {
+	public boolean delete(MyList<String> al) {
 		return false;
 	}
 

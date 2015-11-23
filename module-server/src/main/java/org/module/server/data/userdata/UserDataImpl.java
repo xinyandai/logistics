@@ -18,8 +18,6 @@ import org.module.common.po.UserPO;
 public class UserDataImpl extends UnicastRemoteObject implements UserDataService {
 
 	public UserDataImpl() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
