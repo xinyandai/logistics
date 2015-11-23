@@ -13,6 +13,7 @@ import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.MailingListService;
 import org.module.common.po.DepartmentPO;
 import org.module.common.po.MailingListPO;
+import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
@@ -25,23 +26,7 @@ public class MailingListImpl implements MailingListService{
 		
 	}
 	//觉得有问题
-	public boolean write(ArrayList<MailingListPO> r){
-
-		File file = new File(path);
-		try {
-			FileWriter fW = new FileWriter(file);
-			BufferedWriter br = new BufferedWriter(fW);
-			for (MailingListPO po : r) {
-				br.write(po.toString()+"\n");
-			}
-			br.flush();
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+	
 	
 	public ArrayList<MailingListPO> getAll() {
 		
@@ -65,7 +50,7 @@ public class MailingListImpl implements MailingListService{
 	public boolean add(MailingListPO o) {
 		ArrayList<MailingListPO> ml = new ArrayList<MailingListPO>();
 		ml.add(o);
-		return this.write(ml);
+		return help.rewrite(ml);
 	}
 
 	public boolean update(MailingListPO newone) {
@@ -75,7 +60,15 @@ public class MailingListImpl implements MailingListService{
 
 	public ArrayList<MailingListPO> getByState(State s) {
 		// TODO 自动生成的方法存根
-		return null;
+		ArrayList<MailingListPO> oal = this.getAll();
+		ArrayList<MailingListPO> newone = new ArrayList<MailingListPO>();
+		for(MailingListPO a : oal){
+			if(a.getState().equals(s)){
+				newone.add(a);
+			}
+		}
+		return newone;
+		
 	}
 
 }

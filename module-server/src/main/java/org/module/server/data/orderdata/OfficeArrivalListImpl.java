@@ -31,7 +31,7 @@ public class OfficeArrivalListImpl implements OfficeArrivalListService{
 		// TODO 自动生成的方法存根
 		ArrayList<OfficeArrivalListPO> temp = this.getAll();
 		temp.add(o);
-		return false;
+		return help.rewrite(temp);
 	}
 
 	public boolean update(OfficeArrivalListPO newone) {

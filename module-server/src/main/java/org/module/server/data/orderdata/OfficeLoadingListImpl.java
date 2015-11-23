@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.orderdataservice.OfficeLoadingListService;
+import org.module.common.po.MailingListPO;
 import org.module.common.po.OfficeArrivalListPO;
 import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
@@ -26,8 +27,9 @@ public class OfficeLoadingListImpl implements OfficeLoadingListService{
 	}
 
 	public boolean add(OfficeLoadingListPO o) {
-		// TODO 自动生成的方法存根
-		return false;
+		ArrayList<OfficeLoadingListPO> oll = new ArrayList<OfficeLoadingListPO>();
+		oll.add(o);
+		return help.rewrite(oll);
 	}
 
 	public boolean update(OfficeLoadingListPO newone) {
