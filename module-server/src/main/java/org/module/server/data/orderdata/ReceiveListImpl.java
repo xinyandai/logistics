@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.common.dataservice.orderdataservice.ReceiveListService;
 import org.module.common.po.OfficeArrivalListPO;
+import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.ReceivingListPO;
 import org.module.common.po.State;
 import org.module.server.data.FileHelper;
@@ -28,7 +29,9 @@ public class ReceiveListImpl implements ReceiveListService{
 
 	public boolean add(ReceivingListPO o) {
 		// TODO 自动生成的方法存根
-		return false;
+		ArrayList<ReceivingListPO> oll = new ArrayList<ReceivingListPO>();
+		oll.add(o);
+		return help.rewrite(oll);
 	}
 
 	public boolean update(ReceivingListPO newone) {
@@ -38,7 +41,14 @@ public class ReceiveListImpl implements ReceiveListService{
 
 	public ArrayList<ReceivingListPO> getByState(State s) {
 		// TODO 自动生成的方法存根
-		return null;
+		ArrayList<ReceivingListPO> oal = this.getAll();
+		ArrayList<ReceivingListPO> newone = new ArrayList<ReceivingListPO>();
+		for(ReceivingListPO a : oal){
+			if(a.getState().equals(s)){
+				newone.add(a);
+			}
+		}
+		return newone;
 	}
 
 }

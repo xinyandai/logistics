@@ -7,12 +7,15 @@ public class SendingListPO {
 		private String SendMember;
 		private State state;
 		public SendingListPO(String date, String shippingId, String sendMember,
-				State state) {
+				String state) {
 			super();
 			this.date = date;
 			this.shippingId = shippingId;
 			SendMember = sendMember;
-			this.state = state;
+			this.state = State.getInstance(state);;
+		}
+		public SendingListPO(String[] a){
+			this(a[0],a[1],a[2],a[3]);
 		}
 		public String getDate() {
 			return date;

@@ -24,6 +24,9 @@ public class TranCenterArrivalListPO {
 		this.stateOfGoods = stateOfGoods;
 		this.state = State.getInstance(state);
 	}
+	public TranCenterArrivalListPO(String[] a){
+		this(a[0],a[1],a[2],a[3],a[4],a[5]);
+	}
 	public String getTransId() {
 		return transId;
 	}
