@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.statisticBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.AccountVO;
+import org.module.common.dataservice.MyList;
 
 
 
@@ -52,7 +53,7 @@ public interface AccountManageBLService {
 	 * @param a
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> a);
+	public boolean delete(MyList<String> a);
 	/**
 	 * 前置：选择账户修改信息
 	 * 后置：显示新账户列表

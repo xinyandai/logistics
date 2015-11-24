@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statisticBLservice.AccountManageBLService;
 import org.module.client.vo.AccountVO;
+import org.module.common.dataservice.MyList;
 
 
 public class AccountManageBLService_stub implements AccountManageBLService {
@@ -48,6 +49,11 @@ public class AccountManageBLService_stub implements AccountManageBLService {
 	public ArrayList<AccountVO> fuzzySearch(String s) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public boolean delete(MyList<String> a) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

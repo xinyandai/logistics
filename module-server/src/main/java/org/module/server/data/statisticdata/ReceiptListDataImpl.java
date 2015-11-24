@@ -42,10 +42,10 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 		return this.dh.add(ticket);
 	}
 
-	public boolean delete(ReceiptPO ticket) {
+	public boolean delete(String ticket) {
 		ArrayList<ReceiptPO> re = this.getAll();
 		for (int i = 0; i < re.size(); i++) {
-			if(re.get(i).getOrderId().equals(ticket.getOrderId())){
+			if(re.get(i).getOrderId().equals(ticket)){
 				re.remove(i);
 				this.dh.rewrite(re);
 				return true;
@@ -70,5 +70,7 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 		
 		return false;
 	}
+
+
 
 }

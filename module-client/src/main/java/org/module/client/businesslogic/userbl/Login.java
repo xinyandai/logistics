@@ -9,7 +9,7 @@ import org.module.common.dataservice.userdataservice.UserDataService;
 import org.module.common.po.UserPO;
 
 public class Login implements UserLoginService {
-	private UserDataService user = new RmiClient().getUserDataService();
+	private UserDataService user = new RmiClient().get(UserDataService.class);
 	public boolean login(UserVO u) {
 		try {
 			

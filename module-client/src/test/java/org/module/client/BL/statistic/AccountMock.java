@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statistic.AccountService;
 import org.module.client.vo.AccountVO;
+import org.module.common.dataservice.MyList;
 
 public class AccountMock implements AccountService{
 
@@ -18,7 +19,7 @@ public class AccountMock implements AccountService{
 		return false;
 	}
 
-	public boolean delete(ArrayList<String> a) {
+	public boolean delete(MyList<String> a) {
 		return true;
 	}
 

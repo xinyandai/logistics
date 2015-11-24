@@ -11,7 +11,7 @@ import org.module.common.po.UserPO;
 
 
 public class User implements UserService {
-	private UserDataService user = new RmiClient().getUserDataService();
+	private UserDataService user = new RmiClient().get(UserDataService.class);
 
 	
 

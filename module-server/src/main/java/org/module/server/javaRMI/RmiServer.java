@@ -30,7 +30,14 @@ public class RmiServer {
 			this.regist("statisticdata.SalarySettingDateImpl");
 			this.regist("statisticdata.InitDateImpl");
 			
-			
+			this.regist("orderdata.MailingListImpl");
+			this.regist("orderdata.OfficeArrivalListImpl");
+			this.regist("orderdata.OfficeLoadingListImpl");
+			this.regist("orderdata.ReceiveListImpl");
+			this.regist("orderdata.SendingListImpl");
+			this.regist("orderdata.TranCenterArrivalListImpl");
+			this.regist("orderdata.TranCenterLoadingImpl");
+			this.regist("orderdata.TransportListImpl");
 			
 			System.out.println("user Server is ready.");    
 		} catch (RemoteException e) {

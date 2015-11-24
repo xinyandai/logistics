@@ -18,7 +18,6 @@ public class GoDownEntryController implements GoDownEntryBLService{
 	
 	public boolean createTicket(String courier, String date,
 			String destination, String qu, String pai, String jia, String wei) {
-		// TODO Auto-generated method stub
 		return goDownEntry.createTicket(new GoDownEntryVO(courier, date,
 				destination, qu,pai, jia, wei));
 	}

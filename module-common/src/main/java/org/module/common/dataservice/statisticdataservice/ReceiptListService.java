@@ -36,7 +36,7 @@ public interface ReceiptListService extends Remote{
 	 * @return  添加成功返回true
 	 */
 	
-	public boolean delete(ReceiptPO ticket)throws RemoteException;
+	public boolean delete(String ticket)throws RemoteException;
 
 	/**
 	 * 前置：该PO存在于数据库

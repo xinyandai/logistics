@@ -58,13 +58,13 @@ public class ReceiptPO implements Serializable{
 		}
 
 		public ReceiptPO(String date, String money, String courier,
-				String orderId, String state) {
+				String orderId, State state) {
 			super();
 			this.date = date;
 			this.money = money;
 			Courier = courier;
 			this.orderId = orderId;
-			this.state = State.getInstance(state);
+			this.state = state;
 		}
 
 		
