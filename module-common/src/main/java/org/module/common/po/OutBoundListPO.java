@@ -46,7 +46,7 @@ public class OutBoundListPO implements Serializable{
 	this.tansportListId = tansportListId;
 	this.state = State.getInstance(state);
 }
-	private String spt = ":%:%:";
+	final private String spt = ":%:%:";
 	
 	@Override
 	public String toString(){

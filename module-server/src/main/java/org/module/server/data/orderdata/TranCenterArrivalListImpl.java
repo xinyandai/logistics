@@ -3,7 +3,6 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.TranCenterArrivalListService;
@@ -25,8 +24,8 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 		MyList<TranCenterArrivalListPO> re = new MyList<TranCenterArrivalListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
-			re.add(new TranCenterArrivalListPO(temp));
+//			String[] temp = string.split(":%:%:");
+			re.add(new TranCenterArrivalListPO(string));
 		}
 		return re;
 	}
@@ -44,15 +43,16 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 				all.remove(i);
 				all.add(newone);
 				this.help.rewrite(all);
+				return true;
 			}
 		}
 		return false;
 	}
 
-	public ArrayList<TranCenterArrivalListPO> getByState(State s)  throws RemoteException{
+	public MyList<TranCenterArrivalListPO> getByState(State s)  throws RemoteException{
 		// TODO 自动生成的方法存根
-		ArrayList<TranCenterArrivalListPO> oal = this.getAll();
-		ArrayList<TranCenterArrivalListPO> newone = new ArrayList<TranCenterArrivalListPO>();
+		MyList<TranCenterArrivalListPO> oal = this.getAll();
+		MyList<TranCenterArrivalListPO> newone = new MyList<TranCenterArrivalListPO>();
 		for(TranCenterArrivalListPO a : oal){
 			if(a.getState().toString().equals(s.toString())){
 				newone.add(a);

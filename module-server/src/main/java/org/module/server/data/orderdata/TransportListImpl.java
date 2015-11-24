@@ -24,14 +24,15 @@ public class TransportListImpl extends UnicastRemoteObject implements TransportL
 		MyList<TransportListPO> re = new MyList<TransportListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
+			/*String[] temp = string.split(":%:%:");
 			String[] ids = new String[temp.length-10];
 			for(int i = 0;i<temp.length-10;i++){
 				ids[i] = temp[i+8];
 			}
 			TransportListPO lpo = new TransportListPO(temp[0],temp[1],temp[2],
 					temp[3],temp[4],temp[5],temp[6],temp[7],ids,temp[temp.length-2],temp[temp.length-1]);
-			re.add(lpo);
+			re.add(lpo);*/
+			re.add(new TransportListPO(string));
 		}
 		return re;
 	}
@@ -47,7 +48,7 @@ public class TransportListImpl extends UnicastRemoteObject implements TransportL
 			if(all.get(i).getTransListId().equals(newone.getTransListId())){
 				all.remove(i);
 				all.add(newone);
-				this.help.rewrite(all);
+				return this.help.rewrite(all);
 			}
 		}
 		return false;

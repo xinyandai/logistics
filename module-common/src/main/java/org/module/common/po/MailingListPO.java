@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class MailingListPO {
+import java.io.Serializable;
+
+public class MailingListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8400742003562980730L;
 	private String senderName;
 	private String senderCompany;
 	private String senderMobile;
@@ -23,6 +29,59 @@ public class MailingListPO {
 	
 	private State state;
 
+	
+	final private String spt = ":%:%:";
+	@Override
+	public String toString(){
+		return 
+				this.senderName + this.spt +
+		this.senderCompany + this.spt +
+		this.senderMobile + this.spt +
+		this.senderPhone + this.spt +
+		this.senderCity + this.spt +
+		this.senderPosition + this.spt +
+		
+		this.receiveName + this.spt +
+		this.receiveCompany + this.spt +
+		this.receiveMobile + this.spt +
+		this.receivePhone + this.spt +
+		this.receiveCity  + this.spt +
+		this.receivePosition + this.spt +
+		
+		this.nameOfGood + this.spt +
+		this.counts + this.spt +
+		this.weight + this.spt +
+		this.volume + this.spt +
+		this.costOfDecoration + this.spt +
+		this.type + this.spt +
+		this.id + this.spt +
+		this.state;
+	}
+	public MailingListPO(String string) {
+		String[] s = string.split(spt);
+		this.senderName = s[0];
+		this.senderCompany = s[1];
+		this.senderMobile = s[2];
+		this.senderPhone = s[3];
+		this.senderCity = s[4];
+		this.senderPosition = s[5];
+		
+		this.receiveName = s[6];
+		this.receiveCompany = s[7];
+		this.receiveMobile = s[8];
+		this.receivePhone = s[9];
+		this.receiveCity  = s[10];
+		this.receivePosition = s[11];
+		
+		this.nameOfGood = s[12];
+		this.counts = s[13];
+		this.weight = s[14];
+		this.volume = s[15];
+		this.costOfDecoration = s[16];
+		this.type = s[17];
+		this.id = s[18];
+		this.state = State.getInstance(s[19]);
+	}
 	public MailingListPO(String senderName, String senderCompany,
 			String senderMobile, String senderPhone, String senderCity,
 			String senderPosition, String receiveName, String receiveCompany,
@@ -56,6 +115,8 @@ public class MailingListPO {
 		this(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10],s[11],s[12],
 				s[13],s[14],s[15],s[16],s[17],s[18],s[19]);
 	}
+	
+	
 	public String getSenderName() {
 		return senderName;
 	}

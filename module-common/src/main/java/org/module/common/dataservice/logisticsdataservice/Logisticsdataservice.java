@@ -1,39 +1,40 @@
 package org.module.common.dataservice.logisticsdataservice;
 
-import java.util.ArrayList;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.LogisticsPO;
 
-
-public interface Logisticsdataservice {
-	/**
+/**
 	 * 20151022
 	 * 物流信息
 	 * @author 颜
 	 */
-	public interface LogisticsDataService {
+public interface Logisticsdataservice  extends Remote{
+	
+	
 
 		/**
 		 * 前置：无
 		 * 后置：返回所有物流信息
 		 * @return
 		 */
-		public ArrayList<LogisticsPO> getAll();
+		public MyList<LogisticsPO> getAll()throws RemoteException;
 		/**
 		 * 前置：订单号存在
 		 * 后置：返回订单信息
 		 * @return
 		 */
-		public LogisticsPO getOrder(String id);
+		public LogisticsPO getOrder(String id)throws RemoteException;
 		/**
 		 * 前置：欲修改的PO存在
 		 * 后置：更新PO信息
-		 * @param old
 		 * @param newone
 		 * @return
 		 */
-		public boolean updata(LogisticsPO old,LogisticsPO newone);
+		public boolean updata(LogisticsPO newone)throws RemoteException;
 		
-	}
+	
 
 }

@@ -14,7 +14,7 @@ public class Account implements AccountService {
 
 	AccountDataService data;
 	public Account() {
-		this.data = RmiClient.get(AccountDataService.class);
+		this.data = new RmiClient().get(AccountDataService.class);
 	}
 
 	

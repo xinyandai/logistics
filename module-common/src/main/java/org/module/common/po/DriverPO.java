@@ -8,7 +8,7 @@ public class DriverPO {
 	private String phone;
 	private String gender;
 	private String date;
-	private String split=":%:%:";
+	final private String split=":%:%:";
 	@Override
 	public String toString(){
 		return this.id+this.split+this.name+this.split

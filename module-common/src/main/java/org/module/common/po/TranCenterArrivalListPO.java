@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class TranCenterArrivalListPO {
+import java.io.Serializable;
+
+public class TranCenterArrivalListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2045332226968777577L;
 	private String transId;
 	private String date;
 	private String transportListId;
@@ -26,6 +32,26 @@ public class TranCenterArrivalListPO {
 	}
 	public TranCenterArrivalListPO(String[] a){
 		this(a[0],a[1],a[2],a[3],a[4],a[5]);
+	}
+	
+	final private String spt = ":%:%:";
+	public TranCenterArrivalListPO(String string) {
+		String[] s = string.split(spt);
+		this.transId = s[0];
+		this.date = s[1];
+		this.transportListId = s[2];
+		this.origin = s[3];
+		this.stateOfGoods = s[4];
+		this.state = State.getInstance(s[5]);
+	}
+	@Override
+	public String toString(){
+		return this.transId + this.spt +
+		this.date+ this.spt +
+		this.transportListId + this.spt +
+		this.origin + this.spt +
+		this.stateOfGoods + this.spt +
+		this.state.toString();
 	}
 	public String getTransId() {
 		return transId;

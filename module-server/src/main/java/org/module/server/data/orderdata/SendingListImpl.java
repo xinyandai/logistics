@@ -19,13 +19,14 @@ public class SendingListImpl extends UnicastRemoteObject implements SendingListS
 	public SendingListImpl() throws RemoteException{
 		help = new FileHelper(new File("file"+File.separator+"SendingList.txt"));
 	}
+	
 	public MyList<SendingListPO> getAll()  throws RemoteException{
-		// TODO 自动生成的方法存根
+		
 		MyList<SendingListPO> re = new MyList<SendingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
-			re.add(new SendingListPO(temp));
+//			String[] temp = string.split(":%:%:");
+			re.add(new SendingListPO(string));
 		}
 		return re;
 	}
@@ -42,7 +43,7 @@ public class SendingListImpl extends UnicastRemoteObject implements SendingListS
 			if(all.get(i).getShippingId().equals(newone.getShippingId())){
 				all.remove(i);
 				all.add(newone);
-				this.help.rewrite(all);
+				return this.help.rewrite(all);
 			}
 		}
 		return false;

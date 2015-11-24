@@ -24,14 +24,15 @@ public class TranCenterLoadingImpl extends UnicastRemoteObject  implements TranC
 		MyList<TranCenterLoadingListPO> re = new MyList<TranCenterLoadingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
+		/*	String[] temp = string.split(":%:%:");
 			String[] ids = new String[temp.length-8];
 			for(int i = 0;i<temp.length-8;i++){
 				ids[i] = temp[i+6];
 			}
 			TranCenterLoadingListPO lpo = new TranCenterLoadingListPO(temp[0],temp[1],temp[2],
 					temp[3],temp[4],temp[5],ids,temp[temp.length-2],temp[temp.length-1]);
-			re.add(lpo);
+			re.add(lpo);*/
+			re.add(new TranCenterLoadingListPO(string));
 		}
 		return re;
 	}
@@ -47,7 +48,7 @@ public class TranCenterLoadingImpl extends UnicastRemoteObject  implements TranC
 			if(all.get(i).getTransportListId().equals(newone.getTransportListId())){
 				all.remove(i);
 				all.add(newone);
-				this.help.rewrite(all);
+				return this.help.rewrite(all);
 			}
 		}
 		return false;

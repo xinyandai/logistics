@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class LogisticsPO {
+import java.io.Serializable;
+
+public class LogisticsPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4593210891359674130L;
 	private String orderId;
 	private String origin;
 	private String estination;
@@ -23,6 +29,30 @@ public class LogisticsPO {
 		this.location = location;
 		this.historyLocationAndTime = historyLocationAndTime;
 		this.isCompleted = isCompleted;
+	}
+
+	final private String spt = ":%:%:";
+	final private String inlinespt = "#*#*#";
+	/**
+	 * 把订单号数组转化为字符串
+	 * @param s
+	 * @return
+	 */
+	private String getArrayToString(String[] s){
+		String re = "";
+		for (String string : s) {
+			re += string + this.inlinespt;
+		}
+		return re;
+	}
+	
+	public LogisticsPO(String string) {
+		String[] s = string.split(spt);
+		this.orderId = s[0];
+		this.origin = s[1];
+		this.estination = s[2];
+		this.location = s[3];
+		
 	}
 
 	public String getOrderId() {

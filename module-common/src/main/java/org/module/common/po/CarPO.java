@@ -2,7 +2,7 @@ package org.module.common.po;
 
 public class CarPO {
 
-	private String split =":%:%:";
+	final private String split =":%:%:";
 	
 	private String id;
 	private String License;

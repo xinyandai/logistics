@@ -58,7 +58,7 @@ public class GoDownEntryListPO implements Serializable{
 		this.state = State.getInstance(state);
 	}
 
-	private String spt = ":%：%：";
+	final private String spt = ":%：%：";
 	public GoDownEntryListPO(String string) {
 		String[] s = string.split(spt);
 	    this.id = s[0];

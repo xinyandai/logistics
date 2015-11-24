@@ -2,8 +2,8 @@ package org.module.common.dataservice.orderdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.State;
 import org.module.common.po.TranCenterArrivalListPO;
 
@@ -15,7 +15,7 @@ public interface TranCenterArrivalListService extends Remote{
 	 * 后置：返回所有PO
 	 * @return
 	 */
-	public ArrayList<TranCenterArrivalListPO> getAll() throws RemoteException;
+	public MyList<TranCenterArrivalListPO> getAll() throws RemoteException;
 	/**
 	 * 前置：不存在相同ID的寄件单
 	 * 后置：增加一个PO
@@ -35,5 +35,5 @@ public interface TranCenterArrivalListService extends Remote{
      * @param s
      * @return
      */
-	public ArrayList<TranCenterArrivalListPO> getByState(State s) throws RemoteException;
+	public MyList<TranCenterArrivalListPO> getByState(State s) throws RemoteException;
 }

@@ -5,7 +5,7 @@ public class PriceAndCityPO {
 	private String cityB;
 	private String distance;
 	private String price;
-	private String split=":%:%:";
+	final private String split=":%:%:";
 	@Override
 	public String toString(){
 		return this.cityA+this.split

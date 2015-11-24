@@ -21,6 +21,7 @@ public class RmiServer {
 			LocateRegistry.createRegistry(1099);
 			
 			this.regist("userdata.UserDataImpl");
+			
 			this.regist("ticketData.GoDownEntryListDataImpl");
 			this.regist("ticketData.OutBoundListDataImpl");
 			

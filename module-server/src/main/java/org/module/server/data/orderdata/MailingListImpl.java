@@ -19,6 +19,7 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 	private String path = "file"+File.separator+"mailingList.txt";
 	File file = new File(path);
 	FileHelper help = new FileHelper(file);
+	
 	public MailingListImpl() throws RemoteException{
 		
 	}
@@ -30,14 +31,13 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 		MyList<MailingListPO> re = new MyList<MailingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
-			re.add(new MailingListPO(temp));
+			//String[] temp = string.split(":%:%:");
+			re.add(new MailingListPO(string));
 		}
 		return re;
 	}
 
 	public boolean add(MailingListPO o) throws RemoteException{
-		
 		return this.help.add(o);
 	}
 
@@ -48,13 +48,13 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 				all.remove(i);
 				all.add(newone);
 				this.help.rewrite(all);
+				return true;
 			}
 		}
 		return false;
 	}
 
 	public MyList<MailingListPO> getByState(State s) throws RemoteException {
-		// TODO 自动生成的方法存根
 		MyList<MailingListPO> oal = this.getAll();
 		MyList<MailingListPO> newone = new MyList<MailingListPO>();
 		for(MailingListPO a : oal){

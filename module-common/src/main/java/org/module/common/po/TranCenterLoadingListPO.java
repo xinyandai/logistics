@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class TranCenterLoadingListPO {
+import java.io.Serializable;
+
+public class TranCenterLoadingListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4235679071907414194L;
 	private String LoadingDate;
 	private String transportListId;
 	private String arrival;
@@ -14,16 +20,55 @@ public class TranCenterLoadingListPO {
 			String arrival, String carId, String supervision, String escort,
 			String[] shippingId, String price, String state) {
 		super();
-		LoadingDate = loadingDate;
+		this.LoadingDate = loadingDate;
 		this.transportListId = transportListId;
 		this.arrival = arrival;
 		this.carId = carId;
-		Supervision = supervision;
+		this.Supervision = supervision;
 		this.escort = escort;
 		this.shippingId = shippingId;
 		this.price = price;
 		this.state = State.getInstance(state);
 	}
+	
+	public TranCenterLoadingListPO(String string) {
+		String[] s = string.split(spt);
+		this.transportListId = s[0];
+		this.arrival = s[1];
+		this.carId = s[2];
+		this.Supervision = s[3];
+		this.escort = s[4];
+		this.shippingId = s[5].split(inlinespt);
+		this.price = s[6];
+		this.state = State.getInstance(s[7]);
+	}
+
+	@Override
+	public String toString(){
+        return 		this.transportListId + this.spt + 
+		this.arrival + this.spt + 
+		this.carId + this.spt + 
+		this.Supervision + this.spt + 
+		this.escort + this.spt + 
+		this.getArrayToString( this.shippingId ) + this.spt + 
+		this.price + this.spt + 
+		this.state.toString();
+	}
+	/**
+	 * 把订单号数组转化为字符串
+	 * @param s
+	 * @return
+	 */
+	private String getArrayToString(String[] s){
+		String re = "";
+		for (String string : s) {
+			re += string + this.inlinespt;
+		}
+		return re;
+	}
+	final private String spt = ":%:%:";
+	final private String inlinespt = "#*#*#";
+	
 	public String getLoadingDate() {
 		return LoadingDate;
 	}

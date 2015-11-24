@@ -26,8 +26,8 @@ public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListS
 		MyList<ReceivingListPO> re = new MyList<ReceivingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
-			re.add(new ReceivingListPO(temp));
+	//		String[] temp = string.split(":%:%:");
+			re.add(new ReceivingListPO(string));
 		}
 		return re;
 		
@@ -44,7 +44,7 @@ public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListS
 			if(all.get(i).getOrderId().equals(newone.getOrderId())){
 				all.remove(i);
 				all.add(newone);
-				this.help.rewrite(all);
+				return this.help.rewrite(all);
 			}
 		}
 		return false;

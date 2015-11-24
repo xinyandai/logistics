@@ -24,8 +24,8 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 		MyList<OfficeLoadingListPO> re = new MyList<OfficeLoadingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
-			re.add(new OfficeLoadingListPO(temp));
+		//	String[] temp = string.split(":%:%:");
+			re.add(new OfficeLoadingListPO(string));
 		}
 		return re;
 	}
@@ -36,6 +36,14 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 	}
 
 	public boolean update(OfficeLoadingListPO newone)  throws RemoteException{
+		MyList<OfficeLoadingListPO> all = this.getAll();
+		for (int i = 0; i < all.size(); i++) {
+			if(all.get(i).getTrucksId().equals(newone.getTrucksId())){
+				all.remove(i);
+				all.add(newone);
+				return this.help.rewrite(all);
+			}
+		}
 		return false;
 	}
 

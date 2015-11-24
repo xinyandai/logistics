@@ -21,20 +21,18 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 		help = new FileHelper(new File("file"+File.separator+"officeArrivalList.txt"));
 	}
 	public MyList<OfficeArrivalListPO> getAll()  throws RemoteException{
-		// TODO 自动生成的方法存根
 		MyList<OfficeArrivalListPO> re = new MyList<OfficeArrivalListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			String[] temp = string.split(":%:%:");
-			re.add(new OfficeArrivalListPO(temp));
+		//	String[] temp = string.split(":%:%:");
+			re.add(new OfficeArrivalListPO(string));
 		}
 		return re;
 
 		
 	}
-	//add方法有问题
+
 	public boolean add(OfficeArrivalListPO o)  throws RemoteException{
-		// TODO 自动生成的方法存根
 		
 		return this.help.add(o);
 	}
@@ -45,7 +43,7 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 			if(all.get(i).getTransportListId().equals(newone.getTransportListId())){
 				all.remove(i);
 				all.add(newone);
-				this.help.rewrite(all);
+				return this.help.rewrite(all);
 			}
 		}
 		return false;

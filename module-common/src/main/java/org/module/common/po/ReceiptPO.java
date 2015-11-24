@@ -9,7 +9,7 @@ public class ReceiptPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1488661806746880954L;
-	private String split = ":%:%:";
+	final private String split = ":%:%:";
 	//收款单
 		private String date;
 		private String money;

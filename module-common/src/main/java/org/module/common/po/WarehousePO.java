@@ -6,7 +6,7 @@ public class WarehousePO {
 	private String pai;
 	private String jia;
 	private String wei;
-	private String split=":%:%:";
+	final private String split=":%:%:";
 	@Override
 	public String toString(){
 		return this.number+this.split+this.qu
