@@ -6,6 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
+import org.module.common.dataservice.MySearch;
 import org.module.common.dataservice.statisticdataservice.AccountDataService;
 import org.module.common.po.AccountPO;
 import org.module.server.data.FileHelper;
@@ -17,6 +18,7 @@ public class AccountDataImpl extends UnicastRemoteObject implements AccountDataS
 	 */
 	private static final long serialVersionUID = 1L;
 	private FileHelper helper = new FileHelper(new File("file"+File.separator+"account.txt"));
+	private MySearch seacher;
 	public AccountDataImpl()  throws RemoteException{
 	}
 
@@ -63,6 +65,26 @@ public class AccountDataImpl extends UnicastRemoteObject implements AccountDataS
 	}
 
 	public MyList<AccountPO> fuzzusearch(String key) {
+		MyList<AccountPO> all = this.getAll();
+		MyList<AccountPO> result = new MyList<AccountPO>();
+		if(this.seacher==null){
+			this.seacher = new MySearch();
+		}
+		for (int i = 0; i < all.size(); i++) {
+			if(this.seacher.similarity(all.get(i).getId(), key)>0.1){
+				result.add(all.get(i));
+			}
+		}
+		return result;
+	}
+
+	public AccountPO findById(String s) throws RemoteException {
+		MyList<AccountPO> all = this.getAll();
+		for (AccountPO accountPO : all) {
+			if(accountPO.getId().equals(s)){
+				return accountPO;
+			}
+		}
 		return null;
 	}
 

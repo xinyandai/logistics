@@ -57,21 +57,54 @@ public class Account implements AccountService {
 	
 
 	public boolean pay(String id, double b) {
-		return false;
+		
+		
+		return this.change(id, -b);
 	}
 
 	public boolean income(String id, double b) {
+		return this.change(id, b);
+	}
+
+	private boolean change(String id, double b){
+		try {
+			AccountPO po = this.data.findById(id);
+			AccountVO vo = new AccountVO(po.getId(),(Double.parseDouble(po.getMoney())+b)+"");
+			return this.data.update(new AccountPO(vo.getId(),vo.getMoney()+""));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
-
 	public ArrayList<AccountVO> showAll() {
-		return null;
+		ArrayList<AccountVO> re = new ArrayList<AccountVO>();
+		try {
+			ArrayList<AccountPO> pos = this.data.getAll();
+			for (AccountPO accountPO : pos) {
+				re.add(new AccountVO(accountPO.getId(),accountPO.getMoney()));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return re;
 	}
 
 
 	public ArrayList<AccountVO> fuzzySearch(String s) {
-		return null;
+		ArrayList<AccountVO> re = new ArrayList<AccountVO>();
+		try {
+			ArrayList<AccountPO> pos = this.data.fuzzusearch(s);
+			for (AccountPO accountPO : pos) {
+				re.add(new AccountVO(accountPO.getId(),accountPO.getMoney()));
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return re;
 	}
 
 }

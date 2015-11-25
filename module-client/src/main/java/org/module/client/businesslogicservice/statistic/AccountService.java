@@ -14,6 +14,7 @@ public interface AccountService {
 	 * @return
 	 */
 	public ArrayList<AccountVO> showAll();
+	
 	/**
 	 * 前置：输入关键字查找账户
 	 * 后置：显示模糊查找结果

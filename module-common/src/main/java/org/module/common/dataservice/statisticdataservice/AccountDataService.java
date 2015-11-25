@@ -48,4 +48,11 @@ public interface AccountDataService extends Remote {
 	public boolean update(AccountPO newone) throws RemoteException;
 	
 	public MyList<AccountPO> fuzzusearch(String key) throws RemoteException;
+	
+	/**
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public AccountPO findById(String s) throws RemoteException;
 }
