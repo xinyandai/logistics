@@ -21,16 +21,6 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-    	<groupId>edu.nju.teamwork</groupId>
-    	<artifactId>module-client</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-    	<groupId>edu.nju.teamwork</groupId>
-    	<artifactId>module-server</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
   </dependencies>
   <modules>
     <module>module-server</module>
