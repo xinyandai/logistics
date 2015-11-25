@@ -26,10 +26,10 @@ public class LogisticsController implements LogisticsBLService{
 	}
 
 	public boolean setState(String origin, String estination, String location,
-			String orderId, String[][] historyLocationAndTime) {
+			String orderId, String[] historyLocation,String[] historyTime) {
 		// TODO Auto-generated method stub
 		return Logistics.setState(new LogisticsVO(origin, estination, location,
-				orderId, historyLocationAndTime,false));
+				orderId, historyLocation,historyTime,false));
 	}
 
 }

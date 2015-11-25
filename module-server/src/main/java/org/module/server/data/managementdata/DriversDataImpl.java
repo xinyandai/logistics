@@ -1,21 +1,32 @@
 package org.module.server.data.managementdata;
 
 import java.io.File;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.managementdataservice.DriversDataService;
 import org.module.common.po.DriverPO;
 import org.module.server.data.FileHelper;
 
-public class DriversDataImpl implements DriversDataService{
+public class DriversDataImpl extends UnicastRemoteObject  implements DriversDataService{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8447605741329427326L;
+
+
+
+	public DriversDataImpl() throws RemoteException {
+		super();
+	}
 
 	String path="file"+File.separator+"Driver.txt";
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
 	
-	public DriversDataImpl() {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public ArrayList<DriverPO> getAll() {
 		// TODO Auto-generated method stub

@@ -1,21 +1,28 @@
 package org.module.server.data.managementdata;
 
 import java.io.File;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.managementdataservice.CarDataService;
 import org.module.common.po.CarPO;
 import org.module.server.data.FileHelper;
 
-public class CarDataImpl implements CarDataService {
+public class CarDataImpl extends UnicastRemoteObject implements CarDataService {
 	
+	public CarDataImpl() throws RemoteException {
+		super();
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5027123081037793884L;
 	String path="file"+File.separator+"Car.txt";
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
-	public CarDataImpl() {
-		// TODO Auto-generated constructor stub
-		
-	}
+	
 
 	public ArrayList<CarPO> getAll() {
 		// TODO Auto-generated method stub

@@ -31,6 +31,6 @@ public interface LogisticsBLService {
 	 * @param 
 	 * @return
 	 */
-	public boolean setState(String origin, String estination,
-			String location,String orderId, String[][] historyLocationAndTime);
+	public boolean setState(String origin, String estination, String location,
+			String orderId, String[] historyLocation,String[] historyTime) ;
 }

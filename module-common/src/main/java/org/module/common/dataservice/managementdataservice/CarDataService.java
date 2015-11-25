@@ -1,5 +1,7 @@
 package org.module.common.dataservice.managementdataservice;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.module.common.po.CarPO;
@@ -10,34 +12,34 @@ import org.module.common.po.CarPO;
 * 车辆信息
 * @author 颜
 */
-public interface CarDataService {
+public interface CarDataService  extends Remote{
 	/**
 	 * 前置：无
 	 * 后置：返回所有汽车PO
 	 * @param s
 	 * @return
 	 */
-	public ArrayList<CarPO> getAll();
+	public ArrayList<CarPO> getAll()throws RemoteException;
 	/**
 	 * 前置：数据库中不存在相同ID值的PO
 	 * 后置：增加一个PO
 	 * @param cp
 	 * @return
 	 */
-	public boolean add(CarPO cp);
+	public boolean add(CarPO cp)throws RemoteException;
 	/**
 	 * 前置：数据库中已经存在该PO
 	 * 后置：删除一个PO
 	 * @param cp
 	 * @return
 	 */
-	public boolean delete(CarPO cp);
+	public boolean delete(CarPO cp)throws RemoteException;
 	/**
 	 * 前置：数据库中存在这些PO
 	 * 后置：删除这些PO
 	 * @return
 	 */
-	public boolean delete(ArrayList<CarPO> al);
+	public boolean delete(ArrayList<CarPO> al)throws RemoteException;
 	/**
 	 * 前置：数据库中存在原PO
 	 * 后置：修改该PO
@@ -45,5 +47,5 @@ public interface CarDataService {
 	 * @param newone
 	 * @return
 	 */
-	public boolean update(CarPO old,CarPO newone);
+	public boolean update(CarPO old,CarPO newone)throws RemoteException;
 }

@@ -11,24 +11,66 @@ public class LogisticsPO implements Serializable{
 	private String origin;
 	private String estination;
 	private String location;
-	private String[][] historyLocationAndTime;
-	
+	private String[] historyLocation;
+	private String[] historyTime;
 	private boolean isCompleted;
 
 	
 	
 	
 	
+	
 	public LogisticsPO(String orderId, String origin, String estination,
-			String location, String[][] historyLocationAndTime,
+			String location, String[] historyLocation, String[] historyTime,
 			boolean isCompleted) {
 		super();
 		this.orderId = orderId;
 		this.origin = origin;
 		this.estination = estination;
 		this.location = location;
-		this.historyLocationAndTime = historyLocationAndTime;
+		this.historyLocation = historyLocation;
+		this.historyTime = historyTime;
 		this.isCompleted = isCompleted;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getEstination() {
+		return estination;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String[] getHistoryLocation() {
+		return historyLocation;
+	}
+
+	public String[] getHistoryTime() {
+		return historyTime;
+	}
+
+	public boolean isCompleted() {
+		return isCompleted;
+	}
+
+	public String getSpt() {
+		return spt;
+	}
+
+	public String getInlinespt() {
+		return inlinespt;
 	}
 
 	final private String spt = ":%:%:";
@@ -53,32 +95,23 @@ public class LogisticsPO implements Serializable{
 		this.estination = s[2];
 		this.location = s[3];
 		
+		this.historyTime = s[4].split(inlinespt);
+		this.historyLocation = s[5].split(inlinespt);
+		this.isCompleted = s[6].equals("true");
+		
 	}
 
-	public String getOrderId() {
-		return orderId;
+	@Override
+	public String toString(){
+		return this.orderId + this.spt +
+		this.origin + this.spt +
+		this.estination + this.spt +
+		this.location + this.spt +
+		
+		this.getArrayToString(this.historyTime) + this.spt +
+		this.getArrayToString(this.historyLocation)+ this.spt +
+		this.isCompleted;
 	}
-
-	public String getOrigin() {
-		return origin;
-	}
-
-	public String getEstination() {
-		return estination;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public String[][] getHistoryLocationAndTime() {
-		return historyLocationAndTime;
-	}
-
-	public boolean isCompleted() {
-		return isCompleted;
-	}
-	
 	
 
 }

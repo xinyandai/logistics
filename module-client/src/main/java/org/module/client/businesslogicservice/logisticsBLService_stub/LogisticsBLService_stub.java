@@ -27,7 +27,7 @@ public class LogisticsBLService_stub implements LogisticsBLService{
 	}
 
 	public boolean setState(String origin, String estination,
-			String location,String orderId, String[][] historyLocationAndTime) {
+			String location,String orderId, String[] historyLocation,String[] historyTime) {
 		// TODO �Զ����ɵķ������
 		return false;
 	}

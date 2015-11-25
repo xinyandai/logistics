@@ -31,12 +31,24 @@ public class LogisticsdataImpl extends UnicastRemoteObject implements Logisticsd
 	}
 
 	public LogisticsPO getOrder(String id) throws RemoteException {
-		// TODO Auto-generated method stub
+		MyList<LogisticsPO>  pos = this.getAll();
+		for (LogisticsPO logisticsPO : pos) {
+			if(logisticsPO.getOrderId().equals(id)){
+				return logisticsPO;
+			}
+		}
 		return null;
 	}
 
 	public boolean updata(LogisticsPO newone) throws RemoteException {
-		// TODO Auto-generated method stub
+		MyList<LogisticsPO>  pos = this.getAll();
+		for (int i=0; i<pos.size(); i++) {
+			if(pos.get(i).getOrderId().equals(newone.getOrderId())){
+				pos.remove(i);
+				pos.add(newone);
+				return this.helper.rewrite(pos);
+			}
+		}
 		return false;
 	}
 

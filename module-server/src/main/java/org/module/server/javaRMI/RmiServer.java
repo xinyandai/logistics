@@ -40,6 +40,16 @@ public class RmiServer {
 			this.regist("orderdata.TranCenterLoadingImpl");
 			this.regist("orderdata.TransportListImpl");
 			
+			this.regist("logisticsdata.LogisticsdataImpl");
+			
+			this.regist("managementdata.CarDataImpl");
+			this.regist("managementdata.DriversDataImpl");
+			this.regist("managementdata.PriceAndCityDataImpl");
+			this.regist("managementdata.WarahouseDataImpl");
+			
+			this.regist("ticketData.GoDownEntryListDataImpl");
+			this.regist("ticketData.OutBoundListDataImpl");
+			
 			System.out.println("user Server is ready.");    
 		} catch (RemoteException e) {
 			System.out.println("user Server failed: /n" + e);

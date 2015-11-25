@@ -1,21 +1,33 @@
 package org.module.server.data.managementdata;
 
 import java.io.File;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.managementdataservice.WarahouseDataService;
 import org.module.common.po.WarehousePO;
 import org.module.server.data.FileHelper;
 
-public class WarahouseDataImpl implements WarahouseDataService {
+public class WarahouseDataImpl  extends UnicastRemoteObject implements WarahouseDataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8672640557938555302L;
+
+
+
+	public WarahouseDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	String path="file"+File.separator+"Warahouse.txt";
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
 	
-	public WarahouseDataImpl() {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public ArrayList<WarehousePO> getAll() {
 		// TODO Auto-generated method stub
