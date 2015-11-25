@@ -1,32 +1,26 @@
 package org.module.server.data.managementdata;
 
 import java.io.File;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.managementdataservice.PriceAndCityDataService;
+import org.module.common.po.CityPO;
 import org.module.common.po.PriceAndCityPO;
 import org.module.server.data.FileHelper;
 
-public class PriceAndCityDataImpl extends UnicastRemoteObject  implements PriceAndCityDataService {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1665448137196435593L;
-
-
-
-	public PriceAndCityDataImpl() throws RemoteException {
-		super();
-	}
+public class PriceAndCityDataImpl implements PriceAndCityDataService {
 
 	String path="file"+File.separator+"PriceAndCity.txt";
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
 	
-
+	String Path="file"+File.separator+"City.txt";
+	File fil=new File(Path);
+	FileHelper Help=new FileHelper(fil);
+	
+	public PriceAndCityDataImpl() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public ArrayList<PriceAndCityPO> getAll() {
 		// TODO Auto-generated method stub
@@ -40,12 +34,18 @@ public class PriceAndCityDataImpl extends UnicastRemoteObject  implements PriceA
 
 	public ArrayList<String> getCity() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> re = this.Help.read();
+		ArrayList<CityPO> ar =  new ArrayList<CityPO>();	
+		for (String string : re) {
+			ar.add(new CityPO(string));
+		}
+		return re;
+		
 	}
 
 	public boolean addCity(String city) {
 		// TODO Auto-generated method stub
-		return false;
+		return this.Help.add(city);
 	}
 
 	public boolean addPriceAndCity(PriceAndCityPO p) {

@@ -1,33 +1,27 @@
 package org.module.server.data.managementdata;
 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.managementdataservice.WarahouseDataService;
 import org.module.common.po.WarehousePO;
 import org.module.server.data.FileHelper;
 
-public class WarahouseDataImpl  extends UnicastRemoteObject implements WarahouseDataService {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8672640557938555302L;
-
-
-
-	public WarahouseDataImpl() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+public class WarahouseDataImpl implements WarahouseDataService {
 
 	String path="file"+File.separator+"Warahouse.txt";
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
 	
+	String Path="file"+File.separator+"line.txt";
+	File fil=new File(Path);
 	
+	public WarahouseDataImpl() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public ArrayList<WarehousePO> getAll() {
 		// TODO Auto-generated method stub
@@ -60,7 +54,7 @@ public class WarahouseDataImpl  extends UnicastRemoteObject implements Warahouse
 		// TODO Auto-generated method stub
 		ArrayList<WarehousePO> re = this.getAll();
 		for (int i = 0; i < re.size(); i++) {
-			if(re.get(i).getNumber().equals(newone.getNumber())){
+			if(re.get(i).getNumber().equals(old.getNumber())){
 				re.remove(i);
 				re.add(newone);
 				return help.rewrite(re);
@@ -69,9 +63,23 @@ public class WarahouseDataImpl  extends UnicastRemoteObject implements Warahouse
 		return false;
 	}
 
-	public void setBorderline(double a) {
+	public void setBorderline(int a) {
 		// TODO Auto-generated method stub
-
+		try {
+			FileWriter fw = new FileWriter(fil);
+			BufferedWriter br = new BufferedWriter(fw);
+			br.write(a);			
+			br.flush();
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public double getBorderline(){
+		FileHelper Help=new FileHelper(fil);
+		double a=Double.parseDouble(Help.read().get(0));
+		return a;
 	}
 
 }

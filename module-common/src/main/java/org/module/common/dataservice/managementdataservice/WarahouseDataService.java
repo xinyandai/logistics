@@ -1,4 +1,4 @@
-package org.module.common.dataservice.managementdataservice;
+﻿package org.module.common.dataservice.managementdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -46,6 +46,6 @@ public interface WarahouseDataService  extends Remote{
 	 * 后置：更新
 	 * @param a
 	 */
-	public void setBorderline(double a)throws RemoteException; 
+	public void setBorderline(int a)throws RemoteException; 
 }
 
