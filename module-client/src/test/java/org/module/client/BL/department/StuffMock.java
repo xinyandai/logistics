@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.department.StuffService;
 import org.module.client.vo.StuffVO;
+import org.module.common.dataservice.MyList;
 
 public class StuffMock implements StuffService {
 	
@@ -24,7 +25,7 @@ public class StuffMock implements StuffService {
 		return false;
 	}
 
-	public boolean delete(ArrayList<String> ald) {
+	public boolean delete(MyList<String> ald) {
 		return true;
 	}
 

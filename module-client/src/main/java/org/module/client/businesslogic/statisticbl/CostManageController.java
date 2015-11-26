@@ -23,11 +23,11 @@ public class CostManageController implements CostManageBLService {
 		return cost.creatCostList(new CostListVO(date,money,people,account,entry,note));
 	}
 
-	public ArrayList<CostListVO> showAll(double startTime, double endTime) {
+	public ArrayList<CostListVO> showAll(long startTime, long endTime) {
 		// TODO Auto-generated method stub
 		return cost.getAllCostList(startTime, endTime);
 	}
 
-	
+
 
 }

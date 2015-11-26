@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.departmentBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.DepartmentVO;
+import org.module.common.dataservice.MyList;
 
 /**
  * 20151024
@@ -44,7 +45,7 @@ public interface DepartmentManageBLService {
 	 * @param ald
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> ids);
+	public boolean delete(MyList<String> ids);
 	/**
 	 * 前置：选择机构进行修改，输入修改后的新信息
 	 * 后置：更新机构信息

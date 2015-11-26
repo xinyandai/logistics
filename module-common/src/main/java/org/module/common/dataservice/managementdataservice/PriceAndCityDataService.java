@@ -4,6 +4,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
+import org.module.common.po.CityPO;
 import org.module.common.po.PriceAndCityPO;
 
 
@@ -20,14 +22,14 @@ public interface PriceAndCityDataService  extends Remote{
 	 * 后置：返回所有城市
 	 * @return
 	 */
-	public ArrayList<String>  getCity()throws RemoteException;
+	public MyList<CityPO>  getCity()throws RemoteException;
 	/**
 	 * 前置：该PO不存在于数据库中
 	 * 后置：添加一个PO
 	 * @param p
 	 * @return
 	 */
-	public boolean addCity(String city)throws RemoteException;
+	public boolean addCity(CityPO po)throws RemoteException;
 	/**
 	 * 前置：该PO不存在于数据库中
 	 * 后置：添加一个PO
@@ -43,5 +45,6 @@ public interface PriceAndCityDataService  extends Remote{
 	 */
 	public boolean update(PriceAndCityPO p)throws RemoteException;
 	
-	
+	public boolean deleteCity(String id)throws RemoteException;
+	public boolean modifyCity(CityPO po)throws RemoteException;
 }

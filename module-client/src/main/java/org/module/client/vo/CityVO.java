@@ -1,13 +1,7 @@
-package org.module.common.po;
+package org.module.client.vo;
 
-import java.io.Serializable;
+public class CityVO {
 
-public class CityPO implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6875467710816720203L;
 	private String name;
 	private String id;
 	private String split=":%:%:";
@@ -15,13 +9,13 @@ public class CityPO implements Serializable{
 	public String toString(){
 		return this.name+this.split+this.id;
 	}
-	public CityPO(String str){
+	public CityVO(String str){
 		super();
 		String[] strs=str.split(this.split);
 		this.name=strs[0];
 		this.id=strs[1];
 	}
-	public CityPO(String name, String id) {
+	public CityVO(String name, String id) {
 		super();
 		this.name = name;
 		this.id = id;

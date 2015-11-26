@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
 import org.module.client.vo.StuffVO;
+import org.module.common.dataservice.MyList;
 
 
 
@@ -44,6 +45,13 @@ public class StuffManageBLService_stub implements StuffManageBLService{
 			System.out.println("can change");
 			return true;
 		}
+		return false;
+	}
+
+
+
+	public boolean delete(MyList<String> ids) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 	

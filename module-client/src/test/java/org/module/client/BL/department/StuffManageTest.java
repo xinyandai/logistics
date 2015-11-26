@@ -1,11 +1,10 @@
 package org.module.client.BL.department;
 
-import java.util.ArrayList;
-
 import junit.framework.TestCase;
 
 import org.module.client.businesslogic.deparmentbl.StuffManageController;
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
+import org.module.common.dataservice.MyList;
 
 public class StuffManageTest extends TestCase {
 	private StuffManageBLService stuff;
@@ -31,7 +30,7 @@ public class StuffManageTest extends TestCase {
 	}
 
 	public void testDeleteArrayListOfString() {
-		assert(stuff.delete(new ArrayList<String>() ));
+		assert(stuff.delete(new MyList<String>() ));
 	}
 
 	public void testModify() {

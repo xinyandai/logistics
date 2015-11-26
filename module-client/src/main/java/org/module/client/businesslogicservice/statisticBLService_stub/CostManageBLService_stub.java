@@ -24,5 +24,10 @@ public class CostManageBLService_stub implements CostManageBLService{
 		return false;
 	}
 
+	public ArrayList<CostListVO> showAll(long startTime, long endTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

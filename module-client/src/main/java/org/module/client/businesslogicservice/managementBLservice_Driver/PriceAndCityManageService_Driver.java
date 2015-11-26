@@ -6,7 +6,7 @@ import org.module.client.businesslogicservice.managementBLservice.PriceAndCityMa
 public class PriceAndCityManageService_Driver {
 	public void drive(PriceAndCityManageBLService priceAndCityManageService){
 //		PriceAndCityVO d=new PriceAndCityVO("A","B","distance","price");
-		boolean add=priceAndCityManageService.addCity("nanjing");
+		boolean add=priceAndCityManageService.addCity("nanjing","025");
 		boolean set=priceAndCityManageService.setDiretionAndPrice("A","B","distance","price");
 		//boolean modify=priceAndCityManageService.setPrice(d,10);
 		if(add)

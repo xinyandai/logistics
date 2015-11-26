@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.management;
 import java.util.ArrayList;
 
 import org.module.client.vo.CarVO;
+import org.module.common.dataservice.MyList;
 
 public interface CarsManageService {
 	/**
@@ -43,7 +44,7 @@ public interface CarsManageService {
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> id);
+	public boolean delete(MyList<String> id);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

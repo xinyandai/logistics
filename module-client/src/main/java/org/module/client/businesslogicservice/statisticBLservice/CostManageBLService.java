@@ -27,6 +27,6 @@ public interface CostManageBLService {
 	 * 依赖：CostDataService.getAll 返回所有付款单
 	 * @return
 	 */
-	public ArrayList<CostListVO> showAll(double startTime,double endTime);
+	public ArrayList<CostListVO> showAll(long startTime,long endTime);
 	
 }

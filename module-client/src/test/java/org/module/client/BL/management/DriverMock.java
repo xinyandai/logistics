@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.management.DriversManageService;
 import org.module.client.vo.DriverVO;
+import org.module.common.dataservice.MyList;
 
 public class DriverMock implements DriversManageService{
 
@@ -30,7 +31,7 @@ public class DriverMock implements DriversManageService{
 		return (id.equals("10086"));
 	}
 
-	public boolean delete(ArrayList<String> al) {
+	public boolean delete(MyList<String> al) {
 		// TODO Auto-generated method stub
 		return true;
 	}

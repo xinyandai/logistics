@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.managementdataservice.DriversDataService;
 import org.module.common.po.DriverPO;
 import org.module.server.data.FileHelper;
@@ -28,10 +29,10 @@ public class DriversDataImpl extends UnicastRemoteObject  implements DriversData
 	
 	
 
-	public ArrayList<DriverPO> getAll() {
+	public MyList<DriverPO> getAll() {
 		// TODO Auto-generated method stub
 		ArrayList<String> re = this.help.read();
-		ArrayList<DriverPO> ar =  new ArrayList<DriverPO>();	
+		MyList<DriverPO> ar =  new MyList<DriverPO>();	
 		for (String string : re) {
 			ar.add(new DriverPO(string));
 		}
@@ -43,22 +44,22 @@ public class DriversDataImpl extends UnicastRemoteObject  implements DriversData
 		return this.help.add(cp);
 	}
 
-	public boolean delete(DriverPO cp) {
+	public boolean delete(String id) {
 		// TODO Auto-generated method stub
 		ArrayList<DriverPO> pos = this.getAll();
 		 for (int i = 0; i < pos.size(); i++) {
-			 if(pos.get(i).getId().equals(cp.getId())){
+			 if(pos.get(i).getId().equals(id)){
 				 pos.remove(i);
-					return help.rewrite(pos);
+				 return help.rewrite(pos);
 			 }
 		 }
 		return false;
 	}
 
-	public boolean delete(ArrayList<DriverPO> al) {
+	public boolean delete(MyList<String> al) {
 		// TODO Auto-generated method stub
 		boolean re = true;
-		for (DriverPO DriverPO : al) {
+		for (String DriverPO : al) {
 			if(!this.delete(DriverPO)) {
 				re = false;
 			}

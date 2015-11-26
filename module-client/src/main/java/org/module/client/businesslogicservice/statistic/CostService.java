@@ -19,5 +19,5 @@ public interface CostService {
 	 * 依赖：CostDataService.getAll 返回所有付款单
 	 * @return
 	 */
-	public ArrayList<CostListVO> getAllCostList(double startTime,double endTime);
+	public ArrayList<CostListVO> getAllCostList(long startTime,long endTime);
 }

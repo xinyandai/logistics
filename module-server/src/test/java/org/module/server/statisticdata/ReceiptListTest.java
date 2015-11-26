@@ -22,8 +22,8 @@ public class ReceiptListTest extends TestCase {
 		    receiptTest.add(po);
 		    
 		    ReceiptPO po2 = receiptTest.getAll().get(0);
-		    po = new ReceiptPO("2015-10-31", "29.6", "141250023", "1234567890", State.UNPASS);
-		    receiptTest.delete("1234567890");
+		    //po = new ReceiptPO("2015-10-31", "29.6", "141250023", "1234567890", State.UNPASS);
+		  //  receiptTest.delete("1234567890");
 		assert(po.toString().equals(po2.toString()));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

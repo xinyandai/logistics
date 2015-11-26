@@ -13,15 +13,7 @@ public interface LogisticsService {
 	 * @return
 	 */
 	public LogisticsVO showState(String id);
-	/**
-	 * 前置：输入物流单号并修改物流信息
-	 * 后置：更新
-	 * 依赖：LogisticsDataService.update 修改一个PO
-	 * @param id
-	 * @param state
-	 * @return
-	 */
-	public boolean setState(String id,String state);
+	
 	/**
 	 * 前置：输入物流单号并修改物流信息
 	 * 后置：更新

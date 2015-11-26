@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.managementBLservice.CarsManageBLService;
 import org.module.client.vo.CarVO;
+import org.module.common.dataservice.MyList;
 import org.module.common.po.CarPO;
 
 
@@ -50,6 +51,11 @@ public class CarsManageService_stub implements CarsManageBLService{
 	}
 
 	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean delete(MyList<String> id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

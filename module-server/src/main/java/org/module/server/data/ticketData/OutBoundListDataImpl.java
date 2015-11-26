@@ -29,6 +29,7 @@ public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoun
 		ArrayList<String> strs = this.helper.read();
 		for (String string : strs) {
 			re.add(new OutBoundListPO(string));
+//			System.out.println("getone");
 		}
 		return re;
 	}
@@ -53,7 +54,8 @@ public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoun
 	public MyList<OutBoundListPO> getByState(State s) {
 		MyList<OutBoundListPO> all = this.getAll();
 		MyList<OutBoundListPO> re = new MyList<OutBoundListPO>();
-		for (int i = 0; i < re.size(); i++) {
+		for (int i = 0; i < all.size(); i++) {
+//			System.out.println(all.get(i).getState().toString()+"\n"+s.toString());
 			if(all.get(i).getState().toString().equals(s.toString())){
 				re.add(all.get(i));
 			}

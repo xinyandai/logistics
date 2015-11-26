@@ -1,11 +1,10 @@
 package org.module.client.BL.management;
 
-import java.util.ArrayList;
+import junit.framework.TestCase;
 
 import org.module.client.businesslogic.managementbl.CarsManageController;
 import org.module.client.businesslogicservice.managementBLservice.CarsManageBLService;
-
-import junit.framework.TestCase;
+import org.module.common.dataservice.MyList;
 
 public class CarManageTest extends TestCase {
 	private CarsManageBLService car;
@@ -32,7 +31,7 @@ public class CarManageTest extends TestCase {
 	}
 
 	public void testDeleteArrayListOfString() {
-		assert(car.delete(new ArrayList<String>() ));
+		assert(car.delete(new MyList<String>() ));
 	}
 	
 	public void testFuzzySearch() {

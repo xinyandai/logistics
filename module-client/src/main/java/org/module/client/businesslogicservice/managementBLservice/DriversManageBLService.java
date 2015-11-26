@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.managementBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.DriverVO;
+import org.module.common.dataservice.MyList;
 
 
 public interface DriversManageBLService {
@@ -47,7 +48,7 @@ public interface DriversManageBLService {
 	 * @param al
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> id);
+	public boolean delete(MyList<String> id);
 	/**
 	 * 前置：输入关键字模糊查找
 	 * 后置：返回查找结果

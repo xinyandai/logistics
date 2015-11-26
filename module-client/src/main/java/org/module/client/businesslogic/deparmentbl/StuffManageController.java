@@ -6,6 +6,7 @@ import org.module.client.businesslogicservice.department.CalculateSalaryService;
 import org.module.client.businesslogicservice.department.StuffService;
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
 import org.module.client.vo.StuffVO;
+import org.module.common.dataservice.MyList;
 
 public class StuffManageController implements StuffManageBLService{
 
@@ -43,7 +44,7 @@ public class StuffManageController implements StuffManageBLService{
 		return stuff.delete(identity);
 	}
 
-	public boolean delete(ArrayList<String> ids) {
+	public boolean delete(MyList<String> ids) {
 		// TODO Auto-generated method stub
 		return stuff.delete(ids);
 	}

@@ -16,18 +16,12 @@ public class LogisticsController implements LogisticsBLService{
 	}
 	
 	public LogisticsVO showState(String id) {
-		// TODO Auto-generated method stub
 		return Logistics.showState(id);
 	}
-
-	public boolean setState(String id, String state) {
-		// TODO Auto-generated method stub
-		return Logistics.setState(id, state);
-	}
+	
 
 	public boolean setState(String origin, String estination, String location,
 			String orderId, String[] historyLocation,String[] historyTime) {
-		// TODO Auto-generated method stub
 		return Logistics.setState(new LogisticsVO(origin, estination, location,
 				orderId, historyLocation,historyTime,false));
 	}

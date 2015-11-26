@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class PriceAndCityPO {
+import java.io.Serializable;
+
+public class PriceAndCityPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3025148882274004535L;
 	private String cityA;
 	private String cityB;
 	private String distance;

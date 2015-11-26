@@ -2,6 +2,8 @@ package org.module.client.businesslogicservice.managementBLservice;
 
 import java.util.ArrayList;
 
+import org.module.client.vo.CityVO;
+
 
 public interface PriceAndCityManageBLService {
 
@@ -11,7 +13,7 @@ public interface PriceAndCityManageBLService {
 	 * 依赖：PriceAndCityDataService.getAll 返回所有PO
 	 * @return
 	 */
-	public ArrayList<String> showAllCity();
+	public ArrayList<CityVO> showAllCity();
 
 	/**
 	 * 前置：选择增加城市，并输入
@@ -19,9 +21,9 @@ public interface PriceAndCityManageBLService {
 	 * 依赖：PriceAndCityDataService.getAll 返回所有PO
 	 * @return
 	 */
-	public boolean addCity(String city);
-	public boolean deleteCity(String city);
-	public boolean modifyCity(String city);
+	public boolean addCity(String city,String id);
+	public boolean deleteCity(String id);
+	public boolean modifyCity(String city,String id);
 	
 	/**
 	 * 前置：选择城市，并输入城市间距离

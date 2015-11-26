@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class DriverPO {
+import java.io.Serializable;
+
+public class DriverPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 518479856023930155L;
 	private String id;
 	private String name;
 	private String birthday;

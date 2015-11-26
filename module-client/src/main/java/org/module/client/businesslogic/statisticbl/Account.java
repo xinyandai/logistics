@@ -12,7 +12,7 @@ import org.module.common.po.AccountPO;
 
 public class Account implements AccountService {
 
-	AccountDataService data;
+	private AccountDataService data;
 	public Account() {
 		this.data = new RmiClient().get(AccountDataService.class);
 	}

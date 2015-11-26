@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.managementdataservice.CarDataService;
 import org.module.common.po.CarPO;
 import org.module.server.data.FileHelper;
@@ -24,10 +25,10 @@ public class CarDataImpl extends UnicastRemoteObject implements CarDataService {
 	FileHelper help=new FileHelper(file);
 	
 
-	public ArrayList<CarPO> getAll() {
+	public MyList<CarPO> getAll() {
 		// TODO Auto-generated method stub
 		ArrayList<String> re = this.help.read();
-		ArrayList<CarPO> ar =  new ArrayList<CarPO>();	
+		MyList<CarPO> ar =  new MyList<CarPO>();	
 		for (String string : re) {
 			ar.add(new CarPO(string));
 		}
@@ -39,11 +40,11 @@ public class CarDataImpl extends UnicastRemoteObject implements CarDataService {
 		return this.help.add(cp);
 	}
 
-	public boolean delete(CarPO cp) {
+	public boolean delete(String cp) {
 		// TODO Auto-generated method stub
 		ArrayList<CarPO> pos = this.getAll();
 		 for (int i = 0; i < pos.size(); i++) {
-			 if(pos.get(i).getId().equals(cp.getId())){
+			 if(pos.get(i).getId().equals(cp)){
 				 pos.remove(i);					
 				 return help.rewrite(pos);
 			 }
@@ -51,20 +52,20 @@ public class CarDataImpl extends UnicastRemoteObject implements CarDataService {
 		return false;
 	}
 
-	public boolean delete(ArrayList<CarPO> al) {
+	public boolean delete(MyList<String> al) {
 		// TODO Auto-generated method stub
 		boolean re = true;
-		for (CarPO CarPO : al) {
-			if(!this.delete(CarPO)) {
+		for (String s : al) {
+			if(!this.delete(s)) {
 				re = false;
 			}
 		}
 		return re;
 	}
 
-	public boolean update(CarPO old, CarPO newone) {
+	public boolean update(CarPO newone) {
 		// TODO Auto-generated method stub
-		this.delete(old);
+		this.delete(newone.getId());
 		this.add(newone);
 		return false;
 	}

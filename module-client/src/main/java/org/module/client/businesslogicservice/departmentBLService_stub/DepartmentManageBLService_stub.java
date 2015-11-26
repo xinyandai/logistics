@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.vo.DepartmentVO;
+import org.module.common.dataservice.MyList;
 
 
 public class DepartmentManageBLService_stub implements DepartmentManageBLService {
@@ -34,7 +35,7 @@ public class DepartmentManageBLService_stub implements DepartmentManageBLService
 		System.out.println("delete successfully");		return false;
 	}
 
-	public boolean delete(ArrayList<String> ids) {
+	public boolean delete(MyList<String> ids) {
 		System.out.println("delete successfully");
 		return false;
 	}

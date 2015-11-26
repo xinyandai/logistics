@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.management.DriversManageService;
 import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
 import org.module.client.vo.DriverVO;
+import org.module.common.dataservice.MyList;
 
 public class DriversManageController implements DriversManageBLService{
 	
@@ -40,7 +41,7 @@ public class DriversManageController implements DriversManageBLService{
 		return driver.delete(id);
 	}
 
-	public boolean delete(ArrayList<String> id) {
+	public boolean delete(MyList<String> id) {
 		// TODO Auto-generated method stub
 		return driver.delete(id);
 	}

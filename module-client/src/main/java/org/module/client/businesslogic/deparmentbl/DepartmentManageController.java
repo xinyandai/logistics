@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.department.DepartmentService;
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.vo.DepartmentVO;
+import org.module.common.dataservice.MyList;
 
 public class DepartmentManageController implements DepartmentManageBLService{
 	private DepartmentService department ;
@@ -33,7 +34,7 @@ public class DepartmentManageController implements DepartmentManageBLService{
 		return department.delete(identity);
 	}
 
-	public boolean delete(ArrayList<String> ids) {
+	public boolean delete(MyList<String> ids) {
 		// TODO Auto-generated method stub
 		return department.delete(ids);
 	}

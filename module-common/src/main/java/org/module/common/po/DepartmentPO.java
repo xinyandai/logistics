@@ -23,6 +23,7 @@ public class DepartmentPO implements Serializable{
 		this.name = name;
 		this.category = category;
 		this.location = location;
+		this.identity = identity;
 	}
 	public DepartmentPO(String[] s) {
 		

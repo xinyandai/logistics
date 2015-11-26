@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.management.CarsManageService;
 import org.module.client.vo.CarVO;
+import org.module.common.dataservice.MyList;
 
 public class CarMock implements CarsManageService{
 
@@ -29,7 +30,7 @@ public class CarMock implements CarsManageService{
 		return (id.equals("10086"));
 	}
 
-	public boolean delete(ArrayList<String> id) {
+	public boolean delete(MyList<String> id) {
 		// TODO Auto-generated method stub
 		return true;
 	}

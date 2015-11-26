@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
 import org.module.client.vo.DriverVO;
+import org.module.common.dataservice.MyList;
 
 
 public class DriversManageService_stub implements DriversManageBLService{
@@ -38,6 +39,11 @@ public class DriversManageService_stub implements DriversManageBLService{
 	public ArrayList<DriverVO> fuzzySearch(String s) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public boolean delete(MyList<String> id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

@@ -2,8 +2,8 @@ package org.module.common.dataservice.managementdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.DriverPO;
 
 
@@ -14,7 +14,7 @@ public interface DriversDataService  extends Remote{
 	 * @param s
 	 * @return
 	 */
-	public ArrayList<DriverPO> getAll()throws RemoteException;
+	public MyList<DriverPO> getAll()throws RemoteException;
 	/**
 	 * 前置：数据库中不存在相同ID值的PO
 	 * 后置：增加一个PO
@@ -28,13 +28,13 @@ public interface DriversDataService  extends Remote{
 	 * @param cp
 	 * @return
 	 */
-	public boolean delete(DriverPO cp)throws RemoteException;
+	public boolean delete(String id)throws RemoteException;
 	/**
 	 * 前置：数据库中存在这些PO
 	 * 后置：删除这些PO
 	 * @return
 	 */
-	public boolean delete(ArrayList<DriverPO> al)throws RemoteException;
+	public boolean delete(MyList<String> al)throws RemoteException;
 	/**
 	 * 前置：数据库中存在原PO
 	 * 后置：修改该PO

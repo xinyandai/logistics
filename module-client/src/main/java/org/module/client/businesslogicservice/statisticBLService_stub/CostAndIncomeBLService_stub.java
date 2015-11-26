@@ -22,6 +22,21 @@ public class CostAndIncomeBLService_stub implements CostAndIncomeBLService{
 		return this.getIncome(startTime, endTime)-this.getCost(startTime, endTime);
 	}
 
+	public double getCost(long startTime, long endTime) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public double getIncome(long startTime, long endTime) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public double getPureIncome(long startTime, long endTime) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 
 }

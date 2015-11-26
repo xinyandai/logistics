@@ -27,7 +27,7 @@ public class CostAndIncomeController implements CostAndIncomeBLService {
 	}
 
 
-	public double getCost(double startTime, double endTime) {
+	public double getCost(long startTime, long endTime) {
 		ArrayList<CostListVO> list = cost.getAllCostList(startTime, endTime);
 		double re = 0.0;
 		for (CostListVO v : list) {
@@ -37,7 +37,7 @@ public class CostAndIncomeController implements CostAndIncomeBLService {
 		return re;
 	}
 
-	public double getIncome(double startTime, double endTime) {
+	public double getIncome(long startTime, long endTime) {
 		ArrayList<ReceiptVO> list = income.getAllIncomeList("所有", startTime, endTime);
 		double re = 0.0;
 		for (ReceiptVO v : list) {
@@ -47,7 +47,7 @@ public class CostAndIncomeController implements CostAndIncomeBLService {
 		return re;
 	}
 
-	public double getPureIncome(double startTime, double endTime) {
+	public double getPureIncome(long startTime, long endTime) {
 		
 		return this.incomeMoney-this.costMoney;
 	}

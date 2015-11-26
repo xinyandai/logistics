@@ -20,7 +20,10 @@ public class OutBoundListTest extends TestCase {
 			OutBoundListPO po = new OutBoundListPO("courier","date","destination",
 					"car","tansportListId","通过");
 			data.add(po);
-			assert(data.getByState(State.PASS).get(0).equals(po.toString()));
+			OutBoundListPO s = data.getByState(State.PASS).get(0);
+			boolean a =s.toString().equals(po.toString());
+			
+			assert(a);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

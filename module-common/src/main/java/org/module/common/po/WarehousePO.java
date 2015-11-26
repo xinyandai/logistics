@@ -1,6 +1,12 @@
 package org.module.common.po;
 
-public class WarehousePO {
+import java.io.Serializable;
+
+public class WarehousePO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1576332939454745445L;
 	private String number;
 	private String qu;
 	private String pai;

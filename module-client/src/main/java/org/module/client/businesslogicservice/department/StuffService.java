@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.department;
 import java.util.ArrayList;
 
 import org.module.client.vo.StuffVO;
+import org.module.common.dataservice.MyList;
 
 public interface StuffService {
 	/**
@@ -36,7 +37,7 @@ public interface StuffService {
 	 * @param ald
 	 * @return
 	 */
-	public boolean delete(ArrayList<String> ald);
+	public boolean delete(MyList<String> ald);
 	/**
 	 * 前置：选择修改员工，输入员工新信息
 	 * 后置：更新员工信息
