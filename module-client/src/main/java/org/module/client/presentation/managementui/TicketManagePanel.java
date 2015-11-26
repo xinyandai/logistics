@@ -34,25 +34,25 @@ public class TicketManagePanel extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton button = new JButton("审批通过");
+		JButton pass = new JButton("审批通过");
 		
-		JButton button_1 = new JButton("审批不通过");
+		JButton unpass = new JButton("审批不通过");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 					.addContainerGap(116, Short.MAX_VALUE)
-					.addComponent(button)
+					.addComponent(pass)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_1))
+					.addComponent(unpass))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_1)
-						.addComponent(button)))
+						.addComponent(unpass)
+						.addComponent(pass)))
 		);
 		panel.setLayout(gl_panel);
 		

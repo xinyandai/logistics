@@ -16,7 +16,7 @@ public class LogisticsPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
+	private JTextField ID;
 
 	/**
 	 * Create the panel.
@@ -32,10 +32,10 @@ public class LogisticsPanel extends JPanel {
 		lblInputId.setFont(new Font("楷体", Font.PLAIN, 15));
 		panel.add(lblInputId);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("楷体", Font.PLAIN, 13));
-		panel.add(textField);
-		textField.setColumns(10);
+		ID = new JTextField();
+		ID.setFont(new Font("楷体", Font.PLAIN, 13));
+		panel.add(ID);
+		ID.setColumns(10);
 		
 		JButton btnSearch = new JButton("搜索");
 		panel.add(btnSearch);
@@ -55,17 +55,17 @@ public class LogisticsPanel extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("收件地址");
 		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 15));
 		
-		JLabel lblNewLabel_2 = new JLabel("状态");
-		lblNewLabel_2.setFont(new Font("楷体", Font.PLAIN, 12));
+		JLabel state = new JLabel("状态");
+		state.setFont(new Font("楷体", Font.PLAIN, 12));
 		
-		JLabel lblNewLabel_3 = new JLabel("地址");
-		lblNewLabel_3.setFont(new Font("楷体", Font.PLAIN, 12));
+		JLabel senderLocation = new JLabel("地址");
+		senderLocation.setFont(new Font("楷体", Font.PLAIN, 12));
 		
-		JLabel label_2 = new JLabel("地址");
-		label_2.setFont(new Font("楷体", Font.PLAIN, 12));
+		JLabel receiptLocation = new JLabel("地址");
+		receiptLocation.setFont(new Font("楷体", Font.PLAIN, 12));
 		
-		JLabel lblNewLabel_4 = new JLabel("地址");
-		lblNewLabel_4.setFont(new Font("楷体", Font.PLAIN, 12));
+		JLabel currentLocation = new JLabel("地址");
+		currentLocation.setFont(new Font("楷体", Font.PLAIN, 12));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -77,19 +77,19 @@ public class LogisticsPanel extends JPanel {
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(label, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 							.addGap(3)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
+							.addComponent(state, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(lblNewLabel)
 							.addGap(10)
-							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+							.addComponent(senderLocation, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(lblNewLabel_1)
 							.addGap(10)
-							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+							.addComponent(receiptLocation, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(label_1)
 							.addGap(10)
-							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+							.addComponent(currentLocation, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)))
 		);
 		gl_panel_1.setVerticalGroup(
@@ -98,19 +98,19 @@ public class LogisticsPanel extends JPanel {
 					.addGap(10)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
+						.addComponent(state))
 					.addGap(10)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3))
+						.addComponent(senderLocation))
 					.addGap(10)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2))
+						.addComponent(receiptLocation))
 					.addGap(10)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_4))
+						.addComponent(currentLocation))
 					.addGap(10)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
 		);

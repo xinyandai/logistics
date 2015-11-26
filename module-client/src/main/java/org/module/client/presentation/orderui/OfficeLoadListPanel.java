@@ -16,13 +16,13 @@ public class OfficeLoadListPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 5708449962639760332L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField location;
+	private JTextField office;
+	private JTextField carID;
+	private JTextField monitor;
+	private JTextField TrucksNumber;
 	private JTextField timerPicker;
-	private JTextField textField_6;
+	private JTextField supercargo;
 	private JTextField priceText;
 
 	/**
@@ -51,29 +51,29 @@ public class OfficeLoadListPanel extends JPanel {
 		JLabel label_5 = new JLabel("目的地");
 		label_5.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		JComboBox<String> city = new JComboBox<String>();
 		
-		textField = new JTextField();
-		textField.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField.setColumns(10);
+		location = new JTextField();
+		location.setFont(new Font("楷体", Font.PLAIN, 15));
+		location.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		office = new JTextField();
+		office.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		carID = new JTextField();
+		carID.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		monitor = new JTextField();
+		monitor.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		TrucksNumber = new JTextField();
+		TrucksNumber.setColumns(10);
 		
 		timerPicker = new JTextField();
 		timerPicker.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
+		supercargo = new JTextField();
+		supercargo.setColumns(10);
 		
 		priceText = new JTextField();
 		priceText.setEditable(false);
@@ -87,22 +87,22 @@ public class OfficeLoadListPanel extends JPanel {
 		button.setFont(new Font("楷体", Font.PLAIN, 18));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(34)
+					.addContainerGap(34, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+							.addComponent(office, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
 							.addGap(49)
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
+							.addComponent(TrucksNumber, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(label, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+							.addComponent(carID, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
 							.addGap(49)
 							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
@@ -110,25 +110,23 @@ public class OfficeLoadListPanel extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+							.addComponent(monitor, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
 							.addGap(49)
 							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
+							.addComponent(supercargo, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
+							.addComponent(city, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(location, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(priceText, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(203, Short.MAX_VALUE)
-					.addComponent(button)
-					.addGap(178))
+							.addComponent(priceText, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
+						.addComponent(button))
+					.addGap(30))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -136,26 +134,27 @@ public class OfficeLoadListPanel extends JPanel {
 					.addGap(29)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(office, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_2)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(TrucksNumber, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(8)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(carID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_3)
 						.addComponent(timerPicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(8)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_1)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(monitor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_4)
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(supercargo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(8)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_5)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(city, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(location, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
 					.addGap(10)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_6)

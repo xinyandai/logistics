@@ -12,8 +12,8 @@ public class Price extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField distance;
+	private JTextField carriage;
 
 	String[] city = {"南京","北京","上海","广州"};
 	/**
@@ -32,13 +32,13 @@ public class Price extends JPanel {
 		label_1.setBounds(55, 82, 81, 21);
 		add(label_1);
 		
-		JComboBox<String> comboBox = new JComboBox<String>(city);
-		comboBox.setBounds(165, 41, 61, 21);
-		add(comboBox);
+		JComboBox<String> cityA = new JComboBox<String>(city);
+		cityA.setBounds(165, 41, 61, 21);
+		add(cityA);
 		
-		JComboBox<String> comboBox_1 = new JComboBox<String>(city);
-		comboBox_1.setBounds(165, 82, 61, 21);
-		add(comboBox_1);
+		JComboBox<String> cityB = new JComboBox<String>(city);
+		cityB.setBounds(165, 82, 61, 21);
+		add(cityB);
 		
 		JLabel label_2 = new JLabel("输入距离");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 18));
@@ -50,22 +50,22 @@ public class Price extends JPanel {
 		label_3.setBounds(55, 159, 81, 21);
 		add(label_3);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("楷体", Font.PLAIN, 18));
-		textField.setBounds(165, 126, 66, 21);
-		add(textField);
-		textField.setColumns(10);
+		distance = new JTextField();
+		distance.setFont(new Font("楷体", Font.PLAIN, 18));
+		distance.setBounds(165, 126, 66, 21);
+		add(distance);
+		distance.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("楷体", Font.PLAIN, 18));
-		textField_1.setColumns(10);
-		textField_1.setBounds(165, 161, 66, 21);
-		add(textField_1);
+		carriage = new JTextField();
+		carriage.setFont(new Font("楷体", Font.PLAIN, 18));
+		carriage.setColumns(10);
+		carriage.setBounds(165, 161, 66, 21);
+		add(carriage);
 		
-		JButton button = new JButton("确定");
-		button.setFont(new Font("楷体", Font.PLAIN, 18));
-		button.setBounds(182, 226, 93, 23);
-		add(button);
+		JButton determine = new JButton("确定");
+		determine.setFont(new Font("楷体", Font.PLAIN, 18));
+		determine.setBounds(182, 226, 93, 23);
+		add(determine);
 
 	}
 }

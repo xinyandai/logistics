@@ -39,10 +39,10 @@ public class ReceiveListPanel extends JPanel {
 		jp4jl1.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(jp4jl1);
 		
-		final JTextField jp4jf1 = new JTextField();
-		jp4jf1.setBounds(105, 25, 100, 30);
-		jp4jf1.setFont(new Font("楷体", Font.PLAIN, 16));
-		add(jp4jf1);
+		final JTextField ID = new JTextField();
+		ID.setBounds(105, 25, 100, 30);
+		ID.setFont(new Font("楷体", Font.PLAIN, 16));
+		add(ID);
 		
 		
 		final JLabel jp4jl4 = new JLabel("收件人");
@@ -51,10 +51,10 @@ public class ReceiveListPanel extends JPanel {
 		jp4jl4.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(jp4jl4);
 		
-		final JTextField jp4jf4 = new JTextField();
-		jp4jf4.setBounds(105, 75, 100, 30);
-		jp4jf4.setFont(new Font("楷体", Font.PLAIN, 16));
-		add(jp4jf4);
+		final JTextField recipient = new JTextField();
+		recipient.setBounds(105, 75, 100, 30);
+		recipient.setFont(new Font("楷体", Font.PLAIN, 16));
+		add(recipient);
 			
 		
 		final JLabel jp4jl7 = new JLabel("收件日期");
@@ -70,10 +70,10 @@ public class ReceiveListPanel extends JPanel {
 		add(timePicker1);
 		
 		
-		final JButton jp4jb1 = new JButton("确定");
-		jp4jb1.setBounds(170, 185, 80, 32);
-		jp4jb1.setFont(new Font("楷体", Font.PLAIN, 18));
-		add(jp4jb1);
+		final JButton determine = new JButton("确定");
+		determine.setBounds(170, 185, 80, 32);
+		determine.setFont(new Font("楷体", Font.PLAIN, 18));
+		add(determine);
 		
 		/*final JButton jp4jb2 = new JButton("取消");
 		jp4jb2.setBounds(310, 273, 80, 32);

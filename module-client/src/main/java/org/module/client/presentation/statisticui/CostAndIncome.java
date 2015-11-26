@@ -15,9 +15,10 @@ public class CostAndIncome extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	//利润
+	private JTextField profits;
+	private JTextField income;
+	private JTextField spending;
 	private JXDatePicker endTimePicker;
 	private JXDatePicker startTimePicker;
 
@@ -52,29 +53,29 @@ public class CostAndIncome extends JPanel {
 		label_3.setBounds(49, 168, 78, 15);
 		add(label_3);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setFont(new Font("楷体", Font.PLAIN, 16));
-		textField.setText("0元");
-		textField.setBounds(145, 167, 95, 21);
-		add(textField);
-		textField.setColumns(10);
+		profits = new JTextField();
+		profits.setEditable(false);
+		profits.setFont(new Font("楷体", Font.PLAIN, 16));
+		profits.setText("0元");
+		profits.setBounds(145, 167, 95, 21);
+		add(profits);
+		profits.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setText("0元");
-		textField_1.setFont(new Font("楷体", Font.PLAIN, 16));
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(145, 130, 95, 21);
-		add(textField_1);
+		income = new JTextField();
+		income.setText("0元");
+		income.setFont(new Font("楷体", Font.PLAIN, 16));
+		income.setEditable(false);
+		income.setColumns(10);
+		income.setBounds(145, 130, 95, 21);
+		add(income);
 		
-		textField_2 = new JTextField();
-		textField_2.setText("0元");
-		textField_2.setFont(new Font("楷体", Font.PLAIN, 16));
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(145, 93, 95, 21);
-		add(textField_2);
+		spending = new JTextField();
+		spending.setText("0元");
+		spending.setFont(new Font("楷体", Font.PLAIN, 16));
+		spending.setEditable(false);
+		spending.setColumns(10);
+		spending.setBounds(145, 93, 95, 21);
+		add(spending);
 		
 		endTimePicker = new JXDatePicker();
 		endTimePicker.setDate(new Date());

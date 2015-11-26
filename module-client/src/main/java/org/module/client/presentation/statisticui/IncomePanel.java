@@ -43,34 +43,34 @@ public class IncomePanel extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton button = new JButton("增");
+		JButton add = new JButton("增");
 		
-		JButton button_1 = new JButton("删");
+		JButton delete = new JButton("删");
 		
-		JButton button_2 = new JButton("改");
+		JButton modify = new JButton("改");
 		
-		JButton button_3 = new JButton("同步");
+		JButton update = new JButton("同步");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 					.addContainerGap(150, Short.MAX_VALUE)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_3))
+					.addComponent(update))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_3)
-						.addComponent(button_2)
-						.addComponent(button_1)
-						.addComponent(button))
+						.addComponent(update)
+						.addComponent(modify)
+						.addComponent(delete)
+						.addComponent(add))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -102,7 +102,7 @@ public class IncomePanel extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("营业厅");
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		JComboBox<String> office = new JComboBox<String>();
 		
 		JLabel label = new JLabel("选择起止时间");
 		
@@ -123,7 +123,7 @@ public class IncomePanel extends JPanel {
 					.addContainerGap()
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(office, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(41)
 					.addComponent(label)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -138,7 +138,7 @@ public class IncomePanel extends JPanel {
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(office, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label)
 						.addComponent(startTimePicker)
 						.addComponent(endTimePicker)))

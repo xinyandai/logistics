@@ -16,9 +16,9 @@ public class OfficeArriveListPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -2668521440436318303L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField officeID;
+	private JTextField transportID;
+	private JTextField time;
 	private JTextField textField_3;
 
 	/**
@@ -33,11 +33,11 @@ public class OfficeArriveListPanel extends JPanel {
 		JLabel label_1 = new JLabel("中转单号");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		officeID = new JTextField();
+		officeID.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		transportID = new JTextField();
+		transportID.setColumns(10);
 		
 		JLabel label_2 = new JLabel("到达时间");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 16));
@@ -45,8 +45,8 @@ public class OfficeArriveListPanel extends JPanel {
 		JLabel label_3 = new JLabel("到达状态");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		time = new JTextField();
+		time.setColumns(10);
 		JComboBox<String> comboBox = new JComboBox<String>(arriveState);
 		
 		JLabel label_4 = new JLabel("出发地");
@@ -55,8 +55,8 @@ public class OfficeArriveListPanel extends JPanel {
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		
-		JButton button = new JButton("确定");
-		button.setFont(new Font("楷体", Font.PLAIN, 18));
+		JButton determine = new JButton("确定");
+		determine.setFont(new Font("楷体", Font.PLAIN, 18));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -67,19 +67,19 @@ public class OfficeArriveListPanel extends JPanel {
 					.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(197)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(label)
 							.addGap(18)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
+							.addComponent(officeID, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
 						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addGap(42)
 							.addComponent(label_1)
 							.addGap(16)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(transportID, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(50)
@@ -90,7 +90,7 @@ public class OfficeArriveListPanel extends JPanel {
 							.addGap(34)
 							.addComponent(label_2)
 							.addGap(10)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))))
+							.addComponent(time, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -101,17 +101,17 @@ public class OfficeArriveListPanel extends JPanel {
 							.addGap(4)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(officeID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(label, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(time, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(9)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(transportID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(3)
 							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
@@ -123,7 +123,7 @@ public class OfficeArriveListPanel extends JPanel {
 							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(46)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 		);
 		setLayout(groupLayout);
 

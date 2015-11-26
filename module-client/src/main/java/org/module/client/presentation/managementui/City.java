@@ -34,35 +34,35 @@ public class City extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton button = new JButton("增");
+		JButton add = new JButton("增");
 		
-		JButton button_1 = new JButton("删");
+		JButton delete = new JButton("删");
 		
-		JButton button_2 = new JButton("改");
+		JButton modify = new JButton("改");
 		
-		JButton button_3 = new JButton("同步");
+		JButton update = new JButton("同步");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(58)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_3)
+					.addComponent(update)
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button)
-						.addComponent(button_1)
-						.addComponent(button_2)
-						.addComponent(button_3))
+						.addComponent(add)
+						.addComponent(delete)
+						.addComponent(modify)
+						.addComponent(update))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

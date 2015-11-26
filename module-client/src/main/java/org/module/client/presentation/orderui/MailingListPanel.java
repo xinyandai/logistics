@@ -60,7 +60,7 @@ public class MailingListPanel extends JPanel {
 	
 	private int time;
 	private int money;
-	private JButton button;
+	private JButton save;
 	private JLabel massage;
 	
 	/**
@@ -78,10 +78,10 @@ public class MailingListPanel extends JPanel {
 		JPanel panel_1 = new JPanel();
 		add(panel_1, BorderLayout.SOUTH);
 		
-		button = new JButton("保存");
+		save = new JButton("保存");
 		
-		button.setFont(new Font("楷体", Font.PLAIN, 15));
-		panel_1.add(button);
+		save.setFont(new Font("楷体", Font.PLAIN, 15));
+		panel_1.add(save);
 		
 		timeAndMoney = new JLabel("报价：0元       预计： 0 天后送达");
 		timeAndMoney.setFont(new Font("楷体", Font.PLAIN, 15));
@@ -457,7 +457,7 @@ public class MailingListPanel extends JPanel {
 		});
 		
 		
-		button.addActionListener(new ActionListener(){
+		save.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				 buttonHandler();

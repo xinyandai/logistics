@@ -16,14 +16,14 @@ public class GoDownEntryListPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -425238968522959318L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField warehouse;
+	private JTextField CourierID;
+	private JTextField qu;
+	private JTextField jia;
 	private JXDatePicker timePicker;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField destination;
+	private JTextField pai;
+	private JTextField wei;
 
 	/**
 	 * Create the panel.
@@ -71,29 +71,29 @@ public class GoDownEntryListPanel extends JPanel {
 		label_7.setBounds(236, 138, 73, 21);
 		add(label_7);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField.setBounds(109, 46, 66, 21);
-		add(textField);
-		textField.setColumns(10);
+		warehouse = new JTextField();
+		warehouse.setFont(new Font("楷体", Font.PLAIN, 15));
+		warehouse.setBounds(109, 46, 66, 21);
+		add(warehouse);
+		warehouse.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField_1.setColumns(10);
-		textField_1.setBounds(109, 77, 66, 21);
-		add(textField_1);
+		CourierID = new JTextField();
+		CourierID.setFont(new Font("楷体", Font.PLAIN, 15));
+		CourierID.setColumns(10);
+		CourierID.setBounds(109, 77, 66, 21);
+		add(CourierID);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField_2.setColumns(10);
-		textField_2.setBounds(109, 108, 66, 21);
-		add(textField_2);
+		qu = new JTextField();
+		qu.setFont(new Font("楷体", Font.PLAIN, 15));
+		qu.setColumns(10);
+		qu.setBounds(109, 108, 66, 21);
+		add(qu);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField_3.setColumns(10);
-		textField_3.setBounds(109, 140, 66, 21);
-		add(textField_3);
+		jia = new JTextField();
+		jia.setFont(new Font("楷体", Font.PLAIN, 15));
+		jia.setColumns(10);
+		jia.setBounds(109, 140, 66, 21);
+		add(jia);
 		
 		timePicker = new JXDatePicker();
 		//timePicker = new JTextField();
@@ -103,28 +103,28 @@ public class GoDownEntryListPanel extends JPanel {
 		timePicker.setDate(new Date());
 		add(timePicker);
 		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField_5.setColumns(10);
-		textField_5.setBounds(324, 77, 66, 21);
-		add(textField_5);
+		destination = new JTextField();
+		destination.setFont(new Font("楷体", Font.PLAIN, 15));
+		destination.setColumns(10);
+		destination.setBounds(324, 77, 66, 21);
+		add(destination);
 		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField_6.setColumns(10);
-		textField_6.setBounds(324, 108, 66, 21);
-		add(textField_6);
+		pai = new JTextField();
+		pai.setFont(new Font("楷体", Font.PLAIN, 15));
+		pai.setColumns(10);
+		pai.setBounds(324, 108, 66, 21);
+		add(pai);
 		
-		textField_7 = new JTextField();
-		textField_7.setFont(new Font("楷体", Font.PLAIN, 15));
-		textField_7.setColumns(10);
-		textField_7.setBounds(324, 140, 66, 21);
-		add(textField_7);
+		wei = new JTextField();
+		wei.setFont(new Font("楷体", Font.PLAIN, 15));
+		wei.setColumns(10);
+		wei.setBounds(324, 140, 66, 21);
+		add(wei);
 		
-		JButton button = new JButton("确定");
-		button.setFont(new Font("楷体", Font.PLAIN, 18));
-		button.setBounds(175, 184, 93, 23);
-		add(button);
+		JButton determine = new JButton("确定");
+		determine.setFont(new Font("楷体", Font.PLAIN, 18));
+		determine.setBounds(175, 184, 93, 23);
+		add(determine);
 
 	}
 

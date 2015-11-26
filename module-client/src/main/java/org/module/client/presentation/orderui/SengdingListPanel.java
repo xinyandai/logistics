@@ -19,8 +19,8 @@ public class SengdingListPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField ID;
+	private JTextField sender;
 
 	/**
 	 * Create the panel.
@@ -30,22 +30,22 @@ public class SengdingListPanel extends JPanel {
 		JLabel lblNewLabel = new JLabel("派件单号");
 		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 18));
 		
-		textField = new JTextField();
-		textField.setFont(new Font("楷体", Font.PLAIN, 18));
-		textField.setColumns(10);
+		ID = new JTextField();
+		ID.setFont(new Font("楷体", Font.PLAIN, 18));
+		ID.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("派件员");
 		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 18));
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("楷体", Font.PLAIN, 18));
-		textField_1.setColumns(10);
+		sender = new JTextField();
+		sender.setFont(new Font("楷体", Font.PLAIN, 18));
+		sender.setColumns(10);
 		
 		JLabel label = new JLabel("收件日期");
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
 		
-		JButton button = new JButton("确定");
-		button.setFont(new Font("楷体", Font.PLAIN, 20));
+		JButton determine = new JButton("确定");
+		determine.setFont(new Font("楷体", Font.PLAIN, 20));
 		
 		final JXDatePicker TimeChose = new JXDatePicker();
 		TimeChose.setDate(new Date());
@@ -62,18 +62,18 @@ public class SengdingListPanel extends JPanel {
 							.addComponent(TimeChose))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(167)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+							.addComponent(determine, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(30)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 									.addGap(10)
-									.addComponent(textField))
+									.addComponent(ID))
 								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 									.addComponent(lblNewLabel_1)
 									.addGap(33)
-									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)))))
+									.addComponent(sender, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)))))
 					.addGap(190))
 		);
 		groupLayout.setVerticalGroup(
@@ -85,7 +85,7 @@ public class SengdingListPanel extends JPanel {
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(23)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(ID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -97,9 +97,9 @@ public class SengdingListPanel extends JPanel {
 								.addComponent(TimeChose)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(23)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(sender, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
 					.addGap(98)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 		);
 		setLayout(groupLayout);
 

@@ -12,8 +12,8 @@ public class WarmPercentage extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField borderline;
+	private JTextField currentLine;
 
 	/**
 	 * Create the panel.
@@ -27,36 +27,36 @@ public class WarmPercentage extends JPanel {
 		add(label);
 		
 //		JComboBox comboBox = new JComboBox();
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setFont(new Font("楷体", Font.PLAIN, 18));
-		comboBox.setBounds(157, 40, 66, 21);
-		add(comboBox);
+		JComboBox<String> qu = new JComboBox<String>();
+		qu.setFont(new Font("楷体", Font.PLAIN, 18));
+		qu.setBounds(157, 40, 66, 21);
+		add(qu);
 		
 		JLabel label_1 = new JLabel("警戒比例");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 15));
 		label_1.setBounds(69, 104, 67, 21);
 		add(label_1);
 		
-		textField = new JTextField();
-		textField.setBounds(157, 104, 66, 21);
-		add(textField);
-		textField.setColumns(10);
+		borderline = new JTextField();
+		borderline.setBounds(157, 104, 66, 21);
+		add(borderline);
+		borderline.setColumns(10);
 		
-		JButton button = new JButton("保存");
-		button.setFont(new Font("楷体", Font.PLAIN, 18));
-		button.setBounds(178, 157, 93, 23);
-		add(button);
+		JButton save = new JButton("保存");
+		save.setFont(new Font("楷体", Font.PLAIN, 18));
+		save.setBounds(178, 157, 93, 23);
+		add(save);
 		
 		JLabel label_2 = new JLabel("当前比例");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 15));
 		label_2.setBounds(69, 73, 67, 21);
 		add(label_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(157, 71, 66, 21);
-		add(textField_1);
+		currentLine = new JTextField();
+		currentLine.setEditable(false);
+		currentLine.setColumns(10);
+		currentLine.setBounds(157, 71, 66, 21);
+		add(currentLine);
 
 	}
 
