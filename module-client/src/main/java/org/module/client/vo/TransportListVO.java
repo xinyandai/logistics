@@ -1,4 +1,7 @@
 package org.module.client.vo;
+
+import org.module.common.po.State;
+
 /**
  * 业务员每天根据库存的状况，录入中转单（包括飞机、铁路、公路）。
  * 中转单前缀为：
@@ -33,9 +36,10 @@ public class TransportListVO {
 		private String Supervision;
 		private String[] shippingId;
 		private String price;
+		private State state;
 		public TransportListVO(String car, String loadingDate, String transId,
 				String carId, String origin, String arrival, String counterId,
-				String supervision, String[] shippingId, String price) {
+				String supervision, String[] shippingId, String price,String state) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
@@ -47,6 +51,7 @@ public class TransportListVO {
 			Supervision = supervision;
 			this.shippingId = shippingId;
 			this.price = price;
+			this.state = State.getInstance(state);
 		}
 		public String getCar() {
 			return car;
@@ -107,6 +112,12 @@ public class TransportListVO {
 		}
 		public void setPrice(String price) {
 			this.price = price;
+		}
+		public State getState() {
+			return state;
+		}
+		public void setState(State state) {
+			this.state = state;
 		}
 		
 }

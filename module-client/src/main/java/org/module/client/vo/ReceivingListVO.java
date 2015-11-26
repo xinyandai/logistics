@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.State;
+
 public class ReceivingListVO {
 
 	//�ռ���
@@ -9,6 +11,7 @@ public class ReceivingListVO {
 		private String origin;
 		private String estination;
 		private String orderId;
+		private State state;
 		public String getDate() {
 			return date;
 		}
@@ -40,13 +43,20 @@ public class ReceivingListVO {
 			this.orderId = orderId;
 		}
 		public ReceivingListVO(String date, String location, String origin,
-				String estination, String orderId) {
+				String estination, String orderId,String state) {
 			super();
 			this.date = date;
 			this.location = location;
 			this.origin = origin;
 			this.estination = estination;
 			this.orderId = orderId;
+			this.state = State.getInstance(state);
+		}
+		public State getState() {
+			return state;
+		}
+		public void setState(State state) {
+			this.state = state;
 		}
 		
 

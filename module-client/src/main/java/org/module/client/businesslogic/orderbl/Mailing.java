@@ -6,6 +6,7 @@ import org.module.client.businesslogicservice.order.CalculateDriverCostService;
 import org.module.client.businesslogicservice.order.CalculateTimeService;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.vo.MailingListVO;
+import org.module.common.po.State;
 
 public class Mailing  implements MailingService{
 

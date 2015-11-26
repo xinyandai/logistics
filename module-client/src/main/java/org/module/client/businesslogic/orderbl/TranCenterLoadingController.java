@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.businesslogicservice.orderBLservice.TranCenterLoadingBLService;
 import org.module.client.vo.TranCenterLoadingListVO;
+import org.module.common.po.State;
 
 public class TranCenterLoadingController implements TranCenterLoadingBLService {
 
@@ -24,16 +25,16 @@ public class TranCenterLoadingController implements TranCenterLoadingBLService {
 
 	public boolean creat(String loadingDate, String transportListId,
 			String arrival, String carId, String supervision, String escort,
-			String[] shippingId, String price) {
+			String[] shippingId, String price,String state) {
 		// TODO Auto-generated method stub
 		return this.loading.creat(new TranCenterLoadingListVO( loadingDate,  transportListId,
 			 arrival,  carId,  supervision,  escort,
-			 shippingId,  price));
+			 shippingId,  price,state));
 	}
 
-	public ArrayList<TranCenterLoadingListVO> getAll() {
+	public ArrayList<TranCenterLoadingListVO> getAll(State s) {
 		// TODO Auto-generated method stub
-		return this.loading.getAll();
+		return this.loading.getAll(s);
 	}
 
 	public double calculateDriverCost(String origin, String target) {

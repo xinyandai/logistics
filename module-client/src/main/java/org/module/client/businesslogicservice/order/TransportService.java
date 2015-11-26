@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.TransportListVO;
+import org.module.common.po.State;
 
 
 /**
@@ -25,7 +26,7 @@ public interface TransportService {
 	 * 依赖：TransportListService.getAll 返回所有中转单PO
 	 * @return
 	 */
-	public ArrayList<TransportListVO> getAll();
+	public ArrayList<TransportListVO> getAll(State s);
 	
 	
 }

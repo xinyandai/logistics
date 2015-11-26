@@ -8,7 +8,7 @@ public class TransportBLService_Driver {
 		String[] s = { "shippingId"};
 		boolean result=transportBLService.creat("car", "loadingDate","transId",
 				"carId", "origin",  "arrival", "counterId",
-				"supervision", s,"price");
+				"supervision", s,"price","SUBMITTED");
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

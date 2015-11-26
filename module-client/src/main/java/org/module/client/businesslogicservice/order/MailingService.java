@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.MailingListVO;
+import org.module.common.po.State;
 
 /**
  * 寄件

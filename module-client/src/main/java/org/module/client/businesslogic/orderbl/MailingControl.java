@@ -1,8 +1,11 @@
 package org.module.client.businesslogic.orderbl;
 
+import java.util.ArrayList;
+
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.vo.MailingListVO;
+import org.module.common.po.State;
 
 
 public class MailingControl implements MailingBLService{
@@ -66,6 +69,10 @@ public class MailingControl implements MailingBLService{
 		
 		return mailingBLImpl.calculatePrice(senderCity, receiveCity, counts, 
 				weight, volume, costOfDecoration, type);
+	}
+	public ArrayList<MailingListVO> getAll() {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 

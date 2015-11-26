@@ -6,6 +6,7 @@ import org.module.client.businesslogicservice.logistics.LogisticsService;
 import org.module.client.businesslogicservice.order.ReceiveService;
 import org.module.client.businesslogicservice.orderBLservice.ReceiveBLService;
 import org.module.client.vo.ReceivingListVO;
+import org.module.common.po.State;
 
 public class ReceivingController implements ReceiveBLService {
 	private ReceiveService receive;
@@ -22,15 +23,15 @@ public class ReceivingController implements ReceiveBLService {
 	}
 
 	public boolean creat(String date, String location, String origin,
-			String estination, String orderId) {
+			String estination, String orderId,String state) {
 		
 		return this.receive.creat(new ReceivingListVO( date,  location,  origin,
-			 estination,  orderId));
+			 estination,  orderId,state));
 	}
 
-	public ArrayList<ReceivingListVO> getAll() {
+	public ArrayList<ReceivingListVO> getAll(State s) {
 		// TODO Auto-generated method stub
-		return this.receive.getAll();
+		return this.receive.getAll(s);
 	}
 
 }

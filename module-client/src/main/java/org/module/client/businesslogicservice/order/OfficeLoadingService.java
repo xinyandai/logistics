@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.OfficeLoadingListVO;
+import org.module.common.po.State;
 
 
 public interface OfficeLoadingService {
@@ -20,6 +21,6 @@ public interface OfficeLoadingService {
 	 * 依赖：OfficeLoadingListService.getAll 返回所有的营业厅装车单PO
 	 * @return
 	 */
-	public ArrayList<OfficeLoadingListVO> getAll();
+	public ArrayList<OfficeLoadingListVO> getAll(State s);
 	
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TransportService;
 import org.module.client.vo.TransportListVO;
+import org.module.common.po.State;
 
 public class TransportMock implements TransportService {
 
@@ -16,7 +17,7 @@ public class TransportMock implements TransportService {
 		return false;
 	}
 
-	public ArrayList<TransportListVO> getAll() {
+	public ArrayList<TransportListVO> getAll(State s) {
 		// TODO Auto-generated method stub
 		return null;
 	}

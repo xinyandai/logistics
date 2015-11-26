@@ -2,7 +2,8 @@ package org.module.client.businesslogicservice.order;
 
 import java.util.ArrayList;
 
-import org.module.client.vo.SendingListVO;
+import org.module.client.vo.TranCenterArrivalListVO;
+import org.module.common.po.State;
 
 
 /**
@@ -18,13 +19,13 @@ public interface TranCenterArrivalService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(SendingListVO o);
+	public boolean creat(TranCenterArrivalListVO o);
 	/**
 	 * 前置：选择查看所有中转中心接收单
 	 * 后置：显示所有收件单
 	 * 依赖：TranCenterArrivalListService.getAll 返回所有的接受单PO
 	 * @return
 	 */
-	public ArrayList<SendingListVO> getAll();
+	public ArrayList<TranCenterArrivalListVO> getAll(State s);
 	
 }

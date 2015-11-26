@@ -5,18 +5,18 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import org.module.common.dataservice.MyList;
-import org.module.common.dataservice.orderdataservice.TranCenterLoadingService;
+import org.module.common.dataservice.orderdataservice.TranCenterLoadingListService;
 import org.module.common.po.State;
 import org.module.common.po.TranCenterLoadingListPO;
 import org.module.server.data.FileHelper;
 
-public class TranCenterLoadingImpl extends UnicastRemoteObject  implements TranCenterLoadingService{
+public class TranCenterLoadingListImpl extends UnicastRemoteObject  implements TranCenterLoadingListService{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
-	public TranCenterLoadingImpl() throws RemoteException{
+	public TranCenterLoadingListImpl() throws RemoteException{
 		help = new FileHelper(new File("file"+File.separator+"TranCenterLoadingList.txt"));
 	}
 	public MyList<TranCenterLoadingListPO> getAll()  throws RemoteException{

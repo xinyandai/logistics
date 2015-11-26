@@ -9,7 +9,7 @@ import org.module.common.po.TranCenterLoadingListPO;
 
 
 
-public interface TranCenterLoadingService extends Remote{
+public interface TranCenterLoadingListService extends Remote{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO

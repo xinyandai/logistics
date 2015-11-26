@@ -8,7 +8,7 @@ public class TranCenterLoadingService_Driver {
 		String[] s = { "shippingId"};
 		boolean result=tranCenterLoadingService.creat( "loadingDate", "transportListId",
 				"arrival", "carId", "supervision","escort",
-				s, "price");
+				s, "price","SUBMITTED");
 		if(result)
 			System.out.println("creat suuccessfully!");
 	}

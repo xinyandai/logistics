@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.orderBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.TranCenterLoadingListVO;
+import org.module.common.po.State;
 
 
 public interface TranCenterLoadingBLService {
@@ -16,14 +17,14 @@ public interface TranCenterLoadingBLService {
 	 */
 	public boolean creat(String loadingDate, String transportListId,
 			String arrival, String carId, String supervision, String escort,
-			String[] shippingId, String price);
+			String[] shippingId, String price,String state);
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有装车单
 	 * 依赖：TranCenterLoadingService.getAll返回所有装车单PO
 	 * @return
 	 */
-	public ArrayList<TranCenterLoadingListVO> getAll();
+	public ArrayList<TranCenterLoadingListVO> getAll(State s);
 
 	/**
 	 * 计算运费

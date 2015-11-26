@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.SendingListVO;
+import org.module.common.po.State;
 
 
 /**
@@ -26,6 +27,6 @@ public interface SendingService {
 	 * 依赖：SendingListService.getAll 返回所有派件单 PO
 	 * @return
 	 */
-	public ArrayList<SendingListVO> getAll();
+	public ArrayList<SendingListVO> getAll(State s);
 	
 }

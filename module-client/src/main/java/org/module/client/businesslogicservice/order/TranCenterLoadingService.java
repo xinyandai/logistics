@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.TranCenterLoadingListVO;
+import org.module.common.po.State;
 
 
 public interface TranCenterLoadingService {
@@ -21,6 +22,6 @@ public interface TranCenterLoadingService {
 	 * 依赖：TranCenterLoadingService.getAll返回所有装车单PO
 	 * @return
 	 */
-	public ArrayList<TranCenterLoadingListVO> getAll();
+	public ArrayList<TranCenterLoadingListVO> getAll(State s);
 	
 }

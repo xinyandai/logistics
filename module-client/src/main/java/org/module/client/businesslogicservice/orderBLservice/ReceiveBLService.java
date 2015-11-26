@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.orderBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.ReceivingListVO;
+import org.module.common.po.State;
 
 
 /**
@@ -19,13 +20,13 @@ public interface ReceiveBLService {
 	 * @return
 	 */
 	public boolean creat(String date, String location, String origin,
-			String estination, String orderId);
+			String estination, String orderId,String state);
 	/**
 	 * 前置：选择查看所有收件单
 	 * 后置：显示所有收件单
 	 * 依赖：ReceiveListService.getAll 返回所有的收件单PO
 	 * @return
 	 */
-	public ArrayList<ReceivingListVO> getAll();
+	public ArrayList<ReceivingListVO> getAll(State s);
 	
 }

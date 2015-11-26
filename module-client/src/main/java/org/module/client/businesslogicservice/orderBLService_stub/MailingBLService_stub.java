@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.vo.MailingListVO;
+import org.module.common.po.State;
 
 
 public class MailingBLService_stub implements MailingBLService{

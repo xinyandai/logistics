@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.SendingService;
 import org.module.client.businesslogicservice.orderBLservice.SendingBLService;
 import org.module.client.vo.SendingListVO;
+import org.module.common.po.State;
+
 
 public class SendingController implements SendingBLService {
 
@@ -23,13 +25,13 @@ public class SendingController implements SendingBLService {
 //		this.logistics = logistics;
 	}
 
-	public boolean creat(String date, String shippingId, String sendMember) {
-		return this.sending.creat(new SendingListVO( date,  shippingId,  sendMember));
+	public boolean creat(String date, String shippingId, String sendMember,String state) {
+		return this.sending.creat(new SendingListVO( date,  shippingId,  sendMember,state));
 	}
 
-	public ArrayList<SendingListVO> getAll() {
+	public ArrayList<SendingListVO> getAll(State s) {
 		// TODO Auto-generated method stub
-		return this.sending.getAll();
+		return this.sending.getAll(s);
 	}
 
 }

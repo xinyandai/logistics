@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.OfficeArrivalService;
 import org.module.client.businesslogicservice.orderBLservice.OfficeArrivalBLService;
 import org.module.client.vo.OfficeArrivalListVO;
+import org.module.common.po.State;
 
 public class OfficeArrivalController implements OfficeArrivalBLService{
 	private OfficeArrivalService  officeArrival;
@@ -21,15 +22,15 @@ public class OfficeArrivalController implements OfficeArrivalBLService{
 	}
 
 	public boolean creat(String officeid, String date, String transportListId,
-			String origin, String state) {
+			String origin,String stateOfGoods, String state) {
 		
 		return officeArrival.creat(new OfficeArrivalListVO( officeid,  date,  transportListId,
-			 origin,  state));
+			 origin, stateOfGoods, state));
 	}
 
-	public ArrayList<OfficeArrivalListVO> getAll() {
+	public ArrayList<OfficeArrivalListVO> getAll(State s) {
 		
-		return officeArrival.getAll();
+		return officeArrival.getAll(s);
 	}
 
 }

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TranCenterArrivalService;
 import org.module.client.businesslogicservice.orderBLservice.TranCenterArrivalBLService;
-import org.module.client.vo.SendingListVO;
+import org.module.client.vo.TranCenterArrivalListVO;
+import org.module.common.po.State;
 
 public class TranCenterArrivalController implements TranCenterArrivalBLService {
 
@@ -22,13 +23,16 @@ public class TranCenterArrivalController implements TranCenterArrivalBLService {
 //		this.logistics = logistics;
 	}
 
-	public boolean creat(String date, String shippingId, String sendMember) {
-		return this.arrival.creat(new SendingListVO( date,  shippingId,  sendMember));
+	public boolean creat(String transId, String date,
+			String transportListId, String origin, String stateOfGoods,String state) {
+		return this.arrival.creat(new TranCenterArrivalListVO(transId,date,transportListId,origin,stateOfGoods,state));
 	}
 
-	public ArrayList<SendingListVO> getAll() {
+	public ArrayList<TranCenterArrivalListVO> getAll(State s) {
 		// TODO Auto-generated method stub
-		return this.arrival.getAll();
+		return this.arrival.getAll(s);
 	}
+
+	
 
 }

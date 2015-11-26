@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.State;
+
 /**
  * 当营业厅送达货物到中转中心之后业务员生成中转中心到达单。
  * 中转中心到达单前缀：
@@ -18,15 +20,17 @@ public class TranCenterArrivalListVO {
 	private String date;
 	private String transportListId;
 	private String origin;
-	private String state;
+	private String stateOfGoods;
+	private State state;
 	public TranCenterArrivalListVO(String transId, String date,
-			String transportListId, String origin, String state) {
+			String transportListId, String origin, String stateOfGoods,String state) {
 		super();
 		this.transId = transId;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
-		this.state = state;
+		this.stateOfGoods = stateOfGoods;
+		this.state = State.getInstance(state);
 	}
 	public String getTransId() {
 		return transId;
@@ -52,11 +56,17 @@ public class TranCenterArrivalListVO {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	public String getState() {
+	public State getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(State state) {
 		this.state = state;
+	}
+	public String getStateOfGoods() {
+		return stateOfGoods;
+	}
+	public void setStateOfGoods(String stateOfGoods) {
+		this.stateOfGoods = stateOfGoods;
 	}
 
 }

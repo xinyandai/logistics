@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.OfficeLoadingService;
 import org.module.client.businesslogicservice.orderBLservice.OfficeLoadingBLService;
 import org.module.client.vo.OfficeLoadingListVO;
+import org.module.common.po.State;
 
 public class OfficeLoadingController implements OfficeLoadingBLService {
 	private OfficeLoadingService officeLoading;
@@ -22,16 +23,16 @@ public class OfficeLoadingController implements OfficeLoadingBLService {
 
 	public boolean creat(String loadingDate, String officeId, String trucksId,
 			String arrival, String carId, String supervision, String escort,
-			String[] shippingId, String price) {
+			String[] shippingId, String price,String state) {
 		
 		return this.officeLoading.creat(new OfficeLoadingListVO( loadingDate,  officeId,  trucksId,
 			 arrival,  carId,  supervision,  escort,
-			 shippingId,  price));
+			 shippingId,  price,state));
 	}
 
-	public ArrayList<OfficeLoadingListVO> getAll() {
+	public ArrayList<OfficeLoadingListVO> getAll(State s) {
 		
-		return this.officeLoading.getAll();
+		return this.officeLoading.getAll(s);
 	}
 
 	public double calculateDriverCost(String origin, String target) {

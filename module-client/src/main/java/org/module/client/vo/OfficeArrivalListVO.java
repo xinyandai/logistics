@@ -12,6 +12,7 @@ public class OfficeArrivalListVO {
 	private String date;
 	private String transportListId;
 	private String origin;
+	private String stateOfGoods;
 	private String state;
 	public String getOfficeid() {
 		return officeid;
@@ -44,13 +45,20 @@ public class OfficeArrivalListVO {
 		this.state = state;
 	}
 	public OfficeArrivalListVO(String officeid, String date,
-			String transportListId, String origin, String state) {
+			String transportListId, String origin, String stateOfGoods,String state) {
 		super();
 		this.officeid = officeid;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
+		this.stateOfGoods = stateOfGoods;
 		this.state = state;
+	}
+	public String getStateOfGoods() {
+		return stateOfGoods;
+	}
+	public void setStateOfGoods(String stateOfGoods) {
+		this.stateOfGoods = stateOfGoods;
 	}
 	
 }

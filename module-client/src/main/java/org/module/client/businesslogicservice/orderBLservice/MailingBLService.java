@@ -1,5 +1,10 @@
 package org.module.client.businesslogicservice.orderBLservice;
 
+import java.util.ArrayList;
+
+import org.module.client.vo.MailingListVO;
+import org.module.common.po.State;
+
 
 
 /**
@@ -63,6 +68,6 @@ public interface MailingBLService {
 	 * 依赖：MailingListService.getAll 返回所有PO
 	 * @return
 	 */
-	//public ArrayList<MailingListVO> getAll();
+	public ArrayList<MailingListVO> getAll();
 	
 }

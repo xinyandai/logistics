@@ -1,24 +1,48 @@
 package org.module.client.businesslogic.orderbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.OfficeArrivalService;
+import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.OfficeArrivalListVO;
+import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
+import org.module.common.po.OfficeArrivalListPO;
+import org.module.common.po.State;
 
 public class OfficeArrival implements OfficeArrivalService {
 
+	private OfficeArrivalListService officeArrivalData ;
 	public OfficeArrival() {
-		// TODO Auto-generated constructor stub
+		officeArrivalData = new RmiClient().get(OfficeArrivalListService.class);
 	}
 
 	public boolean creat(OfficeArrivalListVO o) {
-		// TODO Auto-generated method stub
-		return false;
+		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getOfficeid(),o.getDate(),
+				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState().toString()); 
+		try {
+			return officeArrivalData.add(newPO);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		}
 	}
 
-	public ArrayList<OfficeArrivalListVO> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<OfficeArrivalListVO> getAll(State s) {
+		ArrayList<OfficeArrivalListVO> newVOs = new ArrayList<OfficeArrivalListVO>();
+		ArrayList<OfficeArrivalListPO> POs = null;
+		try {
+			 POs = officeArrivalData.getByState(s);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		for(int i =0;i<POs.size();i++){
+			newVOs.add(new OfficeArrivalListVO(POs.get(i).getOfficeid(),POs.get(i).getDate(),
+					POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState().toString()));
+		}
+		return newVOs;
 	}
 
 }

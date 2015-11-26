@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.State;
+
 /**
  * 快递员揽件之后，营业厅人员负责分拣和装车，并在系统中录入装车单                    
  * 营业厅装车单前缀：       001
@@ -30,9 +32,10 @@ public class OfficeLoadingListVO {
 	 */
 	private String[] shippingIds;
 	private String price;
+	private State state;
 	public OfficeLoadingListVO(String loadingDate, String officeId,
 			String trucksId, String arrival, String carId, String supervision,
-			String escort, String[] shippingId, String price) {
+			String escort, String[] shippingId, String price,String state) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
@@ -43,6 +46,7 @@ public class OfficeLoadingListVO {
 		this.escort = escort;
 		this.shippingIds = shippingId;
 		this.price = price;
+		this.setState(State.getInstance(state));
 	}
 	public String getLoadingDate() {
 		return LoadingDate;
@@ -97,6 +101,12 @@ public class OfficeLoadingListVO {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
 	}
 
 }

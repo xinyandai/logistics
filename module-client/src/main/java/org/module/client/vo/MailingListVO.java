@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.State;
+
 
 public class MailingListVO {
 
@@ -22,6 +24,7 @@ public class MailingListVO {
 	private String costOfDecoration;
 	private String type;
 	private String id;
+	//private State state;
 	public String getSenderName() {
 		return senderName;
 	}
@@ -163,5 +166,12 @@ public class MailingListVO {
 		this.costOfDecoration = costOfDecoration;
 		this.type = type;
 		this.id = id;
+		//this.state = State.getInstance(state);
 	}
+	/*public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
+	}*/
 }

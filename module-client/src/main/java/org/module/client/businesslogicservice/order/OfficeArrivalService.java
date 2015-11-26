@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.OfficeArrivalListVO;
+import org.module.common.po.State;
 
 
 /**
@@ -25,6 +26,6 @@ public interface OfficeArrivalService {
 	 * 依赖：OfficeArrivalListService.getAll 返回所有的营业厅接受单
 	 * @return
 	 */
-	public ArrayList<OfficeArrivalListVO> getAll();
+	public ArrayList<OfficeArrivalListVO> getAll(State s);
 	
 }

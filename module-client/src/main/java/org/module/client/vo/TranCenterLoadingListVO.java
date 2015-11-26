@@ -1,4 +1,7 @@
 package org.module.client.vo;
+
+import org.module.common.po.State;
+
 /**
  * 快递到达把目的地中转中心，同样生成中转中心到达单，再次进行入库管理。
  * 中转中心业务员负责出库、装车，并在系统中录入装车单
@@ -23,9 +26,10 @@ public class TranCenterLoadingListVO {
 	private String escort;
 	private String[] shippingId;
 	private String price;
+	private State state;
 	public TranCenterLoadingListVO(String loadingDate, String transportListId,
 			String arrival, String carId, String supervision, String escort,
-			String[] shippingId, String price) {
+			String[] shippingId, String price,String state) {
 		super();
 		LoadingDate = loadingDate;
 		this.transportListId = transportListId;
@@ -35,6 +39,7 @@ public class TranCenterLoadingListVO {
 		this.escort = escort;
 		this.shippingId = shippingId;
 		this.price = price;
+		this.setState(State.getInstance(state));
 	}
 	public String getLoadingDate() {
 		return LoadingDate;
@@ -83,6 +88,12 @@ public class TranCenterLoadingListVO {
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
 	}
 
 }

@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.ReceivingListVO;
+import org.module.common.po.State;
 
 
 /**
@@ -25,6 +26,6 @@ public interface ReceiveService {
 	 * 依赖：ReceiveListService.getAll 返回所有的收件单PO
 	 * @return
 	 */
-	public ArrayList<ReceivingListVO> getAll();
+	public ArrayList<ReceivingListVO> getAll(State s);
 	
 }
