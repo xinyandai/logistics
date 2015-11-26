@@ -26,18 +26,18 @@ public class WarehouseManageController implements WarehouseManageBLService{
 		return warehouse.getAll();
 	}
 
-	public WarehouseVO modify(String id, String qu, String pai, String jia,
+	public boolean modify(String id, String qu, String pai, String jia,
 			String wei) {
 		// TODO Auto-generated method stub
 		return warehouse.modify(new WarehouseVO(id, qu, pai,jia, wei));
 	}
 
-	public WarehouseVO outBound(OutBoundListVO w) {
+	public boolean outBound(OutBoundListVO w) {
 		// TODO Auto-generated method stub
 		return warehouse.outBound(w);
 	}
 
-	public WarehouseVO goDown(GoDownEntryVO w) {
+	public boolean goDown(GoDownEntryVO w) {
 		// TODO Auto-generated method stub
 		return warehouse.goDown(w);
 	}

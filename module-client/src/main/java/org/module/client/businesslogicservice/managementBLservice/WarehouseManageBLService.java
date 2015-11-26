@@ -25,7 +25,7 @@ public interface WarehouseManageBLService {
 	 * @param w
 	 * @return
 	 */
-	public WarehouseVO modify( String id,String qu,String pai,String jia,String wei);
+	public boolean modify( String id,String qu,String pai,String jia,String wei);
 	/**
 	 * 前置：出库
 	 * 后置：更新库存信息
@@ -33,7 +33,7 @@ public interface WarehouseManageBLService {
 	 * @param w
 	 * @return
 	 */
-	public WarehouseVO outBound(OutBoundListVO w);
+	public boolean outBound(OutBoundListVO w);
 	/**
 	 * 前置：入库
 	 * 后置：更新库存
@@ -41,13 +41,13 @@ public interface WarehouseManageBLService {
 	 * @param w
 	 * @return
 	 */
-	public WarehouseVO goDown(GoDownEntryVO w);
+	public boolean goDown(GoDownEntryVO w);
 	
 	/**
 	 * 前置：设置警戒比例
 	 * 后置：更新
 	 * 依赖：WarahouseDataService.setBorderLint 存储警戒比例
-	 * @param a
+	 * @param id中转中心ID
 	 */
 	public void setBorderline(String id,String qu,double a); 
 }

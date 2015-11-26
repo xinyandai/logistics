@@ -16,25 +16,23 @@ public class WarehouseMock implements WarehouseManageService{
 		return re;
 	}
 
-	public WarehouseVO modify(WarehouseVO ware) {
+	public boolean modify(WarehouseVO ware) {
 		// TODO Auto-generated method stub
-		WarehouseVO re = new WarehouseVO("10086","1","1","1","1");
-		return re;
+		return true;
 	}
 
-	public WarehouseVO outBound(OutBoundListVO w) {
+	public boolean outBound(OutBoundListVO w) {
 		// TODO Auto-generated method stub
-		WarehouseVO re = new WarehouseVO("10086","1","1","1","1");
-		return re;
+		return true;
 	}
 
-	public WarehouseVO goDown(GoDownEntryVO w) {
+	public boolean goDown(GoDownEntryVO w) {
 		// TODO Auto-generated method stub
-		WarehouseVO re = new WarehouseVO("10086","1","1","1","1");
-		return re;
+		return true;
 	}
 
-	public void setBorderline(String id, String qu, double a) {
+	public boolean setBorderline(String id, String qu, double a) {
+		return true;
 		// TODO Auto-generated method stub		
 	}
 

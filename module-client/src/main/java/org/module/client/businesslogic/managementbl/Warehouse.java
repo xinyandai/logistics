@@ -1,5 +1,6 @@
 package org.module.client.businesslogic.managementbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
@@ -7,34 +8,91 @@ import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.managementdataservice.WarahouseDataService;
+import org.module.common.po.BorderlinePO;
+import org.module.common.po.WarehousePO;
 
 public class Warehouse implements WarehouseManageService {
 
 	private WarahouseDataService data = new RmiClient().get(WarahouseDataService.class);;
 	public ArrayList<WarehouseVO> getAll() {
-		return null;
+		ArrayList<WarehouseVO> vos = new ArrayList<WarehouseVO>();
+		try {
+			ArrayList<WarehousePO> pos = this.data.getAll();
+			for (WarehousePO warehousePO : pos) {
+				vos.add(
+						new WarehouseVO(
+								warehousePO.getNumber(),		
+								warehousePO.getQu(),
+								warehousePO.getPai(),
+								warehousePO.getJia(),
+								warehousePO.getWei()
+								)
+						);
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return vos;
 	}
 
-	public WarehouseVO modify(WarehouseVO ware) {
+	public boolean modify(WarehouseVO warehousePO) {
+		WarehousePO po = new WarehousePO(
+				warehousePO.getNumber(),		
+				warehousePO.getQu(),
+				warehousePO.getPai(),
+				warehousePO.getJia(),
+				warehousePO.getWei()
+				);
+		try {
+			return this.data.update(po);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean outBound(OutBoundListVO w) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			return this.data.delete(
+					w.getId()
+					);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
-	public WarehouseVO outBound(OutBoundListVO w) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean goDown(GoDownEntryVO w) {
+		try {
+			return this.data.add(
+					new WarehousePO(
+							w.getCourier(),
+							w.getQu(),
+							w.getPai(),
+							w.getJia(),
+							w.getWei()
+							)
+					);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
-	public WarehouseVO goDown(GoDownEntryVO w) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean setBorderline(String id, String qu, double a) {
+
+		try {
+			return this.data.setBorderline(new BorderlinePO(id,qu,a));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
-
-	public void setBorderline(String id, String qu, double a) {
-
-	}
-
 	
 
 }

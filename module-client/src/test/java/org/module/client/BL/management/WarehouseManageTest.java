@@ -19,7 +19,7 @@ public class WarehouseManageTest extends TestCase {
 	}
 	
 	public void testmodify(){
-		assert(warehouse.modify("10086","1","1","1","1").getNumber()=="10086");
+		assert(warehouse.modify("10086","1","1","1","1"));
 	}
 
 	public void testoutBound(){
@@ -27,8 +27,5 @@ public class WarehouseManageTest extends TestCase {
 		assert(true);
 	}
 
-	public void testgoDown(){
-		GoDownEntryVO re = new GoDownEntryVO("01","2015","beijing","1","1","1","1");
-		assert(warehouse.goDown(re).getNumber()=="10086");
-	}
+	
 }

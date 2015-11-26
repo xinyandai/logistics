@@ -1,12 +1,12 @@
 package org.module.server.data.managementdata;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.managementdataservice.WarahouseDataService;
+import org.module.common.po.BorderlinePO;
 import org.module.common.po.WarehousePO;
 import org.module.server.data.FileHelper;
 
@@ -14,10 +14,10 @@ public class WarahouseDataImpl implements WarahouseDataService {
 
 	String path="file"+File.separator+"Warahouse.txt";
 	File file=new File(path);
-	FileHelper help=new FileHelper(file);
+	FileHelper helpWithWar=new FileHelper(file);
 	
 	String Path="file"+File.separator+"line.txt";
-	File fil=new File(Path);
+	File fileHelperWithLine=new File(Path);
 	
 	public WarahouseDataImpl() {
 		// TODO Auto-generated constructor stub
@@ -25,7 +25,7 @@ public class WarahouseDataImpl implements WarahouseDataService {
 
 	public ArrayList<WarehousePO> getAll() {
 		// TODO Auto-generated method stub
-		ArrayList<String> re = this.help.read();
+		ArrayList<String> re = this.helpWithWar.read();
 		ArrayList<WarehousePO> ar =  new ArrayList<WarehousePO>();	
 		for (String string : re) {
 			ar.add(new WarehousePO(string));
@@ -35,51 +35,68 @@ public class WarahouseDataImpl implements WarahouseDataService {
 
 	public boolean add(WarehousePO cp) {
 		// TODO Auto-generated method stub
-		return this.help.add(cp);
+		return this.helpWithWar.add(cp);
 	}
 
-	public boolean delete(WarehousePO cp) {
+	public boolean delete(String cp) {
 		// TODO Auto-generated method stub
 		ArrayList<WarehousePO> pos = this.getAll();
 		 for (int i = 0; i < pos.size(); i++) {
-			 if(pos.get(i).getNumber().equals(cp.getNumber())){
+			 if(pos.get(i).getNumber().equals(cp)){
 				pos.remove(i);
-				return help.rewrite(pos);
+				return helpWithWar.rewrite(pos);
 			 }
 		 }
 		return false;
 	}
 
-	public boolean update(WarehousePO old, WarehousePO newone) {
+	public boolean update( WarehousePO newone) {
 		// TODO Auto-generated method stub
 		ArrayList<WarehousePO> re = this.getAll();
 		for (int i = 0; i < re.size(); i++) {
-			if(re.get(i).getNumber().equals(old.getNumber())){
+			if(re.get(i).getNumber().equals(newone.getNumber())){
 				re.remove(i);
 				re.add(newone);
-				return help.rewrite(re);
+				return helpWithWar.rewrite(re);
 			}
 		}		
 		return false;
 	}
 
-	public void setBorderline(int a) {
-		// TODO Auto-generated method stub
-		try {
-			FileWriter fw = new FileWriter(fil);
-			BufferedWriter br = new BufferedWriter(fw);
-			br.write(a);			
-			br.flush();
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+	public boolean setBorderline(BorderlinePO po) {
+		MyList<BorderlinePO> pos = this.getAllDorderline();
+		for (int i = 0; i < pos.size(); i++) {
+			if(pos.get(i).getId().equals(po.getId()) && pos.get(i).getId().equals(po.getLine())){
+				pos.remove(i);
+				break;
+			}
 		}
-	}
-	
-	public double getBorderline(){
-		FileHelper Help=new FileHelper(fil);
-		double a=Double.parseDouble(Help.read().get(0));
-		return a;
+		return pos.add(po);
 	}
 
+
+	public double getBorderline(BorderlinePO po) throws RemoteException {
+		
+		FileHelper borderline=new FileHelper(fileHelperWithLine);
+		ArrayList<String> ss = borderline.read();
+		for (String string : ss) {
+			BorderlinePO temp = new BorderlinePO(string);
+			if(temp.getId().equals(po.getId()) && temp.getQu().equals(po.getQu())){
+				return temp.getLine();
+			}
+		}
+		return 0.0;// TODO Auto-generated method stub
+		
+	}
+
+	public MyList<BorderlinePO> getAllDorderline(){
+		MyList<BorderlinePO> re =new MyList<BorderlinePO>();
+		FileHelper borderline=new FileHelper(fileHelperWithLine);
+		ArrayList<String> ss = borderline.read();
+		for (String string : ss) {
+			BorderlinePO temp = new BorderlinePO(string);
+			re.add(temp);
+		}
+		return re;
+	}
 }

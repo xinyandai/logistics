@@ -1,10 +1,14 @@
 package org.module.client.businesslogicservice.management;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
+import org.module.common.dataservice.MyList;
+import org.module.common.po.BorderlinePO;
 
 public interface WarehouseManageService {
 
@@ -16,7 +20,7 @@ public interface WarehouseManageService {
 	 */
 	public ArrayList<WarehouseVO> getAll();
 	
-	public WarehouseVO modify(WarehouseVO ware);
+	public boolean modify(WarehouseVO ware);
 	
 	/**
 	 * 前置：出库
@@ -25,7 +29,7 @@ public interface WarehouseManageService {
 	 * @param w
 	 * @return
 	 */
-	public WarehouseVO outBound(OutBoundListVO w);
+	public boolean outBound(OutBoundListVO w);
 	/**
 	 * 前置：入库
 	 * 后置：更新库存
@@ -33,12 +37,13 @@ public interface WarehouseManageService {
 	 * @param w
 	 * @return
 	 */
-	public WarehouseVO goDown(GoDownEntryVO w);
+	public boolean goDown(GoDownEntryVO w);
 	/**
 	 * 前置：设置警戒比例
 	 * 后置：更新
 	 * 依赖：WarahouseDataService.setBorderLint 存储警戒比例
 	 * @param a
 	 */
-	public void setBorderline(String id,String qu,double a); 
+	public boolean setBorderline(String id,String qu,double a); 
+	
 }

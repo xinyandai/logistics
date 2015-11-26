@@ -15,20 +15,20 @@ public class WarehouseManageService_stub implements  WarehouseManageBLService{
 		return null;
 	}
 
-	public WarehouseVO modify(String id, String qu, String pai, String jia,
+	public boolean modify(String id, String qu, String pai, String jia,
 			String wei) {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 
-	public WarehouseVO outBound(OutBoundListVO w) {
+	public boolean outBound(OutBoundListVO w) {
+		return false;
 		// TODO Auto-generated method stub
-		return null;
 	}
 
-	public WarehouseVO goDown(GoDownEntryVO w) {
+	public boolean goDown(GoDownEntryVO w) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	public void setBorderline(String id, String qu, double a) {
