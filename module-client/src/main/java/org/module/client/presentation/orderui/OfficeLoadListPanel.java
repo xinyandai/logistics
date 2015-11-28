@@ -89,7 +89,7 @@ public class OfficeLoadListPanel extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(34, Short.MAX_VALUE)
+					.addGap(34)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
@@ -124,9 +124,12 @@ public class OfficeLoadListPanel extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(priceText, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-						.addComponent(button))
-					.addGap(30))
+							.addComponent(priceText, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)))
+					.addGap(30, 30, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(213)
+					.addComponent(button)
+					.addContainerGap(168, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -159,9 +162,9 @@ public class OfficeLoadListPanel extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_6)
 						.addComponent(priceText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(26)
+					.addGap(35)
 					.addComponent(button)
-					.addContainerGap(77, Short.MAX_VALUE))
+					.addContainerGap(67, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 

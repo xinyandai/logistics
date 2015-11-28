@@ -50,4 +50,22 @@ public class DepartmentManageController implements DepartmentManageBLService{
 		return department.fuzzySearch(s);
 	}
 
+	public String[][] toArray(){
+		ArrayList<DepartmentVO> vo = this.showAll();
+		
+		String[][] re = new String[vo.size()][];
+		for (int i = 0; i < vo.size(); i++) {
+			re[i] = vo.get(i).toArray();
+		}
+		return re;
+	}
+	public ArrayList<String[]> toArrayList(){
+		ArrayList<DepartmentVO> vo = this.showAll();
+		
+		ArrayList<String[]> re = new ArrayList<String[]>();
+		for (int i = 0; i < vo.size(); i++) {
+			re.add( vo.get(i).toArray());
+		}
+		return re;
+	}
 }

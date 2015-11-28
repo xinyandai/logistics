@@ -22,8 +22,8 @@ public class RmiServer {
 			
 			this.regist("userdata.UserDataImpl");
 			
-			this.regist("ticketData.GoDownEntryListDataImpl");
-			this.regist("ticketData.OutBoundListDataImpl");
+			this.regist("departmentdata.DepartmentDataImpl");
+			this.regist("departmentdata.StuffDataImpl");
 			
 			this.regist("statisticdata.AccountDataImpl");
 			this.regist("statisticdata.CostDataImpl");

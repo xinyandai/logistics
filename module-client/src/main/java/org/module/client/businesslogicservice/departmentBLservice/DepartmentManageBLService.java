@@ -64,5 +64,11 @@ public interface DepartmentManageBLService {
 	 * @return
 	 */
 	public ArrayList<DepartmentVO> fuzzySearch(String s);
+	/**
+	 * 
+	 * @return
+	 */
+	public String[][] toArray();
+	public ArrayList<String[]> toArrayList();
 	
 }

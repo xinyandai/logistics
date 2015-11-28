@@ -2,7 +2,6 @@ package org.module.common.dataservice.managementdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.po.CityPO;
@@ -16,7 +15,7 @@ public interface PriceAndCityDataService  extends Remote{
 	 * 后置：返回所有城际距离
 	 * @return
 	 */
-	public ArrayList<PriceAndCityPO> getAll()throws RemoteException;
+	public MyList<PriceAndCityPO> getAll()throws RemoteException;
 	/**
 	 * 前置：无
 	 * 后置：返回所有城市

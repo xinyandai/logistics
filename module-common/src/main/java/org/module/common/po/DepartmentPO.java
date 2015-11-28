@@ -25,9 +25,22 @@ public class DepartmentPO implements Serializable{
 		this.location = location;
 		this.identity = identity;
 	}
-	public DepartmentPO(String[] s) {
+	
+	private String spt = ":%:%:";
+	public DepartmentPO(String string) {
 		
-		this(s[0],s[1],s[2],s[3]);
+		String[] s = string.split(spt);
+		this.name = s[0];
+		this.category = s[1];
+		this.location = s[2];
+		this.identity = s[3];
+	}
+	@Override
+	public String toString(){
+		return this.name + this.spt + 
+				this.category + this.spt +
+				this.location + this.spt + 
+				this.identity ;
 	}
 	public String getName() {
 		return name;

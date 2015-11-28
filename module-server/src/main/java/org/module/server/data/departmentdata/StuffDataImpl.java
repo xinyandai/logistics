@@ -12,7 +12,7 @@ import org.module.server.data.FileHelper;
 
 public class StuffDataImpl extends UnicastRemoteObject implements StuffDataService {
 
-	protected StuffDataImpl() throws RemoteException {
+	public StuffDataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

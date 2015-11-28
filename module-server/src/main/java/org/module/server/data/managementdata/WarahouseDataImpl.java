@@ -2,6 +2,7 @@ package org.module.server.data.managementdata;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
@@ -10,7 +11,19 @@ import org.module.common.po.BorderlinePO;
 import org.module.common.po.WarehousePO;
 import org.module.server.data.FileHelper;
 
-public class WarahouseDataImpl implements WarahouseDataService {
+public class WarahouseDataImpl extends UnicastRemoteObject  implements WarahouseDataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4574838135272237174L;
+
+
+
+	public WarahouseDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	String path="file"+File.separator+"Warahouse.txt";
 	File file=new File(path);
@@ -19,9 +32,7 @@ public class WarahouseDataImpl implements WarahouseDataService {
 	String Path="file"+File.separator+"line.txt";
 	File fileHelperWithLine=new File(Path);
 	
-	public WarahouseDataImpl() {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public ArrayList<WarehousePO> getAll() {
 		// TODO Auto-generated method stub

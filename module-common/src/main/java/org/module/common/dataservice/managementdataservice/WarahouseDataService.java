@@ -59,6 +59,6 @@ public interface WarahouseDataService  extends Remote{
 	 * 
 	 * @return
 	 */
-	public MyList<BorderlinePO> getAllDorderline();
+	public MyList<BorderlinePO> getAllDorderline()throws RemoteException;
 }
 

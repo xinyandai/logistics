@@ -1,87 +1,86 @@
 package org.module.server.data.departmentdata;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.departmentdataservice.DepartmentDataService;
 import org.module.common.po.DepartmentPO;
+import org.module.server.data.FileHelper;
 
 
-public class DepartmentDataImpl implements DepartmentDataService {
+public class DepartmentDataImpl extends UnicastRemoteObject implements DepartmentDataService {
 
-	private String spt = ":%:%:";
-	private String path = "file"+File.separator+"departmnt.txt";
-	public DepartmentDataImpl() {
+	public DepartmentDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4789097559305194975L;
+	
+	private String path = "file"+File.separator+"departmnt.txt";
+	private FileHelper helper = new FileHelper(new File(path));
 
 	
-	public boolean write(MyList<DepartmentPO> r){
-
-		File file = new File(path);
-		try {
-			FileWriter fW = new FileWriter(file);
-			BufferedWriter br = new BufferedWriter(fW);
-			for (DepartmentPO po : r) {
-				br.write(po.toString()+"\n");
-			}
-			br.flush();
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+	
 	
 	
 	
 	public MyList<DepartmentPO> getAll(){
 		MyList<DepartmentPO> re = new MyList<DepartmentPO>();
-		File file = new File(path);
-		try {
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String record = null;
-			while ((record = br.readLine()) != null) {
-				re.add(new DepartmentPO(record.split(spt)));
-			}
-			br.close();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
+		MyList<String> strs = this.helper.read();
+		for (String string : strs) {
+			re.add(new DepartmentPO(string));
 		}
 		return re;
 	}
 
 	public boolean add(DepartmentPO dp) {
-		MyList<DepartmentPO> re = this.getAll();
-		re.add(dp);
-		return this.write(re);
+		
+		return this.helper.add(dp);
 		
 	}
 
 	public boolean delete(String dp) {
 		MyList<DepartmentPO> re = this.getAll();
-		re.remove(dp);
-		return this.write(re);
+		for (int i = 0; i < re.size(); i++) {
+			System.out.println(re.get(i).getIdentity());
+			if(re.get(i).getIdentity().equals(dp)){
+				re.remove(i);
+				return this.helper.rewrite(re);
+			}
+		}
+		return false;
 	}
 
 	public boolean delete(MyList<String> al) {
+		boolean re = true;
+		for (String string : al) {
+			System.out.println(string);
+			re = re && this.delete(string);
+		}
 		return false;
 	}
 
 	public boolean update(DepartmentPO one) {
+		MyList<DepartmentPO> re = this.getAll();
+		for (int i = 0; i < re.size(); i++) {
+			if(re.get(i).getIdentity().equals(one.getIdentity())){
+				re.remove(i);
+				re.add(one);
+				return this.helper.rewrite(re);
+			}
+		}
 		return false;
 	}
 
 
-	public ArrayList<DepartmentPO> fuzzusearch(String key) {
+	public MyList<DepartmentPO> fuzzusearch(String key) {
 		return null;
 	}
 

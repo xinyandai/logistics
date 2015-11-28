@@ -55,4 +55,10 @@ public interface DepartmentService {
 	 * @return
 	 */
 	public ArrayList<DepartmentVO> fuzzySearch(String s);
+	
+	/**
+	 * 把arraylist转换成数组
+	 * @return
+	 */
+	public String[][] toArray();
 }

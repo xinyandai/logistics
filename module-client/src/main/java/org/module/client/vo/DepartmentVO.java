@@ -40,6 +40,14 @@ public class DepartmentVO {
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
+	public String[] toArray() {
+		String[] re = new String[4];
+		re[0] = this.name ;
+		re[1] = this.category;
+		re[2] = this.location ;
+		re[3] = this.identity ;
+		return re;
+	}
 	
 
 }

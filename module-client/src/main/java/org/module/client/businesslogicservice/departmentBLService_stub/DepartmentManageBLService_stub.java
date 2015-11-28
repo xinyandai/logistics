@@ -46,4 +46,26 @@ public class DepartmentManageBLService_stub implements DepartmentManageBLService
 		return false;
 	}
 
+
+
+
+
+
+
+	public String[][] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+
+
+	public ArrayList<String[]> toArrayList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

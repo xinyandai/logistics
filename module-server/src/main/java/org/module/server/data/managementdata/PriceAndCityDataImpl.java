@@ -2,6 +2,7 @@ package org.module.server.data.managementdata;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
@@ -10,8 +11,17 @@ import org.module.common.po.CityPO;
 import org.module.common.po.PriceAndCityPO;
 import org.module.server.data.FileHelper;
 
-public class PriceAndCityDataImpl implements PriceAndCityDataService {
+public class PriceAndCityDataImpl extends UnicastRemoteObject implements PriceAndCityDataService {
 
+	public PriceAndCityDataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1709535140102799399L;
 	String path="file"+File.separator+"PriceAndCity.txt";
 	File file=new File(path);
 	FileHelper priceAndCityHelp=new FileHelper(file);
@@ -20,12 +30,11 @@ public class PriceAndCityDataImpl implements PriceAndCityDataService {
 	File fil=new File(Path);
 	FileHelper cityHelp=new FileHelper(fil);
 	
-	public PriceAndCityDataImpl() {
-	}
+	
 
-	public ArrayList<PriceAndCityPO> getAll() {
+	public MyList<PriceAndCityPO> getAll() {
 		ArrayList<String> re = this.priceAndCityHelp.read();
-		ArrayList<PriceAndCityPO> ar =  new ArrayList<PriceAndCityPO>();	
+		MyList<PriceAndCityPO> ar =  new MyList<PriceAndCityPO>();	
 		for (String string : re) {
 			ar.add(new PriceAndCityPO(string));
 		}

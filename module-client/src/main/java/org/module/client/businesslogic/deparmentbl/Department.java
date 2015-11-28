@@ -109,5 +109,15 @@ public class Department implements DepartmentService {
 		
 		return vos;
 	}
+	
+	public String[][] toArray(){
+		ArrayList<DepartmentVO> vo = this.showAll();
+		
+		String[][] re = new String[vo.size()][];
+		for (int i = 0; i < vo.size(); i++) {
+			re[i] = vo.get(i).toArray();
+		}
+		return re;
+	}
 
 }

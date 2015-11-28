@@ -4,10 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.border.EmptyBorder;
 
 import org.module.client.presentation.departmentui.DeparmentPanel;
 import org.module.client.presentation.departmentui.StuffPanel;
@@ -17,9 +17,7 @@ import org.module.client.presentation.statisticui.CostPanel;
 
 public class ManagerFrame extends JFrame {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
