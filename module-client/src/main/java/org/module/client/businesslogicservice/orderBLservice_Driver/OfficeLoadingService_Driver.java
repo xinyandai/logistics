@@ -7,7 +7,7 @@ public class OfficeLoadingService_Driver {
 	public void drive(OfficeLoadingBLService officeLoadingService){
 		String[] s = { "shippingId"};
 		boolean result=officeLoadingService.creat("loadingDate", "officeId",
-				"trucksId", "arrival", "carId", "supervision",
+				"trucksId", "arrival", "lcoation","carId", "supervision",
 				"escort", s,  "price","SUBMITTED");
 		if(result)
 			System.out.println("creat suuccessfully!");

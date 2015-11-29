@@ -15,8 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
+import org.module.client.presentation.Numeric;
+
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
 
 public class NewDepartmentInputFrame extends JFrame {
 
@@ -34,6 +40,7 @@ public class NewDepartmentInputFrame extends JFrame {
 	private DepartmentManageBLService controller;
 	private JButton button;
 	private JLabel stateLabel;
+	private JButton cancel;
 	/**
 	 * Launch the application.
 	 */
@@ -70,6 +77,9 @@ public class NewDepartmentInputFrame extends JFrame {
 		this.ID.setEditable(false);
 		
 	}
+	
+	
+	
 	public JButton getButton() {
 		return button;
 	}
@@ -103,7 +113,7 @@ public class NewDepartmentInputFrame extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		stateLabel = new JLabel("New label");
+		stateLabel = new JLabel("");
 		stateLabel.setFont(new Font("楷体", Font.PLAIN, 15));
 		panel.add(stateLabel);
 		
@@ -123,10 +133,12 @@ public class NewDepartmentInputFrame extends JFrame {
 		label_3.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		ID = new JTextField();
+		
 		ID.setFont(new Font("宋体", Font.PLAIN, 15));
 		ID.setColumns(10);
 		
 		name = new JTextField();
+		
 		name.setFont(new Font("宋体", Font.PLAIN, 15));
 		name.setColumns(10);
 		
@@ -134,6 +146,7 @@ public class NewDepartmentInputFrame extends JFrame {
 		category.setFont(new Font("楷体", Font.PLAIN, 17));
 		
 		lcoation = new JTextField();
+		
 		lcoation.setFont(new Font("宋体", Font.PLAIN, 15));
 		lcoation.setColumns(10);
 		
@@ -141,7 +154,7 @@ public class NewDepartmentInputFrame extends JFrame {
 		
 		button.setFont(new Font("方正舒体", Font.PLAIN, 16));
 		
-		JButton cancel = new JButton("取消");
+		cancel = new JButton("取消");
 		
 		cancel.setFont(new Font("方正舒体", Font.PLAIN, 16));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -197,6 +210,43 @@ public class NewDepartmentInputFrame extends JFrame {
 					.addGap(24))
 		);
 		panel_1.setLayout(gl_panel_1);
+		addListeners();
+		
+	}
+	
+	private void addListeners(){
+		
+		ID.addCaretListener( new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+                if(!Numeric.isNumeric(ID.getText()) ){
+                	setMessage("ID必须是数值");
+				}else{
+					setMessage("");
+				}
+			}
+		} );
+		
+		
+		name.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+                if(name.getText().trim().equals("")){
+                	setMessage("姓名不能为空");
+			    }else{
+					setMessage("");
+				}
+                
+			}
+		});
+		
+		lcoation.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+                if(lcoation.getText().trim().equals("")){
+                	setMessage("位置不能为空");
+				}else{
+					setMessage("");
+				}
+			}
+		});
 		
 		cancel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -204,5 +254,13 @@ public class NewDepartmentInputFrame extends JFrame {
 				dispose();
 			}
 		});
+		
 	}
+	
+	private void setMessage(String s){
+		this.stateLabel.setText(s);
+	}
+	
+	
+	
 }

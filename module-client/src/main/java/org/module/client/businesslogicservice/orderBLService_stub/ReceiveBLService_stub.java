@@ -20,5 +20,10 @@ public class ReceiveBLService_stub implements ReceiveBLService{
 		return null;
 	}
 
+	public boolean creat(String l, String receiver, String orderId, State state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

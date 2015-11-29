@@ -6,7 +6,7 @@ import org.module.client.businesslogicservice.orderBLservice.TranCenterLoadingBL
 public class TranCenterLoadingService_Driver {
 	public void drive(TranCenterLoadingBLService tranCenterLoadingService){
 		String[] s = { "shippingId"};
-		boolean result=tranCenterLoadingService.creat( "loadingDate", "transportListId",
+		boolean result=tranCenterLoadingService.creat( "loadingDate","","", "transportListId",
 				"arrival", "carId", "supervision","escort",
 				s, "price","SUBMITTED");
 		if(result)

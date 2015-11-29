@@ -1,4 +1,4 @@
-package org.module.client.presentation.orderui;
+package org.module.client.presentation;
 
 import java.util.regex.Pattern;
 

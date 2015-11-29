@@ -23,7 +23,8 @@ public class OfficeLoadingListVO {
 	private String LoadingDate;
 	private String OfficeId;
 	private String trucksId;
-	private String arrival;
+	private String city;
+	private String location;
 	private String carId;
 	private String Supervision;
 	private String escort;
@@ -34,13 +35,14 @@ public class OfficeLoadingListVO {
 	private String price;
 	private State state;
 	public OfficeLoadingListVO(String loadingDate, String officeId,
-			String trucksId, String arrival, String carId, String supervision,
+			String trucksId, String city,String location, String carId, String supervision,
 			String escort, String[] shippingId, String price,String state) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
 		this.trucksId = trucksId;
-		this.arrival = arrival;
+		this.city = city;
+		this.location = location;
 		this.carId = carId;
 		Supervision = supervision;
 		this.escort = escort;
@@ -66,11 +68,24 @@ public class OfficeLoadingListVO {
 	public void setTrucksId(String trucksId) {
 		this.trucksId = trucksId;
 	}
-	public String getArrival() {
-		return arrival;
+	
+	public String getCity() {
+		return city;
 	}
-	public void setArrival(String arrival) {
-		this.arrival = arrival;
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String[] getShippingIds() {
+		return shippingIds;
+	}
+	public void setShippingIds(String[] shippingIds) {
+		this.shippingIds = shippingIds;
 	}
 	public String getCarId() {
 		return carId;

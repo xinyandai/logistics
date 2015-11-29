@@ -28,6 +28,13 @@ public class OfficeLoadingBLService_stub implements OfficeLoadingBLService{
 		return false;
 	}
 
+	public boolean creat(String loadingDate, String officeId, String trucksId,
+			String city, String location, String carId, String supervision,
+			String escort, String[] shippingId, String price, String state) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	
 

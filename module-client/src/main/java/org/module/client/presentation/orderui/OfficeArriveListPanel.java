@@ -1,15 +1,20 @@
 package org.module.client.presentation.orderui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.orderbl.OfficeArrivalController;
+import org.module.client.businesslogicservice.orderBLservice.OfficeArrivalBLService;
 
 public class OfficeArriveListPanel extends JPanel {
 	/**
@@ -18,15 +23,19 @@ public class OfficeArriveListPanel extends JPanel {
 	private static final long serialVersionUID = -2668521440436318303L;
 	private JTextField officeID;
 	private JTextField transportID;
-	private JTextField time;
-	private JTextField textField_3;
+	private JXDatePicker time;
+	private JTextField origin;
+	
+	private OfficeArrivalBLService controller ;
 
 	/**
 	 * Create the panel.
 	 */
 	String[] arriveState = {"损坏","完整","丢失"};
+	private JButton determine;
+	private JComboBox state;
 	public OfficeArriveListPanel() {
-		
+		controller = new OfficeArrivalController();
 		JLabel label = new JLabel("营业厅编号");
 		label.setFont(new Font("楷体", Font.PLAIN, 16));
 		
@@ -45,17 +54,19 @@ public class OfficeArriveListPanel extends JPanel {
 		JLabel label_3 = new JLabel("到达状态");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		time = new JTextField();
-		time.setColumns(10);
-		JComboBox<String> comboBox = new JComboBox<String>(arriveState);
+		time = new JXDatePicker();
+//		time.setColumns(10);
+	
+		state = new JComboBox(arriveState);
 		
 		JLabel label_4 = new JLabel("出发地");
 		label_4.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		origin = new JTextField();
+		origin.setColumns(10);
 		
-		JButton determine = new JButton("确定");
+		determine = new JButton("确定");
+		
 		determine.setFont(new Font("楷体", Font.PLAIN, 18));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -64,7 +75,7 @@ public class OfficeArriveListPanel extends JPanel {
 					.addGap(52)
 					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 					.addGap(17)
-					.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
+					.addComponent(origin, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(197)
 					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
@@ -85,7 +96,7 @@ public class OfficeArriveListPanel extends JPanel {
 							.addGap(50)
 							.addComponent(label_3)
 							.addGap(10)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
+							.addComponent(state, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addGap(34)
 							.addComponent(label_2)
@@ -115,17 +126,32 @@ public class OfficeArriveListPanel extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(3)
 							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(state, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(7)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(2)
 							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(origin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(46)
 					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 		);
 		setLayout(groupLayout);
 
+		addListeners();
+		
+	}
+	private void addListeners() {
+		determine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.creat(officeID.getText(), 
+					    time.getDate().getTime()+"",
+						transportID.getText(), 
+						origin.getText(), 
+						state.getSelectedItem().toString(), 
+						"提交");
+			}
+		});
 	}
 }

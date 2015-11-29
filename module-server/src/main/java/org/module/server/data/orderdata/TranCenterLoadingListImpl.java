@@ -45,7 +45,7 @@ public class TranCenterLoadingListImpl extends UnicastRemoteObject  implements T
 	public boolean update(TranCenterLoadingListPO newone)  throws RemoteException{
 		MyList<TranCenterLoadingListPO> all = this.getAll();
 		for (int i = 0; i < all.size(); i++) {
-			if(all.get(i).getTransportListId().equals(newone.getTransportListId())){
+			if(all.get(i).getOfficeId().equals(newone.getOfficeId())){
 				all.remove(i);
 				all.add(newone);
 				return this.help.rewrite(all);

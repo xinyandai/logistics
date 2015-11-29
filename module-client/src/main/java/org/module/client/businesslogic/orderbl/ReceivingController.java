@@ -22,11 +22,10 @@ public class ReceivingController implements ReceiveBLService {
 //		this.logistics = logistics;
 	}
 
-	public boolean creat(String date, String location, String origin,
-			String estination, String orderId,String state) {
+	public boolean creat(String date, String receiver,  String orderId,State state) {
 		
-		return this.receive.creat(new ReceivingListVO( date,  location,  origin,
-			 estination,  orderId,state));
+		return this.receive.creat(new ReceivingListVO( date,  receiver,
+			   orderId,state));
 	}
 
 	public ArrayList<ReceivingListVO> getAll(State s) {

@@ -1,15 +1,21 @@
 package org.module.client.presentation.orderui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.orderbl.TranCenterArrivalController;
+import org.module.client.businesslogicservice.orderBLservice.TranCenterArrivalBLService;
+import org.module.common.po.State;
 
 public class TranCenterArriveListPanel extends JPanel {
 	/**
@@ -18,15 +24,35 @@ public class TranCenterArriveListPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField tranCenterID;
 	private JTextField transportID;
-	private JTextField time;
+	private JXDatePicker time;
 	private JTextField origin;
 	String[] arriveState = {"损坏","完整","丢失"};
+	private JComboBox state;
+	private JButton determine;
 	
+	private TranCenterArrivalBLService controller = new TranCenterArrivalController();
 	/**
 	 * Create the panel.
 	 */
 	public TranCenterArriveListPanel() {
+		init();
+		addListeners();
+	}
+	private void addListeners() {
+		determine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			   controller.creat(tranCenterID.getText(), 
+					   time.getDate().getTime()+"", 
+					   transportID.getText(), 
+					   origin.getText(), 
+					   state.getSelectedItem().toString(), 
+					   State.SUBMITTED.toString());
+			}
+		});
 		
+	}
+	private void init(){
 		JLabel label = new JLabel("中转中心编号");
 		label.setFont(new Font("楷体", Font.PLAIN, 16));
 		
@@ -45,11 +71,11 @@ public class TranCenterArriveListPanel extends JPanel {
 		JLabel label_3 = new JLabel("到达状态");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		time = new JTextField();
-		time.setColumns(10);
+		time = new JXDatePicker();
+		//time.setColumns(10);
 		
-		//JComboBox comboBox = new JComboBox();
-		JComboBox<String> state = new JComboBox<String>(arriveState);
+		state = new JComboBox();
+		//JComboBox<String> state = new JComboBox<String>(arriveState);
 		
 		JLabel label_4 = new JLabel("出发地");
 		label_4.setFont(new Font("楷体", Font.PLAIN, 16));
@@ -57,7 +83,8 @@ public class TranCenterArriveListPanel extends JPanel {
 		origin = new JTextField();
 		origin.setColumns(10);
 		
-		JButton determine = new JButton("确定");
+		determine = new JButton("确定");
+		
 		determine.setFont(new Font("楷体", Font.PLAIN, 18));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

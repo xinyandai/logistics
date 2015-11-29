@@ -1,32 +1,50 @@
 package org.module.client.presentation.orderui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
 
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.orderbl.SendingController;
+import org.module.client.businesslogicservice.orderBLservice.SendingBLService;
+import org.module.common.po.State;
 
 public class SengdingListPanel extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField ID;
 	private JTextField sender;
 
+	private SendingBLService controller = new SendingController();
+	private JTextField ID;
+	private JXDatePicker TimeChose;
+	private JButton determine;
 	/**
 	 * Create the panel.
 	 */
 	public SengdingListPanel() {
-		
+		init();
+		addListeners();
+	}
+	private void addListeners() {
+		determine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.creat(TimeChose.getDate().getTime()+"", ID.getText(), sender.getText(), State.SUBMITTED.toString());
+			}
+		});
+	}
+	private void init(){
 		JLabel lblNewLabel = new JLabel("派件单号");
 		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 18));
 		
@@ -44,10 +62,11 @@ public class SengdingListPanel extends JPanel {
 		JLabel label = new JLabel("收件日期");
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
 		
-		JButton determine = new JButton("确定");
+		determine = new JButton("确定");
+		
 		determine.setFont(new Font("楷体", Font.PLAIN, 20));
 		
-		final JXDatePicker TimeChose = new JXDatePicker();
+		TimeChose = new JXDatePicker();
 		TimeChose.setDate(new Date());
 		GroupLayout groupLayout = new GroupLayout(this);
 		

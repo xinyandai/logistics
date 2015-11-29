@@ -23,13 +23,13 @@ public class TranCenterLoadingController implements TranCenterLoadingBLService {
 //		this.logistics = logistics;
 	}
 
-	public boolean creat(String loadingDate, String transportListId,
-			String arrival, String carId, String supervision, String escort,
+	public boolean creat(String loadingDate, String officeId, String trucksId,
+			String city,String location, String carId, String supervision, String escort,
 			String[] shippingId, String price,String state) {
 		// TODO Auto-generated method stub
-		return this.loading.creat(new TranCenterLoadingListVO( loadingDate,  transportListId,
-			 arrival,  carId,  supervision,  escort,
-			 shippingId,  price,state));
+		return this.loading.creat(new TranCenterLoadingListVO( loadingDate,  officeId,  trucksId,
+				 city, location,  carId,  supervision,  escort,
+				 shippingId,  price,state));
 	}
 
 	public ArrayList<TranCenterLoadingListVO> getAll(State s) {

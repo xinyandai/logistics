@@ -18,8 +18,8 @@ public class OfficeLoading implements OfficeLoadingService {
 	public boolean creat(OfficeLoadingListVO o) {
 		// TODO Auto-generated method stub
 		OfficeLoadingListPO newPO = new OfficeLoadingListPO(o.getLoadingDate(),o.getOfficeId()
-				,o.getTrucksId(),o.getArrival(),o.getCarId(),o.getSupervision(),o.getEscort()
-				,o.getShippingId(),o.getPrice(),o.getState().toString()); 
+				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
+				,o.getShippingId(),o.getPrice(),o.getState()); 
 		try {
 			return officeLoadingData.add(newPO);
 		} catch (RemoteException e) {
@@ -41,7 +41,7 @@ public class OfficeLoading implements OfficeLoadingService {
 		}
 		for(int i =0;i<POs.size();i++){
 			newVOs.add(new OfficeLoadingListVO(POs.get(i).getLoadingDate(),POs.get(i).getOfficeId()
-					,POs.get(i).getTrucksId(),POs.get(i).getArrival(),POs.get(i).getCarId(),POs.get(i).getSupervision(),POs.get(i).getEscort()
+					,POs.get(i).getTrucksId(),POs.get(i).getCity(),POs.get(i).getLocation(),POs.get(i).getCarId(),POs.get(i).getSupervision(),POs.get(i).getEscort()
 					,POs.get(i).getShippingId(),POs.get(i).getPrice(),POs.get(i).getState().toString()));
 		}
 		return newVOs;

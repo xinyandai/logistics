@@ -36,12 +36,13 @@ public class DeparmentPanel extends JPanel {
 	 * 
 	 */
 	private int mainKey = 3;
-//	private DefaultTableModel tableModel;
+	private JButton add;
+	private JButton delete;
+	private JButton update;
+	private JButton refresh;
 	
-//	private CheckBoxTableModelProxy checkBoxTableModelProxy;
 	public DeparmentPanel() {
 		
-//		cellData = this.controller.toArray();
 		listData = this.controller.toArrayList();
 		
 		setLayout(new BorderLayout(0, 0));
@@ -49,14 +50,11 @@ public class DeparmentPanel extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton add = new JButton("增");
+		add = new JButton("增");
+		delete = new JButton("删");
+		update = new JButton("改");
+		refresh = new JButton("同步");
 		
-		
-		JButton delete = new JButton("删");
-		
-		JButton update = new JButton("改");
-		
-		JButton refresh = new JButton("同步");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -65,7 +63,7 @@ public class DeparmentPanel extends JPanel {
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(10)
 					.addComponent(update, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(refresh))
@@ -76,8 +74,8 @@ public class DeparmentPanel extends JPanel {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(refresh)
 						.addComponent(update)
-						.addComponent(delete)
-						.addComponent(add))
+						.addComponent(add)
+						.addComponent(delete))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

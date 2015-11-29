@@ -19,25 +19,32 @@ import org.module.common.po.State;
 public class TranCenterLoadingListVO {
 
 	private String LoadingDate;
-	private String transportListId;
-	private String arrival;
+	private String OfficeId;
+	private String trucksId;
+	private String city;
+	private String location;
 	private String carId;
 	private String Supervision;
 	private String escort;
-	private String[] shippingId;
+	/**
+	 * 本次装箱所有订单条形码号
+	 */
+	private String[] shippingIds;
 	private String price;
 	private State state;
-	public TranCenterLoadingListVO(String loadingDate, String transportListId,
-			String arrival, String carId, String supervision, String escort,
-			String[] shippingId, String price,String state) {
+	public TranCenterLoadingListVO(String loadingDate, String officeId,
+			String trucksId, String city,String location, String carId, String supervision,
+			String escort, String[] shippingId, String price,String state) {
 		super();
 		LoadingDate = loadingDate;
-		this.transportListId = transportListId;
-		this.arrival = arrival;
+		OfficeId = officeId;
+		this.trucksId = trucksId;
+		this.city = city;
+		this.location = location;
 		this.carId = carId;
 		Supervision = supervision;
 		this.escort = escort;
-		this.shippingId = shippingId;
+		this.shippingIds = shippingId;
 		this.price = price;
 		this.setState(State.getInstance(state));
 	}
@@ -47,17 +54,36 @@ public class TranCenterLoadingListVO {
 	public void setLoadingDate(String loadingDate) {
 		LoadingDate = loadingDate;
 	}
-	public String getTransportListId() {
-		return transportListId;
+	public String getOfficeId() {
+		return OfficeId;
 	}
-	public void setTransportListId(String transportListId) {
-		this.transportListId = transportListId;
+	public void setOfficeId(String officeId) {
+		OfficeId = officeId;
 	}
-	public String getArrival() {
-		return arrival;
+	public String getTrucksId() {
+		return trucksId;
 	}
-	public void setArrival(String arrival) {
-		this.arrival = arrival;
+	public void setTrucksId(String trucksId) {
+		this.trucksId = trucksId;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String[] getShippingIds() {
+		return shippingIds;
+	}
+	public void setShippingIds(String[] shippingIds) {
+		this.shippingIds = shippingIds;
 	}
 	public String getCarId() {
 		return carId;
@@ -78,10 +104,10 @@ public class TranCenterLoadingListVO {
 		this.escort = escort;
 	}
 	public String[] getShippingId() {
-		return shippingId;
+		return shippingIds;
 	}
 	public void setShippingId(String[] shippingId) {
-		this.shippingId = shippingId;
+		this.shippingIds = shippingId;
 	}
 	public String getPrice() {
 		return price;
@@ -95,5 +121,6 @@ public class TranCenterLoadingListVO {
 	public void setState(State state) {
 		this.state = state;
 	}
+
 
 }

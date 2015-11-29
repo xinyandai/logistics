@@ -1,6 +1,8 @@
 package org.module.common.po;
 
-public class SendingListPO {
+import java.io.Serializable;
+
+public class SendingListPO implements Serializable{
 	//派件单
 		private String date;
 		private String shippingId;

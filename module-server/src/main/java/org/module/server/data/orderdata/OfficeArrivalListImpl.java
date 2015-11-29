@@ -33,7 +33,6 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 	}
 
 	public boolean add(OfficeArrivalListPO o)  throws RemoteException{
-		
 		return this.help.add(o);
 	}
 

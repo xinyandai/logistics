@@ -20,11 +20,9 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 		help = new FileHelper(new File("file"+File.separator+"officeLoadingList.txt"));
 	}
 	public MyList<OfficeLoadingListPO> getAll()  throws RemoteException{
-		// TODO 自动生成的方法存根
 		MyList<OfficeLoadingListPO> re = new MyList<OfficeLoadingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-		//	String[] temp = string.split(":%:%:");
 			re.add(new OfficeLoadingListPO(string));
 		}
 		return re;

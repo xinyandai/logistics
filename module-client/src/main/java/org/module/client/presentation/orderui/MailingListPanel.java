@@ -21,6 +21,7 @@ import javax.swing.event.CaretListener;
 
 import org.module.client.businesslogic.orderbl.MailingControl;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
+import org.module.client.presentation.Numeric;
 
 public class MailingListPanel extends JPanel {
 	
@@ -28,7 +29,7 @@ public class MailingListPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -4285669172960400665L;
-	private MailingBLService inputMailingList = new MailingControl();
+	private MailingBLService controller = new MailingControl();
 	private String[] stringOfType = {"经济快递","标准快递","特快"};
 	private String[] cities = {"南京","北京","上海","广州"};
 	
@@ -36,15 +37,15 @@ public class MailingListPanel extends JPanel {
 	private JTextField senderCompany;
 	private JTextField senderMobile;
 	private JTextField senderPhone;
-	//private JComboBox  senderCity;
-	private JComboBox<String> senderCity;
+	private JComboBox  senderCity;
+	//private JComboBox<String> senderCity;
 	private JTextField senderPosition;
 	private JTextField receiveName;
 	private JTextField receiveCompany;
 	private JTextField receiveMobile;
 	private JTextField receivePhone;
-	//private JComboBox receiveCity;
-	private JComboBox<String> receiveCity;
+	private JComboBox receiveCity;
+	//private JComboBox<String> receiveCity;
 	private JTextField receivePosition;
 	private JTextField nameOfGood;
 	private JTextField counts;
@@ -59,9 +60,10 @@ public class MailingListPanel extends JPanel {
 	private JLabel timeAndMoney;
 	
 	private int time;
-	private int money;
+	private double money;
 	private JButton save;
 	private JLabel massage;
+	
 	
 	/**
 	 * Create the panel.
@@ -176,9 +178,9 @@ public class MailingListPanel extends JPanel {
 		label_3.setForeground(new Color(255, 0, 0));
 		panel_8.add(label_3);
 		
-		senderCity = new JComboBox<String>(cities);
+		senderCity = new JComboBox(cities);
 		
-		receiveCity = new JComboBox<String>(cities);
+		receiveCity = new JComboBox(cities);
 		panel_8.add(senderCity);
 		
 		senderPosition = new JTextField();
@@ -266,8 +268,8 @@ public class MailingListPanel extends JPanel {
 		label_6.setForeground(new Color(255, 0, 0));
 		panel_16.add(label_6);
 		
-		//receiveCity = new JComboBox();
-		receiveCity = new JComboBox<String>(cities);
+		receiveCity = new JComboBox();
+		//receiveCity = new JComboBox<String>(cities);
 		
 		panel_16.add(receiveCity);
 		
@@ -289,9 +291,9 @@ public class MailingListPanel extends JPanel {
 		panel_21.add(lblNewLabel_6);
 		lblNewLabel_6.setForeground(new Color(255, 0, 0));
 		
-		//type = new JComboBox(stringOfType);
+		type = new JComboBox(stringOfType);
 		
-		type = new JComboBox<String>(stringOfType);
+		//type = new JComboBox<String>(stringOfType);
 		panel_21.add(type);
 		//type.setColumns(10);
 		
@@ -375,9 +377,6 @@ public class MailingListPanel extends JPanel {
 		id.setColumns(10);
 		
 		this.addListeners();
-		
-		
-		
 		
 		
 	}
@@ -508,13 +507,13 @@ public class MailingListPanel extends JPanel {
 	
 	
 	private void handleTime(){
-		int time = (int) inputMailingList.time(senderCity.getSelectedItem().toString(),
+		int time = (int) controller.time(senderCity.getSelectedItem().toString(),
 				receiveCity.getSelectedItem().toString());
 		this.time = time;
 	}
 	
 	private void handlePrice(){
-		this.money = (int) inputMailingList.price(
+		this.money = (double) controller.price(
 				senderCity.getSelectedItem().toString(),
                 receiveCity.getSelectedItem().toString(), 
                 counts.getText(), weight.getText(), 
@@ -526,7 +525,7 @@ public class MailingListPanel extends JPanel {
 	}
 	
 	private void handleSave(){
-		boolean result = inputMailingList.handleMailingList(
+		boolean result = controller.handleMailingList(
 				senderName.getText(), senderCompany.getText(),
                 senderMobile.getText(),senderPhone.getText(), 
                 senderCity.getSelectedItem().toString(), 

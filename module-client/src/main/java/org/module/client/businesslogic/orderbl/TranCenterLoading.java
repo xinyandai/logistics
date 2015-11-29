@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.vo.OfficeLoadingListVO;
 import org.module.client.vo.TranCenterLoadingListVO;
 import org.module.common.dataservice.orderdataservice.TranCenterLoadingListService;
 import org.module.common.po.State;
@@ -18,9 +19,9 @@ public class TranCenterLoading implements TranCenterLoadingService {
 	}
 
 	public boolean creat(TranCenterLoadingListVO o) {
-		TranCenterLoadingListPO newPO = new TranCenterLoadingListPO(o.getLoadingDate(),
-				o.getTransportListId(),o.getArrival(),o.getCarId(),o.getSupervision(),o.getEscort()
-				,o.getShippingId(),o.getPrice(),o.getState().toString()); 
+		TranCenterLoadingListPO newPO = new TranCenterLoadingListPO(o.getLoadingDate(),o.getOfficeId()
+				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
+				,o.getShippingId(),o.getPrice(),o.getState()); 
 		try {
 			return tranCenterLoadingData.add(newPO);
 		} catch (RemoteException e) {
@@ -41,10 +42,9 @@ public class TranCenterLoading implements TranCenterLoadingService {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new TranCenterLoadingListVO(POs.get(i).getLoadingDate(),
-					POs.get(i).getTransportListId(),POs.get(i).getArrival(),POs.get(i).getCarId(),
-					POs.get(i).getSupervision(),POs.get(i).getEscort(),POs.get(i).getShippingId(),
-					POs.get(i).getPrice(),POs.get(i).getState().toString()));
+			newVOs.add(new TranCenterLoadingListVO(POs.get(i).getLoadingDate(),POs.get(i).getOfficeId()
+					,POs.get(i).getTrucksId(),POs.get(i).getCity(),POs.get(i).getLocation(),POs.get(i).getCarId(),POs.get(i).getSupervision(),POs.get(i).getEscort()
+					,POs.get(i).getShippingId(),POs.get(i).getPrice(),POs.get(i).getState().toString()));
 		}
 		return newVOs;
 		

@@ -1,6 +1,8 @@
 package org.module.client.presentation.orderui;
 
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -9,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.orderbl.ReceivingController;
+import org.module.client.businesslogicservice.orderBLservice.ReceiveBLService;
+import org.module.common.po.State;
 
 
 public class ReceiveListPanel extends JPanel {
@@ -17,10 +22,16 @@ public class ReceiveListPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private ReceiveBLService controller = new ReceivingController();
+	private JButton determine;
+	private JTextField ID;
+	private JTextField receiver;
+	private JXDatePicker timePicker1;
 	public ReceiveListPanel() {
 		super();
 		setLayout(null);
 		initPanel();
+		addListeners();
 	}
 
 	public void initPanel() {
@@ -39,7 +50,7 @@ public class ReceiveListPanel extends JPanel {
 		jp4jl1.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(jp4jl1);
 		
-		final JTextField ID = new JTextField();
+		ID = new JTextField();
 		ID.setBounds(105, 25, 100, 30);
 		ID.setFont(new Font("楷体", Font.PLAIN, 16));
 		add(ID);
@@ -51,10 +62,10 @@ public class ReceiveListPanel extends JPanel {
 		jp4jl4.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(jp4jl4);
 		
-		final JTextField recipient = new JTextField();
-		recipient.setBounds(105, 75, 100, 30);
-		recipient.setFont(new Font("楷体", Font.PLAIN, 16));
-		add(recipient);
+		receiver = new JTextField();
+		receiver.setBounds(105, 75, 100, 30);
+		receiver.setFont(new Font("楷体", Font.PLAIN, 16));
+		add(receiver);
 			
 		
 		final JLabel jp4jl7 = new JLabel("收件日期");
@@ -63,15 +74,16 @@ public class ReceiveListPanel extends JPanel {
 		jp4jl7.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(jp4jl7);
 		
-		final JXDatePicker timePicker1 = new JXDatePicker();
+		timePicker1 = new JXDatePicker();
 		timePicker1.setFont(new Font("楷体", Font.PLAIN, 18));
 		timePicker1.getEditor().setText("YY-MM-DD");
 		timePicker1.setBounds(105, 125, 100, 30);
 		add(timePicker1);
 		
 		
-		final JButton determine = new JButton("确定");
-		determine.setBounds(170, 185, 80, 32);
+		determine = new JButton("确定");
+		
+		determine.setBounds(188, 186, 80, 32);
 		determine.setFont(new Font("楷体", Font.PLAIN, 18));
 		add(determine);
 		
@@ -81,13 +93,15 @@ public class ReceiveListPanel extends JPanel {
 		add(jp4jb2);*/
 		
 		
-		
-		
-		
-		
-
-		
-		
 	}
 
+	private void  addListeners(){
+		determine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.creat(timePicker1.getDate().getTime()+"", receiver.getText(),
+                   ID.getText(), State.SUBMITTED);
+			}
+		});
+	}
 }

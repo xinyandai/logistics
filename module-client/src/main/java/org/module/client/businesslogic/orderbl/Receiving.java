@@ -18,8 +18,8 @@ public class Receiving implements ReceiveService {
 
 	public boolean creat(ReceivingListVO o) {
 		// TODO Auto-generated method stub
-		ReceivingListPO newPO = new ReceivingListPO(o.getDate(),o.getLocation(),
-				o.getOrigin(),o.getEstination(),o.getOrderId(),o.getState().toString()); 
+		ReceivingListPO newPO = new ReceivingListPO(o.getDate(),o.getReceiver(),
+				o.getOrderId(),o.getState()); 
 		try {
 			return receivingData.add(newPO);
 		} catch (RemoteException e) {
@@ -39,8 +39,8 @@ public class Receiving implements ReceiveService {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new ReceivingListVO(POs.get(i).getDate(),POs.get(i).getLocation(),
-					POs.get(i).getOrigin(),POs.get(i).getEstination(),POs.get(i).getOrderId(),POs.get(i).getState().toString()));
+			newVOs.add(new ReceivingListVO(POs.get(i).getDate(),POs.get(i).getReceiver(),
+					POs.get(i).getOrderId(),POs.get(i).getState()));
 		}
 		return newVOs;
 	}

@@ -20,10 +20,10 @@ public class OfficeArrival implements OfficeArrivalService {
 	public boolean creat(OfficeArrivalListVO o) {
 		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getOfficeid(),o.getDate(),
 				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState().toString()); 
+		System.out.println("tobedone");
 		try {
 			return officeArrivalData.add(newPO);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;
 		}
@@ -35,7 +35,6 @@ public class OfficeArrival implements OfficeArrivalService {
 		try {
 			 POs = officeArrivalData.getByState(s);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){

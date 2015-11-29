@@ -10,7 +10,8 @@ public class OfficeLoadingListPO implements Serializable{
 	private String LoadingDate;
 	private String OfficeId;
 	private String trucksId;
-	private String arrival;
+	private String city;
+	private String location;
 	private String carId;
 	private String Supervision;
 	private String escort;
@@ -28,13 +29,14 @@ public class OfficeLoadingListPO implements Serializable{
 		this.LoadingDate = s[0];
 		this.OfficeId = s[1];
 		this.trucksId = s[2];
-		this.arrival = s[3];
-		this.carId = s[4];
-		this.Supervision = s[5];
-		this.escort= s[6];
-		this.shippingId = s[7].split(this.inlinespt);
-		this.price = s[8];
-		this.state = State.getInstance(s[9]);
+		this.city = s[3];
+		this.location = s[4];
+		this.carId = s[5];
+		this.Supervision = s[6];
+		this.escort= s[7];
+		this.shippingId = s[8].split(this.inlinespt);
+		this.price = s[9];
+		this.state = State.getInstance(s[10]);
 	}
 	/**
 	 * 把订单号数组转化为字符串
@@ -53,7 +55,8 @@ public class OfficeLoadingListPO implements Serializable{
 		return this.LoadingDate + this.spt +
 				this.OfficeId  + this.spt +
 				this.trucksId  + this.spt +
-				this.arrival  + this.spt +
+				this.city  + this.spt +
+				this.location + this.spt + 
 				this.carId  + this.spt +
 				this.Supervision  + this.spt +
 				this.escort + this.spt +
@@ -64,24 +67,27 @@ public class OfficeLoadingListPO implements Serializable{
 				this.state.toString() ;
 	}
 
-	public OfficeLoadingListPO(String loadingDate, String officeId,
-			String trucksId, String arrival, String carId, String supervision,
-			String escort, String[] shippingId, String price, String state) {
-		super();
-		this.LoadingDate = loadingDate;
-		this.OfficeId = officeId;
-		this.trucksId = trucksId;
-		this.arrival = arrival;
-		this.carId = carId;
-		this.Supervision = supervision;
-		this.escort = escort;
-		this.shippingId = shippingId;
-		this.price = price;
-		this.state = State.getInstance(state);
-	}
+	
 
 	
 
+	public OfficeLoadingListPO(String loadingDate, String officeId,
+			String trucksId, String city, String location, String carId,
+			String supervision, String escort, String[] shippingId,
+			String price, State state) {
+		super();
+		LoadingDate = loadingDate;
+		OfficeId = officeId;
+		this.trucksId = trucksId;
+		this.city = city;
+		this.location = location;
+		this.carId = carId;
+		Supervision = supervision;
+		this.escort = escort;
+		this.shippingId = shippingId;
+		this.price = price;
+		this.state = state;
+	}
 	/*public OfficeLoadingListPO(String[] a){
 	}*/
 	public String getLoadingDate() {
@@ -99,11 +105,14 @@ public class OfficeLoadingListPO implements Serializable{
 	}
 
 
-	public String getArrival() {
-		return arrival;
+	
+
+	public String getCity() {
+		return city;
 	}
-
-
+	public String getLocation() {
+		return location;
+	}
 	public String getCarId() {
 		return carId;
 	}

@@ -19,8 +19,7 @@ public interface ReceiveBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String date, String location, String origin,
-			String estination, String orderId,String state);
+	public boolean creat(String l, String receiver,  String orderId,State state);
 	/**
 	 * 前置：选择查看所有收件单
 	 * 后置：显示所有收件单
