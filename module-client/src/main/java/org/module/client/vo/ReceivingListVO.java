@@ -12,9 +12,6 @@ public class ReceivingListVO {
 	private String orderId;
 	private State  state;
 	
-	public String getDate() {
-		return date;
-	}
 	public ReceivingListVO(String date, String receiver, String orderId,
 			State state) {
 		super();
@@ -23,6 +20,11 @@ public class ReceivingListVO {
 		this.orderId = orderId;
 		this.state = state;
 	}
+	
+	public String getDate() {
+		return date;
+	}
+
 	public void setDate(String date) {
 		this.date = date;
 	}

@@ -5,6 +5,8 @@ public class CarVO {
 	private String id;
 	private String License;
 	private String time;
+	
+	
 	public CarVO(String id, String license, String time) {
 		super();
 		this.id = id;
@@ -28,6 +30,13 @@ public class CarVO {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public String[] toArray() {
+		String[] re = new String[3];
+		re[0] = id;
+		re[1] = this.License;
+		re[2] = time;
+		return re;
 	}
 
 }

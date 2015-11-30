@@ -14,6 +14,7 @@ public class PriceAndCityVO {
 		this.distance=distance;
 		this.price=price;
 	}
+	
 	public String getcityA() {
 		return cityA;
 	}

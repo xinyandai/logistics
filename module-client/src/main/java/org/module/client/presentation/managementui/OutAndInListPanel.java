@@ -25,9 +25,7 @@ import java.util.Date;
 
 public class OutAndInListPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 查看此时间段内的出/入库数量/金额，存储位置

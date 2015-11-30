@@ -21,14 +21,15 @@ public class GoDownEntry implements GoDownEntryService {
 		try {
 			return data.add(
 					new GoDownEntryListPO(
-							goDownEntryVO.getCourier(),
+							goDownEntryVO.getWarehouseOfWhichTranCenter(),
+							goDownEntryVO.getId(),
 							goDownEntryVO.getDate(),
 							goDownEntryVO.getDestination(),
 							goDownEntryVO.getJia(),
 							goDownEntryVO.getPai(),
 							goDownEntryVO.getQu(),
 							goDownEntryVO.getWei(),
-							State.SUBMITTED.toString()
+							State.SUBMITTED
 							)
 					);
 		} catch (RemoteException e) {

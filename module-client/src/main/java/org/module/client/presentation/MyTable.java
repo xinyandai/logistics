@@ -9,9 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class MyTable extends AbstractTableModel {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1471177073613950851L;
 
 	private ArrayList<String[]> list;
@@ -30,7 +28,8 @@ public class MyTable extends AbstractTableModel {
 	
 	public MyTable(ArrayList<String[]> list, String[] s) {
 		
-		this.list = list;System.out.println(list.size());
+		this.list = list;
+		//System.out.println(list.size());
 		this.name = s;
 		this.checkBoxIndex = s.length;
 		this.addTableModelListener(new TableModelListener(){

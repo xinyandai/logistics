@@ -2,6 +2,13 @@ package org.module.client.businesslogicservice.statisticBLservice;
 
 public interface SalarySettingBLService {
 
+	/**
+	 * 
+	 * @param base  底薪
+	 * @param bonus 提成 
+	 * 
+	 * @return
+	 */
 	public boolean setAccountSalary(String base, String bonus);
 	public boolean setCourierSalary(String base, String bonusEveryDelivered,
 			String bonusEveryReceive);

@@ -1,11 +1,12 @@
 package org.module.client.vo;
 
 public class ReceiptVO {
-	//�տ
-		private String date;
+
+	    private String date;
 		private double money;
 		private String Courier;
 		private String orderId;
+		
 		public ReceiptVO(String date, String money, String courier,
 				String orderId) {
 			super();

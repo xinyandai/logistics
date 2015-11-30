@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.javaRMI.RmiClient;
-import org.module.client.vo.OfficeLoadingListVO;
 import org.module.client.vo.TranCenterLoadingListVO;
 import org.module.common.dataservice.orderdataservice.TranCenterLoadingListService;
 import org.module.common.po.State;

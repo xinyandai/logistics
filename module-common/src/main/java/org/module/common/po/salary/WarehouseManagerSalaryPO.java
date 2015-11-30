@@ -20,6 +20,9 @@ public class WarehouseManagerSalaryPO implements Serializable{
 	 * 出库提成
 	 */
 	private double bonusEveryOutBound;
+	
+	
+	
 	private String split=":%:%:";
 	@Override
 	public String toString(){
@@ -41,6 +44,11 @@ public class WarehouseManagerSalaryPO implements Serializable{
 		this.bonusEveryGodownEntry = bonusEveryGodownEntry;
 		this.bonusEveryOutBound = bonusEveryOutBound;
 	}
+	
+	
+	
+	
+	
 	public double getBase() {
 		return base;
 	}

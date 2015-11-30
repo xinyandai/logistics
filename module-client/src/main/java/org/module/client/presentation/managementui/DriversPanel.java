@@ -1,25 +1,25 @@
 package org.module.client.presentation.managementui;
 
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-import javax.swing.JTable;
-import javax.swing.JButton;
-
-import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
 
-import org.module.client.presentation.CheckBoxTableModelProxy;
+import org.module.client.businesslogic.managementbl.DriversManageController;
+import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
+import org.module.client.presentation.MyTable;
 
 public class DriversPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
@@ -33,47 +33,77 @@ public class DriversPanel extends JPanel {
 	 * 性别、
 	 * 行驶证期限
 	 */
-	Object[][] cellData = {{"row1-col1", "row1-col2","add", "row1-col2","add"},
-			{"row1-col1", "row1-col2","add", "row1-col2","add"},
-			{"row1-col1", "row1-col2","add", "row1-col2","add"},
-			{"row1-col1", "row1-col2","add", "row1-col2","add"}};
-	String[] columnNames = {"司机编号", "姓名","出生日期","身份证号","手机","性别","行驶证期限"};
-	private JTable table;
+	
+	private DriversManageBLService controller = new DriversManageController();
+	ArrayList<String[]> listData ;
+	String[] columnNames = {"编号", "姓名","生日","身份证号","手机","性别","驾驶证证期限"};
+	private MyTable table;
+	private JButton refresh;
+	private JButton modify;
+	private JButton delete;
+	private JButton add;
+	
+	private void addListeners(){
+		add.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		delete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		
+		modify.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		refresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+	}
 	public DriversPanel() {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton add = new JButton("增");
+		add = new JButton("增");
 		
-		JButton delete = new JButton("删");
 		
-		JButton modify = new JButton("改");
+		delete = new JButton("删");
 		
-		JButton update = new JButton("同步");
+		
+		modify = new JButton("改");
+		
+		
+		refresh = new JButton("同步");
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(58)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(210, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(update)
-					.addContainerGap())
+					.addComponent(refresh))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(add)
-						.addComponent(delete)
+						.addComponent(refresh)
 						.addComponent(modify)
-						.addComponent(update))
+						.addComponent(delete)
+						.addComponent(add))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -81,18 +111,11 @@ public class DriversPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		
-		table = new JTable(new DefaultTableModel(cellData,columnNames){
-			
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-		    }
-
-		});
-		CheckBoxTableModelProxy a = new CheckBoxTableModelProxy(table.getModel(), "check");
-		scrollPane.setViewportView(new JTable(a));
+		listData = controller.toArray();
+		table = new MyTable(listData,columnNames);
+		scrollPane.setViewportView(new JTable(table));
+		
+		addListeners();
 	}
 
 }

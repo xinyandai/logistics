@@ -10,4 +10,5 @@ public interface UserLoginBLService {
 	 * @return
 	 */
 	public boolean login(String id,String password,String role);
+	
 }

@@ -12,12 +12,17 @@ public class WarehousePO implements Serializable{
 	private String pai;
 	private String jia;
 	private String wei;
+	
+	private String warehouseOfWhichTranCenter;
+	
 	final private String split=":%:%:";
 	@Override
 	public String toString(){
 		return this.number+this.split+this.qu
 				+this.split+this.pai+this.split
-				+this.jia+this.split+this.wei;
+				+this.jia+this.split+this.wei + 
+				this.split + 
+				this.warehouseOfWhichTranCenter;
 	}
 	public WarehousePO(String str) {
 		super();
@@ -27,15 +32,17 @@ public class WarehousePO implements Serializable{
 		this.pai = strs[2];
 		this.jia = strs[3];
 		this.wei = strs[4];
+		this.warehouseOfWhichTranCenter = strs[5];
 	}
 	public WarehousePO(String number, String qu, String pai, String jia,
-			String wei) {
+			String wei,String warehouseOfWhichTranCenter) {
 		super();
 		this.number = number;
 		this.qu = qu;
 		this.pai = pai;
 		this.jia = jia;
 		this.wei = wei;
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 	}
 	public String getNumber() {
 		return number;
@@ -67,5 +74,7 @@ public class WarehousePO implements Serializable{
 	public void setWei(String wei) {
 		this.wei = wei;
 	}
-	
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
+	}
 }

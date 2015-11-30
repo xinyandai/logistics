@@ -8,6 +8,8 @@ public class UserVO {
 	private String password;
 	private String  role;
 	private String authority;
+	
+	
 	public UserVO(String id,String name,String password,String role,String authority) {
 		// TODO Auto-generated constructor stub
 		this.id = id;

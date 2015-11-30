@@ -58,4 +58,7 @@ public interface DriversManageBLService {
 	 */
 	public ArrayList<DriverVO> fuzzySearch(String s);
 	
+	
+	public ArrayList<String[]> toArray();
+	
 }

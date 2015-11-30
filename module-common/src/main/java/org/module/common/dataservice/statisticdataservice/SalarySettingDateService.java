@@ -13,6 +13,12 @@ import org.module.common.po.salary.WarehouseManagerSalaryPO;
 
 
 public interface SalarySettingDateService extends Remote {
+	/**
+	 * 
+	 * @param a PO
+	 * @return
+	 * @throws RemoteException
+	 */
 	public boolean setAccountSalary(AccountantSalaryPO a)throws RemoteException;
 	public boolean setCourierSalary(CourierSalaryPO c)throws RemoteException;
 	public boolean setDriverSalary(DriverSalaryPO d)throws RemoteException;

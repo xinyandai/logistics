@@ -8,7 +8,10 @@ import org.module.client.vo.DepartmentVO;
 import org.module.common.dataservice.MyList;
 
 public class DepartmentManageController implements DepartmentManageBLService{
+	
 	private DepartmentService department ;
+//	private ArrayList<String[]> re;
+	
 	public DepartmentManageController(DepartmentService department) {
 		super();
 		this.department = department;
@@ -19,49 +22,37 @@ public class DepartmentManageController implements DepartmentManageBLService{
 	}
 
 	public ArrayList<DepartmentVO> showAll() {
-		// TODO Auto-generated method stub
 		return department.showAll();
 	}
 
 	public boolean add(String name, String category, String location,
 			String identity) {
-		// TODO Auto-generated method stub
-		return department.add(new DepartmentVO(name,category,location,identity));
+		DepartmentVO departmentVO = new DepartmentVO(name,category,location,identity);  
+		return department.add(departmentVO);
 	}
 
 	public boolean delete(String identity) {
-		// TODO Auto-generated method stub
 		return department.delete(identity);
 	}
 
 	public boolean delete(MyList<String> ids) {
-		// TODO Auto-generated method stub
 		return department.delete(ids);
 	}
 
 	public boolean update(String name, String category, String location,
 			String identity) {
-		// TODO Auto-generated method stub
-		return department.modify(new DepartmentVO(name,category,location,identity));
+		DepartmentVO departmentVO = new DepartmentVO(name,category,location,identity);
+		return department.modify(departmentVO);
 	}
 
 	public ArrayList<DepartmentVO> fuzzySearch(String s) {
-		// TODO Auto-generated method stub
 		return department.fuzzySearch(s);
 	}
 
-	public String[][] toArray(){
-		ArrayList<DepartmentVO> vo = this.showAll();
-		
-		String[][] re = new String[vo.size()][];
-		for (int i = 0; i < vo.size(); i++) {
-			re[i] = vo.get(i).toArray();
-		}
-		return re;
-	}
+	
+	
 	public ArrayList<String[]> toArrayList(){
 		ArrayList<DepartmentVO> vo = this.showAll();
-		
 		ArrayList<String[]> re = new ArrayList<String[]>();
 		for (int i = 0; i < vo.size(); i++) {
 			re.add( vo.get(i).toArray());

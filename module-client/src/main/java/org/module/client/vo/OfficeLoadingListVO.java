@@ -34,6 +34,8 @@ public class OfficeLoadingListVO {
 	private String[] shippingIds;
 	private String price;
 	private State state;
+	
+	
 	public OfficeLoadingListVO(String loadingDate, String officeId,
 			String trucksId, String city,String location, String carId, String supervision,
 			String escort, String[] shippingId, String price,String state) {

@@ -27,6 +27,8 @@ public class OutBoundListVO {
 	 */
 	private String tansportListId;
 //	private String carId;
+	
+	
 	public OutBoundListVO(String id, String date, String destination,
 			String typeOfLoading, String tansportListId) {
 		super();

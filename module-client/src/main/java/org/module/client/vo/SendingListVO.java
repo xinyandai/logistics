@@ -5,11 +5,11 @@ import org.module.common.po.State;
 
 public class SendingListVO {
 
-	//�ɼ���
 		private String date;
 		private String shippingId;
 		private String SendMember;
 		private State state;
+		
 		public SendingListVO(String date, String shippingId, String sendMember,String state) {
 			super();
 			this.date = date;

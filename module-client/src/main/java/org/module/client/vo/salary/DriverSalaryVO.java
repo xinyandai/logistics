@@ -13,6 +13,9 @@ public class DriverSalaryVO {
 	 * 跨市运货每千米提成
 	 */
 	private double bonusEveryKilometersOutcityDriving;
+	
+	
+	
 	public double getBase() {
 		return base;
 	}

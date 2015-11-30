@@ -11,6 +11,7 @@ public class PriceAndCityPO implements Serializable{
 	private String cityB;
 	private String distance;
 	private String price;
+	
 	final private String split=":%:%:";
 	@Override
 	public String toString(){

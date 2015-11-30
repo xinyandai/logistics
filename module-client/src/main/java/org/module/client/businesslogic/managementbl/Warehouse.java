@@ -8,7 +8,6 @@ import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
-import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.managementdataservice.WarahouseDataService;
 import org.module.common.po.BorderlinePO;
 import org.module.common.po.WarehousePO;
@@ -27,7 +26,8 @@ public class Warehouse implements WarehouseManageService {
 								warehousePO.getQu(),
 								warehousePO.getPai(),
 								warehousePO.getJia(),
-								warehousePO.getWei()
+								warehousePO.getWei(),
+								warehousePO.getWarehouseOfWhichTranCenter()
 								)
 						);
 			}
@@ -37,13 +37,15 @@ public class Warehouse implements WarehouseManageService {
 		return vos;
 	}
 
-	public boolean modify(WarehouseVO warehousePO) {
+	public boolean modify(WarehouseVO warehouseVO) {
 		WarehousePO po = new WarehousePO(
-				warehousePO.getNumber(),		
-				warehousePO.getQu(),
-				warehousePO.getPai(),
-				warehousePO.getJia(),
-				warehousePO.getWei()
+			
+				warehouseVO.getNumber(),		
+				warehouseVO.getQu(),
+				warehouseVO.getPai(),
+				warehouseVO.getJia(),
+				warehouseVO.getWei(),
+				warehouseVO.getWarehouseOfWhichTranCenter()
 				);
 		try {
 			return this.data.update(po);
@@ -71,11 +73,12 @@ public class Warehouse implements WarehouseManageService {
 		try {
 			return this.data.add(
 					new WarehousePO(
-							w.getCourier(),
+							w.getId(),
 							w.getQu(),
 							w.getPai(),
 							w.getJia(),
-							w.getWei()
+							w.getWei(),
+							w.getWarehouseOfWhichTranCenter()
 							)
 					);
 		} catch (RemoteException e) {

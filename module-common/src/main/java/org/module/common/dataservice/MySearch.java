@@ -2,6 +2,12 @@ package org.module.common.dataservice;
 
 public class MySearch {
 
+	/**
+	 * 
+	 * @param tobematch  查找字符
+	 * @param key 关键字
+	 * @return 相似度
+	 */
 	public double similarity(String tobematch,String key){
 		double re = 0;
 		

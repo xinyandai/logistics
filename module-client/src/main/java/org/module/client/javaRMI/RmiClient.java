@@ -25,6 +25,7 @@ public class RmiClient {
 		 return null;
 	}*/
 
+	
 	@SuppressWarnings("unchecked")
 	public  <T> T get(Class<T> cla){
 		String url="rmi://127.0.0.1/"+cla.getName();
@@ -40,6 +41,5 @@ public class RmiClient {
 			e.printStackTrace();
 		} 
 		return null;
-		
 	}
 }

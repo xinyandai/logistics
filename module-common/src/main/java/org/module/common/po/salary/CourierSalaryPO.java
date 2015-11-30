@@ -20,7 +20,13 @@ public class CourierSalaryPO implements Serializable{
 	 * 收件提成
 	 */
 	private double bonusEveryReceive;
-	private String split=":%:%:";
+	
+	
+	
+	
+	
+	
+	final private String split=":%:%:";
 	
 	@Override
 	public String toString(){
@@ -35,6 +41,9 @@ public class CourierSalaryPO implements Serializable{
 		this.bonusEveryDelivered = Double.parseDouble(strs[1]);
 		this.bonusEveryReceive = Double.parseDouble(strs[2]);
 	}	
+	
+	
+	
 	public CourierSalaryPO(double base, double bonusEveryDelivered,
 			double bonusEveryReceive) {
 		super();

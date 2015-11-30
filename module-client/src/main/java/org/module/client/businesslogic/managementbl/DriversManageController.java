@@ -51,4 +51,14 @@ public class DriversManageController implements DriversManageBLService{
 		return driver.fuzzySearch(s);
 	}
 
+	public ArrayList<String[]> toArray() {
+		ArrayList<String[]> re = new ArrayList<String[]>();
+		
+		ArrayList<DriverVO> vos = this.showAll();
+		for (DriverVO driverVO : vos) {
+			re.add(driverVO.toArray());
+		}
+		return re;
+	}
+
 }

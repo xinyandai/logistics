@@ -1,10 +1,13 @@
 package org.module.common.po;
+
+import java.io.Serializable;
+
 /**
  * 所有单据的状态  
  * @author 
  *
  */
-public enum State {
+public enum State implements Serializable{
 
 	/**
 	 * 提交未审核状态

@@ -19,7 +19,9 @@ import org.module.common.po.State;
  */
 public class TransportListVO {
 
-	//��ת��
+	/**
+	 * 运送方式
+	 */
 		private String car;
 		private String LoadingDate;
 		private String transListId;
@@ -37,6 +39,8 @@ public class TransportListVO {
 		private String[] shippingId;
 		private String price;
 		private State state;
+		
+		
 		public TransportListVO(String car, String loadingDate, String transId,
 				String carId, String origin, String arrival, String counterId,
 				String supervision, String[] shippingId, String price,String state) {

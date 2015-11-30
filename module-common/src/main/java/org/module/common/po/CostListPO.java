@@ -7,6 +7,8 @@ public class CostListPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 8829619390677099808L;
+	
+	
 	private String date;
 	private String money;
 	private String people;

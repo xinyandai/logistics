@@ -11,6 +11,7 @@ public class CityPO implements Serializable{
 	private String name;
 	private String id;
 	private String split=":%:%:";
+	
 	@Override
 	public String toString(){
 		return this.name+this.split+this.id;

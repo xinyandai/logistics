@@ -14,6 +14,9 @@ public class OfficeClerkSalaryVO {
 	 * 收件提成
 	 */
 	private double bonusEveryReceive;
+	
+	
+	
 	public double getBase() {
 		return base;
 	}

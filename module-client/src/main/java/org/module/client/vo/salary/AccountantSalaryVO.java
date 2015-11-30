@@ -1,5 +1,6 @@
 package org.module.client.vo.salary;
 
+
 public class AccountantSalaryVO {
 	/**
 	 * 底薪
@@ -9,11 +10,14 @@ public class AccountantSalaryVO {
 	 * 收益提成
 	 */
 	private double bonus;
+	
 	public AccountantSalaryVO(double base, double bonus) {
 		super();
 		this.base = base;
 		this.bonus = bonus;
 	}
+	
+	
 	public double getBase() {
 		return base;
 	}

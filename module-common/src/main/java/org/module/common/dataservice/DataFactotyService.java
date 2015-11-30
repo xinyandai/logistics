@@ -8,7 +8,7 @@ public interface DataFactotyService {
 	/**
 	 * 前置：  名为s 的对象应当是客观存在的
 	 * 后置：  返回对应的对象
-	 * @param s
+	 * @param s 包下类名
 	 * @return
 	 * @throws RemoteException 
 	 */

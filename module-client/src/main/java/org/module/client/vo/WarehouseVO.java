@@ -8,15 +8,18 @@ public class WarehouseVO {
 	private String pai;
 	private String jia;
 	private String wei;
+	private String warehouseOfWhichTranCenter;
+	
 	
 	public WarehouseVO(String number, String qu, String pai, String jia,
-			String wei) {
+			String wei, String warehouseOfWhichTranCenter) {
 		super();
 		this.number = number;
 		this.qu = qu;
 		this.pai = pai;
 		this.jia = jia;
 		this.wei = wei;
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 	}
 	public String getNumber() {
 		return number;
@@ -48,5 +51,12 @@ public class WarehouseVO {
 	public void setWei(String wei) {
 		this.wei = wei;
 	}
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
+	}
+	public void setWarehouseOfWhichTranCenter(String warehouseOfWhichTranCenter) {
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
+	}
+	
 	
 }

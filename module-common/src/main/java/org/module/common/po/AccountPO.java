@@ -7,6 +7,7 @@ public class AccountPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -5647838700427395670L;
+	
 	private String id;
 	private String money;
 	

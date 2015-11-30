@@ -13,6 +13,7 @@ import javax.swing.table.TableModel;
  */
 public class CheckBoxTableModelProxy extends AbstractTableModel {
     private static final long serialVersionUID = 4419095637613592975L;
+   
     protected TableModel tableModel;
     protected String checkBoxColumnName;
     protected BitSet checkBitSet;

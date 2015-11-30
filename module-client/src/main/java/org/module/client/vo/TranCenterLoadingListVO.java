@@ -32,6 +32,7 @@ public class TranCenterLoadingListVO {
 	private String[] shippingIds;
 	private String price;
 	private State state;
+	
 	public TranCenterLoadingListVO(String loadingDate, String officeId,
 			String trucksId, String city,String location, String carId, String supervision,
 			String escort, String[] shippingId, String price,String state) {

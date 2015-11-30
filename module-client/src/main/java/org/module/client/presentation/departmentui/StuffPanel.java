@@ -16,9 +16,7 @@ import org.module.client.presentation.CheckBoxTableModelProxy;
 
 public class StuffPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.

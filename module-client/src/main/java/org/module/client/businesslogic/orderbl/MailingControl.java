@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.vo.MailingListVO;
-import org.module.common.po.State;
 
 
 public class MailingControl implements MailingBLService{

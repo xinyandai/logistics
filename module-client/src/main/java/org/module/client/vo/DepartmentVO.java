@@ -16,6 +16,7 @@ public class DepartmentVO {
 		this.location = location;
 		this.identity = identity;
 	}
+	
 	public String getName() {
 		return name;
 	}

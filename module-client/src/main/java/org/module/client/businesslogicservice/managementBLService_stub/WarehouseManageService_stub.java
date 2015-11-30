@@ -35,4 +35,10 @@ public class WarehouseManageService_stub implements  WarehouseManageBLService{
 		// TODO Auto-generated method stub		
 	}
 
+	public boolean modify(String id, String qu, String pai, String jia,
+			String wei, String warehouseOfWhichTranCenter) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

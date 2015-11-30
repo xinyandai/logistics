@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 public class CarPO implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -6847614444037980888L;
 
 	final private String split =":%:%:";

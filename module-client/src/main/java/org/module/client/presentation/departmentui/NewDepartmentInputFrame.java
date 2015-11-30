@@ -18,11 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
-import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.presentation.Numeric;
-
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
 
 public class NewDepartmentInputFrame extends JFrame {
 
@@ -37,38 +33,16 @@ public class NewDepartmentInputFrame extends JFrame {
 	private JTextField lcoation;
     private final String[] array= {"用户","快递员","营业厅业务员","仓库管理员","中转中心业务员","财务人员","总经理","管理员"};
 	
-	private DepartmentManageBLService controller;
 	private JButton button;
 	private JLabel stateLabel;
 	private JButton cancel;
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NewDepartmentInputFrame frame = new NewDepartmentInputFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the frame.
-	 * @wbp.parser.constructor
-	 */
-	public NewDepartmentInputFrame(final DepartmentManageBLService controller) {
-		this.controller = controller;	
+	
+	public NewDepartmentInputFrame() {
 		this.init();
 	}
 
-	public NewDepartmentInputFrame(final DepartmentManageBLService controller,
+	public NewDepartmentInputFrame(
 			String name,String category,String location,String ID) {
-		this.controller = controller;	
 		this.init();
 		this.ID.setText(ID);
 		this.name.setText(name);

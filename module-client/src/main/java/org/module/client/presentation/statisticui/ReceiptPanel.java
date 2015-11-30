@@ -16,9 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class ReceiptPanel extends JPanel {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -7750747233254196763L;
 	private JTextField money;
 	private JTextField Courier;

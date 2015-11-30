@@ -14,6 +14,7 @@ public class WarehouseManagerSalaryVO {
 	 * 出库提成
 	 */
 	private double bonusEveryOutBound;
+	
 	public WarehouseManagerSalaryVO(double base, double bonusEveryGodownEntry,
 			double bonusEveryOutBound) {
 		super();

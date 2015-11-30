@@ -16,9 +16,8 @@ public class Price extends JPanel {
 	private JTextField carriage;
 
 	String[] city = {"南京","北京","上海","广州"};
-	/**
-	 * Create the panel.
-	 */
+	
+	
 	public Price() {
 		setLayout(null);
 		

@@ -27,9 +27,9 @@ public class WarehouseManageController implements WarehouseManageBLService{
 	}
 
 	public boolean modify(String id, String qu, String pai, String jia,
-			String wei) {
+			String wei,String 	warehouseOfWhichTranCenter) {
 		// TODO Auto-generated method stub
-		return warehouse.modify(new WarehouseVO(id, qu, pai,jia, wei));
+		return warehouse.modify(new WarehouseVO(id, qu, pai,jia, wei,warehouseOfWhichTranCenter));
 	}
 
 	public boolean outBound(OutBoundListVO w) {

@@ -12,9 +12,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class LogisticsPanel extends JPanel {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JTextField ID;
 
@@ -75,6 +73,9 @@ public class LogisticsPanel extends JPanel {
 					.addGap(36)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(label, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 							.addGap(3)
 							.addComponent(state, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
@@ -89,8 +90,7 @@ public class LogisticsPanel extends JPanel {
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(label_1)
 							.addGap(10)
-							.addComponent(currentLocation, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(currentLocation, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -112,7 +112,8 @@ public class LogisticsPanel extends JPanel {
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
 						.addComponent(currentLocation))
 					.addGap(10)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		panel_1.setLayout(gl_panel_1);
 

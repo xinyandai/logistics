@@ -8,6 +8,8 @@ public class CostListVO {
 	private String accout;
 	private String entry;
 	private String note;
+	
+	
 	public CostListVO(String date, String money, String people, String accout,
 			String entry, String note) {
 		super();

@@ -19,7 +19,12 @@ public class TranCenterClerkSalaryPO implements Serializable{
 	 * 每车装车提成
 	 */
 	private double bonusEveryLoading;
+	
+	
+	
 	private String split=":%:%:";
+	
+	
 	@Override
 	public String toString(){
 		return this.base+this.split
@@ -40,6 +45,13 @@ public class TranCenterClerkSalaryPO implements Serializable{
 		this.bonusEveryArrival = bonusEveryArrival;
 		this.bonusEveryLoading = bonusEveryLoading;
 	}
+	
+	
+	
+	
+	
+	
+	
 	public double getBase() {
 		return base;
 	}

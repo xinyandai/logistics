@@ -20,21 +20,17 @@ import org.module.common.dataservice.MyList;
 
 public class DeparmentPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-	/**
-	 * Create the panel.
-	 */
+	
 	private DepartmentManageBLService controller = new DepartmentManageController(); 
-//	String[][] cellData ;
+	
 	String[] columnNames = {"名字","类别","地址", "编号"};
 	ArrayList<String[]> listData;
+	
+	
 	private final MyTable myTable;
-	/**
-	 * 
-	 */
+
 	private int mainKey = 3;
 	private JButton add;
 	private JButton delete;
@@ -42,9 +38,7 @@ public class DeparmentPanel extends JPanel {
 	private JButton refresh;
 	
 	public DeparmentPanel() {
-		
-		listData = this.controller.toArrayList();
-		
+
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -83,13 +77,15 @@ public class DeparmentPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		
-	
-	
+		listData = this.controller.toArrayList();
 		myTable = new MyTable(this.listData,this.columnNames);
 		
 		scrollPane.setViewportView(new JTable(myTable));
-	
-	
+		
+		addListeners();
+		
+	}
+	private void addListeners(){
 		add.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -119,30 +115,29 @@ public class DeparmentPanel extends JPanel {
 				update();
 			} 
 		});
-		
 	}
-
 	
 	private void delete(){
 		int[] indexes = myTable.getCheckedIndexes();
 		
 		
-		
 		MyList<String> ids = new MyList<String>();
 		for (int i =  indexes.length-1; i>=0; i--) {
 			ids.add(listData.get(indexes[i])[this.mainKey]);
-		}for (int i =  indexes.length-1; i>=0; i--) {
-			listData.remove(indexes[i]);
 		}
-//		System.out.println(ids.size());
-		myTable.fireTableDataChanged();
-		controller.delete(ids);
+		if(controller.delete(ids)){
+
+			for (int i =  indexes.length-1; i>=0; i--) {
+				listData.remove(indexes[i]);
+			}
+			myTable.fireTableDataChanged();		
+		}
 	}
 	
 	
 	private void add(){
 		final NewDepartmentInputFrame departmentInputFramenew  = 
-				new	NewDepartmentInputFrame(controller);
+				new	NewDepartmentInputFrame();
 			departmentInputFramenew.setVisible(true);
 			JButton button = departmentInputFramenew.getButton();
 			button.addMouseListener(new MouseAdapter() {
@@ -184,7 +179,7 @@ public class DeparmentPanel extends JPanel {
 			final int index = indexes[0];
 			final String[] ar = listData.get( index );
 			final NewDepartmentInputFrame departmentInputFramenew  = 
-					new	NewDepartmentInputFrame(controller,ar[0],ar[1],ar[2],ar[3]);
+					new	NewDepartmentInputFrame(ar[0],ar[1],ar[2],ar[3]);
 				departmentInputFramenew.setVisible(true);
 			
 			JButton button = departmentInputFramenew.getButton();

@@ -12,6 +12,13 @@ public class GoDownEntryListPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -4680037496734611274L;
+	
+	private String warehouseOfWhichTranCenter;
+	
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
+	}
+
 	/**
 	 * 快递单号
 	 */
@@ -45,9 +52,10 @@ public class GoDownEntryListPO implements Serializable{
 	 */
 	private State state;
 
-	public GoDownEntryListPO(String courier, String date, String destination,
-			String qu, String pai, String jia, String wei, String state) {
+	public GoDownEntryListPO(String warehouseOfWhichTranCenter,String courier, String date, String destination,
+			String qu, String pai, String jia, String wei, State state) {
 		super();
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 		id = courier;
 		this.date = date;
 		this.destination = destination;
@@ -55,25 +63,27 @@ public class GoDownEntryListPO implements Serializable{
 		this.pai = pai;
 		this.jia = jia;
 		this.wei = wei;
-		this.state = State.getInstance(state);
+		this.state =state;
 	}
 
 	final private String spt = ":%：%：";
 	public GoDownEntryListPO(String string) {
 		String[] s = string.split(spt);
-	    this.id = s[0];
-		this.date = s[1];
-		this.destination = s[2];
-		this.qu = s[3];
-		this.pai = s[4];
-		this.jia = s[5];
-		this.wei = s[6];
-		this.state = State.getInstance(s[7]);
+		this.warehouseOfWhichTranCenter = s[0];
+	    this.id = s[1];
+		this.date = s[2];
+		this.destination = s[3];
+		this.qu = s[4];
+		this.pai = s[5];
+		this.jia = s[6];
+		this.wei = s[7];
+		this.state = State.getInstance(s[8]);
 	}
 	
 	@Override
 	public String toString(){
-		return this.id + this.spt+
+		return  this.warehouseOfWhichTranCenter + this.spt +
+				this.id + this.spt+
 				this.date + this.spt+
 				this.destination + this.spt+
 				this.qu + this.spt+

@@ -16,9 +16,9 @@ public class GoDownEntryController implements GoDownEntryBLService{
 		this.goDownEntry = new GoDownEntry();
 	}
 	
-	public boolean createTicket(String courier, String date,
+	public boolean createTicket(String warehouseOfWhichTranCenter,String id, String date,
 			String destination, String qu, String pai, String jia, String wei) {
-		return goDownEntry.createTicket(new GoDownEntryVO(courier, date,
+		return goDownEntry.createTicket(new GoDownEntryVO(warehouseOfWhichTranCenter,id, date,
 				destination, qu,pai, jia, wei));
 	}
 

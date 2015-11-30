@@ -3,9 +3,8 @@ package org.module.common.po;
 import java.io.Serializable;
 
 public class DepartmentPO implements Serializable{
-	/**
-	 * 
-	 */
+	
+	
 	private static final long serialVersionUID = -1765908153306778241L;
 	private String name;
 	private String category;

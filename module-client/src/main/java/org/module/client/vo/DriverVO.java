@@ -5,17 +5,18 @@ public class DriverVO {
 	private String id;
 	private String name;
 	private String birthday;
-	private String Idcard;
+	private String idcard;
 	private String phone;
 	private String gender;
 	private String date;
+
 	public DriverVO(String id, String name, String birthday, String idcard,
 			String phone, String gender, String date) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.birthday = birthday;
-		Idcard = idcard;
+		this.idcard = idcard;
 		this.phone = phone;
 		this.gender = gender;
 		this.date = date;
@@ -39,10 +40,10 @@ public class DriverVO {
 		this.birthday = birthday;
 	}
 	public String getIdcard() {
-		return Idcard;
+		return idcard;
 	}
 	public void setIdcard(String idcard) {
-		Idcard = idcard;
+		this.idcard = idcard;
 	}
 	public String getPhone() {
 		return phone;
@@ -61,6 +62,17 @@ public class DriverVO {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public String[] toArray() {
+		String[] re =new String[7];
+		re[0] = id;
+		re[1] = name;
+		re[2] = birthday;
+		re[3] = idcard;
+		re[4] = phone;
+		re[5] = gender;
+		re[6] = date;
+		return re;
 	}
 
 }

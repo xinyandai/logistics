@@ -10,9 +10,7 @@ import java.io.Serializable;
  *
  */
 public class StuffPO implements Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -2637320937672105650L;
 	private String name;
 	private String age;

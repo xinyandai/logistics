@@ -65,10 +65,15 @@ public interface DepartmentManageBLService {
 	 */
 	public ArrayList<DepartmentVO> fuzzySearch(String s);
 	/**
+	 * 更新同步数据
+	 * 主要是从服务端读取数据
+	 * @return
+	 */
+//	public void refresh();
+	/**
 	 * 
 	 * @return
 	 */
-	public String[][] toArray();
 	public ArrayList<String[]> toArrayList();
 	
 }

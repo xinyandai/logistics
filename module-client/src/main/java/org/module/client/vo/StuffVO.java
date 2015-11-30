@@ -27,6 +27,7 @@ public class StuffVO {
 		this.identity = identity;
 		this.slaray = slaray;
 	}
+	
 	public  void setSlary(double s){
 		this.slaray  =s ;
 	}

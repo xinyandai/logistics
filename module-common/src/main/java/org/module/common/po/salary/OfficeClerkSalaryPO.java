@@ -20,6 +20,9 @@ public class OfficeClerkSalaryPO implements Serializable{
 	 * 收件提成
 	 */
 	private double bonusEveryReceive;
+	
+	
+	
 	private String split=":%:%:";
 	@Override
 	public String toString(){
@@ -34,6 +37,8 @@ public class OfficeClerkSalaryPO implements Serializable{
 		this.bonusEveryDelivered = Double.parseDouble(strs[1]);
 		this.bonusEveryReceive = Double.parseDouble(strs[2]);
 	}
+	
+	
 	public OfficeClerkSalaryPO(double base, double bonusEveryDelivered,
 			double bonusEveryReceive) {
 		super();

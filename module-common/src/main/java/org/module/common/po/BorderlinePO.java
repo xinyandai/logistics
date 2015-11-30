@@ -2,6 +2,7 @@ package org.module.common.po;
 
 public class BorderlinePO {
 
+	
 	private String id;
 	private String qu;
 	private double line;

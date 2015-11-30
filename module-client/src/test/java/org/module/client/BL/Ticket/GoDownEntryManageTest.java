@@ -14,6 +14,6 @@ public class GoDownEntryManageTest extends TestCase {
 	}
 	
 	public void testcreateTicket(){
-		assert(goDownEntry.createTicket("01","2015","beijing","110","1","1","1"));
+		assert(goDownEntry.createTicket("025156","01","2015","beijing","110","1","1","1"));
 	}
 }

@@ -1,6 +1,5 @@
 package org.module.client.vo;
 
-import org.module.common.po.State;
 
 
 public class MailingListVO {
@@ -25,6 +24,8 @@ public class MailingListVO {
 	private String type;
 	private String id;
 	//private State state;
+	
+	
 	public String getSenderName() {
 		return senderName;
 	}

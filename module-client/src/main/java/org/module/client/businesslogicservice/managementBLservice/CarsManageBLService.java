@@ -56,5 +56,11 @@ public interface CarsManageBLService {
 	 * @return
 	 */
 	public ArrayList<CarVO> fuzzySearch(String s);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<String[]> getAllToArray();
 }
 

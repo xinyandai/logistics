@@ -14,6 +14,8 @@ public class OfficeArrivalListVO {
 	private String origin;
 	private String stateOfGoods;
 	private String state;
+	
+	
 	public String getOfficeid() {
 		return officeid;
 	}

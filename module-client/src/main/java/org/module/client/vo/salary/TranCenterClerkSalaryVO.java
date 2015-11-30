@@ -13,6 +13,7 @@ public class TranCenterClerkSalaryVO {
 	 * 每车装车提成
 	 */
 	private double bonusEveryLoading;
+	
 	public double getBase() {
 		return base;
 	}

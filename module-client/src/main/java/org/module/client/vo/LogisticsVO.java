@@ -9,6 +9,8 @@ public class LogisticsVO {
 	private String[] historyLocation;
 	private String[] historyTime;
 	private boolean isCompleted;
+	
+	
 	public String getOrderId() {
 		return orderId;
 	}

@@ -12,7 +12,7 @@ public class WarehouseManageService_Driver {
 	public void drive(WarehouseManageBLService warehouseManageService){
 		OutBoundListVO d=new OutBoundListVO("carId","date","destination",
 				"car","tansportListId");
-		GoDownEntryVO e=new GoDownEntryVO("courier","date","destination",
+		GoDownEntryVO e=new GoDownEntryVO("025156","courier","date","destination",
 				"qu","pai", "jia", "wei");
 		ArrayList<WarehouseVO> past=new ArrayList<WarehouseVO>();
 		ArrayList<WarehouseVO> now=new ArrayList<WarehouseVO>();

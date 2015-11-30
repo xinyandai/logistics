@@ -10,7 +10,8 @@ public interface OutBoundBLService {
 	 * 前置：选择新建
 	 * 后置：更新
 	 * 依赖：OutBoundListService.add 增加一个出库单PO
-	 * @param t
+	 * @param car
+	 * 
 	 * @return
 	 */
 	public boolean createTicket(String id, String date, String destination,

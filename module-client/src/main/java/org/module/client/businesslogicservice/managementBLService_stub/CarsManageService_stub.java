@@ -60,4 +60,9 @@ public class CarsManageService_stub implements CarsManageBLService{
 		return false;
 	}
 
+	public ArrayList<String[]> getAllToArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

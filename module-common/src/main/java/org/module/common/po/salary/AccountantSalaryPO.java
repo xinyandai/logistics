@@ -34,6 +34,7 @@ public class AccountantSalaryPO implements Serializable{
 		this.base = base;
 		this.bonus = bonus;
 	}
+	
 	public double getBase() {
 		return base;
 	}

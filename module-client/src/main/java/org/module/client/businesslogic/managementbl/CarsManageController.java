@@ -20,12 +20,19 @@ public class CarsManageController implements CarsManageBLService{
 	}
 
 	public ArrayList<CarVO> showAll() {
-		// TODO Auto-generated method stub
 		return car.showAll();
 	}
 
+	public ArrayList<String[]> getAllToArray(){
+		ArrayList<String[]>	re =new ArrayList<String[]>();
+		ArrayList<CarVO> vos = this.showAll();
+		for (CarVO carVO : vos) {
+			re.add(carVO.toArray());
+		}
+		return re;
+	}
+	
 	public boolean add(String id, String license, String time) {
-		// TODO Auto-generated method stub
 		return car.add(new CarVO( id, license, time));
 	}
 

@@ -12,6 +12,7 @@ import java.io.Serializable;
 	 * 总经理：41
 	 * 管理员: 51
 	 */
+
 public class UserPO implements Serializable{
 	/**
 	 * 

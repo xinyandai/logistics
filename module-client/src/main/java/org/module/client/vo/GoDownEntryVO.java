@@ -4,11 +4,15 @@ package org.module.client.vo;
  *库存入库单（快递编号、入库日期、目的地、区号、排号、架号、位号）
  */
 public class GoDownEntryVO {
-    /**
+   
+	private String warehouseOfWhichTranCenter;
+	
+	/**
 	 * 快递单号
 	 */
 	private String id;
 
+	
 	
 	
 	/**
@@ -35,9 +39,10 @@ public class GoDownEntryVO {
 	 * 位
 	 */
 	private String wei;
-	public GoDownEntryVO(String courier, String date, String destination,
+	public GoDownEntryVO(String warehouseOfWhichTranCenter,String courier, String date, String destination,
 			String qu, String pai, String jia, String wei) {
 		super();
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 		id = courier;
 		this.date = date;
 		this.destination = destination;
@@ -46,12 +51,8 @@ public class GoDownEntryVO {
 		this.jia = jia;
 		this.wei = wei;
 	}
-	public String getCourier() {
-		return id;
-	}
-	public void setCourier(String courier) {
-		id = courier;
-	}
+
+	
 	public String getDate() {
 		return date;
 	}
@@ -88,5 +89,16 @@ public class GoDownEntryVO {
 	public void setWei(String wei) {
 		this.wei = wei;
 	}
-
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
+	}
+	public void setWarehouseOfWhichTranCenter(String warehouseOfWhichTranCenter) {
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 }

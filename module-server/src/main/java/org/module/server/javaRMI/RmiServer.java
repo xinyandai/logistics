@@ -37,7 +37,7 @@ public class RmiServer {
 			this.regist("orderdata.ReceiveListImpl");
 			this.regist("orderdata.SendingListImpl");
 			this.regist("orderdata.TranCenterArrivalListImpl");
-			this.regist("orderdata.TranCenterLoadingImpl");
+			this.regist("orderdata.TranCenterLoadingListImpl");
 			this.regist("orderdata.TransportListImpl");
 			
 			this.regist("logisticsdata.LogisticsdataImpl");
@@ -58,7 +58,7 @@ public class RmiServer {
 		}
 	}
 	
-	public void regist(String s) throws RemoteException, MalformedURLException{
+	private void regist(String s) throws RemoteException, MalformedURLException{
 		Object obj = factory.creatDataObject(s);
 		Naming.rebind("rmi://127.0.0.1/"+obj.getClass().getInterfaces()[0].getName(), (Remote)obj);
 	}

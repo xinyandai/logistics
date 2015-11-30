@@ -7,6 +7,8 @@ public class LogisticsPO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 4593210891359674130L;
+	
+	
 	private String orderId;
 	private String origin;
 	private String estination;
@@ -15,7 +17,6 @@ public class LogisticsPO implements Serializable{
 	private String[] historyTime;
 	private boolean isCompleted;
 
-	
 	
 	
 	

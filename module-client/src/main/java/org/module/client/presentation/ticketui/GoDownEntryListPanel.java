@@ -1,22 +1,27 @@
 package org.module.client.presentation.ticketui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.Font;
 import java.util.Date;
 
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.ticketbl.GoDownEntryController;
+import org.module.client.businesslogicservice.ticketBLservice.GoDownEntryBLService;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GoDownEntryListPanel extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -425238968522959318L;
-	private JTextField warehouse;
+	private JTextField warehouseOfWhichTranCenter;
 	private JTextField CourierID;
 	private JTextField qu;
 	private JTextField jia;
@@ -25,107 +30,197 @@ public class GoDownEntryListPanel extends JPanel {
 	private JTextField pai;
 	private JTextField wei;
 
+	private GoDownEntryBLService controller = new GoDownEntryController();
+	private JButton determine;
 	/**
 	 * Create the panel.
 	 */
 	public GoDownEntryListPanel() {
-		setLayout(null);
+		init();
+		addListenres();
+	}
+	private void addListenres() {
+		determine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.createTicket(
+						warehouseOfWhichTranCenter.getText(),
+						CourierID.getText(), 
+						timePicker.getDate().getTime()+"",
+						destination.getText(), 
+						qu.getText(), 
+						pai.getText(), 
+						jia.getText(), 
+						wei.getText()
+						);
+			}
+		});
 		
+	}
+	private void init(){
 		JLabel label = new JLabel("仓库名");
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
-		label.setBounds(26, 44, 73, 21);
-		add(label);
 		
 		JLabel label_1 = new JLabel("快递编号");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_1.setBounds(26, 75, 73, 21);
-		add(label_1);
 		
 		JLabel label_2 = new JLabel("区号");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_2.setBounds(26, 106, 73, 21);
-		add(label_2);
 		
 		JLabel label_3 = new JLabel("架号");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_3.setBounds(26, 138, 73, 21);
-		add(label_3);
 		
 		JLabel label_4 = new JLabel("入库时间");
 		label_4.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_4.setBounds(236, 44, 73, 21);
-		add(label_4);
 		
 		JLabel label_5 = new JLabel("目的地");
 		label_5.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_5.setBounds(236, 75, 73, 21);
-		add(label_5);
 		
 		JLabel label_6 = new JLabel("排号");
 		label_6.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_6.setBounds(236, 106, 73, 21);
-		add(label_6);
 		
 		JLabel label_7 = new JLabel("位号");
 		label_7.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_7.setBounds(236, 138, 73, 21);
-		add(label_7);
 		
-		warehouse = new JTextField();
-		warehouse.setFont(new Font("楷体", Font.PLAIN, 15));
-		warehouse.setBounds(109, 46, 66, 21);
-		add(warehouse);
-		warehouse.setColumns(10);
+		warehouseOfWhichTranCenter = new JTextField();
+		warehouseOfWhichTranCenter.setFont(new Font("楷体", Font.PLAIN, 15));
+		warehouseOfWhichTranCenter.setColumns(10);
 		
 		CourierID = new JTextField();
 		CourierID.setFont(new Font("楷体", Font.PLAIN, 15));
 		CourierID.setColumns(10);
-		CourierID.setBounds(109, 77, 66, 21);
-		add(CourierID);
 		
 		qu = new JTextField();
 		qu.setFont(new Font("楷体", Font.PLAIN, 15));
 		qu.setColumns(10);
-		qu.setBounds(109, 108, 66, 21);
-		add(qu);
 		
 		jia = new JTextField();
 		jia.setFont(new Font("楷体", Font.PLAIN, 15));
 		jia.setColumns(10);
-		jia.setBounds(109, 140, 66, 21);
-		add(jia);
 		
 		timePicker = new JXDatePicker();
 		//timePicker = new JTextField();
 		timePicker.setFont(new Font("楷体", Font.PLAIN, 15));
-		//timerPicker.setColumns(10);
-		timePicker.setBounds(324, 46, 89, 21);
 		timePicker.setDate(new Date());
-		add(timePicker);
 		
 		destination = new JTextField();
 		destination.setFont(new Font("楷体", Font.PLAIN, 15));
 		destination.setColumns(10);
-		destination.setBounds(324, 77, 66, 21);
-		add(destination);
 		
 		pai = new JTextField();
 		pai.setFont(new Font("楷体", Font.PLAIN, 15));
 		pai.setColumns(10);
-		pai.setBounds(324, 108, 66, 21);
-		add(pai);
 		
 		wei = new JTextField();
 		wei.setFont(new Font("楷体", Font.PLAIN, 15));
 		wei.setColumns(10);
-		wei.setBounds(324, 140, 66, 21);
-		add(wei);
 		
-		JButton determine = new JButton("确定");
+		determine = new JButton("确定");
+		
 		determine.setFont(new Font("楷体", Font.PLAIN, 18));
-		determine.setBounds(175, 184, 93, 23);
-		add(determine);
+		
+		JLabel state = new JLabel("");
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(26)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(warehouseOfWhichTranCenter, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(61)
+					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addComponent(timePicker, GroupLayout.PREFERRED_SIZE, 89, Short.MAX_VALUE)
+					.addGap(37))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(26)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(CourierID, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(61)
+					.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addComponent(destination, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(60))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(26)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(qu, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(61)
+					.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addComponent(pai, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(60))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(26)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(jia, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(61)
+					.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addComponent(wei, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(60))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(175)
+					.addComponent(determine, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+					.addGap(182))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(194)
+					.addComponent(state, GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+					.addGap(202))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(11)
+					.addComponent(state)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(warehouseOfWhichTranCenter, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_4)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(timePicker, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(CourierID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_5)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(destination, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGap(8)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_2)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(qu, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_6)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(pai, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGap(9)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_3)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(jia, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_7)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(wei, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGap(23)
+					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+		);
+		setLayout(groupLayout);
 
 	}
-
 }

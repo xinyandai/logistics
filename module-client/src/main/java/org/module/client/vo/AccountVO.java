@@ -4,11 +4,13 @@ public class AccountVO {
 
 	private String id;
 	private double money;
+	
 	public AccountVO(String id, String rest) {
 		super();
 		this.id = id;
 		this.money = Double.parseDouble(rest);
 	}
+	
 	public String getId() {
 		return id;
 	}

@@ -39,8 +39,13 @@ public class Car implements CarsManageService{
 		return false;
 	}
 
-	public boolean modify(CarVO newone) {
-		//this.data.update(old, newone)
+	public boolean modify(CarVO carVO) {
+		try {
+			return this.data.update( new CarPO(carVO.getId(), carVO.getLicense(), carVO.getTime()));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 

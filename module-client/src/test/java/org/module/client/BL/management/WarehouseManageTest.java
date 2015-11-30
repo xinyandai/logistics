@@ -1,10 +1,9 @@
 package org.module.client.BL.management;
 
+import junit.framework.TestCase;
+
 import org.module.client.businesslogic.managementbl.WarehouseManageController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
-import org.module.client.vo.GoDownEntryVO;
-
-import junit.framework.TestCase;
 
 public class WarehouseManageTest extends TestCase {
 	private WarehouseManageBLService warehouse;
@@ -19,7 +18,7 @@ public class WarehouseManageTest extends TestCase {
 	}
 	
 	public void testmodify(){
-		assert(warehouse.modify("10086","1","1","1","1"));
+		assert(warehouse.modify("10086","1","1","1","1","warehouse"));
 	}
 
 	public void testoutBound(){

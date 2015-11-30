@@ -22,6 +22,7 @@ public class TranCenterArrivalListVO {
 	private String origin;
 	private String stateOfGoods;
 	private State state;
+	
 	public TranCenterArrivalListVO(String transId, String date,
 			String transportListId, String origin, String stateOfGoods,String state) {
 		super();

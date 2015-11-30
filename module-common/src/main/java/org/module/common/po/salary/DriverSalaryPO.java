@@ -19,7 +19,11 @@ public class DriverSalaryPO implements Serializable{
 	 * 跨市运货每千米提成
 	 */
 	private double bonusEveryKilometersOutcityDriving;
+	
+	
 	private String split=":%:%:";
+	
+	
 	@Override
 	public String toString(){
 		return this.base+this.split+this.bonusEveryIncityDriving

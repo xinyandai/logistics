@@ -3,6 +3,10 @@ package org.module.common.po;
 import java.io.Serializable;
 
 public class SendingListPO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//派件单
 		private String date;
 		private String shippingId;
