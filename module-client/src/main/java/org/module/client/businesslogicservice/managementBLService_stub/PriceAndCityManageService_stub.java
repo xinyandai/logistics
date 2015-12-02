@@ -44,6 +44,11 @@ public class PriceAndCityManageService_stub implements PriceAndCityManageBLServi
 		return false;
 	}
 
+	public ArrayList<String[]> toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 	

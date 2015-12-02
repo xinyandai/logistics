@@ -123,7 +123,7 @@ public class Cars extends JPanel {
 	}
 	
 	private void add(){
-		final NewCityFrame carInputFramenew = new NewCityFrame();
+		final NewCarsInputFrame carInputFramenew = new NewCarsInputFrame();
 		carInputFramenew.setVisible(true);
 		carInputFramenew.getConfirm().addMouseListener(new MouseAdapter() {
 			@Override
@@ -164,8 +164,8 @@ public class Cars extends JPanel {
 		if(indexes.length==1){
 			final int index = indexes[0];
 			final String[] ar = listData.get( index );
-			final NewCityFrame carInputFramenew  = 
-					new	NewCityFrame(ar[0],ar[1],ar[2]);
+			final NewCarsInputFrame carInputFramenew  = 
+					new	NewCarsInputFrame(ar[0],ar[1],ar[2]);
 				carInputFramenew.setVisible(true);
 			
 			JButton button = carInputFramenew.getConfirm();

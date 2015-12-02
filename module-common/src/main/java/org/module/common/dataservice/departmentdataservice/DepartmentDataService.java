@@ -2,7 +2,6 @@ package org.module.common.dataservice.departmentdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.po.DepartmentPO;

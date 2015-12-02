@@ -112,7 +112,7 @@ public class DeparmentPanel extends JPanel {
 		update.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				update();
+				modify();
 			} 
 		});
 	}
@@ -169,7 +169,7 @@ public class DeparmentPanel extends JPanel {
 	}
 
 
-	private void update(){
+	private void modify(){
 		
         int[] indexes = myTable.getCheckedIndexes();
 		

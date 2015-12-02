@@ -14,6 +14,8 @@ public interface PriceAndCityManageBLService {
 	 * @return
 	 */
 	public ArrayList<CityVO> showAllCity();
+	
+	public ArrayList<String[]> toArray(); 
 
 	/**
 	 * 前置：选择增加城市，并输入
@@ -22,6 +24,7 @@ public interface PriceAndCityManageBLService {
 	 * @return
 	 */
 	public boolean addCity(String city,String id);
+
 	public boolean deleteCity(String id);
 	public boolean modifyCity(String city,String id);
 	

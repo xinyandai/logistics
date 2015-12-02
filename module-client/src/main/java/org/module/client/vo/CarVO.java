@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class CarVO {
+public class CarVO{
 
 	private String id;
 	private String License;
@@ -37,6 +37,14 @@ public class CarVO {
 		re[1] = this.License;
 		re[2] = time;
 		return re;
+	}
+	public int getNum() {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+	public String getMainKey() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 
 }

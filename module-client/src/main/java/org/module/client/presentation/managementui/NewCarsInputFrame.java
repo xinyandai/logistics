@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class NewCityFrame extends JFrame {
+public class NewCarsInputFrame extends JFrame {
 
 	/**
 	 * 
@@ -27,10 +27,10 @@ public class NewCityFrame extends JFrame {
 	private JButton cancel;
 
 	
-	public NewCityFrame() {
+	public NewCarsInputFrame() {
 		this.init();
 	}
-	public NewCityFrame(String id,String license,String time) {
+	public NewCarsInputFrame(String id,String license,String time) {
 		this.init();
 		this.id.setText(id);
 		this.license.setText(license);

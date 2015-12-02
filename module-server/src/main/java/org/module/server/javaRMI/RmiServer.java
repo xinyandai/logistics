@@ -46,6 +46,7 @@ public class RmiServer {
 			this.regist("managementdata.DriversDataImpl");
 			this.regist("managementdata.PriceAndCityDataImpl");
 			this.regist("managementdata.WarahouseDataImpl");
+			this.regist("managementdata.WarehouseConfigDataImpl");
 			
 			this.regist("ticketData.GoDownEntryListDataImpl");
 			this.regist("ticketData.OutBoundListDataImpl");

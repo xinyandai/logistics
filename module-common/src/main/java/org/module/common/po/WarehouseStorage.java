@@ -2,27 +2,26 @@ package org.module.common.po;
 
 import java.io.Serializable;
 
-public class WarehousePO implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1576332939454745445L;
+public class WarehouseStorage implements Serializable {
+
+	private static final long serialVersionUID = 691408033266114598L;
+
+	
+	
 	private String number;
 	private String qu;
 	private String pai;
 	private String jia;
 	private String wei;
-	
+	/**
+	 * 所属仓库
+	 */
 	private String warehouseOfWhichTranCenter;
+	/**
+	 * 每一个位置均有一个唯一ID
+	 */
+	private String id;
 	
-	public boolean samePalace(WarehousePO po){
-		return 
-				this.warehouseOfWhichTranCenter.equals(po.warehouseOfWhichTranCenter) &&
-				this.qu.equals(po.qu) &&
-				this.pai.equals(po.pai) &&
-				this.jia.equals(po.jia) &&
-				this.wei.equals(po.wei);
-	}
 	
 	final private String split=":%:%:";
 	@Override
@@ -30,10 +29,10 @@ public class WarehousePO implements Serializable{
 		return this.number+this.split+this.qu
 				+this.split+this.pai+this.split
 				+this.jia+this.split+this.wei + 
-				this.split + 
+				this.split + this.id + this.split +
 				this.warehouseOfWhichTranCenter;
 	}
-	public WarehousePO(String str) {
+	public WarehouseStorage(String str) {
 		super();
 		String[] strs=str.split(this.split);
 		this.number = strs[0];
@@ -42,8 +41,12 @@ public class WarehousePO implements Serializable{
 		this.jia = strs[3];
 		this.wei = strs[4];
 		this.warehouseOfWhichTranCenter = strs[5];
+		this.id = strs[6];
 	}
-	public WarehousePO(String number, String qu, String pai, String jia,
+	public String getId() {
+		return id;
+	}
+	public WarehouseStorage(String number, String qu, String pai, String jia,
 			String wei,String warehouseOfWhichTranCenter) {
 		super();
 		this.number = number;

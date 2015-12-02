@@ -22,28 +22,24 @@ public class WarehouseManageController implements WarehouseManageBLService{
 	}
 	
 	public ArrayList<WarehouseVO> getAll() {
-		// TODO Auto-generated method stub
 		return warehouse.getAll();
 	}
 
 	public boolean modify(String id, String qu, String pai, String jia,
 			String wei,String 	warehouseOfWhichTranCenter) {
-		// TODO Auto-generated method stub
 		return warehouse.modify(new WarehouseVO(id, qu, pai,jia, wei,warehouseOfWhichTranCenter));
 	}
 
 	public boolean outBound(OutBoundListVO w) {
-		// TODO Auto-generated method stub
 		return warehouse.outBound(w);
 	}
 
 	public boolean goDown(GoDownEntryVO w) {
-		// TODO Auto-generated method stub
 		return warehouse.goDown(w);
 	}
 
 	public void setBorderline(String id, String qu, double a) {
-		// TODO Auto-generated method stub
+		this.warehouse.setBorderline(id, qu, a);
 		
 	}
 

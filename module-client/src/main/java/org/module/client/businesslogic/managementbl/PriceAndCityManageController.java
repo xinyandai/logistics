@@ -47,4 +47,13 @@ public class PriceAndCityManageController implements PriceAndCityManageBLService
 		return this.priceAndcity.deleteCity(id);
 	}
 
+	public ArrayList<String[]> toArray() {
+		ArrayList<String[]> re = new ArrayList<String[]>();
+		ArrayList<CityVO> vos = this.showAllCity();
+		for (CityVO cityVO : vos) {
+			re.add(cityVO.toArray());
+		}
+		return re;
+	}
+
 }

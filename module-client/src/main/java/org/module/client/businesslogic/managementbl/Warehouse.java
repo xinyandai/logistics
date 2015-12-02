@@ -9,16 +9,15 @@ import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
 import org.module.common.dataservice.managementdataservice.WarahouseDataService;
-import org.module.common.po.BorderlinePO;
 import org.module.common.po.WarehousePO;
 
 public class Warehouse implements WarehouseManageService {
 
-	private WarahouseDataService data = new RmiClient().get(WarahouseDataService.class);;
+	private WarahouseDataService data = new RmiClient().get(WarahouseDataService.class);
 	public ArrayList<WarehouseVO> getAll() {
 		ArrayList<WarehouseVO> vos = new ArrayList<WarehouseVO>();
 		try {
-			ArrayList<WarehousePO> pos = this.data.getAll();
+			ArrayList<WarehousePO> pos = this.data.getAll("1");
 			for (WarehousePO warehousePO : pos) {
 				vos.add(
 						new WarehouseVO(
@@ -58,14 +57,14 @@ public class Warehouse implements WarehouseManageService {
 
 	public boolean outBound(OutBoundListVO w) {
 		// TODO Auto-generated method stub
-		try {
+		/*try {
 			return this.data.delete(
 					w.getId()
 					);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		return false;
 	}
 
@@ -89,11 +88,11 @@ public class Warehouse implements WarehouseManageService {
 
 	public boolean setBorderline(String id, String qu, double a) {
 
-		try {
+		/*try {
 			return this.data.setBorderline(new BorderlinePO(id,qu,a));
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}
+		}*/
 		return false;
 	}
 	

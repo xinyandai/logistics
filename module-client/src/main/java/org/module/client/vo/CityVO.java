@@ -36,5 +36,17 @@ public class CityVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	public int getNum() {
+		// TODO Auto-generated method stub
+		return 2;
+	}
+	public String[] toArray() {
+		String[] array = {name ,id};
+		return array;
+	}
+	public String getMainKey() {
+		// TODO Auto-generated method stub
+		return id;
+	}
 		
 }

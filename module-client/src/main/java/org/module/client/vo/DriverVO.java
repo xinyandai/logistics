@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class DriverVO {
+public class DriverVO{
 
 	private String id;
 	private String name;
@@ -74,5 +74,13 @@ public class DriverVO {
 		re[6] = date;
 		return re;
 	}
+	public int getNum() {
+		return 7;
+	}
+	public String getMainKey() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+	
 
 }
