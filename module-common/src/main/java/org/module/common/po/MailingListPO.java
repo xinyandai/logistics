@@ -88,7 +88,7 @@ public class MailingListPO implements Serializable{
 			String receiveMobile, String receivePhone, String receiveCity,
 			String receivePosition, String nameOfGood, String counts,
 			String weight, String volume, String costOfDecoration, String type,
-			String id, String state) {
+			String id, State state) {
 		super();
 		this.senderName = senderName;
 		this.senderCompany = senderCompany;
@@ -109,12 +109,9 @@ public class MailingListPO implements Serializable{
 		this.costOfDecoration = costOfDecoration;
 		this.type = type;
 		this.id = id;
-		this.state = State.getInstance(state);
+		this.state = state;
 	}
-	public MailingListPO(String[] s){
-		this(s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9],s[10],s[11],s[12],
-				s[13],s[14],s[15],s[16],s[17],s[18],s[19]);
-	}
+	
 	
 	
 	public String getSenderName() {

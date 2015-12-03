@@ -9,22 +9,7 @@ import java.rmi.RemoteException;
 
 public class RmiClient {
 
-	/*public UserDataService getUserDataService(){
-		String url="rmi://127.0.0.1/"+UserDataService.class.getName();
-		UserDataService service;   
-		 try {
-			service = (UserDataService)Naming.lookup(url);
-			return service;
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch ( RemoteException  e) {
-			e.printStackTrace();
-		} catch ( NotBoundException e) {
-			e.printStackTrace();
-		} 
-		 return null;
-	}*/
-
+	
 	
 	@SuppressWarnings("unchecked")
 	public  <T> T get(Class<T> cla){

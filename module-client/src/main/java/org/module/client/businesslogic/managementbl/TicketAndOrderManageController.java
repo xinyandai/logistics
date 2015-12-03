@@ -28,12 +28,10 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 	}
 
 	public boolean pass(ArrayList<String> id) {
-		// TODO Auto-generated method stub
 		return ticketAndorder.pass(id);
 	}
 
 	public boolean unpass(ArrayList<String> id) {
-		// TODO Auto-generated method stub
 		return ticketAndorder.unpass(id);
 	}
 

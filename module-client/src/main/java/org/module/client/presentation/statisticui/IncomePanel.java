@@ -33,7 +33,7 @@ public class IncomePanel extends JPanel {
 	
 	private ArrayList<ReceiptVO> listData ;
 	private String[] columnNames = {"单号", "金额","日期","快递员"};
-	private String[] officeArray ;
+	private String[] officeArray = {};
 	private Table table;
 	private JXDatePicker startTimePicker;
 	private JXDatePicker endTimePicker;

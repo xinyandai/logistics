@@ -1,5 +1,8 @@
 package org.module.client.vo;
 
+import org.module.common.po.MailingListPO;
+import org.module.common.po.State;
+
 
 
 public class MailingListVO {
@@ -25,6 +28,51 @@ public class MailingListVO {
 	private String id;
 	//private State state;
 	
+	public MailingListVO(MailingListPO po){
+		this(  po.getSenderName(),
+				po.getSenderCompany(),
+				po.getSenderMobile(),
+				po.getSenderPhone(),
+				po.getSenderCity(),
+				po.getSenderPosition(),
+				po.getReceiveName(),
+				po.getReceiveCompany(),
+				po.getReceiveMobile(),
+				po.getReceivePhone(),
+				po.getReceiveCity(),
+				po.getReceivePosition(),
+				po.getNameOfGood(),
+				po.getCounts(),
+				po.getWeight(),
+				po.getVolume(),
+				po.getCostOfDecoration(),
+				po.getType(),
+				po.getId()
+				);
+	}
+	
+	public MailingListPO toPO(State state){
+		return new MailingListPO(getSenderName(),
+				getSenderCompany(),
+				getSenderMobile(),
+				getSenderPhone(),
+			    getSenderCity(),
+			    getSenderPosition(),
+				getReceiveName(),
+				getReceiveCompany(),
+				getReceiveMobile(),
+				getReceivePhone(),
+				getReceiveCity(),
+				getReceivePosition(),
+				getNameOfGood(),
+				getCounts(),
+				getWeight(),
+				getVolume(),
+				getCostOfDecoration(),
+				getType(),
+				getId(),
+				state);
+	}
 	
 	public String getSenderName() {
 		return senderName;

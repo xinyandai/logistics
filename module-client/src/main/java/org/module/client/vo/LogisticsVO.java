@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.LogisticsPO;
+
 public class LogisticsVO {
 
 	private String orderId;
@@ -10,6 +12,41 @@ public class LogisticsVO {
 	private String[] historyTime;
 	private boolean isCompleted;
 	
+	
+	public void addLocationAndTime(String location,String time){
+		String[] newhistoryLocaion = new String[this.historyLocation.length+1];
+		String[] newhistoryTime = new String[this.historyTime.length+1];
+		int i;
+		for ( i = 0; i < historyLocation.length; i++) {
+			newhistoryLocaion[i] = this.historyLocation[i];
+			newhistoryTime[i] = this.historyTime[i];
+		}
+		newhistoryLocaion[i] = location;
+		newhistoryTime[i] = time;
+		this.historyLocation = newhistoryLocaion;
+		this.historyTime = newhistoryTime;
+	}
+	
+	
+	public LogisticsVO(LogisticsPO po){
+		this(po.getOrderId(),
+				po.getOrigin(),
+				po.getEstination(),
+				po.getLocation(),
+				po.getHistoryLocation(),
+				po.getHistoryTime(),
+				po.isCompleted());
+	}
+	
+	public LogisticsPO toPO(){
+		return new LogisticsPO(getOrderId(),
+			    getOrigin(),
+				getEstination(),
+				getLocation(),
+				getHistoryLocation(),
+				getHistoryTime(),
+				isCompleted());
+	}
 	
 	public String getOrderId() {
 		return orderId;
