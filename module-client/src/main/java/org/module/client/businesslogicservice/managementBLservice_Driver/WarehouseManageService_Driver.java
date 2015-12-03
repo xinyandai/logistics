@@ -18,7 +18,7 @@ public class WarehouseManageService_Driver {
 		ArrayList<WarehouseVO> now=new ArrayList<WarehouseVO>();
 		past=warehouseManageService.getAll();
 		
-		warehouseManageService.outBound(d);
+	/*	warehouseManageService.outBound(d);
 		now=warehouseManageService.getAll();
 		if(now==past){
 			System.out.println("outBound successfully!");
@@ -27,7 +27,7 @@ public class WarehouseManageService_Driver {
 		now=warehouseManageService.getAll();
 		if(now==past){
 			System.out.println("outBound successfully!");
-		}
+		}*/
 		
 	}
 }

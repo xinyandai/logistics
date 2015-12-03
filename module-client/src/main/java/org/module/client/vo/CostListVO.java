@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class CostListVO {
+public class CostListVO extends AbstractVO{
 
 	private String date;
 	private double money;
@@ -55,6 +55,22 @@ public class CostListVO {
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public String[] array(){
+		String[] s = {this.date,
+		this.money+"" ,
+		this.people ,
+		this.accout,
+		this.entry,
+		this.note };
+		return s;
+	}
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.array()[i];
 	}
 
 }

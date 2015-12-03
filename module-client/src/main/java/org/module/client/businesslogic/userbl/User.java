@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.user.UserService;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.UserVO;
+import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.userdataservice.UserDataService;
 import org.module.common.po.UserPO;
 
@@ -26,7 +27,7 @@ public class User implements UserService {
 
 	public boolean add(UserVO u) {
 		try {
-			return user.add(new UserPO(u.getId(),u.getName(),u.getPassword(),u.getRole(),u.getAuthority()));
+			return user.add(this.voToPo(u));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +36,7 @@ public class User implements UserService {
 
 	public boolean update(UserVO u) {
 		try {
-			return user.update(new UserPO(u.getId(),u.getName(),u.getPassword(),u.getRole(),u.getAuthority()));
+			return user.update(this.voToPo(u));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -44,15 +45,15 @@ public class User implements UserService {
 
 	
 	public ArrayList<UserVO> getAll() {
+		ArrayList<UserVO> re = new ArrayList<UserVO>();
 		try {
 			ArrayList<UserPO> pos = user.allUsers();
-			ArrayList<UserVO> re = new ArrayList<UserVO>();
+			
 			for (UserPO u : pos) {
-				re.add(new UserVO(u.getId(),u.getName(),u.getPassword(),u.getRole(),u.getAuthority()));
+				re.add(this.poToVo(u));
 			}
 			return re;
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -60,7 +61,27 @@ public class User implements UserService {
 	}
 
 	
+   private UserPO voToPo(UserVO u){
+	   return new UserPO(u.getId(),u.getName(),u.getPassword(),u.getRole(),
+			u.getDepartmeny(),
+			u.getAuthority());
+   }
 
-	
+   private UserVO poToVo(UserPO u){
+	   return new UserVO(u.getId(),u.getName(),u.getPassword(),u.getRole(),
+			u.getDepartmeny(),
+			u.getAuthority());
+   }
+   
+   public boolean delete(MyList<String> ids) {
+
+	   try {
+			return this.user.delete(ids);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return false;
+   }
 
 }

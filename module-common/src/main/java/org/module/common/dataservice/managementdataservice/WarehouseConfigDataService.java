@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import org.module.common.dataservice.MyList;
 import org.module.common.po.WarehouseConfigPO;
 
-public interface WarehouseConfigService extends Remote{
+public interface WarehouseConfigDataService extends Remote{
 	/**
 	 * 
 	 * @return 返回所有的仓库配置信息

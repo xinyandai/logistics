@@ -14,7 +14,8 @@ public class Income implements IncomeService {
 	private ReceiptListService data ;
 
 	public ArrayList<ReceiptVO> getAllIncomeList(String office,
-			double startTime, double endTime) {
+			long startTime, long endTime) {
+		
 		ArrayList<ReceiptVO> vos = new ArrayList<ReceiptVO>();
 		try {
 			ArrayList<ReceiptPO> pos = this.data.getAll();

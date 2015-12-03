@@ -45,4 +45,10 @@ public interface UserDataService extends Remote{
 	 * @return
 	 */
 	public boolean update(UserPO old)throws RemoteException;
+	/**
+	 * 
+	 * @param ids
+	 * @return
+	 */
+	public boolean delete(MyList<String> ids)throws RemoteException;
 }

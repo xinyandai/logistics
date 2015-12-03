@@ -10,7 +10,6 @@ import org.module.common.dataservice.MyList;
 public class DepartmentManageController implements DepartmentManageBLService{
 	
 	private DepartmentService department ;
-//	private ArrayList<String[]> re;
 	
 	public DepartmentManageController(DepartmentService department) {
 		super();

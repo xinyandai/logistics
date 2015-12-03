@@ -31,25 +31,38 @@ public class OutAndInListPanel extends JPanel {
 	 * 查看此时间段内的出/入库数量/金额，存储位置
 	 */
 	private String[] type = {"出库单","入库单","全部"};
-	Object[][] cellData = {{"row1-col1", "row1-col2","add"},{"row2-col1", "row2-col2","add"},
-			{"row1-col1", "row1-col2","add"},{"row1-col1", "row1-col2","add"}};
-	String[] columnNames = {"单号", "目的地","区","排","架" ,"位","" };
+	
+	private String[] columnNamesOfGoDownEntry = {"单号", "目的地","区","排","架" ,"位","" };
+	
 	private JTable table;
 	private JXDatePicker startTimePicker;
 	private JXDatePicker endTimePicker;
+	private JScrollPane scrollPane;
+	private JComboBox comboBox;
+	private JButton modify;
+	private JButton add;
+	private JButton delete;
+	private JButton update;
+	
+	
 	public OutAndInListPanel() {
+		init();
+	//	scrollPane.setViewportView(table);
+	}
+		
+	private void init(){
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton add = new JButton("增");
+		add = new JButton("增");
 		
-		JButton delete = new JButton("删");
+		delete = new JButton("删");
 		
-		JButton modify = new JButton("改");
+		modify = new JButton("改");
 		
-		JButton update = new JButton("同步");
+		update = new JButton("同步");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -80,47 +93,17 @@ public class OutAndInListPanel extends JPanel {
 		add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		panel_1.add(scrollPane);
 		
-		table = new JTable(new DefaultTableModel(cellData,columnNames){
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-		    }
-
-		});
-		table.getColumnModel().getColumn(columnNames.length-1).setCellRenderer(new TableCellRenderer(){
-
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				// 创建用于返回的渲染组件
-				JCheckBox ck = new JCheckBox();
-				 // 使具有焦点的行对应的复选框选中
-				  ck.setSelected(isSelected);
-				 // 设置单选box.setSelected(hasFocus);
-				  // 使复选框在单元格内居中显示
-				// ck.setHorizontalAlignment((int) 0.5f);
-				 return ck;
-
-			}
-			
-		});
-		//table.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		//table.getColumn(0).setCellEditor(new DefaultCellEditor(new JCheckBox()));
-		scrollPane.setViewportView(table);
+		
+		
 		
 		JPanel panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.NORTH);
 		
-	//	JComboBox comboBox = new JComboBox(type);
-		JComboBox<String> comboBox = new JComboBox<String>(type);
+		comboBox = new JComboBox(type);
+	//	JComboBox<String> comboBox = new JComboBox<String>(type);
 		
 		startTimePicker = new JXDatePicker();
 		startTimePicker.setDate(new Date());

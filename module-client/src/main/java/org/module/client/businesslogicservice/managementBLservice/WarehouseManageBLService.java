@@ -1,7 +1,5 @@
 package org.module.client.businesslogicservice.managementBLservice;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import org.module.client.vo.GoDownEntryVO;
@@ -34,23 +32,17 @@ public interface WarehouseManageBLService {
 	 * 依赖：WarahouseDataService.delete 删除一个PO OutBoundListService.creatTiket 新建出库单
 	 * @param w
 	 * @return
-	 */
+	 *//*
 	public boolean outBound(OutBoundListVO w);
-	/**
+	*//**
 	 * 前置：入库
 	 * 后置：更新库存
 	 * 依赖：WarahouseDataService.add增加一个PO  GoDownEntryListService.createTicket 新建入库单
 	 * @param w
 	 * @return
-	 */
-	public boolean goDown(GoDownEntryVO w);
-	/**
-	 * 前置：设置警戒比例
-	 * 后置：更新
-	 * 依赖：WarahouseDataService.setBorderLint 存储警戒比例
-	 * @param id中转中心ID
-	 */
-	public void setBorderline(String id,String qu,double a);
+	 *//*
+	public boolean goDown(GoDownEntryVO w);*/
+	
 	
 	
 }

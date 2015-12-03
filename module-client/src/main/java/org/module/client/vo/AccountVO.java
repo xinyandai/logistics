@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class AccountVO {
+public class AccountVO extends AbstractVO{
 
 	private String id;
 	private double money;
@@ -22,6 +22,18 @@ public class AccountVO {
 	}
 	public void setMoney(double money) {
 		this.money = money;
+	}
+	
+	public String[] array(){
+		String[] s = {this.id,this.money+""};
+		return s;
+	}
+
+	
+
+	@Override
+	public String get(int i) {
+		return this.array()[i];
 	}
 
 }

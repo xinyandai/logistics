@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.WarehouseConfigPO;
+
 
 public class WarehouseConfigVO {
 
@@ -9,6 +11,18 @@ public class WarehouseConfigVO {
 		    private String[] qus;
 		    private String[] sizeOfQu;
 			private String[] borderline;
+			
+			public WarehouseConfigPO toPO(){
+				return new WarehouseConfigPO(this.warehouseOfWhichTranCenter,
+						this.qus,this.sizeOfQu,this.borderline);
+			}
+			
+			public WarehouseConfigVO(WarehouseConfigPO po){
+				this.warehouseOfWhichTranCenter = po.getWarehouseOfWhichTranCenter();
+				this.qus = po.getQus();
+				this.sizeOfQu = po.getQus();
+				this.borderline = po.getBorderline();
+			}
 			
 			public String getWarehouseOfWhichTranCenter() {
 				return warehouseOfWhichTranCenter;

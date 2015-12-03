@@ -54,6 +54,14 @@ public class StuffManageBLService_stub implements StuffManageBLService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+
+	public boolean delete(int[] ins) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

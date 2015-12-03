@@ -21,7 +21,7 @@ public interface UserManageBLService {
 	 * @param u
 	 * @return
 	 */
-	public boolean add(String id,String name,String role);
+	public boolean add(UserVO u);
 	/**
 	 * 前置：更改账户信息
 	 * 后置：更新
@@ -29,12 +29,21 @@ public interface UserManageBLService {
 	 * @param u
 	 * @return
 	 */
-	public boolean update(String id , String name,String role);
+	public boolean update(UserVO u);
 	/**
 	 * 前置：无
 	 * 后置：管理员查看所有账号信息
 	 * 依赖: UserDataService.allUsers 返回所有账号信息
 	 * @return
 	 */
-	public ArrayList<UserVO> showAll();
+	public ArrayList<UserVO> getAll();
+	
+	/**
+	 * 前置：管理员选择用户删除
+	 * 后置：更新
+	 * 依赖: UserDataService.delete 删除一个账号PO
+	 * @param u
+	 * @return
+	 */
+	public boolean delete(int[] indexes);
 }

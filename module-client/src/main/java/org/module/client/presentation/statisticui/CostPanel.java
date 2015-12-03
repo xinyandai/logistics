@@ -1,26 +1,25 @@
 package org.module.client.presentation.statisticui;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.GroupLayout.Alignment;
-import org.module.client.presentation.CheckBoxTableModelProxy;
+
+import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.statisticbl.CostManageController;
+import org.module.client.businesslogicservice.statisticBLservice.CostManageBLService;
+import org.module.client.presentation.Table;
+import org.module.client.vo.CostListVO;
 
 
-
-public class CostPanel extends JPanel {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
+/**
 	 * 付款日期、
 	 * 付款金额、
 	 * 付款人、
@@ -28,45 +27,62 @@ public class CostPanel extends JPanel {
 	 * 条目（租金（按年收）运费（按次计算）人员工资（按月统计）奖励（一次性）），
 	 * 备注（租金年份、运单号、标注工资月份）
 	 */
-	Object[][] cellData = {{"row1-col1", "row1-col2","add"},{"row2-col1", "row2-col2","add"},
-			{"row1-col1", "row1-col2","add"},{"row1-col1", "row1-col2","add"}};
-	String[] columnNames = {"付款日期", "付款金额","付款人","付款账号","条目","备注",""};
-	private JTable table;
+public class CostPanel extends JPanel {
+
+	
+	private static final long serialVersionUID = 1L;
+	
+	ArrayList<CostListVO> listData ;
+	String[] columnNames = {"付款日期", "付款金额","付款人","付款账号","条目","备注"};
+	private Table table;
+	private JButton add;
+	private JXDatePicker startTimePicker;
+	private JXDatePicker endTimePicker;
+	private JButton update;
+	
+	
+	private CostManageBLService controller = new CostManageController();
 	public CostPanel() {
+		
+		
+		
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton add = new JButton("增");
+		add = new JButton("增");
 		
-		JButton delete = new JButton("删");
+		update = new JButton("同步");
 		
-		JButton modify = new JButton("改");
+		startTimePicker = new JXDatePicker();
+		startTimePicker.setDate(new Date());
 		
-		JButton update = new JButton("同步");
+		
+		endTimePicker = new JXDatePicker();
+		endTimePicker.setDate(new Date());
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(58)
+					.addContainerGap()
+					.addComponent(startTimePicker, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(endTimePicker)
+					.addPreferredGap(ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(update)
-					.addContainerGap())
+					.addComponent(update))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(update)
 						.addComponent(add)
-						.addComponent(delete)
-						.addComponent(modify)
-						.addComponent(update))
+						.addComponent(startTimePicker)
+						.addComponent(endTimePicker))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -74,18 +90,16 @@ public class CostPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		
-		table = new JTable(new DefaultTableModel(cellData,columnNames){
-			
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-		    }
-
-		});
-		CheckBoxTableModelProxy a = new CheckBoxTableModelProxy(table.getModel(), "check");
-		scrollPane.setViewportView(new JTable(a));
+		
+		this.listData = controller.showAll(startTimePicker.getDate().getTime(), endTimePicker.getDate().getTime());
+		table = new Table(listData,columnNames);
+		scrollPane.setViewportView(new JTable(table));
 	}
-
+	
+	public void refresh(){
+		this.listData = controller.showAll(startTimePicker.getDate().getTime(), 
+				endTimePicker.getDate().getTime());
+		this.table.setList(listData);
+		this.table.fireTableDataChanged();
+	}
 }

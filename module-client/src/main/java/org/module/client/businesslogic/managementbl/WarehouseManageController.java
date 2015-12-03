@@ -1,11 +1,10 @@
 package org.module.client.businesslogic.managementbl;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
-import org.module.client.vo.GoDownEntryVO;
-import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
 
 public class WarehouseManageController implements WarehouseManageBLService{
@@ -27,20 +26,7 @@ public class WarehouseManageController implements WarehouseManageBLService{
 
 	public boolean modify(String id, String qu, String pai, String jia,
 			String wei,String 	warehouseOfWhichTranCenter) {
-		return warehouse.modify(new WarehouseVO(id, qu, pai,jia, wei,warehouseOfWhichTranCenter));
+		return warehouse.modify(new WarehouseVO(
+				id, qu, pai,jia, wei,warehouseOfWhichTranCenter,new Date().getTime()));
 	}
-
-	public boolean outBound(OutBoundListVO w) {
-		return warehouse.outBound(w);
-	}
-
-	public boolean goDown(GoDownEntryVO w) {
-		return warehouse.goDown(w);
-	}
-
-	public void setBorderline(String id, String qu, double a) {
-		this.warehouse.setBorderline(id, qu, a);
-		
-	}
-
 }

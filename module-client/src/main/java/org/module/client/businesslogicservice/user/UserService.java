@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.user;
 import java.util.ArrayList;
 
 import org.module.client.vo.UserVO;
+import org.module.common.dataservice.MyList;
 
 public interface UserService {
 	/**
@@ -36,4 +37,10 @@ public interface UserService {
 	 * @return
 	 */
 	public ArrayList<UserVO> getAll();
+	/**
+	 * 
+	 * @param ids
+	 * @return
+	 */
+	public boolean delete(MyList<String> ids);
 }

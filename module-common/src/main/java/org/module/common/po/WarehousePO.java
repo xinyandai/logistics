@@ -14,6 +14,7 @@ public class WarehousePO implements Serializable{
 	private String wei;
 	
 	private String warehouseOfWhichTranCenter;
+	private String date;
 	
 	public boolean samePalace(WarehousePO po){
 		return 
@@ -31,7 +32,8 @@ public class WarehousePO implements Serializable{
 				+this.split+this.pai+this.split
 				+this.jia+this.split+this.wei + 
 				this.split + 
-				this.warehouseOfWhichTranCenter;
+				this.warehouseOfWhichTranCenter + this.split
+				+ this.date;
 	}
 	public WarehousePO(String str) {
 		super();
@@ -42,9 +44,37 @@ public class WarehousePO implements Serializable{
 		this.jia = strs[3];
 		this.wei = strs[4];
 		this.warehouseOfWhichTranCenter = strs[5];
+		this.date = strs[6];
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public String getQu() {
+		return qu;
+	}
+	public String getPai() {
+		return pai;
+	}
+	public String getJia() {
+		return jia;
+	}
+	public String getWei() {
+		return wei;
+	}
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
+	}
+	public String getDate() {
+		return date;
+	}
+	public String getSplit() {
+		return split;
 	}
 	public WarehousePO(String number, String qu, String pai, String jia,
-			String wei,String warehouseOfWhichTranCenter) {
+			String wei, String warehouseOfWhichTranCenter, String data) {
 		super();
 		this.number = number;
 		this.qu = qu;
@@ -52,38 +82,9 @@ public class WarehousePO implements Serializable{
 		this.jia = jia;
 		this.wei = wei;
 		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
+		this.date = data;
 	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getQu() {
-		return qu;
-	}
-	public void setQu(String qu) {
-		this.qu = qu;
-	}
-	public String getPai() {
-		return pai;
-	}
-	public void setPai(String pai) {
-		this.pai = pai;
-	}
-	public String getJia() {
-		return jia;
-	}
-	public void setJia(String jia) {
-		this.jia = jia;
-	}
-	public String getWei() {
-		return wei;
-	}
-	public void setWei(String wei) {
-		this.wei = wei;
-	}
-	public String getWarehouseOfWhichTranCenter() {
-		return warehouseOfWhichTranCenter;
-	}
+	
+	
+	
 }

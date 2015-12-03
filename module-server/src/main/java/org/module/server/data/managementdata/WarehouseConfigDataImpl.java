@@ -5,11 +5,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import org.module.common.dataservice.MyList;
-import org.module.common.dataservice.managementdataservice.WarehouseConfigService;
+import org.module.common.dataservice.managementdataservice.WarehouseConfigDataService;
 import org.module.common.po.WarehouseConfigPO;
 import org.module.server.data.FileHelper;
 
-public class WarehouseConfigDataImpl extends UnicastRemoteObject  implements WarehouseConfigService{
+public class WarehouseConfigDataImpl extends UnicastRemoteObject  implements WarehouseConfigDataService{
 
 	
 	private static final long serialVersionUID = -5019247589010208338L;

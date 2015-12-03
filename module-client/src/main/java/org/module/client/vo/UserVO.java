@@ -1,30 +1,14 @@
 package org.module.client.vo;
 
 
-public class UserVO {
+public class UserVO extends AbstractVO{
 
 	private String id;
 	private String name;
 	private String password;
 	private String  role;
+	private String departmeny;
 	private String authority;
-	
-	
-	public UserVO(String id,String name,String password,String role,String authority) {
-		// TODO Auto-generated constructor stub
-		this.id = id;
-		this.name = name;
-		this.password=password;
-		this.role = role;
-		this.authority = authority;
-	}
-	public UserVO(String id,String password,String role) {
-		// TODO Auto-generated constructor stub
-		this.id = id;
-		this.name = "";
-		this.password=password;
-		this.role = role;
-	}
 	public String getId() {
 		return id;
 	}
@@ -49,12 +33,55 @@ public class UserVO {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public String getDepartmeny() {
+		return departmeny;
+	}
+	public void setDepartmeny(String departmeny) {
+		this.departmeny = departmeny;
+	}
 	public String getAuthority() {
 		return authority;
 	}
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+	public UserVO(String id, String name, String password, String role,
+			String departmeny, String authority) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.role = role;
+		this.departmeny = departmeny;
+		this.authority = authority;
+	}
+	public UserVO(String id, String password, String role) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.role = role;
+	}
+	
+	public String[] array(){
+		String[] re = {this.id ,
+		this.name ,
+		this.password ,
+		this.role,
+		this.departmeny ,
+		this.authority };
+		return re;
+	}
+	
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.array()[i];
+	}
+	
+	
+	
+	
 	
 
 }

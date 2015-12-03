@@ -2,6 +2,7 @@ package org.module.client.businesslogic.statisticbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogic.deparmentbl.DeparmentCount;
 import org.module.client.businesslogicservice.statistic.IncomeService;
 import org.module.client.businesslogicservice.statisticBLservice.IncomeManageBLService;
 import org.module.client.vo.ReceiptVO;
@@ -10,9 +11,11 @@ public class IncomeManageController implements IncomeManageBLService {
 
 	
 	private IncomeService income;
+	private DeparmentCount office;
 	public IncomeManageController() {
 		super();
 		this.income = new Income();
+		this.office = new DeparmentCount("营业厅");
 	}
 
 	public IncomeManageController(IncomeService income) {
@@ -22,14 +25,21 @@ public class IncomeManageController implements IncomeManageBLService {
 
 
 	public ArrayList<ReceiptVO> showIncomeList(String office,
-			double startTime, double endTime) {
+			long startTime, long endTime) {
 		
 		return income.getAllIncomeList(office, startTime, endTime);
 	}
 
-	public boolean add(String date, String money, String courier, String orderId) {
+	public boolean add(String date, String money, String courier, String[] orderId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public String[] getAllOffice() {
+		// TODO Auto-generated method stub
+		return this.office.getName();
+	}
+
+	
 
 }

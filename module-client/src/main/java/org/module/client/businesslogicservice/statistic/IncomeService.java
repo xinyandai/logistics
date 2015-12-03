@@ -11,7 +11,7 @@ public interface IncomeService {
 	 * 依赖：ReceiptListService.getAll 返回所有的收款单信息
 	 * @return
 	 */
-	public ArrayList<ReceiptVO> getAllIncomeList(String office,double startTime,double endTime);
+	public ArrayList<ReceiptVO> getAllIncomeList(String office,long startTime,long endTime);
 	
 	public boolean add(ReceiptVO a);
 }

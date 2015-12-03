@@ -47,6 +47,20 @@ public interface DepartmentDataService extends Remote{
 	 * @return
 	 */
 	public boolean update(DepartmentPO one)throws RemoteException;
-	
+	/**
+	 * 
+	 * @param key
+	 * @return
+	 * @throws RemoteException
+	 */
 	public MyList<DepartmentPO> fuzzusearch(String key)throws RemoteException;
+	
+	/**
+	 * 
+	 * @param type
+	 * @return
+	 * @throws RemoteException
+	 */
+	public MyList<DepartmentPO> findByType(String type) throws RemoteException;
+	
 }

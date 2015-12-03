@@ -56,6 +56,11 @@ public class AccountManageBLService_stub implements AccountManageBLService {
 		return false;
 	}
 
+	public boolean delete(int[] a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 
 }

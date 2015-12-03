@@ -3,11 +3,14 @@ package org.module.client.main;
 import java.awt.EventQueue;
 
 import org.module.client.presentation.mainui.MainFrame;
+import org.module.client.vo.UserVO;
 
 
 
 public class Main {
 
+	public static UserVO currentUser ;
+	
 	/**
 	 * Launch the application.
 	 */

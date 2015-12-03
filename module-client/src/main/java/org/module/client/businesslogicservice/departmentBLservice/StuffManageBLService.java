@@ -26,10 +26,10 @@ public interface StuffManageBLService {
 	 * 前置：选择删除员工
 	 * 后置：更新员工信息
 	 * 依赖：StuffDataService.delete 删除一个PO
-	 * @param d
+	 * @param id 是该vo索引
 	 * @return
 	 */
-	public boolean delete(String identity);
+	public boolean delete(String id);
 	
 	/**
 	 * 前置：选择删除员工
@@ -56,4 +56,11 @@ public interface StuffManageBLService {
 	 * @return
 	 */
 	public ArrayList<StuffVO> fuzzySearch(String s);
+	/**
+	 * 
+	 * @param ins
+	 */
+	public boolean delete(int[] ins);
+	
+	
 }

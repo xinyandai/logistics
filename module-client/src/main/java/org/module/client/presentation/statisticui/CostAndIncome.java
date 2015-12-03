@@ -1,14 +1,15 @@
 package org.module.client.presentation.statisticui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import java.awt.Font;
 import java.util.Date;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.statisticbl.CostAndIncomeController;
+import org.module.client.businesslogicservice.statisticBLservice.CostAndIncomeBLService;
 
 public class CostAndIncome extends JPanel {
 	
@@ -20,6 +21,7 @@ public class CostAndIncome extends JPanel {
 	private JXDatePicker endTimePicker;
 	private JXDatePicker startTimePicker;
 
+	private CostAndIncomeBLService controller = new CostAndIncomeController();
 	/**
 	 * Create the panel.
 	 */
@@ -94,6 +96,14 @@ public class CostAndIncome extends JPanel {
 		startTimePicker.setBounds(145, 23, 95, 21);
 		add(startTimePicker);
 
+		this.refresh();
 	}
 
+	public void refresh(){
+		long startTime = this.startTimePicker.getDate().getTime();
+		long endTime = this.endTimePicker.getDate().getTime();
+		this.income.setText(this.controller.getIncome(startTime, endTime)+"");
+		this.spending.setText(this.controller.getCost(startTime, endTime)+"");
+		this.profits.setText(this.controller.getPureIncome(startTime, endTime)+"");
+	}
 }

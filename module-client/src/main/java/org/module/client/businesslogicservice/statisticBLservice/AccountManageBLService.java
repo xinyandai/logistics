@@ -63,21 +63,11 @@ public interface AccountManageBLService {
 	 */
 	public boolean update(String id,String rest);
 	/**
-	 * 前置：新建收款单
-	 * 后置：更新余额
-	 * 依赖：AccountDataService.update 更改账户信息
-	 * @param a
-	 * @param b
+	 * 前置：选择账户删除
+	 * 后置：显示新账户列表
+	 * 依赖：AccountDataService.delete 删除账户
+	 * @param a 所有的将删除的PO的索引
 	 * @return
 	 */
-	//public boolean income(String id,double rest);
-	/**
-	 * 前置：新建付款单
-	 * 后置：更新余额
-	 * 依赖：AccountDataService.update 更改账户信息
-	 * @param id
-	 * @param b
-	 * @return
-	 */
-	//public boolean pay(String id,double b);
+	public boolean delete(int[] a);
 }

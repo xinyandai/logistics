@@ -12,7 +12,7 @@ public class WarehouseMock implements WarehouseManageService{
 	public ArrayList<WarehouseVO> getAll() {
 		// TODO Auto-generated method stub
 		ArrayList<WarehouseVO> re = new ArrayList<WarehouseVO>();
-		re.add(new WarehouseVO("10086","1","1","1","1","warehouse"));
+		re.add(new WarehouseVO("10086","1","1","1","1","warehouse",615613531));
 		return re;
 	}
 

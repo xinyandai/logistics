@@ -1,47 +1,110 @@
 package org.module.client.presentation.userui;
 
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-import javax.swing.JTable;
-import javax.swing.JButton;
-
-import javax.swing.JCheckBox;
-import javax.swing.JScrollPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
+
+import org.module.client.businesslogic.userbl.UserManageController;
+import org.module.client.businesslogicservice.userBLservice.UserManageBLService;
+import org.module.client.presentation.Table;
+import org.module.client.vo.UserVO;
 
 public class UserPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	/**
-	 * Create the panel.
-	 */
-	Object[][] cellData = {{"row1-col1", "row1-col2","add"},{"row2-col1", "row2-col2","add"},
-			{"row1-col1", "row1-col2","add"},{"row1-col1", "row1-col2","add"}};
-	String[] columnNames = {"id","名字", "密码","工作类别","权限",""};
-	private JTable table;
+	
+	
+	ArrayList<UserVO> listData ;
+	String[] columnNames = {"id","名字", "密码","工作类别","所属部门","权限"};
+	
+	private Table table;
+	private JButton add;
+	private JButton delete;
+	private JButton modify;
+	private JButton update;
+	
+	private UserManageBLService controller  = new UserManageController();
+	
+	private void addListeners(){
+		
+		add.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				final NewUserInputFrame frame = new NewUserInputFrame();
+				frame.setVisible(true);
+				frame.getComfirm().addMouseListener(new MouseAdapter(){
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						controller.add(new UserVO(frame.getId(),frame.getName(),frame.getPassword(),
+								frame.getTypeOfUser(),frame.getDeparment(),frame.getRight()));
+						table.fireTableDataChanged();
+						frame.dispose();
+					}
+				});
+			}
+		});
+		delete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int[] indexes = table.getCheckedIndexes();
+				controller.delete(indexes);
+				table.fireTableDataChanged();
+			}
+		});
+		modify.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int[] indexes = table.getCheckedIndexes();
+				if(indexes.length!=1){return;}
+				final NewUserInputFrame frame = new NewUserInputFrame(listData.get(indexes[0]));
+				frame.setVisible(true);
+				frame.getComfirm().addMouseListener(new MouseAdapter(){
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						controller.update(new UserVO(frame.getId(),frame.getNameOfUser(),frame.getPassword(),
+								frame.getTypeOfUser(),frame.getDeparment(),frame.getRight()));
+						table.fireTableDataChanged();
+						frame.dispose();
+					}
+				});
+			}
+		});
+		update.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listData = controller.getAll();
+				table.setList(listData);
+				table.fireTableDataChanged();
+			}
+		});
+	}
+	
 	public UserPanel() {
+		this.listData = controller.getAll();
+		init();
+		this.addListeners();
+	}
+				
+	private void init(){
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton add = new JButton("增");
+		add = new JButton("增");
+		delete = new JButton("删");
+		modify = new JButton("改");
+		update = new JButton("同步");
 		
-		JButton delete = new JButton("删");
-		
-		JButton modify = new JButton("改");
-		
-		JButton update = new JButton("同步");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -67,39 +130,8 @@ public class UserPanel extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
-		
-		table = new JTable(new DefaultTableModel(cellData,columnNames){
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-		    }
-
-		});
-		table.getColumnModel().getColumn(columnNames.length-1).setCellRenderer(new TableCellRenderer(){
-
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				// 创建用于返回的渲染组件
-				JCheckBox ck = new JCheckBox();
-				 // 使具有焦点的行对应的复选框选中
-				  ck.setSelected(isSelected);
-				 // 设置单选box.setSelected(hasFocus);
-				  // 使复选框在单元格内居中显示
-				// ck.setHorizontalAlignment((int) 0.5f);
-				 return ck;
-
-			}
-			
-		});
-		//table.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		//table.getColumn(0).setCellEditor(new DefaultCellEditor(new JCheckBox()));
-		scrollPane.setViewportView(table);
+		table = new Table(this.listData,this.columnNames);
+		scrollPane.setViewportView(new JTable(table));
 	}
 
 }

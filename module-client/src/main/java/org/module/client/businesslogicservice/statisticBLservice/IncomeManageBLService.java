@@ -17,8 +17,21 @@ public interface IncomeManageBLService {
 	 * 依赖：ReceiptListService.getAll 返回所有的收款单信息
 	 * @return
 	 */
-	public ArrayList<ReceiptVO> showIncomeList(String office,double startTime,double endTime);
-	
+	public ArrayList<ReceiptVO> showIncomeList(String office,long startTime,long endTime);
+	/**
+	 * 
+	 * @param date
+	 * @param money
+	 * @param courier
+	 * @param orderId
+	 * @return
+	 */
 	public boolean add(String date, String money, String courier,
-			String orderId);
+			String[] orderId);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String[] getAllOffice();
 }

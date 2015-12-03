@@ -84,4 +84,15 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 		return null;
 	}
 
+	public MyList<DepartmentPO> findByType(String type) throws RemoteException {
+		MyList<DepartmentPO> re = new MyList<DepartmentPO>();
+		MyList<DepartmentPO> all = this.getAll();
+		for (DepartmentPO departmentPO : all) {
+			if(departmentPO.getCategory().equals(type)){
+				re.add(departmentPO);
+			}
+		}
+		return re;
+	}
+
 }

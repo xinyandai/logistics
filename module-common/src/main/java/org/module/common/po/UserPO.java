@@ -22,49 +22,67 @@ public class UserPO implements Serializable{
 	private String name;
 	private String password;
 	private String  role;
-//	private String spt = ":%:%:";
+	private String departmeny;
+	private String authority;
+	
+	final private String spt = ":%:%:";
+
+	@Override
+	public String toString(){
+		return this.id + 
+				this.spt +
+				this.name + this.spt +
+				this.password + this.spt +
+				this.role + this.spt +
+				this.departmeny + this.spt + 
+				this.authority;
+	}
+	
+	public UserPO(String string){
+		
+		String[] s = string.split(spt);
+		this.id = s[0];
+		this.name = s[1];
+		this.password = s[2];
+		this.role = s[3];
+		this.departmeny = s[4];
+		this.authority = s[5];
+	}
+	
 	public UserPO(String id, String name, String password, String role,
-			String authority) {
+			String departmeny, String authority) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.role = role;
+		this.departmeny = departmeny;
 		this.authority = authority;
 	}
-	public UserPO(String[] s) {
-		this(s[0],s[1],s[2],s[3],s[4]);
-	}
+
 	public String getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public String getRole() {
 		return role;
 	}
-	public void setRole(String role) {
-		this.role = role;
+
+	public String getDepartmeny() {
+		return departmeny;
 	}
+
 	public String getAuthority() {
 		return authority;
 	}
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
-	private String authority;
+	
 }
 

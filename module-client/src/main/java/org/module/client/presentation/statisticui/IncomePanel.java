@@ -1,9 +1,11 @@
 package org.module.client.presentation.statisticui;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -11,33 +13,52 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
 
 import org.jdesktop.swingx.JXDatePicker;
-import org.module.client.presentation.CheckBoxTableModelProxy;
-
-import javax.swing.GroupLayout.Alignment;
-
-public class IncomePanel extends JPanel {
-
-	/**
+import org.module.client.businesslogic.statisticbl.IncomeManageController;
+import org.module.client.businesslogicservice.statisticBLservice.IncomeManageBLService;
+import org.module.client.presentation.Table;
+import org.module.client.vo.ReceiptVO;
+/**
 	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * Create the panel.
 	 * 单号
 	 * 金额
 	 * 日期
 	 * 快递员
 	 */
-	Object[][] cellData = {{"row1-col1", "row1-col2","add"},{"row2-col1", "row2-col2","add"},
-			{"row1-col1", "row1-col2","add"},{"row1-col1", "row1-col2","add"}};
-	String[] columnNames = {"单号", "金额","日期","快递员",""};
-	private JTable table;
-	JXDatePicker startTimePicker;
-	JXDatePicker endTimePicker;
+public class IncomePanel extends JPanel {
+
+
+	private static final long serialVersionUID = 1L;
+	
+	private ArrayList<ReceiptVO> listData ;
+	private String[] columnNames = {"单号", "金额","日期","快递员"};
+	private String[] officeArray ;
+	private Table table;
+	private JXDatePicker startTimePicker;
+	private JXDatePicker endTimePicker;
+	private IncomeManageBLService controller  = new IncomeManageController();
+	private JScrollPane scrollPane;
+	private JComboBox<String> office;
+	
+	
 	public IncomePanel() {
+		this.officeArray = this.controller.getAllOffice();
+		this.init();
+		this.listData = this.controller.showIncomeList(office.getSelectedItem().toString(), this.startTimePicker.getDate().getTime(), 
+				this.endTimePicker.getDate().getTime());
+		table = new Table(listData,columnNames);
+		scrollPane.setViewportView(new JTable(table));
+	}
+	
+	private void refresh(){
+		this.listData = this.controller.showIncomeList(office.getSelectedItem().toString(), this.startTimePicker.getDate().getTime(), 
+				this.endTimePicker.getDate().getTime());
+		table.setList(listData);
+		table.fireTableDataChanged();
+	}
+	
+	private void init(){
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -45,21 +66,13 @@ public class IncomePanel extends JPanel {
 		
 		JButton add = new JButton("增");
 		
-		JButton delete = new JButton("删");
-		
-		JButton modify = new JButton("改");
-		
 		JButton update = new JButton("同步");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(150, Short.MAX_VALUE)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(334, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(update))
 		);
@@ -68,8 +81,6 @@ public class IncomePanel extends JPanel {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(update)
-						.addComponent(modify)
-						.addComponent(delete)
 						.addComponent(add))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
@@ -79,30 +90,17 @@ public class IncomePanel extends JPanel {
 		add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		panel_1.add(scrollPane);
 		
-		table = new JTable(new DefaultTableModel(cellData,columnNames){
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-		    }
-
-		});
-		CheckBoxTableModelProxy a = new CheckBoxTableModelProxy(table.getModel(), "check");
-		scrollPane.setViewportView(new JTable(a));
+		
 		
 		JPanel panel_2 = new JPanel();
 		panel_1.add(panel_2, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("营业厅");
 		
-		JComboBox<String> office = new JComboBox<String>();
+		office = new JComboBox(officeArray);
 		
 		JLabel label = new JLabel("选择起止时间");
 		

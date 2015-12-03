@@ -14,14 +14,11 @@ public class StuffDataImpl extends UnicastRemoteObject implements StuffDataServi
 
 	public StuffDataImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-	private FileHelper helper = new FileHelper(new File("src"+File.separator+"stuff.txt"));
+	private FileHelper helper = new FileHelper(new File("file"+File.separator+"stuff.txt"));
 
 
 	public MyList<StuffPO> getAll() {
@@ -60,7 +57,7 @@ public class StuffDataImpl extends UnicastRemoteObject implements StuffDataServi
 		 for (int i = 0; i < pos.size(); i++) {
 			 if(pos.get(i).getIdentity().equals(id)){
 				 pos.remove(i);
-				 return true;
+				 return this.helper.rewrite(pos);
 			 }
 		 }
 		return false;

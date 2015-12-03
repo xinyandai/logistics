@@ -17,16 +17,12 @@ public class Warehouse implements WarehouseManageService {
 	public ArrayList<WarehouseVO> getAll() {
 		ArrayList<WarehouseVO> vos = new ArrayList<WarehouseVO>();
 		try {
+			//当前中转中心id
 			ArrayList<WarehousePO> pos = this.data.getAll("1");
 			for (WarehousePO warehousePO : pos) {
 				vos.add(
 						new WarehouseVO(
-								warehousePO.getNumber(),		
-								warehousePO.getQu(),
-								warehousePO.getPai(),
-								warehousePO.getJia(),
-								warehousePO.getWei(),
-								warehousePO.getWarehouseOfWhichTranCenter()
+								warehousePO
 								)
 						);
 			}
@@ -37,15 +33,8 @@ public class Warehouse implements WarehouseManageService {
 	}
 
 	public boolean modify(WarehouseVO warehouseVO) {
-		WarehousePO po = new WarehousePO(
-			
-				warehouseVO.getNumber(),		
-				warehouseVO.getQu(),
-				warehouseVO.getPai(),
-				warehouseVO.getJia(),
-				warehouseVO.getWei(),
-				warehouseVO.getWarehouseOfWhichTranCenter()
-				);
+		WarehousePO po = 
+				warehouseVO.toVO();
 		try {
 			return this.data.update(po);
 		} catch (RemoteException e) {
@@ -77,7 +66,8 @@ public class Warehouse implements WarehouseManageService {
 							w.getPai(),
 							w.getJia(),
 							w.getWei(),
-							w.getWarehouseOfWhichTranCenter()
+							w.getWarehouseOfWhichTranCenter(),
+							w.getDate()
 							)
 					);
 		} catch (RemoteException e) {
@@ -86,15 +76,15 @@ public class Warehouse implements WarehouseManageService {
 		return false;
 	}
 
-	public boolean setBorderline(String id, String qu, double a) {
+	/*public boolean setBorderline(String id, String qu, double a) {
 
-		/*try {
+		try {
 			return this.data.setBorderline(new BorderlinePO(id,qu,a));
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}*/
+		}
 		return false;
-	}
+	}*/
 	
 
 }

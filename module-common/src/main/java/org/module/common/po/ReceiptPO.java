@@ -14,17 +14,30 @@ public class ReceiptPO implements Serializable{
 		private String date;
 		private String money;
 		private String Courier;
-		private String orderId;
+		private String[] orderId;
 		
 		private State state;
 		
-
+		
+		final private String inlinespt = "#*#*#";
+		/**
+		 * 把订单号数组转化为字符串
+		 * @param s
+		 * @return
+		 */
+		private String getArrayToString(String[] s){
+			String re = "";
+			for (String string : s) {
+				re += string + this.inlinespt;
+			}
+			return re;
+		}
 		public ReceiptPO(String str){
 			String[] s = str.split(split);
 			this.date = s[0];
 			this.money = s[1];
 			this.Courier = s[2];
-			this.orderId = s[3];
+			this.orderId = s[3].split(inlinespt);
 			this.state = State.getInstance(s[4]);
 		}
 		
@@ -33,7 +46,7 @@ public class ReceiptPO implements Serializable{
 			return this.date + this.split +
 					this.money + this.split +
 					this.Courier + this.split +
-					this.orderId + this.split +
+					this.getArrayToString( this.orderId )+ this.split +
 					this.state.toString();
 		}
 		
@@ -49,7 +62,7 @@ public class ReceiptPO implements Serializable{
 			return Courier;
 		}
 
-		public String getOrderId() {
+		public String[] getOrderId() {
 			return orderId;
 		}
 
@@ -58,7 +71,7 @@ public class ReceiptPO implements Serializable{
 		}
 
 		public ReceiptPO(String date, String money, String courier,
-				String orderId, State state) {
+				String[] orderId, State state) {
 			super();
 			this.date = date;
 			this.money = money;

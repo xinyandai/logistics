@@ -2,7 +2,7 @@ package org.module.client.vo;
 
 
 
-public class StuffVO {
+public class StuffVO extends AbstractVO{
 
 	private String name;
 	private String age;
@@ -16,6 +16,7 @@ public class StuffVO {
 		this.age = age;
 		this.category = category;
 		this.identity = identity;
+		this.slaray = 0.0;
 	}
 	
 	public StuffVO(String name, String age, String category, String identity,
@@ -58,5 +59,20 @@ public class StuffVO {
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
+
+	
+
+	@Override
+	public String get(int i) {
+		String[] s = {
+		this.name ,
+		this.age,
+		this.category,
+		this.identity ,
+		this.slaray+"" };
+		return s[i];
+	}
+
+	
 
 }

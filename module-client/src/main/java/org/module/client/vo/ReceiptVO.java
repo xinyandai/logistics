@@ -1,14 +1,14 @@
 package org.module.client.vo;
 
-public class ReceiptVO {
+public class ReceiptVO extends AbstractVO{
 
 	    private String date;
 		private double money;
 		private String Courier;
-		private String orderId;
+		private String[] orderId;
 		
 		public ReceiptVO(String date, String money, String courier,
-				String orderId) {
+				String[] orderId) {
 			super();
 			this.date = date;
 			this.money = Double.parseDouble(money) ;
@@ -33,11 +33,41 @@ public class ReceiptVO {
 		public void setCourier(String courier) {
 			Courier = courier;
 		}
-		public String getOrderId() {
+		public String[] getOrderId() {
 			return orderId;
 		}
-		public void setOrderId(String orderId) {
+		public void setOrderId(String[] orderId) {
 			this.orderId = orderId;
+		}
+		
+		public String arrayToString(String[] s){
+			String spt = " ";
+			StringBuffer re = new StringBuffer("");
+			for (int i = 0; i < s.length; i++) {
+				re.append( s[i]  );
+				re.append(spt);
+			}
+			return re.toString();
+		}
+		
+		public String[] array(){
+			String[] s = {this.date ,
+			this.money +"",
+			Courier ,
+			this.arrayToString(orderId)
+			};
+			return s;
+			
+		}
+		
+		public int getNum() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		@Override
+		public String get(int i) {
+			// TODO Auto-generated method stub
+			return this.array()[i];
 		}
 		
 
