@@ -44,7 +44,7 @@ public class UserPanel extends JPanel {
 				frame.getComfirm().addMouseListener(new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						controller.add(new UserVO(frame.getId(),frame.getName(),frame.getPassword(),
+						controller.add(new UserVO(frame.getId(),frame.getNameOfUser(),frame.getPassword(),
 								frame.getTypeOfUser(),frame.getDeparment(),frame.getRight()));
 						table.fireTableDataChanged();
 						frame.dispose();

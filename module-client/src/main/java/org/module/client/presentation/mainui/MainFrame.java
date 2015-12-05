@@ -1,5 +1,6 @@
 package org.module.client.presentation.mainui;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -7,10 +8,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,9 +24,20 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.api.SubstanceSkin;
+import org.jvnet.substance.skin.MistAquaSkin;
 import org.module.client.businesslogic.userbl.Login;
 import org.module.client.businesslogic.userbl.LoginController;
 import org.module.client.businesslogicservice.userBLservice.UserLoginBLService;
+import org.module.client.presentation.userui.AccoutantFrame;
+import org.module.client.presentation.userui.AdminFrame;
+import org.module.client.presentation.userui.CourierFrame;
+import org.module.client.presentation.userui.CustomerFrame;
+import org.module.client.presentation.userui.ManagerFrame;
+import org.module.client.presentation.userui.OfficeClerkFrame;
+import org.module.client.presentation.userui.TranCenterClerkFrame;
+import org.module.client.presentation.userui.WarehouseFrame;
 
 public class MainFrame extends JFrame {
 
@@ -44,10 +61,51 @@ public class MainFrame extends JFrame {
 	private int closeBtnWidth = 40;
 	private int closeBtnHeight = 40;
 	
-	/**
-	 * Create the frame.
-	 */
+
+	private Map<String,Class<? extends JFrame>> map = new HashMap<String,Class<? extends JFrame>>();
+	
+	private void init() {
+		map.put(array[0], CustomerFrame.class);
+		map.put(array[1], CourierFrame.class);
+		map.put(array[2], OfficeClerkFrame.class);
+		map.put(array[3], WarehouseFrame.class);
+		map.put(array[4], TranCenterClerkFrame.class);
+		map.put(array[5], AccoutantFrame.class);
+		map.put(array[6], ManagerFrame.class);
+		map.put(array[7], AdminFrame.class);
+		
+	}
+
+
+	private void login(){
+		char[] ch = passwordField.getPassword();
+		String password = "";
+		for (char c : ch) {
+			password+=c;
+		}
+		String type = array[comboBox.getSelectedIndex()];
+		if(longiner.login(textField.getText(),password,type)){
+			System.out.println("success to login");
+			frame.dispose();
+			Class<? extends JFrame> cls = this.map.get(type);
+			try {
+				JFrame o = cls.newInstance();
+				o.setVisible(true);
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+
+		}else{
+			JOptionPane.showConfirmDialog(frame, "账号信息错误", "登录失败", JOptionPane.OK_CANCEL_OPTION);
+		}
+	}
 	public MainFrame() {
+		
+		this.init();
+		
+		this.setSkin();
 		this.setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
@@ -55,11 +113,7 @@ public class MainFrame extends JFrame {
 		int y = (d.height - imgBackground.getHeight(null))/2;
 		setBounds(x, y, imgBackground.getWidth(null), imgBackground.getHeight(null));
 		contentPane = new Panel();
-		//contentPane.setOpaque(false);
-		//contentPane.setBackground(new Color(176, 224, 230));
-		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		//contentPane.setLayout(null);
 		
 		btnNewButton = new JButton("LOGIN\r\n");
 	
@@ -98,8 +152,6 @@ public class MainFrame extends JFrame {
 		btnNewButton.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			public void keyPressed(KeyEvent e) {
@@ -110,45 +162,44 @@ public class MainFrame extends JFrame {
 			}
 
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 		});
 	}
 	 
 	
-	private void login(){
-		char[] ch = passwordField.getPassword();
-		String s = "";
-		for (char c : ch) {
-			s+=c;
-		}
-		if(longiner.login(textField.getText(),s,array[comboBox.getSelectedIndex()])){
-			System.out.println("success to login");
-			frame.dispose();
-	//		new AdministratorUI(user.allUsers()).setVisible(true);;
-
-		}else{
-			JOptionPane.showConfirmDialog(frame, "账号信息错误", "登录失败", JOptionPane.OK_CANCEL_OPTION);
-		}
+	
+	
+	
+	
+	private void setSkin(){
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					SubstanceSkin skin  =   new  MistAquaSkin();  
+					SubstanceLookAndFeel.setSkin(skin); 
+				}//设置皮肤                      
+				catch  (Exception ex) {      
+						Logger.getLogger(AdminFrame. class .getName()).log(Level.SEVERE,  null , ex);       
+				} 
+			}		
+		});
 	}
+	
 	
 	class Panel extends JPanel{
 
 		Panel(){
 			setOpaque(false);
-			//contentPane.setBackground(new Color(176, 224, 230));
 			setBorder(new EmptyBorder(5, 5, 5, 5));
-			//setContentPane(contentPane);
 			setLayout(null);
 		}
 		private static final long serialVersionUID = 1L;
 		@Override 
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
-			
-			//if(new File("pic/login.png").exists()) System.out.println("fff");
 			g.drawImage(imgBackground, 0, 0, imgBackground.getWidth(null), imgBackground.getHeight(null),
 					         0, 0, imgBackground.getWidth(null), imgBackground.getHeight(null),null);
 			
@@ -168,7 +219,6 @@ public class MainFrame extends JFrame {
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			
-			//if(new File("pic/close.png").exists()) System.out.println("fff");
 			g.drawImage(imgClose, 0, 0, imgClose.getWidth(null), imgClose.getHeight(null),
 					         0, 0, closeBtnWidth,closeBtnHeight,null);
 			

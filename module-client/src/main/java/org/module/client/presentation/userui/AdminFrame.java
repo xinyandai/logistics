@@ -45,13 +45,11 @@ public class AdminFrame extends JFrame {
 					JFrame.setDefaultLookAndFeelDecorated(true);
 					JDialog.setDefaultLookAndFeelDecorated(true);
 					
-					
 					try  { 
-						                
-						        SubstanceSkin skin  =   new  MistAquaSkin();   
-						       // UIManager.setLookAndFeel( new  SubstanceOfficeBlue2007LookAndFeel());    
-						        SubstanceLookAndFeel.setSkin(skin);  //设置皮肤                      
-						}  
+						  SubstanceSkin skin  =   new  MistAquaSkin();   
+					       // UIManager.setLookAndFeel( new  SubstanceOfficeBlue2007LookAndFeel());    
+					        SubstanceLookAndFeel.setSkin(skin);  //设置皮肤                   	     
+					}  
 					catch  (Exception ex) {      
 						Logger.getLogger(AdminFrame. class .getName()).log(Level.SEVERE,  null , ex);       
 					} 
@@ -65,9 +63,7 @@ public class AdminFrame extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public AdminFrame() {
 		
 		background = new ImageIcon(path);// 背景图片
