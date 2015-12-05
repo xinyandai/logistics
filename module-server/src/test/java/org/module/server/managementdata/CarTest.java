@@ -20,11 +20,9 @@ public class CarTest extends TestCase{
 			CarPO po=new CarPO("08025001001","09025001001","20080808");
 			car.add(po);
 			CarPO po1=car.getAll().get(0);
-			//car.delete(po);
 			assert(po.toString().equals(po1.toString()));
 			
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

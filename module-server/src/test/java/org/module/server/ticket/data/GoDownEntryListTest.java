@@ -18,12 +18,10 @@ public class GoDownEntryListTest extends TestCase {
 		try {
 			GoDownEntryListDataImpl data = new GoDownEntryListDataImpl();
 			GoDownEntryListPO po = new GoDownEntryListPO("025156","courier","date", "destination",
-					"qu", "pai","jia", "wei",State.SUBMITTED);
+					"qu", "pai","jia", "wei",State.UNPASS);
 			data.add(po);
-			
 			assert(data.getAll().size()>0);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
