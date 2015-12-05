@@ -2,6 +2,8 @@ package org.module.client.businesslogicservice.managementBLservice;
 
 import java.util.ArrayList;
 
+import org.module.client.vo.AbstractVO;
+
 
 public interface TicketAndOrderManageBLService{
 
@@ -10,7 +12,7 @@ public interface TicketAndOrderManageBLService{
 	 * 后置：判断是否有待提交单据未审批
 	 * @return
 	 */
-	public boolean hasTicketToManage();
+	public boolean hasTicketToVerify();
 
 	/**
 	 * 前置：经理查看未审批单据
@@ -19,7 +21,7 @@ public interface TicketAndOrderManageBLService{
 	 * @param state
 	 * @return
 	 */
-	public ArrayList<Object> getTicket();
+	public ArrayList<? extends AbstractVO> getAll(String type);
 	/**
 	 * 前置：经理通过单据
 	 * 后置：更新
@@ -27,7 +29,7 @@ public interface TicketAndOrderManageBLService{
 	 * @param o
 	 * @return
 	 */
-	public boolean pass(ArrayList<String> id);
+	public boolean pass(int[] indexes,String type);
 	/**
 	 * 前置：经理未通过单据
 	 * 后置：更新
@@ -35,5 +37,10 @@ public interface TicketAndOrderManageBLService{
 	 * @param o
 	 * @return
 	 */
-	public boolean unpass(ArrayList<String> id);
+	public boolean unpass(int[] indexes,String type);
+	/**
+	 * 所有需要审批的单据类型
+	 * @return
+	 */
+	public String[] getTypes();
 }

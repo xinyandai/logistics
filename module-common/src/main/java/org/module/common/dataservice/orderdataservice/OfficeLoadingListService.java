@@ -2,8 +2,8 @@ package org.module.common.dataservice.orderdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
 
@@ -14,7 +14,7 @@ public interface OfficeLoadingListService extends Remote{
 	 * 后置：返回所有PO
 	 * @return
 	 */
-	public ArrayList<OfficeLoadingListPO> getAll() throws RemoteException;
+	public MyList<OfficeLoadingListPO> getAll() throws RemoteException;
 	/**
 	 * 前置：不存在相同ID的寄件单
 	 * 后置：增加一个PO
@@ -35,6 +35,6 @@ public interface OfficeLoadingListService extends Remote{
      * @param s
      * @return
      */
-	public ArrayList<OfficeLoadingListPO> getByState(State s) throws RemoteException;
+	public MyList<OfficeLoadingListPO> getByState(State s) throws RemoteException;
 }
 

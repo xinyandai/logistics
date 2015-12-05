@@ -18,6 +18,7 @@ public class WarehouseConfigVO {
 			}
 			
 			public WarehouseConfigVO(WarehouseConfigPO po){
+				
 				this.warehouseOfWhichTranCenter = po.getWarehouseOfWhichTranCenter();
 				this.qus = po.getQus();
 				this.sizeOfQu = po.getQus();

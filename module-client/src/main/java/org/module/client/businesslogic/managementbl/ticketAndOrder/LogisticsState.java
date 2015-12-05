@@ -11,24 +11,27 @@ public class LogisticsState {
 
 	private Logisticsdataservice data = new RmiClient().get(Logisticsdataservice.class);
 	
-	public boolean setState(LogisticsVO vo) {
-		
-		try {
-			return this.data.updata(new LogisticsPO(
-						vo.getOrderId(),
-						vo.getOrigin(),
-						vo.getEstination(),
-						vo.getLocation(),
-						vo.getHistoryLocation(),
-						vo.getHistoryTime(),
-						vo.isCompleted()
-						)
-			);
+	
+	
+	 public boolean creat(LogisticsVO logisticsVO){
+		 try {
+			return this.data.add(logisticsVO.toPO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return false;
-	}
+		 return false;
+	 }
+	
+     public boolean updateLocationAndTime(String id,String current,String location,String time){
+    	 LogisticsVO logisticsVO = this.find(id);
+    	 logisticsVO.addLocationAndTime(location, time);
+    	 try {
+			return this.data.updata(logisticsVO.toPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+    	 return false;
+     }
 	
 	public LogisticsVO find(String id){
 		LogisticsPO po;
@@ -39,5 +42,14 @@ public class LogisticsState {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public boolean update(LogisticsVO logisticsVO){
+		try {
+			return this.data.updata(logisticsVO.toPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

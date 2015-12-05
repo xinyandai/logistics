@@ -44,10 +44,7 @@ public class DepartmentManageController implements DepartmentManageBLService{
 		return department.modify(departmentVO);
 	}
 
-	public ArrayList<DepartmentVO> fuzzySearch(String s) {
-		return department.fuzzySearch(s);
-	}
-
+	
 	
 	
 	public ArrayList<String[]> toArrayList(){

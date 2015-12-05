@@ -89,26 +89,6 @@ public class Department implements DepartmentService {
 		return false;
 	}
 
-	public ArrayList<DepartmentVO> fuzzySearch(String s) {
-		ArrayList<DepartmentVO> vos = new ArrayList<DepartmentVO>();
-		ArrayList<DepartmentPO> pos;
-		try {
-			pos = this.data.fuzzusearch(s);
-			for (DepartmentPO departmentPO : pos) {
-			vos.add(new DepartmentVO(
-					departmentPO.getName(),
-					departmentPO.getCategory(),
-					departmentPO.getLocation(),
-					departmentPO.getIdentity()
-					)
-			);
-		}
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
-		return vos;
-	}
 	
 	public String[][] toArray(){
 		ArrayList<DepartmentVO> vo = this.showAll();

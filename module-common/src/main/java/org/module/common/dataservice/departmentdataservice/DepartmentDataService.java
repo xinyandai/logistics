@@ -53,7 +53,7 @@ public interface DepartmentDataService extends Remote{
 	 * @return
 	 * @throws RemoteException
 	 */
-	public MyList<DepartmentPO> fuzzusearch(String key)throws RemoteException;
+	public DepartmentPO findById(String key)throws RemoteException;
 	
 	/**
 	 * 

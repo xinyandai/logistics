@@ -7,5 +7,5 @@ public interface CalculateSalaryService {
 	 * @param id
 	 * @return
 	 */
-	public double calculateById(String id);
+	public double calculateById(String id,String time);
 }

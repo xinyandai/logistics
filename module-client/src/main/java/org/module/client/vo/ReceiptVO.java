@@ -69,6 +69,13 @@ public class ReceiptVO extends AbstractVO{
 			// TODO Auto-generated method stub
 			return this.array()[i];
 		}
+		@Override
+		public String[] names() {
+			String[] s = {
+					"日期","金额","快递员","托运单号"
+			};
+		    return s;
+		}
 		
 
 }

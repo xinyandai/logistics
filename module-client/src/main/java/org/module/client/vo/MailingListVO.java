@@ -5,7 +5,7 @@ import org.module.common.po.State;
 
 
 
-public class MailingListVO {
+public class MailingListVO extends AbstractVO{
 
 	private String senderName;
 	private String senderCompany;
@@ -223,4 +223,30 @@ public class MailingListVO {
 	public void setState(State state) {
 		this.state = state;
 	}*/
+
+	public String[] toArray(){
+		String[] s = {
+				this.id,
+				this.type,
+				this.senderName,
+				this.senderCity,
+				this.receiveName,
+				this.receiveCity
+		};
+		return s;
+	}
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+
+	@Override
+	public String[] names() {
+		String[] s = {
+				"快递编号","类型","寄件人","出发城市","收件人","目的城市"
+		};
+	    return s;
+	}
 }

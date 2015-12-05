@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class DepartmentVO {
+public class DepartmentVO  extends AbstractVO{
 
 	private String name;
 	private String category;
@@ -48,6 +48,24 @@ public class DepartmentVO {
 		re[2] = this.location ;
 		re[3] = this.identity ;
 		return re;
+	}
+
+	@Override
+	public String get(int i) {
+		
+		return this.toArray()[i];
+	}
+
+	@Override
+	public String[] names() {
+
+		String[] s = {
+				"名称",
+				"类别",
+				"地址",
+				"ID"
+		};
+	    return s;
 	}
 	
 

@@ -1,6 +1,7 @@
 package org.module.client.vo;
 
 import org.module.common.po.State;
+import org.module.common.po.TransportListPO;
 
 /**
  * 业务员每天根据库存的状况，录入中转单（包括飞机、铁路、公路）。
@@ -17,7 +18,7 @@ import org.module.common.po.State;
  * @author 
  *
  */
-public class TransportListVO {
+public class TransportListVO extends AbstractVO{
 
 	/**
 	 * 运送方式
@@ -43,7 +44,7 @@ public class TransportListVO {
 		
 		public TransportListVO(String car, String loadingDate, String transId,
 				String carId, String origin, String arrival, String counterId,
-				String supervision, String[] shippingId, String price,String state) {
+				String supervision, String[] shippingId, String price,State state) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
@@ -55,7 +56,35 @@ public class TransportListVO {
 			Supervision = supervision;
 			this.shippingId = shippingId;
 			this.price = price;
-			this.state = State.getInstance(state);
+			this.state = state;
+		}
+		public TransportListVO(TransportListPO transportListPO) {
+			this(transportListPO.getCar(),
+					transportListPO.getLoadingDate(),
+					transportListPO.getTransListId(),
+					transportListPO.getCarId(),
+					transportListPO.getOrigin(),
+					transportListPO.getArrival(),
+					transportListPO.getCounterId(),
+					transportListPO.getSupervision(),
+					transportListPO.getShippingId(),
+					transportListPO.getPrice(),
+					transportListPO.getState());
+		}
+		
+		public TransportListPO toPO(){
+			return new TransportListPO(
+					getCar(),
+					getLoadingDate(),
+					this.transListId,
+					getCarId(),
+					getOrigin(),
+					getArrival(),
+					getCounterId(),
+					getSupervision(),
+					getShippingId(),
+					getPrice(),
+					getState());
 		}
 		public String getCar() {
 			return car;
@@ -122,6 +151,35 @@ public class TransportListVO {
 		}
 		public void setState(State state) {
 			this.state = state;
+		}
+		
+		public String[] toArray(){
+			String[] s = {
+					getCar(),
+					getLoadingDate(),
+					this.transListId,
+					getCarId(),
+					getOrigin(),
+					getArrival(),
+					getCounterId(),
+					getSupervision(),
+					"......",
+					getPrice(),
+			};
+			return s;
+		}
+		
+		@Override
+		public String get(int i) {
+			// TODO Auto-generated method stub
+			return this.toArray()[i];
+		}
+		@Override
+		public String[] names() {
+			String[] s = {
+					"运送方式","装车日期","中转单号","车次","出发地","目的地","货柜号","监装员","物流单号","价格"
+			};
+			return s;
 		}
 		
 }

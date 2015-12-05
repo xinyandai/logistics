@@ -20,7 +20,7 @@ public interface SendingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String date, String shippingId, String sendMember,String state);
+	public boolean creat(String date, String shippingId, String sendMember);
 	/**
 	 * 前置：选择查看所有派件单
 	 * 后置：显示所有收件单

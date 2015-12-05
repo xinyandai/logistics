@@ -78,6 +78,13 @@ public class UserVO extends AbstractVO{
 		// TODO Auto-generated method stub
 		return this.array()[i];
 	}
+	@Override
+	public String[] names() {
+		String[] s = {
+				"ID","姓名","密码","类别","部门","权限"
+		};
+		return s;
+	}
 	
 	
 	

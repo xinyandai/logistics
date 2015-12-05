@@ -78,8 +78,8 @@ public class TransportListPanel extends JPanel {
 						container.getText(), 
 						monitor.getText(), 
 						shippingId, 
-						price.getText(), 
-						"提交");
+						price.getText()
+					);
 			}
 		});
 	}

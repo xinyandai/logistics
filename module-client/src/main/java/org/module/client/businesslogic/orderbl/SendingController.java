@@ -25,8 +25,8 @@ public class SendingController implements SendingBLService {
 //		this.logistics = logistics;
 	}
 
-	public boolean creat(String date, String shippingId, String sendMember,String state) {
-		return this.sending.creat(new SendingListVO( date,  shippingId,  sendMember,state));
+	public boolean creat(String date, String shippingId, String sendMember) {
+		return this.sending.creat(new SendingListVO( date,  shippingId,  sendMember,State.SUBMITTED));
 	}
 
 	public ArrayList<SendingListVO> getAll(State s) {

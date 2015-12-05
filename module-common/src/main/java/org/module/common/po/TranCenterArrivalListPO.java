@@ -21,18 +21,16 @@ public class TranCenterArrivalListPO implements Serializable{
 	private State state;
 	public TranCenterArrivalListPO(String transId, String date,
 			String transportListId, String origin, String stateOfGoods,
-			String state) {
+			State state) {
 		super();
 		this.transId = transId;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
-		this.state = State.getInstance(state);
+		this.state = state;
 	}
-	public TranCenterArrivalListPO(String[] a){
-		this(a[0],a[1],a[2],a[3],a[4],a[5]);
-	}
+	
 	
 	final private String spt = ":%:%:";
 	public TranCenterArrivalListPO(String string) {

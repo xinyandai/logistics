@@ -47,14 +47,7 @@ public interface DepartmentService {
 	 * @return
 	 */
 	public boolean modify(DepartmentVO vo);
-	/**
-	 * 前置：输入关键字模糊查找
-	 * 后置：返回查找结果
-	 * 依赖：DepartmentDataService.getAll 得到所有的PO
-	 * @param s
-	 * @return
-	 */
-	public ArrayList<DepartmentVO> fuzzySearch(String s);
+	
 	
 	/**
 	 * 把arraylist转换成数组

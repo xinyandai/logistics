@@ -43,7 +43,7 @@ public class TranCenterLoading implements TranCenterLoadingService {
 		for(int i =0;i<POs.size();i++){
 			newVOs.add(new TranCenterLoadingListVO(POs.get(i).getLoadingDate(),POs.get(i).getOfficeId()
 					,POs.get(i).getTrucksId(),POs.get(i).getCity(),POs.get(i).getLocation(),POs.get(i).getCarId(),POs.get(i).getSupervision(),POs.get(i).getEscort()
-					,POs.get(i).getShippingId(),POs.get(i).getPrice(),POs.get(i).getState().toString()));
+					,POs.get(i).getShippingId(),POs.get(i).getPrice(),POs.get(i).getState()));
 		}
 		return newVOs;
 		

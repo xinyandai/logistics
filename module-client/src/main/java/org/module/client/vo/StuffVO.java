@@ -73,6 +73,14 @@ public class StuffVO extends AbstractVO{
 		return s[i];
 	}
 
+	@Override
+	public String[] names() {
+		String[] s = {
+				"姓名","年龄","类型","ID","薪水"
+		};
+	    return s;
+	}
+
 	
 
 }

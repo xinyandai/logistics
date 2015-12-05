@@ -19,5 +19,10 @@ public class SendingBLService_stub implements SendingBLService{
 		return null;
 	}
 
+	public boolean creat(String date, String shippingId, String sendMember) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

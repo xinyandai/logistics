@@ -24,8 +24,8 @@ public class TranCenterArrivalController implements TranCenterArrivalBLService {
 	}
 
 	public boolean creat(String transId, String date,
-			String transportListId, String origin, String stateOfGoods,String state) {
-		return this.arrival.creat(new TranCenterArrivalListVO(transId,date,transportListId,origin,stateOfGoods,state));
+			String transportListId, String origin, String stateOfGoods) {
+		return this.arrival.creat(new TranCenterArrivalListVO(transId,date,transportListId,origin,stateOfGoods,State.SUBMITTED));
 	}
 
 	public ArrayList<TranCenterArrivalListVO> getAll(State s) {

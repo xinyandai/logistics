@@ -25,7 +25,7 @@ public class OfficeArrivalController implements OfficeArrivalBLService{
 			String origin,String stateOfGoods, String state) {
 		
 		return officeArrival.creat(new OfficeArrivalListVO( officeid,  date,  transportListId,
-			 origin, stateOfGoods, state));
+			 origin, stateOfGoods, State.getInstance(state)));
 	}
 
 	public ArrayList<OfficeArrivalListVO> getAll(State s) {

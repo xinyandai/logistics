@@ -18,7 +18,7 @@ public class OutBoundListTest extends TestCase {
 		try {
 			OutBoundListDataImpl data = new OutBoundListDataImpl();
 			OutBoundListPO po = new OutBoundListPO("courier","date","destination",
-					"car","tansportListId","通过");
+					"car","tansportListId",State.PASS);
 			data.add(po);
 			OutBoundListPO s = data.getByState(State.PASS).get(0);
 			boolean a =s.toString().equals(po.toString());

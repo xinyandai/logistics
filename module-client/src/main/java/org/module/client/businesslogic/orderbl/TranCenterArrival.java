@@ -19,7 +19,7 @@ public class TranCenterArrival implements TranCenterArrivalService {
 
 	public boolean creat(TranCenterArrivalListVO o) {
 		// TODO Auto-generated method stub
-		TranCenterArrivalListPO newPO = new TranCenterArrivalListPO(o.getTransId(),o.getDate(),o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState().toString()); 
+		TranCenterArrivalListPO newPO = new TranCenterArrivalListPO(o.getTransId(),o.getDate(),o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState()); 
 		try {
 			return tranCenterArrivalListData.add(newPO);
 		} catch (RemoteException e) {
@@ -40,7 +40,7 @@ public class TranCenterArrival implements TranCenterArrivalService {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new TranCenterArrivalListVO(POs.get(i).getTransId(),POs.get(i).getDate(),POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState().toString()));
+			newVOs.add(new TranCenterArrivalListVO(POs.get(i).getTransId(),POs.get(i).getDate(),POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState()));
 		}
 		return newVOs;
 		

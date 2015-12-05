@@ -35,8 +35,8 @@ public class TranCenterLoadListPanel extends OfficeLoadListPanel {
 						monitor.getText(),
 						escort.getText(), 
 						shippingId, 
-						price.getText(), 
-						"提交");
+						price.getText()
+						);
 				}
 			}
 		});

@@ -47,4 +47,5 @@ public interface GoDownEntryListService extends Remote{
 	 * @throws RemoteException 
      */
 	public MyList<GoDownEntryListPO> getByState(State s) throws RemoteException;
+	
 }

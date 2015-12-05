@@ -239,8 +239,8 @@ public class OfficeLoadListPanel extends JPanel {
 						monitor.getText(),
 						escort.getText(), 
 						shippingId, 
-						price.getText(), 
-						"提交"
+						price.getText()
+						
 						);
 				
 				

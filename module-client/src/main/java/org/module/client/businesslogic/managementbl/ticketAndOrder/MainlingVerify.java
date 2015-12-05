@@ -2,7 +2,9 @@ package org.module.client.businesslogic.managementbl.ticketAndOrder;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
+import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.MailingListVO;
@@ -11,7 +13,7 @@ import org.module.common.dataservice.orderdataservice.MailingListService;
 import org.module.common.po.MailingListPO;
 import org.module.common.po.State;
 
-public class MainlingVerify {
+public class MainlingVerify implements TicketAndorderVerify{
 	private MailingListService data = new RmiClient().get(MailingListService.class);
 	private MyList<MailingListVO> list ;
 	private LogisticsState logistics = new LogisticsState();
@@ -19,16 +21,17 @@ public class MainlingVerify {
 		
 	}
 	public MyList<MailingListVO> getAll(){
-		MyList<MailingListVO> re = new MyList<MailingListVO>();
+		list = new MyList<MailingListVO>();
 		try {
 			ArrayList<MailingListPO> pos = this.data.getByState(State.SUBMITTED);
 			for (MailingListPO mailingListPO : pos) {
-				re.add(new MailingListVO(mailingListPO));
+				list.add(new MailingListVO(mailingListPO));
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return null;
+		
+		return list;
 	}
 	
 	public boolean pass(int[] ids){
@@ -36,11 +39,25 @@ public class MainlingVerify {
 			this.list = this.getAll();
 		}
 		
-		try {for (int i : ids) {
-			MailingListVO vo = this.list.get(i);
+		try {
+			for (int i = ids.length-1; i>=0 ; i--) {
+			MailingListVO vo = this.list.remove(ids[i]);
+			
+			
 			this.data.update(vo.toPO(State.PASS));
-			LogisticsVO logisticsVO = this.logistics.find(vo.getId());
-			logisticsVO.addLocationAndTime("", "");
+			String[] location = {};
+			String[] time = {};
+			this.logistics.creat(new LogisticsVO(
+					vo.getId(),
+					vo.getSenderCity(),
+					vo.getReceiveCity()+vo.getReceivePosition(),
+					"订单已受理",
+					location,
+					time,
+					false
+					));
+			
+			
 			
 		}
 		} catch (RemoteException e) {
@@ -52,6 +69,31 @@ public class MainlingVerify {
 		return false;
 	}
 	
-	
-	
+	public boolean unpass(int[] ids){
+		if(this.list==null){
+			this.list = this.getAll();
+		}
+		try {
+			for (int i = ids.length-1; i>=0 ; i--) {
+			MailingListVO vo = this.list.get(ids[i]);
+			
+			this.data.update(vo.toPO(State.PASS));
+			String[] location = {"订单到达营业厅"};
+			String[] time = {new Date().toString()};
+			this.logistics.creat(new LogisticsVO(
+					vo.getId(),
+					vo.getSenderCity(),
+					vo.getReceiveCity()+vo.getReceivePosition(),
+					"订单拒绝受理，请联系收件员",
+					location,
+					time,
+					false
+					));
+			
+		}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

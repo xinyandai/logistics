@@ -41,6 +41,13 @@ public interface WarahouseDataService  extends Remote{
      * @return
      */
 	public boolean update(WarehousePO newone)throws RemoteException;
+	/**
+	 * 
+	 * @param id 对应的入库托运单号
+	 * @return
+	 * @throws RemoteException
+	 */
+	public WarehousePO find(String tranCenterID,String id)throws RemoteException;
 	
 }
 

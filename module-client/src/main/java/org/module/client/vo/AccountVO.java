@@ -36,4 +36,13 @@ public class AccountVO extends AbstractVO{
 		return this.array()[i];
 	}
 
+	@Override
+	public String[] names() {
+		String[] s = {
+				"ID",
+				"余额"
+		};
+		return s;
+	}
+
 }

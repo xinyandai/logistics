@@ -118,6 +118,18 @@ public class WarehouseVO extends AbstractVO{
 	public String get(int i) {
 		return this.array()[i];
 	}
+	@Override
+	public String[] names() {
+		String[] s = {
+				"快递单号" ,
+				"区" ,
+				"排" ,
+				"架" ,
+				"位" ,
+				"入库日期"
+						};
+				return s;
+	}
 	
 	
 }

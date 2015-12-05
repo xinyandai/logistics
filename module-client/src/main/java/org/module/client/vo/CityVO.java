@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class CityVO {
+public class CityVO extends AbstractVO{
 
 	private String name;
 	private String id;
@@ -47,6 +47,20 @@ public class CityVO {
 	public String getMainKey() {
 		// TODO Auto-generated method stub
 		return id;
+	}
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+	@Override
+	public String[] names() {
+		String[] s = {
+				"姓名",
+				"ID"
+				
+		};
+	    return s;
 	}
 		
 }

@@ -1,8 +1,9 @@
 package org.module.client.vo;
 
+import org.module.common.po.ReceivingListPO;
 import org.module.common.po.State;
 
-public class ReceivingListVO {
+public class ReceivingListVO  extends AbstractVO{
 
 	private String date;
 	/***
@@ -21,6 +22,11 @@ public class ReceivingListVO {
 		this.state = state;
 	}
 	
+	public ReceivingListVO(ReceivingListPO receivingListPO) {
+		this(receivingListPO.getDate(),receivingListPO.getReceiver(),
+				receivingListPO.getOrderId(),receivingListPO.getState());
+	}
+
 	public String getDate() {
 		return date;
 	}
@@ -45,6 +51,39 @@ public class ReceivingListVO {
 	}
 	public void setState(State state) {
 		this.state = state;
+	}
+
+	public ReceivingListPO toPO() {
+		// TODO Auto-generated method stub
+		return new ReceivingListPO(
+				this.date,
+				this.receiver,
+				this.orderId ,
+				this.state
+				);
+	}
+
+	public String[] toArray(){
+		String[] s = {
+				this.date,
+				this.receiver,
+				this.orderId 
+		};
+		return s;
+	}
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+
+	@Override
+	public String[] names() {
+		String[] s = {
+				"收件日期","签收人","快递单号"
+		};
+	    return s;
 	}
 		
 		

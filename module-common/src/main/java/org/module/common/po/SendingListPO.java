@@ -13,16 +13,14 @@ public class SendingListPO implements Serializable{
 		private String SendMember;
 		private State state;
 		public SendingListPO(String date, String shippingId, String sendMember,
-				String state) {
+				State state) {
 			super();
 			this.date = date;
 			this.shippingId = shippingId;
 			this.SendMember = sendMember;
-			this.state = State.getInstance(state);;
+			this.state = state;
 		}
-		public SendingListPO(String[] a){
-			this(a[0],a[1],a[2],a[3]);
-		}
+		
 		final private String spt = ":%:%:";
 		
 		public SendingListPO(String string) {

@@ -79,4 +79,31 @@ public class WarahouseDataImpl extends UnicastRemoteObject  implements Warahouse
 	}
 
 
+
+
+
+
+
+
+	public WarehousePO find(String tranCenterID, String id)
+			throws RemoteException {
+
+		MyList<WarehousePO> pos = this.getAll(tranCenterID);
+		for (WarehousePO warehousePO : pos) {
+			if(warehousePO.equals(id)){
+				return warehousePO;
+			}
+		}
+		return null;
+	}
+
+
+
+
+
+
+
+
+
+
 }

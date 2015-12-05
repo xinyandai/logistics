@@ -65,5 +65,15 @@ public class TransportListImpl extends UnicastRemoteObject implements TransportL
 		}
 		return newone;
 	}
+	public TransportListPO findById(String id)
+			throws RemoteException {
+		MyList<TransportListPO> pos = this.getAll();
+		for (TransportListPO transportListPO : pos) {
+			if(transportListPO.getTransListId().equals(id)){
+				return transportListPO;
+			}
+		}
+		return null;
+	}
 
 }

@@ -23,11 +23,11 @@ public class OfficeLoadingController implements OfficeLoadingBLService {
 
 	public boolean creat(String loadingDate, String officeId, String trucksId,
 			String city,String location, String carId, String supervision, String escort,
-			String[] shippingId, String price,String state) {
+			String[] shippingId, String price) {
 		
 		return this.officeLoading.creat(new OfficeLoadingListVO( loadingDate,  officeId,  trucksId,
 			 city, location,  carId,  supervision,  escort,
-			 shippingId,  price,state));
+			 shippingId,  price,State.SUBMITTED));
 	}
 
 	public ArrayList<OfficeLoadingListVO> getAll(State s) {

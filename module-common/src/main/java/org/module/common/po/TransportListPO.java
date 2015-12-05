@@ -32,7 +32,7 @@ public class TransportListPO implements Serializable{
 		public TransportListPO(String car, String loadingDate,
 				String transListId, String carId, String origin,
 				String arrival, String counterId, String supervision,
-				String[] shippingId, String price, String state) {
+				String[] shippingId, String price, State state) {
 			super();
 			this.car = car;
 			this.LoadingDate = loadingDate;
@@ -44,7 +44,7 @@ public class TransportListPO implements Serializable{
 			this.Supervision = supervision;
 			this.shippingId = shippingId;
 			this.price = price;
-			this.state = State.getInstance(state);
+			this.state = state;
 		}
 		
 		public TransportListPO(String string) {

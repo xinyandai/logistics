@@ -33,5 +33,12 @@ public class TranCenterLoadingBLService_stub implements TranCenterLoadingBLServi
 		return false;
 	}
 
+	public boolean creat(String loadingDate, String officeId, String trucksId,
+			String city, String location, String carId, String supervision,
+			String escort, String[] shippingId, String price) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

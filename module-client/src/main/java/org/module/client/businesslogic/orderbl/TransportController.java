@@ -26,11 +26,11 @@ public class TransportController implements TransportBLService {
 
 	public boolean creat(String car, String loadingDate, String transId,
 			String carId, String origin, String arrival, String counterId,
-			String supervision, String[] shippingId, String price,String state) {
+			String supervision, String[] shippingId, String price) {
 		// TODO Auto-generated method stub
 		return this.transport.creat(new TransportListVO( car,  loadingDate,  transId,
 			 carId,  origin,  arrival,  counterId,
-			 supervision,  shippingId,  price,state));
+			 supervision,  shippingId,  price,State.SUBMITTED));
 	}
 
 	public ArrayList<TransportListVO> getAll(State s) {

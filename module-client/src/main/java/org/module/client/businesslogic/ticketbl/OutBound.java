@@ -20,14 +20,9 @@ public class OutBound implements OutBoundService {
 	public boolean createTicket(OutBoundListVO outBoundListVO) {
 		try {
 			return data.add(
-					new OutBoundListPO(
-							outBoundListVO.getDate(),
-							outBoundListVO.getDestination(),
-							outBoundListVO.getId(),
-							outBoundListVO.getTansportListId(),
-							outBoundListVO.getTypeOfLoading(),
-							State.SUBMITTED.toString()
-							)
+					
+							outBoundListVO.toPO(State.SUBMITTED)
+							
 					);
 		} catch (RemoteException e) {
 			e.printStackTrace();

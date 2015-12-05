@@ -1,5 +1,6 @@
 package org.module.client.vo;
 
+import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
 
 /**
@@ -18,7 +19,7 @@ import org.module.common.po.State;
  *
  */
 
-public class OfficeLoadingListVO {
+public class OfficeLoadingListVO extends AbstractVO{
 
 	private String LoadingDate;
 	private String OfficeId;
@@ -38,7 +39,7 @@ public class OfficeLoadingListVO {
 	
 	public OfficeLoadingListVO(String loadingDate, String officeId,
 			String trucksId, String city,String location, String carId, String supervision,
-			String escort, String[] shippingId, String price,String state) {
+			String escort, String[] shippingId, String price,State state) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
@@ -50,7 +51,30 @@ public class OfficeLoadingListVO {
 		this.escort = escort;
 		this.shippingIds = shippingId;
 		this.price = price;
-		this.setState(State.getInstance(state));
+		this.setState(state);
+	}
+	public OfficeLoadingListVO(OfficeLoadingListPO officeLoadingListPO) {
+		new OfficeLoadingListVO(
+				officeLoadingListPO.getLoadingDate(),
+				officeLoadingListPO.getOfficeId(),
+				officeLoadingListPO.getTrucksId(),
+				officeLoadingListPO.getCity(),
+				officeLoadingListPO.getLocation(),
+				officeLoadingListPO.getCarId(),
+				officeLoadingListPO.getSupervision(),
+				officeLoadingListPO.getEscort(),
+				officeLoadingListPO.getShippingId(),
+				officeLoadingListPO.getPrice(),
+				officeLoadingListPO.getState());
+	}
+	
+	public OfficeLoadingListPO toPO( ){
+		return new OfficeLoadingListPO(
+ 
+				getLoadingDate(),
+				getOfficeId()
+				,getTrucksId(),getCity(),getLocation(),getCarId(),getSupervision(),getEscort()
+				,getShippingId(),getPrice(),getState());
 	}
 	public String getLoadingDate() {
 		return LoadingDate;
@@ -124,6 +148,27 @@ public class OfficeLoadingListVO {
 	}
 	public void setState(State state) {
 		this.state = state;
+	}
+	
+	public String[] toArray(){
+		String[] s = {getLoadingDate(),
+				getOfficeId()
+				,getTrucksId(),getCity(),getLocation(),getCarId(),getSupervision(),getEscort()
+				,"...",getPrice()};
+		return s;
+	}
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+	@Override
+	public String[] names() {
+		String[] s = {
+				"装车日期","营业厅","汽运编号","目的城市","目的地","车号","监装员","司机","物流单号","价格"
+		};
+	    return s;
 	}
 
 }

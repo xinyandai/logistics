@@ -1,6 +1,7 @@
 package org.module.client.vo;
 
 import org.module.common.po.State;
+import org.module.common.po.TranCenterArrivalListPO;
 
 /**
  * 当营业厅送达货物到中转中心之后业务员生成中转中心到达单。
@@ -14,7 +15,7 @@ import org.module.common.po.State;
  *
  */
 
-public class TranCenterArrivalListVO {
+public class TranCenterArrivalListVO  extends AbstractVO{
 
 	private String transId;
 	private String date;
@@ -24,14 +25,22 @@ public class TranCenterArrivalListVO {
 	private State state;
 	
 	public TranCenterArrivalListVO(String transId, String date,
-			String transportListId, String origin, String stateOfGoods,String state) {
+			String transportListId, String origin, String stateOfGoods,State state) {
 		super();
 		this.transId = transId;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
-		this.state = State.getInstance(state);
+		this.state = state;
+	}
+	public TranCenterArrivalListVO(TranCenterArrivalListPO officeArrivalListPO) {
+		this(officeArrivalListPO.getTransId(),
+				officeArrivalListPO.getDate(),
+				officeArrivalListPO.getTransportListId(),
+				officeArrivalListPO.getOrigin(),
+				officeArrivalListPO.getStateOfGoods(),
+				officeArrivalListPO.getState()); 
 	}
 	public String getTransId() {
 		return transId;
@@ -68,6 +77,38 @@ public class TranCenterArrivalListVO {
 	}
 	public void setStateOfGoods(String stateOfGoods) {
 		this.stateOfGoods = stateOfGoods;
+	}
+	public TranCenterArrivalListPO toPO(State pass) {
+		
+		return new TranCenterArrivalListPO(
+				getTransId(),
+				getDate(),
+				getTransportListId(),
+				getOrigin(),
+				getStateOfGoods(),
+				pass); 
+	}
+	
+	public String[] toArray(){
+		String[] s = {getTransId(),
+				getDate(),
+				getTransportListId(),
+				getOrigin(),
+				getStateOfGoods()};
+		return s;
+	}
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+	@Override
+	public String[] names() {
+		String[] s = {
+				"中转中心","到达日期","中转单","出发地","货物到达状态"
+		};
+	    return s;
 	}
 
 }

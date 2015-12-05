@@ -40,7 +40,7 @@ public class SengdingListPanel extends JPanel {
 		determine.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controller.creat(TimeChose.getDate().getTime()+"", ID.getText(), sender.getText(), State.SUBMITTED.toString());
+				controller.creat(TimeChose.getDate().getTime()+"", ID.getText(), sender.getText());
 			}
 		});
 	}

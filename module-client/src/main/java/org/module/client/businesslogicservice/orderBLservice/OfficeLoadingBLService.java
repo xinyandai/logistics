@@ -16,7 +16,7 @@ public interface OfficeLoadingBLService {
 	 */
 	public boolean creat(String loadingDate, String officeId,
 			String trucksId, String city,String location, String carId, String supervision,
-			String escort, String[] shippingId, String price,String state);
+			String escort, String[] shippingId, String price);
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有收件单

@@ -17,9 +17,7 @@ public class Transport implements TransportService {
 	}
 
 	public boolean creat(TransportListVO o) {
-		TransportListPO newPO = new TransportListPO(o.getCar(),o.getLoadingDate(),
-				o.getTransId(),o.getCarId(),o.getOrigin(),o.getArrival(),o.getCounterId()
-				,o.getSupervision(),o.getShippingId(),o.getPrice(),o.getState().toString()); 
+		TransportListPO newPO = o.toPO(); 
 		try {
 			return transportData.add(newPO);
 		} catch (RemoteException e) {
@@ -40,10 +38,7 @@ public class Transport implements TransportService {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new TransportListVO(POs.get(i).getCar(),POs.get(i).getLoadingDate(),
-					POs.get(i).getTransListId(),POs.get(i).getCarId(),POs.get(i).getOrigin(),
-					POs.get(i).getArrival(),POs.get(i).getCounterId()
-					,POs.get(i).getSupervision(),POs.get(i).getShippingId(),POs.get(i).getPrice(),POs.get(i).getState().toString()));
+			newVOs.add(new TransportListVO(POs.get(i)));
 		}
 		return newVOs;
 	}

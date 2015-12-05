@@ -46,8 +46,8 @@ public class TranCenterArriveListPanel extends JPanel {
 					   time.getDate().getTime()+"", 
 					   transportID.getText(), 
 					   origin.getText(), 
-					   state.getSelectedItem().toString(), 
-					   State.SUBMITTED.toString());
+					   state.getSelectedItem().toString()
+					   );
 			}
 		});
 		

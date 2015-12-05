@@ -1,14 +1,27 @@
 package org.module.client.presentation.userui;
 
+
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.api.SubstanceSkin;
+import org.jvnet.substance.skin.AutumnSkin;
+import org.jvnet.substance.skin.MagmaSkin;
+import org.jvnet.substance.skin.MistAquaSkin;
+import org.jvnet.substance.skin.SubstanceOfficeBlue2007LookAndFeel;
 
 public class AdminFrame extends JFrame {
 
@@ -26,6 +39,23 @@ public class AdminFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
+					
+					
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					
+					
+					try  { 
+						                
+						        SubstanceSkin skin  =   new  MistAquaSkin();   
+						       // UIManager.setLookAndFeel( new  SubstanceOfficeBlue2007LookAndFeel());    
+						        SubstanceLookAndFeel.setSkin(skin);  //设置皮肤                      
+						}  
+					catch  (Exception ex) {      
+						Logger.getLogger(AdminFrame. class .getName()).log(Level.SEVERE,  null , ex);       
+					} 
+					
 					AdminFrame frame = new AdminFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {

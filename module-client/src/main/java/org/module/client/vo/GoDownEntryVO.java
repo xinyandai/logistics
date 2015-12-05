@@ -1,9 +1,13 @@
 package org.module.client.vo;
+
+import org.module.common.po.GoDownEntryListPO;
+import org.module.common.po.State;
+
 /**
  * 
  *库存入库单（快递编号、入库日期、目的地、区号、排号、架号、位号）
  */
-public class GoDownEntryVO {
+public class GoDownEntryVO extends AbstractVO{
    
 	private String warehouseOfWhichTranCenter;
 	
@@ -53,6 +57,18 @@ public class GoDownEntryVO {
 	}
 
 	
+	public GoDownEntryVO(GoDownEntryListPO goDownEntryListPO) {
+		this(goDownEntryListPO.getWarehouseOfWhichTranCenter(),
+				goDownEntryListPO.getId(),
+				goDownEntryListPO.getDate(),
+				goDownEntryListPO.getDestination(),
+				goDownEntryListPO.getQu(),
+				goDownEntryListPO.getPai(),
+				goDownEntryListPO.getJia(),
+				goDownEntryListPO.getWei());
+	}
+
+
 	public String getDate() {
 		return date;
 	}
@@ -100,5 +116,46 @@ public class GoDownEntryVO {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+
+    public String[] toArray(){
+    	String[] s = {this.warehouseOfWhichTranCenter ,
+		id ,
+		this.date,
+		this.destination,
+		this.qu,
+		this.pai,
+		this.jia ,
+		this.wei };
+    	return s;
+    }
+	
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+
+
+	public GoDownEntryListPO toPO(State pass) {
+		// TODO Auto-generated method stub
+		return new GoDownEntryListPO(this.warehouseOfWhichTranCenter ,
+		id ,
+		this.date,
+		this.destination,
+		this.qu,
+		this.pai,
+		this.jia ,
+		this.wei,
+		pass);
+	}
+
+
+	@Override
+	public String[] names() {
+		String[] s = {
+				"中转中心","快递编号","入库日期","目的地","区号","排号","架号","位号"
+		};
+	    return s;
 	}
 }

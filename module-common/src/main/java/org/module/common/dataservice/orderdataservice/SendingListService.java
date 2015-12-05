@@ -2,8 +2,8 @@ package org.module.common.dataservice.orderdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.SendingListPO;
 import org.module.common.po.State;
 
@@ -15,7 +15,7 @@ public interface SendingListService extends Remote{
 	 * 后置：返回所有PO
 	 * @return
 	 */
-	public ArrayList<SendingListPO> getAll() throws RemoteException;
+	public MyList<SendingListPO> getAll() throws RemoteException;
 	/**
 	 * 前置：不存在相同ID的寄件单
 	 * 后置：增加一个PO
@@ -35,6 +35,6 @@ public interface SendingListService extends Remote{
      * @param s
      * @return
      */
-	public ArrayList<SendingListPO> getByState(State s) throws RemoteException;
+	public MyList<SendingListPO> getByState(State s) throws RemoteException;
 }
 

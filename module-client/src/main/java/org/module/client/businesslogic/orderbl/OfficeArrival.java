@@ -19,7 +19,7 @@ public class OfficeArrival implements OfficeArrivalService {
 
 	public boolean creat(OfficeArrivalListVO o) {
 		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getOfficeid(),o.getDate(),
-				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState().toString()); 
+				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState()); 
 		System.out.println("tobedone");
 		try {
 			return officeArrivalData.add(newPO);
@@ -39,7 +39,7 @@ public class OfficeArrival implements OfficeArrivalService {
 		}
 		for(int i =0;i<POs.size();i++){
 			newVOs.add(new OfficeArrivalListVO(POs.get(i).getOfficeid(),POs.get(i).getDate(),
-					POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState().toString()));
+					POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState()));
 		}
 		return newVOs;
 	}

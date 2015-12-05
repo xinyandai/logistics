@@ -52,6 +52,11 @@ public class LogisticsdataImpl extends UnicastRemoteObject implements Logisticsd
 		return false;
 	}
 
+	public boolean add(LogisticsPO newone) throws RemoteException {
+		// TODO Auto-generated method stub
+		return this.helper.add(newone);
+	}
+
 	
 
 

@@ -80,7 +80,14 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	}
 
 
-	public MyList<DepartmentPO> fuzzusearch(String key) {
+	public DepartmentPO findById(String key) {
+		
+		MyList<DepartmentPO>  all = this.getAll();
+		for (DepartmentPO departmentPO : all) {
+			if(departmentPO.getIdentity().equals(key)){
+				return departmentPO;
+			}
+		}
 		return null;
 	}
 

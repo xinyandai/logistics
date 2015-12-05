@@ -38,7 +38,6 @@ public class Warehouse implements WarehouseManageService {
 		try {
 			return this.data.update(po);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

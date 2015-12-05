@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.OfficeArrivalListPO;
 import org.module.common.po.State;
 
@@ -35,6 +36,6 @@ public interface OfficeArrivalListService extends Remote{
      * @param s
      * @return
      */
-	public ArrayList<OfficeArrivalListPO> getByState(State s)  throws RemoteException;
+	public MyList<OfficeArrivalListPO> getByState(State s)  throws RemoteException;
     
 }

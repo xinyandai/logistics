@@ -37,14 +37,14 @@ public class OutBoundListPO implements Serializable{
 	
 	
 	public OutBoundListPO(String id, String date, String destination,
-		String typeOfLoading, String tansportListId, String state) {
+		String typeOfLoading, String tansportListId, State state) {
 	super();
 	this.id = id;
 	this.date = date;
 	this.destination = destination;
 	this.typeOfLoading = typeOfLoading;
 	this.tansportListId = tansportListId;
-	this.state = State.getInstance(state);
+	this.state =state;
 }
 	final private String spt = ":%:%:";
 	

@@ -35,6 +35,6 @@ public interface Logisticsdataservice  extends Remote{
 		 */
 		public boolean updata(LogisticsPO newone)throws RemoteException;
 		
-	
 
+		public boolean add(LogisticsPO newone)throws RemoteException;
 }

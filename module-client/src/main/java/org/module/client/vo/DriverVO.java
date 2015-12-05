@@ -1,6 +1,6 @@
 package org.module.client.vo;
 
-public class DriverVO{
+public class DriverVO extends AbstractVO{
 
 	private String id;
 	private String name;
@@ -80,6 +80,20 @@ public class DriverVO{
 	public String getMainKey() {
 		// TODO Auto-generated method stub
 		return id;
+	}
+	@Override
+	public String get(int i) {
+		// TODO Auto-generated method stub
+		return this.toArray()[i];
+	}
+	@Override
+	public String[] names() {
+
+		String[] s = {
+				"ID","姓名","生日",
+				"身份证号","电话","性别","驾驶证期限"
+		};
+	    return s;
 	}
 	
 

@@ -20,7 +20,7 @@ public class Sending implements SendingService {
 
 	public boolean creat(SendingListVO o) {
 		// TODO Auto-generated method stub
-		SendingListPO newPO = new SendingListPO(o.getDate(),o.getShippingId(),o.getSendMember(),o.getState().toString()); 
+		SendingListPO newPO = o.toPO(); 
 		try {
 			return sendingData.add(newPO);
 		} catch (RemoteException e) {
@@ -41,7 +41,7 @@ public class Sending implements SendingService {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new SendingListVO(POs.get(i).getDate(),POs.get(i).getShippingId(),POs.get(i).getSendMember(),POs.get(i).getState().toString()));
+			newVOs.add(new SendingListVO(POs.get(i)));
 		}
 		return newVOs;
 	}

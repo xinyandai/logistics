@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.CostListPO;
+
 public class CostListVO extends AbstractVO{
 
 	private String date;
@@ -19,6 +21,16 @@ public class CostListVO extends AbstractVO{
 		this.accout = accout;
 		this.entry = entry;
 		this.note = note;
+	}
+	public CostListVO(CostListPO costListPO) {
+		this(
+				costListPO.getDate(),
+				costListPO.getMoney(),
+				costListPO.getPeople(),
+				costListPO.getAccout(),
+				costListPO.getEntry(),
+				costListPO.getNote()
+				);
 	}
 	public String getDate() {
 		return date;
@@ -71,6 +83,19 @@ public class CostListVO extends AbstractVO{
 	public String get(int i) {
 		// TODO Auto-generated method stub
 		return this.array()[i];
+	}
+	@Override
+	public String[] names() {
+
+		String[] s = {
+				"日期",
+				"钱",
+				"付款人",
+				"付款账户",
+				"条目",
+				"备注"
+		};
+	    return s;
 	}
 
 }

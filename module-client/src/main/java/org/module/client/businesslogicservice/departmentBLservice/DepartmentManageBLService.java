@@ -56,14 +56,7 @@ public interface DepartmentManageBLService {
 	 */
 	public boolean update(String name, String category, String location,
 			String identity);
-	/**
-	 * 前置：输入关键字模糊查找
-	 * 后置：返回查找结果
-	 * 依赖：DepartmentDataService.getAll 得到所有的PO
-	 * @param s
-	 * @return
-	 */
-	public ArrayList<DepartmentVO> fuzzySearch(String s);
+	
 	/**
 	 * 更新同步数据
 	 * 主要是从服务端读取数据

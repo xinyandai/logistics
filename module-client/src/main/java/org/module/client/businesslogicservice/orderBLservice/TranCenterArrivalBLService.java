@@ -20,7 +20,7 @@ public interface TranCenterArrivalBLService {
 	 * @return
 	 */
 	public boolean creat(String transId, String date,
-			String transportListId, String origin,String stateOfGoods, String state);
+			String transportListId, String origin,String stateOfGoods);
 	/**
 	 * 前置：选择查看所有中转中心接收单
 	 * 后置：显示所有收件单

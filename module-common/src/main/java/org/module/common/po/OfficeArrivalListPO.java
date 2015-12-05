@@ -43,18 +43,16 @@ public class OfficeArrivalListPO implements Serializable{
 	
 	public OfficeArrivalListPO(String officeid, String date,
 			String transportListId, String origin, String stateOfGoods,
-			String state) {
+			State state2) {
 		super();
 		this.officeid = officeid;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
-		this.state = State.getInstance(state);
+		this.state = state2;
 	}
-	public OfficeArrivalListPO(String[] a){
-		this(a[0],a[1],a[2],a[3],a[4],a[5]);
-	}
+
 	
 	public String getOfficeid() {
 		return officeid;
