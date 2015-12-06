@@ -2,9 +2,9 @@
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
 import org.module.common.dataservice.MyList;
 import org.module.common.po.WarehousePO;
+
 
 
 public interface WarahouseDataService  extends Remote{
