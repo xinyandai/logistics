@@ -8,7 +8,6 @@ import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.OfficeArrivalListVO;
 import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
 import org.module.common.po.OfficeArrivalListPO;
-import org.module.common.po.State;
 
 public class OfficeArrival implements OfficeArrivalService {
 

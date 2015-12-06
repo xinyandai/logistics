@@ -40,4 +40,9 @@ public interface TranCenterLoadingBLService {
 	 * @return
 	 */
 	public double calculateDriverCost(String origin,String target);
+	/**
+	 * 当前所有城市
+	 * @return
+	 */
+	public String[] getCityArray();
 }

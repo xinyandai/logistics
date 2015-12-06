@@ -8,7 +8,6 @@ import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.OfficeLoadingListVO;
 import org.module.common.dataservice.orderdataservice.OfficeLoadingListService;
 import org.module.common.po.OfficeLoadingListPO;
-import org.module.common.po.State;
 
 public class OfficeLoading implements OfficeLoadingService {
 	private OfficeLoadingListService officeLoadingData ;

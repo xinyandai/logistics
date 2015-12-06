@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.OfficeArrivalService;
 import org.module.client.businesslogicservice.orderBLservice.OfficeArrivalBLService;
 import org.module.client.vo.OfficeArrivalListVO;
-import org.module.client.vo.TranCenterArrivalListVO;
 
 public class OfficeArrivalController implements OfficeArrivalBLService{
 	private OfficeArrivalService  officeArrival;

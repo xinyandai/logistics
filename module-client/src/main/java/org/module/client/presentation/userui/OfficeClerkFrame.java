@@ -12,7 +12,6 @@ import javax.swing.border.EmptyBorder;
 import org.module.client.presentation.managementui.Cars;
 import org.module.client.presentation.managementui.DriversPanel;
 import org.module.client.presentation.orderui.ListTableForOfficeArrival;
-import org.module.client.presentation.orderui.OfficeArriveListPanel;
 import org.module.client.presentation.orderui.OfficeLoadListPanel;
 import org.module.client.presentation.orderui.SengdingListPanel;
 import org.module.client.presentation.statisticui.ReceiptPanel;

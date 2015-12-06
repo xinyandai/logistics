@@ -55,5 +55,10 @@ public class TranCenterLoadingBLService_stub implements TranCenterLoadingBLServi
 		return null;
 	}
 
+	public String[] getCityArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

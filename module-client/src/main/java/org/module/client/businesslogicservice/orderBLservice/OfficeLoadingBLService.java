@@ -38,4 +38,5 @@ public interface OfficeLoadingBLService {
 	 */
 	public double calculateDriverCost(String origin,String target);
 	
+	public String[] getCityArray();
 }

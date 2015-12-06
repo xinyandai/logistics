@@ -57,6 +57,11 @@ public class OfficeLoadingBLService_stub implements OfficeLoadingBLService{
 		return null;
 	}
 
+	public String[] getCityArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 
