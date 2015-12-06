@@ -8,6 +8,7 @@ import org.module.common.po.WarehousePO;
 
 
 public interface WarahouseDataService  extends Remote{
+	
 	/**
 	 * 前置：无
 	 * 后置：根据中转中心ID返回所有库存PO
