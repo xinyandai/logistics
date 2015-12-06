@@ -7,9 +7,6 @@ import org.module.common.dataservice.MyList;
 import org.module.common.po.WarehousePO;
 
 
-/**
- * @author 颜
- */
 public interface WarahouseDataService  extends Remote{
 	/**
 	 * 前置：无
