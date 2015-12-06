@@ -24,7 +24,7 @@ public class WarehouseConfigPO implements Serializable {
     
    
 	final private String spt = ":%:%:";
-	final private String inlinespt = "#*#*#";
+	final private String inlinespt = "&&&&&&&";
 	/**
 	 * 把订单号数组转化为字符串
 	 * @param s

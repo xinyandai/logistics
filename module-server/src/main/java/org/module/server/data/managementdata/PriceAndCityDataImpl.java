@@ -100,4 +100,18 @@ public class PriceAndCityDataImpl extends UnicastRemoteObject implements PriceAn
 		return false;
 	}
 
+	public PriceAndCityPO find(String cityA, String cityB)
+			throws RemoteException {
+		MyList<PriceAndCityPO> pos = this.getAll();
+		for (PriceAndCityPO priceAndCityPO : pos) {
+			if(priceAndCityPO.getcityA().equals(cityA) && priceAndCityPO.getcityB().equals(cityB)){
+				return priceAndCityPO;
+			}
+			if(priceAndCityPO.getcityA().equals(cityB) && priceAndCityPO.getcityB().equals(cityA)){
+				return priceAndCityPO;
+			}
+		}
+		return null;
+	}
+
 }

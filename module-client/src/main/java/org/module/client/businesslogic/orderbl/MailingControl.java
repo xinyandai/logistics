@@ -2,80 +2,102 @@ package org.module.client.businesslogic.orderbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogic.managementbl.PriceAndCity;
+import org.module.client.businesslogicservice.management.PriceAndCityManageService;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
+import org.module.client.vo.CityVO;
 import org.module.client.vo.MailingListVO;
 
 
 public class MailingControl implements MailingBLService{
 	
 	private MailingService mailingBLImpl;
+	private ArrayList<CityVO> cityVOs;
+	private PriceAndCityManageService priceAndcity = new PriceAndCity();
+	private ArrayList<MailingListVO> list;
 	
-//	private LogisticsService logistics;
+	
+	private ArrayList<CityVO> showAllCity() {
+		this.cityVOs = this.priceAndcity.showAllCity();
+		return this.cityVOs;
+	}
+	
+	public String[] getAllCitiesArray() {
+		if(this.cityVOs==null){
+			this.showAllCity();
+		}
+		String[] city = new String[cityVOs.size()];
+		for (int i = 0; i < city.length; i++) {
+			city[i] = cityVOs.get(i).getName();
+		}
+		return city;
+	}
 	
 	public MailingControl( ) {
 		super();
 		this.mailingBLImpl = new Mailing();
-//		this.logistics = new Logistics();
 	}
 	public MailingControl(MailingService mailingBLImpl  ) {
 		super();
 		this.mailingBLImpl = mailingBLImpl;	
-//		this.logistics = logistics;
+	}
+
+	
+
+	public int time(int senderCity, int receiveCity) {
+		
+		return mailingBLImpl.calculateTime(this.indexesToID(senderCity), this.indexesToID(receiveCity));
+	}
+
+	public double price(int senderCity, int receiveCity,  String costOfDecoration) {
+		
+		return mailingBLImpl.calculatePrice(this.indexesToID(senderCity),
+				this.indexesToID(receiveCity),
+				costOfDecoration);
+	}
+	
+	
+	public ArrayList<MailingListVO> getAll() {
+		this.list =  this.mailingBLImpl.getAll();
+		return this.list;
 	}
 
 
 
-	public boolean handleMailingList(String senderName, String senderCompany,
-			String senderMobile, String senderPhone, String senderCity,
-			String senderPosition, String receiveName, String receiveCompany,
-			String receiveMobile, String receivePhone, String receiveCity,
-			String receivePosition, String nameOfGood, String counts,
-			String weight, String volume, String costOfDecoration, String type,
-			String id) {
-
-		MailingListVO mailingListVO = new MailingListVO( senderName,  senderCompany,
-				 senderMobile,  senderPhone,  senderCity,
-				 senderPosition,  receiveName,  receiveCompany,
-				 receiveMobile,  receivePhone,  receiveCity,
-				 receivePosition,  nameOfGood,  counts,
-				 weight,  volume,  costOfDecoration,type,
-				 id);
-		String[] info =  { senderName,  senderCompany,
-				 senderMobile,  senderPhone,  senderCity,
-				 senderPosition,  receiveName,  receiveCompany,
-				 receiveMobile,  receivePhone,  receiveCity,
-				 receivePosition,  nameOfGood,  counts,
-				 weight,  volume,  costOfDecoration,type};
-		for (String string : info) {
-			if(string.isEmpty()) return false;
+	/**
+	 * cityArraylist 的index查找该城市
+	 * 然后返回城市ID
+	 * @param i
+	 * @return
+	 */
+	private String indexesToID(int i){
+		return this.cityVOs.get(i).getId();
+	}
+	public boolean handleMailingList(MailingListVO mailingListVO) {
+		if(this.list == null){
+			this.getAll();
 		}
-		if(mailingBLImpl.creat(mailingListVO)) return true;
+		if(mailingBLImpl.creat(mailingListVO)){
+			this.list.add(mailingListVO);
+			return true;
+		}
 		return false;
 	}
 
-	
-
-	public int time(String senderCity, String receiveCity) {
-		
-		return mailingBLImpl.calculateTime(senderCity, receiveCity);
+	public boolean update(MailingListVO vo) {
+		if(this.list == null){
+			this.getAll();
+		}
+		for(int i = 0; i<this.list.size(); i++){
+			if(this.list.get(i).getId().equals(vo.getId())){
+				this.list.remove(i);
+				this.list.add(i, vo);
+			}
+		}
+		return this.mailingBLImpl.update(vo);
 	}
-
-
-
-	public double price(String senderCity, String receiveCity, String counts,
-			String weight, String volume, String costOfDecoration, String type) {
-		
-		return mailingBLImpl.calculatePrice(senderCity, receiveCity, counts, 
-				weight, volume, costOfDecoration, type);
-	}
-	public ArrayList<MailingListVO> getAll() {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-
-
-	
-
 }
+	
+
+

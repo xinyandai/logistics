@@ -43,7 +43,27 @@ public interface PriceAndCityDataService  extends Remote{
 	 * @return
 	 */
 	public boolean update(PriceAndCityPO p)throws RemoteException;
+	/**
+	 * 
+	 * @param cityA
+	 * @param cityB
+	 * @return
+	 * @throws RemoteException
+	 */
+	public PriceAndCityPO find(String cityA,String cityB)throws RemoteException;
 	
+	/***
+	 * 
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 */
 	public boolean deleteCity(String id)throws RemoteException;
+	/**
+	 * 
+	 * @param po
+	 * @return
+	 * @throws RemoteException
+	 */
 	public boolean modifyCity(CityPO po)throws RemoteException;
 }

@@ -22,7 +22,17 @@ public interface PriceAndCityManageService {
 	 * @return
 	 */
 	public boolean addCity(CityVO vo);
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public boolean deleteCity(String id);
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
 	public boolean modifyCity(CityVO vo);
 	
 	/**
@@ -34,10 +44,13 @@ public interface PriceAndCityManageService {
 	 * @return
 	 */
 	public boolean setDiretionAndPrice(PriceAndCityVO priceAndcity);
+	
+	
 	/**
-	 * 前置：选择设置各费用（包装费/元，运费/元/km）
-	 * 后置：更新
-	 * 依赖：PriceAndCityDataService.update 更改一个PO
+	 * 
+	 * @param cityA
+	 * @param cityB
 	 * @return
 	 */
+	public PriceAndCityVO getDiretionAndPrice(String cityA, String cityB) ;
 }

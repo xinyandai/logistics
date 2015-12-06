@@ -7,7 +7,7 @@ public class PriceAndCityManageService_Driver {
 	public void drive(PriceAndCityManageBLService priceAndCityManageService){
 //		PriceAndCityVO d=new PriceAndCityVO("A","B","distance","price");
 		boolean add=priceAndCityManageService.addCity("nanjing","025");
-		boolean set=priceAndCityManageService.setDiretionAndPrice("A","B","distance","price");
+		boolean set=priceAndCityManageService.setDiretionAndPrice(1,0,"distance","price");
 		//boolean modify=priceAndCityManageService.setPrice(d,10);
 		if(add)
 			System.out.println("add successfully!\n");

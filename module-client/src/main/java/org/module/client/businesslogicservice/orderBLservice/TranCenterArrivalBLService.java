@@ -19,14 +19,19 @@ public interface TranCenterArrivalBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String transId, String date,
-			String transportListId, String origin,String stateOfGoods);
+	public boolean creat(TranCenterArrivalListVO vo);
 	/**
 	 * 前置：选择查看所有中转中心接收单
 	 * 后置：显示所有收件单
 	 * 依赖：TranCenterArrivalListService.getAll 返回所有的接受单PO
 	 * @return
 	 */
-	public ArrayList<TranCenterArrivalListVO> getAll(State s);
+	public ArrayList<TranCenterArrivalListVO> getAll( );
+	/**
+	 * 
+	 * @param o
+	 * @return
+	 */
+	public boolean update(TranCenterArrivalListVO o);
 	
 }

@@ -3,7 +3,7 @@ package org.module.common.po.salary;
 import java.io.Serializable;
 
 public class WarehouseManagerSalaryPO implements Serializable{
- 
+
 	/**
 	 * 
 	 */

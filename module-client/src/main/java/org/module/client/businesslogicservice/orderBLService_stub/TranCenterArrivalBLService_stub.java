@@ -20,6 +20,21 @@ public class TranCenterArrivalBLService_stub implements TranCenterArrivalBLServi
 		return null;
 	}
 
+	public boolean update(TranCenterArrivalListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean creat(TranCenterArrivalListVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<TranCenterArrivalListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

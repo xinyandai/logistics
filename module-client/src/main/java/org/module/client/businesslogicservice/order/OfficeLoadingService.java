@@ -21,6 +21,12 @@ public interface OfficeLoadingService {
 	 * 依赖：OfficeLoadingListService.getAll 返回所有的营业厅装车单PO
 	 * @return
 	 */
-	public ArrayList<OfficeLoadingListVO> getAll(State s);
+	public ArrayList<OfficeLoadingListVO> getAll( );
+	/**
+	 * 
+	 * @param o
+	 * @return
+	 */
+	public boolean update(OfficeLoadingListVO o);
 	
 }

@@ -8,7 +8,6 @@ import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.SendingListVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.SendingListService;
-import org.module.common.po.LogisticsPO;
 import org.module.common.po.SendingListPO;
 import org.module.common.po.State;
 

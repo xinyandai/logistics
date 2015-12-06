@@ -8,7 +8,6 @@ import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.ReceivingListVO;
 import org.module.common.dataservice.orderdataservice.ReceiveListService;
 import org.module.common.po.ReceivingListPO;
-import org.module.common.po.State;
 
 public class Receiving implements ReceiveService {
 	private ReceiveListService receivingData ;
@@ -23,19 +22,17 @@ public class Receiving implements ReceiveService {
 		try {
 			return receivingData.add(newPO);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	public ArrayList<ReceivingListVO> getAll(State s) {
+	public ArrayList<ReceivingListVO> getAll() {
 		ArrayList<ReceivingListVO> newVOs = new ArrayList<ReceivingListVO>();
 		ArrayList<ReceivingListPO> POs = null;
 		try {
-			 POs = receivingData.getByState(s);
+			 POs = receivingData.getAll();
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
@@ -43,6 +40,18 @@ public class Receiving implements ReceiveService {
 					POs.get(i).getOrderId(),POs.get(i).getState()));
 		}
 		return newVOs;
+	}
+
+	public boolean update(ReceivingListVO o) {
+		ReceivingListPO newPO = new ReceivingListPO(o.getDate(),o.getReceiver(),
+				o.getOrderId(),o.getState());
+		
+		try {
+			return this.receivingData.update(newPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

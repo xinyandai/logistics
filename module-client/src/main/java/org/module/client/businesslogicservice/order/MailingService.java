@@ -15,9 +15,9 @@ public interface MailingService {
 	public ArrayList<MailingListVO> getAll() ;
 
 	public double calculatePrice(String senderCity, String receiveCity,
-			String counts, String weight, String volume,
-			String costOfDecoration, String type);
+			String costOfDecoration);
 
 	public int calculateTime(String senderCity, String receiveCity) ;
 	
+	public boolean update(MailingListVO vo);
 }

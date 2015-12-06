@@ -159,11 +159,21 @@ public class WarmPercentage extends JPanel {
 	}
 	
 	private  void refresh(){
-		this.tranCenterID.setText(this.controller.find().getWarehouseOfWhichTranCenter());
-		String qu = this.qusPicker.getSelectedItem().toString();
-		this.currentBorderline.setText(	this.controller.calculateCurrentBorderLine(	qu)	);
-		this.size.setText(this.controller.getQuSize(qu));
-		this.borderline.setText(this.controller.getBorderLine(qu));
+		WarehouseConfigVO  warehoseConfigVO  = this.controller.find();
+		if(warehoseConfigVO != null){
+			this.tranCenterID.setText(warehoseConfigVO.getWarehouseOfWhichTranCenter());
+			Object selectedItem = this.qusPicker.getSelectedItem();
+			if(selectedItem == null){
+				
+			}else{
+				 String qu = selectedItem.toString();
+				 this.currentBorderline.setText(	this.controller.calculateCurrentBorderLine(	qu)	);
+				 this.size.setText(this.controller.getQuSize(qu));
+				 this.borderline.setText(this.controller.getBorderLine(qu));
+			}
+			
+		}
+		
 		
 	}
 }

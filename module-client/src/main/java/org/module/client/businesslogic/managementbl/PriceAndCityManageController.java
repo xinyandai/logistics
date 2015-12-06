@@ -10,6 +10,8 @@ import org.module.client.vo.PriceAndCityVO;
 public class PriceAndCityManageController implements PriceAndCityManageBLService{
 
 	private PriceAndCityManageService priceAndcity ;
+	private ArrayList<CityVO> cityVOs;
+	
 	public PriceAndCityManageController(PriceAndCityManageService priceAndcity) {
 		super();
 		this.priceAndcity = priceAndcity;
@@ -21,15 +23,16 @@ public class PriceAndCityManageController implements PriceAndCityManageBLService
 	
 	
 
-	public boolean setDiretionAndPrice(String cityA, String cityB,
+	public boolean setDiretionAndPrice(int cityA, int cityB,
 			String distance, String price) {
-		// TODO Auto-generated method stub
-		return priceAndcity.setDiretionAndPrice(new PriceAndCityVO(cityA, cityB,
+
+		return priceAndcity.setDiretionAndPrice(new PriceAndCityVO(
+				this.cityVOs.get(cityA).getId(), 
+				this.cityVOs.get(cityB).getId(),
 				distance, price));
 	}
 
 	public boolean addCity(String city, String id) {
-		
 		return this.priceAndcity.addCity(new CityVO(city,id));
 	}
 
@@ -39,8 +42,8 @@ public class PriceAndCityManageController implements PriceAndCityManageBLService
 	}
 
 	public ArrayList<CityVO> showAllCity() {
-		
-		return this.priceAndcity.showAllCity();
+		this.cityVOs = this.priceAndcity.showAllCity();
+		return this.cityVOs;
 	}
 
 	public boolean deleteCity(String id) {
@@ -56,4 +59,25 @@ public class PriceAndCityManageController implements PriceAndCityManageBLService
 		return re;
 	}
 
+	public String[] getAllCitiesArray() {
+		if(this.cityVOs==null){
+			this.showAllCity();
+		}
+		String[] city = new String[cityVOs.size()];
+		for (int i = 0; i < city.length; i++) {
+			city[i] = cityVOs.get(i).getName();
+		}
+		return city;
+	}
+
+	public PriceAndCityVO getDiretionAndPrice(int cityA, int cityB) {
+		
+		PriceAndCityVO re =  this.priceAndcity.getDiretionAndPrice(this.cityVOs.get(cityA).getId(),
+				this.cityVOs.get(cityB).getId());
+		if(re==null){
+			re = new PriceAndCityVO(this.cityVOs.get(cityA).getId(),
+					this.cityVOs.get(cityB).getId(), "0", "0");
+		}
+		return re;
+	}
 }

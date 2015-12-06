@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import org.module.client.businesslogicservice.order.CalculateDriverCostService;
 import org.module.client.javaRMI.RmiClient;
-import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.managementdataservice.PriceAndCityDataService;
 import org.module.common.po.PriceAndCityPO;
 
@@ -15,13 +14,9 @@ public class CalculateDriverCost implements CalculateDriverCostService {
 	public double calculateDriverCost(String origin, String target) {
 		double re = .0;
 		try {
-			MyList<PriceAndCityPO> prices = this.data.getAll();
-			for (PriceAndCityPO priceAndCityPO : prices) {
-				if( (priceAndCityPO.getcityA().equals(origin)&&priceAndCityPO.getcityB().equals(target))
-						&&(priceAndCityPO.getcityB().equals(origin)&&priceAndCityPO.getcityA().equals(target))
-						){
-					re+=Double.parseDouble(priceAndCityPO.getPrice());
-				}
+			PriceAndCityPO po = this.data.find(origin, target);
+			if(po!=null){
+				re += Double.parseDouble(po.getPrice());
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

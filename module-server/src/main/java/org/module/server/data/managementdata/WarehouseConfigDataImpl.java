@@ -25,6 +25,7 @@ public class WarehouseConfigDataImpl extends UnicastRemoteObject  implements War
 	public WarehouseConfigPO find(String id) throws RemoteException {
 		MyList<WarehouseConfigPO> pos = this.getAll();
 		for (WarehouseConfigPO warehouseConfigPO : pos) {
+			System.out.println(warehouseConfigPO.getWarehouseOfWhichTranCenter());
 			if(warehouseConfigPO.getWarehouseOfWhichTranCenter().equals(id)){
 				return warehouseConfigPO;
 			}

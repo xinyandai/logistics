@@ -18,9 +18,8 @@ public class OfficeArrival implements OfficeArrivalService {
 	}
 
 	public boolean creat(OfficeArrivalListVO o) {
-		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getOfficeid(),o.getDate(),
+		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getDepartmentId(),o.getDate(),
 				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState()); 
-		System.out.println("tobedone");
 		try {
 			return officeArrivalData.add(newPO);
 		} catch (RemoteException e) {
@@ -29,19 +28,30 @@ public class OfficeArrival implements OfficeArrivalService {
 		}
 	}
 
-	public ArrayList<OfficeArrivalListVO> getAll(State s) {
+	public ArrayList<OfficeArrivalListVO> getAll() {
 		ArrayList<OfficeArrivalListVO> newVOs = new ArrayList<OfficeArrivalListVO>();
 		ArrayList<OfficeArrivalListPO> POs = null;
 		try {
-			 POs = officeArrivalData.getByState(s);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		for(int i =0;i<POs.size();i++){
+			 POs = officeArrivalData.getAll();
+			 for(int i =0;i<POs.size();i++){
 			newVOs.add(new OfficeArrivalListVO(POs.get(i).getOfficeid(),POs.get(i).getDate(),
 					POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState()));
 		}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
 		return newVOs;
 	}
 
+	public boolean update(OfficeArrivalListVO o){
+		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getDepartmentId(),o.getDate(),
+				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState()); 
+		try {
+			return officeArrivalData.update(newPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

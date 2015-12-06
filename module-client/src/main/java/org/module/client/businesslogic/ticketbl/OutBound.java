@@ -6,7 +6,6 @@ import org.module.client.businesslogicservice.ticket.OutBoundService;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.OutBoundListVO;
 import org.module.common.dataservice.ticketdataservice.OutBoundListService;
-import org.module.common.po.OutBoundListPO;
 import org.module.common.po.State;
 
 public class OutBound implements OutBoundService {

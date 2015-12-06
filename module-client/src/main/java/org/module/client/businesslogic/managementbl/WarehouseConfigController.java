@@ -65,11 +65,11 @@ public class WarehouseConfigController implements WarehouseConfigBLService {
 		
 		//增加相应的区警戒比例
 		String[] previousBorderLine = vo.getBorderline();
-		String[] newBorderLine = new String[previousBorderLine.length];
-		for (int i = 0; i < newBorderLine.length; i++) {
+		String[] newBorderLine = new String[previousBorderLine.length + 1];
+		for (int i = 0; i < previousBorderLine.length; i++) {
 			newBorderLine[i] = previousBorderLine[i];
 		}
-		previousBorderLine[newBorderLine.length] = borderline;
+		newBorderLine[previousBorderLine.length] = borderline;
 		
 		
 		vo.setQus(newQus);
@@ -87,7 +87,11 @@ public class WarehouseConfigController implements WarehouseConfigBLService {
 
 	public String[] getQus(){
 		if(this.warehouseConfigVO==null){
-			this.warehouseConfigVO = this.warehouse.find("");
+			this.warehouseConfigVO = this.find();
+		}
+		if(this.warehouseConfigVO == null){
+			String[] s = {};
+			return s;
 		}
 		return this.warehouseConfigVO.getQus();
 	}
@@ -102,12 +106,13 @@ public class WarehouseConfigController implements WarehouseConfigBLService {
 				return size[i];
 			}
 		}
-		return null;
+		return "分区不存在";
 	}
 
 
 
 	public String getBorderLine(String qu) {
+		
 		String[] qus = this.warehouseConfigVO.getQus();
 		String[] borderline = this.warehouseConfigVO.getBorderline();
 		for (int i = 0; i < qus.length; i++) {
@@ -115,6 +120,6 @@ public class WarehouseConfigController implements WarehouseConfigBLService {
 				return borderline[i];
 			}
 		}
-		return null;
+		return "分区未创立";
 	}
 }

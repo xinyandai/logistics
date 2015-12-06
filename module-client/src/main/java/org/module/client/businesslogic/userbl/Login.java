@@ -15,8 +15,12 @@ public class Login implements UserLoginService {
 			
 			UserPO po = user.find(u.getId());
 			if(po==null) return false;
-			if(po.getPassword().equals(u.getPassword()) &&  po.getRole().equals(u.getRole()))
+			if(po.getPassword().equals(u.getPassword()) &&  po.getRole().equals(u.getRole())){
+				u.setAuthority(po.getAuthority());
+				u.setDepartmeny(po.getDepartmeny());
+				u.setName(po.getName());
 				return true;
+			}
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();

@@ -26,7 +26,7 @@ public class MailingListVO extends AbstractVO{
 	private String costOfDecoration;
 	private String type;
 	private String id;
-	//private State state;
+	private State state;
 	
 	public MailingListVO(MailingListPO po){
 		this(  po.getSenderName(),
@@ -47,11 +47,12 @@ public class MailingListVO extends AbstractVO{
 				po.getVolume(),
 				po.getCostOfDecoration(),
 				po.getType(),
-				po.getId()
+				po.getId(),
+				po.getState()
 				);
 	}
 	
-	public MailingListPO toPO(State state){
+	public MailingListPO toPO(){
 		return new MailingListPO(getSenderName(),
 				getSenderCompany(),
 				getSenderMobile(),
@@ -188,13 +189,14 @@ public class MailingListVO extends AbstractVO{
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	public MailingListVO(String senderName, String senderCompany,
 			String senderMobile, String senderPhone, String senderCity,
 			String senderPosition, String receiveName, String receiveCompany,
 			String receiveMobile, String receivePhone, String receiveCity,
 			String receivePosition, String nameOfGood, String counts,
 			String weight, String volume, String costOfDecoration, String type,
-			String id) {
+			String id,State state) {
 		super();
 		this.senderName = senderName;
 		this.senderCompany = senderCompany;
@@ -215,14 +217,14 @@ public class MailingListVO extends AbstractVO{
 		this.costOfDecoration = costOfDecoration;
 		this.type = type;
 		this.id = id;
-		//this.state = State.getInstance(state);
+		this.state = state;
 	}
-	/*public State getState() {
+	public State getState() {
 		return state;
 	}
 	public void setState(State state) {
 		this.state = state;
-	}*/
+	}
 
 	public String[] toArray(){
 		String[] s = {
@@ -231,21 +233,21 @@ public class MailingListVO extends AbstractVO{
 				this.senderName,
 				this.senderCity,
 				this.receiveName,
-				this.receiveCity
+				this.receiveCity,
+				this.state.toString()
 		};
 		return s;
 	}
 	
 	@Override
 	public String get(int i) {
-		// TODO Auto-generated method stub
 		return this.toArray()[i];
 	}
 
 	@Override
 	public String[] names() {
 		String[] s = {
-				"快递编号","类型","寄件人","出发城市","收件人","目的城市"
+				"快递编号","类型","寄件人","出发城市","收件人","目的城市","状态"
 		};
 	    return s;
 	}

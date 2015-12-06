@@ -15,16 +15,23 @@ public interface TranCenterLoadingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String loadingDate, String officeId,
-			String trucksId, String city,String location, String carId, String supervision,
-			String escort, String[] shippingId, String price);
+	public boolean creat(TranCenterLoadingListVO o);
+	
+	/**
+	 * 
+	 * @param o
+	 * @return
+	 */
+	public boolean update(TranCenterLoadingListVO o); 
+	
+	
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有装车单
 	 * 依赖：TranCenterLoadingService.getAll返回所有装车单PO
 	 * @return
 	 */
-	public ArrayList<TranCenterLoadingListVO> getAll(State s);
+	public ArrayList<TranCenterLoadingListVO> getAll();
 
 	/**
 	 * 计算运费

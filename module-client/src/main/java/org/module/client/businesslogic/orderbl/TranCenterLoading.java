@@ -7,13 +7,11 @@ import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.TranCenterLoadingListVO;
 import org.module.common.dataservice.orderdataservice.TranCenterLoadingListService;
-import org.module.common.po.State;
 import org.module.common.po.TranCenterLoadingListPO;
 
 public class TranCenterLoading implements TranCenterLoadingService {
 	private TranCenterLoadingListService tranCenterLoadingData ;
 	public TranCenterLoading() {
-		// TODO Auto-generated constructor stub
 		tranCenterLoadingData =  new RmiClient().get(TranCenterLoadingListService.class);
 	}
 
@@ -24,20 +22,17 @@ public class TranCenterLoading implements TranCenterLoadingService {
 		try {
 			return tranCenterLoadingData.add(newPO);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	public ArrayList<TranCenterLoadingListVO> getAll(State s) {
-		// TODO Auto-generated method stub
+	public ArrayList<TranCenterLoadingListVO> getAll() {
 		ArrayList<TranCenterLoadingListVO> newVOs = new ArrayList<TranCenterLoadingListVO>();
 		ArrayList<TranCenterLoadingListPO> POs = null;
 		try {
-			 POs = tranCenterLoadingData.getByState(s);
+			 POs = tranCenterLoadingData.getAll();
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
@@ -47,6 +42,18 @@ public class TranCenterLoading implements TranCenterLoadingService {
 		}
 		return newVOs;
 		
+	}
+
+	public boolean update(TranCenterLoadingListVO o) {
+		TranCenterLoadingListPO newPO = new TranCenterLoadingListPO(o.getLoadingDate(),o.getOfficeId()
+				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
+				,o.getShippingId(),o.getPrice(),o.getState()); 
+		try {
+			return tranCenterLoadingData.update(newPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

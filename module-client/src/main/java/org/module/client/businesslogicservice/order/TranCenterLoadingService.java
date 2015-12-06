@@ -22,6 +22,11 @@ public interface TranCenterLoadingService {
 	 * 依赖：TranCenterLoadingService.getAll返回所有装车单PO
 	 * @return
 	 */
-	public ArrayList<TranCenterLoadingListVO> getAll(State s);
-	
+	public ArrayList<TranCenterLoadingListVO> getAll();
+	/**
+	 * 对未审核或者审核不通过的单据修改并更新
+	 * @param o
+	 * @return
+	 */
+	public boolean update(TranCenterLoadingListVO o);
 }

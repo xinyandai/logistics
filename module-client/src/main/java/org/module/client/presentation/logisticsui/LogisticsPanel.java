@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JList;
 
 public class LogisticsPanel extends JPanel {
 	
@@ -115,6 +116,9 @@ public class LogisticsPanel extends JPanel {
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
+		
+		JList list = new JList();
+		scrollPane.setViewportView(list);
 		panel_1.setLayout(gl_panel_1);
 
 	}

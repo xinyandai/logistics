@@ -26,6 +26,13 @@ public interface ReceiveService {
 	 * 依赖：ReceiveListService.getAll 返回所有的收件单PO
 	 * @return
 	 */
-	public ArrayList<ReceivingListVO> getAll(State s);
+	public ArrayList<ReceivingListVO> getAll();
+	
+	/**
+	 * 
+	 * @param o
+	 * @return
+	 */
+	public boolean update(ReceivingListVO o);
 	
 }

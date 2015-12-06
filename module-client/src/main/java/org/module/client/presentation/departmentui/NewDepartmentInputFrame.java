@@ -31,7 +31,7 @@ public class NewDepartmentInputFrame extends JFrame {
 	private JTextField name;
 	private JComboBox category;
 	private JTextField lcoation;
-    private final String[] array= {"用户","快递员","营业厅业务员","仓库管理员","中转中心业务员","财务人员","总经理","管理员"};
+    private final String[] array= {"营业厅","中转中心"};
 	
 	private JButton button;
 	private JLabel stateLabel;

@@ -2,6 +2,7 @@ package org.module.client.businesslogic.userbl;
 
 import org.module.client.businesslogicservice.user.UserLoginService;
 import org.module.client.businesslogicservice.userBLservice.UserLoginBLService;
+import org.module.client.main.Main;
 import org.module.client.vo.UserVO;
 
 public class LoginController implements UserLoginBLService{
@@ -17,7 +18,9 @@ public class LoginController implements UserLoginBLService{
 
 
 	public boolean login(String id, String password, String role) {
-		 return loginer.login(new UserVO(id,password,role));
+		UserVO userVO = new UserVO(id,password,role);
+		Main.currentUser = userVO;
+		return loginer.login(userVO);
 	}
 
 }

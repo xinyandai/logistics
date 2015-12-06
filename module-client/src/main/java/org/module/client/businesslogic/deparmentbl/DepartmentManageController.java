@@ -10,6 +10,7 @@ import org.module.common.dataservice.MyList;
 public class DepartmentManageController implements DepartmentManageBLService{
 	
 	private DepartmentService department ;
+	private String[] type = {"营业厅","中转中心"};
 	
 	public DepartmentManageController(DepartmentService department) {
 		super();
@@ -24,9 +25,16 @@ public class DepartmentManageController implements DepartmentManageBLService{
 		return department.showAll();
 	}
 
+	/**
+	 * @see WarehouseInit
+	 */
 	public boolean add(String name, String category, String location,
 			String identity) {
-		DepartmentVO departmentVO = new DepartmentVO(name,category,location,identity);  
+		DepartmentVO departmentVO = new DepartmentVO(name,category,location,identity);
+		if(category.equals(type[1])){
+			WarehouseInit initWarehouse = new WarehouseInit();
+		    initWarehouse.add(identity);
+		}
 		return department.add(departmentVO);
 	}
 

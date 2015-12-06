@@ -59,9 +59,16 @@ public class PriceAndCity implements PriceAndCityManageService{
 				);
 		
 		try {
+			
+			//首先查找底层是否有该PO
+			PriceAndCityPO priceAndCity = this.data.find(priceAndcity.getcityA(),
+				priceAndcity.getcityB());
+			//有则更新，否则增加
+			if(priceAndCity==null){
+				return this.data.addPriceAndCity(po);
+			}
 			return this.data.update(po);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -76,6 +83,19 @@ public class PriceAndCity implements PriceAndCityManageService{
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public PriceAndCityVO getDiretionAndPrice(String cityA, String cityB) {
+		try {
+			PriceAndCityPO po = this.data.find(cityA, cityB);
+			if(po==null){
+				return null;
+			}
+			return new PriceAndCityVO( po.getcityA(), po.getcityB(), po.getDistance(), po.getPrice() );
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} 
+		return null;
 	}
 
 	

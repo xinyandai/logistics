@@ -9,8 +9,14 @@ public class PriceAndCityVO {
 	
 	public PriceAndCityVO(String cityA, String cityB,String distance,String price){
 		super();
-		this.cityA = cityA;
-		this.cityB = cityB;
+		if(cityA.compareTo(cityB)>=0){
+			this.cityA = cityA;
+			this.cityB = cityB;
+		}else{
+			this.cityA = cityB;
+			this.cityB = cityA;
+		}
+		
 		this.distance=distance;
 		this.price=price;
 	}

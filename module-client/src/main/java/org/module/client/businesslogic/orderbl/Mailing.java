@@ -36,7 +36,8 @@ public class Mailing  implements MailingService{
 	}
 	public boolean creat(MailingListVO o) {
 		try {
-			return this.data.add(o.toPO(State.SUBMITTED));
+			o.setState(State.SUBMITTED);
+			return this.data.add(o.toPO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -46,7 +47,7 @@ public class Mailing  implements MailingService{
 	public ArrayList<MailingListVO> getAll() {
 		this.list = new ArrayList<MailingListVO>();
 		try {
-			ArrayList<MailingListPO> pos = this.data.getByState(State.PASS);
+			ArrayList<MailingListPO> pos = this.data.getAll();
 			for (MailingListPO mailingListPO : pos) {
 				list.add(new MailingListVO(mailingListPO));
 			}
@@ -57,10 +58,10 @@ public class Mailing  implements MailingService{
 	}
 
 	public double calculatePrice(String senderCity, String receiveCity,
-			String counts, String weight, String volume,
-			String costOfDecoration, String type) {
+			String costOfDecoration) {
 		double  re = this.driverCost.calculateDriverCost(senderCity, receiveCity);
-		return re;
+		
+		return re + Double.parseDouble(costOfDecoration);
 	}
 
 	public int calculateTime(String senderCity, String receiveCity) {
@@ -86,6 +87,15 @@ public class Mailing  implements MailingService{
 			e.printStackTrace();
 		}
 		return i==0? 0 : day/i;
+	}
+
+	public boolean update(MailingListVO vo) {
+		try {
+			return this.data.update(vo.toPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

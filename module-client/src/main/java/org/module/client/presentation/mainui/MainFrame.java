@@ -101,6 +101,11 @@ public class MainFrame extends JFrame {
 			JOptionPane.showConfirmDialog(frame, "账号信息错误", "登录失败", JOptionPane.OK_CANCEL_OPTION);
 		}
 	}
+	
+	
+	
+	
+	
 	public MainFrame() {
 		
 		this.init();

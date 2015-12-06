@@ -176,10 +176,6 @@ public class DriversPanel extends JPanel {
 	
 	
 	
-	
-	
-	
-	
 	private void addListeners(){
 		add.addMouseListener(new MouseAdapter() {
 			@Override

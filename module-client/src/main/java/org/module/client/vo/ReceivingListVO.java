@@ -67,7 +67,8 @@ public class ReceivingListVO  extends AbstractVO{
 		String[] s = {
 				this.date,
 				this.receiver,
-				this.orderId 
+				this.orderId ,
+				this.state.toString()
 		};
 		return s;
 	}
@@ -81,7 +82,7 @@ public class ReceivingListVO  extends AbstractVO{
 	@Override
 	public String[] names() {
 		String[] s = {
-				"收件日期","签收人","快递单号"
+				"收件日期","签收人","快递单号","状态"
 		};
 	    return s;
 	}

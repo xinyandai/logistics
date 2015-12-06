@@ -40,9 +40,9 @@ public class MyTable extends AbstractTableModel {
 	                    || e.getLastRow() == Integer.MAX_VALUE//fireTableDataChanged
 	                    || e.getLastRow() == TableModelEvent.HEADER_ROW){
 					 checkBitSet.clear();
-					 fireTableChanged(new TableModelEvent(
+					 /*fireTableChanged(new TableModelEvent(
 							 MyTable.this, 0, getRowCount() - 1,
-		                        checkBoxIndex, TableModelEvent.UPDATE));
+		                        checkBoxIndex, TableModelEvent.UPDATE));*/
 				}
 			}
 			

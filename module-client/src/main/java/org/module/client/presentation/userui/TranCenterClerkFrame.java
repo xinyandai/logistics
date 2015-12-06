@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-import org.module.client.presentation.orderui.TranCenterArriveListPanel;
+import org.module.client.presentation.orderui.ListTableForTranCenterArrival;
 import org.module.client.presentation.orderui.TranCenterLoadListPanel;
 
 public class TranCenterClerkFrame extends JFrame {
@@ -56,7 +56,7 @@ public class TranCenterClerkFrame extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new TranCenterArriveListPanel();
+		JPanel panel_1 = new ListTableForTranCenterArrival();
 		tabbedPane.addTab("中转接收", null, panel_1, null);
 		
 		JPanel panel_2 = new TranCenterLoadListPanel();

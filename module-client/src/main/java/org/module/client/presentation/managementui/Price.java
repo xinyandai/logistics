@@ -1,11 +1,21 @@
 package org.module.client.presentation.managementui;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import org.module.client.businesslogic.managementbl.PriceAndCityManageController;
+import org.module.client.vo.PriceAndCityVO;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Price extends JPanel {
 	/**
@@ -15,10 +25,14 @@ public class Price extends JPanel {
 	private JTextField distance;
 	private JTextField carriage;
 
-	String[] city = {"南京","北京","上海","广州"};
-	
+	String[] city ;
+	private PriceAndCityManageController controller = new PriceAndCityManageController();
+	private JComboBox cityA;
+	private JComboBox cityB;
+	private JButton determine;
 	
 	public Price() {
+		this.city = this.controller.getAllCitiesArray();
 		setLayout(null);
 		
 		JLabel label = new JLabel("选择城市1");
@@ -31,11 +45,11 @@ public class Price extends JPanel {
 		label_1.setBounds(55, 82, 81, 21);
 		add(label_1);
 		
-		JComboBox<String> cityA = new JComboBox<String>(city);
+		cityA = new JComboBox(city);
 		cityA.setBounds(165, 41, 61, 21);
 		add(cityA);
-		
-		JComboBox<String> cityB = new JComboBox<String>(city);
+
+		cityB = new JComboBox(city);
 		cityB.setBounds(165, 82, 61, 21);
 		add(cityB);
 		
@@ -61,10 +75,46 @@ public class Price extends JPanel {
 		carriage.setBounds(165, 161, 66, 21);
 		add(carriage);
 		
-		JButton determine = new JButton("确定");
+		determine = new JButton("确定");
 		determine.setFont(new Font("楷体", Font.PLAIN, 18));
 		determine.setBounds(182, 226, 93, 23);
 		add(determine);
+		
+		this.addListeners();
 
+	}
+	
+	
+	private void addListeners(){
+		cityA.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				update();
+			}
+		});
+		
+		cityB.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				update();
+			}
+		});
+		
+		determine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				save();
+			}
+		});
+	}
+	
+	private void update(){
+		PriceAndCityVO vo = this.controller.getDiretionAndPrice(
+				cityA.getSelectedIndex(), cityB.getSelectedIndex());
+		this.distance.setText(vo.getDistance());
+		this.carriage.setText(vo.getPrice());
+	}
+	
+	private void save(){
+		this.controller.setDiretionAndPrice(cityA.getSelectedIndex(), cityB.getSelectedIndex(),
+				distance.getText(), carriage.getText());
 	}
 }

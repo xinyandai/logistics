@@ -26,6 +26,13 @@ public interface OfficeArrivalService {
 	 * 依赖：OfficeArrivalListService.getAll 返回所有的营业厅接受单
 	 * @return
 	 */
-	public ArrayList<OfficeArrivalListVO> getAll(State s);
+	public ArrayList<OfficeArrivalListVO> getAll();
+	
+	/**
+	 * 
+	 * @param o
+	 * @return
+	 */
+	public boolean update(OfficeArrivalListVO o);
 	
 }

@@ -5,32 +5,44 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.TranCenterArrivalService;
 import org.module.client.businesslogicservice.orderBLservice.TranCenterArrivalBLService;
 import org.module.client.vo.TranCenterArrivalListVO;
-import org.module.common.po.State;
 
 public class TranCenterArrivalController implements TranCenterArrivalBLService {
 
 	private TranCenterArrivalService arrival;
-//	private LogisticsService logistics;
+	private ArrayList<TranCenterArrivalListVO> list ;
+	
 	public TranCenterArrivalController() {
 
 		this.arrival = new TranCenterArrival();
-//		this.logistics = new Logistics();
 	}
 
 	public TranCenterArrivalController(TranCenterArrivalService arrival ) {
 		super();
 		this.arrival = arrival;
-//		this.logistics = logistics;
 	}
 
-	public boolean creat(String transId, String date,
-			String transportListId, String origin, String stateOfGoods) {
-		return this.arrival.creat(new TranCenterArrivalListVO(transId,date,transportListId,origin,stateOfGoods,State.SUBMITTED));
+	public boolean creat(TranCenterArrivalListVO vo) {
+		this.list.add(vo);
+		return this.arrival.creat(vo);
 	}
 
-	public ArrayList<TranCenterArrivalListVO> getAll(State s) {
-		// TODO Auto-generated method stub
-		return this.arrival.getAll(s);
+	public ArrayList<TranCenterArrivalListVO> getAll() {
+		this.list = this.arrival.getAll();
+		return this.list;
+	}
+
+	public boolean update(TranCenterArrivalListVO o) {
+		for (TranCenterArrivalListVO tranCenterArrivalListVO : list) {
+			if(tranCenterArrivalListVO.getTransportListId().equals(o.getTransportListId())){
+				tranCenterArrivalListVO.setDate(o.getDate());
+				tranCenterArrivalListVO.setDepartmentId(o.getDepartmentId());
+				tranCenterArrivalListVO.setOrigin(o.getOrigin());
+				tranCenterArrivalListVO.setStateOfGoods(o.getStateOfGoods());
+				tranCenterArrivalListVO.setState(o.getState());
+				return this.arrival.update(o);
+			}
+		}
+		return false;
 	}
 
 	

@@ -88,8 +88,8 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 	 */
 	private void updateLogistics(OfficeArrivalListVO officeArrivalListVO){
 		
-		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getOfficeid() );
-		String departmentLocation = this.departmentFinder.getCityById( officeArrivalListVO.getOfficeid() );
+		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getDepartmentId() );
+		String departmentLocation = this.departmentFinder.getCityById( officeArrivalListVO.getDepartmentId() );
 		String date = new Date().toString();
 		try {
 			//默认为中转单

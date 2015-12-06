@@ -2,6 +2,9 @@ package org.module.client.presentation.orderui;
 
 import org.module.client.businesslogic.orderbl.TranCenterLoadingController;
 import org.module.client.businesslogicservice.orderBLservice.TranCenterLoadingBLService;
+import org.module.client.vo.TranCenterLoadingListVO;
+import org.module.common.po.State;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -26,16 +29,20 @@ public class TranCenterLoadListPanel extends OfficeLoadListPanel {
 			public void mouseClicked(MouseEvent e) {
 				String[] shippingId = TranCenterLoadListPanel.this.shippingId();
 				if(shippingId!=null){
-					controller.creat(timerPicker.getDate().getTime()+"", 
+					controller.creat(
+							new TranCenterLoadingListVO(
+							timerPicker.getDate().getTime()+"", 
 						officeID.getText(), 
 						TrucksNumber.getText(), 
 						city.getSelectedItem().toString(),
-						location.getText(), 
+						location.getSelectedItem().toString(), 
 						carID.getText(), 
 						monitor.getText(),
 						escort.getText(), 
 						shippingId, 
-						price.getText()
+						price.getText(),
+						State.SUBMITTED
+						)
 						);
 				}
 			}

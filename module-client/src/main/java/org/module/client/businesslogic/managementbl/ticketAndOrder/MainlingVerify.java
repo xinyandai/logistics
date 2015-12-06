@@ -43,8 +43,8 @@ public class MainlingVerify implements TicketAndorderVerify{
 			for (int i = ids.length-1; i>=0 ; i--) {
 			MailingListVO vo = this.list.remove(ids[i]);
 			
-			
-			this.data.update(vo.toPO(State.PASS));
+			vo.setState(State.PASS);
+			this.data.update(vo.toPO());
 			String[] location = {};
 			String[] time = {};
 			this.logistics.creat(new LogisticsVO(
@@ -76,8 +76,8 @@ public class MainlingVerify implements TicketAndorderVerify{
 		try {
 			for (int i = ids.length-1; i>=0 ; i--) {
 			MailingListVO vo = this.list.get(ids[i]);
-			
-			this.data.update(vo.toPO(State.PASS));
+			vo.setState(State.UNPASS);
+			this.data.update(vo.toPO());
 			String[] location = {"订单到达营业厅"};
 			String[] time = {new Date().toString()};
 			this.logistics.creat(new LogisticsVO(

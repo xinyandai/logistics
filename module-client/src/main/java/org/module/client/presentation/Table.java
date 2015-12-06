@@ -27,7 +27,7 @@ public class Table extends AbstractTableModel{
 		
 		this.list = list;
 		this.name = s;
-		this.checkBoxIndex = s.length;
+		this.checkBoxIndex = s==null? 0 : s.length;
 		
 		this.addTableModelListener(new TableModelListener(){
 			public void tableChanged(TableModelEvent e) {
@@ -42,6 +42,10 @@ public class Table extends AbstractTableModel{
 			}
 			
 		});
+	}
+
+	public void setName(String[] name) {
+		this.name = name;
 	}
 
 	public int getRowCount() {

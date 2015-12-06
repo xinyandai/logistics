@@ -34,6 +34,7 @@ public class UserVO extends AbstractVO{
 		this.role = role;
 	}
 	public String getDepartmeny() {
+		System.out.println(this.departmeny);
 		return departmeny;
 	}
 	public void setDepartmeny(String departmeny) {

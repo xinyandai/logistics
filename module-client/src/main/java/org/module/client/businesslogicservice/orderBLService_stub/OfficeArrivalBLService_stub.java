@@ -26,4 +26,25 @@ public class OfficeArrivalBLService_stub implements OfficeArrivalBLService{
 		return false;
 	}
 
+
+
+	public boolean creat(OfficeArrivalListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	public boolean update(OfficeArrivalListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	public ArrayList<OfficeArrivalListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

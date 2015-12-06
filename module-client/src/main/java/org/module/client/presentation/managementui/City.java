@@ -37,6 +37,7 @@ public class City extends JPanel {
 
 	
 	public City() {
+		this.listData = this.controller.toArray();
 		init();
 		addListenrs();
 	}

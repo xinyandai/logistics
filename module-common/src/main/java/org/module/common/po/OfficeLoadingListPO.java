@@ -22,7 +22,7 @@ public class OfficeLoadingListPO implements Serializable{
 	private State state;
 
 	final private String spt = ":%:%:";
-	final private String inlinespt = "#*#*#";
+	final private String inlinespt = "&&&&&&&";
 
 	public OfficeLoadingListPO(String string) {
 		String[] s = string.split(spt);

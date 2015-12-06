@@ -19,14 +19,15 @@ public interface OfficeArrivalBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String officeid, String date,
-			String transportListId, String origin, String stateOfGoods,String state);
+	public boolean creat(OfficeArrivalListVO o);
 	/**
 	 * 前置：选择查看所有营业厅接收单
 	 * 后置：显示所有营业厅接收单
 	 * 依赖：OfficeArrivalListService.getAll 返回所有的营业厅接受单
 	 * @return
 	 */
-	public ArrayList<OfficeArrivalListVO> getAll(State s);
+	public ArrayList<OfficeArrivalListVO> getAll();
+	
+	public boolean update(OfficeArrivalListVO o);
 	
 }

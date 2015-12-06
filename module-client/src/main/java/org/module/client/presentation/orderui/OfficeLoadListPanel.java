@@ -18,6 +18,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.orderbl.OfficeLoadingController;
 import org.module.client.businesslogicservice.orderBLservice.OfficeLoadingBLService;
+import org.module.client.vo.OfficeLoadingListVO;
+import org.module.common.po.State;
 
 public class OfficeLoadListPanel extends JPanel {
 	/**
@@ -25,11 +27,8 @@ public class OfficeLoadListPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 5708449962639760332L;
 	protected final int lengthOfID = 9;
-	protected JTextField location;
 	protected JTextField officeID;
-	protected JTextField carID;
 	protected JTextField monitor;
-	protected JTextField TrucksNumber;
 	protected JXDatePicker timerPicker;
 	protected JTextField escort;
 	protected JTextField price;
@@ -40,9 +39,13 @@ public class OfficeLoadListPanel extends JPanel {
 	protected JScrollPane scrollPane;
 	protected JTextPane textPane;
 	
+	
 	protected JLabel state;
 	protected String[] array = {"南京","上海","北京"};
 	protected JLabel labelOfDepartment;
+	protected JTextField carID;
+	protected JTextField TrucksNumber;
+	protected JComboBox location;
 	/**
 	 * Create the panel.
 	 */
@@ -53,155 +56,75 @@ public class OfficeLoadListPanel extends JPanel {
 	}
 	private void init(){
 		labelOfDepartment = new JLabel("营业厅编号");
+		labelOfDepartment.setBounds(34, 29, 80, 19);
 		labelOfDepartment.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label = new JLabel("车辆代号");
+		label.setBounds(34, 58, 77, 19);
 		label.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label_1 = new JLabel("监装员");
+		label_1.setBounds(34, 89, 77, 19);
 		label_1.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label_2 = new JLabel("汽运编号");
+		label_2.setBounds(254, 29, 71, 19);
 		label_2.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label_3 = new JLabel("装车时间");
+		label_3.setBounds(255, 58, 71, 19);
 		label_3.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label_4 = new JLabel("押运员");
+		label_4.setBounds(255, 89, 71, 19);
 		label_4.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label_5 = new JLabel("目的地");
+		label_5.setBounds(34, 118, 77, 19);
 		label_5.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		city = new JComboBox(array);
-		
-		location = new JTextField();
-		location.setFont(new Font("楷体", Font.PLAIN, 15));
-		location.setColumns(10);
+		city.setBounds(124, 119, 53, 21);
 		
 		officeID = new JTextField();
+		officeID.setBounds(124, 29, 84, 21);
 		officeID.setColumns(10);
 		
-		carID = new JTextField();
-		carID.setColumns(10);
-		
 		monitor = new JTextField();
+		monitor.setBounds(124, 89, 84, 21);
 		monitor.setColumns(10);
 		
-		TrucksNumber = new JTextField();
-		TrucksNumber.setColumns(10);
-		
 		timerPicker = new JXDatePicker();
-	//	timerPicker.setColumns(10);
+		timerPicker.setBounds(336, 58, 84, 23);
 		
 		escort = new JTextField();
+		escort.setBounds(336, 89, 84, 21);
 		escort.setColumns(10);
 		
 		price = new JTextField();
+		price.setBounds(124, 150, 84, 21);
 		price.setEditable(false);
 		price.setText("￥ 88");
 		price.setColumns(10);
 		
 		JLabel label_6 = new JLabel("运费");
+		label_6.setBounds(34, 150, 71, 19);
 		label_6.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		button = new JButton("确定");
+		button.setBounds(205, 385, 69, 29);
 		
 		button.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setBounds(34, 181, 433, 194);
 		
 		JPanel panel = new JPanel();
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(205, Short.MAX_VALUE)
-					.addComponent(button)
-					.addGap(203))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(34)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(labelOfDepartment)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(officeID, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-							.addGap(40)
-							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(TrucksNumber, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(price, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(label_5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(label, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(carID, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-									.addGap(49)
-									.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(timerPicker, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(monitor, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
-									.addGap(49)
-									.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(escort, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(city, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(location, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)))))
-					.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_2)
-						.addComponent(TrucksNumber, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(labelOfDepartment)
-							.addComponent(officeID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(8)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(carID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_3)
-						.addComponent(timerPicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label))
-					.addGap(8)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(monitor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_4)
-						.addComponent(escort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1))
-					.addGap(8)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(city, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(location, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-						.addComponent(label_5))
-					.addGap(10)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_6)
-						.addComponent(price, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(button)
-					.addGap(24))
-		);
+		panel.setBounds(0, 0, 467, 23);
+		
+		JLabel label_8 = new JLabel("目的地");
+		label_8.setBounds(255, 119, 77, 19);
+		label_8.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		state = new JLabel("");
 		state.setFont(new Font("楷体", Font.PLAIN, 16));
@@ -212,12 +135,40 @@ public class OfficeLoadListPanel extends JPanel {
 		label_7.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		textPane = new JTextPane();
-		
 		scrollPane.setViewportView(textPane);
+		setLayout(null);
+		add(label_8);
+		add(button);
+		add(scrollPane);
+		add(labelOfDepartment);
+		add(officeID);
+		add(label_2);
+		add(label_6);
+		add(price);
+		add(label_5);
+		add(label_1);
+		add(label);
+		add(label_3);
+		add(timerPicker);
+		add(monitor);
+		add(label_4);
+		add(escort);
+		add(city);
+		add(panel);
 		
+		carID = new JTextField();
+		carID.setColumns(10);
+		carID.setBounds(124, 60, 84, 21);
+		add(carID);
 		
-		setLayout(groupLayout);
-
+		TrucksNumber = new JTextField();
+		TrucksNumber.setColumns(10);
+		TrucksNumber.setBounds(335, 29, 84, 21);
+		add(TrucksNumber);
+		
+		location = new JComboBox(new Object[]{});
+		location.setBounds(336, 119, 53, 21);
+		add(location);
 		addListeners();
 	}
 	
@@ -229,18 +180,20 @@ public class OfficeLoadListPanel extends JPanel {
 				
 				String[] shippingId = shippingId();
 				if(shippingId==null) return ;
-				controller.creat(
+				controller.creat( 
+						new OfficeLoadingListVO(
 						timerPicker.getDate().getTime()+"", 
 						officeID.getText(), 
 						TrucksNumber.getText(), 
 						city.getSelectedItem().toString(),
-						location.getText(), 
+						location.getSelectedItem().toString(),
 						carID.getText(), 
 						monitor.getText(),
 						escort.getText(), 
 						shippingId, 
-						price.getText()
-						
+						price.getText(),
+						State.SUBMITTED
+						)
 						);
 				
 				
@@ -280,6 +233,5 @@ public class OfficeLoadListPanel extends JPanel {
 		    state.setText("格式正确");
 		    return shippingId;
 	}
-	
 }
 

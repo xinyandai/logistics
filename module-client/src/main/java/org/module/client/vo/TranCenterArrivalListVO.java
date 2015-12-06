@@ -15,9 +15,9 @@ import org.module.common.po.TranCenterArrivalListPO;
  *
  */
 
-public class TranCenterArrivalListVO  extends AbstractVO{
+public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 
-	private String transId;
+	private String departmentID;
 	private String date;
 	private String transportListId;
 	private String origin;
@@ -26,8 +26,7 @@ public class TranCenterArrivalListVO  extends AbstractVO{
 	
 	public TranCenterArrivalListVO(String transId, String date,
 			String transportListId, String origin, String stateOfGoods,State state) {
-		super();
-		this.transId = transId;
+		this.departmentID = transId;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
@@ -42,46 +41,12 @@ public class TranCenterArrivalListVO  extends AbstractVO{
 				officeArrivalListPO.getStateOfGoods(),
 				officeArrivalListPO.getState()); 
 	}
-	public String getTransId() {
-		return transId;
-	}
-	public void setTransId(String transId) {
-		this.transId = transId;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getTransportListId() {
-		return transportListId;
-	}
-	public void setTransportListId(String transportListId) {
-		this.transportListId = transportListId;
-	}
-	public String getOrigin() {
-		return origin;
-	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
-	public State getState() {
-		return state;
-	}
-	public void setState(State state) {
-		this.state = state;
-	}
-	public String getStateOfGoods() {
-		return stateOfGoods;
-	}
-	public void setStateOfGoods(String stateOfGoods) {
-		this.stateOfGoods = stateOfGoods;
-	}
+	
+
 	public TranCenterArrivalListPO toPO(State pass) {
 		
 		return new TranCenterArrivalListPO(
-				getTransId(),
+				getDepartmentId(),
 				getDate(),
 				getTransportListId(),
 				getOrigin(),
@@ -90,14 +55,13 @@ public class TranCenterArrivalListVO  extends AbstractVO{
 	}
 	
 	public String[] toArray(){
-		String[] s = {getTransId(),
+		String[] s = {getDepartmentId(),
 				getDate(),
 				getTransportListId(),
 				getOrigin(),
 				getStateOfGoods()};
 		return s;
 	}
-	
 	@Override
 	public String get(int i) {
 		// TODO Auto-generated method stub

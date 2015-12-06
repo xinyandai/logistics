@@ -12,26 +12,28 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
-import org.module.client.businesslogic.orderbl.MailingControl;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.presentation.Numeric;
+import org.module.client.vo.MailingListVO;
+import org.module.common.po.State;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MailingListPanel extends JPanel {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -4285669172960400665L;
-	private MailingBLService controller = new MailingControl();
+	private MailingBLService controller ;
 	private String[] stringOfType = {"经济快递","标准快递","特快"};
-	private String[] cities = {"南京","北京","上海","广州"};
+	private String[] cities ;
 	
 	private JTextField senderName;
 	private JTextField senderCompany;
@@ -51,7 +53,7 @@ public class MailingListPanel extends JPanel {
 	private JTextField counts;
 	private JTextField weight;
 	private JTextField volume;
-	private JTextField costOfDecoration;
+	private JComboBox costOfDecoration;
 	//private JComboBox type;
 	private JComboBox<String> type;
 
@@ -63,12 +65,55 @@ public class MailingListPanel extends JPanel {
 	private double money;
 	private JButton save;
 	private JLabel massage;
+	final private boolean isSubmitted ;
+	private JButton cancel;
+	
+	private JFrame frame;
+	
 	
 	
 	/**
-	 * Create the panel.
+	 * @wbp.parser.constructor
 	 */
-	public MailingListPanel() {
+	public MailingListPanel(MailingBLService controller) {
+		this.controller = controller;
+		this.isSubmitted = true;
+		this.cities = this.controller.getAllCitiesArray();
+		this.init();
+	}
+	
+    public MailingListPanel(MailingListVO mailingListVO,MailingBLService controller) {
+    	this.controller = controller;
+		this.isSubmitted = false;
+		this.cities = this.controller.getAllCitiesArray();
+		this.init();
+		senderName.setText(mailingListVO.getSenderName());
+		senderCompany.setText(mailingListVO.getSenderCompany());
+        senderMobile.setText(mailingListVO.getSenderMobile());
+        senderPhone.setText(mailingListVO.getSenderPhone()); 
+     //   senderCity.Set 
+        senderPosition.setText(mailingListVO.getSenderPosition());
+        
+        
+       receiveName.setText(mailingListVO.getReceiveName());
+       receiveCompany.setText(mailingListVO.getReceiveCompany());
+       receiveMobile.setText(mailingListVO.getReceiveMobile()); 
+        receivePhone.setText(mailingListVO.getReceivePhone()); 
+     //   receiveCity.getSelectedItem().toString(), 
+       receivePosition.setText(mailingListVO.getSenderPosition()); 
+       
+       nameOfGood.setText(mailingListVO.getNameOfGood()); 
+       counts.setText(mailingListVO.getCounts()); 
+        weight.setText(mailingListVO.getWeight()); 
+        volume.setText(mailingListVO.getVolume()); 
+         costOfDecoration.setSelectedItem(mailingListVO.getCostOfDecoration()); 
+         type.setSelectedItem(mailingListVO.getType());
+         id.setText(mailingListVO.getId());
+         
+         id.setEditable(false);
+	}
+	
+	private void  init(){
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -81,9 +126,11 @@ public class MailingListPanel extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		
 		save = new JButton("保存");
-		
 		save.setFont(new Font("楷体", Font.PLAIN, 15));
 		panel_1.add(save);
+		
+		cancel = new JButton("取消");
+		panel_1.add(cancel);
 		
 		timeAndMoney = new JLabel("报价：0元       预计： 0 天后送达");
 		timeAndMoney.setFont(new Font("楷体", Font.PLAIN, 15));
@@ -268,7 +315,7 @@ public class MailingListPanel extends JPanel {
 		label_6.setForeground(new Color(255, 0, 0));
 		panel_16.add(label_6);
 		
-		receiveCity = new JComboBox();
+		receiveCity = new JComboBox(this.cities);
 		//receiveCity = new JComboBox<String>(cities);
 		
 		panel_16.add(receiveCity);
@@ -305,11 +352,13 @@ public class MailingListPanel extends JPanel {
 		panel_22.add(lblNewLabel_5);
 		lblNewLabel_5.setForeground(new Color(255, 0, 0));
 		
-		costOfDecoration = new JTextField();
+		String[]  costArray = {"1","2","5","10","20"};
+		costOfDecoration = new JComboBox(costArray);
+		costOfDecoration.setEnabled(true);
 		
 		costOfDecoration.setFont(new Font("楷体", Font.PLAIN, 14));
 		panel_22.add(costOfDecoration);
-		costOfDecoration.setColumns(10);
+		//costOfDecoration.setColumns(10);
 		
 		JPanel panel_23 = new JPanel();
 		panel_5.add(panel_23);
@@ -377,10 +426,22 @@ public class MailingListPanel extends JPanel {
 		id.setColumns(10);
 		
 		this.addListeners();
-		
+		this.makeFrame();
 		
 	}
 
+	private void makeFrame(){
+		frame = new JFrame();
+		JPanel contentPane;
+		frame.setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.add(this);
+		frame.setContentPane(contentPane);
+		frame.setVisible(true);
+	}
+	
 	private void addListeners(){
 		type.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -404,23 +465,22 @@ public class MailingListPanel extends JPanel {
 				setTimeAndMoney();
 			}
 		});
-		costOfDecoration.addCaretListener(new CaretListener() {
-			public void caretUpdate(CaretEvent e) {
-			//	handleTime();
-				if(!Numeric.isNumeric(costOfDecoration.getText())){
+		costOfDecoration.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				if(!Numeric.isRealNumber(costOfDecoration.getSelectedItem().toString())){
 					setMessage("！包装费用必须是数值");
 				}else{
 					setMessage("");
 					handlePrice();
 					setTimeAndMoney();
 				}
-				
 			}
 		});
 		counts.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 			//	handleTime();
-				if(!Numeric.isNumeric(counts.getText())){
+				if(!Numeric.isRealNumber(counts.getText())){
 					setMessage("！数目必须是数值");
 				}else{
 					setMessage("");
@@ -433,7 +493,7 @@ public class MailingListPanel extends JPanel {
 		weight.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 			//	handleTime();
-				if(!Numeric.isNumeric(weight.getText())){
+				if(!Numeric.isRealNumber(weight.getText())){
 					setMessage("！重量必须是数值");
 				}else{
 					setMessage("");
@@ -445,7 +505,7 @@ public class MailingListPanel extends JPanel {
 		volume.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 			//	handleTime();
-				if(!Numeric.isNumeric(volume.getText())){
+				if(!Numeric.isRealNumber(volume.getText())){
 					setMessage("！体积必须是数值");
 				}else{
 					setMessage("");
@@ -454,35 +514,37 @@ public class MailingListPanel extends JPanel {
 				}
 			}
 		});
-		
-		
-		save.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {
-				 buttonHandler();
+		cancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
 			}
-			
 		});
-		
+	
+		save.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonHandler();
+			}
+		});
 	}
 	
-	private void buttonHandler(){
-		System.out.println("fd fd ");
-		if(!Numeric.isNumeric(volume.getText())){
+	private  void buttonHandler(){
+		if(!Numeric.isRealNumber(volume.getText())){
 			setMessage("！体积必须是数值");
-		}else if(!Numeric.isNumeric(weight.getText())){
+		}else if(!Numeric.isRealNumber(weight.getText())){
 			setMessage("！重量必须是数值");
 		}else if(!Numeric.isNumeric(counts.getText())){
 			setMessage("！数目必须是数值");
-		}else if(!Numeric.isNumeric(costOfDecoration.getText())){
+		}else if(!Numeric.isRealNumber(costOfDecoration.getSelectedItem().toString())){
 			setMessage("！包装费用必须是数值");
 		}else if(senderName.getText().length()<3){
 			setMessage("！寄件人姓名不能少于两字节");
-		}else if(Numeric.isNumeric(senderMobile.getText()) || senderMobile.getText().length()!=11){
+		}else if(!Numeric.isNumeric(senderMobile.getText()) || senderMobile.getText().length()!=11){
 			setMessage("！寄件人手机不符合格式");
 		}else if(senderPosition.getText().isEmpty()){
 			setMessage("！寄件人地址不能为空");
-		}else if(receiveName.getText().length()<3){
+		}else if(receiveName.getText().length()<2){
 			setMessage("！收件人姓名不能少于两字节");
 		}else if(!Numeric.isNumeric(receiveMobile.getText()) ||
 				receiveMobile.getText().length()!=11){
@@ -491,10 +553,15 @@ public class MailingListPanel extends JPanel {
 			setMessage("！收件人地址不能为空");
 		}else if(id.getText().equals("")){
 			setMessage("！订单号不能为空");
-			System.out.print("id");
 		}
 		else{
-			handleSave();
+			MailingListVO vo = this.getVO();
+			if(this.isSubmitted){
+				controller.handleMailingList(vo) ;
+			}else{
+				controller.update(vo);
+			}
+			frame.dispose();
 		}
 	}
 	
@@ -507,26 +574,23 @@ public class MailingListPanel extends JPanel {
 	
 	
 	private void handleTime(){
-		int time = (int) controller.time(senderCity.getSelectedItem().toString(),
-				receiveCity.getSelectedItem().toString());
+		int time = (int) controller.time(senderCity.getSelectedIndex(),
+				receiveCity.getSelectedIndex());
 		this.time = time;
 	}
 	
 	private void handlePrice(){
 		this.money = (double) controller.price(
-				senderCity.getSelectedItem().toString(),
-                receiveCity.getSelectedItem().toString(), 
-                counts.getText(), weight.getText(), 
-                volume.getText(), costOfDecoration.getText(), 
-                type.getSelectedItem().toString()
+				senderCity.getSelectedIndex(),
+                receiveCity.getSelectedIndex(), 
+                 costOfDecoration.getSelectedItem().toString()
 				);
 		
 		
 	}
 	
-	private void handleSave(){
-		boolean result = controller.handleMailingList(
-				senderName.getText(), senderCompany.getText(),
+	private MailingListVO getVO(){
+		MailingListVO vo  = new MailingListVO(senderName.getText(), senderCompany.getText(),
                 senderMobile.getText(),senderPhone.getText(), 
                 senderCity.getSelectedItem().toString(), 
                 senderPosition.getText(), 
@@ -539,17 +603,20 @@ public class MailingListPanel extends JPanel {
                 counts.getText(), 
                 weight.getText(), 
                 volume.getText(), 
-                 costOfDecoration.getText(), 
+                 costOfDecoration.getSelectedItem().toString(), 
                  type.getSelectedItem().toString(), 
-                 id.getText()
-				);
-		if(result){
-			
-		}
-				
+                 id.getText(),State.SUBMITTED);
+		return vo;
 	}
 	
 	
 
+	public JFrame getFrame(){
+		return this.frame;
+	}
 	
+	
+	public JButton getSave() {
+		return save;
+	}
 }

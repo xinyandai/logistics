@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.OutBoundListVO;
-import org.module.client.vo.TransportListVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.ticketdataservice.OutBoundListService;
 import org.module.common.po.OutBoundListPO;
@@ -21,6 +20,9 @@ public class OutBoundVerify  implements TicketAndorderVerify{
 		this.List = new MyList<OutBoundListVO>();
 		try {
 			MyList<OutBoundListPO> pos = this.outBoundListDataGetter.getByState(State.SUBMITTED);
+			for (OutBoundListPO outBoundListPO : pos) {
+				this.List.add(new OutBoundListVO(outBoundListPO));
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

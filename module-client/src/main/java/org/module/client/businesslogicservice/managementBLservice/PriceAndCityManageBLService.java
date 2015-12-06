@@ -3,6 +3,7 @@ package org.module.client.businesslogicservice.managementBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.CityVO;
+import org.module.client.vo.PriceAndCityVO;
 
 
 public interface PriceAndCityManageBLService {
@@ -15,6 +16,10 @@ public interface PriceAndCityManageBLService {
 	 */
 	public ArrayList<CityVO> showAllCity();
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<String[]> toArray(); 
 
 	/**
@@ -25,7 +30,18 @@ public interface PriceAndCityManageBLService {
 	 */
 	public boolean addCity(String city,String id);
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public boolean deleteCity(String id);
+	/**
+	 * 
+	 * @param city
+	 * @param id
+	 * @return
+	 */
 	public boolean modifyCity(String city,String id);
 	
 	/**
@@ -36,11 +52,20 @@ public interface PriceAndCityManageBLService {
 	 * @param direction
 	 * @return
 	 */
-	public boolean setDiretionAndPrice(String cityA, String cityB,String distance,String price);
+	public boolean setDiretionAndPrice(int cityA, int cityB,String distance,String price);
 	/**
-	 * 前置：选择设置各费用（包装费/元，运费/元/km）
-	 * 后置：更新
-	 * 依赖：PriceAndCityDataService.update 更改一个PO
+	 * 前置：选择城市
+	 * 后置：
+	 * 依赖：PriceAndCityDataService  查找一个PO
+	 * @param o
+	 * @param direction
 	 * @return
 	 */
+	public PriceAndCityVO getDiretionAndPrice(int cityA, int cityB);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String[] getAllCitiesArray();
 }

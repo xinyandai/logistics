@@ -22,6 +22,9 @@ public class FileHelper {
 	public MyList<String> read(){
 		MyList<String> re =  new MyList<String>();		
 		try {
+			if(!file.exists()){
+				return re;
+			}
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			
@@ -36,8 +39,7 @@ public class FileHelper {
 		return re;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public boolean rewrite(ArrayList os){	
+	public boolean rewrite(ArrayList<? extends Object> os){	
 		try {
 			FileWriter fw = new FileWriter(file);
 			BufferedWriter br = new BufferedWriter(fw);
@@ -55,6 +57,9 @@ public class FileHelper {
 	
 	public boolean add(Object object) {
 		try {
+			if(!file.exists()){
+				file.createNewFile();
+			}
 			FileWriter fw = new FileWriter(file,true);
 			BufferedWriter br = new BufferedWriter(fw);
 			

@@ -16,32 +16,42 @@ public class OfficeLoading implements OfficeLoadingService {
 		officeLoadingData = new RmiClient().get(OfficeLoadingListService.class);
 	}
 	public boolean creat(OfficeLoadingListVO o) {
-		// TODO Auto-generated method stub
 		OfficeLoadingListPO newPO = new OfficeLoadingListPO(o.getLoadingDate(),o.getOfficeId()
 				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
 				,o.getShippingId(),o.getPrice(),o.getState()); 
 		try {
 			return officeLoadingData.add(newPO);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	public ArrayList<OfficeLoadingListVO> getAll(State s) {
-		// TODO Auto-generated method stub
+	
+	public boolean update(OfficeLoadingListVO o){
+		OfficeLoadingListPO newPO = new OfficeLoadingListPO(o.getLoadingDate(),o.getOfficeId()
+				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
+				,o.getShippingId(),o.getPrice(),o.getState()); 
+		try {
+			return officeLoadingData.update(newPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public ArrayList<OfficeLoadingListVO> getAll() {
 		ArrayList<OfficeLoadingListVO> newVOs = new ArrayList<OfficeLoadingListVO>();
 		ArrayList<OfficeLoadingListPO> POs = null;
 		try {
-			 POs = officeLoadingData.getByState(s);
+			 POs = officeLoadingData.getAll();
+			 for(int i =0;i<POs.size();i++){
+					newVOs.add(new OfficeLoadingListVO(POs.get(i)));
+			 }
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		for(int i =0;i<POs.size();i++){
-			newVOs.add(new OfficeLoadingListVO(POs.get(i)));
-		}
+		
 		return newVOs;
 	}
 

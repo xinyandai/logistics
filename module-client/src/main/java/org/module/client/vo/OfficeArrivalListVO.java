@@ -10,50 +10,12 @@ import org.module.common.po.State;
  * @author 
  *
  */
-public class OfficeArrivalListVO extends AbstractVO{
+public class OfficeArrivalListVO extends AbstractArrialListVO{
 
-	private String officeid;
-	private String date;
-	private String transportListId;
-	private String origin;
-	private String stateOfGoods;
-	private State state;
 	
-	
-	public String getOfficeid() {
-		return officeid;
-	}
-	public void setOfficeid(String officeid) {
-		this.officeid = officeid;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getTransportListId() {
-		return transportListId;
-	}
-	public void setTransportListId(String transportListId) {
-		this.transportListId = transportListId;
-	}
-	public String getOrigin() {
-		return origin;
-	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
-	public State getState() {
-		return state;
-	}
-	public void setState(State state) {
-		this.state = state;
-	}
 	public OfficeArrivalListVO(String officeid, String date,
 			String transportListId, String origin, String stateOfGoods,State state) {
-		super();
-		this.officeid = officeid;
+		this.departmentID = officeid;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
@@ -71,16 +33,12 @@ public class OfficeArrivalListVO extends AbstractVO{
 		
 		);
 	}
-	public String getStateOfGoods() {
-		return stateOfGoods;
-	}
-	public void setStateOfGoods(String stateOfGoods) {
-		this.stateOfGoods = stateOfGoods;
-	}
+	
+	
 	public OfficeArrivalListPO toPO(State state) {
 		// TODO Auto-generated method stub
 		return new OfficeArrivalListPO(
-				getOfficeid(),
+				getDepartmentId(),
 				getDate(),
 				getTransportListId(),
 				getOrigin(),
@@ -89,16 +47,7 @@ public class OfficeArrivalListVO extends AbstractVO{
 		        );
 	}
 	
-	public String[] toArray(){
-		String[] s = {
-				getOfficeid(),
-				getDate(),
-				getTransportListId(),
-				getOrigin(),
-		        getStateOfGoods(),
-		};
-		return s;
-	}
+	
 	
 	@Override
 	public String get(int i) {

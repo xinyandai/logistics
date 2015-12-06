@@ -26,6 +26,13 @@ public interface TranCenterArrivalService {
 	 * 依赖：TranCenterArrivalListService.getAll 返回所有的接受单PO
 	 * @return
 	 */
-	public ArrayList<TranCenterArrivalListVO> getAll(State s);
+	public ArrayList<TranCenterArrivalListVO> getAll( );
+	
+	/**
+	 * 重新提交修改的单据
+	 * @param o
+	 * @return
+	 */
+	public boolean update(TranCenterArrivalListVO o);
 	
 }

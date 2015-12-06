@@ -14,16 +14,21 @@ public interface OfficeLoadingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String loadingDate, String officeId,
-			String trucksId, String city,String location, String carId, String supervision,
-			String escort, String[] shippingId, String price);
+	public boolean creat(OfficeLoadingListVO  vo);
+	
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(OfficeLoadingListVO  vo);
 	/**
 	 * 前置：选择查看所有装车单
 	 * 后置：显示所有收件单
 	 * 依赖：OfficeLoadingListService.getAll 返回所有的营业厅装车单PO
 	 * @return
 	 */
-	public ArrayList<OfficeLoadingListVO> getAll(State s);
+	public ArrayList<OfficeLoadingListVO> getAll( );
 	
 	/**
 	 * 计算运费

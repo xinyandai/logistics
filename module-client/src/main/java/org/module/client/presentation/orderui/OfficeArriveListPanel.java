@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.orderbl.OfficeArrivalController;
 import org.module.client.businesslogicservice.orderBLservice.OfficeArrivalBLService;
+import org.module.client.vo.OfficeArrivalListVO;
+import org.module.common.po.State;
 
 public class OfficeArriveListPanel extends JPanel {
 	/**
@@ -145,12 +147,12 @@ public class OfficeArriveListPanel extends JPanel {
 		determine.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controller.creat(officeID.getText(), 
+				controller.creat(new OfficeArrivalListVO (officeID.getText(), 
 					    time.getDate().getTime()+"",
 						transportID.getText(), 
 						origin.getText(), 
 						state.getSelectedItem().toString(), 
-						"提交");
+						State.PASS));
 			}
 		});
 	}

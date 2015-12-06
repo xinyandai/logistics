@@ -89,7 +89,7 @@ public class TransportListPO implements Serializable{
 			return re;
 		}
 		final private String spt = ":%:%:";
-		final private String inlinespt = "#*#*#";
+		final private String inlinespt = "&&&&&&&";
 		
 		public String getCar() {
 			return car;

@@ -40,5 +40,20 @@ public class TranCenterLoadingBLService_stub implements TranCenterLoadingBLServi
 		return false;
 	}
 
+	public boolean creat(TranCenterLoadingListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean update(TranCenterLoadingListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<TranCenterLoadingListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

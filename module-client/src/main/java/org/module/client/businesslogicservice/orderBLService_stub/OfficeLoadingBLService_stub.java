@@ -42,6 +42,21 @@ public class OfficeLoadingBLService_stub implements OfficeLoadingBLService{
 		return false;
 	}
 
+	public boolean creat(OfficeLoadingListVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean update(OfficeLoadingListVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<OfficeLoadingListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 
