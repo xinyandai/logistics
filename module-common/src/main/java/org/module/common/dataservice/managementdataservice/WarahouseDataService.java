@@ -8,8 +8,6 @@ import org.module.common.po.WarehousePO;
 
 
 /**
- * 20151022
- * 仓库信息
  * @author 颜
  */
 public interface WarahouseDataService  extends Remote{

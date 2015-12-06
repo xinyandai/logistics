@@ -12,6 +12,7 @@ public class StuffManageTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		stuff = new StuffManageController(new StuffMock(),new CalculateSalaryMock());
+		stuff.showAll();
 	}
 
 	
@@ -35,10 +36,6 @@ public class StuffManageTest extends TestCase {
 
 	public void testModify() {
 		assert(stuff.update("name","18","快递员","140010001"));
-	}
-
-	public void testFuzzySearch() {
-		assert(stuff.fuzzySearch("140010001").size()>0);
 	}
 
 }

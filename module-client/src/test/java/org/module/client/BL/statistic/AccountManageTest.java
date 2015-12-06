@@ -14,6 +14,7 @@ public class AccountManageTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		account =new AccountManageController( new AccountMock());
+		account.showAll();
 	}
 
 	
