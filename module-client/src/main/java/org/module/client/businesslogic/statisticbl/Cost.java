@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statistic.CostService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.CostListVO;
 import org.module.common.dataservice.statisticdataservice.CostDataService;
 import org.module.common.po.CostListPO;
@@ -21,7 +22,6 @@ public class Cost implements CostService {
 			return data.addCostList(new CostListPO(vo.getDate(),vo.getMoney()+"",vo.getPeople(),
 					vo.getAccout(),vo.getEntry(),vo.getNote()));
 		} catch (RemoteException e) {
-			
 			e.printStackTrace();
 		}
 		return false;
@@ -32,8 +32,8 @@ public class Cost implements CostService {
 		try {
 			ArrayList<CostListPO> pos = this.data.getAll();
 			for (CostListPO po : pos) {
-                long time = Long.parseLong(po.getDate());
-				if(time<endTime && time>startTime){
+                long time = DateTransferHelper.getDate(po.getDate()).getTime();
+				if(time<=endTime && time>=startTime){
 					vos.add(new CostListVO(po.getDate(),po.getMoney()+"",po.getPeople(),
 							po.getAccout(),po.getEntry(),po.getNote()));
 				}

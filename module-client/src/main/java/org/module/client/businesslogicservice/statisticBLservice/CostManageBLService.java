@@ -19,8 +19,7 @@ public interface CostManageBLService {
 	 * @param c
 	 * @return
 	 */
-	public boolean add(String date, String money, String people, String accout,
-			String entry, String note);
+	public boolean add(CostListVO vo);
 	/**
 	 * 前置：选择查看所有成本支出
 	 * 后置：显示所有付款单

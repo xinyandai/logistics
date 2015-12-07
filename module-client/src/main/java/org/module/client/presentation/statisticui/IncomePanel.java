@@ -19,6 +19,12 @@ import org.module.client.businesslogic.statisticbl.IncomeManageController;
 import org.module.client.businesslogicservice.statisticBLservice.IncomeManageBLService;
 import org.module.client.presentation.Table;
 import org.module.client.vo.ReceiptVO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /**
 	 * 
 	 * 单号
@@ -40,15 +46,47 @@ public class IncomePanel extends JPanel {
 	private IncomeManageBLService controller  = new IncomeManageController();
 	private JScrollPane scrollPane;
 	private JComboBox<String> office;
+	private JButton update;
 	
 	
 	public IncomePanel() {
 		this.officeArray = this.controller.getAllOffice();
 		this.init();
-		this.listData = this.controller.showIncomeList(office.getSelectedItem().toString(), this.startTimePicker.getDate().getTime(), 
+		if(this.officeArray.length > 0){
+			this.listData = this.controller.showIncomeList(office.getSelectedItem().toString(), this.startTimePicker.getDate().getTime(), 
 				this.endTimePicker.getDate().getTime());
+		}
 		table = new Table(listData,columnNames);
 		scrollPane.setViewportView(new JTable(table));
+		
+		addListeners();
+	}
+	
+	private void addListeners(){
+		update.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				 refresh();
+			}
+		});
+		
+		office.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				 refresh();
+			}
+		});
+		
+		startTimePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 refresh();
+			}
+		});
+		endTimePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 refresh();
+			}
+		});
+		
 	}
 	
 	private void refresh(){
@@ -64,24 +102,20 @@ public class IncomePanel extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JButton add = new JButton("增");
+		update = new JButton("同步");
 		
-		JButton update = new JButton("同步");
+		update.setToolTipText("同步");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(334, Short.MAX_VALUE)
-					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addContainerGap(393, Short.MAX_VALUE)
 					.addComponent(update))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(update)
-						.addComponent(add))
+					.addComponent(update)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -91,6 +125,7 @@ public class IncomePanel extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setToolTipText("");
 		panel_1.add(scrollPane);
 		
 		
@@ -104,15 +139,11 @@ public class IncomePanel extends JPanel {
 		
 		JLabel label = new JLabel("选择起止时间");
 		
-		
-		
 		startTimePicker = new JXDatePicker();
 		startTimePicker.setDate(new Date());
 		
-		
 		endTimePicker = new JXDatePicker();
 		endTimePicker.setDate(new Date());
-		
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(

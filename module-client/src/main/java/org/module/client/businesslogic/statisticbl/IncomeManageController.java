@@ -31,12 +31,10 @@ public class IncomeManageController implements IncomeManageBLService {
 	}
 
 	public boolean add(String date, String money, String courier, String[] orderId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public String[] getAllOffice() {
-		// TODO Auto-generated method stub
 		return this.office.getName();
 	}
 

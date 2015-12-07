@@ -90,7 +90,7 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 	private void updateLogistics(TranCenterArrivalListVO officeArrivalListVO){
 		
 		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getDepartmentId() );
-		String departmentLocation = this.departmentFinder.getCityById( officeArrivalListVO.getDepartmentId() );
+		String departmentLocation = this.departmentFinder.getLocationById( officeArrivalListVO.getDepartmentId() );
 		String date = new Date().toString();
 		try {
 			String[] allOrders = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId()).getShippingId();

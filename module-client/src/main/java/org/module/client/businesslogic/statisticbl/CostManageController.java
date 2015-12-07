@@ -17,10 +17,9 @@ public class CostManageController implements CostManageBLService {
 		cost = new Cost();
 	}
 
-	public boolean add(String date, String money, String people,
-			String account, String entry, String note) {
+	public boolean add(CostListVO vo) {
 		// TODO Auto-generated method stub
-		return cost.creatCostList(new CostListVO(date,money,people,account,entry,note));
+		return cost.creatCostList(vo);
 	}
 
 	public ArrayList<CostListVO> showAll(long startTime, long endTime) {

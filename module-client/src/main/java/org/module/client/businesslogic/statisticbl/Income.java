@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statistic.IncomeService;
+import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.ReceiptVO;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.po.ReceiptPO;
@@ -11,7 +12,7 @@ import org.module.common.po.State;
 
 public class Income implements IncomeService {
 
-	private ReceiptListService data ;
+	private ReceiptListService data = new RmiClient().get(ReceiptListService.class);
 
 	public ArrayList<ReceiptVO> getAllIncomeList(String office,
 			long startTime, long endTime) {

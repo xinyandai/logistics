@@ -29,5 +29,10 @@ public class CostManageBLService_stub implements CostManageBLService{
 		return null;
 	}
 
+	public boolean add(CostListVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

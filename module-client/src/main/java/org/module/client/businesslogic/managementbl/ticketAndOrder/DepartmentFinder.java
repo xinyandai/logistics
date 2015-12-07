@@ -16,16 +16,14 @@ public class DepartmentFinder {
 		try {
 			return this.department.findById(id).getName();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return id;
 	}
-	public String getCityById(String id){
+	public String getLocationById(String id){
 		try {
 			return this.department.findById(id).getLocation();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return id;
