@@ -27,6 +27,13 @@ public interface SendingService {
 	 * 依赖：SendingListService.getAll 返回所有派件单 PO
 	 * @return
 	 */
-	public ArrayList<SendingListVO> getAll(State s);
+	public ArrayList<SendingListVO> getAll();
+	
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(SendingListVO vo);
 	
 }

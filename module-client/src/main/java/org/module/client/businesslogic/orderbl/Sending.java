@@ -30,12 +30,12 @@ public class Sending implements SendingService {
 		}
 	}
 
-	public ArrayList<SendingListVO> getAll(State s) {
+	public ArrayList<SendingListVO> getAll() {
 		// TODO Auto-generated method stub
 		ArrayList<SendingListVO> newVOs = new ArrayList<SendingListVO>();
 		ArrayList<SendingListPO> POs = null;
 		try {
-			 POs = sendingData.getByState(s);
+			 POs = sendingData.getAll();
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -44,6 +44,16 @@ public class Sending implements SendingService {
 			newVOs.add(new SendingListVO(POs.get(i)));
 		}
 		return newVOs;
+	}
+
+	public boolean update(SendingListVO vo) {
+		SendingListPO newPO = vo.toPO(); 
+		try {
+			return sendingData.update(newPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

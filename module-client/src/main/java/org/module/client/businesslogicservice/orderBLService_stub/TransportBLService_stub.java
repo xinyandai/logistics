@@ -28,5 +28,30 @@ public class TransportBLService_stub implements TransportBLService{
 		return false;
 	}
 
+	public boolean creat(TransportListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean update(TransportListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<TransportListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String[] getCityArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double calculateDriverCost(String origin, String target) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

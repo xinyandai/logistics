@@ -17,12 +17,6 @@ import org.module.common.po.TranCenterArrivalListPO;
 
 public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 
-	private String departmentID;
-	private String date;
-	private String transportListId;
-	private String origin;
-	private String stateOfGoods;
-	private State state;
 	
 	public TranCenterArrivalListVO(String transId, String date,
 			String transportListId, String origin, String stateOfGoods,State state) {
@@ -64,7 +58,6 @@ public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 	}
 	@Override
 	public String get(int i) {
-		// TODO Auto-generated method stub
 		return this.toArray()[i];
 	}
 	@Override

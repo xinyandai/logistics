@@ -22,4 +22,14 @@ public class TransportMock implements TransportService {
 		return null;
 	}
 
+	public boolean update(TransportListVO o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<TransportListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

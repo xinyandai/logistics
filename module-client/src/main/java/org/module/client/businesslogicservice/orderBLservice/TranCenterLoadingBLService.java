@@ -3,7 +3,6 @@ package org.module.client.businesslogicservice.orderBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.TranCenterLoadingListVO;
-import org.module.common.po.State;
 
 
 public interface TranCenterLoadingBLService {

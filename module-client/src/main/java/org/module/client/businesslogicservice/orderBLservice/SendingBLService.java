@@ -20,13 +20,19 @@ public interface SendingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean creat(String date, String shippingId, String sendMember);
+	public boolean creat(SendingListVO vo);
 	/**
 	 * 前置：选择查看所有派件单
 	 * 后置：显示所有收件单
 	 * 依赖：SendingListService.getAll 返回所有派件单 PO
 	 * @return
 	 */
-	public ArrayList<SendingListVO> getAll(State s);
+	public ArrayList<SendingListVO> getAll();
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(SendingListVO vo);
 
 }

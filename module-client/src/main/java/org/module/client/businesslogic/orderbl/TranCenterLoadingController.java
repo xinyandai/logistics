@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.businesslogicservice.orderBLservice.TranCenterLoadingBLService;
-import org.module.client.vo.OfficeLoadingListVO;
 import org.module.client.vo.TranCenterLoadingListVO;
 
 public class TranCenterLoadingController implements TranCenterLoadingBLService {

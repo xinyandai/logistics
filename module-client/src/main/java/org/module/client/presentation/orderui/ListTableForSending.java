@@ -4,23 +4,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import org.module.client.businesslogic.orderbl.TranCenterArrivalController;
-import org.module.client.businesslogicservice.orderBLservice.TranCenterArrivalBLService;
-import org.module.client.vo.TranCenterArrivalListVO;
+import org.module.client.businesslogic.orderbl.SendingController;
+import org.module.client.businesslogicservice.orderBLservice.SendingBLService;
+import org.module.client.vo.SendingListVO;
 
-public class ListTableForTranCenterArrival extends ListTableForAll {
+public class ListTableForSending extends ListTableForAll {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7153348124509119710L;
+	private static final long serialVersionUID = 2924001557039265431L;
 
-	private TranCenterArrivalBLService controller ;
-	protected ArrayList<TranCenterArrivalListVO> listCell;
-	
+	protected ArrayList<SendingListVO> listCell;
+	private SendingBLService controller ;
 	@Override
 	protected void initData() {
-		controller = new TranCenterArrivalController();
+		controller = new SendingController();
 		this.listCell = this.controller.getAll();
 		if(this.listCell.size()>0){
 			this.typeArray = this.listCell.get(0).names();
@@ -44,10 +43,10 @@ public class ListTableForTranCenterArrival extends ListTableForAll {
 		if(indexes.length!=1){
 			return;
 		}
-		final NewTranCenterArrivalListInputFrame frame = 
-				new NewTranCenterArrivalListInputFrame(this.listCell.get(indexes[0]));
+		final NewSendingListInputFrame frame = 
+				new NewSendingListInputFrame(this.listCell.get(indexes[0]));
 		frame.setVisible(true);
-		frame.getComfirmButton().addMouseListener(new MouseAdapter() {
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
@@ -61,10 +60,10 @@ public class ListTableForTranCenterArrival extends ListTableForAll {
 
 	@Override
 	protected void add() {
-		final NewTranCenterArrivalListInputFrame frame = 
-				new NewTranCenterArrivalListInputFrame();
+		final NewSendingListInputFrame frame = 
+				new NewSendingListInputFrame();
 		frame.setVisible(true);
-		frame.getComfirmButton().addMouseListener(new MouseAdapter() {
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){

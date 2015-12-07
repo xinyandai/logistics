@@ -5,37 +5,50 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.TransportService;
 import org.module.client.businesslogicservice.orderBLservice.TransportBLService;
 import org.module.client.vo.TransportListVO;
-import org.module.common.po.State;
 
 public class TransportController implements TransportBLService {
 
 	private TransportService transport;
-//	private LogisticsService logistics;
+	private CalculateDriverCost cityAndCost;
+	private ArrayList<TransportListVO> list;
 	
 	public TransportController() {
 
 		this.transport = new Transport();
-//		this.logistics = new Logistics();
+		cityAndCost = new CalculateDriverCost();
 	}
 
 	public TransportController(TransportService transport ) {
 		super();
 		this.transport = transport;
-//		this.logistics = logistics;
 	}
 
-	public boolean creat(String car, String loadingDate, String transId,
-			String carId, String origin, String arrival, String counterId,
-			String supervision, String[] shippingId, String price) {
-		// TODO Auto-generated method stub
-		return this.transport.creat(new TransportListVO( car,  loadingDate,  transId,
-			 carId,  origin,  arrival,  counterId,
-			 supervision,  shippingId,  price,State.SUBMITTED));
+	public boolean creat(TransportListVO o) {
+		this.list.add(o);
+		return this.transport.creat(o);
 	}
 
-	public ArrayList<TransportListVO> getAll(State s) {
-		// TODO Auto-generated method stub
-		return this.transport.getAll(s);
+	public ArrayList<TransportListVO> getAll() {
+		this.list =  this.transport.getAll();
+		return list;
 	}
 
+	public boolean update(TransportListVO o) {
+		for (TransportListVO transportListVO : list) {
+			if(transportListVO.getTransId().equals(o.getTransId())){
+				list.remove(transportListVO);
+				list.add(o);
+				return this.transport.update(transportListVO);
+			}
+		}
+		return false;
+	}
+
+	public String[] getCityArray() {
+		return this.cityAndCost.getAllCitiesArray();
+	}
+
+	public double calculateDriverCost(String origin, String target) {
+		return this.cityAndCost.calculateDriverCostByCityName(origin, target);
+	}
 }

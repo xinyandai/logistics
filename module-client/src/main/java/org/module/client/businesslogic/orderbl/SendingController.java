@@ -5,33 +5,43 @@ import java.util.ArrayList;
 import org.module.client.businesslogicservice.order.SendingService;
 import org.module.client.businesslogicservice.orderBLservice.SendingBLService;
 import org.module.client.vo.SendingListVO;
-import org.module.common.po.State;
 
 
 public class SendingController implements SendingBLService {
 
 	private SendingService sending;
-//	private LogisticsService logistics;
+	private ArrayList<SendingListVO> list;
 
 	public SendingController() {
 
 		this.sending = new Sending();
-//		this.logistics = new Logistics();
 	}
 
 	public SendingController(SendingService sending ) {
 		super();
 		this.sending = sending;
-//		this.logistics = logistics;
 	}
 
-	public boolean creat(String date, String shippingId, String sendMember) {
-		return this.sending.creat(new SendingListVO( date,  shippingId,  sendMember,State.SUBMITTED));
+	public boolean creat(SendingListVO vo) {
+		this.list.add(vo);
+		return this.sending.creat(vo);
 	}
 
-	public ArrayList<SendingListVO> getAll(State s) {
-		// TODO Auto-generated method stub
-		return this.sending.getAll(s);
+	public ArrayList<SendingListVO> getAll() {
+		this.list =  this.sending.getAll( );
+		return list;
+	}
+
+	public boolean update(SendingListVO vo) {
+		for (SendingListVO sendingListVO : list) {
+			if(sendingListVO.getShippingId().equals(vo.getShippingId())){
+				sendingListVO.setDate(vo.getDate());
+				sendingListVO.setSendMember(vo.getSendMember());
+				sendingListVO.setState(vo.getState());
+				return this.sending.update(vo);
+			}
+		}
+		return false;
 	}
 
 }

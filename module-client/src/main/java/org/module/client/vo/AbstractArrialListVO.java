@@ -1,7 +1,6 @@
 package org.module.client.vo;
 
 import org.module.common.po.State;
-import org.module.common.po.TranCenterArrivalListPO;
 
 public abstract class AbstractArrialListVO extends AbstractVO{
 	protected String departmentID;

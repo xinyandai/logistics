@@ -24,5 +24,20 @@ public class SendingBLService_stub implements SendingBLService{
 		return false;
 	}
 
+	public boolean creat(SendingListVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<SendingListVO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean update(SendingListVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

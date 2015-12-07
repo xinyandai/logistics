@@ -12,8 +12,8 @@ import javax.swing.border.EmptyBorder;
 import org.module.client.presentation.managementui.Cars;
 import org.module.client.presentation.managementui.DriversPanel;
 import org.module.client.presentation.orderui.ListTableForOfficeArrival;
-import org.module.client.presentation.orderui.OfficeLoadListPanel;
-import org.module.client.presentation.orderui.SengdingListPanel;
+import org.module.client.presentation.orderui.ListTableForOfficeLoading;
+import org.module.client.presentation.orderui.ListTableForSending;
 import org.module.client.presentation.statisticui.ReceiptPanel;
 
 public class OfficeClerkFrame extends JFrame {
@@ -66,13 +66,13 @@ public class OfficeClerkFrame extends JFrame {
 		JPanel panel_2 = new DriversPanel();
 		tabbedPane.addTab("司机管理", null, panel_2, null);
 		
-		JPanel panel_3 = new OfficeLoadListPanel();
+		JPanel panel_3 = new ListTableForOfficeLoading();
 		tabbedPane.addTab("订单装车", null, panel_3, null);
 		
 		JPanel panel_4 = new ListTableForOfficeArrival();
 		tabbedPane.addTab("订单接收", null, panel_4, null);
 		
-		JPanel panel_5 = new SengdingListPanel();
+		JPanel panel_5 = new ListTableForSending();
 		tabbedPane.addTab("订单派送", null, panel_5, null);
 		
 		JPanel panel_6 = new ReceiptPanel();

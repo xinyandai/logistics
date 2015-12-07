@@ -6,11 +6,11 @@ import org.module.common.po.State;
 
 public class TransportBLService_Driver {
 	public void drive(TransportBLService transportBLService){
-		String[] s = { "shippingId"};
+		/*String[] s = { "shippingId"};
 		boolean result=transportBLService.creat("car", "loadingDate","transId",
 				"carId", "origin",  "arrival", "counterId",
 				"supervision", s,"price");
-		if(result)
+		if(result)*/
 			System.out.println("creat suuccessfully!");
 	}
 }

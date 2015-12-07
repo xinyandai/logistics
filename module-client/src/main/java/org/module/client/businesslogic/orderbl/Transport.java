@@ -21,20 +21,17 @@ public class Transport implements TransportService {
 		try {
 			return transportData.add(newPO);
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	public ArrayList<TransportListVO> getAll(State s) {
-		// TODO Auto-generated method stub
+	public ArrayList<TransportListVO> getAll() {
 		ArrayList<TransportListVO> newVOs = new ArrayList<TransportListVO>();
 		ArrayList<TransportListPO> POs = null;
 		try {
-			 POs = transportData.getByState(s);
+			 POs = transportData.getAll();
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
@@ -42,5 +39,16 @@ public class Transport implements TransportService {
 		}
 		return newVOs;
 	}
+
+	public boolean update(TransportListVO o) {
+		try {
+			return this.transportData.update(o.toPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	
 
 }

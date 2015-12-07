@@ -4,23 +4,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import org.module.client.businesslogic.orderbl.TranCenterArrivalController;
-import org.module.client.businesslogicservice.orderBLservice.TranCenterArrivalBLService;
-import org.module.client.vo.TranCenterArrivalListVO;
+import org.module.client.businesslogic.orderbl.TransportController;
+import org.module.client.businesslogicservice.orderBLservice.TransportBLService;
+import org.module.client.vo.TransportListVO;
 
-public class ListTableForTranCenterArrival extends ListTableForAll {
+public class ListTableForTransport extends ListTableForAll{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7153348124509119710L;
-
-	private TranCenterArrivalBLService controller ;
-	protected ArrayList<TranCenterArrivalListVO> listCell;
 	
+	private static final long serialVersionUID = 4297040531877933600L;
+	private TransportBLService controller;
+	protected ArrayList< TransportListVO> listCell;
 	@Override
 	protected void initData() {
-		controller = new TranCenterArrivalController();
+		this.controller = new  TransportController();
 		this.listCell = this.controller.getAll();
 		if(this.listCell.size()>0){
 			this.typeArray = this.listCell.get(0).names();
@@ -35,7 +31,7 @@ public class ListTableForTranCenterArrival extends ListTableForAll {
 		}
 		this.table.setList(listCell);
 		this.table.setName(typeArray);
-		this.table.fireTableDataChanged();
+		this.table.fireTableDataChanged();;
 	}
 
 	@Override
@@ -44,10 +40,11 @@ public class ListTableForTranCenterArrival extends ListTableForAll {
 		if(indexes.length!=1){
 			return;
 		}
-		final NewTranCenterArrivalListInputFrame frame = 
-				new NewTranCenterArrivalListInputFrame(this.listCell.get(indexes[0]));
+		final NewTransportListInputFrame frame = new NewTransportListInputFrame(
+				this.controller.getCityArray(),
+				this.listCell.get(indexes[0]) );
 		frame.setVisible(true);
-		frame.getComfirmButton().addMouseListener(new MouseAdapter() {
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
@@ -61,10 +58,11 @@ public class ListTableForTranCenterArrival extends ListTableForAll {
 
 	@Override
 	protected void add() {
-		final NewTranCenterArrivalListInputFrame frame = 
-				new NewTranCenterArrivalListInputFrame();
+		final NewTransportListInputFrame frame = new NewTransportListInputFrame(
+				this.controller.getCityArray()
+				 );
 		frame.setVisible(true);
-		frame.getComfirmButton().addMouseListener(new MouseAdapter() {
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){

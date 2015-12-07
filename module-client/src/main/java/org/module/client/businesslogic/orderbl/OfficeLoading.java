@@ -15,10 +15,9 @@ public class OfficeLoading implements OfficeLoadingService {
 		officeLoadingData = new RmiClient().get(OfficeLoadingListService.class);
 	}
 	public boolean creat(OfficeLoadingListVO o) {
-		OfficeLoadingListPO newPO = new OfficeLoadingListPO(o.getLoadingDate(),o.getOfficeId()
-				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
-				,o.getShippingId(),o.getPrice(),o.getState()); 
+		OfficeLoadingListPO newPO = o.toPO(); 
 		try {
+			 System.out.println("creat");
 			return officeLoadingData.add(newPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -28,9 +27,7 @@ public class OfficeLoading implements OfficeLoadingService {
 
 	
 	public boolean update(OfficeLoadingListVO o){
-		OfficeLoadingListPO newPO = new OfficeLoadingListPO(o.getLoadingDate(),o.getOfficeId()
-				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
-				,o.getShippingId(),o.getPrice(),o.getState()); 
+		OfficeLoadingListPO newPO = o.toPO(); 
 		try {
 			return officeLoadingData.update(newPO);
 		} catch (RemoteException e) {
