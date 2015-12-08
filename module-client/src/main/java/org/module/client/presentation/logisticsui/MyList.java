@@ -32,7 +32,7 @@ public class MyList extends JList<Object>{
 					}
 					JPanel panel = new JPanel ();
 					JLabel lable1 = new JLabel(((String[]) value)[0]);
-					JLabel lable2 = new JLabel(((String[]) value)[0]);
+					JLabel lable2 = new JLabel(((String[]) value)[1]);
 					panel.add(lable1);
 					panel.add(lable2);
 				return panel;

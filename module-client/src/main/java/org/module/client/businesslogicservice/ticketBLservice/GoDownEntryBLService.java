@@ -1,5 +1,9 @@
 package org.module.client.businesslogicservice.ticketBLservice;
 
+import java.util.ArrayList;
+
+import org.module.client.vo.GoDownEntryVO;
+
 
 /**
  * 入库管理
@@ -15,7 +19,17 @@ public interface GoDownEntryBLService {
 	 * @param t
 	 * @return
 	 */
-	public boolean createTicket( String warehouseOfWhichTranCenter,String courier, String date, String destination,
-			String qu, String pai, String jia, String wei);
+	public boolean createTicket( GoDownEntryVO vo);
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<GoDownEntryVO> getAll(long start , long end);
 	
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update( GoDownEntryVO vo);
 }

@@ -12,12 +12,11 @@ public class ListTableForMailingList extends ListTableForAll {
 
 	private static final long serialVersionUID = 83627053089339309L;
 	protected ArrayList<MailingListVO> listCell;
-	private MailingBLService controller = new MailingControl();
+	private MailingBLService controller ;
+	
 	@Override
 	protected void initData() {
-		if(this.controller ==null){
-			controller = new MailingControl();
-		}
+		controller = new MailingControl();
 		this.listCell = this.controller.getAll();
 		if(listCell.size()>0){
 			this.typeArray = this.listCell.get(0).names();
@@ -27,7 +26,7 @@ public class ListTableForMailingList extends ListTableForAll {
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell!=null){
+		if(this.listCell.size()>0){
 			this.typeArray = this.listCell.get(0).names();
 		}
 		this.table.setList(listCell);

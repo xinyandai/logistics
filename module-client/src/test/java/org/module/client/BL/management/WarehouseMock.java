@@ -1,8 +1,10 @@
 package org.module.client.BL.management;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
@@ -12,7 +14,7 @@ public class WarehouseMock implements WarehouseManageService{
 	public ArrayList<WarehouseVO> getAll() {
 		// TODO Auto-generated method stub
 		ArrayList<WarehouseVO> re = new ArrayList<WarehouseVO>();
-		re.add(new WarehouseVO("10086","1","1","1","1","warehouse",615613531));
+		re.add(new WarehouseVO("10086","1","1","1","1","warehouse",DateTransferHelper.getString(new Date())));
 		return re;
 	}
 

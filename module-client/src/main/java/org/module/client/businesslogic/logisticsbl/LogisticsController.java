@@ -16,6 +16,7 @@ public class LogisticsController implements LogisticsBLService{
 	}
 	
 	public LogisticsVO showState(String id) {
+		
 		return Logistics.showState(id);
 	}
 	

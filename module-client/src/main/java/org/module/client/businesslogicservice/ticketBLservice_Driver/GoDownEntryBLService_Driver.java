@@ -6,9 +6,9 @@ import org.module.client.businesslogicservice.ticketBLservice.GoDownEntryBLServi
 public class GoDownEntryBLService_Driver {
 	public void drive(GoDownEntryBLService goDownEntryBLService){
 //		GoDownEntryVO d=new GoDownEntryVO("courier","date", "destination",	"qu", "pai","jia", "wei");
-		boolean creat=goDownEntryBLService.createTicket("025156","courier","date", "destination",
+		/*boolean creat=goDownEntryBLService.createTicket("025156","courier","date", "destination",
 				"qu", "pai","jia", "wei");
-		if(creat)
+		if(creat)*/
 			System.out.println("creat successfully!");
 		
 		

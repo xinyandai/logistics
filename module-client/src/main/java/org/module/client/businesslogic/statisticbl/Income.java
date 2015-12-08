@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statistic.IncomeService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
+import org.module.client.vo.CostListVO;
 import org.module.client.vo.ReceiptVO;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.po.ReceiptPO;
@@ -19,14 +21,24 @@ public class Income implements IncomeService {
 		
 		ArrayList<ReceiptVO> vos = new ArrayList<ReceiptVO>();
 		try {
+			
+			
+			
 			ArrayList<ReceiptPO> pos = this.data.getAll();
 			for (ReceiptPO po : pos) {
-				vos.add(new ReceiptVO(po.getDate() , 
-						po.getMoney() ,
-						po.getCourier() ,
-						po.getOrderId()
-						)
-				);
+				/**
+				 * 把时间转换为毫秒比较
+				 */
+	            long time = DateTransferHelper.getDate(po.getDate()).getTime();
+				if(time<=endTime && time>=startTime){
+					vos.add(new ReceiptVO(po.getDate() , 
+							po.getMoney() ,
+							po.getCourier() ,
+							po.getOrderId()
+							)
+					);
+				}
+				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

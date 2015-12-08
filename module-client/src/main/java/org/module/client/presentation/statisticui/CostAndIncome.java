@@ -1,6 +1,8 @@
 package org.module.client.presentation.statisticui;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 
 import javax.swing.JLabel;
@@ -82,7 +84,6 @@ public class CostAndIncome extends JPanel {
 		//endTimePicker = new JTextField();
 		//endTimePicker.setText("0元");
 		endTimePicker.setFont(new Font("楷体", Font.PLAIN, 16));
-		endTimePicker.setEditable(false);
 		//endTimePicker.setColumns(10);
 		endTimePicker.setBounds(145, 59, 95, 21);
 		add(endTimePicker);
@@ -91,14 +92,27 @@ public class CostAndIncome extends JPanel {
 		startTimePicker.setDate(new Date());
 		//startTimePicker.setText("0元");
 		startTimePicker.setFont(new Font("楷体", Font.PLAIN, 16));
-		startTimePicker.setEditable(false);
 		//startTimePicker.setColumns(10);
 		startTimePicker.setBounds(145, 23, 95, 21);
 		add(startTimePicker);
 
 		this.refresh();
+		addListeners();
 	}
 
+	private void addListeners(){
+		startTimePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 refresh();
+			}
+		});
+		endTimePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 refresh();
+			}
+		});
+	}
+	
 	public void refresh(){
 		long startTime = this.startTimePicker.getDate().getTime();
 		long endTime = this.endTimePicker.getDate().getTime();

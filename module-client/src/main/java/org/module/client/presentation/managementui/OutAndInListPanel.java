@@ -30,7 +30,7 @@ public class OutAndInListPanel extends JPanel {
 	/**
 	 * 查看此时间段内的出/入库数量/金额，存储位置
 	 */
-	private String[] type = {"出库单","入库单","全部"};
+	private String[] type = {"出库单","入库单"};
 	
 	private String[] columnNamesOfGoDownEntry = {"单号", "目的地","区","排","架" ,"位","" };
 	
@@ -47,7 +47,7 @@ public class OutAndInListPanel extends JPanel {
 	
 	public OutAndInListPanel() {
 		init();
-	//	scrollPane.setViewportView(table);
+		scrollPane.setViewportView(table);
 	}
 		
 	private void init(){
@@ -57,11 +57,8 @@ public class OutAndInListPanel extends JPanel {
 		add(panel, BorderLayout.NORTH);
 		
 		add = new JButton("增");
-		
 		delete = new JButton("删");
-		
 		modify = new JButton("改");
-		
 		update = new JButton("同步");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);

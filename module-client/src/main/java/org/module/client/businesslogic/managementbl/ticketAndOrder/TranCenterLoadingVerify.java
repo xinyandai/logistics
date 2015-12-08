@@ -20,7 +20,7 @@ public class TranCenterLoadingVerify  implements TicketAndorderVerify{
 	public MyList<TranCenterLoadingListVO> getAll(){
 		list = new MyList<TranCenterLoadingListVO>();
 		try {
-			MyList<TranCenterLoadingListPO> pos = this.loadingListService.getByState(State.UNPASS);
+			MyList<TranCenterLoadingListPO> pos = this.loadingListService.getByState(State.SUBMITTED);
 			for (TranCenterLoadingListPO officeLoadingListPO : pos) {
 				this.list.add(new TranCenterLoadingListVO(officeLoadingListPO));
 			}
@@ -32,7 +32,7 @@ public class TranCenterLoadingVerify  implements TicketAndorderVerify{
 	
 	
 	public boolean pass(int[] indexes){
-		for(int i = indexes.length; i>=0; i--){
+		for(int i = indexes.length - 1; i>=0; i--){
 			TranCenterLoadingListVO loadingListVO = this.list.remove(indexes[i]);
 			loadingListVO.setState(State.PASS);
 			try {
@@ -60,7 +60,7 @@ public class TranCenterLoadingVerify  implements TicketAndorderVerify{
 	}
 	
 	public boolean unpass(int[] indexes){
-		for(int i = indexes.length; i>=0; i--){
+		for(int i = indexes.length-1; i>=0; i--){
 			TranCenterLoadingListVO loadingListVO = this.list.remove(indexes[i]);
 			loadingListVO.setState(State.UNPASS);
 			try {

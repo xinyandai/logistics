@@ -1,5 +1,8 @@
 package org.module.client.businesslogicservice.ticket;
 
+import java.util.ArrayList;
+
+import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 
 public interface OutBoundService {
@@ -11,4 +14,16 @@ public interface OutBoundService {
 	 * @return
 	 */
 	public boolean createTicket(OutBoundListVO out);
+
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(OutBoundListVO vo);
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<OutBoundListVO> getAll(long start , long end);
 }

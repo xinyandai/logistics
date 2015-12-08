@@ -18,6 +18,7 @@ public class MyModel extends AbstractListModel<Object>{
 
 	public Object getElementAt(int index) {
 		String[] s = {vo.getHistoryLocation()[index], vo.getHistoryTime()[index++]};
+		//String[] s = {vo.getLocation(),vo.getEstination()};
 		return s;
 	}
 	

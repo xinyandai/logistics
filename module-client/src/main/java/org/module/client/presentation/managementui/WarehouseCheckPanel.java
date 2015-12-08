@@ -2,8 +2,8 @@ package org.module.client.presentation.managementui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
@@ -12,14 +12,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.WarehouseManageController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
 import org.module.client.presentation.Table;
 import org.module.client.vo.WarehouseVO;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class WarehouseCheckPanel extends JPanel {
 
@@ -37,6 +35,7 @@ public class WarehouseCheckPanel extends JPanel {
 	private JButton export;
 	private JScrollPane scrollPane;
 	private JButton modify;
+	
 	public WarehouseCheckPanel() {
 		init();
 		this.listData = this.controller.getAll();

@@ -55,7 +55,7 @@ public class DriversPanel extends JPanel {
 				public void mouseClicked(MouseEvent e) {
 					String[] ar = {
 							driversInputFrame.getId(),
-							driversInputFrame.getName(),
+							driversInputFrame.getDrivername(),
 							driversInputFrame.getBirthday(),
 							driversInputFrame.getIdCard(),
 							driversInputFrame.getPhone(),
@@ -103,7 +103,7 @@ public class DriversPanel extends JPanel {
 						public void mouseClicked(MouseEvent e) {
 							
 							ar[0] = driversInputFrame.getId();
-							ar[1] = driversInputFrame.getName();
+							ar[1] = driversInputFrame.getDrivername();
 							ar[2] = driversInputFrame.getBirthday();
 							ar[3] = driversInputFrame.getIdCard();
 							ar[4] = driversInputFrame.getPhone();

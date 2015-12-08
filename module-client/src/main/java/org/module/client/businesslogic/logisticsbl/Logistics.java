@@ -15,7 +15,9 @@ public class Logistics implements LogisticsService{
 	public LogisticsVO showState(String id) {
 		try {
 			LogisticsPO po = this.data.getOrder(id);
-			return new LogisticsVO(
+			
+			return  po == null?  null : 
+				new LogisticsVO(
 					po.getOrderId(),
 					po.getOrigin(),
 					po.getEstination(),

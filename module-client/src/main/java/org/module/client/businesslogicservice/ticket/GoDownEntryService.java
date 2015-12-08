@@ -1,5 +1,7 @@
 package org.module.client.businesslogicservice.ticket;
 
+import java.util.ArrayList;
+
 import org.module.client.vo.GoDownEntryVO;
 
 public interface GoDownEntryService {
@@ -11,5 +13,17 @@ public interface GoDownEntryService {
 	 * @return
 	 */
 	public boolean createTicket(GoDownEntryVO go);
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<GoDownEntryVO> getAll(long start , long end);
+	
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update( GoDownEntryVO vo);
 	
 }

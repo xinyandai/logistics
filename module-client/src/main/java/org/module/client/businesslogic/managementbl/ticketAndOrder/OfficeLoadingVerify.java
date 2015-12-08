@@ -21,7 +21,7 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	public MyList<OfficeLoadingListVO> getAll(){
 		list = new MyList<OfficeLoadingListVO>();
 		try {
-			MyList<OfficeLoadingListPO> pos = this.loadingListService.getByState(State.UNPASS);
+			MyList<OfficeLoadingListPO> pos = this.loadingListService.getByState(State.SUBMITTED);
 			for (OfficeLoadingListPO officeLoadingListPO : pos) {
 				this.list.add(new OfficeLoadingListVO(officeLoadingListPO));
 			}
@@ -33,7 +33,7 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	
 	
 	public boolean pass(int[] indexes){
-		for(int i = indexes.length; i>=0; i--){
+		for(int i = indexes.length - 1; i>=0; i--){
 			OfficeLoadingListVO officeLoadingListVO = this.list.remove(indexes[i]);
 			officeLoadingListVO.setState(State.PASS);
 			try {
@@ -61,7 +61,7 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	}
 	
 	public boolean unpass(int[] indexes){
-		for(int i = indexes.length; i>=0; i--){
+		for(int i = indexes.length - 1; i>=0; i--){
 			OfficeLoadingListVO officeLoadingListVO = this.list.remove(indexes[i]);
 			officeLoadingListVO.setState(State.UNPASS);
 			try {

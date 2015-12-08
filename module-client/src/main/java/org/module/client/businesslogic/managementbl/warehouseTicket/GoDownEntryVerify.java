@@ -33,7 +33,8 @@ public class GoDownEntryVerify  implements TicketAndorderVerify{
 		try{
 			for(int i = indexes.length-1; i>=0; i--){
 				GoDownEntryVO vo = this.list.remove(indexes[i]);
-				this.goDownEntry.update( vo.toPO(State.PASS) );
+				vo.setState(State.PASS);
+				this.goDownEntry.update( vo.toPO() );
 				this.warehouse.goDown(vo);
 			}
 		}catch (RemoteException e) {
@@ -46,7 +47,8 @@ public class GoDownEntryVerify  implements TicketAndorderVerify{
 		try{
 			for(int i = indexes.length-1; i>=0; i--){
 				GoDownEntryVO vo = this.list.remove(indexes[i]);
-				this.goDownEntry.update( vo.toPO(State.UNPASS) );
+				vo.setState(State.UNPASS);
+				this.goDownEntry.update( vo.toPO() );
 			}
 		}catch (RemoteException e) {
 			e.printStackTrace();

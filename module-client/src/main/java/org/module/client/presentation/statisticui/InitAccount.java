@@ -12,14 +12,10 @@ import org.module.client.presentation.managementui.DriversPanel;
 
 public class InitAccount extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public InitAccount() {
 		setLayout(new BorderLayout(0, 0));
 		

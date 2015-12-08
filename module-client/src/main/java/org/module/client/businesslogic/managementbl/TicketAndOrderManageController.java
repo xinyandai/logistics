@@ -31,7 +31,7 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 			"中转中心装车单",
 			"中转单",
 			"出库单",
-			"入库单",
+			"入库单"
 	};
 	
 	Map<String,TicketAndorderVerify> map = new HashMap<String,TicketAndorderVerify>();

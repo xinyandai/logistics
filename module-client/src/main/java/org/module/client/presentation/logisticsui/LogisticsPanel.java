@@ -67,11 +67,12 @@ public class LogisticsPanel extends JPanel {
 
 	protected void search() {
 		
-		if(!Numeric.isWholeNumber(this.ID.getText()) || this.ID.getText().length() != 9){
+		/*if(!Numeric.isWholeNumber(this.ID.getText()) || this.ID.getText().length() != 9){
 			return;
-		}
+		}*/
 		
 		LogisticsVO vo = this.controller.showState(this.ID.getText());
+		
 		if(vo == null){
 			return;
 		}

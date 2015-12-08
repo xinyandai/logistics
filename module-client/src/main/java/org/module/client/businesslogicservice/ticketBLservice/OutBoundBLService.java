@@ -1,5 +1,10 @@
 package org.module.client.businesslogicservice.ticketBLservice;
 
+import java.util.ArrayList;
+
+import org.module.client.vo.AbstractVO;
+import org.module.client.vo.OutBoundListVO;
+
 /**
  * 出库管理
  * @author 颜
@@ -14,7 +19,19 @@ public interface OutBoundBLService {
 	 * 
 	 * @return
 	 */
-	public boolean createTicket(String id, String date, String destination,
-			String car, String tansportListId);
-	
+	public boolean createTicket(OutBoundListVO vo);
+
+	/**
+	 * 
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public ArrayList<OutBoundListVO> getAll(long start , long end);
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(OutBoundListVO vo);
 }

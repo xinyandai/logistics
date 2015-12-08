@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class DateTransferHelper {
 	private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static SimpleDateFormat formatterForDay = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public static String getString(Date date){
 		String dateString = formatter.format(date);
@@ -17,8 +18,12 @@ public class DateTransferHelper {
 		Date date = new Date();
 		try {    
 	           date = formatter.parse(str);   
-		} catch (ParseException e) {    
-	           e.printStackTrace();    
+		} catch (ParseException e) { 
+			try {  
+				date = formatterForDay.parse(str);     
+			}catch (ParseException e1) {    
+				return new Date();  
+			}
 		}
 		return date;   
 

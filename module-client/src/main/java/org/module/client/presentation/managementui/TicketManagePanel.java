@@ -27,7 +27,7 @@ public class TicketManagePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private TicketAndOrderManageBLService controller = new TicketAndOrderManageController();
-	private String[] typeArray ;
+	private String[] typeArray = {"空"};
 	private JScrollPane scrollPane;
 	private Table table;
 	private ArrayList<? extends AbstractVO> listCell;
@@ -59,9 +59,14 @@ public class TicketManagePanel extends JPanel {
 		this.listCell = this.controller.getAll(this.type.getSelectedItem().toString());
 		if(!this.listCell.isEmpty()){
 			table = new Table(this.listCell,this.listCell.get(0).names());
-			scrollPane.setViewportView(new JTable(this.table));
-		}
+			
+		}else{
+			String[] name = {"空"};
+			table = new Table(this.listCell,name);
+		}scrollPane.setViewportView(new JTable(this.table));
 	}
+	
+	
 	private void init(){
 		setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
@@ -77,8 +82,8 @@ public class TicketManagePanel extends JPanel {
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(18)
-					.addComponent(type, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+					.addComponent(type, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
 					.addComponent(pass)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(unpass)

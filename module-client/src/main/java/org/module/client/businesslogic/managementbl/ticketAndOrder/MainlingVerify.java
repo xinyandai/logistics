@@ -1,3 +1,4 @@
+
 package org.module.client.businesslogic.managementbl.ticketAndOrder;
 
 import java.rmi.RemoteException;
@@ -6,6 +7,7 @@ import java.util.Date;
 
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.MailingListVO;
 import org.module.common.dataservice.MyList;
@@ -45,8 +47,9 @@ public class MainlingVerify implements TicketAndorderVerify{
 			
 			vo.setState(State.PASS);
 			this.data.update(vo.toPO());
-			String[] location = {};
-			String[] time = {};
+			
+			String[] location = {"订单已到达本地营业厅"};
+			String[] time = {""+DateTransferHelper.getString(new Date())};
 			this.logistics.creat(new LogisticsVO(
 					vo.getId(),
 					vo.getSenderCity(),

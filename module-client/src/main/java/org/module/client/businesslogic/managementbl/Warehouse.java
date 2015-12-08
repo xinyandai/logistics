@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 import org.module.client.vo.WarehouseVO;
@@ -18,7 +19,7 @@ public class Warehouse implements WarehouseManageService {
 		ArrayList<WarehouseVO> vos = new ArrayList<WarehouseVO>();
 		try {
 			//当前中转中心id
-			ArrayList<WarehousePO> pos = this.data.getAll("1");
+			ArrayList<WarehousePO> pos = this.data.getAll(Main.currentUser.getDepartmeny());
 			for (WarehousePO warehousePO : pos) {
 				vos.add(
 						new WarehouseVO(

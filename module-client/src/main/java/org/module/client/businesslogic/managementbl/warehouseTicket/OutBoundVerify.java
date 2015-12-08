@@ -33,7 +33,8 @@ public class OutBoundVerify  implements TicketAndorderVerify{
 		try{
 			for(int i = indexes.length-1; i>=0; i--){
 				OutBoundListVO vo = this.List.remove(indexes[i]);
-				this.outBoundListDataGetter.update( vo.toPO(State.PASS) );
+				vo.setState(State.PASS);
+				this.outBoundListDataGetter.update( vo.toPO() );
 				this.warehouse.outBound(vo);
 			}
 		}catch (RemoteException e) {
@@ -46,7 +47,8 @@ public class OutBoundVerify  implements TicketAndorderVerify{
 		try{
 			for(int i = indexes.length-1; i>=0; i--){
 				OutBoundListVO vo = this.List.remove(indexes[i]);
-				this.outBoundListDataGetter.update( vo.toPO(State.UNPASS) );
+				vo.setState(State.UNPASS);
+				this.outBoundListDataGetter.update( vo.toPO() );
 			}
 		}catch (RemoteException e) {
 			e.printStackTrace();

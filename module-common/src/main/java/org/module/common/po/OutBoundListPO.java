@@ -24,26 +24,27 @@ public class OutBoundListPO implements Serializable{
 	 */
 	private String typeOfLoading;
 	/**
-	 * 中转单编号或者货运编号
+	 * 中转单编号
 	 */
 	private String tansportListId;
-//	private String carId;
 
 	/**
 	 * 单据状态
 	 */
 	private State state;
 
-	
+	private String warehouseOfWhichTranCenter;
 	
 	public OutBoundListPO(String id, String date, String destination,
-		String typeOfLoading, String tansportListId, State state) {
+		String typeOfLoading, String tansportListId,String warehouseOfWhichTranCenter, State state) {
+		
 	super();
 	this.id = id;
 	this.date = date;
 	this.destination = destination;
 	this.typeOfLoading = typeOfLoading;
 	this.tansportListId = tansportListId;
+	this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 	this.state =state;
 }
 	final private String spt = ":%:%:";
@@ -55,6 +56,7 @@ public class OutBoundListPO implements Serializable{
 				this.destination + this.spt+
 				this.typeOfLoading + this.spt+
 				this.tansportListId + this.spt+
+				this.warehouseOfWhichTranCenter + this.spt +
 				this.state.toString();
 	}
 	
@@ -65,7 +67,8 @@ public class OutBoundListPO implements Serializable{
 		this.destination = s[2];
 		this.typeOfLoading = s[3];
 		this.tansportListId = s[4];
-		this.state = State.getInstance(s[5]);
+		this.warehouseOfWhichTranCenter = s[5];
+		this.state = State.getInstance(s[6]);
 	}
 
 	public String getId() {
@@ -90,6 +93,10 @@ public class OutBoundListPO implements Serializable{
 
 	public State getState() {
 		return state;
+	}
+
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
 	}
 	
 	

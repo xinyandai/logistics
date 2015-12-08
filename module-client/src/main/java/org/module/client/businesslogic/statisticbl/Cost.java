@@ -32,6 +32,9 @@ public class Cost implements CostService {
 		try {
 			ArrayList<CostListPO> pos = this.data.getAll();
 			for (CostListPO po : pos) {
+				/**
+				 * 把时间转换为毫秒比较
+				 */
                 long time = DateTransferHelper.getDate(po.getDate()).getTime();
 				if(time<=endTime && time>=startTime){
 					vos.add(new CostListVO(po.getDate(),po.getMoney()+"",po.getPeople(),
@@ -40,7 +43,6 @@ public class Cost implements CostService {
 					
 			}
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -33,7 +33,10 @@ public class LogisticsdataImpl extends UnicastRemoteObject implements Logisticsd
 	public LogisticsPO getOrder(String id) throws RemoteException {
 		MyList<LogisticsPO>  pos = this.getAll();
 		for (LogisticsPO logisticsPO : pos) {
+			System.out.println(logisticsPO.getOrderId());
+			System.out.println(id);
 			if(logisticsPO.getOrderId().equals(id)){
+				
 				return logisticsPO;
 			}
 		}

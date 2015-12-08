@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.module.client.businesslogicservice.management.WarehouseManageService;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.WarehouseVO;
 
 public class WarehouseManageController implements WarehouseManageBLService{
@@ -27,6 +28,6 @@ public class WarehouseManageController implements WarehouseManageBLService{
 	public boolean modify(String id, String qu, String pai, String jia,
 			String wei,String 	warehouseOfWhichTranCenter) {
 		return warehouse.modify(new WarehouseVO(
-				id, qu, pai,jia, wei,warehouseOfWhichTranCenter,new Date().getTime()));
+				id, qu, pai,jia, wei,warehouseOfWhichTranCenter,DateTransferHelper.getString( new Date() )));
 	}
 }

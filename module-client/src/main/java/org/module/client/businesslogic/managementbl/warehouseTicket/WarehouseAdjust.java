@@ -15,9 +15,11 @@ public class WarehouseAdjust {
 	public boolean outBound(OutBoundListVO w) {
 
 		try {
-			return this.data.delete(
-					this.getWarehousePO(w)
-					);
+			WarehousePO po = this.getWarehousePO(w);
+			if(po==null){
+				return false;
+			}
+			return this.data.delete(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -26,7 +28,8 @@ public class WarehouseAdjust {
 
 	public WarehousePO getWarehousePO(OutBoundListVO w){
 		try {
-			return this.data.find("",w.getId());
+			WarehousePO po = this.data.find(w.getWarehouseOfWhichTranCenter(),w.getId());
+			return po;
 		} catch (RemoteException e) {
 		}
 		return null;
@@ -47,9 +50,11 @@ public class WarehouseAdjust {
 	
 	public boolean goDown(GoDownEntryVO w) {
 		try {
-			return this.data.delete(
-					this.getWarehousePO(w)
-					);
+			WarehousePO po = this.getWarehousePO(w) ;
+			if(po==null){
+				return false;
+			}
+			return this.data.add( po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

@@ -23,6 +23,7 @@ public class FileHelper {
 		MyList<String> re =  new MyList<String>();		
 		try {
 			if(!file.exists()){
+				System.out.println(file.getAbsolutePath()+"  notExits");
 				return re;
 			}
 			FileReader fr = new FileReader(file);

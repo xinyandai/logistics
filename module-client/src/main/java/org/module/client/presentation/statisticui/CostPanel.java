@@ -17,6 +17,9 @@ import org.module.client.businesslogic.statisticbl.CostManageController;
 import org.module.client.businesslogicservice.statisticBLservice.CostManageBLService;
 import org.module.client.presentation.Table;
 import org.module.client.vo.CostListVO;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -159,6 +162,17 @@ public class CostPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				refresh();
+			}
+		});
+		
+		startTimePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 refresh();
+			}
+		});
+		endTimePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 refresh();
 			}
 		});
 		

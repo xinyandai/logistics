@@ -11,7 +11,7 @@ public class WarehouseVO extends AbstractVO{
 	private String jia;
 	private String wei;
 	private String warehouseOfWhichTranCenter;
-	private long date;
+	private String date;
 	
 	public WarehouseVO(WarehousePO po ){
 		this(po.getNumber(),
@@ -20,7 +20,7 @@ public class WarehouseVO extends AbstractVO{
 				po.getJia(),
 				po.getWei(),
 				po.getWarehouseOfWhichTranCenter(),
-				Long.parseLong( po.getDate())
+				 po.getDate()
 				);
 	}
 	public WarehousePO toVO(){
@@ -35,7 +35,7 @@ public class WarehouseVO extends AbstractVO{
 	
 	
 	public WarehouseVO(String number, String qu, String pai, String jia,
-			String wei, String warehouseOfWhichTranCenter, long data) {
+			String wei, String warehouseOfWhichTranCenter, String data) {
 		super();
 		this.number = number;
 		this.qu = qu;
@@ -94,11 +94,11 @@ public class WarehouseVO extends AbstractVO{
 		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 	}
 
-	public long getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(long date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

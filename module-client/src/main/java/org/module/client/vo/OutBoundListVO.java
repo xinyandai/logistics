@@ -30,18 +30,27 @@ public class OutBoundListVO  extends AbstractVO{
 	 * 中转单编号或者货运编号
 	 */
 	private String tansportListId;
-//	private String carId;
+
+	private String warehouseOfWhichTranCenter;
+	
+	private State state;
 	
 	
+
 	public OutBoundListVO(String id, String date, String destination,
-			String typeOfLoading, String tansportListId) {
+			String typeOfLoading, String tansportListId,
+			String warehouseOfWhichTranCenter, State state) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.destination = destination;
 		this.typeOfLoading = typeOfLoading;
 		this.tansportListId = tansportListId;
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
+		this.state = state;
 	}
+
+
 	public String getId() {
 		return id;
 	}
@@ -74,15 +83,16 @@ public class OutBoundListVO  extends AbstractVO{
 	}
 	
 	public OutBoundListVO(OutBoundListPO po){
-		this(po.getId(),po.getDate(),po.getDestination(),po.getTypeOfLoading(),po.getTypeOfLoading());
+		this(po.getId(),po.getDate(),po.getDestination(),po.getTypeOfLoading(),po.getTypeOfLoading(),po.getWarehouseOfWhichTranCenter(),po.getState());
 	}
-	public OutBoundListPO toPO( State state ){
+	public OutBoundListPO toPO(  ){
 		return new OutBoundListPO(
 				this.id ,
 				this.date ,
 				this.destination ,
 				this.typeOfLoading ,
 				this.tansportListId ,
+				this.warehouseOfWhichTranCenter,
 				state
 				);
 	}
@@ -92,11 +102,33 @@ public class OutBoundListVO  extends AbstractVO{
 				this.date ,
 				this.destination ,
 				this.typeOfLoading ,
-				this.tansportListId 
+				this.tansportListId ,
+				this.getWarehouseOfWhichTranCenter(),
+				this.getState().toString()
 		};
 		return s;
 	}
 	
+	public String getWarehouseOfWhichTranCenter() {
+		return warehouseOfWhichTranCenter;
+	}
+
+
+	public void setWarehouseOfWhichTranCenter(String warehouseOfWhichTranCenter) {
+		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
+	}
+
+
+	public State getState() {
+		return state;
+	}
+
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
+
 	@Override
 	public String get(int i) {
 		// TODO Auto-generated method stub
@@ -105,7 +137,7 @@ public class OutBoundListVO  extends AbstractVO{
 	@Override
 	public String[] names() {
 		String[] s = {
-				"物流单号","出库日期","目的地","装车方式","中转单"
+				"物流单号","出库日期","目的地","装车方式","单号","营业厅","状态"
 		};
 	    return s;
 	}

@@ -15,9 +15,6 @@ public class GoDownEntryVO extends AbstractVO{
 	 * 快递单号
 	 */
 	private String id;
-
-	
-	
 	
 	/**
 	 * 入库日期
@@ -42,9 +39,12 @@ public class GoDownEntryVO extends AbstractVO{
 	/**
 	 * 位
 	 */
+	
 	private String wei;
+	private State state;
+	
 	public GoDownEntryVO(String warehouseOfWhichTranCenter,String courier, String date, String destination,
-			String qu, String pai, String jia, String wei) {
+			String qu, String pai, String jia, String wei,State state) {
 		super();
 		this.warehouseOfWhichTranCenter = warehouseOfWhichTranCenter;
 		id = courier;
@@ -54,6 +54,7 @@ public class GoDownEntryVO extends AbstractVO{
 		this.pai = pai;
 		this.jia = jia;
 		this.wei = wei;
+		this.state = state;
 	}
 
 	
@@ -65,7 +66,8 @@ public class GoDownEntryVO extends AbstractVO{
 				goDownEntryListPO.getQu(),
 				goDownEntryListPO.getPai(),
 				goDownEntryListPO.getJia(),
-				goDownEntryListPO.getWei());
+				goDownEntryListPO.getWei(),
+				goDownEntryListPO.getState());
 	}
 
 
@@ -118,7 +120,17 @@ public class GoDownEntryVO extends AbstractVO{
 		this.id = id;
 	}
 
-    public String[] toArray(){
+    public State getState() {
+		return state;
+	}
+
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
+
+	public String[] toArray(){
     	String[] s = {this.warehouseOfWhichTranCenter ,
 		id ,
 		this.date,
@@ -126,18 +138,18 @@ public class GoDownEntryVO extends AbstractVO{
 		this.qu,
 		this.pai,
 		this.jia ,
-		this.wei };
+		this.wei,
+		this.state.toString()};
     	return s;
     }
 	
 	@Override
 	public String get(int i) {
-		// TODO Auto-generated method stub
 		return this.toArray()[i];
 	}
 
 
-	public GoDownEntryListPO toPO(State pass) {
+	public GoDownEntryListPO toPO() {
 		// TODO Auto-generated method stub
 		return new GoDownEntryListPO(this.warehouseOfWhichTranCenter ,
 		id ,
@@ -147,14 +159,14 @@ public class GoDownEntryVO extends AbstractVO{
 		this.pai,
 		this.jia ,
 		this.wei,
-		pass);
+		this.state);
 	}
 
 
 	@Override
 	public String[] names() {
 		String[] s = {
-				"中转中心","快递编号","入库日期","目的地","区号","排号","架号","位号"
+				"中转中心","快递编号","入库日期","目的地","区号","排号","架号","位号","状态"
 		};
 	    return s;
 	}
