@@ -19,7 +19,7 @@ public class OutBoundMock implements OutBoundService{
 
 	public ArrayList<OutBoundListVO> getAll(long start, long end) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<OutBoundListVO>();
 	}
 
 }

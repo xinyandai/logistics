@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.ticket.OutBoundService;
 import org.module.client.businesslogicservice.ticketBLservice.OutBoundBLService;
-import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 
 public class OutBoundController implements OutBoundBLService{
@@ -14,6 +13,7 @@ public class OutBoundController implements OutBoundBLService{
 	public OutBoundController(OutBoundService outBound) {
 		super();
 		this.outBound = outBound;
+		this.list = new ArrayList<OutBoundListVO>();
 	}
 
 	public OutBoundController() {
