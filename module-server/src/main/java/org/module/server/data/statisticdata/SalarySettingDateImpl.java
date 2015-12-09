@@ -97,6 +97,9 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
 		re=help.read();
+		if(re.size()==0){
+			return null;
+		}
 		AccountantSalaryPO a=new AccountantSalaryPO(re.get(0));
 		return a;
 	}
@@ -108,6 +111,9 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
 		re=help.read();
+		if(re.size()==0){
+			return null;
+		}
 		CourierSalaryPO a=new CourierSalaryPO(re.get(0));
 		return a;
 	}
@@ -119,6 +125,9 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
 		re=help.read();
+		if(re.size()==0){
+			return null;
+		}
 		DriverSalaryPO a=new DriverSalaryPO(re.get(0));
 		return a;
 	}
@@ -130,6 +139,9 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
 		re=help.read();
+		if(re.size()==0){
+			return null;
+		}
 		OfficeClerkSalaryPO a=new OfficeClerkSalaryPO(re.get(0));
 		return a;
 	}
@@ -141,6 +153,9 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
 		re=help.read();
+		if(re.size()==0){
+			return null;
+		}
 		 TranCenterClerkSalaryPO a=new  TranCenterClerkSalaryPO(re.get(0));
 		return a;
 	}
@@ -152,6 +167,9 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
 		re=help.read();
+		if(re.size()==0){
+			return null;
+		}
 		WarehouseManagerSalaryPO a=new WarehouseManagerSalaryPO(re.get(0));
 		return a;
 	}

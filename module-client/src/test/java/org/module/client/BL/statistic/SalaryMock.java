@@ -46,4 +46,34 @@ public class SalaryMock implements SalaryService{
 		return false;
 	}
 
+	public AccountantSalaryVO getAccountantSalaryVO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public CourierSalaryVO getCourierSalaryVO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public DriverSalaryVO getDriverSalaryVO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public OfficeClerkSalaryVO getOfficeClerkSalaryVO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public TranCenterClerkSalaryVO getTranCenterClerkSalaryVO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public WarehouseManagerSalaryVO getWarehouseManagerSalaryVO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -36,7 +36,7 @@ public class CourierSalaryPO implements Serializable{
 	}
 	public CourierSalaryPO(String str){
 		super();
-		String[] strs=str.split(str);
+		String[] strs=str.split(split);
 		this.base = Double.parseDouble(strs[0]);
 		this.bonusEveryDelivered = Double.parseDouble(strs[1]);
 		this.bonusEveryReceive = Double.parseDouble(strs[2]);

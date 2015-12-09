@@ -34,16 +34,42 @@ public class Salary implements SalaryService {
 		return false;
 	}
 
+	public AccountantSalaryVO getAccountantSalaryVO(){
+		AccountantSalaryPO a = null;
+		try {
+			a = this.data.getAccountSalary();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==null){
+			return new AccountantSalaryVO(0,0);
+		}
+		return new AccountantSalaryVO(a.getBase(),a.getBonus());
+	}
+	
 	public boolean setCourierSalary(CourierSalaryVO c) {
 		try {
 			return this.data.setCourierSalary(new CourierSalaryPO(c.getBase(),c.getBonusEveryDelivered(),c.getBonusEveryReceive()));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
 	}
 
+	public CourierSalaryVO getCourierSalaryVO(){
+		CourierSalaryPO c = null;
+		try {
+			c = this.data.getCourierSalary();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(c==null){
+			return new CourierSalaryVO(0,0,0);
+		}
+		return new CourierSalaryVO(c.getBase(),c.getBonusEveryDelivered(),c.getBonusEveryReceive());
+	}
+	
 	public boolean setDriverSalary(DriverSalaryVO driverSalaryVO) {
 		try {
 			return this.data.setDriverSalary(
@@ -59,6 +85,21 @@ public class Salary implements SalaryService {
 
 	}
 
+	public DriverSalaryVO getDriverSalaryVO(){
+		DriverSalaryPO driverSalaryPO = null;
+		try {
+			driverSalaryPO = this.data.getDriverSalary();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(driverSalaryPO==null){
+			return new DriverSalaryVO(0,0,0);
+		}
+		return new DriverSalaryVO(driverSalaryPO.getBase(),
+				  driverSalaryPO.getBonusEveryIncityDriving(),
+				  driverSalaryPO.getBonusEveryKilometersOutcityDriving());
+	}
+	
 	public boolean setOfficeClerkSalary(OfficeClerkSalaryVO officeClerkSalaryVO) {
 		try {
 			return this.data.setOfficeClerkSalary(
@@ -74,6 +115,26 @@ public class Salary implements SalaryService {
 		return false;
 	}
 
+	public OfficeClerkSalaryVO getOfficeClerkSalaryVO(){
+		OfficeClerkSalaryPO officeClerkSalaryPO = null;
+		try {
+			officeClerkSalaryPO = this.data.getOfficeClerkSalary();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(officeClerkSalaryPO==null){
+			return new OfficeClerkSalaryVO( 0,0,0);
+
+		}
+		return new OfficeClerkSalaryVO(
+
+				officeClerkSalaryPO.getBase(),
+				officeClerkSalaryPO.getBonusEveryDelivered(),
+				officeClerkSalaryPO.getBonusEveryReceive());
+	}
+	
+	
+	
 	public boolean setTranCenterClerkSalary(TranCenterClerkSalaryVO tranCenterClerkSalaryVO) {
 		try {
 			return this.data.setTranCenterClerkSalary(
@@ -89,6 +150,26 @@ public class Salary implements SalaryService {
 		return false;
 	}
 
+	
+	
+	public TranCenterClerkSalaryVO getTranCenterClerkSalaryVO(){
+		TranCenterClerkSalaryPO tranCenterClerkSalaryVO = null;
+		try {
+			tranCenterClerkSalaryVO = this.data.getTranCenterClerkSalary();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(tranCenterClerkSalaryVO==null){
+			return new TranCenterClerkSalaryVO( 0,0,0);
+		}
+		return new TranCenterClerkSalaryVO(
+				tranCenterClerkSalaryVO.getBase(),
+				tranCenterClerkSalaryVO.getBonusEveryArrival(),
+				tranCenterClerkSalaryVO.getBonusEveryLoading()
+				);
+	}
+	
+	
 	public boolean setWarehouseSalary(WarehouseManagerSalaryVO w) {
 		try {
 			return this.data.setWarehouseSalary(
@@ -104,4 +185,21 @@ public class Salary implements SalaryService {
 		return false;
 	}
 
+	
+	public WarehouseManagerSalaryVO getWarehouseManagerSalaryVO(){
+		WarehouseManagerSalaryPO w = null;
+		try {
+			w = this.data.getWarehouseSalary();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(w==null){
+			return new WarehouseManagerSalaryVO( 0, 0, 0);
+		}
+		return new WarehouseManagerSalaryVO(
+				w.getBase(),
+				w.getBonusEveryGodownEntry(),
+				w.getBonusEveryOutBound()
+				);
+	}
 }

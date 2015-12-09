@@ -15,4 +15,11 @@ public interface SalaryService {
 	public boolean setOfficeClerkSalary(OfficeClerkSalaryVO o);
 	public boolean setTranCenterClerkSalary(TranCenterClerkSalaryVO t);
 	public boolean setWarehouseSalary(WarehouseManagerSalaryVO w);
+	
+	public AccountantSalaryVO getAccountantSalaryVO();
+	public CourierSalaryVO getCourierSalaryVO();
+	public DriverSalaryVO getDriverSalaryVO();
+	public OfficeClerkSalaryVO getOfficeClerkSalaryVO();
+	public TranCenterClerkSalaryVO getTranCenterClerkSalaryVO();
+	public WarehouseManagerSalaryVO getWarehouseManagerSalaryVO();
 }

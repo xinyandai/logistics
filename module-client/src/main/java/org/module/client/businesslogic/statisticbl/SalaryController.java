@@ -4,6 +4,7 @@ import org.module.client.businesslogicservice.statistic.SalaryService;
 import org.module.client.businesslogicservice.statisticBLservice.SalarySettingBLService;
 import org.module.client.vo.salary.AccountantSalaryVO;
 import org.module.client.vo.salary.CourierSalaryVO;
+import org.module.client.vo.salary.DriverSalaryVO;
 import org.module.client.vo.salary.OfficeClerkSalaryVO;
 import org.module.client.vo.salary.TranCenterClerkSalaryVO;
 import org.module.client.vo.salary.WarehouseManagerSalaryVO;
@@ -15,53 +16,53 @@ public class SalaryController implements SalarySettingBLService {
 		super();
 		this.salary = salary;
 	}
-
-	public boolean setAccountSalary(String base, String bonus) {
+	public SalaryController() {
+		super();
+		this.salary = new  Salary();
+	}
+	public boolean setAccountSalary(AccountantSalaryVO vo) {
 		
-		return salary.setAccountSalary(new AccountantSalaryVO
-				(Double.parseDouble(base),Double.parseDouble(bonus) )) ;
+		return salary.setAccountSalary(vo) ;
 	}
 
-	public boolean setCourierSalary(String base, String bonusEveryDelivered,
-			String bonusEveryReceive) {
-		// TODO Auto-generated method stub
-		return salary.setCourierSalary(new CourierSalaryVO( Double.parseDouble(base),  
-				Double.parseDouble(bonusEveryDelivered),
-				Double.parseDouble(bonusEveryReceive)));
+	public boolean setCourierSalary(CourierSalaryVO vo) {
+		return salary.setCourierSalary(vo);
 	}
 
-	public boolean setDriverSalary(String base, String bonusEveryIncityDriving,
-			String bonusEveryKilometersOutcityDriving) {
-		// TODO Auto-generated method stub
-		return salary.setCourierSalary(new CourierSalaryVO(Double.parseDouble(base),
-				                                      Double.parseDouble(bonusEveryIncityDriving),
-				                                     Double.parseDouble(bonusEveryKilometersOutcityDriving)));
+	public boolean setDriverSalary(DriverSalaryVO vo) {
+		return salary.setDriverSalary(vo);
 	}
 
-	public boolean setOfficeClerkSalary(String base,
-			String bonusEveryDelivered, String bonusEveryReceive) {
-		// TODO Auto-generated method stub
-		return salary.setOfficeClerkSalary(new OfficeClerkSalaryVO(Double.parseDouble(base),
-				                                     Double.parseDouble(bonusEveryDelivered),
-				                                     Double.parseDouble(bonusEveryReceive)));
+	public boolean setOfficeClerkSalary(OfficeClerkSalaryVO vo) {
+		return salary.setOfficeClerkSalary(vo);
 	}
 
-	public boolean setTranCenterClerkSalary(String base,
-			String bonusEveryArrival, String bonusEveryLoading) {
+	public boolean setTranCenterClerkSalary(TranCenterClerkSalaryVO vo) {
 		
-		return salary.setTranCenterClerkSalary(new TranCenterClerkSalaryVO(
-				Double.parseDouble(base),
-				Double.parseDouble(bonusEveryArrival),
-				Double.parseDouble(bonusEveryLoading)));
+		return salary.setTranCenterClerkSalary(vo);
 	}
 
-	public boolean setWarehouseSalary(String base,
-			String bonusEveryGodownEntry, String bonusEveryOutBound) {
+	public boolean setWarehouseSalary(WarehouseManagerSalaryVO vo) {
 		
-		return salary.setWarehouseSalary(new WarehouseManagerSalaryVO(
-				Double.parseDouble(base),
-				Double.parseDouble(bonusEveryGodownEntry),
-				Double.parseDouble(bonusEveryOutBound)));
+		return salary.setWarehouseSalary(vo);
+	}
+	public AccountantSalaryVO getAccountantSalaryVO() {
+		return this.salary.getAccountantSalaryVO();
+	}
+	public CourierSalaryVO getCourierSalaryVO() {
+		return this.salary.getCourierSalaryVO();
+	}
+	public DriverSalaryVO getDriverSalaryVO() {
+		return this.salary.getDriverSalaryVO();
+	}
+	public OfficeClerkSalaryVO getOfficeClerkSalaryVO() {
+		return this.salary.getOfficeClerkSalaryVO();
+	}
+	public TranCenterClerkSalaryVO getTranCenterClerkSalaryVO() {
+		return this.salary.getTranCenterClerkSalaryVO();
+	}
+	public WarehouseManagerSalaryVO getWarehouseManagerSalaryVO() {
+		return this.salary.getWarehouseManagerSalaryVO();
 	}
 
 }

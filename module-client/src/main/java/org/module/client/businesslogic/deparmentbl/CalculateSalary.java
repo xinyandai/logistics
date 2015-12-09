@@ -24,9 +24,14 @@ import org.module.common.po.salary.WarehouseManagerSalaryPO;
 public class CalculateSalary implements CalculateSalaryService {
 
 	private SalarySettingDateService data;
+	
+	
+	
 	public CalculateSalary(){
 		this.data = new RmiClient().get(SalarySettingDateService.class);
 	}
+	
+	
 	public double calculateById(String id,String time) {
 		if(id.substring(0,2).equals("001")){
 			return this.getAccountant();

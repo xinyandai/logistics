@@ -14,6 +14,7 @@ import org.module.client.presentation.departmentui.StuffPanel;
 import org.module.client.presentation.managementui.CityAndPrice;
 import org.module.client.presentation.managementui.TicketManagePanel;
 import org.module.client.presentation.statisticui.CostPanel;
+import org.module.client.presentation.statisticui.SalaryPanel;
 
 public class ManagerFrame extends JFrame {
 
@@ -68,6 +69,9 @@ public class ManagerFrame extends JFrame {
 		
 		JPanel panel_3 = new CityAndPrice();
 		tabbedPane.addTab("价格与距离", null, panel_3, null);
+		
+		JPanel panel_6 = new SalaryPanel();
+		tabbedPane.addTab("薪水策略", null, panel_6, null);
 		
 		JPanel panel_4 = new TicketManagePanel();
 		tabbedPane.addTab("单据管理", null, panel_4, null);
