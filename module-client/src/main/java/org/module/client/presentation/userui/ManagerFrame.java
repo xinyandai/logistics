@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
+import org.module.client.presentation.VenetianPane;
 import org.module.client.presentation.departmentui.DeparmentPanel;
 import org.module.client.presentation.departmentui.StuffPanel;
 import org.module.client.presentation.managementui.CityAndPrice;
@@ -22,25 +23,7 @@ public class ManagerFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ManagerFrame frame = new ManagerFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public ManagerFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -55,7 +38,7 @@ public class ManagerFrame extends JFrame {
 		JLabel label = new JLabel("总经理");
 		panel.add(label);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane tabbedPane = new VenetianPane();
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel_5 = new StuffPanel();

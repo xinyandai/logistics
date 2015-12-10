@@ -13,12 +13,17 @@ import org.module.server.data.FileHelper;
 public class UserDataImpl extends UnicastRemoteObject implements UserDataService {
 
 	public UserDataImpl() throws RemoteException {
+//		String s = this.getClass().getClassLoader().getResource("file"+File.separator+"user.txt").getFile();
+		String s = "file"+File.separator+"user.txt";
+		System.out.println(s);
+		helper = new FileHelper(new File(s));  
 	}
 	
 	private static final long serialVersionUID = 1L;
 
 	
-    private FileHelper helper = new FileHelper(new File("file"+File.separator+"user.txt"));
+    private FileHelper helper;
+    		
 	
 	
 	public MyList<UserPO> allUsers() {

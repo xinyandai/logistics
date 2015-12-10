@@ -177,7 +177,6 @@ public class CalculateSalary implements CalculateSalaryService {
 			apo = data.getWarehouseSalary();
 			return apo.getBase();
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			return 0;
 		}
 	}

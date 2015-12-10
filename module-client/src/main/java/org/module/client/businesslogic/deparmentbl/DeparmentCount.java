@@ -17,6 +17,55 @@ public class DeparmentCount {
 		this.findByType(type);
 	}
 	
+	public DeparmentCount() {
+		this.data = new RmiClient().get(DepartmentDataService.class);
+		this.getAll();
+	}
+	/**
+	 * 根据ID找出名字
+	 * @param id
+	 * @return 返回ID与名字
+	 */
+	public String IdAndNameString(String id){
+		for (DepartmentVO vo : list) {
+			if(vo.getIdentity().equals(id)){
+				return vo.getName();
+			}
+		}
+		return "";
+	}
+	
+	public String getName(String id){
+		for (DepartmentVO vo : list) {
+			if(vo.getIdentity().equals(id)){
+				return vo.getName();
+			}
+		}
+		return "";
+	}
+	
+	private   void   getAll(){
+		ArrayList<DepartmentVO> vos = new ArrayList<DepartmentVO>();
+		ArrayList<DepartmentPO> pos;
+		try {
+			pos = this.data.getAll();
+			for (DepartmentPO departmentPO : pos) {
+			vos.add(new DepartmentVO(
+					departmentPO.getName(),
+					departmentPO.getCategory(),
+					departmentPO.getLocation(),
+					departmentPO.getIdentity()
+					)
+			      );
+		
+		    }
+			this.list = vos;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	private   void   findByType(String type){
 		ArrayList<DepartmentVO> vos = new ArrayList<DepartmentVO>();
 		ArrayList<DepartmentPO> pos;
@@ -39,6 +88,14 @@ public class DeparmentCount {
 		
 	}
 
+	public String[] getIDWithName(){
+		String[] re  = new String[list.size()];
+		for (int i= 0 ; i < list.size(); i++){
+			re[i] = list.get(i).getIdentity()+list.get(i).getName();
+		}
+		return re;
+	}
+	
 	public String[] getName(){
 		String[] re  = new String[list.size()];
 		for (int i= 0 ; i < list.size(); i++){

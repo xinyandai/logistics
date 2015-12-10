@@ -3,6 +3,7 @@ package org.module.client.presentation.ticketui;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,16 +14,21 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.deparmentbl.DeparmentCount;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.OutBoundListVO;
 import org.module.common.po.State;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class NewOutBoundInputFrame extends JFrame {
 
 	
 	private static final long serialVersionUID = -6717991181868844078L;
 	private JPanel contentPane;
-	private JTextField warehouseID;
+	private JComboBox warehouseID;
 	private JTextField target;
 	private JTextField ID;
 	private JTextField transportID;
@@ -32,12 +38,17 @@ public class NewOutBoundInputFrame extends JFrame {
 	private JXDatePicker datePicker;
 	private JComboBox typeOfWay;
 	
+	private DeparmentCount departmentCount = new DeparmentCount("中转中心");
+	
 	public NewOutBoundInputFrame() {
 		init();
 	}
 	public NewOutBoundInputFrame(OutBoundListVO vo) {
 		init();
-		this.warehouseID.setText(vo.getWarehouseOfWhichTranCenter());
+		this.warehouseID.setSelectedItem(
+				this.departmentCount.IdAndNameString(
+						vo.getWarehouseOfWhichTranCenter())
+				);
 		this.target.setText(vo.getDestination());
 		this.ID.setText(vo.getId());
 		this.transportID.setText(vo.getTansportListId());
@@ -56,7 +67,7 @@ public class NewOutBoundInputFrame extends JFrame {
 				this.target.getText(),
 				this.typeOfWay.getSelectedItem().toString(),
 				this.transportID.getText(),
-				this.warehouseID.getText(),
+				this.warehouseID.getSelectedItem().toString().substring(0, 6),
 				State.SUBMITTED
 				);
 		
@@ -70,75 +81,48 @@ public class NewOutBoundInputFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("仓库名");
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
-		label.setBounds(42, 27, 76, 21);
-		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("目的地");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_1.setBounds(42, 58, 76, 21);
-		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("装运形式");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_2.setBounds(42, 89, 76, 21);
-		contentPane.add(label_2);
 		
-		warehouseID = new JTextField();
+		warehouseID = new JComboBox(this.departmentCount.getIDWithName());
 		warehouseID.setFont(new Font("楷体", Font.PLAIN, 15));
-		warehouseID.setColumns(10);
-		warehouseID.setBounds(128, 29, 81, 21);
-		contentPane.add(warehouseID);
 		
 		target = new JTextField();
 		target.setFont(new Font("楷体", Font.PLAIN, 15));
 		target.setColumns(10);
-		target.setBounds(128, 60, 81, 21);
-		contentPane.add(target);
 		
 		typeOfWay = new JComboBox(this.type);
-		typeOfWay.setBounds(128, 91, 81, 21);
-		contentPane.add(typeOfWay);
 		
 		JLabel label_3 = new JLabel("快递编号");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_3.setBounds(239, 27, 76, 21);
-		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("货运编号");
 		label_4.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_4.setBounds(239, 58, 76, 21);
-		contentPane.add(label_4);
 		
 		JLabel label_5 = new JLabel("入库时间");
 		label_5.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_5.setBounds(239, 89, 76, 21);
-		contentPane.add(label_5);
 		
 		ID = new JTextField();
 		ID.setFont(new Font("楷体", Font.PLAIN, 15));
 		ID.setColumns(10);
-		ID.setBounds(325, 28, 81, 21);
-		contentPane.add(ID);
 		
 		transportID = new JTextField();
 		transportID.setFont(new Font("楷体", Font.PLAIN, 15));
 		transportID.setColumns(10);
-		transportID.setBounds(325, 59, 81, 21);
-		contentPane.add(transportID);
 		
 		datePicker = new JXDatePicker();
+		datePicker.setDate(new Date());
 		datePicker.setFont(new Font("楷体", Font.PLAIN, 15));
-		datePicker.setBounds(325, 90, 109, 21);
-		contentPane.add(datePicker);
 		
 		comfirm = new JButton("确定");
 		comfirm.setFont(new Font("楷体", Font.PLAIN, 18));
-		comfirm.setBounds(128, 150, 93, 23);
-		contentPane.add(comfirm);
 		
 		JButton cancel = new JButton("取消");
 		cancel.addMouseListener(new MouseAdapter() {
@@ -148,8 +132,93 @@ public class NewOutBoundInputFrame extends JFrame {
 			}
 		});
 		cancel.setFont(new Font("楷体", Font.PLAIN, 18));
-		cancel.setBounds(245, 152, 93, 23);
-		contentPane.add(cancel);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(37)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(warehouseID, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+					.addGap(28))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(37)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(target, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(transportID, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+					.addGap(28))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(37)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(typeOfWay, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(123)
+					.addComponent(comfirm, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+					.addGap(24)
+					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+					.addGap(91))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(22)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(label)
+								.addComponent(label_3)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(1)
+									.addComponent(ID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addComponent(warehouseID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(8)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_1)
+								.addComponent(label_4)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(1)
+									.addComponent(transportID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(target, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(8)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_2)
+								.addComponent(label_5)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(1)
+									.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(typeOfWay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(38)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(comfirm, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(2)
+							.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
 	
 	
