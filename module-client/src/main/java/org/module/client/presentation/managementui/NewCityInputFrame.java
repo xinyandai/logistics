@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+
+import org.module.client.presentation.Numeric;
 
 public class NewCityInputFrame extends JFrame {
 
@@ -19,7 +23,7 @@ public class NewCityInputFrame extends JFrame {
 	private JTextField id;
 	private JTextField city;
 	private JButton confirm;
-
+	private JLabel state;
 	
 	public NewCityInputFrame() {
 		init();
@@ -48,12 +52,14 @@ public class NewCityInputFrame extends JFrame {
 		contentPane.add(label_1);
 		
 		city = new JTextField();
+		
 		city.setFont(new Font("楷体", Font.PLAIN, 16));
 		city.setBounds(198, 41, 154, 21);
 		contentPane.add(city);
 		city.setColumns(10);
 		
 		id = new JTextField();
+		
 		id.setFont(new Font("楷体", Font.PLAIN, 16));
 		id.setColumns(10);
 		id.setBounds(198, 85, 154, 21);
@@ -66,8 +72,41 @@ public class NewCityInputFrame extends JFrame {
 		JButton cancel = new JButton("取消");
 		cancel.setBounds(253, 145, 71, 23);
 		contentPane.add(cancel);
+		
+		state = new JLabel("");
+		state.setBounds(81, 10, 300, 15);
+		contentPane.add(state);
+		
+		city.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(city.getText().isEmpty()){
+					state.setText("！城市名不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		id.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(id.getText()))){
+					state.setText("！城市代号必须是数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
 
+	public boolean isDataUsable(){
+		if(city.getText().isEmpty()){
+			state.setText("！城市名不能为空");
+		}else if((!Numeric.isNumeric(id.getText()))){
+			state.setText("！城市代号必须是数值");
+		}
+			
+		return true;
+	}
+	
 	public String getId() {
 		return id.getText();
 	}

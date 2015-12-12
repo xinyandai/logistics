@@ -16,12 +16,15 @@ import javax.swing.border.EmptyBorder;
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.deparmentbl.DeparmentCount;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.common.po.State;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewGoDownEntryInputFrame extends JFrame {
 
@@ -40,6 +43,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 
 
 	private DeparmentCount departmentCount = new DeparmentCount("中转中心");
+	private JLabel state;
 	
 	public NewGoDownEntryInputFrame(GoDownEntryVO vo) {
 		
@@ -66,9 +70,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 		
 	
 	
-	public boolean isDataUsable(){
-		return true;
-	}
+	
 	
 	public GoDownEntryVO getVO(){
 		return new GoDownEntryVO(
@@ -108,10 +110,12 @@ public class NewGoDownEntryInputFrame extends JFrame {
 		warehouseID.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		ID = new JTextField();
+		
 		ID.setFont(new Font("楷体", Font.PLAIN, 15));
 		ID.setColumns(10);
 		
 		qu = new JTextField();
+		
 		qu.setFont(new Font("楷体", Font.PLAIN, 15));
 		qu.setColumns(10);
 		
@@ -136,6 +140,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 		datePicker.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		target = new JTextField();
+		
 		target.setFont(new Font("楷体", Font.PLAIN, 15));
 		target.setColumns(10);
 		
@@ -160,6 +165,8 @@ public class NewGoDownEntryInputFrame extends JFrame {
 		});
 		cancel.setToolTipText("取消");
 		cancel.setFont(new Font("楷体", Font.PLAIN, 18));
+		
+		state = new JLabel("");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -181,7 +188,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 							.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(42)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
 									.addGap(10)
@@ -198,7 +205,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 									.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
 									.addGap(10)
 									.addComponent(pai, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
-								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
 									.addGap(10)
 									.addComponent(ID, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
@@ -208,10 +215,16 @@ public class NewGoDownEntryInputFrame extends JFrame {
 									.addComponent(target)))
 							.addGap(3)))
 					.addGap(25))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(80)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(113, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(state)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(31)
@@ -276,7 +289,88 @@ public class NewGoDownEntryInputFrame extends JFrame {
 							.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))))
 		);
 		contentPane.setLayout(gl_contentPane);
+		
+		
+		ID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
+					state.setText("！快递编号必须是10位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		target.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(target.getText().isEmpty()){
+					state.setText("！目的地不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		qu.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(qu.getText().isEmpty()){
+					state.setText("！区号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		pai.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(pai.getText().isEmpty()){
+					state.setText("！排号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		jia.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(jia.getText().isEmpty()){
+					state.setText("！架号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		wei.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(wei.getText().isEmpty()){
+					state.setText("！位号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
+	
+	public boolean isDataUsable(){
+		if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=21){
+			state.setText("！快递编号必须是10位数值");
+			return false;
+		}else if(target.getText().isEmpty()){
+			state.setText("！目的地不能为空");
+			return false;
+		}else if(qu.getText().isEmpty()){
+			state.setText("！区号不能为空");
+			return false;
+		}else if(pai.getText().isEmpty()){
+			state.setText("！排号不能为空");
+			return false;
+		}else if(jia.getText().isEmpty()){
+			state.setText("！架号不能为空");
+			return false;
+		}else if(wei.getText().isEmpty()){
+			state.setText("！位号不能为空");
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public JButton getComfirm() {
 		return comfirm;
 	}

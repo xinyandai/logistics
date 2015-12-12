@@ -9,10 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.AccountVO;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewAccountInputFrame extends JFrame {
 
@@ -23,7 +27,7 @@ public class NewAccountInputFrame extends JFrame {
 	private JTextField money;
 	private JButton comfirm;
 	private JButton cancel;
-
+	private JLabel state;
 	
 	public NewAccountInputFrame() {
 		init();
@@ -35,15 +39,8 @@ public class NewAccountInputFrame extends JFrame {
 		this.id.setText(vo.getId());
 		this.money.setText(vo.getMoney()+"");
 	}
-	private void addListeners() {
-		cancel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-			}
-		});		
-	}
-
+	
+	
 	private void init(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -52,10 +49,10 @@ public class NewAccountInputFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("state");
-		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 14));
-		lblNewLabel.setBounds(184, 10, 54, 15);
-		contentPane.add(lblNewLabel);
+		state = new JLabel("");
+		state.setFont(new Font("楷体", Font.PLAIN, 14));
+		state.setBounds(184, 10, 193, 15);
+		contentPane.add(state);
 		
 		JLabel lblNewLabel_1 = new JLabel("账户");
 		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 15));
@@ -68,12 +65,14 @@ public class NewAccountInputFrame extends JFrame {
 		contentPane.add(label);
 		
 		id = new JTextField();
+		
 		id.setFont(new Font("楷体", Font.PLAIN, 15));
 		id.setBounds(133, 48, 263, 21);
 		contentPane.add(id);
 		id.setColumns(10);
 		
 		money = new JTextField();
+		
 		money.setFont(new Font("楷体", Font.PLAIN, 15));
 		money.setColumns(10);
 		money.setBounds(133, 81, 263, 21);
@@ -90,6 +89,47 @@ public class NewAccountInputFrame extends JFrame {
 		contentPane.add(cancel);
 	}
 	
+	
+	private void addListeners() {
+		cancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+		});	
+
+		id.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(id.getText().isEmpty()){
+					state.setText("！账户号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		money.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(!Numeric.isRealNumber(money.getText())){
+					state.setText("！余额必须是数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+	}
+	
+	public boolean isDataUsable(){
+		if(id.getText().isEmpty()){
+			state.setText("！账户号不能为空");
+			return false;
+		}else if(!Numeric.isRealNumber(money.getText())){
+			state.setText("！余额必须是数值");
+			return false;
+		}
+			
+		return true;
+	}
 	public AccountVO getAccountVO() {
 		return new AccountVO(this.id.getText(),this.money.getText());
 	}

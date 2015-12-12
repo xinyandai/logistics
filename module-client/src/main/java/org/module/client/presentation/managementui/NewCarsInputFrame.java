@@ -12,6 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+
+import org.module.client.presentation.Numeric;
 
 public class NewCarsInputFrame extends JFrame {
 
@@ -25,6 +29,7 @@ public class NewCarsInputFrame extends JFrame {
 	private JTextField time;
 	private JButton confirm;
 	private JButton cancel;
+	private JLabel state;
 
 	
 	public NewCarsInputFrame() {
@@ -52,14 +57,17 @@ public class NewCarsInputFrame extends JFrame {
 		label_2.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		id = new JTextField();
+		
 		id.setFont(new Font("楷体", Font.PLAIN, 17));
 		id.setColumns(10);
 		
 		license = new JTextField();
+		
 		license.setFont(new Font("楷体", Font.PLAIN, 17));
 		license.setColumns(10);
 		
 		time = new JTextField();
+		
 		time.setFont(new Font("楷体", Font.PLAIN, 17));
 		time.setColumns(10);
 		
@@ -69,14 +77,11 @@ public class NewCarsInputFrame extends JFrame {
 		cancel = new JButton("取消");
 		
 		cancel.setFont(new Font("方正姚体", Font.PLAIN, 16));
+		
+		state = new JLabel("");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(105)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addComponent(id, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-					.addGap(73))
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(105)
 					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
@@ -87,17 +92,28 @@ public class NewCarsInputFrame extends JFrame {
 					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 					.addComponent(time, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
 					.addGap(73))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(115)
 					.addComponent(confirm, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 					.addGap(37)
 					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 					.addGap(86))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(state, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(105)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+							.addComponent(id, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
+					.addGap(73))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(25)
+					.addComponent(state)
+					.addGap(10)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(2)
@@ -129,9 +145,50 @@ public class NewCarsInputFrame extends JFrame {
 				dispose();
 			}
 		});
+		id.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(id.getText()))||id.getText().length()!=9){
+					state.setText("！汽车代号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		license.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(license.getText().isEmpty()){
+					state.setText("！车牌号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		time.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(time.getText().isEmpty()){
+					state.setText("！服役时间不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 		
 	}
 
+	public boolean isDataUsable(){
+		if((!Numeric.isNumeric(id.getText()))||id.getText().length()!=9){
+			state.setText("！汽车代号必须是9位数值");
+			return false;
+		}else if(license.getText().isEmpty()){
+			state.setText("！车牌号不能为空");
+			return false;
+		}else if(time.getText().isEmpty()){
+			state.setText("！服役时间不能为空");
+		}
+			
+		return true;
+	}
+	
 	public String getId() {
 		return id.getText();
 	}

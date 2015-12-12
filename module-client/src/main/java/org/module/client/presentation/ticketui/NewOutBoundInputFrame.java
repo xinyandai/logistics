@@ -16,12 +16,15 @@ import javax.swing.border.EmptyBorder;
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.deparmentbl.DeparmentCount;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.OutBoundListVO;
 import org.module.common.po.State;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewOutBoundInputFrame extends JFrame {
 
@@ -39,6 +42,7 @@ public class NewOutBoundInputFrame extends JFrame {
 	private JComboBox typeOfWay;
 	
 	private DeparmentCount departmentCount = new DeparmentCount("中转中心");
+	private JLabel state;
 	
 	public NewOutBoundInputFrame() {
 		init();
@@ -56,9 +60,7 @@ public class NewOutBoundInputFrame extends JFrame {
 		this.datePicker.setDate(DateTransferHelper.getDate(vo.getDate()));
 	}
 	
-	public boolean isDataUsable(){
-		return true;
-	}
+	
 	
 	public OutBoundListVO getVO(){
 		return new OutBoundListVO(
@@ -95,6 +97,7 @@ public class NewOutBoundInputFrame extends JFrame {
 		warehouseID.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		target = new JTextField();
+		
 		target.setFont(new Font("楷体", Font.PLAIN, 15));
 		target.setColumns(10);
 		
@@ -110,10 +113,12 @@ public class NewOutBoundInputFrame extends JFrame {
 		label_5.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		ID = new JTextField();
+		
 		ID.setFont(new Font("楷体", Font.PLAIN, 15));
 		ID.setColumns(10);
 		
 		transportID = new JTextField();
+		
 		transportID.setFont(new Font("楷体", Font.PLAIN, 15));
 		transportID.setColumns(10);
 		
@@ -132,6 +137,8 @@ public class NewOutBoundInputFrame extends JFrame {
 			}
 		});
 		cancel.setFont(new Font("楷体", Font.PLAIN, 18));
+		
+		state = new JLabel("");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -143,7 +150,7 @@ public class NewOutBoundInputFrame extends JFrame {
 					.addGap(18)
 					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
-					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
 					.addGap(28))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(37)
@@ -153,7 +160,7 @@ public class NewOutBoundInputFrame extends JFrame {
 					.addGap(18)
 					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
-					.addComponent(transportID, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+					.addComponent(transportID, GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
 					.addGap(28))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(37)
@@ -163,17 +170,23 @@ public class NewOutBoundInputFrame extends JFrame {
 					.addGap(18)
 					.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
-					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(123)
 					.addComponent(comfirm, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 					.addGap(24)
 					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
 					.addGap(91))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(58)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(76, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(state)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(22)
@@ -219,14 +232,54 @@ public class NewOutBoundInputFrame extends JFrame {
 							.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))))
 		);
 		contentPane.setLayout(gl_contentPane);
+		
+		target.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(target.getText().isEmpty()){
+					state.setText("！目的地不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		ID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
+					state.setText("！快递编号必须是10位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		transportID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=9){
+					state.setText("！货运编号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
 	
-	
+	public boolean isDataUsable(){
+		if(target.getText().isEmpty()){
+			state.setText("！目的地不能为空");
+			return false;
+		}else if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
+			state.setText("！快递编号必须是10位数值");
+			return false;
+		}else if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=9){
+			state.setText("！货运编号必须是9位数值");
+			return false;
+		}
+		
+		
+		return true;
+	}
 	
 
 	public JButton getComfirm() {
 		return comfirm;
 	}
-	
-	
 }

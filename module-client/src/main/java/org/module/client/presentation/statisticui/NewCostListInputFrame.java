@@ -18,7 +18,11 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.CostListVO;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewCostListInputFrame extends JFrame {
 
@@ -30,6 +34,7 @@ public class NewCostListInputFrame extends JFrame {
 	private JXDatePicker datePicker;
 	private JComboBox entry;
 	private JButton comfirm;
+	private JLabel state;
 
 	
 	public NewCostListInputFrame() {
@@ -53,7 +58,7 @@ public class NewCostListInputFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel state = new JLabel("state");
+		state = new JLabel("");
 		state.setForeground(Color.RED);
 		
 		JLabel lblNewLabel = new JLabel("付款日期");
@@ -82,12 +87,15 @@ public class NewCostListInputFrame extends JFrame {
 		entry.setFont(new Font("宋体", Font.PLAIN, 15));
 		
 		payer = new JTextField();
+		
 		payer.setColumns(10);
 		
 		money = new JTextField();
+		
 		money.setColumns(10);
 		
 		account = new JTextField();
+		
 		account.setColumns(10);
 		
 		note = new JTextField();
@@ -108,21 +116,6 @@ public class NewCostListInputFrame extends JFrame {
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(179)
-					.addComponent(state, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(32)
-					.addComponent(lblNewLabel)
-					.addGap(10)
-					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-					.addGap(41)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(56)
-							.addComponent(payer, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)))
-					.addGap(51))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(32)
 					.addComponent(label)
@@ -153,12 +146,28 @@ public class NewCostListInputFrame extends JFrame {
 					.addGap(30)
 					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
 					.addGap(134))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(32)
+					.addComponent(lblNewLabel)
+					.addGap(10)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(state, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+							.addGap(41)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(56)
+									.addComponent(payer, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)))
+							.addGap(51))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(5)
-					.addComponent(state)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 5, GroupLayout.PREFERRED_SIZE)
 					.addGap(19)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -200,9 +209,50 @@ public class NewCostListInputFrame extends JFrame {
 						.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
 		);
 		contentPane.setLayout(gl_contentPane);
+		
+		
+		payer.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(payer.getText().isEmpty()){
+					state.setText("！付款人不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		money.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isRealNumber(money.getText()))){
+					state.setText("！金额必须是数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		account.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isRealNumber(account.getText()))){
+					state.setText("！账号必须是数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
 	
 	public boolean isDataUsable(){
+		if(payer.getText().isEmpty()){
+			state.setText("！付款人不能为空");
+			return false;
+		}else if((!Numeric.isRealNumber(money.getText()))){
+			state.setText("！金额必须是数值");
+			return false;
+		}else if((!Numeric.isRealNumber(account.getText()))){
+			state.setText("！账号必须是数值");
+			return false;
+		}
+			
 		return true;
 	}
 	

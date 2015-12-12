@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.SendingListVO;
 import org.module.common.po.State;
 
@@ -21,6 +22,9 @@ import javax.swing.JButton;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewSendingListInputFrame extends JFrame {
 
@@ -32,6 +36,7 @@ public class NewSendingListInputFrame extends JFrame {
 	private JXDatePicker datePicker;
 	private JButton comfirm;
 	private JButton cancel;
+	private JLabel state;
 
 	
 
@@ -69,12 +74,14 @@ public class NewSendingListInputFrame extends JFrame {
 		contentPane.add(label_2);
 		
 		ID = new JTextField();
+		
 		ID.setFont(new Font("楷体", Font.PLAIN, 18));
 		ID.setColumns(10);
 		ID.setBounds(176, 27, 121, 21);
 		contentPane.add(ID);
 		
 		sender = new JTextField();
+		
 		sender.setFont(new Font("楷体", Font.PLAIN, 18));
 		sender.setColumns(10);
 		sender.setBounds(176, 67, 121, 21);
@@ -97,6 +104,31 @@ public class NewSendingListInputFrame extends JFrame {
 		});
 		cancel.setBounds(229, 178, 65, 23);
 		contentPane.add(cancel);
+		
+		state = new JLabel("");
+		state.setBounds(93, 0, 251, 21);
+		contentPane.add(state);
+		
+		
+		ID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
+					state.setText("！快递单号必须是10位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		sender.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(sender.getText()))||sender.getText().length()!=9){
+					state.setText("！派件员必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
 	
 	public JButton getComfirm() {
@@ -104,6 +136,14 @@ public class NewSendingListInputFrame extends JFrame {
 	}
 	
 	public boolean isDataUsable(){
+		if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
+			state.setText("！快递单号必须是10位数值");
+			return false;
+		}else if((!Numeric.isNumeric(sender.getText()))||sender.getText().length()!=9){
+			state.setText("！派件员必须是9位数值");
+			return false;
+		}
+		
 		return true;
 		
 	}

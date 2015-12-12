@@ -14,11 +14,14 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.TransportListVO;
 import org.module.common.po.State;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewTransportListInputFrame extends JFrame {
 
@@ -45,6 +48,9 @@ public class NewTransportListInputFrame extends JFrame {
 	private int lengthOfID = 9;
 	private String[] array;
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public NewTransportListInputFrame(String[] ary) {
 		this.array = ary;
 		init();
@@ -84,8 +90,8 @@ public class NewTransportListInputFrame extends JFrame {
 		label.setBounds(34, 31, 79, 15);
 		contentPane.add(label);
 		
-		state = new JLabel("state");
-		state.setBounds(191, 10, 54, 15);
+		state = new JLabel("");
+		state.setBounds(133, 10, 215, 15);
 		contentPane.add(state);
 		
 		JLabel label_1 = new JLabel("车次");
@@ -115,6 +121,7 @@ public class NewTransportListInputFrame extends JFrame {
 		contentPane.add(way);
 		
 		trucksID = new JTextField();
+		
 		trucksID.setColumns(10);
 		trucksID.setBounds(117, 58, 109, 21);
 		contentPane.add(trucksID);
@@ -126,6 +133,7 @@ public class NewTransportListInputFrame extends JFrame {
 		contentPane.add(price);
 		
 		supervision = new JTextField();
+		
 		supervision.setColumns(10);
 		supervision.setBounds(117, 108, 109, 21);
 		contentPane.add(supervision);
@@ -151,11 +159,13 @@ public class NewTransportListInputFrame extends JFrame {
 		contentPane.add(label_8);
 		
 		transportList = new JTextField();
+		
 		transportList.setColumns(10);
 		transportList.setBounds(325, 58, 109, 21);
 		contentPane.add(transportList);
 		
 		counterID = new JTextField();
+		
 		counterID.setColumns(10);
 		counterID.setBounds(325, 108, 109, 21);
 		contentPane.add(counterID);
@@ -197,12 +207,69 @@ public class NewTransportListInputFrame extends JFrame {
 		
 		textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
+		
+		
+		
+		trucksID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isRealNumber(trucksID.getText()))||trucksID.getText().length()!=9){
+					state.setText("！车辆代号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}		
+		});
+		
+		transportList.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isRealNumber(transportList.getText()))||transportList.getText().length()!=21){
+					state.setText("！中转单号必须是21位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		supervision.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(supervision.getText().isEmpty()){
+					state.setText("！监装员不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		counterID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(counterID.getText().isEmpty()){
+					state.setText("！监装员不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
 	public JButton getComfirm() {
 		return comfirm;
 	}
 	
 	public boolean isDataUsable(){
+		if((!Numeric.isRealNumber(trucksID.getText()))||trucksID.getText().length()!=9){
+			state.setText("！车辆代号必须是9位数值");
+			return false;
+		}else if((!Numeric.isRealNumber(transportList.getText()))||transportList.getText().length()!=21){
+			state.setText("！中转单号必须是21位数值");
+			return false;
+		}else if(supervision.getText().isEmpty()){
+			state.setText("！监装员不能为空");
+			return false;
+		}else if(counterID.getText().isEmpty()){
+			state.setText("！监装员不能为空");
+			return false;
+		}
+		
+		
 		String[] ids = this.shippingId();
 		return (ids !=null) ;
 	}

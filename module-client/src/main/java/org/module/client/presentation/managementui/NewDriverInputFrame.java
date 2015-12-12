@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+
+import org.module.client.presentation.Numeric;
 
 public class NewDriverInputFrame extends JFrame {
 
@@ -39,8 +43,8 @@ public class NewDriverInputFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		state = new JLabel("New label");
-		state.setBounds(192, 10, 81, 19);
+		state = new JLabel("");
+		state.setBounds(53, 10, 296, 19);
 		state.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label_1 = new JLabel("编号");
@@ -72,6 +76,7 @@ public class NewDriverInputFrame extends JFrame {
 		label_7.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		id = new JTextField();
+		
 		id.setBounds(129, 46, 66, 21);
 		id.setFont(new Font("楷体", Font.PLAIN, 16));
 		id.setColumns(10);
@@ -82,26 +87,32 @@ public class NewDriverInputFrame extends JFrame {
 		birthday.setColumns(10);
 		
 		phone = new JTextField();
+		
+		
 		phone.setBounds(129, 124, 66, 21);
 		phone.setFont(new Font("楷体", Font.PLAIN, 16));
 		phone.setColumns(10);
 		
 		date = new JTextField();
+		
 		date.setBounds(129, 160, 66, 21);
 		date.setFont(new Font("楷体", Font.PLAIN, 16));
 		date.setColumns(10);
 		
 		drivername = new JTextField();
+		
 		drivername.setBounds(315, 46, 66, 21);
 		drivername.setFont(new Font("楷体", Font.PLAIN, 16));
 		drivername.setColumns(10);
 		
 		idCard = new JTextField();
+		
 		idCard.setBounds(315, 85, 66, 21);
 		idCard.setFont(new Font("楷体", Font.PLAIN, 16));
 		idCard.setColumns(10);
 		
 		gender = new JTextField();
+		
 		gender.setBounds(315, 124, 66, 21);
 		gender.setFont(new Font("楷体", Font.PLAIN, 16));
 		gender.setColumns(10);
@@ -143,7 +154,83 @@ public class NewDriverInputFrame extends JFrame {
 				dispose();
 			}
 		});
+		
+		id.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(id.getText()))||id.getText().length()!=9){
+					state.setText("！汽车代号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		drivername.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(drivername.getText().isEmpty()){
+					state.setText("！司机姓名不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		idCard.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(idCard.getText()))||idCard.getText().length()!=18){
+					state.setText("！身份证号必须是18位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		phone.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(phone.getText()))||phone.getText().length()!=11){
+					state.setText("！手机号必须是11位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		gender.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(gender.getText().isEmpty()){
+					state.setText("！性别不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		date.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(date.getText().isEmpty()){
+					state.setText("！驾驶期限不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
 	}
+	
+
+	public boolean isDataUsable(){
+		if((!Numeric.isNumeric(id.getText()))||id.getText().length()!=9){
+			state.setText("！汽车代号必须是9位数值");
+		}else if(drivername.getText().isEmpty()){
+			state.setText("！司机姓名不能为空");
+		}else if((!Numeric.isNumeric(idCard.getText()))||idCard.getText().length()!=9){
+			state.setText("！身份证号必须是18位数值");
+		}else if((!Numeric.isNumeric(phone.getText()))||phone.getText().length()!=9){
+			state.setText("！手机号必须是11位数值");
+		}else if(gender.getText().isEmpty()){
+			state.setText("！性别不能为空");
+		}else if(date.getText().isEmpty()){
+			state.setText("！驾驶期限不能为空");
+		}
+			
+		return true;
+	}
+	
 	public NewDriverInputFrame(String id, String name, String birthday, String idcard,
 			String phone, String gender, String date) {
 		this.init();

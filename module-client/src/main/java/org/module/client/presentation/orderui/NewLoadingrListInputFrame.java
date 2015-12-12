@@ -16,7 +16,11 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.AbstractLoadingListVO;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewLoadingrListInputFrame extends JFrame {
 
@@ -104,16 +108,19 @@ public class NewLoadingrListInputFrame extends JFrame {
 		contentPane.add(label_3);
 		
 		department = new JTextField();
+		
 		department.setColumns(10);
 		department.setBounds(115, 37, 84, 21);
 		contentPane.add(department);
 		
 		carID = new JTextField();
+		
 		carID.setColumns(10);
 		carID.setBounds(115, 66, 84, 21);
 		contentPane.add(carID);
 		
 		supervision = new JTextField();
+		
 		supervision.setColumns(10);
 		supervision.setBounds(115, 95, 84, 21);
 		contentPane.add(supervision);
@@ -151,11 +158,13 @@ public class NewLoadingrListInputFrame extends JFrame {
 		contentPane.add(price);
 		
 		trucksID = new JTextField();
+		
 		trucksID.setColumns(10);
 		trucksID.setBounds(314, 37, 84, 21);
 		contentPane.add(trucksID);
 		
 		driver = new JTextField();
+		
 		driver.setColumns(10);
 		driver.setBounds(314, 95, 84, 21);
 		contentPane.add(driver);
@@ -181,6 +190,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 		scrollPane.setColumnHeaderView(labelForInput);
 		
 		textPane = new JTextPane();
+		
 		scrollPane.setViewportView(textPane);
 		
 		comfirm = new JButton("确定");
@@ -197,10 +207,58 @@ public class NewLoadingrListInputFrame extends JFrame {
 			}
 		});
 		state = new JLabel("");
-		state.setBounds(191, 10, 54, 15);
+		state.setBounds(107, 10, 226, 15);
 		contentPane.add(state);
 		
+		trucksID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(!Numeric.isNumeric(trucksID.getText())||trucksID.getText().length()!=19){
+					state.setText("！汽运编号必须是19位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 		
+		carID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(!Numeric.isNumeric(carID.getText())||carID.getText().length()!=9){
+					state.setText("！车辆代号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		supervision.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(supervision.getText().isEmpty()){
+					state.setText("！监装员不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		driver.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(!Numeric.isNumeric(driver.getText())||driver.getText().length()!=9){
+					state.setText("！司机代号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		textPane.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(textPane.getText().isEmpty()){
+					state.setText("！托运单号不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
 	}
 	
 	protected String[] shippingId(){
@@ -236,11 +294,30 @@ public class NewLoadingrListInputFrame extends JFrame {
 	}
 	
 	
+	
 	public JButton getComfirm() {
 		return comfirm;
 	}
 	
 	public boolean isDataUsable(){
+		if(!Numeric.isNumeric(trucksID.getText())||trucksID.getText().length()!=19){
+			state.setText("！汽运编号必须是19位数值");
+			return false;
+		}else if(!Numeric.isNumeric(carID.getText())||carID.getText().length()!=9){
+			state.setText("！车辆代号必须是9位数值");
+			return false;
+		}else if(supervision.getText().isEmpty()){
+			state.setText("！监装员不能为空");
+			return false;
+		}else if(!Numeric.isNumeric(driver.getText())||driver.getText().length()!=9){
+			
+			state.setText("！司机代号必须是9位数值");
+			return false;
+		}else if(textPane.getText().isEmpty()){
+			state.setText("！托运单号不能为空");
+			return false;
+		}
+		
 		return true;
 	}
 }

@@ -16,7 +16,12 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.AbstractArrialListVO;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class NewArrivalListInputFrame extends JFrame {
 
@@ -49,14 +54,15 @@ public class NewArrivalListInputFrame extends JFrame {
 		this.origin.setText(vo.getOrigin());
 	}
 	
-	private void init(){	
+	protected void init(){	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		state = new JLabel("state");
+		state = new JLabel("");
+		state.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		JLabel label = new JLabel("部门编号");
 		label.setFont(new Font("楷体", Font.PLAIN, 16));
@@ -78,14 +84,17 @@ public class NewArrivalListInputFrame extends JFrame {
 		time = new JXDatePicker();
 		
 		deparmentID = new JTextField();
+		
 		deparmentID.setFont(new Font("楷体", Font.PLAIN, 15));
 		deparmentID.setColumns(10);
 		
 		transportID = new JTextField();
+		
 		transportID.setFont(new Font("楷体", Font.PLAIN, 15));
 		transportID.setColumns(10);
 		
 		origin = new JTextField();
+		
 		origin.setFont(new Font("楷体", Font.PLAIN, 15));
 		origin.setColumns(10);
 		
@@ -97,19 +106,6 @@ public class NewArrivalListInputFrame extends JFrame {
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(184)
-					.addComponent(state, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(deparmentID, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-					.addGap(21)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(time, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-					.addGap(16))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(42)
 					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
@@ -123,21 +119,34 @@ public class NewArrivalListInputFrame extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(42)
 					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(origin, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-					.addGap(204))
+					.addGap(206))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(118)
 					.addComponent(comfirm, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 					.addGap(30)
 					.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(42)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(deparmentID, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+					.addGap(21)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(time, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+					.addGap(16))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(98)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(102, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(5)
 					.addComponent(state)
-					.addGap(18)
+					.addGap(23)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 						.addComponent(deparmentID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
@@ -158,7 +167,7 @@ public class NewArrivalListInputFrame extends JFrame {
 							.addGap(1)
 							.addComponent(stateOfArrival, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 						.addComponent(origin, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 					.addGap(33)
@@ -176,12 +185,53 @@ public class NewArrivalListInputFrame extends JFrame {
 				dispose();
 			}
 		});
+		
+		deparmentID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(!Numeric.isRealNumber(deparmentID.getText())||deparmentID.getText().length()!=6){
+					state.setText("！部门编号必须是6位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		transportID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isRealNumber(transportID.getText()))||transportID.getText().length()!=21){
+					state.setText("！中转单号必须是21位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
+		origin.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(origin.getText().isEmpty()){
+					state.setText("！出发地不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
 	}
 	public JButton getComfirmButton() {
 		return comfirm;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isDataUsable(){
+		if(!Numeric.isNumeric(deparmentID.getText())||deparmentID.getText().length()!=6){
+			return false;
+		}else if(!Numeric.isNumeric(transportID.getText())||transportID.getText().length()!=21){
+			return false;
+		}else if(origin.getText().isEmpty()){
+			return false;
+		}
 		return true;
 	}
 }

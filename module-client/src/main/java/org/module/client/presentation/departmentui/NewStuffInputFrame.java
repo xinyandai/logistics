@@ -11,10 +11,14 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.StuffVO;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class NewStuffInputFrame extends JFrame {
 
@@ -58,8 +62,8 @@ public class NewStuffInputFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		state = new JLabel("New label");
-		state.setBounds(196, 10, 54, 15);
+		state = new JLabel("");
+		state.setBounds(78, 10, 308, 15);
 		contentPane.add(state);
 		
 		JLabel label = new JLabel("年龄");
@@ -83,18 +87,21 @@ public class NewStuffInputFrame extends JFrame {
 		contentPane.add(label_3);
 		
 		age = new JTextField();
+		
 		age.setFont(new Font("楷体", Font.PLAIN, 16));
 		age.setBounds(109, 43, 66, 21);
 		contentPane.add(age);
 		age.setColumns(10);
 		
 		name = new JTextField();
+		
 		name.setFont(new Font("楷体", Font.PLAIN, 16));
 		name.setColumns(10);
 		name.setBounds(109, 71, 66, 21);
 		contentPane.add(name);
 		
 		id = new JTextField();
+		
 		id.setFont(new Font("楷体", Font.PLAIN, 16));
 		id.setColumns(10);
 		id.setBounds(298, 43, 66, 21);
@@ -126,7 +133,48 @@ public class NewStuffInputFrame extends JFrame {
 				dispose();
 			}
 		});
+		age.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(age.getText()))){
+					state.setText("！年龄必须是数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		id.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if((!Numeric.isNumeric(id.getText()))||id.getText().length()!=9){
+					state.setText("！员工号必须是9位数值");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		name.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(name.getText().isEmpty()){
+					state.setText("！姓名不能为空");
+				}else{
+					state.setText("");
+				}
+			}
+		});
+		
 	}
+	
+	public boolean isDataUsable(){
+		if((!Numeric.isNumeric(age.getText()))){
+			state.setText("！年龄必须是数值");
+		}else if((!Numeric.isNumeric(id.getText()))||id.getText().length()!=9){
+			state.setText("！员工号必须是9位数值");
+		}else if(name.getText().isEmpty()){
+			state.setText("！姓名不能为空");
+		}
+			
+		return true;
+	}
+	
 	public String getAge() {
 		return age.getText();
 	}
