@@ -16,6 +16,7 @@ public class CostListPO implements Serializable{
 	private String entry;
 	private String note;
 	
+	private State state;
 	final private String split = ":%:%:";
 	
 	@Override
@@ -25,7 +26,8 @@ public class CostListPO implements Serializable{
 				this.people + this.split +
 				this.accout + this.split +
 				this.entry + this.split +
-				this.note;
+				this.state.toString() + this.split + 
+				this.note+ this.split + this.ID;
 	}
 	
 	public CostListPO(String string) {
@@ -36,9 +38,11 @@ public class CostListPO implements Serializable{
 		this.accout = s[3];
 		this.entry = s[4];
 		this.note = s[5];
+		this.state = State.getInstance(s[6]);
+		this.ID = s[7];
 	}
 	public CostListPO(String date, String money, String people, String accout,
-			String entry, String note) {
+			String entry, String note,State state ,String id) {
 		super();
 		this.date = date;
 		this.money = money;
@@ -46,8 +50,14 @@ public class CostListPO implements Serializable{
 		this.accout = accout;
 		this.entry = entry;
 		this.note = note;
+		this.state = state;
+		this.ID = id;
 	}
 	
+	public State getState() {
+		return state;
+	}
+
 	public String getDate() {
 		return date;
 	}
@@ -84,5 +94,11 @@ public class CostListPO implements Serializable{
 	public void setNote(String note) {
 		this.note = note;
 	}
+	private String ID;
+	
+	public String getID() {
+		return ID;
+	}
+
 	
 }

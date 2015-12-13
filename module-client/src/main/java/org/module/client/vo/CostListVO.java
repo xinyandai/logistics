@@ -1,6 +1,7 @@
 package org.module.client.vo;
 
 import org.module.common.po.CostListPO;
+import org.module.common.po.State;
 
 public class CostListVO extends AbstractVO{
 
@@ -11,9 +12,12 @@ public class CostListVO extends AbstractVO{
 	private String entry;
 	private String note;
 	
+	private State state;
+	
+	
 	
 	public CostListVO(String date, String money, String people, String accout,
-			String entry, String note) {
+			String entry, String note,State state ,String id) {
 		super();
 		this.date = date;
 		this.money = Double.parseDouble(money);
@@ -21,6 +25,8 @@ public class CostListVO extends AbstractVO{
 		this.accout = accout;
 		this.entry = entry;
 		this.note = note;
+		this.ID = id;
+		this.state = state;
 	}
 	public CostListVO(CostListPO costListPO) {
 		this(
@@ -29,8 +35,23 @@ public class CostListVO extends AbstractVO{
 				costListPO.getPeople(),
 				costListPO.getAccout(),
 				costListPO.getEntry(),
-				costListPO.getNote()
+				costListPO.getNote(),
+				costListPO.getState(),
+				costListPO.getID()
 				);
+	}
+	
+	public CostListPO toPO(){
+		return new CostListPO(
+				this.date ,
+				this.money +"",
+				this.people ,
+				this.accout ,
+				this.entry ,
+				this.note ,
+				this.state ,
+				this.ID 
+				); 
 	}
 	public String getDate() {
 		return date;
@@ -68,14 +89,23 @@ public class CostListVO extends AbstractVO{
 	public void setNote(String note) {
 		this.note = note;
 	}
+	private String ID;
 	
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
 	public String[] array(){
 		String[] s = {this.date,
 		this.money+"" ,
 		this.people ,
 		this.accout,
 		this.entry,
-		this.note };
+		this.note,
+		this.state.toString()};
 		return s;
 	}
 	
@@ -93,7 +123,8 @@ public class CostListVO extends AbstractVO{
 				"付款人",
 				"付款账户",
 				"条目",
-				"备注"
+				"备注",
+				"状态"
 		};
 	    return s;
 	}

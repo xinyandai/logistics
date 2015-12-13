@@ -39,6 +39,7 @@ public class ReceiptPO implements Serializable{
 			this.Courier = s[2];
 			this.orderId = s[3].split(inlinespt);
 			this.state = State.getInstance(s[4]);
+			this.ID = s[5];
 		}
 		
 		@Override
@@ -47,7 +48,8 @@ public class ReceiptPO implements Serializable{
 					this.money + this.split +
 					this.Courier + this.split +
 					this.getArrayToString( this.orderId )+ this.split +
-					this.state.toString();
+					this.state.toString()
+					+ this.split + this.ID;
 		}
 		
 		public String getDate() {
@@ -71,15 +73,19 @@ public class ReceiptPO implements Serializable{
 		}
 
 		public ReceiptPO(String date, String money, String courier,
-				String[] orderId, State state) {
+				String[] orderId, State state,String id) {
 			super();
 			this.date = date;
 			this.money = money;
 			Courier = courier;
 			this.orderId = orderId;
 			this.state = state;
+			this.ID = id;
 		}
-
+		private String ID;
+		public String getID() {
+			return ID;
+		}
 		
 		
 		

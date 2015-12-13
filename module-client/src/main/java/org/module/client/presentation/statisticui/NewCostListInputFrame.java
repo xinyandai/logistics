@@ -1,10 +1,10 @@
 package org.module.client.presentation.statisticui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -15,14 +15,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.CostListVO;
-
-import javax.swing.event.CaretListener;
-import javax.swing.event.CaretEvent;
+import org.module.common.po.State;
 
 public class NewCostListInputFrame extends JFrame {
 
@@ -36,12 +36,15 @@ public class NewCostListInputFrame extends JFrame {
 	private JButton comfirm;
 	private JLabel state;
 
+	private String id;
 	
 	public NewCostListInputFrame() {
+		this.id = new Date().getTime()+"";
 		init();
 	}
 	
 	public NewCostListInputFrame( CostListVO vo) {
+		this.id = vo.getID();
 		init();
 		this.payer.setText(vo.getPeople());
 		this.money.setText(vo.getMoney()+"");
@@ -267,7 +270,10 @@ public class NewCostListInputFrame extends JFrame {
 		this.payer.getText(),
 		this.account.getText(),
 		this.entry.getSelectedItem().toString(),
-		this.note.getText()
+		this.note.getText(),
+		State.SUBMITTED,
+		id
+		
 		);
 	}
 }

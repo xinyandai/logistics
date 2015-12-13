@@ -19,8 +19,7 @@ public class Cost implements CostService {
 	public boolean creatCostList(CostListVO vo) {
 		
 		try {
-			return data.addCostList(new CostListPO(vo.getDate(),vo.getMoney()+"",vo.getPeople(),
-					vo.getAccout(),vo.getEntry(),vo.getNote()));
+			return data.addCostList(vo.toPO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -37,8 +36,7 @@ public class Cost implements CostService {
 				 */
                 long time = DateTransferHelper.getDate(po.getDate()).getTime();
 				if(time<=endTime && time>=startTime){
-					vos.add(new CostListVO(po.getDate(),po.getMoney()+"",po.getPeople(),
-							po.getAccout(),po.getEntry(),po.getNote()));
+					vos.add(new CostListVO(po));
 				}
 					
 			}
