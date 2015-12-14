@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.module.client.businesslogicservice.department.CalculateSalaryService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.vo.StuffVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.TranCenterLoadingListService;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
@@ -32,22 +33,9 @@ public class CalculateSalary implements CalculateSalaryService {
 	}
 	
 	
-	public double calculateById(String id,String time) {
-		if(id.substring(0,2).equals("001")){
-			return this.getAccountant();
-		}else if(id.substring(0,2).equals("002")){
-			return this.getCourier(id,time);
-		}else if(id.substring(0,2).equals("003")){
-			return this.getDriver(id,time);
-		}else if(id.substring(0,2).equals("004")){
-			return this.getOfficeClerk();
-		}else if(id.substring(0,2).equals("005")){
-			return this.getTranCenterClerk();
-		}else if(id.substring(0,2).equals("006")){
-			return this.getWarehouse();
-		}else{
-			return 0;
-		}
+	public double calculateSalary(StuffVO vo) {
+		double re = .0;
+		return re;
 		
 	}
 
@@ -57,7 +45,6 @@ public class CalculateSalary implements CalculateSalaryService {
 			apo = data.getAccountSalary();
 			return apo.getBase()+apo.getBonus();
 		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
 			return 0;
 		}
 		

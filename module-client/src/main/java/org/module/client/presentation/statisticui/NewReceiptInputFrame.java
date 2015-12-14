@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,17 +15,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.ReceiptVO;
 import org.module.common.po.State;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.event.CaretListener;
-import javax.swing.event.CaretEvent;
 
 public class NewReceiptInputFrame extends JFrame {
 
@@ -32,27 +31,52 @@ public class NewReceiptInputFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField money;
 	private JTextField courier;
-	private JXDatePicker timePicker;
+	private JXDatePicker datePicker;
 	private JTextPane textPane;
 	private JLabel state;
 	private final int lengthOfID = 9;
 	private JButton save;
 	private JButton cancel;
 	final private String id;
-	
+	/**
+	 * 检查数据输入格式是否都正确
+	 * @return
+	 */
 	public boolean isDataUsable(){
-		return this.shippingId()!=null;
+		return this.shippingId()!=null 
+				&&Numeric.isNumeric(courier.getText())
+				&&courier.getText().length()==6;
 	}
+	/**
+	 * 调用段先调用this.isDataUsable()
+	 * 返回为true则继续调用此函数
+	 * 返回VO
+	 * @return
+	 */
 	public ReceiptVO getVO(){
 		return new ReceiptVO(
-				DateTransferHelper.getString( this.timePicker.getDate() ),
+				DateTransferHelper.getString( this.datePicker.getDate() ),
 							this.money.getText() ,
 							this.courier.getText() ,
 							this.shippingId(),
 							State.SUBMITTED,
 							id);
 	}
-	
+	public NewReceiptInputFrame(ReceiptVO vo) {
+	    this.id = vo.getID();
+		init();
+		this.money.setText(vo.getMoney()+"");
+		this.courier.setText(vo.getCourier());
+		StringBuffer buffer = new StringBuffer();
+		String[] strs = vo.getOrderId() ;
+		for (String string : strs) {
+			buffer.append(string);
+			buffer.append("\n");
+		}
+		this.textPane.setText(buffer.toString());
+		this.datePicker.setDate(DateTransferHelper.getDate(vo.getDate()));
+		this.addListeners();
+	}
 	public NewReceiptInputFrame() {
 	    this.id = new Date().getTime()+"";
 		init();
@@ -84,7 +108,7 @@ public class NewReceiptInputFrame extends JFrame {
 		courier.setFont(new Font("楷体", Font.PLAIN, 15));
 		courier.setColumns(10);
 		
-		timePicker = new JXDatePicker();
+		datePicker = new JXDatePicker();
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -114,7 +138,7 @@ public class NewReceiptInputFrame extends JFrame {
 					.addGap(31)
 					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 					.addGap(24)
-					.addComponent(timePicker, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))
+					.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(31)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 388, GroupLayout.PREFERRED_SIZE))
@@ -149,7 +173,7 @@ public class NewReceiptInputFrame extends JFrame {
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(3)
-							.addComponent(timePicker, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
 					.addGap(12)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
@@ -172,25 +196,14 @@ public class NewReceiptInputFrame extends JFrame {
 		});
 		this.courier.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
-				if(!Numeric.isNumeric(courier.getText() )){
+				if(!Numeric.isNumeric(courier.getText() ) || 
+						courier.getText().length()!=6){
 					state.setText("!员工号必须是六位数值");
 				}
 			}
 		});
-		this.money.addCaretListener(new CaretListener() {
-			public void caretUpdate(CaretEvent e) {
-			}
-		});
-		save.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String[] shippingId = shippingId(); 
-				if(shippingId!=null){
-					
-				}
-				
-			}
-		});		
+		
+		
 		cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -200,7 +213,6 @@ public class NewReceiptInputFrame extends JFrame {
 	}
 	protected String[] shippingId(){
 		String[] shippingId = null;
-		
 		String   text = textPane.getText();
 		while(text.charAt(text.length()-1)=='\r'  || text.charAt(text.length()-1)==' '
 				||text.charAt(text.length()-1)=='\n' ){
@@ -217,15 +229,9 @@ public class NewReceiptInputFrame extends JFrame {
 			System.out.println("0:"+string);
 			
 			if(string.length()!=lengthOfID ){
-				System.out.println("1:"+string);
-				System.out.println("2:"+string.length());
 				state.setText("托运单号请以空格或回车隔开");
 				return null;
-			}else{
-				System.out.println("3:"+string);
-				System.out.println("4:"+string.length());
 			}
-			
 		}
 	    state.setText("格式正确");
 	    return shippingId;

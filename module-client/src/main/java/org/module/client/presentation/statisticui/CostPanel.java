@@ -38,7 +38,15 @@ public class CostPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	ArrayList<CostListVO> listData ;
-	String[] columnNames = {"付款日期", "付款金额","付款人","付款账号","条目","备注"};
+	String[] columnNames =  {
+			"日期",
+			"钱",
+			"付款人",
+			"付款账户",
+			"条目",
+			"备注",
+			"状态"
+	};
 	private Table table;
 	private JButton add;
 	private JXDatePicker startTimePicker;
@@ -122,6 +130,7 @@ public class CostPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
 					controller.add(frame.getVO());
+					table.fireTableDataChanged();
 					frame.dispose();
 				}
 			}
@@ -137,6 +146,7 @@ public class CostPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
 					controller.add(frame.getVO());
+					table.fireTableDataChanged();
 					frame.dispose();
 				}
 			}

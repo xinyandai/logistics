@@ -1,5 +1,7 @@
 package org.module.client.businesslogicservice.department;
 
+import org.module.client.vo.StuffVO;
+
 public interface CalculateSalaryService {
 
 	/**
@@ -7,5 +9,5 @@ public interface CalculateSalaryService {
 	 * @param id
 	 * @return
 	 */
-	public double calculateById(String id,String time);
+	public double calculateSalary(StuffVO vo);
 }

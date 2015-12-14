@@ -148,7 +148,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 
 	public TranCenterClerkSalaryPO getTranCenterClerkSalary() {
 		// TODO Auto-generated method stub
-		String path="file"+File.separator+" TranCenterClerkSalary.txt";
+		String path="file"+File.separator+"TranCenterClerkSalary.txt";
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();

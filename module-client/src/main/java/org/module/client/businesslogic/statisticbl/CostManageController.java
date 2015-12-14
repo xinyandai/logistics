@@ -8,6 +8,7 @@ import org.module.client.vo.CostListVO;
 
 public class CostManageController implements CostManageBLService {
 	private CostService cost;
+	private ArrayList<CostListVO> list;
 	public CostManageController(CostService cost) {
 		super();
 		this.cost = cost;
@@ -18,13 +19,13 @@ public class CostManageController implements CostManageBLService {
 	}
 
 	public boolean add(CostListVO vo) {
-		// TODO Auto-generated method stub
+		this.list.add(vo);
 		return cost.creatCostList(vo);
 	}
 
 	public ArrayList<CostListVO> showAll(long startTime, long endTime) {
-		// TODO Auto-generated method stub
-		return cost.getAllCostList(startTime, endTime);
+		this.list = cost.getAllCostList(startTime, endTime);
+		return list;
 	}
 
 

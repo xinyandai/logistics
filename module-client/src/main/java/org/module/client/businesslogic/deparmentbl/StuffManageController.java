@@ -31,7 +31,7 @@ public class StuffManageController implements StuffManageBLService{
 	public ArrayList<StuffVO> showAll() {
 		 ArrayList<StuffVO>  re = stuff.showAll();
 		 for (StuffVO stuffVO : re) {
-			 stuffVO.setSlary(salary.calculateById(stuffVO.getIdentity(),""));
+			 stuffVO.setSlary(salary.calculateSalary(stuffVO));
 		 }
 		 this.list =re;
 		return re;

@@ -19,7 +19,7 @@ public class ReceiptPO implements Serializable{
 		private State state;
 		
 		
-		final private String inlinespt = "#*#*#";
+		final private String inlinespt = "&&&&&&&";
 		/**
 		 * 把订单号数组转化为字符串
 		 * @param s

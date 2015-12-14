@@ -14,7 +14,7 @@ import org.module.client.presentation.managementui.DriversPanel;
 import org.module.client.presentation.orderui.ListTableForOfficeArrival;
 import org.module.client.presentation.orderui.ListTableForOfficeLoading;
 import org.module.client.presentation.orderui.ListTableForSending;
-import org.module.client.presentation.statisticui.ReceiptPanel;
+import org.module.client.presentation.statisticui.ListTableForReiceipt;
 
 public class OfficeClerkFrame extends JFrame {
 
@@ -75,7 +75,7 @@ public class OfficeClerkFrame extends JFrame {
 		JPanel panel_5 = new ListTableForSending();
 		tabbedPane.addTab("订单派送", null, panel_5, null);
 		
-		JPanel panel_6 = new ReceiptPanel();
+		JPanel panel_6 = new ListTableForReiceipt();
 		tabbedPane.addTab("收款单管理", null, panel_6, null);
 	}
 

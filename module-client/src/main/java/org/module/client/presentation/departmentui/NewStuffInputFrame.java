@@ -32,7 +32,9 @@ public class NewStuffInputFrame extends JFrame {
 	private JLabel state;
 	private JButton comfirm;
 	private JButton cancel;
-	private final String[] array= {"快递员","营业厅业务员","仓库管理员","中转中心业务员","财务人员","总经理","管理员"};
+	private final String[] array= {"快递员","营业厅业务员","仓库管理员",
+			"中转中心业务员","财务人员","总经理","管理员",
+			"司机","监装员","其他"};
 	
 	public NewStuffInputFrame() {
 		init();

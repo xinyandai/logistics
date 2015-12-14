@@ -37,7 +37,7 @@ public class ReceiptContoller {
 			if(vo.getID().equals(receiptVO.getID())){
 				list.remove(receiptVO);
 				list.add(vo);
-				return this.update(vo);
+				return this.receipt.update(vo);
 			}
 		}
 	

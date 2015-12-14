@@ -26,6 +26,10 @@ import org.module.common.po.State;
 
 public class NewCostListInputFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5891171573116418980L;
 	private JPanel contentPane;
 	private JTextField payer;
 	private JTextField money;

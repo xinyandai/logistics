@@ -1,36 +1,76 @@
 package org.module.client.presentation.statisticui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import org.module.client.businesslogic.statisticbl.ReceiptContoller;
 import org.module.client.presentation.orderui.ListTableForAll;
+import org.module.client.vo.ReceiptVO;
 
 public class ListTableForReiceipt extends ListTableForAll {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -7389044960331158157L;
 
+	private ReceiptContoller controller;
+	protected ArrayList<ReceiptVO> listCell;
 	@Override
 	protected void initData() {
-		// TODO Auto-generated method stub
-
+		this.controller = new ReceiptContoller();
+		this.listCell = this.controller.getAll();
+		String[] s = {
+				"日期","金额","快递员","托运单号","状态"
+		};
+		this.typeArray = s;
 	}
 
 	@Override
 	protected void refresh() {
-		// TODO Auto-generated method stub
-
+		this.listCell = this.controller.getAll();
+		if(this.listCell.size()>0){
+			this.typeArray = this.listCell.get(0).names();
+		}
+		this.table.setList(listCell);
+		this.table.setName(typeArray);
+		this.table.fireTableDataChanged();;
 	}
 
 	@Override
 	protected void modify() {
-		// TODO Auto-generated method stub
-
+		int[] indexes = this.table.getCheckedIndexes();
+		if(indexes.length!=1){
+			return;
+		}
+		final NewReceiptInputFrame frame = new NewReceiptInputFrame(
+				this.listCell.get(indexes[0]));
+		frame.setVisible(true);
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(frame.isDataUsable()){
+					controller.update(frame.getVO());
+					table.fireTableDataChanged();
+					frame.dispose();
+				}
+			}
+		});
 	}
 
 	@Override
 	protected void add() {
-		// TODO Auto-generated method stub
-
+		final NewReceiptInputFrame frame = new NewReceiptInputFrame();
+		frame.setVisible(true);
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(frame.isDataUsable()){
+					controller.add(frame.getVO());
+					table.fireTableDataChanged();
+					frame.dispose();
+				}
+			}
+		});
 	}
 
 }

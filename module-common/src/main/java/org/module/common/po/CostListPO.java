@@ -26,8 +26,9 @@ public class CostListPO implements Serializable{
 				this.people + this.split +
 				this.accout + this.split +
 				this.entry + this.split +
-				this.state.toString() + this.split + 
-				this.note+ this.split + this.ID;
+				this.note+ this.split + 
+				this.state.toString() + this.split+
+				this.ID;
 	}
 	
 	public CostListPO(String string) {
