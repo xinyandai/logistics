@@ -10,6 +10,7 @@ import org.module.common.dataservice.MyList;
 public class DriversManageController implements DriversManageBLService{
 	
 	private DriversManageService driver ;
+	private ArrayList<DriverVO> list;
 	public DriversManageController(DriversManageService driver) {
 		super();
 		this.driver = driver;
@@ -21,12 +22,16 @@ public class DriversManageController implements DriversManageBLService{
 	
 	public ArrayList<DriverVO> showAll() {
 		// TODO Auto-generated method stub
-		return driver.showAll();
+		return list =  driver.showAll();
 	}
 
 	public boolean add(String id, String name, String birthday, String idcard,
 			String phone, String gender, String date) {
-		// TODO Auto-generated method stub
+		for (DriverVO driverVO : list) {
+			if(driverVO.getId().equals(id)){
+				return false;
+			}
+		}
 		return driver.add(new DriverVO(id,name,birthday,idcard,phone, gender, date));
 	}
 

@@ -14,9 +14,11 @@ public class CalculateDriverCost implements CalculateDriverCostService {
 
 	private PriceAndCityDataService data = new RmiClient().get(PriceAndCityDataService.class);
 	private ArrayList<CityVO> cityVOs;
-	
 	public double calculateDriverCost(String originID, String targetID) {
 		if(originID==null || targetID==null) return .0;
+		if(this.cityVOs == null){
+			this.showAllCity();
+		}
 		double re = .0;
 		try {
 			PriceAndCityPO po = this.data.find(originID, targetID);
@@ -58,7 +60,9 @@ public class CalculateDriverCost implements CalculateDriverCostService {
 	}
 	
 	private String nameToId(String name){
-		
+		if(this.cityVOs == null){
+			this.showAllCity();
+		}
 		for (CityVO cityVO : cityVOs) {
 			if(cityVO.getName().equals(name)){
 				return cityVO.getId();

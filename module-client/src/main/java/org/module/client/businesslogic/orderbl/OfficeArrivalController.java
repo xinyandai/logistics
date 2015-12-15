@@ -20,6 +20,11 @@ public class OfficeArrivalController implements OfficeArrivalBLService{
 	}
 
 	public boolean creat(OfficeArrivalListVO o) {
+		for (OfficeArrivalListVO officeArrivalListVO : list) {
+			if(officeArrivalListVO.getTransportListId().equals(o.getTransportListId())){
+				return false;
+			}
+		}
 		this.list.add(o);
 		return officeArrival.creat(o);
 	}

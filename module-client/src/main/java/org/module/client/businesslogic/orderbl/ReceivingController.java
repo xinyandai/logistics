@@ -21,6 +21,11 @@ public class ReceivingController implements ReceiveBLService {
 	}
 
 	public boolean creat(ReceivingListVO o) {
+		for (ReceivingListVO receivingListVO : list) {
+			if(receivingListVO.getOrderId().equals(o.getOrderId())){
+				return false;
+			}
+		}
 		this.list.add(o);
 		return this.receive.creat(o);
 	}

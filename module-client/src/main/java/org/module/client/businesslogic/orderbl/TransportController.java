@@ -24,6 +24,11 @@ public class TransportController implements TransportBLService {
 	}
 
 	public boolean creat(TransportListVO o) {
+		for (TransportListVO transportListVO : list) {
+			if(transportListVO.getTransId().equals(o.getTransId())){
+				return false;
+			}
+		}
 		this.list.add(o);
 		return this.transport.creat(o);
 	}

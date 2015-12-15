@@ -24,6 +24,12 @@ public class AccountManageController implements AccountManageBLService {
 
 
 	public boolean add(String id, String rest) {
+		
+		for (AccountVO accountVO : list) {
+			if(accountVO.getId().equals(id)){
+				return false;
+			}
+		}
 		AccountVO vo = new AccountVO(id,rest);
 		this.list.add(vo);
 		return account.add(vo);

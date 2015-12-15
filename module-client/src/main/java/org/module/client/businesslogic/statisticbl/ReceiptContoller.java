@@ -28,6 +28,11 @@ public class ReceiptContoller {
 	}
 	
 	public boolean add(ReceiptVO vo) {
+		for (ReceiptVO receiptVO : list) {
+			if(receiptVO.getID().equals(vo.getID())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return this.receipt.add(vo);
 	}

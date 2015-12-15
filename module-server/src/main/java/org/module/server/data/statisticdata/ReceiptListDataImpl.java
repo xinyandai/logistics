@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.po.ReceiptPO;
+import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
 public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptListService {
@@ -37,6 +38,7 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 		return re;
 	}
 
+	
 	public boolean add(ReceiptPO ticket) {
 		
 		return this.dh.add(ticket);
@@ -69,6 +71,19 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 		}
 		
 		return false;
+	}
+
+
+	public MyList<ReceiptPO> getAllBySatte(State state) throws RemoteException {
+		MyList<ReceiptPO> re = new MyList<ReceiptPO>();
+		ArrayList<String>    strs = dh.read();
+		for (String string : strs) {
+			ReceiptPO temp = new ReceiptPO(string);
+			if(temp.getState().toString().equals(state.toString())){
+				re .add(temp);
+			}
+		}
+		return re;
 	}
 
 

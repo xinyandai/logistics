@@ -38,6 +38,11 @@ public class StuffManageController implements StuffManageBLService{
 	}
 
 	public boolean add(String name, String age, String category, String identity) {
+		for (StuffVO stuffVO : list) {
+			 if(stuffVO.getIdentity().equals(identity)){
+				return false; 
+			 }
+		 }
 		StuffVO vo = new StuffVO(name,age,category,identity);
 		this.list.add(vo);
 		return stuff.add(vo);

@@ -1,6 +1,8 @@
 package org.module.client.presentation.orderui;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,6 +17,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.orderbl.CalculateDriverCost;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.AbstractLoadingListVO;
@@ -49,6 +52,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 
 	protected String[] arrayOfCity;
 	
+	private CalculateDriverCost costCalculator = new CalculateDriverCost();
 	/**
 	 * @wbp.parser.constructor
 	 */
@@ -259,6 +263,24 @@ public class NewLoadingrListInputFrame extends JFrame {
 				}
 			}
 		});
+		
+		origin.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				handlePrice();
+			}
+		});
+		
+		target.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				handlePrice();
+			}
+		});
+	}
+	
+	protected void handlePrice() {
+		double p = costCalculator.calculateDriverCostByCityName(origin.getSelectedItem().toString(), 
+				target.getSelectedItem().toString());
+	    this.price.setText(p+"");
 	}
 	
 	protected String[] shippingId(){

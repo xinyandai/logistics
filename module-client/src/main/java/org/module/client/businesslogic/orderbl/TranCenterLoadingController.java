@@ -24,6 +24,11 @@ public class TranCenterLoadingController implements TranCenterLoadingBLService {
 	}
 
 	public boolean creat(TranCenterLoadingListVO vo) {
+		for (TranCenterLoadingListVO tranCenterLoadingListVO : list) {
+			if(tranCenterLoadingListVO.getTrucksId().equals(vo.getTrucksId())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return this.loading.creat(vo);
 	}

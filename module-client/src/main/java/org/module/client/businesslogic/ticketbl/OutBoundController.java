@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.ticket.OutBoundService;
 import org.module.client.businesslogicservice.ticketBLservice.OutBoundBLService;
+import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
 
 public class OutBoundController implements OutBoundBLService{
@@ -21,6 +22,12 @@ public class OutBoundController implements OutBoundBLService{
 	}
 	
 	public boolean createTicket(OutBoundListVO vo) {
+		
+		for (OutBoundListVO goDownEntryVO : list) {
+			if(goDownEntryVO.getId().equals(vo.getId())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return outBound.createTicket(vo);
 	}

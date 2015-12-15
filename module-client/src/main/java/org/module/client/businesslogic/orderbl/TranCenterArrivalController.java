@@ -22,6 +22,11 @@ public class TranCenterArrivalController implements TranCenterArrivalBLService {
 	}
 
 	public boolean creat(TranCenterArrivalListVO vo) {
+		for (TranCenterArrivalListVO tranCenterArrivalListVO : list) {
+			if(tranCenterArrivalListVO.getTransportListId().equals(vo.getTransportListId())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return this.arrival.creat(vo);
 	}

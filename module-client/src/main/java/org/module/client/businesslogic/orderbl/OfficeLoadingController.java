@@ -38,6 +38,11 @@ public class OfficeLoadingController implements OfficeLoadingBLService {
 	}
 
 	public boolean creat(OfficeLoadingListVO vo) {
+		for (OfficeLoadingListVO officeLoadingListVO : list) {
+			if(officeLoadingListVO.getTrucksId().equals(vo.getTrucksId())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return this.officeLoading.creat(vo);
 	}

@@ -58,11 +58,16 @@ public class Account implements AccountService {
 
 	public boolean pay(String id, double b) {
 		
-		
+		if(b<=0){
+			return false;
+		}
 		return this.change(id, -b);
 	}
 
 	public boolean income(String id, double b) {
+		if(b<=0){
+			return false;
+		}
 		return this.change(id, b);
 	}
 
@@ -72,7 +77,6 @@ public class Account implements AccountService {
 			AccountVO vo = new AccountVO(po.getId(),(Double.parseDouble(po.getMoney())+b)+"");
 			return this.data.update(new AccountPO(vo.getId(),vo.getMoney()+""));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -105,6 +109,14 @@ public class Account implements AccountService {
 		}
 		
 		return re;
+	}
+	
+	public AccountVO getDefaultAccount(){
+		ArrayList<AccountVO> pos = this.showAll();
+		if(pos.size()==0) {
+			return null;
+		}
+		return pos.get(0);
 	}
 
 }

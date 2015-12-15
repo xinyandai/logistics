@@ -66,4 +66,9 @@ public class AccountMock implements AccountService{
 		
 	}
 
+	public AccountVO getDefaultAccount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

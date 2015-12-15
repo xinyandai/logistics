@@ -24,6 +24,17 @@ public class GoDownEntryController implements GoDownEntryBLService{
 	
 
 	public boolean createTicket(GoDownEntryVO vo) {
+		for (GoDownEntryVO goDownEntryVO : list) {
+			if(goDownEntryVO.getId().equals(vo.getId())){
+				return false;
+			}
+			if(goDownEntryVO.getQu().equals(vo.getQu()) 
+					&& goDownEntryVO.getPai().equals(vo.getPai())
+					&& goDownEntryVO.getJia().equals(vo.getJia())
+					&& goDownEntryVO.getWei().equals(vo.getWei())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return this.goDownEntry.createTicket(vo);
 	}

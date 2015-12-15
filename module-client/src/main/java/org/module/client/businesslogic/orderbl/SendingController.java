@@ -23,6 +23,11 @@ public class SendingController implements SendingBLService {
 	}
 
 	public boolean creat(SendingListVO vo) {
+		for (SendingListVO sendingListVO : list) {
+			if(sendingListVO.getShippingId().equals(vo.getShippingId())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return this.sending.creat(vo);
 	}

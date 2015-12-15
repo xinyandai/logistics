@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.po.ReceiptPO;
+import org.module.common.po.State;
 
 
 /**
@@ -21,6 +22,12 @@ public interface ReceiptListService extends Remote{
 	 * @return 所有的列表信息
 	 */
 	public MyList<ReceiptPO> getAll()throws RemoteException;
+	/**
+	 * 前置：无
+	 * 后置：返回所有PO
+	 * @return 所有的列表信息
+	 */
+	public MyList<ReceiptPO> getAllBySatte(State state)throws RemoteException;
 	/**
 	 * 前置：数据库中不含有相同ID的PO
 	 * 后置：增加一个PO

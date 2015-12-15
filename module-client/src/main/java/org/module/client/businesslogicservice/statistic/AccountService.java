@@ -73,4 +73,9 @@ public interface AccountService {
 	 * @return
 	 */
 	public boolean pay(String id,double b);
+	/**
+	 * 得到默认的账户
+	 * @return
+	 */
+	public AccountVO getDefaultAccount();
 }

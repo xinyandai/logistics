@@ -1,6 +1,8 @@
 package org.module.client.presentation.orderui;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -9,19 +11,19 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.orderbl.CalculateDriverCost;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.TransportListVO;
 import org.module.common.po.State;
-
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.event.CaretListener;
-import javax.swing.event.CaretEvent;
 
 public class NewTransportListInputFrame extends JFrame {
 
@@ -48,9 +50,8 @@ public class NewTransportListInputFrame extends JFrame {
 	private int lengthOfID = 9;
 	private String[] array;
 	
-	/**
-	 * @wbp.parser.constructor
-	 */
+	private CalculateDriverCost costCalculator = new CalculateDriverCost();
+	
 	public NewTransportListInputFrame(String[] ary) {
 		this.array = ary;
 		init();
@@ -185,12 +186,6 @@ public class NewTransportListInputFrame extends JFrame {
 		contentPane.add(comfirm);
 		
 		cancel = new JButton("取消");
-		cancel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-			}
-		});
 		cancel.setBounds(237, 353, 72, 23);
 		contentPane.add(cancel);
 		
@@ -248,7 +243,31 @@ public class NewTransportListInputFrame extends JFrame {
 					state.setText("");
 				}
 			}
+			
 		});
+		
+		origin.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				handlePrice();
+			}
+		});
+		
+		target.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				handlePrice();
+			}
+		});
+		cancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+		});
+	}
+	protected void handlePrice() {
+		double p = costCalculator.calculateDriverCostByCityName(origin.getSelectedItem().toString(), 
+				target.getSelectedItem().toString());
+	    this.price.setText(p+"");
 	}
 	public JButton getComfirm() {
 		return comfirm;

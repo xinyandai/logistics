@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.user.UserService;
 import org.module.client.businesslogicservice.userBLservice.UserManageBLService;
+import org.module.client.vo.AccountVO;
 import org.module.client.vo.UserVO;
 import org.module.common.dataservice.MyList;
 
@@ -25,6 +26,11 @@ public class UserManageController implements UserManageBLService {
 	}
 	
 	public boolean add(UserVO u) {
+		for (UserVO userVO : list) {
+			if(userVO.getId().equals(u.getId())){
+				return false;
+			}
+		}
 		this.list.add(u);
 		return this.userManager.add(u);
 	}

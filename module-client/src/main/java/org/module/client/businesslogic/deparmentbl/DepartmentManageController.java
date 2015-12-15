@@ -11,6 +11,7 @@ public class DepartmentManageController implements DepartmentManageBLService{
 	
 	private DepartmentService department ;
 	private String[] type = {"营业厅","中转中心"};
+	private ArrayList<DepartmentVO> list;
 	
 	public DepartmentManageController(DepartmentService department) {
 		super();
@@ -22,7 +23,8 @@ public class DepartmentManageController implements DepartmentManageBLService{
 	}
 
 	public ArrayList<DepartmentVO> showAll() {
-		return department.showAll();
+		list = department.showAll();
+		return this.list;
 	}
 
 	/**
@@ -30,6 +32,11 @@ public class DepartmentManageController implements DepartmentManageBLService{
 	 */
 	public boolean add(String name, String category, String location,
 			String identity) {
+		for (DepartmentVO departmentVO : list) {
+			if(departmentVO.getIdentity().equals(identity)){
+				return false;
+			}
+		}
 		DepartmentVO departmentVO = new DepartmentVO(name,category,location,identity);
 		if(category.equals(type[1])){
 			WarehouseInit initWarehouse = new WarehouseInit();

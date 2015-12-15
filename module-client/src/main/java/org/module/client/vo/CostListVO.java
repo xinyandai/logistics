@@ -14,6 +14,7 @@ public class CostListVO extends AbstractVO{
 	
 	private State state;
 	
+	private String ID;
 	
 	
 	public CostListVO(String date, String money, String people, String accout,
@@ -89,12 +90,14 @@ public class CostListVO extends AbstractVO{
 	public void setNote(String note) {
 		this.note = note;
 	}
-	private String ID;
+	
 	
 	public String getID() {
 		return ID;
 	}
-
+	public void setState(State state) {
+		this.state = state;
+	}
 	public void setID(String iD) {
 		ID = iD;
 	}

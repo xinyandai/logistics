@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.module.client.businesslogic.managementbl.ticketAndOrder.CostVerify;
+import org.module.client.businesslogic.managementbl.ticketAndOrder.IncomeVerify;
 import org.module.client.businesslogic.managementbl.ticketAndOrder.MainlingVerify;
 import org.module.client.businesslogic.managementbl.ticketAndOrder.OfficeArrivalVerify;
 import org.module.client.businesslogic.managementbl.ticketAndOrder.OfficeLoadingVerify;
@@ -31,7 +33,9 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 			"中转中心装车单",
 			"中转单",
 			"出库单",
-			"入库单"
+			"入库单",
+			"付款单",
+			"收款单"
 	};
 	
 	Map<String,TicketAndorderVerify> map = new HashMap<String,TicketAndorderVerify>();
@@ -46,6 +50,8 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 		map.put("中转单", new TransportVerify());
 		map.put("出库单", new OutBoundVerify());
 		map.put("入库单", new GoDownEntryVerify());
+		map.put("付款单", new CostVerify());
+		map.put("收款单", new IncomeVerify());
 	}
 	
 	public String[] getTypes(){

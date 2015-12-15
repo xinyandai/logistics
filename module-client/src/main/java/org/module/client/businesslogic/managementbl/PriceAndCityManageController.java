@@ -33,6 +33,11 @@ public class PriceAndCityManageController implements PriceAndCityManageBLService
 	}
 
 	public boolean addCity(String city, String id) {
+		for (CityVO cityVO : cityVOs) {
+			if(cityVO.getId().equals(id)){
+				return false;
+			}
+		}
 		return this.priceAndcity.addCity(new CityVO(city,id));
 	}
 
