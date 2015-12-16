@@ -41,4 +41,9 @@ public class WarehouseManageService_stub implements  WarehouseManageBLService{
 		return false;
 	}
 
+	public boolean modify(WarehouseVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
