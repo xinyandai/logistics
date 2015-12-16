@@ -33,31 +33,33 @@ public class SendingVerify  implements TicketAndorderVerify{
 	}
 	
 	public boolean pass(int[] indexes){
+		boolean re = true;
 		try{
 			for(int i = indexes.length - 1 ; i>=0; i--){
 				SendingListVO sendingListVO = this.list.remove(indexes[i]);
 				sendingListVO.setState(State.PASS);
-				this.sendingListDataGetter.update(sendingListVO.toPO());
+				re = re &&this.sendingListDataGetter.update(sendingListVO.toPO());
 				
 				LogisticsVO logisticsVO = this.logistics.find(sendingListVO.getShippingId());
 				logisticsVO.setLocation("开始派件，派件员:"+sendingListVO.getSendMember());
-				this.logistics.update(logisticsVO);
+				re = re &&this.logistics.update(logisticsVO);
 			}
 		}catch(RemoteException e){
 			
 		}
-		return true;
+		return re;
 	}
 	public boolean  unpass(int[] indexes){
+		boolean re = true;
 		try{
 			for(int i = indexes.length - 1 ; i>=0; i--){
 				SendingListVO sendingListVO = this.list.remove(indexes[i]);
 				sendingListVO.setState(State.PASS);
-				this.sendingListDataGetter.update(sendingListVO.toPO());
+				re = re &&this.sendingListDataGetter.update(sendingListVO.toPO());
 			}
 		}catch(RemoteException e){
 			
 		}
-		return true;
+		return re;
 	}
 }

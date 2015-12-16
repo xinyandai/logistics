@@ -31,6 +31,8 @@ public class TransportVerify  implements TicketAndorderVerify{
 	}
 	
 	public boolean pass(int[] index){
+		
+		boolean re = true;
 		try{
 			for(int i = index.length-1; i>=0; i--){
 				TransportListVO transportListVO = this.list.get(index[i]);
@@ -38,12 +40,12 @@ public class TransportVerify  implements TicketAndorderVerify{
 				
 				this.updateLogistics(transportListVO);
 				
-				this.transport.update(transportListVO.toPO());
+				re = re &&this.transport.update(transportListVO.toPO());
 			}
 		}catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return re;
 	}
 	
 	
@@ -59,15 +61,16 @@ public class TransportVerify  implements TicketAndorderVerify{
 	
 	
 	public boolean unpass(int[] index){
+		boolean re = true;
 		try{
 			for(int i = index.length-1; i>=0; i--){
 				TransportListVO vo = this.list.get(index[i]);
 				vo.setState(State.UNPASS);
-				this.transport.update(vo.toPO());
+				re = re &&this.transport.update(vo.toPO());
 			}
 		}catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return re;
 	}
 }

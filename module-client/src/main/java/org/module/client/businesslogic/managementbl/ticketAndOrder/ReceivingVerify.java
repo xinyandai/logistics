@@ -33,36 +33,38 @@ public class ReceivingVerify  implements TicketAndorderVerify{
 	
 	public boolean pass(int[] indexes){
 		
+		boolean re = true;
 		try {
 			for(int i = indexes.length-1; i>=0; i++){
 				ReceivingListVO vo = this.list.remove(indexes[i]);
 				vo.setState(State.PASS);
-				this.receiveListDataGetter.update(vo.toPO());
+				re = re &&this.receiveListDataGetter.update(vo.toPO());
 				
 				LogisticsVO logisticsVO = this.logistics.find(vo.getOrderId());
 				logisticsVO.setCompleted(true);
 				logisticsVO.setLocation("订单已签收");
 				logisticsVO.addLocationAndTime(vo.getReceiver()+"已经签收", new Date().toString());
+				re  = re &&this.logistics.update(logisticsVO);
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return re;
 	}
 	
 	public boolean unpass(int[] indexes){
 		
-		
+		boolean re = true;
 		try {
 			for(int i = indexes.length-1; i>=0; i++){
 				ReceivingListVO vo = this.list.remove(indexes[i]);
 				vo.setState(State.UNPASS);
-				this.receiveListDataGetter.update(vo.toPO());
+				re = re &&this.receiveListDataGetter.update(vo.toPO());
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return re;
 	}
 	
 }

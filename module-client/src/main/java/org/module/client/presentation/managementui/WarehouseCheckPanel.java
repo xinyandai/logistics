@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
@@ -16,7 +17,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.WarehouseManageController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
+import org.module.client.presentation.orderui.NewOfficeLoadingrListInputFrame;
 import org.module.client.vo.WarehouseVO;
 
 public class WarehouseCheckPanel extends JPanel {
@@ -72,13 +75,37 @@ public class WarehouseCheckPanel extends JPanel {
 
 
 	protected void modify() {
-	//	this.controller.modify(id, qu, pai, jia, wei, warehouseOfWhichTranCenter);
+		int[] indexes = this.table.getCheckedIndexes();
+		if(indexes.length!=1){
+			return;
+		}
+		final ModifyWarehouseFrame frame = new ModifyWarehouseFrame(
+				this.listData.get(indexes[0]));
+		frame.setVisible(true);
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(frame.isDataUsable()){
+					if(controller.modify(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
+					table.fireTableDataChanged();
+					
+				}
+			}
+		});
 	}
 
 
 
 	protected void export() {
-		//wait the inplements
+		File file = new PathGetter().getPath(this);
+		if(file!=null){
+			this.controller.export(table, file);
+		}
 	}
 
 

@@ -1,6 +1,9 @@
 package org.module.client.businesslogicservice.managementBLService_stub;
 
+import java.io.File;
 import java.util.ArrayList;
+
+import javax.swing.table.TableModel;
 
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
 import org.module.client.vo.GoDownEntryVO;
@@ -44,6 +47,11 @@ public class WarehouseManageService_stub implements  WarehouseManageBLService{
 	public boolean modify(WarehouseVO vo) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public void export(TableModel model, File file) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

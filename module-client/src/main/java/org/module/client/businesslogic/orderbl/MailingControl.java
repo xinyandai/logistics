@@ -34,6 +34,7 @@ public class MailingControl implements MailingBLService{
 		return city;
 	}
 	
+	
 	public MailingControl( ) {
 		super();
 		this.mailingBLImpl = new Mailing();
@@ -74,14 +75,16 @@ public class MailingControl implements MailingBLService{
 	private String indexesToID(int i){
 		return this.cityVOs.get(i).getId();
 	}
+	
 	public boolean handleMailingList(MailingListVO mailingListVO) {
+		
+		if(this.list == null){
+			this.getAll();
+		}
 		for(MailingListVO vo : list){
 			if(vo.getId().equals(mailingListVO.getId())){
 				return false;
 			}
-		}
-		if(this.list == null){
-			this.getAll();
 		}
 		if(mailingBLImpl.creat(mailingListVO)){
 			this.list.add(mailingListVO);

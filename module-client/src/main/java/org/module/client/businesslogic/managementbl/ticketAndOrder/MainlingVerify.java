@@ -40,7 +40,7 @@ public class MainlingVerify implements TicketAndorderVerify{
 		if(this.list==null){
 			this.list = this.getAll();
 		}
-		
+		boolean re = true;
 		try {
 			for (int i = ids.length-1; i>=0 ; i--) {
 			MailingListVO vo = this.list.remove(ids[i]);
@@ -50,7 +50,7 @@ public class MainlingVerify implements TicketAndorderVerify{
 			
 			String[] location = {"订单已到达本地营业厅"};
 			String[] time = {""+DateTransferHelper.getString(new Date())};
-			this.logistics.creat(new LogisticsVO(
+			 re = re && this.logistics.creat(new LogisticsVO(
 					vo.getId(),
 					vo.getSenderCity(),
 					vo.getReceiveCity()+vo.getReceivePosition(),
@@ -69,13 +69,14 @@ public class MainlingVerify implements TicketAndorderVerify{
 		
 		
 		
-		return false;
+		return re;
 	}
 	
 	public boolean unpass(int[] ids){
 		if(this.list==null){
 			this.list = this.getAll();
 		}
+		boolean re = true;
 		try {
 			for (int i = ids.length-1; i>=0 ; i--) {
 			MailingListVO vo = this.list.get(ids[i]);
@@ -83,7 +84,7 @@ public class MainlingVerify implements TicketAndorderVerify{
 			this.data.update(vo.toPO());
 			String[] location = {"订单到达营业厅"};
 			String[] time = {new Date().toString()};
-			this.logistics.creat(new LogisticsVO(
+			re = re && this.logistics.creat(new LogisticsVO(
 					vo.getId(),
 					vo.getSenderCity(),
 					vo.getReceiveCity()+vo.getReceivePosition(),
@@ -97,6 +98,6 @@ public class MainlingVerify implements TicketAndorderVerify{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return re;
 	}
 }

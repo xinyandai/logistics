@@ -435,7 +435,7 @@ public class MailingListPanel extends JPanel {
 	private void makeFrame(){
 		frame = new JFrame();
 		JPanel contentPane;
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 424);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -580,22 +580,17 @@ public class MailingListPanel extends JPanel {
 	private void setTimeAndMoney(){
 		timeAndMoney.setText("报价："+money+"元  预计："+time+ " 天后送达");
 	}
-	
-	
 	private void handleTime(){
 		int time = (int) controller.time(senderCity.getSelectedIndex(),
 				receiveCity.getSelectedIndex());
 		this.time = time;
 	}
-	
 	private void handlePrice(){
 		this.money = (double) controller.price(
 				senderCity.getSelectedIndex(),
                 receiveCity.getSelectedIndex(), 
                  costOfDecoration.getSelectedItem().toString()
 				);
-		
-		
 	}
 	
 	private MailingListVO getVO(){

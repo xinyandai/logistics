@@ -39,19 +39,19 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 		if(this.list==null){
 			this.list = this.getAll();
 		}
-			
+		boolean re = true;
 		try {
 			for(int i = index.length-1;  i>=0; i--){
 				TranCenterArrivalListVO arrivalListVO = this.list.remove(index[i]);
 				//单据状态更新
-				this.arrivalListDataGetter.update(arrivalListVO.toPO(State.UNPASS));
+				re = re &&this.arrivalListDataGetter.update(arrivalListVO.toPO(State.UNPASS));
 				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 			
-		return true;
+		return re;
 		
 	}
 	
@@ -66,12 +66,12 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 		if(this.list==null){
 			this.list = this.getAll();
 		}
-			
+		boolean re = true;
 		try {
 			for(int i = index.length-1;  i>=0; i--){
 				TranCenterArrivalListVO officeArrivalListVO = this.list.remove(index[i]);
 				//单据状态更新
-				this.arrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
+				re = re &&this.arrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
 				//更新物流
 				this.updateLogistics(officeArrivalListVO);
 			}
@@ -79,7 +79,7 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 			e.printStackTrace();
 		}
 			
-		return true;
+		return re;
 		
 	}
 	

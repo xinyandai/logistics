@@ -77,10 +77,11 @@ public interface MailingBLService {
 	 */
 	public ArrayList<MailingListVO> getAll();
 	/**
-	 * 
+	 * 所有的有服务覆盖的城市
 	 * @return
 	 */
 	public String[] getAllCitiesArray();
+	
 	/**
 	 * 
 	 * @param vo

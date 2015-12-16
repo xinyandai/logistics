@@ -1,11 +1,12 @@
 package org.module.client.presentation.orderui;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import org.module.client.businesslogic.orderbl.MailingControl;
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.MailingListVO;
 
 public class ListTableForMailingList extends ListTableForAll {
@@ -37,24 +38,49 @@ public class ListTableForMailingList extends ListTableForAll {
 	@Override
 	protected void modify() {
 		int[] indexes = this.table.getCheckedIndexes();
-		if(indexes.length == 1){
-			final MailingListPanel p = new MailingListPanel(this.listCell.get(0),controller);
-			p.getFrame().addWindowListener(new WindowAdapter(){     
-				//添加一个窗口监听     
-				public void windowClosing(WindowEvent e) {    //这是窗口关闭事件         
-					refresh();   
-				}
-			});
+		if(indexes.length!=1){
+			return;
 		}
+		final NewMailingListInputFrame frame = new NewMailingListInputFrame(
+				this.listCell.get(indexes[0]),this.controller
+				);
+		frame.setVisible(true);
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(frame.isDataUsable()){
+					if(controller.update(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
+					table.fireTableDataChanged();
+					
+				}
+			}
+		});
 	}
 
 	@Override
 	protected void add() {
-		final MailingListPanel p = new MailingListPanel(controller);
-		p.getFrame().addWindowListener(new WindowAdapter(){     
-			//添加一个窗口监听     
-			public void windowClosing(WindowEvent e) {    //这是窗口关闭事件         
-				refresh();   
+		final NewMailingListInputFrame frame = new NewMailingListInputFrame(
+				this.controller
+				);
+		frame.setVisible(true);
+		frame.getComfirm().addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(frame.isDataUsable()){
+					if(controller.handleMailingList(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
+					table.fireTableDataChanged();
+					
+				}
 			}
 		});
 	}

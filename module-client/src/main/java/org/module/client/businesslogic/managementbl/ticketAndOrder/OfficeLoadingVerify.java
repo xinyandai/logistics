@@ -33,17 +33,18 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	
 	
 	public boolean pass(int[] indexes){
+		boolean re = true;
 		for(int i = indexes.length - 1; i>=0; i--){
 			OfficeLoadingListVO officeLoadingListVO = this.list.remove(indexes[i]);
 			officeLoadingListVO.setState(State.PASS);
 			try {
-				this.loadingListService.update(officeLoadingListVO.toPO());
+				re = re && this.loadingListService.update(officeLoadingListVO.toPO());
 				this.updateLogistics(officeLoadingListVO);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 		}
-		return true;
+		return re;
 	}
 	
 	private void updateLogistics(OfficeLoadingListVO officeLoadingListVO){
@@ -61,15 +62,16 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	}
 	
 	public boolean unpass(int[] indexes){
+		boolean re = true; 
 		for(int i = indexes.length - 1; i>=0; i--){
 			OfficeLoadingListVO officeLoadingListVO = this.list.remove(indexes[i]);
 			officeLoadingListVO.setState(State.UNPASS);
 			try {
-				this.loadingListService.update(officeLoadingListVO.toPO());
+				re = re && this.loadingListService.update(officeLoadingListVO.toPO());
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 		}
-		return true;
+		return re;
 	}
 }

@@ -41,11 +41,12 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 		if(this.list==null){
 			this.list = this.getAll();
 		}
+		boolean re = true;
 		try {
 			for(int i = index.length-1;  i>=0; i--){
 				OfficeArrivalListVO officeArrivalListVO = this.list.remove(index[i]);
 				//单据状态更新
-				this.officeArrivalListDataGetter.update(officeArrivalListVO.toPO(State.UNPASS));
+				re = re&&this.officeArrivalListDataGetter.update(officeArrivalListVO.toPO(State.UNPASS));
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -64,20 +65,18 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 		if(this.list==null){
 			this.list = this.getAll();
 		}
-		
+		boolean re = true;
 		try {
 			for(int i = index.length-1;  i>=0; i--){
 				OfficeArrivalListVO officeArrivalListVO = this.list.remove(index[i]);
 				//单据状态更新
-				this.officeArrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
+				re = re && this.officeArrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
 				//更新物流
 				this.updateLogistics(officeArrivalListVO);
 			}
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
 		return true;
 		
 	}

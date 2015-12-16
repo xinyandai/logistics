@@ -5,26 +5,26 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.deparmentbl.DeparmentCount;
+import org.module.client.businesslogic.managementbl.QusCounter;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.common.po.State;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.event.CaretListener;
-import javax.swing.event.CaretEvent;
 
 public class NewGoDownEntryInputFrame extends JFrame {
 
@@ -33,7 +33,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 	private JPanel contentPane;
 	private JComboBox warehouseID;
 	private JTextField ID;
-	private JTextField qu;
+	private JComboBox qu;
 	private JTextField jia;
 	private JTextField target;
 	private JTextField pai;
@@ -56,7 +56,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 		this.ID.setText(vo.getId());
 		this.target.setText(vo.getDestination());
 		this.pai.setText(vo.getPai());
-		this.qu.setText(vo.getQu());
+		this.qu.setSelectedItem(vo.getQu());
 		this.jia.setText(vo.getJia());
 		this.wei.setText(vo.getWei());
 		this.datePicker.setDate(DateTransferHelper.getDate(vo.getDate()));
@@ -78,7 +78,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 				this.ID.getText(),
 				DateTransferHelper.getString( this.datePicker.getDate() ),
 				this.target.getText(),
-				this.qu.getText(),
+				this.qu.getSelectedItem().toString(),
 				this.pai.getText(),
 				this.jia.getText(),
 				this.wei.getText(),
@@ -114,10 +114,10 @@ public class NewGoDownEntryInputFrame extends JFrame {
 		ID.setFont(new Font("楷体", Font.PLAIN, 15));
 		ID.setColumns(10);
 		
-		qu = new JTextField();
+		qu = new JComboBox(new QusCounter().getQus());
 		
 		qu.setFont(new Font("楷体", Font.PLAIN, 15));
-		qu.setColumns(10);
+	//	qu.setColumns(10);
 		
 		jia = new JTextField();
 		jia.setFont(new Font("楷体", Font.PLAIN, 15));
@@ -309,15 +309,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 				}
 			}
 		});
-		qu.addCaretListener(new CaretListener() {
-			public void caretUpdate(CaretEvent e) {
-				if(qu.getText().isEmpty()){
-					state.setText("！区号不能为空");
-				}else{
-					state.setText("");
-				}
-			}
-		});
+		
 		pai.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				if(pai.getText().isEmpty()){
@@ -353,9 +345,6 @@ public class NewGoDownEntryInputFrame extends JFrame {
 			return false;
 		}else if(target.getText().isEmpty()){
 			state.setText("！目的地不能为空");
-			return false;
-		}else if(qu.getText().isEmpty()){
-			state.setText("！区号不能为空");
 			return false;
 		}else if(pai.getText().isEmpty()){
 			state.setText("！排号不能为空");

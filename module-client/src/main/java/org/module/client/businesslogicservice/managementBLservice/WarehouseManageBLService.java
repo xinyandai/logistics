@@ -1,6 +1,9 @@
 package org.module.client.businesslogicservice.managementBLservice;
 
+import java.io.File;
 import java.util.ArrayList;
+
+import javax.swing.table.TableModel;
 
 import org.module.client.vo.GoDownEntryVO;
 import org.module.client.vo.OutBoundListVO;
@@ -42,7 +45,11 @@ public interface WarehouseManageBLService {
 	 * @return
 	 *//*
 	public boolean goDown(GoDownEntryVO w);*/
-	
-	
+	/**
+	 * 导出excel文件
+	 * @param model
+	 * @param file
+	 */
+	public void export(TableModel model,File file);
 	
 }
