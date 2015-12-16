@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.WarehouseConfigController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseConfigBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.WarehouseConfigVO;
 
 public class WarmPercentage extends JPanel {
@@ -149,9 +150,14 @@ public class WarmPercentage extends JPanel {
 		save.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controller.update(qusPicker.getSelectedItem().toString(), 
+				if(controller.update(
+						qusPicker.getSelectedItem().toString(), 
 						size.getText(), 
-						borderline.getText());
+						borderline.getText())){
+					new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
+				}
 			}
 		});
 		

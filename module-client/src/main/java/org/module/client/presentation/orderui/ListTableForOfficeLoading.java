@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogic.orderbl.OfficeLoadingController;
 import org.module.client.businesslogicservice.orderBLservice.OfficeLoadingBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.OfficeLoadingListVO;
 
 public class ListTableForOfficeLoading extends ListTableForAll {
@@ -50,9 +51,14 @@ public class ListTableForOfficeLoading extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.update(frame.getVO());
+					if(controller.update(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});
@@ -67,9 +73,14 @@ public class ListTableForOfficeLoading extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.creat(frame.getVO());
+					if(controller.creat(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});

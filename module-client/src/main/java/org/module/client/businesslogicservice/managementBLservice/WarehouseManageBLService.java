@@ -25,7 +25,7 @@ public interface WarehouseManageBLService {
 	 * @param w
 	 * @return
 	 */
-	public boolean modify( String id,String qu,String pai,String jia,String wei,String 	warehouseOfWhichTranCenter);
+	public boolean modify( WarehouseVO vo);
 	/**
 	 * 前置：出库
 	 * 后置：更新库存信息

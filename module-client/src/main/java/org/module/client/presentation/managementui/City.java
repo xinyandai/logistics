@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.PriceAndCityManageController;
 import org.module.client.presentation.MyTable;
+import org.module.client.presentation.ResultFrame;
 
 public class City extends JPanel {
 
@@ -52,10 +53,15 @@ public class City extends JPanel {
 				ar[1] = cityInputFrame.getId();
 				ar[0] = cityInputFrame.getCity();
 				
-				controller.addCity(ar[0], ar[1]);
-				cityInputFrame.dispose();
+				if(	controller.addCity(ar[0], ar[1]) ){
+					cityInputFrame.dispose();
+					
+					listData.add(ar);
+					new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
+				}
 				
-				listData.add(ar);
 				myTable.fireTableDataChanged();
 			}
 		});

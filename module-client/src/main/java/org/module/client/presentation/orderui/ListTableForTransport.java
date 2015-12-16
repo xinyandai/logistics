@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogic.orderbl.TransportController;
 import org.module.client.businesslogicservice.orderBLservice.TransportBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.TransportListVO;
 
 public class ListTableForTransport extends ListTableForAll{
@@ -48,9 +49,14 @@ public class ListTableForTransport extends ListTableForAll{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.update(frame.getVO());
+					if(controller.update(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});
@@ -65,11 +71,13 @@ public class ListTableForTransport extends ListTableForAll{
 		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(frame.isDataUsable()){
-					controller.creat(frame.getVO());
-					table.fireTableDataChanged();
+				if(controller.creat(frame.getVO())){
 					frame.dispose();
+					new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
 				}
+				table.fireTableDataChanged();
 			}
 		});
 	}

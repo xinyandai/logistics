@@ -26,6 +26,16 @@ public class Cost implements CostService {
 		return false;
 	}
 
+    public boolean update(CostListVO vo) {
+		
+		try {
+			return data.update(vo.toPO());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public ArrayList<CostListVO> getAllCostList(long startTime, long endTime) {
 		ArrayList<CostListVO> vos = new ArrayList<CostListVO>();
 		try {

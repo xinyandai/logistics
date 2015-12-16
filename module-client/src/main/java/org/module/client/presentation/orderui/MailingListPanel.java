@@ -23,8 +23,10 @@ import javax.swing.event.CaretListener;
 
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
 import org.module.client.presentation.Numeric;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.MailingListVO;
 import org.module.common.po.State;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -556,12 +558,19 @@ public class MailingListPanel extends JPanel {
 		}
 		else{
 			MailingListVO vo = this.getVO();
+			boolean re;
 			if(this.isSubmitted){
-				controller.handleMailingList(vo) ;
+				re = controller.handleMailingList(vo) ;
 			}else{
-				controller.update(vo);
+				re = controller.update(vo);
 			}
-			frame.dispose();
+			if(re){
+				frame.dispose();
+				new ResultFrame(true);
+			}else{
+				new ResultFrame(false);
+			}
+			
 		}
 	}
 	

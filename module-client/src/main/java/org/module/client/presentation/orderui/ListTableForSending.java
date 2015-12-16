@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogic.orderbl.SendingController;
 import org.module.client.businesslogicservice.orderBLservice.SendingBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.SendingListVO;
 
 public class ListTableForSending extends ListTableForAll {
@@ -50,9 +51,14 @@ public class ListTableForSending extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.update(frame.getVO());
+					if(controller.update(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});
@@ -66,11 +72,13 @@ public class ListTableForSending extends ListTableForAll {
 		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(frame.isDataUsable()){
-					controller.creat(frame.getVO());
-					table.fireTableDataChanged();
+				if(controller.creat(frame.getVO())){
 					frame.dispose();
+					new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
 				}
+				table.fireTableDataChanged();
 			}
 		});
 	}

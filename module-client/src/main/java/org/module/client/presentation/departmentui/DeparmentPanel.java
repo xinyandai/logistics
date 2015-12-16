@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.deparmentbl.DepartmentManageController;
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.presentation.MyTable;
+import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
 
 public class DeparmentPanel extends JPanel {
@@ -130,7 +131,10 @@ public class DeparmentPanel extends JPanel {
 			for (int i =  indexes.length-1; i>=0; i--) {
 				listData.remove(indexes[i]);
 			}
+			new ResultFrame(true,DeparmentPanel.this);
 			myTable.fireTableDataChanged();		
+		}else{
+			new ResultFrame(false,DeparmentPanel.this);
 		}
 	}
 	
@@ -149,15 +153,21 @@ public class DeparmentPanel extends JPanel {
 					ar[2] = departmentInputFramenew.getLcoationOfInput();
 					ar[3] = departmentInputFramenew.getID();
 				
-					controller.add(
+					boolean  re = controller.add(
 							ar[0], 
 							ar[1],
 							ar[2],
 							ar[3]
                             );
-					departmentInputFramenew.dispose();
-					listData.add(ar);
-					myTable.fireTableDataChanged();
+					if(re){
+						departmentInputFramenew.dispose();
+						new ResultFrame(true,DeparmentPanel.this);
+						listData.add(ar);
+						myTable.fireTableDataChanged();	
+					}else{
+						new ResultFrame(false,DeparmentPanel.this);
+					}
+					
 				}
 			});
 	}
@@ -172,11 +182,11 @@ public class DeparmentPanel extends JPanel {
 	private void modify(){
 		
         int[] indexes = myTable.getCheckedIndexes();
-		
 		myTable.fireTableDataChanged();
 	
 		if(indexes.length==1){
 			final int index = indexes[0];
+			final String[] temp = new String[4];
 			final String[] ar = listData.get( index );
 			final NewDepartmentInputFrame departmentInputFramenew  = 
 					new	NewDepartmentInputFrame(ar[0],ar[1],ar[2],ar[3]);
@@ -187,14 +197,25 @@ public class DeparmentPanel extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					
-					ar[0] = departmentInputFramenew.getName();
-					ar[1] = departmentInputFramenew.getCategory();
-					ar[2] = departmentInputFramenew.getLcoationOfInput();
-					ar[3] = departmentInputFramenew.getID();
+					temp[0] = departmentInputFramenew.getName();
+					temp[1] = departmentInputFramenew.getCategory();
+					temp[2] = departmentInputFramenew.getLcoationOfInput();
+					temp[3] = departmentInputFramenew.getID();
 				
-					controller.update(ar[0], ar[1],ar[2],ar[3]);
-					myTable.fireTableDataChanged();
-					departmentInputFramenew.dispose();
+ 					boolean re = controller.update(temp[0], temp[1],temp[2],temp[3]);
+					if(re){
+						ar[0] = departmentInputFramenew.getName();
+						ar[1] = departmentInputFramenew.getCategory();
+						ar[2] = departmentInputFramenew.getLcoationOfInput();
+						ar[3] = departmentInputFramenew.getID();
+						
+						departmentInputFramenew.dispose();
+						new ResultFrame(true,DeparmentPanel.this);
+						myTable.fireTableDataChanged();
+					}else{
+						new ResultFrame(false,DeparmentPanel.this);
+					}
+ 					
 				}
 			});
 		}else{

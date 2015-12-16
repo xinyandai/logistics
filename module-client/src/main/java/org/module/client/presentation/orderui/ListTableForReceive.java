@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogic.orderbl.ReceivingController;
 import org.module.client.businesslogicservice.orderBLservice.ReceiveBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.ReceivingListVO;
 
 public class ListTableForReceive extends ListTableForAll {
@@ -46,9 +47,14 @@ public class ListTableForReceive extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(p.isDataUsable()){
-					controller.update(p.getVO());
+					if(controller.update(p.getVO())){
+						p.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					p.dispose();
+					
 				}
 			}
 		});
@@ -61,9 +67,14 @@ public class ListTableForReceive extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(p.isDataUsable()){
-					controller.creat(p.getVO());
+					if(controller.creat(p.getVO())){
+						p.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					p.dispose();
+					
 				}
 			}
 		});

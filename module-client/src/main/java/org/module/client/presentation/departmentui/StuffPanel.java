@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.deparmentbl.StuffManageController;
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.StuffVO;
 
@@ -50,8 +51,15 @@ public class StuffPanel extends JPanel {
 				frame.getComfirm().addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						controller.add(frame.getNameOfStuff(), frame.getAge(), frame.getTypeOfStuff(), frame.getId());
-					    frame.dispose();
+						if(controller.add(
+								frame.getNameOfStuff(), frame.getAge(),
+								frame.getTypeOfStuff(), frame.getId())){
+							frame.dispose();
+							new ResultFrame(true);
+						}else{
+							new ResultFrame(true);
+						}
+					    
 					    table.fireTableDataChanged();
 					}
 				});
@@ -61,8 +69,13 @@ public class StuffPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int[] ins = table.getCheckedIndexes();
-				controller.delete(ins);
-				table.fireTableDataChanged();
+				if (controller.delete(ins)){
+					table.fireTableDataChanged();
+					new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
+				}
+				
 			}
 		});
 		modify.addMouseListener(new MouseAdapter() {
@@ -76,9 +89,17 @@ public class StuffPanel extends JPanel {
 				frame.getComfirm().addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						controller.update(frame.getNameOfStuff(), frame.getAge(), frame.getTypeOfStuff(), frame.getId());
-					    frame.dispose();
-					    table.fireTableDataChanged();
+						if(
+								controller.update(
+										frame.getNameOfStuff(), frame.getAge(), 
+										frame.getTypeOfStuff(), frame.getId())){
+							 frame.dispose();
+							    table.fireTableDataChanged();
+							new ResultFrame(true);
+						}else{
+							new ResultFrame(false);
+						}
+					   
 					}
 				});
 			}

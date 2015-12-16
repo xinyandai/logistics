@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.statisticbl.AccountManageController;
 import org.module.client.businesslogicservice.statisticBLservice.AccountManageBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.AccountVO;
 
@@ -50,7 +51,11 @@ public class AccountPanel extends JPanel {
 
 	protected void delete() {
 		int[] indexes = this.table.getCheckedIndexes();
-		this.controller.delete(indexes);
+		if(this.controller.delete(indexes)){
+			new ResultFrame(true);
+		}else{
+			new ResultFrame(false);
+		}
 		this.table.fireTableDataChanged();
 	}
 
@@ -60,8 +65,13 @@ public class AccountPanel extends JPanel {
 		frame.getComfirm().addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				controller.add(frame.getId(), frame.getMoney());
-				frame.dispose();
+				if(controller.add(frame.getId(), frame.getMoney())){
+					frame.dispose();
+					new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
+				}
+				
 				table.fireTableDataChanged();
 			}
 		});
@@ -85,12 +95,6 @@ public class AccountPanel extends JPanel {
 		delete = new JButton("删");
 		modify = new JButton("改");
 		modify.setEnabled(false);
-		modify.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		
 		update = new JButton("同步");
 		
 		input = new JTextField();

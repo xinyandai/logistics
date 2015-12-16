@@ -19,6 +19,11 @@ public class CostManageController implements CostManageBLService {
 	}
 
 	public boolean add(CostListVO vo) {
+		for (CostListVO costListVO : list) {
+			if(costListVO.getID().equals(vo.getID())){
+				return false;
+			}
+		}
 		this.list.add(vo);
 		return cost.creatCostList(vo);
 	}
@@ -28,6 +33,11 @@ public class CostManageController implements CostManageBLService {
 		return list;
 	}
 
+	public boolean update(CostListVO vo) {
+		
+		return this.cost.update(vo);
+	}
 
+    
 
 }

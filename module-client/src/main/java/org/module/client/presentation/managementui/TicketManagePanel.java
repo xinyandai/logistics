@@ -14,8 +14,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.TicketAndOrderManageController;
 import org.module.client.businesslogicservice.managementBLservice.TicketAndOrderManageBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.AbstractVO;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ItemListener;
@@ -48,11 +50,21 @@ public class TicketManagePanel extends JPanel {
 	}
 	
 	protected void pass() {
-		this.controller.pass(this.table.getCheckedIndexes(), this.type.getSelectedItem().toString());
+		if (this.controller.pass(this.table.getCheckedIndexes(), this.type.getSelectedItem().toString())){
+			new ResultFrame(true);
+		}else{
+			new ResultFrame(false);
+		}
 		this.table.fireTableDataChanged();
 	}
 	protected void unpass() {
-		this.controller.unpass(this.table.getCheckedIndexes(), this.type.getSelectedItem().toString());
+		if(
+				this.controller.unpass(this.table.getCheckedIndexes(), 
+						this.type.getSelectedItem().toString())){
+			new ResultFrame(true);
+		}else{
+			new ResultFrame(false);
+		}
 		this.table.fireTableDataChanged();
 	}
 	protected void refresh() {	

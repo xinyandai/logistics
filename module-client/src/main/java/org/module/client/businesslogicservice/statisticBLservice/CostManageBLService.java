@@ -27,5 +27,11 @@ public interface CostManageBLService {
 	 * @return
 	 */
 	public ArrayList<CostListVO> showAll(long startTime,long endTime);
+	/**
+	 * 修改一个未审批或者审批不通过的付款单
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(CostListVO vo);
 	
 }

@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.statisticbl.CostManageController;
 import org.module.client.businesslogicservice.statisticBLservice.CostManageBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.CostListVO;
 
@@ -129,9 +130,14 @@ public class CostPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.add(frame.getVO());
+					if(controller.update(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(true);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});
@@ -145,9 +151,14 @@ public class CostPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.add(frame.getVO());
+					if(controller.add(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});

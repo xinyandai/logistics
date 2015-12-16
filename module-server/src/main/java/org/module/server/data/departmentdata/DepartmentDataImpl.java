@@ -64,7 +64,7 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 			System.out.println(string);
 			re = re && this.delete(string);
 		}
-		return false;
+		return re;
 	}
 
 	public boolean update(DepartmentPO one) {

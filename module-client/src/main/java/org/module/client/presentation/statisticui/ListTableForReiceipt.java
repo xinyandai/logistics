@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import org.module.client.businesslogic.statisticbl.ReceiptContoller;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.orderui.ListTableForAll;
 import org.module.client.vo.ReceiptVO;
 
@@ -49,9 +50,14 @@ public class ListTableForReiceipt extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.update(frame.getVO());
+					if (controller.update(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});
@@ -65,9 +71,14 @@ public class ListTableForReiceipt extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.add(frame.getVO());
+					if( controller.add(frame.getVO())){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});

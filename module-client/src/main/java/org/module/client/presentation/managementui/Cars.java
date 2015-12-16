@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.managementbl.CarsManageController;
 import org.module.client.businesslogicservice.managementBLservice.CarsManageBLService;
 import org.module.client.presentation.MyTable;
+import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
 
 public class Cars extends JPanel {
@@ -132,11 +133,15 @@ public class Cars extends JPanel {
 				ar[0] = carInputFramenew.getId();
 				ar[1] = carInputFramenew.getLicense();
 				ar[2] = carInputFramenew.getTime();
+				if(
+				    controller.add(ar[0], ar[1], ar[2])){
+					carInputFramenew.dispose();
+				    listData.add(ar);
+				    new ResultFrame(true);
+				}else{
+					new ResultFrame(false);
+				}
 				
-				controller.add(ar[0], ar[1], ar[2]);
-				carInputFramenew.dispose();
-				
-				listData.add(ar);
 				myTable.fireTableDataChanged();
 			}
 		});
@@ -153,7 +158,11 @@ public class Cars extends JPanel {
 			for (int i =  indexes.length-1; i>=0; i--) {
 				listData.remove(indexes[i]);
 			}
+			new ResultFrame(true);
 			myTable.fireTableDataChanged();		
+		}else{
+			this.refresh();
+			new ResultFrame(false);
 		}
 	}
 	private void modify(){
@@ -163,23 +172,30 @@ public class Cars extends JPanel {
 	
 		if(indexes.length==1){
 			final int index = indexes[0];
-			final String[] ar = listData.get( index );
+			final String[] origindata = listData.get( index );
 			final NewCarsInputFrame carInputFramenew  = 
-					new	NewCarsInputFrame(ar[0],ar[1],ar[2]);
+					new	NewCarsInputFrame(origindata[0],origindata[1],origindata[2]);
 				carInputFramenew.setVisible(true);
 			
 			JButton button = carInputFramenew.getConfirm();
 			button.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					
+					String[] ar = new String[3];
 					ar[0] = carInputFramenew.getId();
 					ar[1] = carInputFramenew.getLicense();
 					ar[2] = carInputFramenew.getTime();
 				
-					controller.modify(ar[0], ar[1],ar[2]);
+					if(	controller.modify(ar[0], ar[1],ar[2]) ){
+						carInputFramenew.dispose();
+						origindata[0] = carInputFramenew.getId();
+						origindata[1] = carInputFramenew.getLicense();
+						origindata[2] = carInputFramenew.getTime();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					myTable.fireTableDataChanged();
-					carInputFramenew.dispose();
 				}
 			});
 		}else{

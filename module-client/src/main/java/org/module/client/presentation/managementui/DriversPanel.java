@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.managementbl.DriversManageController;
 import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
 import org.module.client.presentation.MyTable;
+import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
 
 public class DriversPanel extends JPanel {
@@ -92,16 +93,17 @@ public class DriversPanel extends JPanel {
 		    int[] indexes = myTable.getCheckedIndexes();
 			if(indexes.length==1){
 				final int index = indexes[0];
-				final String[] ar = listData.get( index );
+				final String[] originData = listData.get( index );
 				final NewDriverInputFrame driversInputFrame  = 
-						new	NewDriverInputFrame(ar[0],ar[1],ar[2],ar[3],ar[4],ar[5],ar[6]);
+						new	NewDriverInputFrame(originData[0],originData[1],originData[2],
+								originData[3],originData[4],originData[5],originData[6]);
 					driversInputFrame.setVisible(true);
 				
 					JButton button = driversInputFrame.getConfirm();
 					button.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							
+							String[] ar = new String[7];
 							ar[0] = driversInputFrame.getId();
 							ar[1] = driversInputFrame.getDrivername();
 							ar[2] = driversInputFrame.getBirthday();
@@ -109,10 +111,21 @@ public class DriversPanel extends JPanel {
 							ar[4] = driversInputFrame.getPhone();
 							ar[5] = driversInputFrame.getGender();
 							ar[6] = driversInputFrame.getDate();
-						
-							controller.modify(ar[0],ar[1],ar[2],ar[3],ar[4],ar[5],ar[6]);
-							myTable.fireTableDataChanged();
-							driversInputFrame.dispose();
+						    if(controller.modify(ar[0],ar[1],ar[2],ar[3],ar[4],ar[5],ar[6])){
+						    	originData[0] = driversInputFrame.getId();
+						    	originData[1] = driversInputFrame.getDrivername();
+						    	originData[2] = driversInputFrame.getBirthday();
+						    	originData[3] = driversInputFrame.getIdCard();
+						    	originData[4] = driversInputFrame.getPhone();
+						    	originData[5] = driversInputFrame.getGender();
+						    	originData[6] = driversInputFrame.getDate();
+						    	new ResultFrame(true);
+								myTable.fireTableDataChanged();
+								driversInputFrame.dispose();
+						    }else{
+						    	new ResultFrame(false);
+						    }
+							
 						}
 					});
 				}else{

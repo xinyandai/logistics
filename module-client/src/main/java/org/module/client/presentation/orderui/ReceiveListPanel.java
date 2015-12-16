@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.DateTransferHelper;
+import org.module.client.presentation.Numeric;
 import org.module.client.vo.ReceivingListVO;
 import org.module.common.po.State;
 
@@ -22,6 +23,9 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 
 public class ReceiveListPanel extends JPanel {
@@ -35,6 +39,7 @@ public class ReceiveListPanel extends JPanel {
 	private JTextField receiver;
 	private JXDatePicker timePicker1;
 	private JButton cancel;
+	private JLabel state;
 	public ReceiveListPanel() {
 		super();
 		initPanel();
@@ -87,35 +92,42 @@ public class ReceiveListPanel extends JPanel {
 		
 		cancel = new JButton("取消");
 		cancel.setFont(new Font("楷体", Font.PLAIN, 18));
+		
+		state = new JLabel("");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(5)
 					.addComponent(jp4jl1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
 					.addGap(245))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(5)
 					.addComponent(jp4jl4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addComponent(receiver, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+					.addComponent(receiver, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
 					.addGap(245))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(5)
 					.addComponent(jp4jl7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addComponent(timePicker1, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+					.addComponent(timePicker1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(245))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(111)
 					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 					.addGap(49)
 					.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(130, Short.MAX_VALUE))
+					.addContainerGap(135, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(166)
+					.addComponent(state, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+					.addGap(153))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(22)
+					.addComponent(state)
+					.addGap(7)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(jp4jl1, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -141,16 +153,33 @@ public class ReceiveListPanel extends JPanel {
 		);
 		setLayout(groupLayout);
 		
-		
+		addListeners();
 		this.makeFrame();
+		
+	}
+    private void addListeners(){
+		ID.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if(!Numeric.isNumeric(ID.getText()) 
+				|| ID.getText().length()!=9){
+					state.setText("!ID必须是9位数字");
+				}
+			}
+		});
 		cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
 			}
 		});
-	}
-
+		receiver.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent e) {
+				if ( receiver.getText().trim().equals("") ){
+					state.setText("!收件人不能为空");
+				}
+			}
+		});
+    }
 	private void makeFrame(){
 		frame = new JFrame();
 		JPanel contentPane;
@@ -175,7 +204,15 @@ public class ReceiveListPanel extends JPanel {
 	}
 	
 	public boolean isDataUsable(){
-		return true;
+		if(!Numeric.isNumeric(ID.getText()) 
+				|| ID.getText().length()!=9){
+					state.setText("!ID必须是9位数字");
+		}else if ( receiver.getText().trim().equals("") ){
+			state.setText("!收件人不能为空");
+		}else{
+			return true;
+		}
+		return false;
 	}
 	public void dispose(){
 		frame.dispose();

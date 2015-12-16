@@ -16,6 +16,7 @@ import javax.swing.border.CompoundBorder;
 import org.module.client.businesslogic.logisticsbl.LogisticsController;
 import org.module.client.businesslogicservice.logisticsBLservice.LogisticsBLService;
 import org.module.client.presentation.Numeric;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.LogisticsVO;
 
 public class LogisticsPanel extends JPanel {
@@ -74,6 +75,7 @@ public class LogisticsPanel extends JPanel {
 		LogisticsVO vo = this.controller.showState(this.ID.getText());
 		
 		if(vo == null){
+			new ResultFrame(false);
 			return;
 		}
 		list = new MyList(vo);

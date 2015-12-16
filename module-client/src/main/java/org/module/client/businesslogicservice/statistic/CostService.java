@@ -20,4 +20,10 @@ public interface CostService {
 	 * @return
 	 */
 	public ArrayList<CostListVO> getAllCostList(long startTime,long endTime);
+	/**
+	 * 修改一个付款单
+	 * @param vo
+	 * @return
+	 */
+	public boolean update(CostListVO vo);
 }

@@ -9,6 +9,7 @@ import javax.swing.JTable;
 
 import org.module.client.businesslogic.ticketbl.OutBoundController;
 import org.module.client.businesslogicservice.ticketBLservice.OutBoundBLService;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.OutBoundListVO;
 
@@ -62,9 +63,14 @@ public class OutBoundList extends AbstractAllList {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.update(frame.getVO());
+					if( controller.update(frame.getVO())){
+						new ResultFrame(true);
+						frame.dispose();
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});
@@ -78,9 +84,14 @@ public class OutBoundList extends AbstractAllList {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					controller.createTicket(frame.getVO());
+					if( controller.createTicket(frame.getVO()) ){
+						frame.dispose();
+						new ResultFrame(true);
+					}else{
+						new ResultFrame(false);
+					}
 					table.fireTableDataChanged();
-					frame.dispose();
+					
 				}
 			}
 		});

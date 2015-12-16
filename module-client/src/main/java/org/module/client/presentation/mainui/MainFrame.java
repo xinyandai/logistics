@@ -181,7 +181,7 @@ public class MainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JFrame.setDefaultLookAndFeelDecorated(true);
+					//JFrame.setDefaultLookAndFeelDecorated(true);
 					JDialog.setDefaultLookAndFeelDecorated(true);
 					SubstanceSkin skin  =   new  MistAquaSkin();  
 					SubstanceLookAndFeel.setSkin(skin); 

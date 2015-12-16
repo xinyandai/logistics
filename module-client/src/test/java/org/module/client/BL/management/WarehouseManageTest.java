@@ -17,9 +17,9 @@ public class WarehouseManageTest extends TestCase {
 		assert(warehouse.getAll().get(0).getNumber()=="10086");
 	}
 	
-	public void testmodify(){
+	/*public void testmodify(){
 		assert(warehouse.modify("10086","1","1","1","1","warehouse"));
-	}
+	}*/
 
 	public void testoutBound(){
 		

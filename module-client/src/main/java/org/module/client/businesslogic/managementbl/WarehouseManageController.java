@@ -25,9 +25,7 @@ public class WarehouseManageController implements WarehouseManageBLService{
 		return warehouse.getAll();
 	}
 
-	public boolean modify(String id, String qu, String pai, String jia,
-			String wei,String 	warehouseOfWhichTranCenter) {
-		return warehouse.modify(new WarehouseVO(
-				id, qu, pai,jia, wei,warehouseOfWhichTranCenter,DateTransferHelper.getString( new Date() )));
+	public boolean modify(WarehouseVO vo) {
+		return warehouse.modify(vo);
 	}
 }

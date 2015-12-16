@@ -37,11 +37,17 @@ public class SalaryPanel extends JPanel {
 	private JButton button;
 	
 	protected void save() {
-		this.controller.setAccountSalary(this.getAccountantSalaryVO());
-		this.controller.setCourierSalary(this.getCourierSalaryVO());
-		this.controller.setDriverSalary(this.getDriverSalaryVO());
-		this.controller.setOfficeClerkSalary(this.getOfficeClerkSalaryVO());
-		this.controller.setTranCenterClerkSalary(this.getTranCenterClerkSalaryVO());
+		boolean re = true;
+  		re = re && this.controller.setAccountSalary(this.getAccountantSalaryVO())
+  				&&
+		this.controller.setCourierSalary(this.getCourierSalaryVO())
+		&&
+		this.controller.setDriverSalary(this.getDriverSalaryVO())
+		&&
+		this.controller.setOfficeClerkSalary(this.getOfficeClerkSalaryVO())
+		&&
+		this.controller.setTranCenterClerkSalary(this.getTranCenterClerkSalaryVO())
+		&&
 		this.controller.setWarehouseSalary(this.getWarehouseManagerSalaryVO());
 		
 	}
