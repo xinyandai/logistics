@@ -1,6 +1,8 @@
 package org.module.client.vo;
 
-public class CarVO{
+import org.module.common.po.CarPO;
+
+public class CarVO extends AbstractVO{
 
 	private String id;
 	private String License;
@@ -12,6 +14,13 @@ public class CarVO{
 		this.id = id;
 		License = license;
 		this.time = time;
+	}
+	public CarVO(CarPO carPO) {
+		this(
+				carPO.getId(),
+				carPO.getLicense(),
+				carPO.getTime()
+				);
 	}
 	public String getId() {
 		return id;
@@ -38,13 +47,17 @@ public class CarVO{
 		re[2] = time;
 		return re;
 	}
-	public int getNum() {
-		// TODO Auto-generated method stub
-		return 3;
+	
+	
+	
+	@Override
+	public String get(int i) {
+		return this.toArray()[i];
 	}
-	public String getMainKey() {
-		// TODO Auto-generated method stub
-		return id;
+	@Override
+	public String[] names() {
+		String[] s = {"车辆代号","车牌号","服役时间"};
+		return s;
 	}
 
 }

@@ -14,11 +14,14 @@ public class RmiServer {
 
 	private DataFactotyService factory = new DataFactoty();
 	public RmiServer() {
-		
-	}
-	public void user(){
 		try {
 			LocateRegistry.createRegistry(1099);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	public void rebind(){
+		try {
 			
 			this.regist("userdata.UserDataImpl");
 			
@@ -63,12 +66,6 @@ public class RmiServer {
 		Object obj = factory.creatDataObject(s);
 		Naming.rebind("rmi://127.0.0.1/"+obj.getClass().getInterfaces()[0].getName(), (Remote)obj);
 	}
-	
-	public static void main(String[] args){
-		RmiServer  rmi = new RmiServer();
-		rmi.user();
-	}
-	
 	
 
 }

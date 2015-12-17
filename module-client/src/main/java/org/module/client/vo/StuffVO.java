@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.StuffPO;
+
 
 
 public class StuffVO extends AbstractVO{
@@ -29,6 +31,14 @@ public class StuffVO extends AbstractVO{
 		this.slaray = slaray;
 	}
 	
+	public StuffVO(StuffPO stuffPO) {
+		this(stuffPO.getName(),
+				stuffPO.getAge(),
+				stuffPO.getCategory(),
+				stuffPO.getIdentity(),
+				0.0);
+	}
+
 	public  void setSlary(double s){
 		this.slaray  =s ;
 	}

@@ -26,7 +26,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.api.SubstanceSkin;
-import org.jvnet.substance.skin.MistAquaSkin;
+import org.jvnet.substance.skin.BusinessBlackSteelSkin;
 import org.module.client.businesslogic.userbl.Login;
 import org.module.client.businesslogic.userbl.LoginController;
 import org.module.client.businesslogicservice.userBLservice.UserLoginBLService;
@@ -183,7 +183,7 @@ public class MainFrame extends JFrame {
 				try {
 					//JFrame.setDefaultLookAndFeelDecorated(true);
 					JDialog.setDefaultLookAndFeelDecorated(true);
-					SubstanceSkin skin  =   new  MistAquaSkin();  
+					SubstanceSkin skin  =   new  BusinessBlackSteelSkin();  
 					SubstanceLookAndFeel.setSkin(skin); 
 				}//设置皮肤                      
 				catch  (Exception ex) {      

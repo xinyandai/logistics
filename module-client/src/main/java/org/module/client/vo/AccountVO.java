@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.AccountPO;
+
 public class AccountVO extends AbstractVO{
 
 	private String id;
@@ -11,6 +13,10 @@ public class AccountVO extends AbstractVO{
 		this.money = Double.parseDouble(rest);
 	}
 	
+	public AccountVO(AccountPO accountPO) {
+		this(accountPO.getId(),accountPO.getMoney());
+	}
+
 	public String getId() {
 		return id;
 	}

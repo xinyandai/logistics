@@ -5,6 +5,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,10 +22,14 @@ import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.orderbl.CalculateDriverCost;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.TransportListVO;
 import org.module.common.po.State;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class NewTransportListInputFrame extends JFrame {
 
@@ -52,9 +58,17 @@ public class NewTransportListInputFrame extends JFrame {
 	
 	private CalculateDriverCost costCalculator = new CalculateDriverCost();
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public NewTransportListInputFrame(String[] ary) {
 		this.array = ary;
 		init();
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		String dateString = formatter.format(new Date());
+		String s = Main.currentUser.getDepartmeny() + dateString;
+		this.transportList.setText(s);
 	}	
 	public NewTransportListInputFrame(String[] ary,TransportListVO vo) {
 		this.array = ary;
@@ -84,124 +98,197 @@ public class NewTransportListInputFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("中转方式");
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
-		label.setBounds(34, 31, 79, 15);
-		contentPane.add(label);
 		
 		state = new JLabel("");
-		state.setBounds(133, 10, 215, 15);
-		contentPane.add(state);
 		
 		JLabel label_1 = new JLabel("车次");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_1.setBounds(34, 59, 79, 15);
-		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("出发地");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_2.setBounds(34, 84, 79, 15);
-		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("监装员");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_3.setBounds(34, 109, 79, 15);
-		contentPane.add(label_3);
 		
 		JLabel label_4 = new JLabel("运费");
 		label_4.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_4.setBounds(34, 134, 79, 15);
-		contentPane.add(label_4);
 		
 		String[] wayArray = {"火车","飞机","轮船"};
 		way = new JComboBox(wayArray);
 		way.setFont(new Font("宋体", Font.PLAIN, 15));
-		way.setBounds(117, 30, 94, 21);
-		contentPane.add(way);
 		
 		trucksID = new JTextField();
 		
 		trucksID.setColumns(10);
-		trucksID.setBounds(117, 58, 109, 21);
-		contentPane.add(trucksID);
 		
 		price = new JTextField();
 		price.setEditable(false);
 		price.setColumns(10);
-		price.setBounds(117, 134, 109, 21);
-		contentPane.add(price);
 		
 		supervision = new JTextField();
 		
 		supervision.setColumns(10);
-		supervision.setBounds(117, 108, 109, 21);
-		contentPane.add(supervision);
 		
 		JLabel label_5 = new JLabel("装车日期");
 		label_5.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_5.setBounds(237, 31, 79, 15);
-		contentPane.add(label_5);
 		
 		JLabel label_6 = new JLabel("中转单号");
 		label_6.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_6.setBounds(236, 61, 79, 15);
-		contentPane.add(label_6);
 		
 		JLabel label_7 = new JLabel("目的地");
 		label_7.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_7.setBounds(237, 86, 79, 15);
-		contentPane.add(label_7);
 		
 		JLabel label_8 = new JLabel("货柜号");
 		label_8.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_8.setBounds(236, 111, 79, 15);
-		contentPane.add(label_8);
 		
 		transportList = new JTextField();
-		
 		transportList.setColumns(10);
-		transportList.setBounds(325, 58, 109, 21);
-		contentPane.add(transportList);
-		
 		counterID = new JTextField();
-		
 		counterID.setColumns(10);
-		counterID.setBounds(325, 108, 109, 21);
-		contentPane.add(counterID);
-		
 		origin = new JComboBox(this.array );
 		origin.setFont(new Font("宋体", Font.PLAIN, 15));
-		origin.setBounds(117, 84, 94, 21);
-		contentPane.add(origin);
-		
 		target = new JComboBox(this.array);
 		target.setFont(new Font("宋体", Font.PLAIN, 15));
-		target.setBounds(326, 83, 94, 21);
-		contentPane.add(target);
-		
 		comfirm = new JButton("确定");
-		comfirm.setBounds(154, 353, 72, 23);
-		contentPane.add(comfirm);
-		
 		cancel = new JButton("取消");
-		cancel.setBounds(237, 353, 72, 23);
-		contentPane.add(cancel);
-		
 		datePicker = new JXDatePicker();
-		datePicker.setBounds(326, 29, 109, 21);
-		contentPane.add(datePicker);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 176, 438, 167);
-		contentPane.add(scrollPane);
 		
 		JLabel label_9 = new JLabel("在下方填入所有订单号");
 		scrollPane.setColumnHeaderView(label_9);
 		
 		textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(128)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(29)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(way, 0, 109, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+					.addGap(18))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(29)
+					.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(transportList, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+					.addGap(19))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(29)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(origin, 0, 109, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(target, 0, 108, Short.MAX_VALUE)
+					.addGap(19))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(29)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(supervision, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+					.addGap(10)
+					.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(counterID, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+					.addGap(19))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(29)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(trucksID, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(9)
+					.addComponent(price, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+					.addGap(19))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+					.addGap(5))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(149)
+					.addComponent(comfirm, GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+					.addGap(144))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(2)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(way, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(2)
+							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(transportList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(origin, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(target, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(3)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(supervision, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(label_8, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(counterID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(trucksID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(price, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(22)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(comfirm)
+						.addComponent(cancel)))
+		);
+		contentPane.setLayout(gl_contentPane);
 		
 		
 		

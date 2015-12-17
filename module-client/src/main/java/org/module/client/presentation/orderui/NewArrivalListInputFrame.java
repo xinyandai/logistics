@@ -3,6 +3,9 @@ package org.module.client.presentation.orderui;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -15,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.AbstractArrialListVO;
@@ -31,7 +35,7 @@ public class NewArrivalListInputFrame extends JFrame {
 	protected JTextField deparmentID;
 	protected JTextField transportID;
 	protected JTextField origin;
-	protected String[] arriveState = {"损坏","完整","丢失"};
+	protected String[] arriveState = {"完整","损坏","丢失"};
 	protected JButton comfirm;
 	protected JButton cancel;
 	protected JLabel state;
@@ -42,6 +46,10 @@ public class NewArrivalListInputFrame extends JFrame {
 	public NewArrivalListInputFrame() {
 		init();
 		this.addListeners();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		String dateString = formatter.format(new Date());
+		String s = Main.currentUser.getDepartmeny() + dateString;
+		this.transportID.setText(s);
 	}
 	
 	public NewArrivalListInputFrame(AbstractArrialListVO vo) {
@@ -52,10 +60,10 @@ public class NewArrivalListInputFrame extends JFrame {
 		this.transportID.setText(vo.getTransportListId());
 		this.stateOfArrival.setSelectedItem(vo.getStateOfGoods());
 		this.origin.setText(vo.getOrigin());
+		this.transportID.setEditable(false);
 	}
 	
 	protected void init(){	
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,6 +90,7 @@ public class NewArrivalListInputFrame extends JFrame {
 		stateOfArrival = new JComboBox(arriveState);
 		
 		time = new JXDatePicker();
+		time.setDate(new Date());
 		
 		deparmentID = new JTextField();
 		
@@ -107,40 +116,44 @@ public class NewArrivalListInputFrame extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(transportID, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-					.addGap(21)
-					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(9)
-					.addComponent(stateOfArrival, 0, 88, Short.MAX_VALUE)
-					.addGap(16))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(origin, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-					.addGap(206))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(118)
-					.addComponent(comfirm, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(deparmentID, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-					.addGap(21)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(time, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-					.addGap(16))
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(98)
 					.addComponent(state, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(102, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(118)
+							.addComponent(comfirm, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+							.addGap(30))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(42)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(origin, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+							.addGap(23)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(stateOfArrival, 0, 88, Short.MAX_VALUE))
+						.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+					.addGap(15))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGap(42)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(transportID, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(deparmentID, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+							.addGap(21)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(time, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)))
+					.addGap(16))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -159,17 +172,13 @@ public class NewArrivalListInputFrame extends JFrame {
 					.addGap(15)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addComponent(transportID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(4)
-							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(1)
-							.addComponent(stateOfArrival, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(transportID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addComponent(origin, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(origin, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addComponent(stateOfArrival, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(33)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(comfirm)
@@ -198,7 +207,7 @@ public class NewArrivalListInputFrame extends JFrame {
 		
 		transportID.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
-				if((!Numeric.isRealNumber(transportID.getText()))||transportID.getText().length()!=21){
+				if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=21){
 					state.setText("！中转单号必须是21位数值");
 				}else{
 					state.setText("");

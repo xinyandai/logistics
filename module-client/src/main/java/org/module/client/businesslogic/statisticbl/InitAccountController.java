@@ -11,38 +11,37 @@ import org.module.client.vo.WarehouseVO;
 
 public class InitAccountController implements InitAccountBLService {
 
+	private InitAccount initccount ;
 	public InitAccountController() {
-		// TODO Auto-generated constructor stub
+		this.initccount = new InitAccount();
 	}
 
 	public boolean init() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.initccount.init();
 	}
 
+	public ArrayList<CarVO> getInit() {
+		return this.initccount.getInitCar();
+	}
+	
 	public ArrayList<CarVO> getInitCar() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.initccount.getInitCar();
 	}
 
 	public ArrayList<StuffVO> getInitStuff() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.initccount.getInitStuff();
 	}
 
 	public ArrayList<DepartmentVO> getInitDepartment() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.initccount.getInitDepartment();
 	}
 
 	public ArrayList<AccountVO> getInitAccount() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.initccount.getInitAccount();
 	}
 
 	public ArrayList<WarehouseVO> getInitWarehouse() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.initccount.getInitWarehouse();
 	}
 
 }

@@ -131,7 +131,11 @@ public class UserPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		table = new Table(this.listData,this.columnNames);
-		scrollPane.setViewportView(new JTable(table));
+		JTable t = new JTable(table);
+		scrollPane.setViewportView(t);
+	//	t.setOpaque(false);
+		this.setOpaque(false);
+		scrollPane.setOpaque(false);
 	}
 
 }

@@ -88,7 +88,6 @@ public class NewGoDownEntryInputFrame extends JFrame {
 	}
 	
 	private void init(){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -340,7 +339,7 @@ public class NewGoDownEntryInputFrame extends JFrame {
 	}
 	
 	public boolean isDataUsable(){
-		if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=21){
+		if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
 			state.setText("！快递编号必须是10位数值");
 			return false;
 		}else if(target.getText().isEmpty()){

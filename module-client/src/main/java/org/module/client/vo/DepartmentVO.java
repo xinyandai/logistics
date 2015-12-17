@@ -1,5 +1,7 @@
 package org.module.client.vo;
 
+import org.module.common.po.DepartmentPO;
+
 public class DepartmentVO  extends AbstractVO{
 
 	private String name;
@@ -17,6 +19,11 @@ public class DepartmentVO  extends AbstractVO{
 		this.identity = identity;
 	}
 	
+	public DepartmentVO(DepartmentPO departmentPO) {
+		this(departmentPO.getName(),departmentPO.getCategory(),
+				departmentPO.getLocation(),departmentPO.getIdentity());
+	}
+
 	public String getName() {
 		return name;
 	}

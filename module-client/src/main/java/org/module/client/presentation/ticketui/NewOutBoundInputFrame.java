@@ -3,6 +3,7 @@ package org.module.client.presentation.ticketui;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -15,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.deparmentbl.DeparmentCount;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.OutBoundListVO;
@@ -46,6 +48,11 @@ public class NewOutBoundInputFrame extends JFrame {
 	
 	public NewOutBoundInputFrame() {
 		init();
+		this.warehouseID.setSelectedItem(Main.currentUser.getDepartmeny());
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		String dateString = formatter.format(new Date());
+		String s = Main.currentUser.getDepartmeny() + dateString;
+		this.transportID.setText(s);
 	}
 	public NewOutBoundInputFrame(OutBoundListVO vo) {
 		init();
@@ -85,51 +92,65 @@ public class NewOutBoundInputFrame extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel label = new JLabel("仓库名");
+		label.setBounds(42, 27, 76, 21);
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		JLabel label_1 = new JLabel("目的地");
+		label_1.setBounds(42, 58, 76, 21);
 		label_1.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		JLabel label_2 = new JLabel("装运形式");
+		label_2.setBounds(42, 89, 76, 21);
 		label_2.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		warehouseID = new JComboBox(this.departmentCount.getIDWithName());
+		warehouseID.setBounds(128, 29, 88, 21);
 		warehouseID.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		target = new JTextField();
+		target.setBounds(128, 60, 88, 21);
 		
 		target.setFont(new Font("楷体", Font.PLAIN, 15));
 		target.setColumns(10);
 		
 		typeOfWay = new JComboBox(this.type);
+		typeOfWay.setBounds(128, 91, 88, 21);
 		
 		JLabel label_3 = new JLabel("快递编号");
+		label_3.setBounds(234, 27, 76, 21);
 		label_3.setFont(new Font("楷体", Font.PLAIN, 18));
 		
-		JLabel label_4 = new JLabel("货运编号");
+		JLabel label_4 = new JLabel("中转单号");
+		label_4.setBounds(42, 123, 76, 21);
 		label_4.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		JLabel label_5 = new JLabel("入库时间");
+		label_5.setBounds(234, 89, 76, 21);
 		label_5.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		ID = new JTextField();
+		ID.setBounds(320, 28, 81, 21);
 		
 		ID.setFont(new Font("楷体", Font.PLAIN, 15));
 		ID.setColumns(10);
 		
 		transportID = new JTextField();
+		transportID.setBounds(128, 124, 296, 21);
 		
 		transportID.setFont(new Font("楷体", Font.PLAIN, 15));
 		transportID.setColumns(10);
 		
 		datePicker = new JXDatePicker();
+		datePicker.setBounds(320, 90, 109, 21);
 		datePicker.setDate(new Date());
 		datePicker.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		comfirm = new JButton("确定");
+		comfirm.setBounds(128, 151, 93, 23);
 		comfirm.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		JButton cancel = new JButton("取消");
+		cancel.setBounds(245, 153, 93, 23);
 		cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -139,99 +160,23 @@ public class NewOutBoundInputFrame extends JFrame {
 		cancel.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		state = new JLabel("");
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(37)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(warehouseID, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-					.addGap(28))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(37)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(target, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(transportID, GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-					.addGap(28))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(37)
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(typeOfWay, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(123)
-					.addComponent(comfirm, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-					.addGap(24)
-					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-					.addGap(91))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(58)
-					.addComponent(state, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(76, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(state)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(22)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(label)
-								.addComponent(label_3)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(1)
-									.addComponent(ID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(24)
-							.addComponent(warehouseID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(8)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(label_1)
-								.addComponent(label_4)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(1)
-									.addComponent(transportID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addComponent(target, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(8)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(label_2)
-								.addComponent(label_5)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(1)
-									.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addComponent(typeOfWay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(38)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(comfirm, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(2)
-							.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))))
-		);
-		contentPane.setLayout(gl_contentPane);
+		state.setBounds(63, 5, 290, 0);
+		contentPane.setLayout(null);
+		contentPane.add(label);
+		contentPane.add(warehouseID);
+		contentPane.add(label_3);
+		contentPane.add(ID);
+		contentPane.add(label_1);
+		contentPane.add(target);
+		contentPane.add(label_4);
+		contentPane.add(transportID);
+		contentPane.add(label_2);
+		contentPane.add(typeOfWay);
+		contentPane.add(label_5);
+		contentPane.add(datePicker);
+		contentPane.add(comfirm);
+		contentPane.add(cancel);
+		contentPane.add(state);
 		
 		target.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
@@ -253,8 +198,8 @@ public class NewOutBoundInputFrame extends JFrame {
 		});
 		transportID.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
-				if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=9){
-					state.setText("！货运编号必须是9位数值");
+				if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=21){
+					state.setText("！中转单号必须是21位数值");
 				}else{
 					state.setText("");
 				}
@@ -269,8 +214,8 @@ public class NewOutBoundInputFrame extends JFrame {
 		}else if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
 			state.setText("！快递编号必须是10位数值");
 			return false;
-		}else if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=9){
-			state.setText("！货运编号必须是9位数值");
+		}else if((!Numeric.isNumeric(transportID.getText()))||transportID.getText().length()!=21){
+			state.setText("！中转单号必须是21位数值");
 			return false;
 		}
 		

@@ -43,7 +43,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>org.module.server.javaRMI.RmiServer</mainClass>
+							<mainClass>org.module.server.Main.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
