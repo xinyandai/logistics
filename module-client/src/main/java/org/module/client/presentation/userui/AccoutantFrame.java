@@ -1,7 +1,6 @@
 package org.module.client.presentation.userui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,13 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
+import org.module.client.main.Main;
 import org.module.client.presentation.statisticui.AccountPanel;
 import org.module.client.presentation.statisticui.CostAndIncome;
 import org.module.client.presentation.statisticui.CostPanel;
 import org.module.client.presentation.statisticui.IncomePanel;
-import org.module.client.presentation.statisticui.InitAccount;
+import org.module.client.presentation.statisticui.InitAccountPanel;
 
-public class AccoutantFrame extends JFrame {
+public class AccoutantFrame extends FatherFrame {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -23,14 +23,19 @@ public class AccoutantFrame extends JFrame {
 
 	
 	public AccoutantFrame() {
+		
+		  
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
+		contentPane.setOpaque(false);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		contentPane.add(panel, BorderLayout.NORTH);
 		
 		JLabel label = new JLabel("财务人员");
@@ -39,20 +44,28 @@ public class AccoutantFrame extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new AccountPanel();
-		tabbedPane.addTab("账户管理", null, panel_1, null);
+		if(Main.currentUser.getAuthority().equals("1")){
+			JPanel panel_1 = new AccountPanel();
+			panel_1.setOpaque(false);
+			tabbedPane.addTab("账户管理", null, panel_1, "账户管理");
+		}
 		
-		JPanel panel_2 = new InitAccount();
-		tabbedPane.addTab("期初建账", null, panel_2, null);
+		
+		JPanel panel_2 = new InitAccountPanel();
+		panel_2.setOpaque(false);
+		tabbedPane.addTab("期初建账", null, panel_2, "期初建账");
 		
 		JPanel panel_3 = new CostPanel();
-		tabbedPane.addTab("成本管理", null, panel_3, null);
+		panel_3.setOpaque(false);
+		tabbedPane.addTab("成本管理", null, panel_3, "成本管理");
 		
 		JPanel panel_4 = new IncomePanel();
-		tabbedPane.addTab("收益查看", null, panel_4, null);
+		panel_4.setOpaque(false);
+		tabbedPane.addTab("收益查看", null, panel_4, "收益查看");
 		
 		JPanel panel_5 = new CostAndIncome();
-		tabbedPane.addTab("成本收益表", null, panel_5, null);
+		panel_5.setOpaque(false);
+		tabbedPane.addTab("成本收益表", null, panel_5, "成本收益表");
 	}
 
 }

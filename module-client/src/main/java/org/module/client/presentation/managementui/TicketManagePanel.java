@@ -75,7 +75,9 @@ public class TicketManagePanel extends JPanel {
 		}else{
 			String[] name = {"空"};
 			table = new Table(this.listCell,name);
-		}scrollPane.setViewportView(new JTable(this.table));
+		}
+		JTable t = new JTable(this.table);
+		scrollPane.setViewportView(t);
 	}
 	
 	

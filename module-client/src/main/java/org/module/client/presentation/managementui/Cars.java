@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.CarsManageController;
 import org.module.client.businesslogicservice.managementBLservice.CarsManageBLService;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
@@ -47,35 +48,36 @@ public class Cars extends JPanel {
 	public Cars() {
 		setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
-		add = new JButton("增");
-		delete = new JButton("删");
-		modify = new JButton("改");
-		refresh = new JButton("同步");
+		add = new Button("add");
+		delete = new Button("delete");
+		refresh = new Button("refresh");
+		modify = new Button("modify");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(216)
-					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(210, Short.MAX_VALUE)
+					.addComponent(add, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(refresh)
-					.addContainerGap())
+					.addGap(2))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(refresh)
-						.addComponent(modify)
-						.addComponent(delete)
-						.addComponent(add))
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(delete, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -149,6 +151,9 @@ public class Cars extends JPanel {
 	private void delete(){
 
 		int[] indexes = myTable.getCheckedIndexes();
+		if(indexes.length==0){
+			return;
+		}
 		MyList<String> ids = new MyList<String>();
 		for (int i =  indexes.length-1; i>=0; i--) {
 			ids.add(listData.get(indexes[i])[this.mainKey]);

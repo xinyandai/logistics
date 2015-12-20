@@ -10,9 +10,16 @@ public abstract class AbstractArrialListVO extends AbstractVO{
 	protected String stateOfGoods;
 	protected State state;
 	
+	protected String writer;
 	
 	public String getDepartmentId() {
 		return departmentID;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public void setDepartmentId(String transId) {
 		this.departmentID = transId;
@@ -54,7 +61,8 @@ public abstract class AbstractArrialListVO extends AbstractVO{
 				getDate(),
 				getTransportListId(),
 				getOrigin(),
-				getStateOfGoods()};
+				getStateOfGoods(),
+				state.toString()};
 		return s;
 	}
 }

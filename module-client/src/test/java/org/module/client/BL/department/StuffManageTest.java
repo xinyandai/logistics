@@ -23,11 +23,11 @@ public class StuffManageTest extends TestCase {
 	}
 
 	public void testAdd() {
-		assert(stuff.add("name","18","快递员","140010001"));
+		assert(stuff.add("name","18","快递员","140010002"));
 	}
 
 	public void testDeleteString() {
-		assert(stuff.delete("140010001"));
+		assert(stuff.delete("140010002"));
 	}
 
 	public void testDeleteArrayListOfString() {

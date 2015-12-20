@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.deparmentbl.DepartmentManageController;
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
@@ -35,7 +36,7 @@ public class DeparmentPanel extends JPanel {
 	private int mainKey = 3;
 	private JButton add;
 	private JButton delete;
-	private JButton update;
+	private JButton modify;
 	private JButton refresh;
 	
 	public DeparmentPanel() {
@@ -43,12 +44,13 @@ public class DeparmentPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
-		add = new JButton("增");
-		delete = new JButton("删");
-		update = new JButton("改");
-		refresh = new JButton("同步");
+		add = new Button("add");
+		delete = new Button("delete");
+		refresh = new Button("refresh");
+		modify = new Button("modify");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -59,7 +61,7 @@ public class DeparmentPanel extends JPanel {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
-					.addComponent(update, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(refresh))
 		);
@@ -67,10 +69,10 @@ public class DeparmentPanel extends JPanel {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(refresh)
-						.addComponent(update)
-						.addComponent(add)
-						.addComponent(delete))
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(delete, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -110,7 +112,7 @@ public class DeparmentPanel extends JPanel {
 			} 
 		});
 		
-		update.addMouseListener(new MouseAdapter() {
+		modify.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				modify();
@@ -120,7 +122,9 @@ public class DeparmentPanel extends JPanel {
 	
 	private void delete(){
 		int[] indexes = myTable.getCheckedIndexes();
-		
+		if(indexes.length==0){
+			return;
+		}
 		
 		MyList<String> ids = new MyList<String>();
 		for (int i =  indexes.length-1; i>=0; i--) {

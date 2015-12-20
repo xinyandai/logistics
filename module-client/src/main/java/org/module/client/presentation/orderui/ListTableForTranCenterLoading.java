@@ -20,17 +20,15 @@ public class ListTableForTranCenterLoading extends ListTableForAll {
 	protected void initData() {
 		this.controller = new TranCenterLoadingController();
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
+		this.typeArray = new String[]{
+					"装车日期","中转中心","汽运编号","出发地","目的地",
+					"车号","监装员","司机","物流单号","价格","状态"
+			};
 	}
 
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
 		this.table.setList(listCell);
 		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();;

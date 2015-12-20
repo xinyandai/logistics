@@ -122,7 +122,7 @@ public class MainFrame extends JFrame {
 		
 		btnNewButton = new JButton("LOGIN\r\n");
 	
-		btnNewButton.setBounds(262, 179, 68, 23);
+		btnNewButton.setBounds(262, 179, 78, 23);
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
@@ -184,7 +184,7 @@ public class MainFrame extends JFrame {
 					//JFrame.setDefaultLookAndFeelDecorated(true);
 					JDialog.setDefaultLookAndFeelDecorated(true);
 					SubstanceSkin skin  =   new  BusinessBlackSteelSkin();  
-					SubstanceLookAndFeel.setSkin(skin); 
+					SubstanceLookAndFeel.setSkin(skin);
 				}//设置皮肤                      
 				catch  (Exception ex) {      
 						Logger.getLogger(AdminFrame. class .getName()).log(Level.SEVERE,  null , ex);       

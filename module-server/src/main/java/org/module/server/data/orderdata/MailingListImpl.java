@@ -3,6 +3,7 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.MailingListService;
@@ -16,7 +17,9 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String path = "file"+File.separator+"mailingList.txt";
+	String path = 
+			"file"+"/"+"mailingList.txt"
+    	;
 	File file = new File(path);
 	FileHelper help = new FileHelper(file);
 	
@@ -64,6 +67,17 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 		}
 		return newone;
 		
+	}
+	public ArrayList<MailingListPO> getAll(String w) throws RemoteException {
+		MyList<MailingListPO> re = new MyList<MailingListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			MailingListPO  po= 	new MailingListPO(string);
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

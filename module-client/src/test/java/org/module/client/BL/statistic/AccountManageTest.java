@@ -22,7 +22,7 @@ public class AccountManageTest extends TestCase {
 	public void testAdd() {
 		assert(account.add("62202", "100"));
 	}
-
+/*
 	public void testDeleteString() {
 		assert(account.delete("62202"));
 	}
@@ -37,6 +37,6 @@ public class AccountManageTest extends TestCase {
 		assert(b.get(0).getMoney()-200<1 &&b.get(0).getMoney()-200>-1);
 		
 		
-	}
+	}*/
 
 }

@@ -12,27 +12,21 @@ import org.module.server.data.FileHelper;
 
 
 public class TransportListImpl extends UnicastRemoteObject implements TransportListService{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public TransportListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"TransportList.txt"));
+		
+		String path = 
+				"file"+"/"+"TransportList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	public MyList<TransportListPO> getAll()  throws RemoteException{
-		// TODO 自动生成的方法存根
 		MyList<TransportListPO> re = new MyList<TransportListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			/*String[] temp = string.split(":%:%:");
-			String[] ids = new String[temp.length-10];
-			for(int i = 0;i<temp.length-10;i++){
-				ids[i] = temp[i+8];
-			}
-			TransportListPO lpo = new TransportListPO(temp[0],temp[1],temp[2],
-					temp[3],temp[4],temp[5],temp[6],temp[7],ids,temp[temp.length-2],temp[temp.length-1]);
-			re.add(lpo);*/
+			
 			re.add(new TransportListPO(string));
 		}
 		return re;
@@ -74,6 +68,18 @@ public class TransportListImpl extends UnicastRemoteObject implements TransportL
 			}
 		}
 		return null;
+	}
+	public MyList<TransportListPO> getAll(String w) throws RemoteException {
+		MyList<TransportListPO> re = new MyList<TransportListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			
+			TransportListPO po = (new TransportListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

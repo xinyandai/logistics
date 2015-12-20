@@ -21,6 +21,13 @@ public interface TransportListService extends Remote{
 	 * @return
 	 */
 	public MyList<TransportListPO> getAll() throws RemoteException;
+	
+	/**
+	 * 前置：无
+	 * 后置：返回所有PO
+	 * @return
+	 */
+	public MyList<TransportListPO> getAll(String w) throws RemoteException;
 	/**
 	 * 前置：不存在相同ID的收件单
 	 * 后置：增加一个PO

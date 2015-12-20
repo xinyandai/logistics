@@ -5,6 +5,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,15 +16,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.orderbl.CalculateDriverCost;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.AbstractLoadingListVO;
-
-import javax.swing.event.CaretListener;
-import javax.swing.event.CaretEvent;
 
 public class NewLoadingrListInputFrame extends JFrame {
 
@@ -45,7 +46,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 	protected JTextPane textPane;
 	protected JLabel state;
 
-	protected int lengthOfID = 9;
+	protected int lengthOfID = 10;
 	protected JXDatePicker timePicker;
 	protected JComboBox origin;
 	protected JComboBox target;
@@ -115,6 +116,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 		
 		department.setColumns(10);
 		department.setBounds(115, 37, 84, 21);
+		department.setText(Main.currentUser.getDepartmeny());
 		contentPane.add(department);
 		
 		carID = new JTextField();
@@ -155,7 +157,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 		contentPane.add(label_8);
 		
 		price = new JTextField();
-		price.setText("￥ 88");
+		price.setText("0");
 		price.setEditable(false);
 		price.setColumns(10);
 		price.setBounds(115, 153, 84, 21);
@@ -182,6 +184,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 		contentPane.add(target);
 		
 		timePicker = new JXDatePicker();
+		timePicker.setDate(new Date());
 		timePicker.setBounds(314, 65, 84, 23);
 		contentPane.add(timePicker);
 		
@@ -295,23 +298,18 @@ public class NewLoadingrListInputFrame extends JFrame {
 		
 		
 		for (String string : shippingId) {
-			System.out.println("-2:"+string);
 			string = string.replace("\r", "");
-			System.out.println("-1:"+string);
 			string = string.replace("\n", "");
-			System.out.println("0:"+string);
 			if(string.length()!=lengthOfID){
 				System.out.println("1:"+string);
 				System.out.println("2:"+string.length());
 				state.setText("托运单号请以空格或回车隔开");
 				return null;
 			}else{
-				System.out.println("3:"+string);
-				System.out.println("4:"+string.length());
+				
 			}
 			
 		}
-	    state.setText("格式正确");
 	    return shippingId;
 	}
 	

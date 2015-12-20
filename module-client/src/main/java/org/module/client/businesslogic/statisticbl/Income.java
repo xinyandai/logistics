@@ -25,14 +25,13 @@ public class Income implements IncomeService {
 			
 			ArrayList<ReceiptPO> pos = this.data.getAll();
 			for (ReceiptPO po : pos) {
-				/**
+				 /**
 				 * 把时间转换为毫秒比较
 				 */
 	            long time = DateTransferHelper.getDate(po.getDate()).getTime();
-				if(time<=endTime && time>=startTime){
+				if(time<=endTime && time>=startTime && po.getCourier().substring(0, 6).equals(office)){
 					vos.add(new ReceiptVO(po));
 				}
-				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

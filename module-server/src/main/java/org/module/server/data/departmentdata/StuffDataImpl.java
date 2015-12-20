@@ -18,7 +18,10 @@ public class StuffDataImpl extends UnicastRemoteObject implements StuffDataServi
 
 	
 	private static final long serialVersionUID = 1L;
-	private FileHelper helper = new FileHelper(new File("file"+File.separator+"stuff.txt"));
+	String path = 
+			"file"+"/"+"stuff.txt"
+    	;
+	private FileHelper helper = new FileHelper(new File(path));
 
 
 	public MyList<StuffPO> getAll() {

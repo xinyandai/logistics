@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TransportService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.TransportListVO;
 import org.module.common.dataservice.orderdataservice.TransportListService;
 import org.module.common.po.State;
@@ -30,7 +31,7 @@ public class Transport implements TransportService {
 		ArrayList<TransportListVO> newVOs = new ArrayList<TransportListVO>();
 		ArrayList<TransportListPO> POs = null;
 		try {
-			 POs = transportData.getAll();
+			 POs = transportData.getAll(Main.currentUser.getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

@@ -22,13 +22,17 @@ public class PriceAndCityDataImpl extends UnicastRemoteObject implements PriceAn
 	 * 
 	 */
 	private static final long serialVersionUID = -1709535140102799399L;
-	String path="file"+File.separator+"PriceAndCity.txt";
-	File file=new File(path);
-	FileHelper priceAndCityHelp=new FileHelper(file);
-	
-	String Path="file"+File.separator+"City.txt";
-	File fil=new File(Path);
-	FileHelper cityHelp=new FileHelper(fil);
+	String pathOfPriceAndCity=
+			"file"+"/"+"PriceAndCity.txt"
+	    	;
+	File fileOfPrice=new File(pathOfPriceAndCity);
+	FileHelper priceAndCityHelp=new FileHelper(fileOfPrice);
+
+	String pathOfCities=
+			"file"+"/"+"City.txt"
+	    	;
+	File fileOfCitied=new File(pathOfCities);
+	FileHelper cityHelp=new FileHelper(fileOfCitied);
 	
 	
 

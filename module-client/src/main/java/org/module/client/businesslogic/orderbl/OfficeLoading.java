@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.OfficeLoadingService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.OfficeLoadingListVO;
 import org.module.common.dataservice.orderdataservice.OfficeLoadingListService;
 import org.module.common.po.OfficeLoadingListPO;
@@ -40,7 +41,7 @@ public class OfficeLoading implements OfficeLoadingService {
 		ArrayList<OfficeLoadingListVO> newVOs = new ArrayList<OfficeLoadingListVO>();
 		ArrayList<OfficeLoadingListPO> POs = null;
 		try {
-			 POs = officeLoadingData.getAll();
+			 POs = officeLoadingData.getAll(Main.currentUser.getId());
 			 for(int i =0;i<POs.size();i++){
 					newVOs.add(new OfficeLoadingListVO(POs.get(i)));
 			 }

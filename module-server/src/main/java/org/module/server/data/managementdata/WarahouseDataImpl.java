@@ -21,14 +21,15 @@ public class WarahouseDataImpl extends UnicastRemoteObject  implements Warahouse
 
 	public WarahouseDataImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 
 
 	public boolean add(WarehousePO cp) {
-		FileHelper help=new FileHelper(new File(
-				"file"+File.separator+"warehouse"+File.separator+cp.getWarehouseOfWhichTranCenter()+".txt"));
+		String path = 
+				"file"+"/"+"warehouse"+"/"+cp.getWarehouseOfWhichTranCenter()+".txt"
+	    ;
+		FileHelper help=new FileHelper(new File(path));
 		return help.add(cp);
 	}
 

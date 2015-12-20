@@ -19,6 +19,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.ReceiptVO;
@@ -34,7 +35,7 @@ public class NewReceiptInputFrame extends JFrame {
 	private JXDatePicker datePicker;
 	private JTextPane textPane;
 	private JLabel state;
-	private final int lengthOfID = 9;
+	private final int lengthOfID = 10;
 	private JButton save;
 	private JButton cancel;
 	final private String id;
@@ -43,9 +44,9 @@ public class NewReceiptInputFrame extends JFrame {
 	 * @return
 	 */
 	public boolean isDataUsable(){
-		return this.shippingId()!=null 
+		return  this.shippingId()!=null 
 				&&Numeric.isNumeric(courier.getText())
-				&&courier.getText().length()==6;
+				&&courier.getText().length()==9;
 	}
 	/**
 	 * 调用段先调用this.isDataUsable()
@@ -54,13 +55,15 @@ public class NewReceiptInputFrame extends JFrame {
 	 * @return
 	 */
 	public ReceiptVO getVO(){
+		System.out.println(id);
 		return new ReceiptVO(
 				DateTransferHelper.getString( this.datePicker.getDate() ),
 							this.money.getText() ,
 							this.courier.getText() ,
 							this.shippingId(),
 							State.SUBMITTED,
-							id);
+							id,
+							Main.currentUser.getId() );
 	}
 	public NewReceiptInputFrame(ReceiptVO vo) {
 	    this.id = vo.getID();
@@ -71,7 +74,7 @@ public class NewReceiptInputFrame extends JFrame {
 		String[] strs = vo.getOrderId() ;
 		for (String string : strs) {
 			buffer.append(string);
-			buffer.append("\n");
+			buffer.append("\r");
 		}
 		this.textPane.setText(buffer.toString());
 		this.datePicker.setDate(DateTransferHelper.getDate(vo.getDate()));
@@ -109,6 +112,7 @@ public class NewReceiptInputFrame extends JFrame {
 		courier.setColumns(10);
 		
 		datePicker = new JXDatePicker();
+		datePicker.setDate(new Date());
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -119,38 +123,36 @@ public class NewReceiptInputFrame extends JFrame {
 		scrollPane.setViewportView(textPane);
 		
 		save = new JButton("确定");
-		
 		cancel = new JButton("取消");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
+					.addGap(86)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(36)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-					.addGap(24)
-					.addComponent(money, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(money, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
+					.addGap(36)
 					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-					.addGap(24)
-					.addComponent(courier, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(courier, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
+					.addGap(36)
 					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-					.addGap(24)
-					.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(31)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 388, GroupLayout.PREFERRED_SIZE))
+					.addGap(36)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(95)
 					.addComponent(save, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 					.addGap(28)
 					.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addGap(86)
-					.addComponent(state, GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-					.addGap(75))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -159,22 +161,20 @@ public class NewReceiptInputFrame extends JFrame {
 					.addGap(15)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(label)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(2)
-							.addComponent(money, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(5)
+						.addComponent(money, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(4)
+							.addGap(2)
 							.addComponent(courier, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(6)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(3)
-							.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-					.addGap(12)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+						.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+					.addGap(15)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -197,8 +197,8 @@ public class NewReceiptInputFrame extends JFrame {
 		this.courier.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				if(!Numeric.isNumeric(courier.getText() ) || 
-						courier.getText().length()!=6){
-					state.setText("!员工号必须是六位数值");
+						courier.getText().length()!=9){
+					state.setText("!员工号必须是9位数值");
 				}
 			}
 		});
@@ -219,21 +219,14 @@ public class NewReceiptInputFrame extends JFrame {
 			text = text.substring(0, text.length()-1);
 		}
 		shippingId = text.split("\r",0);
-		
-		
 		for (String string : shippingId) {
-			System.out.println("-2:"+string);
 			string = string.replace("\r", "");
-			System.out.println("-1:"+string);
 			string = string.replace("\n", "");
-			System.out.println("0:"+string);
-			
 			if(string.length()!=lengthOfID ){
 				state.setText("托运单号请以空格或回车隔开");
 				return null;
 			}
 		}
-	    state.setText("格式正确");
 	    return shippingId;
 }
 	public JButton getComfirm() {

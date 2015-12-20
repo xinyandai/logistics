@@ -19,19 +19,15 @@ public class ListTableForMailingList extends ListTableForAll {
 	protected void initData() {
 		controller = new MailingControl();
 		this.listCell = this.controller.getAll();
-		if(listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
+		this.typeArray = new String[]{
+				"快递编号","类型","寄件人","出发城市","收件人","目的城市","状态"
+		};
 	}
 
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
 		this.table.setList(listCell);
-		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();
 	}
 

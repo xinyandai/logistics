@@ -1,30 +1,25 @@
 package org.module.client.presentation.orderui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.SendingListVO;
 import org.module.common.po.State;
-
-import javax.swing.JButton;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.event.CaretListener;
-import javax.swing.event.CaretEvent;
 
 public class NewSendingListInputFrame extends JFrame {
 
@@ -88,6 +83,7 @@ public class NewSendingListInputFrame extends JFrame {
 		contentPane.add(sender);
 		
 		datePicker = new JXDatePicker();
+		datePicker.setDate(new Date());
 		datePicker.setBounds(176, 105, 121, 23);
 		contentPane.add(datePicker);
 		
@@ -113,7 +109,7 @@ public class NewSendingListInputFrame extends JFrame {
 		ID.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				if((!Numeric.isNumeric(ID.getText()))||ID.getText().length()!=10){
-					state.setText("！快递单号必须是10位数值");
+					state.setText("！ 派件单号必须是10位数值");
 				}else{
 					state.setText("");
 				}
@@ -153,7 +149,7 @@ public class NewSendingListInputFrame extends JFrame {
 				DateTransferHelper.getString(this.datePicker.getDate()),
 				this.ID.getText(),
 				this.sender.getText(),
-				State.SUBMITTED
+				State.SUBMITTED ,Main.currentUser.getId() 
 				);
 	}
 }

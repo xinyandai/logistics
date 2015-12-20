@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.OfficeArrivalService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.OfficeArrivalListVO;
 import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
 import org.module.common.po.OfficeArrivalListPO;
+import org.module.common.po.State;
 
 public class OfficeArrival implements OfficeArrivalService {
 
@@ -17,8 +19,7 @@ public class OfficeArrival implements OfficeArrivalService {
 	}
 
 	public boolean creat(OfficeArrivalListVO o) {
-		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getDepartmentId(),o.getDate(),
-				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState()); 
+		OfficeArrivalListPO newPO = o.toPO(State.SUBMITTED); 
 		try {
 			return officeArrivalData.add(newPO);
 		} catch (RemoteException e) {
@@ -31,10 +32,9 @@ public class OfficeArrival implements OfficeArrivalService {
 		ArrayList<OfficeArrivalListVO> newVOs = new ArrayList<OfficeArrivalListVO>();
 		ArrayList<OfficeArrivalListPO> POs = null;
 		try {
-			 POs = officeArrivalData.getAll();
+			 POs = officeArrivalData.getAll(Main.currentUser.getId());
 			 for(int i =0;i<POs.size();i++){
-			newVOs.add(new OfficeArrivalListVO(POs.get(i).getOfficeid(),POs.get(i).getDate(),
-					POs.get(i).getTransportListId(),POs.get(i).getOrigin(),POs.get(i).getStateOfGoods(),POs.get(i).getState()));
+			newVOs.add(new OfficeArrivalListVO(POs.get(i)));
 		}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -44,8 +44,7 @@ public class OfficeArrival implements OfficeArrivalService {
 	}
 
 	public boolean update(OfficeArrivalListVO o){
-		OfficeArrivalListPO newPO = new OfficeArrivalListPO(o.getDepartmentId(),o.getDate(),
-				o.getTransportListId(),o.getOrigin(),o.getStateOfGoods(),o.getState()); 
+		OfficeArrivalListPO newPO = o.toPO(State.SUBMITTED); 
 		try {
 			return officeArrivalData.update(newPO);
 		} catch (RemoteException e) {

@@ -78,7 +78,6 @@ public class User implements UserService {
 	   try {
 			return this.user.delete(ids);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    return false;

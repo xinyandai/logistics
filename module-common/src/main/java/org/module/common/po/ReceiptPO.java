@@ -5,9 +5,7 @@ import java.io.Serializable;
 
 public class ReceiptPO implements Serializable{
 	
-	   /**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -1488661806746880954L;
 	final private String split = ":%:%:";
 	//收款单
@@ -18,7 +16,7 @@ public class ReceiptPO implements Serializable{
 		
 		private State state;
 		
-		
+		private String writer;
 		final private String inlinespt = "&&&&&&&";
 		/**
 		 * 把订单号数组转化为字符串
@@ -40,6 +38,7 @@ public class ReceiptPO implements Serializable{
 			this.orderId = s[3].split(inlinespt);
 			this.state = State.getInstance(s[4]);
 			this.ID = s[5];
+			this.writer = s[6];
 		}
 		
 		@Override
@@ -49,7 +48,7 @@ public class ReceiptPO implements Serializable{
 					this.Courier + this.split +
 					this.getArrayToString( this.orderId )+ this.split +
 					this.state.toString()
-					+ this.split + this.ID;
+					+ this.split + this.ID+this.split + this.writer;
 		}
 		
 		public String getDate() {
@@ -73,7 +72,7 @@ public class ReceiptPO implements Serializable{
 		}
 
 		public ReceiptPO(String date, String money, String courier,
-				String[] orderId, State state,String id) {
+				String[] orderId, State state,String id,String w) {
 			super();
 			this.date = date;
 			this.money = money;
@@ -81,12 +80,15 @@ public class ReceiptPO implements Serializable{
 			this.orderId = orderId;
 			this.state = state;
 			this.ID = id;
+			this.writer = w;
 		}
 		private String ID;
 		public String getID() {
 			return ID;
 		}
-		
+		public String getWriter() {
+			return this.writer;
+		}
 		
 		
 }

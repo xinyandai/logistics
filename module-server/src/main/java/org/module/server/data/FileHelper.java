@@ -1,11 +1,12 @@
 package org.module.server.data;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
@@ -13,6 +14,7 @@ import org.module.common.dataservice.MyList;
 
 public class FileHelper {
 
+	private  String charsetName = "UTF-8";
 	private File file;
 	public FileHelper(File file) {
 
@@ -23,10 +25,10 @@ public class FileHelper {
 		MyList<String> re =  new MyList<String>();		
 		try {
 			if(!file.exists()){
-				System.out.println(file.getAbsolutePath()+"  notExits");
+				System.out.println(file.getAbsolutePath()+"notExits");
 				return re;
 			}
-			FileReader fr = new FileReader(file);
+			InputStreamReader fr = new InputStreamReader(new FileInputStream(file),this.charsetName);
 			BufferedReader br = new BufferedReader(fr);
 			
 			String record = null;
@@ -42,8 +44,7 @@ public class FileHelper {
 
 	public boolean rewrite(ArrayList<? extends Object> os){	
 		try {
-			FileWriter fw = new FileWriter(file);
-			BufferedWriter br = new BufferedWriter(fw);
+			OutputStreamWriter br = new OutputStreamWriter(new FileOutputStream(file),this.charsetName);
 			for (Object object : os) {
 				br.write(object.toString()+"\n");
 			}
@@ -61,12 +62,8 @@ public class FileHelper {
 			if(!file.exists()){
 				file.createNewFile();
 			}
-			FileWriter fw = new FileWriter(file,true);
-			BufferedWriter br = new BufferedWriter(fw);
-			
-			
+			OutputStreamWriter br = new OutputStreamWriter(new FileOutputStream(file,true),this.charsetName);
 			br.write(object.toString()+"\n");
-			
 			br.flush();
 			br.close();
 		} catch (IOException e) {

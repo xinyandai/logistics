@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -27,9 +29,6 @@ import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.TransportListVO;
 import org.module.common.po.State;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
 public class NewTransportListInputFrame extends JFrame {
 
@@ -53,7 +52,7 @@ public class NewTransportListInputFrame extends JFrame {
 	private JXDatePicker datePicker;
 	private JTextPane textPane;
 	private JLabel state;
-	private int lengthOfID = 9;
+	private int lengthOfID = 10;
 	private String[] array;
 	
 	private CalculateDriverCost costCalculator = new CalculateDriverCost();
@@ -155,6 +154,7 @@ public class NewTransportListInputFrame extends JFrame {
 		comfirm = new JButton("确定");
 		cancel = new JButton("取消");
 		datePicker = new JXDatePicker();
+		datePicker.setDate(new Date());
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -427,7 +427,8 @@ public class NewTransportListInputFrame extends JFrame {
 				this.supervision.getText(),
 				ids,
 				this.price.getText(),
-				State.SUBMITTED
+				State.SUBMITTED,
+				Main.currentUser.getId() 
 				);
 	}
 }

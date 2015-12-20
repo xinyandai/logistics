@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.ReceivingListVO;
@@ -161,8 +162,8 @@ public class ReceiveListPanel extends JPanel {
 		ID.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				if(!Numeric.isNumeric(ID.getText()) 
-				|| ID.getText().length()!=9){
-					state.setText("!ID必须是9位数字");
+				|| ID.getText().length()!=10){
+					state.setText("!快递单号必须是10位数字");
 				}
 			}
 		});
@@ -199,7 +200,8 @@ public class ReceiveListPanel extends JPanel {
 		return new ReceivingListVO (
 				DateTransferHelper.getString(timePicker1.getDate()),
 				receiver.getText(),
-                ID.getText(), State.SUBMITTED);
+                ID.getText(), State.SUBMITTED,
+				Main.currentUser.getId() );
 		
 	}
 	

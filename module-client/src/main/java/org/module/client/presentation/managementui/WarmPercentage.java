@@ -1,10 +1,11 @@
 package org.module.client.presentation.managementui;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -12,7 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 import org.module.client.businesslogic.managementbl.WarehouseConfigController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseConfigBLService;
@@ -56,6 +57,7 @@ public class WarmPercentage extends JPanel {
 		borderline.setColumns(10);
 		
 		save = new JButton("保存");
+		save.setToolTipText("保存");
 		save.setFont(new Font("楷体", Font.PLAIN, 18));
 		
 		JLabel label_2 = new JLabel("分区大小");
@@ -75,7 +77,8 @@ public class WarmPercentage extends JPanel {
 		qusPicker = new JComboBox(arrayOfQus);
 		qusPicker.setEditable(true);
 		
-		state = new JLabel("state");
+		state = new JLabel("");
+		state.setHorizontalAlignment(SwingConstants.CENTER);
 		state.setFont(new Font("宋体", Font.PLAIN, 15));
 		
 		JLabel current = new JLabel("当前比例");
@@ -85,60 +88,73 @@ public class WarmPercentage extends JPanel {
 		currentBorderline.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(205)
-					.addComponent(state, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(69)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
 					.addGap(21)
-					.addComponent(tranCenterID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(tranCenterID, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+					.addGap(127))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(69)
 					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
 					.addGap(21)
-					.addComponent(qusPicker, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-					.addGap(33)
+					.addComponent(qusPicker, 0, 166, Short.MAX_VALUE)
+					.addGap(127))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(69)
 					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(size, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(21)
+					.addComponent(size, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+					.addGap(127))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(69)
 					.addComponent(current, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
 					.addGap(21)
-					.addComponent(currentBorderline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(33)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(borderline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(currentBorderline, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+					.addGap(127))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(193)
-					.addComponent(save, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+					.addGap(69)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+					.addGap(21)
+					.addComponent(borderline, GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+					.addGap(127))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(state, GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(196)
+					.addComponent(save, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(185))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addComponent(state, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-					.addGap(27)
+					.addContainerGap()
+					.addComponent(state)
+					.addGap(24)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tranCenterID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(10)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addComponent(qusPicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(qusPicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 						.addComponent(size, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(10)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(current, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addComponent(currentBorderline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(currentBorderline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 						.addComponent(borderline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(34)
-					.addComponent(save, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addGap(37)
+					.addComponent(save, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addGap(61))
 		);
 		setLayout(groupLayout);
 
@@ -160,8 +176,11 @@ public class WarmPercentage extends JPanel {
 				}
 			}
 		});
-		
-		
+		qusPicker.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				refresh();
+			}
+		});
 	}
 	
 	private  void refresh(){
@@ -177,9 +196,6 @@ public class WarmPercentage extends JPanel {
 				 this.size.setText(this.controller.getQuSize(qu));
 				 this.borderline.setText(this.controller.getBorderLine(qu));
 			}
-			
 		}
-		
-		
 	}
 }

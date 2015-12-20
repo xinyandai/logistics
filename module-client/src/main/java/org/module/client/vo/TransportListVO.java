@@ -41,10 +41,12 @@ public class TransportListVO extends AbstractVO{
 		private String price;
 		private State state;
 		
+		private String writer;
 		
 		public TransportListVO(String car, String loadingDate, String transId,
 				String carId, String origin, String arrival, String counterId,
-				String supervision, String[] shippingId, String price,State state) {
+				String supervision, String[] shippingId, String price,State state,
+				String w) {
 			super();
 			this.car = car;
 			LoadingDate = loadingDate;
@@ -57,6 +59,7 @@ public class TransportListVO extends AbstractVO{
 			this.shippingId = shippingId;
 			this.price = price;
 			this.state = state;
+			this.writer = w;
 		}
 		public TransportListVO(TransportListPO transportListPO) {
 			this(transportListPO.getCar(),
@@ -69,7 +72,8 @@ public class TransportListVO extends AbstractVO{
 					transportListPO.getSupervision(),
 					transportListPO.getShippingId(),
 					transportListPO.getPrice(),
-					transportListPO.getState());
+					transportListPO.getState(),
+					transportListPO.getWriter());
 		}
 		
 		public TransportListPO toPO(){
@@ -84,7 +88,14 @@ public class TransportListVO extends AbstractVO{
 					getSupervision(),
 					getShippingId(),
 					getPrice(),
-					getState());
+					getState(),writer);
+		}
+		
+		public String getWriter() {
+			return writer;
+		}
+		public void setWriter(String writer) {
+			this.writer = writer;
 		}
 		public String getCar() {
 			return car;
@@ -165,6 +176,7 @@ public class TransportListVO extends AbstractVO{
 					getSupervision(),
 					"......",
 					getPrice(),
+					state.toString()
 			};
 			return s;
 		}
@@ -177,7 +189,9 @@ public class TransportListVO extends AbstractVO{
 		@Override
 		public String[] names() {
 			String[] s = {
-					"运送方式","装车日期","中转单号","车次","出发地","目的地","货柜号","监装员","物流单号","价格"
+					"运送方式","装车日期","中转单号","车次",
+					"出发地","目的地","货柜号","监装员",
+					"物流单号","价格","状态"
 			};
 			return s;
 		}

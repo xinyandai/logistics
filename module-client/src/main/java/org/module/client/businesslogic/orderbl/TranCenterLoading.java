@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.TranCenterLoadingService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.TranCenterLoadingListVO;
 import org.module.common.dataservice.orderdataservice.TranCenterLoadingListService;
 import org.module.common.po.TranCenterLoadingListPO;
@@ -16,9 +17,7 @@ public class TranCenterLoading implements TranCenterLoadingService {
 	}
 
 	public boolean creat(TranCenterLoadingListVO o) {
-		TranCenterLoadingListPO newPO = new TranCenterLoadingListPO(o.getLoadingDate(),o.getOfficeId()
-				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
-				,o.getShippingId(),o.getPrice(),o.getState()); 
+		TranCenterLoadingListPO newPO = o.toPO(); 
 		try {
 			return tranCenterLoadingData.add(newPO);
 		} catch (RemoteException e) {
@@ -31,23 +30,19 @@ public class TranCenterLoading implements TranCenterLoadingService {
 		ArrayList<TranCenterLoadingListVO> newVOs = new ArrayList<TranCenterLoadingListVO>();
 		ArrayList<TranCenterLoadingListPO> POs = null;
 		try {
-			 POs = tranCenterLoadingData.getAll();
+			 POs = tranCenterLoadingData.getAll(Main.currentUser.getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new TranCenterLoadingListVO(POs.get(i).getLoadingDate(),POs.get(i).getOfficeId()
-					,POs.get(i).getTrucksId(),POs.get(i).getCity(),POs.get(i).getLocation(),POs.get(i).getCarId(),POs.get(i).getSupervision(),POs.get(i).getEscort()
-					,POs.get(i).getShippingId(),POs.get(i).getPrice(),POs.get(i).getState()));
+			newVOs.add(new TranCenterLoadingListVO(POs.get(i)));
 		}
 		return newVOs;
 		
 	}
 
 	public boolean update(TranCenterLoadingListVO o) {
-		TranCenterLoadingListPO newPO = new TranCenterLoadingListPO(o.getLoadingDate(),o.getOfficeId()
-				,o.getTrucksId(),o.getCity(),o.getLocation(),o.getCarId(),o.getSupervision(),o.getEscort()
-				,o.getShippingId(),o.getPrice(),o.getState()); 
+		TranCenterLoadingListPO newPO = o.toPO(); 
 		try {
 			return tranCenterLoadingData.update(newPO);
 		} catch (RemoteException e) {

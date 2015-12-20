@@ -18,13 +18,16 @@ public class CityAndPrice extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+		tabbedPane.setOpaque(false);
 		add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel = new City();
-		tabbedPane.addTab("所有城市", null, panel, null);
+		panel.setOpaque(false);
+		tabbedPane.addTab("所有城市", null, panel, "所有城市");
 		
 		JPanel panel_1 = new Price();
-		tabbedPane.addTab("城际运费", null, panel_1, null);
+		panel_1.setOpaque(false);
+		tabbedPane.addTab("城际运费", null, panel_1, "城际运费");
 
 	}
 

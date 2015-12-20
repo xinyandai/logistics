@@ -17,6 +17,8 @@ public class ReceivingListPO implements Serializable{
 	private String orderId;
 	private State  state;
 	
+	private String writer;
+	
 	final private String spt = ":%:%:";
 	public ReceivingListPO(String string) {
 		String[] s = string.split(spt);
@@ -24,22 +26,24 @@ public class ReceivingListPO implements Serializable{
 		this.receiver =s[1];
 		this.orderId = s[2];
 		this.state = State.getInstance(s[3]);
+		this.writer = s[4];
 	}
 	@Override
 	public String toString(){
 		return this.date +this.spt +
 		this.receiver  +this.spt +
 		this.orderId  +this.spt +
-		this.state.toString() ;
+		this.state.toString()+this.spt + this.writer ;
 	}
 	
 	public ReceivingListPO(String date, String receiver, 
-			String orderId, State state) {
+			String orderId, State state, String w) {
 		super();
 		this.date = date;
 		this.receiver = receiver;
 		this.orderId = orderId;
 		this.state = state;
+		this.writer = w;
 	}
 	
 	
@@ -57,5 +61,7 @@ public class ReceivingListPO implements Serializable{
 	public State getState() {
 		return state;
 	}
-
+	public String getWriter() {
+		return this.writer;
+	}
 }

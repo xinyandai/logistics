@@ -26,7 +26,8 @@ public class OfficeLoadingListVO extends AbstractLoadingListVO{
 	
 	public OfficeLoadingListVO(String loadingDate, String officeId,
 			String trucksId, String city,String location, String carId, String supervision,
-			String escort, String[] shippingId, String price,State state) {
+			String escort, String[] shippingId, String price,State state,
+			String w) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
@@ -39,6 +40,7 @@ public class OfficeLoadingListVO extends AbstractLoadingListVO{
 		this.shippingIds = shippingId;
 		this.price = price;
 		this.setState(state);
+		this.writer = w;
 	}
 	public OfficeLoadingListVO(OfficeLoadingListPO officeLoadingListPO) {
 		this(
@@ -52,7 +54,8 @@ public class OfficeLoadingListVO extends AbstractLoadingListVO{
 				officeLoadingListPO.getEscort(),
 				officeLoadingListPO.getShippingId(),
 				officeLoadingListPO.getPrice(),
-				officeLoadingListPO.getState());
+				officeLoadingListPO.getState(),
+				officeLoadingListPO.getWriter());
 	}
 	
 	public OfficeLoadingListPO toPO( ){
@@ -61,14 +64,15 @@ public class OfficeLoadingListVO extends AbstractLoadingListVO{
 				getLoadingDate(),
 				getOfficeId()
 				,getTrucksId(),getCity(),getLocation(),getCarId(),getSupervision(),getEscort()
-				,getShippingId(),getPrice(),getState());
+				,getShippingId(),getPrice(),getState(),writer);
 	}
 	
 	
 	@Override
 	public String[] names() {
 		String[] s = {
-				"装车日期","营业厅","汽运编号","目的城市","目的地","车号","监装员","司机","物流单号","价格"
+				"装车日期","营业厅","汽运编号","出发地","目的地","车号","监装员",
+				"司机","物流单号","价格","状态"
 		};
 	    return s;
 	}

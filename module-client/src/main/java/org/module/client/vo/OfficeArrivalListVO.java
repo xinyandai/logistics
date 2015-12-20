@@ -14,13 +14,15 @@ public class OfficeArrivalListVO extends AbstractArrialListVO{
 
 	
 	public OfficeArrivalListVO(String officeid, String date,
-			String transportListId, String origin, String stateOfGoods,State state) {
+			String transportListId, String origin, String stateOfGoods,State state,
+			String w) {
 		this.departmentID = officeid;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
 		this.state = state;
+		this.writer = w;
 	}
 	public OfficeArrivalListVO(OfficeArrivalListPO officeArrivalListPO) {
 		this(
@@ -29,7 +31,8 @@ public class OfficeArrivalListVO extends AbstractArrialListVO{
 				officeArrivalListPO.getTransportListId(),
 				officeArrivalListPO.getOrigin(),
 		        officeArrivalListPO.getStateOfGoods(),
-		        officeArrivalListPO.getState()
+		        officeArrivalListPO.getState(),
+		        officeArrivalListPO.getWriter()
 		
 		);
 	}
@@ -43,7 +46,7 @@ public class OfficeArrivalListVO extends AbstractArrialListVO{
 				getTransportListId(),
 				getOrigin(),
 		        getStateOfGoods(),
-		        state
+		        state,writer
 		        );
 	}
 	
@@ -57,7 +60,7 @@ public class OfficeArrivalListVO extends AbstractArrialListVO{
 	@Override
 	public String[] names() {
 		String[] s = {
-				"营业厅","到达日期","中转单","出发地","货物到达状态"
+				"营业厅","到达日期","中转单","出发地","货物到达状态","单据状态"
 		};
 	    return s;
 	}

@@ -12,13 +12,17 @@ public class SendingListPO implements Serializable{
 		private String shippingId;
 		private String SendMember;
 		private State state;
+		
+		private String writer;
+		
 		public SendingListPO(String date, String shippingId, String sendMember,
-				State state) {
+				State state, String w) {
 			super();
 			this.date = date;
 			this.shippingId = shippingId;
 			this.SendMember = sendMember;
 			this.state = state;
+			this.writer = w;
 		}
 		
 		final private String spt = ":%:%:";
@@ -29,6 +33,7 @@ public class SendingListPO implements Serializable{
 			this.shippingId = s[1];
 			this.SendMember = s[2];
 			this.state = State.getInstance(s[3]);
+			this.writer = s[4];
 		}
 		
 		@Override
@@ -36,7 +41,7 @@ public class SendingListPO implements Serializable{
 			return this.date + this.spt +
 					this.shippingId +this.spt +
 					this.SendMember + this.spt +
-					this.state.toString();
+					this.state.toString()+this.spt + this.writer;
 		}
 		public String getDate() {
 			return date;
@@ -50,6 +55,8 @@ public class SendingListPO implements Serializable{
 		public State getState() {
 			return state;
 		}
-		
+		public String getWriter() {
+			return this.writer;
+		}
 
 }

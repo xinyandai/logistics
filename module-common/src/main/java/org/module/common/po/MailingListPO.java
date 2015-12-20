@@ -28,7 +28,7 @@ public class MailingListPO implements Serializable{
 	private String id;
 	
 	private State state;
-
+	private String writer;
 	
 	final private String spt = ":%:%:";
 	@Override
@@ -55,7 +55,7 @@ public class MailingListPO implements Serializable{
 		this.costOfDecoration + this.spt +
 		this.type + this.spt +
 		this.id + this.spt +
-		this.state;
+		this.state.toString()+this.spt + this.writer;
 	}
 	public MailingListPO(String string) {
 		String[] s = string.split(spt);
@@ -81,6 +81,7 @@ public class MailingListPO implements Serializable{
 		this.type = s[17];
 		this.id = s[18];
 		this.state = State.getInstance(s[19]);
+		this.writer = s[20];
 	}
 	public MailingListPO(String senderName, String senderCompany,
 			String senderMobile, String senderPhone, String senderCity,
@@ -88,7 +89,7 @@ public class MailingListPO implements Serializable{
 			String receiveMobile, String receivePhone, String receiveCity,
 			String receivePosition, String nameOfGood, String counts,
 			String weight, String volume, String costOfDecoration, String type,
-			String id, State state) {
+			String id, State state,String w) {
 		super();
 		this.senderName = senderName;
 		this.senderCompany = senderCompany;
@@ -110,6 +111,7 @@ public class MailingListPO implements Serializable{
 		this.type = type;
 		this.id = id;
 		this.state = state;
+		this.writer = w;
 	}
 	
 	
@@ -193,7 +195,9 @@ public class MailingListPO implements Serializable{
 	public State getState() {
 		return state;
 	}
-	
+	public String getWriter() {
+		return this.writer;
+	}
 	
 	
 	

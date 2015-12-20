@@ -88,6 +88,10 @@ public class DeparmentCount {
 		
 	}
 
+	/**
+	 * 带有ID与姓名的字符串
+	 * @return
+	 */
 	public String[] getIDWithName(){
 		String[] re  = new String[list.size()];
 		for (int i= 0 ; i < list.size(); i++){

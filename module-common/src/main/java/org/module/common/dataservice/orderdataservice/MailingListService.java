@@ -23,6 +23,13 @@ public interface MailingListService extends Remote{
 	 */
 	public ArrayList<MailingListPO> getAll() throws RemoteException;
 	/**
+	 * 前置：无
+	 * 后置：返回所有PO
+	 * @return
+	 * @throws RemoteException 
+	 */
+	public ArrayList<MailingListPO> getAll(String w) throws RemoteException;
+	/**
 	 * 前置：不存在相同ID的寄件单
 	 * 后置：增加一个PO
 	 * @return

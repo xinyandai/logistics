@@ -28,7 +28,7 @@ public class InitDateImpl extends UnicastRemoteObject implements InitDateService
 	}
 
 	private static final long serialVersionUID = 5130502560682465347L;
-
+	
 	public boolean init() throws RemoteException {
 		MyList<CarPO> carPOs = new CarDataImpl().getAll();
 		MyList<StuffPO> stuffPOs = new StuffDataImpl().getAll();
@@ -64,7 +64,10 @@ public class InitDateImpl extends UnicastRemoteObject implements InitDateService
 	
 	@SuppressWarnings("unchecked")
 	private <T> MyList<T> reader(Class<T> c){
-		File file = new File("file"+File.separator+"init"+File.separator+c.getName()); 
+		String path = 
+				"file"+"/"+"init"+c.getName()+".txt"
+	    	;
+		File file = new File(path); 
 		if(!file.exists()){
 			return null;
 		}
@@ -83,7 +86,10 @@ public class InitDateImpl extends UnicastRemoteObject implements InitDateService
 		
 	}
 	private <T> boolean write( MyList<T> list,Class<T> c){
-		File file = new File("file"+File.separator+"init"+File.separator+c.getName()); 
+		String path = 
+				"file"+"/"+"init"+c.getName()+".txt"
+	    	;
+		File file = new File(path); 
 		if(!file.exists()){
 			try {
 				file.createNewFile();

@@ -13,8 +13,10 @@ import org.module.server.data.FileHelper;
 
 public class LogisticsdataImpl extends UnicastRemoteObject implements Logisticsdataservice {
 
-	
-	private FileHelper helper = new FileHelper(new File("file"+File.separator+"logistics.txt"));
+	String path = 
+			"file"+"/"+"logistics.txt"
+    	;
+	private FileHelper helper = new FileHelper(new File(path));
 	public LogisticsdataImpl() throws RemoteException {
 		super();
 	}

@@ -6,23 +6,23 @@ import org.module.client.businesslogicservice.management.WarehouseConfigService;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseConfigBLService;
 import org.module.client.main.Main;
 import org.module.client.vo.WarehouseConfigVO;
+import org.module.client.vo.WarehouseVO;
 
 public class WarehouseConfigController implements WarehouseConfigBLService {
 
-	private WarehouseConfigService warehouse = new WarehouseConfig();
-	
+	private WarehouseConfigService warehouseConfig = new WarehouseConfig();
 	private WarehouseConfigVO warehouseConfigVO;
-
+    private Warehouse wahouseVOs = new Warehouse();
 	public ArrayList<WarehouseConfigVO> getAll() {
 
-		return this.warehouse.getAll();
+		return this.warehouseConfig.getAll();
 	}
 
 	
 
 	public WarehouseConfigVO find() {
 
-		return this.warehouse.find(Main.currentUser.getDepartmeny());
+		return this.warehouseConfig.find(Main.currentUser.getDepartmeny());
 	}
 
 	
@@ -39,7 +39,7 @@ public class WarehouseConfigController implements WarehouseConfigBLService {
 			if(priviousQus[i].equals(qu)){
 				vo.getSizeOfQu()[i] = size;
 				vo.getBorderline()[i] = borderline;
-				return this.warehouse.update(vo);
+				return this.warehouseConfig.update(vo);
 			}
 		}
 		
@@ -75,14 +75,27 @@ public class WarehouseConfigController implements WarehouseConfigBLService {
 		vo.setQus(newQus);
 		vo.setSizeOfQu(newSize);
 		vo.setBorderline(newBorderLine);
-		return this.warehouse.update(vo);
+		return this.warehouseConfig.update(vo);
 	}
 
 
 
 	public String calculateCurrentBorderLine(String qu) {
+		int max_size = 10000;
+		try{
+			max_size = Integer.parseInt(this.getQuSize(qu));
+		}catch (Exception e){
+			max_size = 10000;
+		}
 		
-		return null;
+		ArrayList<WarehouseVO> vos = this.wahouseVOs.getAll();
+		int cur_size = 0;
+		for (WarehouseVO warehouseVO : vos) {
+			if(warehouseVO.getQu().equals(qu)){
+				cur_size++;
+			}
+		}
+		return (((double)cur_size)/((double)max_size)*100.0) +"";
 	}
 
 	public String[] getQus(){

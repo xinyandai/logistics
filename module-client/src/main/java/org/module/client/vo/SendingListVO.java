@@ -11,12 +11,15 @@ public class SendingListVO  extends AbstractVO{
 		private String SendMember;
 		private State state;
 		
-		public SendingListVO(String date, String shippingId, String sendMember,State state) {
+		private String writer;
+		
+		public SendingListVO(String date, String shippingId, String sendMember,State state,String w) {
 			super();
 			this.date = date;
 			this.shippingId = shippingId;
 			SendMember = sendMember;
 			this.setState(state);
+			this.writer = w;
 		}
 		
 		public SendingListVO(SendingListPO sendingListPO) {
@@ -24,12 +27,20 @@ public class SendingListVO  extends AbstractVO{
 					sendingListPO.getDate(),
 					sendingListPO.getShippingId(),
 					sendingListPO.getSendMember(),
-					sendingListPO.getState()
+					sendingListPO.getState(),
+					sendingListPO.getWriter()
 					);
 		}
 		
 		public  SendingListPO toPO( ){
-			return new SendingListPO(getDate(),getShippingId(),getSendMember(),getState()); 
+			return new SendingListPO(getDate(),getShippingId(),getSendMember(),getState(),writer); 
+		}
+		
+		public String getWriter() {
+			return writer;
+		}
+		public void setWriter(String writer) {
+			this.writer = writer;
 		}
 		public String getDate() {
 			return date;
@@ -58,21 +69,20 @@ public class SendingListVO  extends AbstractVO{
 
 		public String[] toArray(){
 			String[] s = {
-					getDate(),getShippingId(),getSendMember()
+					getDate(),getShippingId(),getSendMember(),state.toString()
 			};
 			return s;
 		}
 		
 		@Override
 		public String get(int i) {
-			// TODO Auto-generated method stub
 			return this.toArray()[i];
 		}
 
 		@Override
 		public String[] names() {
 			String[] s = {
-					"派件时间","快递单号","派件人"
+					"派件时间","快递单号","派件人","单据状态"
 			};
 		    return s;
 		}

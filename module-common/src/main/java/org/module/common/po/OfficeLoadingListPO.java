@@ -21,6 +21,7 @@ public class OfficeLoadingListPO implements Serializable{
 	
 	private State state;
 
+	private String writer;
 	final private String spt = ":%:%:";
 	final private String inlinespt = "&&&&&&&";
 
@@ -37,6 +38,7 @@ public class OfficeLoadingListPO implements Serializable{
 		this.shippingId = s[8].split(this.inlinespt);
 		this.price = s[9];
 		this.state = State.getInstance(s[10]);
+		this.writer = s[11];
 	}
 	/**
 	 * 把订单号数组转化为字符串
@@ -64,7 +66,7 @@ public class OfficeLoadingListPO implements Serializable{
 				this.getArrayToString(this.shippingId)  + this.spt +
 				//
 				this.price  + this.spt +
-				this.state.toString() ;
+				this.state.toString() + this.spt + this.writer;
 	}
 
 	
@@ -74,7 +76,7 @@ public class OfficeLoadingListPO implements Serializable{
 	public OfficeLoadingListPO(String loadingDate, String officeId,
 			String trucksId, String city, String location, String carId,
 			String supervision, String escort, String[] shippingId,
-			String price, State state) {
+			String price, State state , String w) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
@@ -87,6 +89,7 @@ public class OfficeLoadingListPO implements Serializable{
 		this.shippingId = shippingId;
 		this.price = price;
 		this.state = state;
+		this.writer = w;
 	}
 	/*public OfficeLoadingListPO(String[] a){
 	}*/
@@ -142,5 +145,7 @@ public class OfficeLoadingListPO implements Serializable{
 		return state;
 	}
 	
-	
+	public String getWriter() {
+		return this.writer;
+	}
 }

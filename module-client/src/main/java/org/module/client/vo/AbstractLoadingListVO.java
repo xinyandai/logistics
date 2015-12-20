@@ -18,8 +18,13 @@ public abstract class AbstractLoadingListVO  extends AbstractVO{
 	protected String price;
 	protected State state;
 	
-	
-	
+	protected String writer;
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getLoadingDate() {
 		return LoadingDate;
 	}
@@ -98,7 +103,7 @@ public abstract class AbstractLoadingListVO  extends AbstractVO{
 		String[] s = {getLoadingDate(),
 				getOfficeId()
 				,getTrucksId(),getCity(),getLocation(),getCarId(),getSupervision(),getEscort()
-				,"...",getPrice()};
+				,"...",getPrice(),state.toString()};
 		return s;
 	}
 	

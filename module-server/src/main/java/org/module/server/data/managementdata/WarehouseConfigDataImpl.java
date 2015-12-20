@@ -14,7 +14,9 @@ public class WarehouseConfigDataImpl extends UnicastRemoteObject  implements War
 	
 	private static final long serialVersionUID = -5019247589010208338L;
 
-	private String path="file"+File.separator+"warehouse"+File.separator+"WarehouseConfigData.txt";
+	private String path = 
+			"file"+"/"+"warehouse"+"/"+"WarehouseConfigData.txt"
+    	;
 	private File file=new File(path);
 	private FileHelper help=new FileHelper(file);
 	
@@ -25,7 +27,6 @@ public class WarehouseConfigDataImpl extends UnicastRemoteObject  implements War
 	public WarehouseConfigPO find(String id) throws RemoteException {
 		MyList<WarehouseConfigPO> pos = this.getAll();
 		for (WarehouseConfigPO warehouseConfigPO : pos) {
-			System.out.println(warehouseConfigPO.getWarehouseOfWhichTranCenter());
 			if(warehouseConfigPO.getWarehouseOfWhichTranCenter().equals(id)){
 				return warehouseConfigPO;
 			}

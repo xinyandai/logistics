@@ -20,7 +20,8 @@ public class GoDownEntryListDataImpl extends UnicastRemoteObject  implements GoD
 	public GoDownEntryListDataImpl() throws RemoteException {
 		super();
 	}
-	private FileHelper helper = new FileHelper(new File("file"+File.separator+"goDownEntryList.txt"));
+	private String s = "file"+"/"+"goDownEntryList.txt";
+	private FileHelper helper = new FileHelper(new File(s));
 	
 	public MyList<GoDownEntryListPO> getAll() throws RemoteException {
 		
@@ -42,7 +43,7 @@ public class GoDownEntryListDataImpl extends UnicastRemoteObject  implements GoD
 			if(all.get(i).getId().equals(newone.getId())){
 				all.remove(i);
 				all.add(newone);
-				this.helper.rewrite(all);
+				return this.helper.rewrite(all);
 			}
 		}
 		return false;

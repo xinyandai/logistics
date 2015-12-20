@@ -1,5 +1,6 @@
 package org.module.client.presentation.orderui;
 
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.TranCenterLoadingListVO;
 import org.module.common.po.State;
@@ -33,7 +34,7 @@ public class NewTranCenterLoadingrListInputFrame extends NewLoadingrListInputFra
 				driver.getText(), 
 				shippingId, 
 				price.getText(),
-				State.SUBMITTED
+				State.SUBMITTED ,Main.currentUser.getId() 
 				)
 				);
 	}

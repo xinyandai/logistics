@@ -14,14 +14,11 @@ import org.module.server.data.FileHelper;
 public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoundListService {
 	public OutBoundListDataImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private FileHelper helper = new FileHelper(new File("file"+File.separator+"outBoundList.txt"));
+	private String s = "file"+"/"+"outBoundList.txt";
+	private FileHelper helper = new FileHelper(new File(s));
 	
 
 	public MyList<OutBoundListPO> getAll() {
@@ -29,7 +26,6 @@ public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoun
 		ArrayList<String> strs = this.helper.read();
 		for (String string : strs) {
 			re.add(new OutBoundListPO(string));
-//			System.out.println("getone");
 		}
 		return re;
 	}
@@ -55,7 +51,6 @@ public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoun
 		MyList<OutBoundListPO> all = this.getAll();
 		MyList<OutBoundListPO> re = new MyList<OutBoundListPO>();
 		for (int i = 0; i < all.size(); i++) {
-//			System.out.println(all.get(i).getState().toString()+"\n"+s.toString());
 			if(all.get(i).getState().toString().equals(s.toString())){
 				re.add(all.get(i));
 			}

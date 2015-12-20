@@ -22,17 +22,14 @@ public class ListTableForSending extends ListTableForAll {
 	protected void initData() {
 		controller = new SendingController();
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
+		this.typeArray = new String[]{
+					"派件时间","快递单号","派件人","单据状态"
+			       };
 	}
 
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
 		this.table.setList(listCell);
 		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();

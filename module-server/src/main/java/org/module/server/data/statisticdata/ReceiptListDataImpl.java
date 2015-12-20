@@ -13,20 +13,15 @@ import org.module.server.data.FileHelper;
 
 public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptListService {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-
 
 	public ReceiptListDataImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-
-
-	FileHelper dh= new FileHelper(new File("file"+File.separator+"receiptlist.txt"));
+	private String path = 
+			"file"+"/"+"receiptlist.txt";
+	private FileHelper dh= new FileHelper(new File(path));
 	
 	
 	public MyList<ReceiptPO> getAll() {
@@ -47,7 +42,7 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 	public boolean delete(String ticket) {
 		ArrayList<ReceiptPO> re = this.getAll();
 		for (int i = 0; i < re.size(); i++) {
-			if(re.get(i).getOrderId().equals(ticket)){
+			if(re.get(i).getID().equals(ticket)){
 				re.remove(i);
 				this.dh.rewrite(re);
 				return true;
@@ -63,7 +58,7 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 		
 		ArrayList<ReceiptPO> re = this.getAll();
 		for (int i = 0; i < re.size(); i++) {
-			if(re.get(i).getOrderId().equals(newone.getOrderId())){
+			if(re.get(i).getID().equals(newone.getID())){
 				re.remove(i);
 				re.add(newone);
 				return true;
@@ -81,6 +76,19 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 			ReceiptPO temp = new ReceiptPO(string);
 			if(temp.getState().toString().equals(state.toString())){
 				re .add(temp);
+			}
+		}
+		return re;
+	}
+
+
+	public MyList<ReceiptPO> getAll(String w) throws RemoteException {
+		MyList<ReceiptPO> re = new MyList<ReceiptPO>();
+		ArrayList<String>    strs = dh.read();
+		for (String string : strs) {
+			ReceiptPO po = (new ReceiptPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
 			}
 		}
 		return re;

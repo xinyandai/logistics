@@ -17,7 +17,10 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public OfficeLoadingListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"officeLoadingList.txt"));
+		String path = 
+				"file"+"/"+"officeLoadingList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	public MyList<OfficeLoadingListPO> getAll()  throws RemoteException{
 		MyList<OfficeLoadingListPO> re = new MyList<OfficeLoadingListPO>();
@@ -55,6 +58,17 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 			}
 		}
 		return newone;
+	}
+	public MyList<OfficeLoadingListPO> getAll(String w) throws RemoteException {
+		MyList<OfficeLoadingListPO> re = new MyList<OfficeLoadingListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			OfficeLoadingListPO po = (new OfficeLoadingListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

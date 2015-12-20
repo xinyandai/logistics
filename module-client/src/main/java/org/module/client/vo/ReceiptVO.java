@@ -13,13 +13,16 @@ public class ReceiptVO extends AbstractVO{
 		private String[] orderId;
 		private State state;
 		
+		private String writer;
+		
 		public ReceiptVO (ReceiptPO po){
 			this(po.getDate() , 
 							po.getMoney() ,
 							po.getCourier() ,
 							po.getOrderId(),
 							po.getState(),
-							po.getID());
+							po.getID(),
+							po.getWriter());
 		}
 		
 		public ReceiptPO toPo (){
@@ -29,7 +32,7 @@ public class ReceiptVO extends AbstractVO{
 					getCourier() ,
 					getOrderId(),
 					getState(),
-					this.getID()
+					this.getID(),writer
 					);
 		}
 		
@@ -42,7 +45,7 @@ public class ReceiptVO extends AbstractVO{
 		}
 
 		public ReceiptVO(String date, String money, String courier,
-				String[] orderId,State state,String id) {
+				String[] orderId,State state,String id,String w) {
 			super();
 			this.date = date;
 			this.money = Double.parseDouble(money) ;
@@ -50,6 +53,7 @@ public class ReceiptVO extends AbstractVO{
 			this.orderId = orderId;
 			this.state = state;
 			this.ID = id;
+			this.writer = w;
 		}
 		public String getDate() {
 			return date;
@@ -105,6 +109,12 @@ public class ReceiptVO extends AbstractVO{
 			};
 			return s;
 			
+		}
+		public String getWriter() {
+			return writer;
+		}
+		public void setWriter(String writer) {
+			this.writer = writer;
 		}
 		
 		public int getNum() {

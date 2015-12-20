@@ -1,5 +1,6 @@
 package org.module.client.presentation.orderui;
 
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.OfficeLoadingListVO;
 import org.module.common.po.State;
@@ -34,7 +35,7 @@ public class NewOfficeLoadingrListInputFrame extends NewLoadingrListInputFrame{
 				driver.getText(), 
 				shippingId, 
 				price.getText(),
-				State.SUBMITTED
+				State.SUBMITTED ,Main.currentUser.getId() 
 				)
 				);
 	}

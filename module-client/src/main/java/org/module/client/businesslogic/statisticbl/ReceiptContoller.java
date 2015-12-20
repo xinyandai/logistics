@@ -39,6 +39,7 @@ public class ReceiptContoller {
 
 	public boolean update(ReceiptVO vo){
 		for (ReceiptVO receiptVO : list) {
+			
 			if(vo.getID().equals(receiptVO.getID())){
 				list.remove(receiptVO);
 				list.add(vo);

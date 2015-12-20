@@ -3,6 +3,7 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
@@ -18,13 +19,15 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public OfficeArrivalListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"officeArrivalList.txt"));
+		String path = 
+				"file"+"/"+"officeArrivalList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	public MyList<OfficeArrivalListPO> getAll()  throws RemoteException{
 		MyList<OfficeArrivalListPO> re = new MyList<OfficeArrivalListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-		//	String[] temp = string.split(":%:%:");
 			re.add(new OfficeArrivalListPO(string));
 		}
 		return re;
@@ -58,6 +61,18 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 			}
 		}
 		return newone;
+	}
+	public ArrayList<OfficeArrivalListPO> getAll(String w)
+			throws RemoteException {
+		MyList<OfficeArrivalListPO> re = new MyList<OfficeArrivalListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			OfficeArrivalListPO po = (new OfficeArrivalListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

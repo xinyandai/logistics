@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 
 import org.module.client.businesslogic.managementbl.PriceAndCityManageController;
 import org.module.client.vo.PriceAndCityVO;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class Price extends JPanel {
 	/**
@@ -33,52 +33,92 @@ public class Price extends JPanel {
 	
 	public Price() {
 		this.city = this.controller.getAllCitiesArray();
-		setLayout(null);
 		
 		JLabel label = new JLabel("选择城市1");
 		label.setFont(new Font("楷体", Font.PLAIN, 18));
-		label.setBounds(55, 39, 81, 21);
-		add(label);
 		
 		JLabel label_1 = new JLabel("选择城市2");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_1.setBounds(55, 82, 81, 21);
-		add(label_1);
 		
 		cityA = new JComboBox(city);
-		cityA.setBounds(165, 41, 61, 21);
-		add(cityA);
 
 		cityB = new JComboBox(city);
-		cityB.setBounds(165, 82, 61, 21);
-		add(cityB);
 		
 		JLabel label_2 = new JLabel("输入距离");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_2.setBounds(55, 124, 81, 21);
-		add(label_2);
 		
 		JLabel label_3 = new JLabel("输入运费");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 18));
-		label_3.setBounds(55, 159, 81, 21);
-		add(label_3);
 		
 		distance = new JTextField();
 		distance.setFont(new Font("楷体", Font.PLAIN, 18));
-		distance.setBounds(165, 126, 66, 21);
-		add(distance);
 		distance.setColumns(10);
 		
 		carriage = new JTextField();
 		carriage.setFont(new Font("楷体", Font.PLAIN, 18));
 		carriage.setColumns(10);
-		carriage.setBounds(165, 161, 66, 21);
-		add(carriage);
 		
 		determine = new JButton("确定");
 		determine.setFont(new Font("楷体", Font.PLAIN, 18));
-		determine.setBounds(182, 226, 93, 23);
-		add(determine);
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(55)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+							.addGap(29)
+							.addComponent(distance, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(55)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+							.addGap(29)
+							.addComponent(carriage, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(55)
+							.addComponent(label)
+							.addGap(29)
+							.addComponent(cityA, 0, 110, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(182)
+							.addComponent(determine, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(55)
+							.addComponent(label_1)
+							.addGap(29)
+							.addComponent(cityB, 0, 110, Short.MAX_VALUE)))
+					.addGap(175))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(39)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(cityA, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(20)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1)
+						.addComponent(cityB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(21)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_2)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(distance, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGap(12)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_3)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(2)
+							.addComponent(carriage, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+					.addGap(44)
+					.addComponent(determine, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+		);
+		setLayout(groupLayout);
 		
 		this.addListeners();
 

@@ -8,7 +8,7 @@ import org.module.common.dataservice.MyList;
 
 public class AccountMock implements AccountService{
 
-	private AccountVO vo = new AccountVO("62202","100");
+	private AccountVO vo = new AccountVO("6220202","10000");
   
 	public boolean add(AccountVO vo) {
 		return true;

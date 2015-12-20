@@ -19,13 +19,15 @@ public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 
 	
 	public TranCenterArrivalListVO(String transId, String date,
-			String transportListId, String origin, String stateOfGoods,State state) {
+			String transportListId, String origin, String stateOfGoods,State state
+			,String w) {
 		this.departmentID = transId;
 		this.date = date;
 		this.transportListId = transportListId;
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
 		this.state = state;
+		this.writer = w;
 	}
 	public TranCenterArrivalListVO(TranCenterArrivalListPO officeArrivalListPO) {
 		this(officeArrivalListPO.getTransId(),
@@ -33,7 +35,8 @@ public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 				officeArrivalListPO.getTransportListId(),
 				officeArrivalListPO.getOrigin(),
 				officeArrivalListPO.getStateOfGoods(),
-				officeArrivalListPO.getState()); 
+				officeArrivalListPO.getState(),
+				officeArrivalListPO.getWriter()); 
 	}
 	
 
@@ -45,7 +48,7 @@ public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 				getTransportListId(),
 				getOrigin(),
 				getStateOfGoods(),
-				pass); 
+				pass,writer); 
 	}
 	
 	public String[] toArray(){
@@ -53,7 +56,8 @@ public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 				getDate(),
 				getTransportListId(),
 				getOrigin(),
-				getStateOfGoods()};
+				getStateOfGoods(),
+				state.toString()};
 		return s;
 	}
 	@Override
@@ -63,7 +67,7 @@ public class TranCenterArrivalListVO  extends AbstractArrialListVO{
 	@Override
 	public String[] names() {
 		String[] s = {
-				"中转中心","到达日期","中转单","出发地","货物到达状态"
+				"中转中心","到达日期","中转单","出发地","货物到达状态","单据状态"
 		};
 	    return s;
 	}

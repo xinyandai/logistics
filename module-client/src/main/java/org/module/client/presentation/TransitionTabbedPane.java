@@ -1,13 +1,16 @@
 package org.module.client.presentation;
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
+
 import java.awt.image.*;
 
 public class TransitionTabbedPane extends JTabbedPane 
     implements ChangeListener, Runnable {
     
-    protected int step;
+	private static final long serialVersionUID = -2556929094913600418L;
+	protected int step;
     protected BufferedImage buf = null;
     protected int previous_tab = -1;
     protected int animation_length = 20;
@@ -62,7 +65,7 @@ public class TransitionTabbedPane extends JTabbedPane
             step = i;
             repaint();
             try {
-                Thread.currentThread().sleep(100);
+				Thread.sleep(50);
             } catch (Exception ex) {
                 p("ex: " + ex);
             }

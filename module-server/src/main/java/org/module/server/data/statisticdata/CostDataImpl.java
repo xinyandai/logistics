@@ -20,10 +20,9 @@ public class CostDataImpl extends UnicastRemoteObject implements CostDataService
 
 	public CostDataImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	private FileHelper helper = new FileHelper(new File("file"+File.separator+"costl.txt"));
+	private String s = "file"+"/"+"costl.txt";
+	private FileHelper helper = new FileHelper(new File(s));
 	
 
 	public boolean update(CostListPO newone){

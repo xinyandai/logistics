@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.businesslogic.statisticbl.CostManageController;
 import org.module.client.businesslogicservice.statisticBLservice.CostManageBLService;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.CostListVO;
@@ -52,7 +53,7 @@ public class CostPanel extends JPanel {
 	private JButton add;
 	private JXDatePicker startTimePicker;
 	private JXDatePicker endTimePicker;
-	private JButton update;
+	private JButton refresh;
 	
 	
 	private CostManageBLService controller = new CostManageController();
@@ -67,10 +68,11 @@ public class CostPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
-		add = new JButton("增");
-		update = new JButton("同步");
+		add = new Button("add");
+		refresh = new Button("refresh");
 		
 		startTimePicker = new JXDatePicker();
 		startTimePicker.setDate(new Date());
@@ -78,7 +80,7 @@ public class CostPanel extends JPanel {
 		endTimePicker = new JXDatePicker();
 		endTimePicker.setDate(new Date());
 		
-		modify = new JButton("改");
+		modify = new Button("modify");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -88,22 +90,22 @@ public class CostPanel extends JPanel {
 					.addComponent(startTimePicker, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(endTimePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(update))
+					.addComponent(refresh))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(update)
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 						.addComponent(startTimePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(endTimePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(modify)
-						.addComponent(add))
+						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -179,7 +181,7 @@ public class CostPanel extends JPanel {
 				add();
 			}
 		});
-		update.addMouseListener(new MouseAdapter() {
+		refresh.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				refresh();

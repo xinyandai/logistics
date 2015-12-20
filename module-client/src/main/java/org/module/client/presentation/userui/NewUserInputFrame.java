@@ -27,7 +27,7 @@ public class NewUserInputFrame extends JFrame {
 	private JTextField nameOfUser;
 	private JComboBox type;
 	private String[] typeArray = {"用户","快递员","营业厅业务员","仓库管理员","中转中心业务员","财务人员","总经理","管理员"};
-	private JTextField right;
+	private JComboBox right;
 	private JLabel cancel;
 	private JLabel comfirm;
 	
@@ -44,7 +44,7 @@ public class NewUserInputFrame extends JFrame {
 		this.deparment.setSelectedItem(vo.getDepartmeny());
 		this.nameOfUser.setText(vo.getName());
 		this.type.setSelectedItem(vo.getRole());
-		this.right.setText(vo.getAuthority());
+		this.right.setSelectedItem(vo.getAuthority());
 		addListeners();
 	}
 	private void addListeners() {
@@ -101,9 +101,9 @@ public class NewUserInputFrame extends JFrame {
 		type = new JComboBox(typeArray);
 		type.setFont(new Font("楷体", Font.PLAIN, 15));
 		
-		right = new JTextField();
+		right = new JComboBox(new String[]{"0","1"});
 		right.setFont(new Font("楷体", Font.PLAIN, 15));
-		right.setColumns(10);
+	//	right.setColumns(10);
 		
 		comfirm = new JLabel("确定");
 		comfirm.setFont(new Font("方正姚体", Font.PLAIN, 15));
@@ -214,7 +214,7 @@ public class NewUserInputFrame extends JFrame {
 		return deparment.getSelectedItem().toString().substring(0, 6);
 	}
 	public String getRight() {
-		return right.getText();
+		return right.getSelectedItem().toString();
 	}
 	public String getTypeOfUser() {
 		return type.getSelectedItem().toString();

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.ReceiveService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.ReceivingListVO;
 import org.module.common.dataservice.orderdataservice.ReceiveListService;
 import org.module.common.po.ReceivingListPO;
@@ -17,8 +18,7 @@ public class Receiving implements ReceiveService {
 
 	public boolean creat(ReceivingListVO o) {
 		// TODO Auto-generated method stub
-		ReceivingListPO newPO = new ReceivingListPO(o.getDate(),o.getReceiver(),
-				o.getOrderId(),o.getState()); 
+		ReceivingListPO newPO = o.toPO(); 
 		try {
 			return receivingData.add(newPO);
 		} catch (RemoteException e) {
@@ -31,20 +31,18 @@ public class Receiving implements ReceiveService {
 		ArrayList<ReceivingListVO> newVOs = new ArrayList<ReceivingListVO>();
 		ArrayList<ReceivingListPO> POs = null;
 		try {
-			 POs = receivingData.getAll();
+			 POs = receivingData.getAll(Main.currentUser.getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		for(int i =0;i<POs.size();i++){
-			newVOs.add(new ReceivingListVO(POs.get(i).getDate(),POs.get(i).getReceiver(),
-					POs.get(i).getOrderId(),POs.get(i).getState()));
+			newVOs.add(new ReceivingListVO(POs.get(i)));
 		}
 		return newVOs;
 	}
 
 	public boolean update(ReceivingListVO o) {
-		ReceivingListPO newPO = new ReceivingListPO(o.getDate(),o.getReceiver(),
-				o.getOrderId(),o.getState());
+		ReceivingListPO newPO =o.toPO();
 		
 		try {
 			return this.receivingData.update(newPO);

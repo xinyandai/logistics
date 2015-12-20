@@ -13,20 +13,31 @@ public class ReceivingListVO  extends AbstractVO{
 	private String orderId;
 	private State  state;
 	
+	private String writer;
+	
 	public ReceivingListVO(String date, String receiver, String orderId,
-			State state) {
+			State state ,String w ) {
 		super();
 		this.date = date;
 		this.receiver = receiver;
 		this.orderId = orderId;
 		this.state = state;
+		this.writer = w;
 	}
 	
 	public ReceivingListVO(ReceivingListPO receivingListPO) {
 		this(receivingListPO.getDate(),receivingListPO.getReceiver(),
-				receivingListPO.getOrderId(),receivingListPO.getState());
+				receivingListPO.getOrderId(),receivingListPO.getState()
+				,receivingListPO.getWriter());
 	}
 
+	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getDate() {
 		return date;
 	}
@@ -59,7 +70,7 @@ public class ReceivingListVO  extends AbstractVO{
 				this.date,
 				this.receiver,
 				this.orderId ,
-				this.state
+				this.state,writer
 				);
 	}
 

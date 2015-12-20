@@ -1,6 +1,5 @@
 package org.module.client.presentation.userui;
 
-import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -15,6 +14,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.userbl.UserManageController;
 import org.module.client.businesslogicservice.userBLservice.UserManageBLService;
+import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
+import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.UserVO;
 
@@ -31,6 +33,8 @@ public class UserPanel extends JPanel {
 	private JButton delete;
 	private JButton modify;
 	private JButton update;
+	
+	private FontFactory fontFactory = new FontFactory() ;
 	
 	private UserManageBLService controller  = new UserManageController();
 	
@@ -56,8 +60,16 @@ public class UserPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int[] indexes = table.getCheckedIndexes();
-				controller.delete(indexes);
-				table.fireTableDataChanged();
+				if(indexes.length==0){
+					return;
+				}
+				if(controller.delete(indexes)){
+					new ResultFrame(true);
+					table.fireTableDataChanged();
+				}else{
+					new ResultFrame(false);
+				}
+				
 			}
 		});
 		modify.addMouseListener(new MouseAdapter() {
@@ -70,10 +82,15 @@ public class UserPanel extends JPanel {
 				frame.getComfirm().addMouseListener(new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						controller.update(new UserVO(frame.getId(),frame.getNameOfUser(),frame.getPassword(),
-								frame.getTypeOfUser(),frame.getDeparment(),frame.getRight()));
-						table.fireTableDataChanged();
+						if(controller.update(new UserVO(frame.getId(),frame.getNameOfUser(),frame.getPassword(),
+								frame.getTypeOfUser(),frame.getDeparment(),frame.getRight()))){
+							new ResultFrame(true);
+							table.fireTableDataChanged();
 						frame.dispose();
+						}else{
+							new ResultFrame(false);
+						}
+						
 					}
 				});
 			}
@@ -95,47 +112,61 @@ public class UserPanel extends JPanel {
 	}
 				
 	private void init(){
-		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		add(panel, BorderLayout.NORTH);
-		
-		add = new JButton("增");
-		delete = new JButton("删");
-		modify = new JButton("改");
-		update = new JButton("同步");
-		
+		panel.setOpaque(false);
+		add = new Button("add");
+		delete = new Button("delete");
+		modify = new Button("modify");
+		update = new Button("refresh");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(190, Short.MAX_VALUE)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(214, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(update))
+					.addComponent(update, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-					.addComponent(update)
-					.addComponent(modify)
-					.addComponent(delete)
-					.addComponent(add))
+				.addComponent(add, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+				.addComponent(delete, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+				.addComponent(modify, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+				.addComponent(update, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 		);
 		panel.setLayout(gl_panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		add(scrollPane, BorderLayout.CENTER);
 		table = new Table(this.listData,this.columnNames);
 		JTable t = new JTable(table);
+		t.setFont(fontFactory.getTableElementFont());
+		t.getTableHeader().setFont(fontFactory.getTabelNameInput());
+		
+		
 		scrollPane.setViewportView(t);
-	//	t.setOpaque(false);
+		t.setOpaque(false);
 		this.setOpaque(false);
 		scrollPane.setOpaque(false);
+		
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))
+		);
+		setLayout(groupLayout);
 	}
 
 }

@@ -10,6 +10,7 @@ import org.module.client.businesslogicservice.order.CalculateDriverCostService;
 import org.module.client.businesslogicservice.order.CalculateTimeService;
 import org.module.client.businesslogicservice.order.MailingService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.MailingListVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.logisticsdataservice.Logisticsdataservice;
@@ -47,7 +48,7 @@ public class Mailing  implements MailingService{
 	public ArrayList<MailingListVO> getAll() {
 		this.list = new ArrayList<MailingListVO>();
 		try {
-			ArrayList<MailingListPO> pos = this.data.getAll();
+			ArrayList<MailingListPO> pos = this.data.getAll(Main.currentUser.getId());
 			for (MailingListPO mailingListPO : pos) {
 				list.add(new MailingListVO(mailingListPO));
 			}

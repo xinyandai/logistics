@@ -23,7 +23,7 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 	
 	public TranCenterLoadingListVO(String loadingDate, String officeId,
 			String trucksId, String city,String location, String carId, String supervision,
-			String escort, String[] shippingId, String price,State state) {
+			String escort, String[] shippingId, String price,State state,String w) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
@@ -36,6 +36,7 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 		this.shippingIds = shippingId;
 		this.price = price;
 		this.setState(state);
+		this.writer = w;
 	}
 	public TranCenterLoadingListVO(TranCenterLoadingListPO LoadingListPO) {
 		this(LoadingListPO.getLoadingDate(),
@@ -48,7 +49,8 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 				LoadingListPO.getEscort(),
 				LoadingListPO.getShippingId(),
 				LoadingListPO.getPrice(),
-				LoadingListPO.getState()
+				LoadingListPO.getState(),
+				LoadingListPO.getWriter()
 				);
 	}
 	
@@ -65,6 +67,7 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 				this.shippingIds ,
 				this.price,
 				this.state
+				,writer
 				);
 	}
 	
@@ -72,7 +75,8 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 	@Override
 	public String[] names() {
 		String[] s = {
-				"装车日期","中转中心","汽运编号","目的城市","目的地","车号","监装员","司机","物流单号","价格"
+				"装车日期","中转中心","汽运编号","出发地","目的地",
+				"车号","监装员","司机","物流单号","价格","状态"
 		};
 		return s;
 	}

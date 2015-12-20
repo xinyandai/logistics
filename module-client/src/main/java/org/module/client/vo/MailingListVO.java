@@ -27,7 +27,7 @@ public class MailingListVO extends AbstractVO{
 	private String type;
 	private String id;
 	private State state;
-	
+	private String writer;
 	public MailingListVO(MailingListPO po){
 		this(  po.getSenderName(),
 				po.getSenderCompany(),
@@ -48,7 +48,8 @@ public class MailingListVO extends AbstractVO{
 				po.getCostOfDecoration(),
 				po.getType(),
 				po.getId(),
-				po.getState()
+				po.getState(),
+				po.getWriter()
 				);
 	}
 	
@@ -72,9 +73,15 @@ public class MailingListVO extends AbstractVO{
 				getCostOfDecoration(),
 				getType(),
 				getId(),
-				state);
+				state,
+				writer);
 	}
-	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getSenderName() {
 		return senderName;
 	}
@@ -196,7 +203,7 @@ public class MailingListVO extends AbstractVO{
 			String receiveMobile, String receivePhone, String receiveCity,
 			String receivePosition, String nameOfGood, String counts,
 			String weight, String volume, String costOfDecoration, String type,
-			String id,State state) {
+			String id,State state,String w) {
 		super();
 		this.senderName = senderName;
 		this.senderCompany = senderCompany;
@@ -218,6 +225,7 @@ public class MailingListVO extends AbstractVO{
 		this.type = type;
 		this.id = id;
 		this.state = state;
+		this.writer = w;
 	}
 	public State getState() {
 		return state;

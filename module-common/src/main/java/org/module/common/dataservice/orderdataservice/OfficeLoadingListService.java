@@ -16,6 +16,12 @@ public interface OfficeLoadingListService extends Remote{
 	 */
 	public MyList<OfficeLoadingListPO> getAll() throws RemoteException;
 	/**
+	 * 前置：无
+	 * 后置：返回所有PO
+	 * @return
+	 */
+	public MyList<OfficeLoadingListPO> getAll(String w) throws RemoteException;
+	/**
 	 * 前置：不存在相同ID的寄件单
 	 * 后置：增加一个PO
 	 * @return

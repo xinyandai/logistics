@@ -20,7 +20,9 @@ public class CarDataImpl extends UnicastRemoteObject implements CarDataService {
 	 * 
 	 */
 	private static final long serialVersionUID = 5027123081037793884L;
-	String path="file"+File.separator+"Car.txt";
+	String path = 
+			"file"+"/"+"Car.txt"
+    	;
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
 	

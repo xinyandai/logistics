@@ -7,11 +7,13 @@ import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.TranCenterArrivalListVO;
+import org.module.client.vo.TransportListVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.TranCenterArrivalListService;
 import org.module.common.dataservice.orderdataservice.TransportListService;
 import org.module.common.po.State;
 import org.module.common.po.TranCenterArrivalListPO;
+import org.module.common.po.TransportListPO;
 
 public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 	
@@ -93,7 +95,11 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 		String departmentLocation = this.departmentFinder.getLocationById( officeArrivalListVO.getDepartmentId() );
 		String date = new Date().toString();
 		try {
-			String[] allOrders = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId()).getShippingId();
+			TransportListPO po = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId());
+			if(po==null){
+				return ;
+			}
+			String[] allOrders = po.getShippingId();
 			for (String order : allOrders) {
 				LogisticsVO logisticsVO = this.logistics.find(order);
 				logisticsVO.addLocationAndTime( departmentName, date);

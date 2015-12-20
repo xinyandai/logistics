@@ -22,6 +22,15 @@ public interface ReceiptListService extends Remote{
 	 * @return 所有的列表信息
 	 */
 	public MyList<ReceiptPO> getAll()throws RemoteException;
+	
+
+	/**
+	 * 前置：无
+	 * 后置：返回所有PO
+	 * @return 所有的列表信息
+	 */
+	public MyList<ReceiptPO> getAll(String w)throws RemoteException;
+	
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO

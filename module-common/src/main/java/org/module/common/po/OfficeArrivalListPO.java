@@ -19,6 +19,7 @@ public class OfficeArrivalListPO implements Serializable{
 	 * 单据状态
 	 */
 	private State state;
+	private String writer;
 	
 	final private String spt = ":%:%:";
 	public OfficeArrivalListPO(String string) {
@@ -29,6 +30,7 @@ public class OfficeArrivalListPO implements Serializable{
 		this.origin = s[3];
 		this.stateOfGoods= s[4];
 		this.state= State.getInstance(s[5]);
+		this.writer = s[6];
 	}
 	@Override
 	public String toString(){
@@ -38,12 +40,12 @@ public class OfficeArrivalListPO implements Serializable{
 		this.transportListId + this.spt +
 		this.origin + this.spt +
 		this.stateOfGoods + this.spt +
-		this.state.toString();
+		this.state.toString() + this.spt + this.writer;
 	}
 	
 	public OfficeArrivalListPO(String officeid, String date,
 			String transportListId, String origin, String stateOfGoods,
-			State state2) {
+			State state2,String w) {
 		super();
 		this.officeid = officeid;
 		this.date = date;
@@ -51,6 +53,7 @@ public class OfficeArrivalListPO implements Serializable{
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
 		this.state = state2;
+		this.writer = w;
 	}
 
 	
@@ -72,6 +75,8 @@ public class OfficeArrivalListPO implements Serializable{
 	public State getState() {
 		return state;
 	}
-	
+	public String getWriter() {
+		return this.writer;
+	}
 	
 }

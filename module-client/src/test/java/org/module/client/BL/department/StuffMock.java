@@ -22,7 +22,7 @@ public class StuffMock implements StuffService {
 
 	public boolean delete(String identity) {
 		if(identity.equals("140010001")) return true;
-		return false;
+		return true;
 	}
 
 	public boolean delete(MyList<String> ald) {
@@ -31,7 +31,7 @@ public class StuffMock implements StuffService {
 
 	public boolean modify(StuffVO vo) {
 		if(vo.getIdentity().equals("140010001")) return true;
-		return false;
+		return true;
 	}
 
 	public ArrayList<StuffVO> fuzzySearch(String s) {

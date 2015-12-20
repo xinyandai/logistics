@@ -20,16 +20,17 @@ public class ListTableForTransport extends ListTableForAll{
 		this.controller = new  TransportController();
 		this.listCell = this.controller.getAll();
 		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
+			this.typeArray = new String[]{
+					"运送方式","装车日期","中转单号","车次",
+					"出发地","目的地","货柜号","监装员",
+					"物流单号","价格","状态"
+			};
 		}
 	}
 
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
 		this.table.setList(listCell);
 		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();;

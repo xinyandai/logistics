@@ -14,7 +14,6 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 
 	public DepartmentDataImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -22,8 +21,9 @@ public class DepartmentDataImpl extends UnicastRemoteObject implements Departmen
 	 * 
 	 */
 	private static final long serialVersionUID = 4789097559305194975L;
-	
-	private String path = "file"+File.separator+"departmnt.txt";
+	String path = 
+			"file"+"/"+"departmnt.txt"
+    	;
 	private FileHelper helper = new FileHelper(new File(path));
 
 	

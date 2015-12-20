@@ -17,7 +17,10 @@ public class SendingListImpl extends UnicastRemoteObject implements SendingListS
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public SendingListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"SendingList.txt"));
+		String path = 
+				"file"+"/"+"SendingList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	
 	public MyList<SendingListPO> getAll()  throws RemoteException{
@@ -59,6 +62,18 @@ public class SendingListImpl extends UnicastRemoteObject implements SendingListS
 			}
 		}
 		return newone;
+	}
+
+	public MyList<SendingListPO> getAll(String w) throws RemoteException {
+		MyList<SendingListPO> re = new MyList<SendingListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			SendingListPO po = (new SendingListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

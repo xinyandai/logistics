@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.order.SendingService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.vo.SendingListVO;
 import org.module.common.dataservice.orderdataservice.SendingListService;
 import org.module.common.po.SendingListPO;
@@ -35,7 +36,7 @@ public class Sending implements SendingService {
 		ArrayList<SendingListVO> newVOs = new ArrayList<SendingListVO>();
 		ArrayList<SendingListPO> POs = null;
 		try {
-			 POs = sendingData.getAll();
+			 POs = sendingData.getAll(Main.currentUser.getId());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

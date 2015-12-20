@@ -197,7 +197,7 @@ public class NewArrivalListInputFrame extends JFrame {
 		
 		deparmentID.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
-				if(!Numeric.isRealNumber(deparmentID.getText())||deparmentID.getText().length()!=6){
+				if(!Numeric.isNumeric(deparmentID.getText())||deparmentID.getText().length()!=6){
 					state.setText("！部门编号必须是6位数值");
 				}else{
 					state.setText("");

@@ -20,19 +20,15 @@ public class ListTableForReceive extends ListTableForAll {
 	protected void initData() {
 		controller = new ReceivingController();
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = listCell.get(0).names();
-		}
+		this.typeArray = new  String[] {
+					"收件日期","签收人","快递单号","状态"
+			};
 	}
 
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = listCell.get(0).names();
-		}
 		this.table.setList(listCell);
-		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();
 	}
 

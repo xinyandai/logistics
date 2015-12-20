@@ -27,12 +27,12 @@ public class TransportListPO implements Serializable{
 		private String price;
 		private State state;
 		
-		
+		private String writer;
 		
 		public TransportListPO(String car, String loadingDate,
 				String transListId, String carId, String origin,
 				String arrival, String counterId, String supervision,
-				String[] shippingId, String price, State state) {
+				String[] shippingId, String price, State state,String w) {
 			super();
 			this.car = car;
 			this.LoadingDate = loadingDate;
@@ -45,6 +45,7 @@ public class TransportListPO implements Serializable{
 			this.shippingId = shippingId;
 			this.price = price;
 			this.state = state;
+			this.writer = w;
 		}
 		
 		public TransportListPO(String string) {
@@ -60,6 +61,7 @@ public class TransportListPO implements Serializable{
 			this.shippingId = s[8].split(inlinespt);
 			this.price = s[9];
 			this.state = State.getInstance(s[10]);
+			this.writer = s[11];
 		}
 
 		@Override
@@ -74,7 +76,8 @@ public class TransportListPO implements Serializable{
 			this.Supervision  + this.spt +
 			this.getArrayToString(this.shippingId) + this.spt + 
 			this.price + this.spt +
-			this.state.toString();
+			this.state.toString()
+			+this.spt + this.writer;
 		}
 		/**
 		 * 把订单号数组转化为字符串
@@ -124,5 +127,7 @@ public class TransportListPO implements Serializable{
 		public State getState() {
 			return state;
 		}
-				
+		public String getWriter() {
+			return this.writer;
+		}		
 }

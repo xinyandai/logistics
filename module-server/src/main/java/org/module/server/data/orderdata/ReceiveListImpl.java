@@ -13,20 +13,19 @@ import org.module.server.data.FileHelper;
 public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListService{
 	
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 */
 	
 	FileHelper help;
 	public ReceiveListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"ReceiveList.txt"));
+		String path = 
+				"file"+"/"+"ReceiveList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	public MyList<ReceivingListPO> getAll() throws RemoteException {
-		// TODO 自动生成的方法存根
+
 		MyList<ReceivingListPO> re = new MyList<ReceivingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-	//		String[] temp = string.split(":%:%:");
 			re.add(new ReceivingListPO(string));
 		}
 		return re;
@@ -60,6 +59,17 @@ public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListS
 			}
 		}
 		return newone;
+	}
+	public MyList<ReceivingListPO> getAll(String w) throws RemoteException {
+		MyList<ReceivingListPO> re = new MyList<ReceivingListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			ReceivingListPO po = (new ReceivingListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

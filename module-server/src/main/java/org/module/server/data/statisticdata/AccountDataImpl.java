@@ -18,7 +18,8 @@ public class AccountDataImpl extends UnicastRemoteObject implements AccountDataS
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private FileHelper helper = new FileHelper(new File("file"+File.separator+"account.txt"));
+	private String s ="file"+"/"+"account.txt";
+	private FileHelper helper = new FileHelper(new File(s));
 	private MySearch seacher;
 	public AccountDataImpl()  throws RemoteException{
 	}

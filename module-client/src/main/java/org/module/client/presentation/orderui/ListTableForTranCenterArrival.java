@@ -23,17 +23,14 @@ public class ListTableForTranCenterArrival extends ListTableForAll {
 	protected void initData() {
 		controller = new TranCenterArrivalController();
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
+		this.typeArray = new String[]  {
+					"中转中心","到达日期","中转单","出发地","货物到达状态","单据状态"
+			};
 	}
 
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
 		this.table.setList(listCell);
 		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();

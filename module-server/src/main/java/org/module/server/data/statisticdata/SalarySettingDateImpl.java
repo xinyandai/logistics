@@ -24,14 +24,14 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 
 	public SalarySettingDateImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	
 	
 	public boolean setAccountSalary(AccountantSalaryPO a) {
 		// TODO Auto-generated method stub
-		String path="file"+File.separator+"AccountantSalary.txt";
+		String path="file"+"/"+"AccountantSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
@@ -40,8 +40,8 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	}
 
 	public boolean setCourierSalary(CourierSalaryPO c) {
-		// TODO Auto-generated method stub
 		String path="file"+File.separator+"CourierSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
@@ -52,6 +52,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public boolean setDriverSalary(DriverSalaryPO d) {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"DriverSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
@@ -62,6 +63,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public boolean setOfficeClerkSalary(OfficeClerkSalaryPO salarypo) {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"OfficeClerkSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
@@ -72,6 +74,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public boolean setTranCenterClerkSalary(TranCenterClerkSalaryPO t) {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"TranCenterClerkSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
@@ -82,6 +85,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public boolean setWarehouseSalary(WarehouseManagerSalaryPO w) {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"WarehouseManagerSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<Object> re =  new ArrayList<Object>();
@@ -93,6 +97,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public AccountantSalaryPO getAccountSalary() {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"AccountantSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
@@ -107,6 +112,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public CourierSalaryPO getCourierSalary() {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"CourierSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
@@ -121,6 +127,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public DriverSalaryPO getDriverSalary() {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"DriverSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
@@ -135,6 +142,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public OfficeClerkSalaryPO getOfficeClerkSalary() {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"OfficeClerkSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
@@ -149,6 +157,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public TranCenterClerkSalaryPO getTranCenterClerkSalary() {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"TranCenterClerkSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();
@@ -163,6 +172,7 @@ public class SalarySettingDateImpl extends UnicastRemoteObject implements Salary
 	public WarehouseManagerSalaryPO getWarehouseSalary() {
 		// TODO Auto-generated method stub
 		String path="file"+File.separator+"CourierSalary.txt";
+	//	path = this.getClass().getClassLoader().getResource(path).getPath();
 		File file=new File(path);
 		FileHelper help=new FileHelper(file);
 		ArrayList<String> re =  new ArrayList<String>();

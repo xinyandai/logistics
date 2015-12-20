@@ -3,7 +3,6 @@ package org.module.client.presentation.ticketui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JTable;
 
@@ -29,6 +28,7 @@ public class GoDownEntryList extends AbstractAllList {
 		initData();
 		init();
 		addListeners();
+		this.listCell = this.controller.getAll(this.startTime.getDate().getTime(),this.endTime.getDate().getTime());
 		table =   new Table(this.listCell,this.typeArray);
 		this.scrollPane.setViewportView(new JTable(table));
 	}
@@ -36,7 +36,6 @@ public class GoDownEntryList extends AbstractAllList {
 	@Override
 	protected void initData() {
 		controller = new GoDownEntryController();
-		this.listCell = this.controller.getAll(new Date().getTime(),new Date().getTime());
 	}
 
 

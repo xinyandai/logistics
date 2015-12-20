@@ -19,9 +19,11 @@ public class TranCenterArrivalListPO implements Serializable{
 	 * 单据状态
 	 */
 	private State state;
+	private String writer;
+	
 	public TranCenterArrivalListPO(String transId, String date,
 			String transportListId, String origin, String stateOfGoods,
-			State state) {
+			State state,String w) {
 		super();
 		this.transId = transId;
 		this.date = date;
@@ -29,6 +31,7 @@ public class TranCenterArrivalListPO implements Serializable{
 		this.origin = origin;
 		this.stateOfGoods = stateOfGoods;
 		this.state = state;
+		this.writer = w;
 	}
 	
 	
@@ -41,6 +44,7 @@ public class TranCenterArrivalListPO implements Serializable{
 		this.origin = s[3];
 		this.stateOfGoods = s[4];
 		this.state = State.getInstance(s[5]);
+		this.writer = s[5];
 	}
 	@Override
 	public String toString(){
@@ -49,7 +53,7 @@ public class TranCenterArrivalListPO implements Serializable{
 		this.transportListId + this.spt +
 		this.origin + this.spt +
 		this.stateOfGoods + this.spt +
-		this.state.toString();
+		this.state.toString()+this.spt + this.writer;
 	}
 	public String getTransId() {
 		return transId;
@@ -69,6 +73,8 @@ public class TranCenterArrivalListPO implements Serializable{
 	public State getState() {
 		return state;
 	}
-	
+	public String getWriter() {
+		return this.writer;
+	}
 	
 }

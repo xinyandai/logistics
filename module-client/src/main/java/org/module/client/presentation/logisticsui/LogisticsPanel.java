@@ -30,11 +30,13 @@ public class LogisticsPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public LogisticsPanel() {
+		
 		setBorder(new CompoundBorder());
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
+		panel.setBorder(null);
 		add(panel, BorderLayout.NORTH);
 		
 		JLabel lblInputId = new JLabel("输入订单号");
@@ -60,6 +62,7 @@ public class LogisticsPanel extends JPanel {
 		panel.add(label);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
 		add(scrollPane, BorderLayout.CENTER);
 		
 		
@@ -68,9 +71,10 @@ public class LogisticsPanel extends JPanel {
 
 	protected void search() {
 		
-		/*if(!Numeric.isWholeNumber(this.ID.getText()) || this.ID.getText().length() != 9){
+		if(!Numeric.isWholeNumber(this.ID.getText()) || this.ID.getText().length() != 9){
+			new ResultFrame(false);
 			return;
-		}*/
+		}
 		
 		LogisticsVO vo = this.controller.showState(this.ID.getText());
 		

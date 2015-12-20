@@ -12,6 +12,8 @@ import javax.swing.event.CaretListener;
 import javax.swing.event.CaretEvent;
 
 import org.module.client.presentation.Numeric;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class NewCityInputFrame extends JFrame {
 
@@ -34,7 +36,7 @@ public class NewCityInputFrame extends JFrame {
 		this.id.setText(id);
 	}
 	private void init(){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,6 +72,12 @@ public class NewCityInputFrame extends JFrame {
 		contentPane.add(confirm);
 		
 		JButton cancel = new JButton("取消");
+		cancel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+		});
 		cancel.setBounds(253, 145, 71, 23);
 		contentPane.add(cancel);
 		
@@ -102,9 +110,10 @@ public class NewCityInputFrame extends JFrame {
 			state.setText("！城市名不能为空");
 		}else if((!Numeric.isNumeric(id.getText()))){
 			state.setText("！城市代号必须是数值");
+		}else{
+			return true;
 		}
-			
-		return true;
+		return false;
 	}
 	
 	public String getId() {

@@ -11,27 +11,22 @@ import org.module.common.po.TranCenterLoadingListPO;
 import org.module.server.data.FileHelper;
 
 public class TranCenterLoadingListImpl extends UnicastRemoteObject  implements TranCenterLoadingListService{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public TranCenterLoadingListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"TranCenterLoadingList.txt"));
+		
+		String path = 
+				"file"+"/"+"TranCenterLoadingList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	public MyList<TranCenterLoadingListPO> getAll()  throws RemoteException{
-		// TODO 自动生成的方法存根
+
 		MyList<TranCenterLoadingListPO> re = new MyList<TranCenterLoadingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-		/*	String[] temp = string.split(":%:%:");
-			String[] ids = new String[temp.length-8];
-			for(int i = 0;i<temp.length-8;i++){
-				ids[i] = temp[i+6];
-			}
-			TranCenterLoadingListPO lpo = new TranCenterLoadingListPO(temp[0],temp[1],temp[2],
-					temp[3],temp[4],temp[5],ids,temp[temp.length-2],temp[temp.length-1]);
-			re.add(lpo);*/
+		
 			re.add(new TranCenterLoadingListPO(string));
 		}
 		return re;
@@ -63,6 +58,19 @@ public class TranCenterLoadingListImpl extends UnicastRemoteObject  implements T
 			}
 		}
 		return newone;
+	}
+	public MyList<TranCenterLoadingListPO> getAll(String w)
+			throws RemoteException {
+		MyList<TranCenterLoadingListPO> re = new MyList<TranCenterLoadingListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+		
+			TranCenterLoadingListPO po = (new TranCenterLoadingListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

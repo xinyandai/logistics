@@ -21,6 +21,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import org.module.client.businesslogicservice.orderBLservice.MailingBLService;
+import org.module.client.main.Main;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.MailingListVO;
 import org.module.common.po.State;
@@ -488,7 +489,9 @@ public class NewMailingListInputFrame extends JFrame {
                 volume.getText(), 
                  costOfDecoration.getSelectedItem().toString(), 
                  type.getSelectedItem().toString(), 
-                 id.getText(),State.SUBMITTED);
+                 id.getText(),State.SUBMITTED,
+                Main.currentUser.getId() 
+				);
 		return vo;
 	}
 	public JButton getComfirm() {

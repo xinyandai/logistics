@@ -87,6 +87,7 @@ public class NewCostListInputFrame extends JFrame {
 		label_4.setFont(new Font("楷体", Font.PLAIN, 15));
 		
 		datePicker = new JXDatePicker();
+		datePicker.setDate(new Date());
 		
 		String[] s = {"薪水","租金","利息","宣传","保险"};
 		entry = new JComboBox(s);
@@ -94,15 +95,12 @@ public class NewCostListInputFrame extends JFrame {
 		entry.setFont(new Font("宋体", Font.PLAIN, 15));
 		
 		payer = new JTextField();
-		
 		payer.setColumns(10);
 		
 		money = new JTextField();
-		
 		money.setColumns(10);
 		
 		account = new JTextField();
-		
 		account.setColumns(10);
 		
 		note = new JTextField();

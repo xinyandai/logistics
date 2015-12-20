@@ -100,6 +100,7 @@ public class IncomePanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
 		update = new JButton("同步");
@@ -121,11 +122,13 @@ public class IncomePanel extends JPanel {
 		panel.setLayout(gl_panel);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setToolTipText("");
+		scrollPane.setOpaque(false);
 		panel_1.add(scrollPane);
 		
 		

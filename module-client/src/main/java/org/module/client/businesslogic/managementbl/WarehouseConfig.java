@@ -55,7 +55,9 @@ public class WarehouseConfig implements WarehouseConfigService{
 	public WarehouseConfigVO find(String tranCenterID) {
 		try {
 			WarehouseConfigPO po = this.data.find(tranCenterID);
-			if(po == null) return null;
+			if(po == null){
+				return null;
+			}
 			return new WarehouseConfigVO(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -17,9 +17,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.WarehouseManageController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseManageBLService;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
-import org.module.client.presentation.orderui.NewOfficeLoadingrListInputFrame;
 import org.module.client.vo.WarehouseVO;
 
 public class WarehouseCheckPanel extends JPanel {
@@ -122,9 +122,10 @@ public class WarehouseCheckPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
-		update = new JButton("同步");
-		modify = new JButton("改");
+		update = new Button("refresh");
+		modify = new Button("modify");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(

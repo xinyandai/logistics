@@ -23,7 +23,9 @@ public class DriversDataImpl extends UnicastRemoteObject  implements DriversData
 		super();
 	}
 
-	String path="file"+File.separator+"Driver.txt";
+	String path = 
+			"file"+"/"+"Driver.txt"
+    	;
 	File file=new File(path);
 	FileHelper help=new FileHelper(file);
 	

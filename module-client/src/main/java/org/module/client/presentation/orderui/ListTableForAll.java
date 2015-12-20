@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.Table;
 import org.module.client.vo.AbstractVO;
 
@@ -28,13 +30,19 @@ public abstract class ListTableForAll extends JPanel {
 	protected JButton refresh;
 	protected Table table;
 	protected JScrollPane scrollPane;
+	protected FontFactory font;
 	
 	public ListTableForAll() {
+		font = new FontFactory();
 		initData();
 		init();
 		addListeners();
 		table =   new Table(this.listCell,this.typeArray);
-		this.scrollPane.setViewportView(new JTable(table));
+		JTable t = new JTable(table);
+		t.setOpaque(false);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
+		this.scrollPane.setViewportView(t);
 		this.refresh();
 	}
 
@@ -47,33 +55,36 @@ public abstract class ListTableForAll extends JPanel {
 
 	protected void init(){
 		setLayout(new BorderLayout(0, 0));
-		
+		this.setOpaque(false);
+		this.setBorder(null);
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
-		
-		refresh = new JButton("刷新");
-		modify = new JButton("修改");
-		add = new JButton("提交");
+		panel.setOpaque(false);
+		refresh = new Button("refresh");
+		modify = new Button("modify");
+		add = new Button("add");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(234, Short.MAX_VALUE)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(230, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
+					.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(4))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(refresh)
-						.addComponent(modify)
-						.addComponent(add)))
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE, false)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addGap(6))
 		);
 		panel.setLayout(gl_panel);
 		

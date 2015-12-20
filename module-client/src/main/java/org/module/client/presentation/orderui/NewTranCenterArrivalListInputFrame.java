@@ -1,7 +1,7 @@
 package org.module.client.presentation.orderui;
 
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
-import org.module.client.vo.OfficeArrivalListVO;
 import org.module.client.vo.TranCenterArrivalListVO;
 import org.module.common.po.State;
 
@@ -24,7 +24,7 @@ public class NewTranCenterArrivalListInputFrame extends
 				this.transportID.getText(),
 				this.origin.getText(),
 				this.stateOfArrival.getSelectedItem().toString(),
-				State.SUBMITTED
+				State.SUBMITTED ,Main.currentUser.getId() 
 				);
 		return vo;
 	}

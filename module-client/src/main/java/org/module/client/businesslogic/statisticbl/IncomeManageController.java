@@ -27,7 +27,7 @@ public class IncomeManageController implements IncomeManageBLService {
 	public ArrayList<ReceiptVO> showIncomeList(String office,
 			long startTime, long endTime) {
 		
-		return income.getAllIncomeList(office, startTime, endTime);
+		return income.getAllIncomeList(office.substring(0, 6), startTime, endTime);
 	}
 
 	public boolean add(String date, String money, String courier, String[] orderId) {
@@ -35,7 +35,7 @@ public class IncomeManageController implements IncomeManageBLService {
 	}
 
 	public String[] getAllOffice() {
-		return this.office.getName();
+		return this.office.getIDWithName();
 	}
 
 	

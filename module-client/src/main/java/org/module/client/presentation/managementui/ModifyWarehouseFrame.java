@@ -21,6 +21,8 @@ import org.module.client.businesslogic.managementbl.QusCounter;
 import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.WarehouseVO;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class ModifyWarehouseFrame extends JFrame {
 
@@ -46,10 +48,11 @@ public class ModifyWarehouseFrame extends JFrame {
 		this.pai.setText(vo.getPai());
 		this.jia.setText(vo.getJia());
 		this.wei.setText(vo.getWei());
+		this.datePicker.setDate(DateTransferHelper.getDate(vo.getDate()));
 	}
 		
 		private void init(){
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 470, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -62,81 +65,130 @@ public class ModifyWarehouseFrame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("快递单号");
 		lblNewLabel_1.setFont(new Font("楷体", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(22, 21, 68, 15);
-		panel.add(lblNewLabel_1);
 		
 		JLabel label = new JLabel("区");
 		label.setFont(new Font("楷体", Font.PLAIN, 15));
-		label.setBounds(22, 46, 68, 15);
-		panel.add(label);
 		
 		JLabel label_1 = new JLabel("架");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 15));
-		label_1.setBounds(22, 71, 68, 15);
-		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("日期");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 15));
-		label_2.setBounds(222, 21, 68, 15);
-		panel.add(label_2);
 		
 		JLabel label_3 = new JLabel("排");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 15));
-		label_3.setBounds(222, 46, 68, 15);
-		panel.add(label_3);
 		
 		JLabel label_4 = new JLabel("位");
 		label_4.setFont(new Font("楷体", Font.PLAIN, 15));
-		label_4.setBounds(222, 71, 68, 15);
-		panel.add(label_4);
 		
 		ID = new JTextField();
 		ID.setEditable(false);
 		ID.setFont(new Font("楷体", Font.PLAIN, 15));
-		ID.setBounds(100, 17, 112, 21);
-		panel.add(ID);
 		ID.setColumns(10);
 		
 		qu = new JComboBox( new QusCounter().getQus() );
 		qu.setFont(new Font("楷体", Font.PLAIN, 15));
-//		qu.setColumns(10);
-		qu.setBounds(100, 42, 112, 21);
-		panel.add(qu);
 		
 		jia = new JTextField();
 		jia.setFont(new Font("楷体", Font.PLAIN, 15));
 		jia.setColumns(10);
-		jia.setBounds(100, 67, 112, 21);
-		panel.add(jia);
 		
 		pai = new JTextField();
 		pai.setFont(new Font("楷体", Font.PLAIN, 15));
 		pai.setColumns(10);
-		pai.setBounds(302, 42, 112, 21);
-		panel.add(pai);
 		
 		wei = new JTextField();
 		wei.setFont(new Font("楷体", Font.PLAIN, 15));
 		wei.setColumns(10);
-		wei.setBounds(302, 67, 112, 21);
-		panel.add(wei);
 		
 		comfirm = new JButton("确定");
-		comfirm.setBounds(121, 128, 93, 23);
-		panel.add(comfirm);
 		
 		cancel = new JButton("取消");
-		cancel.setBounds(233, 128, 93, 23);
-		panel.add(cancel);
 		
 		datePicker = new JXDatePicker();
 		datePicker.setFont(new Font("楷体", Font.PLAIN, 15));
-		datePicker.setBounds(300, 17, 114, 21);
-		panel.add(datePicker);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(22)
+					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(ID, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+					.addGap(10)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(datePicker, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+					.addGap(30))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(22)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(qu, 0, 112, Short.MAX_VALUE)
+					.addGap(10)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(pai, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+					.addGap(30))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(22)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(jia, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+					.addGap(10)
+					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(wei, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+					.addGap(30))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(121)
+					.addComponent(comfirm, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+					.addGap(19)
+					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+					.addGap(118))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(17)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(ID, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(qu, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(pai, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(jia, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+						.addComponent(wei, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(40)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(comfirm)
+						.addComponent(cancel)))
+		);
+		panel.setLayout(gl_panel);
 	}
 		
 	private void addListenrs(){

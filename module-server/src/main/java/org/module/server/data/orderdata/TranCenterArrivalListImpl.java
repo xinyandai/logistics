@@ -17,14 +17,15 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 	private static final long serialVersionUID = 1L;
 	FileHelper help;
 	public TranCenterArrivalListImpl() throws RemoteException{
-		help = new FileHelper(new File("file"+File.separator+"TranCenterArrivalList.txt"));
+		String path = 
+				"file"+"/"+"TranCenterArrivalList.txt"
+	    	;
+		help = new FileHelper(new File(path));
 	}
 	public MyList<TranCenterArrivalListPO> getAll()  throws RemoteException{
-		// TODO 自动生成的方法存根
 		MyList<TranCenterArrivalListPO> re = new MyList<TranCenterArrivalListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-//			String[] temp = string.split(":%:%:");
 			re.add(new TranCenterArrivalListPO(string));
 		}
 		return re;
@@ -50,7 +51,7 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 	}
 
 	public MyList<TranCenterArrivalListPO> getByState(State s)  throws RemoteException{
-		// TODO 自动生成的方法存根
+
 		MyList<TranCenterArrivalListPO> oal = this.getAll();
 		MyList<TranCenterArrivalListPO> newone = new MyList<TranCenterArrivalListPO>();
 		for(TranCenterArrivalListPO a : oal){
@@ -59,6 +60,18 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 			}
 		}
 		return newone;
+	}
+	public MyList<TranCenterArrivalListPO> getAll(String w)
+			throws RemoteException {
+		MyList<TranCenterArrivalListPO> re = new MyList<TranCenterArrivalListPO>();
+		MyList<String>    strs = help.read();
+		for (String string : strs) {
+			TranCenterArrivalListPO po = (new TranCenterArrivalListPO(string));
+			if(po.getWriter().equals(w)){
+				re.add(po);
+			}
+		}
+		return re;
 	}
 
 }

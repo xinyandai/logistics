@@ -14,24 +14,18 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.PriceAndCityManageController;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 
 public class City extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	/**
-	 * Create the panel.
-	 */
+	
 	ArrayList<String[]> listData ;
 	String[] columnNames = {"城市名", "城市代码"};
 	private MyTable myTable;
 	private JButton add;
-	private JButton delete;
-	private JButton modify;
 	private JButton refresh;
 	
 	private PriceAndCityManageController controller = new PriceAndCityManageController();
@@ -61,16 +55,9 @@ public class City extends JPanel {
 				}else{
 					new ResultFrame(false);
 				}
-				
 				myTable.fireTableDataChanged();
 			}
 		});
-	}
-	private void delete(){
-		
-	}
-	private void modify(){
-		
 	}
 	private void refresh(){
 		
@@ -80,34 +67,27 @@ public class City extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
-		add = new JButton("增");
-		delete = new JButton("删");
-		modify = new JButton("改");
-		refresh = new JButton("同步");
+		add = new Button("add");
+		refresh = new Button("refresh");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(210, Short.MAX_VALUE)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(339, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(refresh))
+					.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(refresh)
-						.addComponent(modify)
-						.addComponent(delete)
-						.addComponent(add))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -124,18 +104,6 @@ public class City extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				add();
-			}
-		});
-		delete.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				delete();
-			}
-		});
-		modify.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				modify();
 			}
 		});
 		refresh.addMouseListener(new MouseAdapter() {

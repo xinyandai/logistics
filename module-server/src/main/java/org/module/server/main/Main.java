@@ -5,15 +5,13 @@ import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
-import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 import org.module.server.javaRMI.RmiServer;
 
@@ -54,8 +52,15 @@ public class Main {
                 	rmi.rebind();  
                 }  
             });  
-            Image image = Toolkit.getDefaultToolkit().getImage("pic"+File.separator+"tray.png");  
-            trayIcon = new TrayIcon(image.getScaledInstance(20, 20, Image.SCALE_DEFAULT), "物流管理系统服务端", popupMenu);
+            InputStream s = this.getClass().getClassLoader().getResourceAsStream("pic"+"/"+"tray.png");
+            Image image ;
+			try {
+				image = ImageIO.read(s);
+				 trayIcon = new TrayIcon(image.getScaledInstance(20, 20, Image.SCALE_DEFAULT), "物流管理系统服务端", popupMenu);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+           
 			 systemTray = SystemTray.getSystemTray();  
 	         systemTray.add(trayIcon);  
 			

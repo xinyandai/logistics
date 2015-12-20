@@ -29,9 +29,6 @@ public class ListTableForReiceipt extends ListTableForAll {
 	@Override
 	protected void refresh() {
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = this.listCell.get(0).names();
-		}
 		this.table.setList(listCell);
 		this.table.setName(typeArray);
 		this.table.fireTableDataChanged();;

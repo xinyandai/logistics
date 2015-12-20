@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.deparmentbl.StuffManageController;
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.StuffVO;
@@ -33,7 +34,7 @@ public class StuffPanel extends JPanel {
 	private JButton add;
 	private JButton delete;
 	private JButton modify;
-	private JButton update;
+	private JButton refresh;
 	
 	
 	public StuffPanel() {
@@ -69,6 +70,9 @@ public class StuffPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int[] ins = table.getCheckedIndexes();
+				if(ins.length==0){
+					return;
+				}
 				if (controller.delete(ins)){
 					table.fireTableDataChanged();
 					new ResultFrame(true);
@@ -104,7 +108,7 @@ public class StuffPanel extends JPanel {
 				});
 			}
 		});
-		update.addMouseListener(new MouseAdapter() {
+		refresh.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				listData = controller.showAll();
@@ -119,17 +123,18 @@ public class StuffPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
-		add = new JButton("增");
-		delete = new JButton("删");
-		modify = new JButton("改");
-		update = new JButton("同步");
+		add = new Button("add");
+		delete = new Button("delete");
+		modify = new Button("modify");
+		refresh = new Button("refresh");
 
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap(214, Short.MAX_VALUE)
 					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -137,25 +142,27 @@ public class StuffPanel extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(update))
+					.addComponent(refresh))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(update)
-						.addComponent(modify)
-						.addComponent(delete)
-						.addComponent(add))
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(delete, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
 		add(scrollPane, BorderLayout.CENTER);
 		
 		table = new Table(this.listData,this.columnNames);
-		scrollPane.setViewportView(new JTable(table));
+		JTable t = new JTable(table);
+		scrollPane.setViewportView(t);
 	}
 
 }

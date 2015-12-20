@@ -2,7 +2,12 @@ package org.module.client.presentation;
 import java.awt.*;
 
 public class InOutPane extends TransitionTabbedPane {
-    public void paintTransition(Graphics2D g2, int state,
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1982906839811118172L;
+
+	public void paintTransition(Graphics2D g2, int state,
             Rectangle size, Image prev) {
         
         int length = getAnimationLength();

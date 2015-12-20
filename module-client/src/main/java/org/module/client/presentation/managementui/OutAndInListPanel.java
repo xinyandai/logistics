@@ -1,27 +1,20 @@
 package org.module.client.presentation.managementui;
 
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
-import java.awt.Component;
-
-import javax.swing.JTable;
-import javax.swing.JButton;
-
-import javax.swing.JCheckBox;
-import javax.swing.JScrollPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-
-import org.jdesktop.swingx.JXDatePicker;
-
 import java.awt.Font;
 import java.util.Date;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import org.jdesktop.swingx.JXDatePicker;
 
 public class OutAndInListPanel extends JPanel {
 

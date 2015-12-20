@@ -3,7 +3,6 @@ package org.module.client.presentation;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.File;
 
@@ -25,7 +24,7 @@ public class ResultFrame extends JFrame {
 	public ResultFrame(boolean isSuccess,Component c) {
 		   this.path = "pic"+File.separator +
 				(isSuccess? "success" : "fail" ) + ".png";
-		
+		//   InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
 		   background = new ImageIcon(path);// 背景图片
 		   JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		   this.w = this.background.getIconWidth();
