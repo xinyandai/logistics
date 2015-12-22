@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.statisticbl.AccountManageController;
 import org.module.client.businesslogicservice.statisticBLservice.AccountManageBLService;
+import org.module.client.presentation.Button;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.AccountVO;
@@ -32,7 +33,6 @@ public class AccountPanel extends JPanel {
 	private JButton search;
 	private JButton add;
 	private JButton delete;
-	private JButton modify;
 	private JButton update;
 	
 	private AccountManageBLService controller = new AccountManageController();
@@ -89,13 +89,12 @@ public class AccountPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
 		
-		add = new JButton("增");
-		delete = new JButton("删");
-		modify = new JButton("改");
-		modify.setEnabled(false);
-		update = new JButton("同步");
+		add = new Button("add");
+		delete = new Button("delete");
+		update = new Button("refresh");
 		
 		input = new JTextField();
 		input.setColumns(10);
@@ -106,32 +105,24 @@ public class AccountPanel extends JPanel {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(2)
 					.addComponent(input, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(18, 106, Short.MAX_VALUE)
-							.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(modify, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-							.addGap(2)
-							.addComponent(update)
-							.addGap(6))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(8)
-							.addComponent(search)
-							.addContainerGap())))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(search))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(271, Short.MAX_VALUE)
+					.addComponent(add, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(delete, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(update, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(update)
-						.addComponent(modify)
-						.addComponent(delete)
-						.addComponent(add))
+						.addComponent(update, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(delete, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(input, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)

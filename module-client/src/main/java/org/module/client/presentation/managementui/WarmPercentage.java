@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import org.module.client.businesslogic.managementbl.WarehouseConfigController;
 import org.module.client.businesslogicservice.managementBLservice.WarehouseConfigBLService;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.WarehouseConfigVO;
 
@@ -34,9 +35,11 @@ public class WarmPercentage extends JPanel {
 	private JLabel state;
 	private JTextField currentBorderline;
 	private String[] arrayOfQus;
+	private FontFactory font;
 	
 	public WarmPercentage() {
 		this.arrayOfQus = this.controller.getQus();
+		this.font = new FontFactory();
 		init();
 		addListeners();
 		this.refresh();
@@ -57,6 +60,7 @@ public class WarmPercentage extends JPanel {
 		borderline.setColumns(10);
 		
 		save = new JButton("保存");
+		save.setFont(font.getStateFont());
 		save.setToolTipText("保存");
 		save.setFont(new Font("楷体", Font.PLAIN, 18));
 		

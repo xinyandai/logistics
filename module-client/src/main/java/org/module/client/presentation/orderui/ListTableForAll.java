@@ -61,8 +61,11 @@ public abstract class ListTableForAll extends JPanel {
 		add(panel, BorderLayout.NORTH);
 		panel.setOpaque(false);
 		refresh = new Button("refresh");
+		refresh.setToolTipText("刷新");
 		modify = new Button("modify");
+		modify.setToolTipText("对已提交单据进行修改");
 		add = new Button("add");
+		add.setToolTipText("新建新单据进行提交");
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -82,8 +85,8 @@ public abstract class ListTableForAll extends JPanel {
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE, false)
 						.addComponent(add, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addComponent(modify, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(refresh, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addGap(6))
 		);
 		panel.setLayout(gl_panel);

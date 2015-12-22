@@ -48,7 +48,7 @@ public class WarehouseManagerSalaryPO implements Serializable{
 	
 	
 	
-	
+
 	public double getBase() {
 		return base;
 	}

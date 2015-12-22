@@ -9,6 +9,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 import org.module.client.main.Main;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.statisticui.AccountPanel;
 import org.module.client.presentation.statisticui.CostAndIncome;
 import org.module.client.presentation.statisticui.CostPanel;
@@ -20,7 +21,7 @@ public class AccoutantFrame extends FatherFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+    private FontFactory font = new FontFactory();
 	
 	public AccoutantFrame() {
 		
@@ -39,9 +40,11 @@ public class AccoutantFrame extends FatherFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 		
 		JLabel label = new JLabel("财务人员");
+	    label.setFont(font.getTabelNameInput());
 		panel.add(label);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFont(font.getTabbeFont());
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		if(Main.currentUser.getAuthority().equals("1")){

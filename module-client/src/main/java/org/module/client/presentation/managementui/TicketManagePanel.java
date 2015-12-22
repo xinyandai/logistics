@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.TicketAndOrderManageController;
 import org.module.client.businesslogicservice.managementBLservice.TicketAndOrderManageBLService;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.AbstractVO;
@@ -37,14 +38,18 @@ public class TicketManagePanel extends JPanel {
 	private JButton unpass;
 	private JButton refresh;
 	private JComboBox type;
-	
+	private FontFactory font;
 	public TicketManagePanel() {
+		this.font = new FontFactory();
 		this.typeArray = this.controller.getTypes();
 		init();
 		this.listCell = this.controller.getAll(typeArray[0]);
 		if(!this.listCell.isEmpty()){
 			table = new Table(this.listCell,this.listCell.get(0).names());
-			scrollPane.setViewportView(new JTable(this.table));
+			JTable t = new JTable(this.table);
+			t.setFont(font.getTableElementFont());
+			t.getTableHeader().setFont(font.getTabelNameInput());
+			scrollPane.setViewportView(t);
 		}
 		addListeners();
 	}
@@ -70,14 +75,18 @@ public class TicketManagePanel extends JPanel {
 	protected void refresh() {	
 		this.listCell = this.controller.getAll(this.type.getSelectedItem().toString());
 		if(!this.listCell.isEmpty()){
-			table = new Table(this.listCell,this.listCell.get(0).names());
-			
+			//table = new Table(this.listCell,this.listCell.get(0).names());
+			table.setName(this.listCell.get(0).names());
+			table.setList(listCell);
 		}else{
 			String[] name = {"空"};
-			table = new Table(this.listCell,name);
+			//table = new Table(this.listCell,name);
+			table.setName(name);
+			table.setList(listCell);
 		}
-		JTable t = new JTable(this.table);
-		scrollPane.setViewportView(t);
+		table.fireTableStructureChanged();
+		//JTable t = new JTable(this.table);
+		//scrollPane.setViewportView(t);
 	}
 	
 	
@@ -86,9 +95,14 @@ public class TicketManagePanel extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
+		
 		pass = new JButton("审批通过");
 		unpass = new JButton("审批不通过");
 		refresh = new JButton("刷新");
+		pass.setFont(font.getStateFont());
+		unpass.setFont(font.getStateFont());
+		refresh.setFont(font.getStateFont());
+		
 		type = new JComboBox(this.typeArray);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);

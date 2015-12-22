@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.managementbl.CarsManageController;
 import org.module.client.businesslogicservice.managementBLservice.CarsManageBLService;
 import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
@@ -43,9 +44,12 @@ public class Cars extends JPanel {
 	private JButton delete;
 	private JButton modify;
 	private JButton refresh;
-	
+	private FontFactory font;
 	
 	public Cars() {
+		
+		font = new FontFactory();
+		
 		setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -87,7 +91,10 @@ public class Cars extends JPanel {
 		
 		listData = controller.getAllToArray();
 		myTable = new MyTable(listData,columnNames);
-		scrollPane.setViewportView(new JTable(myTable));
+		JTable t = new JTable(myTable);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
+		scrollPane.setViewportView(t);
 		
 		addListeners();
 	}

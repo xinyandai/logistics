@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.deparmentbl.DepartmentManageController;
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
@@ -32,7 +33,7 @@ public class DeparmentPanel extends JPanel {
 	
 	
 	private final MyTable myTable;
-
+    private FontFactory font ;
 	private int mainKey = 3;
 	private JButton add;
 	private JButton delete;
@@ -42,7 +43,7 @@ public class DeparmentPanel extends JPanel {
 	public DeparmentPanel() {
 
 		setLayout(new BorderLayout(0, 0));
-		
+		font = new FontFactory();
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);
@@ -82,8 +83,10 @@ public class DeparmentPanel extends JPanel {
 		
 		listData = this.controller.toArrayList();
 		myTable = new MyTable(this.listData,this.columnNames);
-		
-		scrollPane.setViewportView(new JTable(myTable));
+		JTable tableView = new JTable(myTable);
+		tableView.setFont(font.getTableElementFont());
+		tableView.getTableHeader().setFont(font.getTabelNameInput());
+		scrollPane.setViewportView(tableView);
 		
 		addListeners();
 		

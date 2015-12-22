@@ -19,6 +19,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import org.jdesktop.swingx.JXDatePicker;
+import org.module.client.businesslogic.statisticbl.Account;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.presentation.Numeric;
 import org.module.client.vo.CostListVO;
@@ -33,13 +34,14 @@ public class NewCostListInputFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField payer;
 	private JTextField money;
-	private JTextField account;
+	private JComboBox account;
 	private JTextField note;
 	private JXDatePicker datePicker;
 	private JComboBox entry;
 	private JButton comfirm;
 	private JLabel state;
 
+	private String[] accounts;
 	private String id;
 	
 	public NewCostListInputFrame() {
@@ -52,7 +54,7 @@ public class NewCostListInputFrame extends JFrame {
 		init();
 		this.payer.setText(vo.getPeople());
 		this.money.setText(vo.getMoney()+"");
-		this.account.setText(vo.getAccout());
+		this.account.setSelectedItem(vo.getAccout());
 		this.datePicker.setDate(DateTransferHelper.getDate(vo.getDate()));
 		this.note.setText(vo.getNote());
 		this.entry.setSelectedItem(vo.getEntry());
@@ -100,8 +102,9 @@ public class NewCostListInputFrame extends JFrame {
 		money = new JTextField();
 		money.setColumns(10);
 		
-		account = new JTextField();
-		account.setColumns(10);
+		this.accounts = new Account().getAccountArray();
+		account = new JComboBox(this.accounts);
+//		account.setColumns(10);
 		
 		note = new JTextField();
 		note.setColumns(10);
@@ -235,15 +238,7 @@ public class NewCostListInputFrame extends JFrame {
 				}
 			}
 		});
-		account.addCaretListener(new CaretListener() {
-			public void caretUpdate(CaretEvent e) {
-				if((!Numeric.isRealNumber(account.getText()))){
-					state.setText("！账号必须是数值");
-				}else{
-					state.setText("");
-				}
-			}
-		});
+		
 	}
 	
 	public boolean isDataUsable(){
@@ -252,9 +247,6 @@ public class NewCostListInputFrame extends JFrame {
 			return false;
 		}else if((!Numeric.isRealNumber(money.getText()))){
 			state.setText("！金额必须是数值");
-			return false;
-		}else if((!Numeric.isRealNumber(account.getText()))){
-			state.setText("！账号必须是数值");
 			return false;
 		}
 			
@@ -270,7 +262,7 @@ public class NewCostListInputFrame extends JFrame {
 				DateTransferHelper.getString( this.datePicker.getDate() ),
 		this.money.getText(),
 		this.payer.getText(),
-		this.account.getText(),
+		this.account.getSelectedItem().toString(),
 		this.entry.getSelectedItem().toString(),
 		this.note.getText(),
 		State.SUBMITTED,

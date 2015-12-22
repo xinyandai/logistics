@@ -1,8 +1,11 @@
 package org.module.client.presentation.managementui;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import org.module.client.presentation.FontFactory;
 
 public class CityAndPrice extends JPanel {
 
@@ -10,15 +13,14 @@ public class CityAndPrice extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Create the panel.
-	 */
+    private FontFactory font;
 	public CityAndPrice() {
+		font = new FontFactory();
 		setLayout(new BorderLayout(0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		tabbedPane.setOpaque(false);
+		tabbedPane.setFont(font.getTabbeFont());
 		add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel = new City();

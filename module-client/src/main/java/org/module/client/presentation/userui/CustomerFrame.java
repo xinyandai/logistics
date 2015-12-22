@@ -2,15 +2,13 @@ package org.module.client.presentation.userui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.module.client.presentation.logisticsui.LogisticsPanel;
 
-public class CustomerFrame extends JFrame {
+public class CustomerFrame extends FatherFrame {
 
 	
 	private static final long serialVersionUID = -1452749767128951688L;
@@ -18,14 +16,7 @@ public class CustomerFrame extends JFrame {
 
 	
 	public CustomerFrame() {
-		 String path = "pic/bkg.jpg";
-		  ImageIcon background = new ImageIcon(path);// 背景图片
-		  JLabel back = new JLabel(background);// 把背景图片显示在一个标签里面
-		  back.setBounds(0, 0, background.getIconWidth(),background.getIconHeight());
-		  JPanel imagePanel = (JPanel) getContentPane();
-		  imagePanel.setOpaque(false);
-		  getLayeredPane().setLayout(null);
-		  getLayeredPane().add(back, new Integer(Integer.MIN_VALUE));
+		 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

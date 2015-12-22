@@ -13,6 +13,22 @@ import org.module.common.po.DriverPO;
 public class Driver implements DriversManageService{
 
 	private DriversDataService data = new RmiClient().get(DriversDataService.class);
+	
+	public String[] getAllDriversArray(){
+		String[]  re = new String[]{};
+		try {
+			ArrayList<DriverPO> pos = this.data.getAll();
+			re = new String[pos.size()];
+			for (int i = 0; i < re.length; i++) {
+				re[i] = pos.get(i).getId();
+			}
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return re;
+	}
+	
 	public ArrayList<DriverVO> showAll() {
 		ArrayList<DriverVO> vos = new ArrayList<DriverVO>();
 		try {

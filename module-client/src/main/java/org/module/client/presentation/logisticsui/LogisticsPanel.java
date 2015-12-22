@@ -15,6 +15,7 @@ import javax.swing.border.CompoundBorder;
 
 import org.module.client.businesslogic.logisticsbl.LogisticsController;
 import org.module.client.businesslogicservice.logisticsBLservice.LogisticsBLService;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.Numeric;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.vo.LogisticsVO;
@@ -26,9 +27,8 @@ public class LogisticsPanel extends JPanel {
 	private JList list;
 	private JScrollPane scrollPane;
 	private LogisticsBLService controller = new LogisticsController();
-	/**
-	 * Create the panel.
-	 */
+	private FontFactory font = new FontFactory();
+	
 	public LogisticsPanel() {
 		
 		setBorder(new CompoundBorder());
@@ -40,15 +40,16 @@ public class LogisticsPanel extends JPanel {
 		add(panel, BorderLayout.NORTH);
 		
 		JLabel lblInputId = new JLabel("输入订单号");
-		lblInputId.setFont(new Font("楷体", Font.PLAIN, 15));
+		lblInputId.setFont(font.getTableElementFont());
 		panel.add(lblInputId);
 		
 		ID = new JTextField();
-		ID.setFont(new Font("楷体", Font.PLAIN, 13));
+		ID.setFont(font.getInputFont());
 		panel.add(ID);
 		ID.setColumns(10);
 		
 		JButton btnNewButton = new JButton("搜索");
+		btnNewButton.setFont(font.getTableElementFont());
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -56,10 +57,6 @@ public class LogisticsPanel extends JPanel {
 			}
 		});
 		panel.add(btnNewButton);
-		
-		JLabel label = new JLabel("");
-		label.setToolTipText("搜索");
-		panel.add(label);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);

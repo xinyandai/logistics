@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.module.client.businesslogic.managementbl.PriceAndCityManageController;
 import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 
@@ -27,11 +28,12 @@ public class City extends JPanel {
 	private MyTable myTable;
 	private JButton add;
 	private JButton refresh;
-	
+	private FontFactory font;
 	private PriceAndCityManageController controller = new PriceAndCityManageController();
 
 	
 	public City() {
+		font = new FontFactory();
 		this.listData = this.controller.toArray();
 		init();
 		addListenrs();
@@ -96,7 +98,10 @@ public class City extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		myTable = new MyTable(listData,columnNames);
-		scrollPane.setViewportView(new JTable(myTable));
+		JTable t = new JTable(myTable);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
+		scrollPane.setViewportView(t);
 	}
 	
 	private void addListenrs(){

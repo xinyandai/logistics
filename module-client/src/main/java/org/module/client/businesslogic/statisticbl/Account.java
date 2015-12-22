@@ -74,6 +74,12 @@ public class Account implements AccountService {
 	private boolean change(String id, double b){
 		try {
 			AccountPO po = this.data.findById(id);
+			if( Double.parseDouble(po.getMoney())+b<0){
+				return false;
+			}
+			if( Double.parseDouble(po.getMoney())+b>Double.MAX_VALUE){
+				return false;
+			}
 			AccountVO vo = new AccountVO(po.getId(),(Double.parseDouble(po.getMoney())+b)+"");
 			return this.data.update(new AccountPO(vo.getId(),vo.getMoney()+""));
 		} catch (RemoteException e) {
@@ -108,6 +114,15 @@ public class Account implements AccountService {
 			e.printStackTrace();
 		}
 		
+		return re;
+	}
+	
+	public String[] getAccountArray(){
+		ArrayList<AccountVO> vos = this.showAll();
+		String[] re = new String[vos.size()];
+		for (int i = 0; i < re.length; i++) {
+			re[i] = vos.get(i).getId();
+		}
 		return re;
 	}
 	

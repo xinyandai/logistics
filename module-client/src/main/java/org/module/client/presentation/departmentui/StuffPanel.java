@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.deparmentbl.StuffManageController;
 import org.module.client.businesslogicservice.departmentBLservice.StuffManageBLService;
 import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.StuffVO;
@@ -35,9 +36,10 @@ public class StuffPanel extends JPanel {
 	private JButton delete;
 	private JButton modify;
 	private JButton refresh;
-	
+	private FontFactory font;
 	
 	public StuffPanel() {
+		font = new FontFactory();
 		this.listData = this.controller.showAll();
 		init();
 		addListeners();
@@ -162,6 +164,8 @@ public class StuffPanel extends JPanel {
 		
 		table = new Table(this.listData,this.columnNames);
 		JTable t = new JTable(table);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
 		scrollPane.setViewportView(t);
 	}
 

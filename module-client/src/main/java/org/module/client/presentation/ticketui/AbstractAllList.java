@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import org.jdesktop.swingx.JXDatePicker;
 import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.Table;
 import org.module.client.vo.AbstractVO;
 
@@ -45,12 +46,17 @@ public abstract class AbstractAllList extends JPanel {
 	protected abstract  void modify() ;
 	protected abstract void add(); 
 	
+	protected FontFactory font;
 	public AbstractAllList() {
+		this.font = new FontFactory();
 		initData();
 		init();
 		addListeners();
 		table =   new Table(this.listCell,this.typeArray);
-		this.scrollPane.setViewportView(new JTable(table));
+		JTable t = new JTable(table);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
+		this.scrollPane.setViewportView(t);
 	}
 	protected void updateNums(){
 		this.count.setText("合计："+this.listCell.size());

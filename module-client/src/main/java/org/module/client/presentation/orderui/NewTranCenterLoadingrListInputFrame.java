@@ -31,7 +31,7 @@ public class NewTranCenterLoadingrListInputFrame extends NewLoadingrListInputFra
 				target.getSelectedItem().toString(),
 				carID.getText(), 
 				supervision.getText(),
-				driver.getText(), 
+				driver.getSelectedItem().toString(), 
 				shippingId, 
 				price.getText(),
 				State.SUBMITTED ,Main.currentUser.getId() 

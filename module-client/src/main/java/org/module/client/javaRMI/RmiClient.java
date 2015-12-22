@@ -1,5 +1,10 @@
 package org.module.client.javaRMI;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -13,7 +18,7 @@ public class RmiClient {
 	
 	@SuppressWarnings("unchecked")
 	public  <T> T get(Class<T> cla){
-		String url="rmi://127.0.0.1/"+cla.getName();
+		String url="rmi://"+this.read()+"/"+cla.getName();
 		T service;   
 		 try {
 			service = (T)Naming.lookup(url);
@@ -26,5 +31,19 @@ public class RmiClient {
 			e.printStackTrace();
 		} 
 		return null;
+	}
+	
+	public String read(){
+		String re = "127.0.0.1";
+		try {
+			InputStreamReader reader = new InputStreamReader(
+					new FileInputStream("config"+File.separator+"config.txt"),"UTF-8");
+			BufferedReader br = new BufferedReader(reader);
+			re = br.readLine();
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return re;
 	}
 }

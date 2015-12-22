@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.module.client.businesslogic.managementbl.DriversManageController;
 import org.module.client.businesslogicservice.managementBLservice.DriversManageBLService;
 import org.module.client.presentation.Button;
+import org.module.client.presentation.FontFactory;
 import org.module.client.presentation.MyTable;
 import org.module.client.presentation.ResultFrame;
 import org.module.common.dataservice.MyList;
@@ -45,6 +46,7 @@ public class DriversPanel extends JPanel {
 	private JButton modify;
 	private JButton delete;
 	private JButton add;
+	private FontFactory font;
 	private final int mainKey = 0;
 	
 	private void add(){
@@ -143,6 +145,7 @@ public class DriversPanel extends JPanel {
 	
 	
 	public DriversPanel() {
+		this.font = new FontFactory();
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -184,7 +187,9 @@ public class DriversPanel extends JPanel {
 		
 		listData = controller.toArray();
 		myTable = new MyTable(listData,columnNames);
-		scrollPane.setViewportView(new JTable(myTable));
+		JTable t = new JTable(myTable);
+		t.setFont(font.getTableElementFont());
+		scrollPane.setViewportView(t);
 		
 		addListeners();
 	}

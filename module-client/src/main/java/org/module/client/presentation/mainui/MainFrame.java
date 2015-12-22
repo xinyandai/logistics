@@ -8,11 +8,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -46,8 +49,8 @@ public class MainFrame extends JFrame {
 	 */
 	private UserLoginBLService longiner = new LoginController(new Login());
 	
-	private Image imgBackground = new ImageIcon("pic/login.png").getImage();
-	private Image imgClose = new ImageIcon("pic/close.png").getImage();
+	private Image imgBackground ;
+	private Image imgClose ;
 	private CloseButton closeBtn;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -107,7 +110,19 @@ public class MainFrame extends JFrame {
 	
 	
 	public MainFrame() {
+		InputStream bkgStream = this.getClass().getClassLoader().
+				getResourceAsStream("pic/login.png");
+		InputStream buttonStream = this.getClass().getClassLoader().
+				getResourceAsStream("pic/close.png");
+		try {
+			imgBackground = ImageIO.read(bkgStream);
+			imgClose= ImageIO.read(buttonStream);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
+		//imgBackground = new ImageIcon("pic/login.png").getImage();
+		//imgClose = new ImageIcon("pic/close.png").getImage();
 		this.init();
 		
 		this.setSkin();
@@ -139,7 +154,8 @@ public class MainFrame extends JFrame {
 		contentPane.add(comboBox);
 		
 		closeBtn = new CloseButton();
-		closeBtn.setBounds(imgBackground.getWidth(null)-closeBtnWidth,0,closeBtnWidth,closeBtnHeight);
+		closeBtn.setBounds(imgBackground.getWidth(null)-closeBtnWidth,0,
+				closeBtnWidth,closeBtnHeight);
 		contentPane.add(closeBtn);
 		closeBtn.addMouseListener(new MouseAdapter() {
 			@Override
