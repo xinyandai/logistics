@@ -30,7 +30,7 @@ public class TicketManagePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private TicketAndOrderManageBLService controller = new TicketAndOrderManageController();
-	private String[] typeArray = {"空"};
+	private String[] typeArray = {""};
 	private JScrollPane scrollPane;
 	private Table table;
 	private ArrayList<? extends AbstractVO> listCell;
@@ -85,8 +85,10 @@ public class TicketManagePanel extends JPanel {
 			table.setList(listCell);
 		}
 		table.fireTableStructureChanged();
-		//JTable t = new JTable(this.table);
-		//scrollPane.setViewportView(t);
+		/*JTable t = new JTable(this.table);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
+		scrollPane.setViewportView(t);*/
 	}
 	
 	

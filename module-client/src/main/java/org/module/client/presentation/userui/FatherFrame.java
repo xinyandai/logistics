@@ -1,5 +1,6 @@
 package org.module.client.presentation.userui;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +18,11 @@ public class FatherFrame extends JFrame {
 		this.setBackground();
 	}
     protected void setBackground(){
-    	  
+    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	int w = 1000;
+    	int h = 600;
+    	Dimension d = this.getToolkit().getScreenSize();
+		setBounds((d.width-w)/2, (d.height-h)/2, w, h);
     	  String path = "pic/bkg.jpg";
     	  InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
     	  try {

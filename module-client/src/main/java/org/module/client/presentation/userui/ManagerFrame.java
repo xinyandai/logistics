@@ -2,7 +2,6 @@ package org.module.client.presentation.userui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -25,8 +24,7 @@ public class ManagerFrame extends FatherFrame {
 	private FontFactory font = new FontFactory() ;
 	
 	public ManagerFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 600);
+		super();
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

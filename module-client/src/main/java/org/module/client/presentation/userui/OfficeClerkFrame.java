@@ -2,7 +2,6 @@ package org.module.client.presentation.userui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -26,8 +25,7 @@ public class OfficeClerkFrame extends FatherFrame {
 	public OfficeClerkFrame() {
 		
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 500);
+		super();
 		contentPane = new JPanel();
 		contentPane.setOpaque(false);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

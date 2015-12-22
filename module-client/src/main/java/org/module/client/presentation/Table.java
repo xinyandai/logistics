@@ -17,7 +17,7 @@ public class Table extends AbstractTableModel{
 	private static final long serialVersionUID = -6531466986196769453L;
 	private ArrayList<? extends AbstractVO> list;
 	private String[] name;
-	final private int checkBoxIndex;
+	private int checkBoxIndex;
 	final private String checkBoxColumnName = "选择";
 	private BitSet checkBitSet = new BitSet();
 	
@@ -46,6 +46,7 @@ public class Table extends AbstractTableModel{
 
 	public void setName(String[] name) {
 		this.name = name;
+		this.checkBoxIndex = name==null? 0 : name.length;
 	}
 
 	public int getRowCount() {
@@ -101,12 +102,19 @@ public class Table extends AbstractTableModel{
 	
 	 @Override
 	    public String getColumnName(int columnIndex) {
-	        if (columnIndex == checkBoxIndex)
-	            return checkBoxColumnName;
-	        else if (columnIndex > checkBoxIndex)
-	            return name[columnIndex - 1];
-	        else
-	            return name[columnIndex];
+		 try{
+			 if (columnIndex == checkBoxIndex)
+		            return checkBoxColumnName;
+		        else if (columnIndex > checkBoxIndex)
+		            return name[columnIndex - 1];
+		        else{
+		        	return name[columnIndex];
+		        }
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		 return "empty";
+	       
 	    }
 
 	    @Override

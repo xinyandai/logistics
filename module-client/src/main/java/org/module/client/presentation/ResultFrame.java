@@ -3,9 +3,13 @@ package org.module.client.presentation;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,8 +28,17 @@ public class ResultFrame extends JFrame {
 	public ResultFrame(boolean isSuccess,Component c) {
 		   this.path = "pic"+File.separator +
 				(isSuccess? "success" : "fail" ) + ".png";
-		//   InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
+		   InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
+		   
 		   background = new ImageIcon(path);// 背景图片
+		   try {
+				Image img =  ImageIO.read(stream);
+				if(img!=null){
+					this.background.setImage(img);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		   JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		   this.w = this.background.getIconWidth();
 		   this.h = this.background.getIconHeight();
@@ -64,6 +77,15 @@ public class ResultFrame extends JFrame {
 				(isSuccess? "success" : "fail" ) + ".png";
 		
 		   background = new ImageIcon(path);// 背景图片
+		   InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
+		   try {
+				Image img =  ImageIO.read(stream);
+				if(img!=null){
+					this.background.setImage(img);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		   JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		   this.w = this.background.getIconWidth();
 		   this.h = this.background.getIconHeight();
