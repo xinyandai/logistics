@@ -52,7 +52,7 @@ public class ModifyWarehouseFrame extends JFrame {
 	}
 		
 		private void init(){
-		setBounds(100, 100, 470, 300);
+		setBounds(400, 200, 470, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -195,6 +195,7 @@ public class ModifyWarehouseFrame extends JFrame {
 		cancel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				dispose();
 			}
 		});
 		pai.addCaretListener(new CaretListener() {

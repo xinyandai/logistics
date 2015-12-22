@@ -107,8 +107,9 @@ public class WarehouseCheckPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
 					if(controller.modify(frame.getVO())){
-						frame.dispose();
+						
 						new ResultFrame(true);
+						frame.dispose();
 					}else{
 						new ResultFrame(false);
 					}

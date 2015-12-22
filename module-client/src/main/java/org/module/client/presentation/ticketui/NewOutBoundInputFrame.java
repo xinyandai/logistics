@@ -86,7 +86,7 @@ public class NewOutBoundInputFrame extends JFrame {
 		
 	private void init(){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 471, 300);
+		setBounds(400, 200, 471, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

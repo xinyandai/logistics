@@ -57,7 +57,7 @@ public class NewUserInputFrame extends JFrame {
 	}
 	private void init(){
 	//
-		setBounds(100, 100, 566, 300);
+		setBounds(400, 200, 566, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

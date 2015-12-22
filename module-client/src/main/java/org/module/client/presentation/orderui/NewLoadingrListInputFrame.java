@@ -91,7 +91,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 	protected void init(){
 		this.arrayOfDrivers = new Driver().getAllDriversArray();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 460, 488);
+		setBounds(400, 200, 460, 488);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

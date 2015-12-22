@@ -40,7 +40,7 @@ public class WarahouseDataImpl extends UnicastRemoteObject  implements Warahouse
 				"file"+File.separator+"warehouse"+File.separator+newone.getWarehouseOfWhichTranCenter()+".txt"));
 		ArrayList<WarehousePO> re = this.getAll(newone.getWarehouseOfWhichTranCenter());
 		for (int i = 0; i < re.size(); i++) {
-			if(re.get(i).samePalace(newone)){
+			if(re.get(i).getNumber().equals(newone.getNumber())){
 				re.remove(i);
 				re.add(newone);
 				return help.rewrite(re);

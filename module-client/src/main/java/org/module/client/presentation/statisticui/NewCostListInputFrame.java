@@ -62,7 +62,7 @@ public class NewCostListInputFrame extends JFrame {
 	}
 		
 	private void init(){
-		setBounds(100, 100, 450, 300);
+		setBounds(400, 200, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

@@ -93,7 +93,7 @@ public class NewTransportListInputFrame extends JFrame {
 	}	
 	
 	private void init(){
-		setBounds(100, 100, 474, 451);
+		setBounds(400, 200, 474, 451);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
