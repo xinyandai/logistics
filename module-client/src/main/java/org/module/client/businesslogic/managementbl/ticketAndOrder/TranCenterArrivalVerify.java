@@ -7,7 +7,6 @@ import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.TranCenterArrivalListVO;
-import org.module.client.vo.TransportListVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.TranCenterArrivalListService;
 import org.module.common.dataservice.orderdataservice.TransportListService;
@@ -71,11 +70,15 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 		boolean re = true;
 		try {
 			for(int i = index.length-1;  i>=0; i--){
-				TranCenterArrivalListVO officeArrivalListVO = this.list.remove(index[i]);
-				//单据状态更新
-				re = re &&this.arrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
+				TranCenterArrivalListVO officeArrivalListVO = this.list.get(index[i]);
+				
 				//更新物流
-				this.updateLogistics(officeArrivalListVO);
+				if(this.updateLogistics(officeArrivalListVO)){
+					this.list.remove(index[i]);
+					//单据状态更新
+					re = re &&this.arrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
+				}
+				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -89,26 +92,33 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 	 * 更新物流信息
 	 * @param officeArrivalListVO
 	 */
-	private void updateLogistics(TranCenterArrivalListVO officeArrivalListVO){
+	private boolean updateLogistics(TranCenterArrivalListVO officeArrivalListVO){
 		
 		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getDepartmentId() );
 		String departmentLocation = this.departmentFinder.getLocationById( officeArrivalListVO.getDepartmentId() );
 		String date = new Date().toString();
+		boolean re = true;
 		try {
 			TransportListPO po = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId());
 			if(po==null){
-				return ;
+				return false;
 			}
 			String[] allOrders = po.getShippingId();
 			for (String order : allOrders) {
 				LogisticsVO logisticsVO = this.logistics.find(order);
-				logisticsVO.addLocationAndTime( departmentName, date);
-				logisticsVO.setLocation(departmentLocation);
-				this.logistics.update(logisticsVO);
+				if(logisticsVO!=null){
+					logisticsVO.addLocationAndTime( "快递已到达"+departmentName, date);
+					logisticsVO.setLocation(departmentLocation);
+					this.logistics.update(logisticsVO);
+				}else{
+					re = false;
+				}
+				
 			}
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
+		return re;
 		
 		
 	}

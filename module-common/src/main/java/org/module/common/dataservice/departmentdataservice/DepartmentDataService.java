@@ -48,17 +48,17 @@ public interface DepartmentDataService extends Remote{
 	 */
 	public boolean update(DepartmentPO one)throws RemoteException;
 	/**
-	 * 
+	 * 按ID绝对查找
 	 * @param key
-	 * @return
+	 * @return 没查找到则返回null
 	 * @throws RemoteException
 	 */
 	public DepartmentPO findById(String key)throws RemoteException;
 	
 	/**
 	 * 
-	 * @param type
-	 * @return
+	 * @param type 机构类别： 营业厅或者中转中心
+	 * @return  序列化的arraylist
 	 * @throws RemoteException
 	 */
 	public MyList<DepartmentPO> findByType(String type) throws RemoteException;

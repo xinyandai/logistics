@@ -5,16 +5,18 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import org.module.client.businesslogic.statisticbl.ReceiptContoller;
+import org.module.client.businesslogicservice.statisticBLservice.ReceiptBLService;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.orderui.ListTableForAll;
 import org.module.client.vo.ReceiptVO;
+import org.module.common.po.State;
 
 public class ListTableForReiceipt extends ListTableForAll {
 
 	
 	private static final long serialVersionUID = -7389044960331158157L;
 
-	private ReceiptContoller controller;
+	private ReceiptBLService controller;
 	protected ArrayList<ReceiptVO> listCell;
 	@Override
 	protected void initData() {
@@ -38,6 +40,10 @@ public class ListTableForReiceipt extends ListTableForAll {
 	protected void modify() {
 		int[] indexes = this.table.getCheckedIndexes();
 		if(indexes.length!=1){
+			return;
+		}
+		if(this.listCell.get(indexes[0]).getState() == State.PASS){
+			new ResultFrame(false);
 			return;
 		}
 		final NewReceiptInputFrame frame = new NewReceiptInputFrame(

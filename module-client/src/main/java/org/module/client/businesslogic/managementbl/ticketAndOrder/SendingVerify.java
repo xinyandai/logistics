@@ -2,9 +2,11 @@
 package org.module.client.businesslogic.managementbl.ticketAndOrder;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.SendingListVO;
 import org.module.common.dataservice.MyList;
@@ -36,16 +38,23 @@ public class SendingVerify  implements TicketAndorderVerify{
 		boolean re = true;
 		try{
 			for(int i = indexes.length - 1 ; i>=0; i--){
-				SendingListVO sendingListVO = this.list.remove(indexes[i]);
-				sendingListVO.setState(State.PASS);
-				re = re &&this.sendingListDataGetter.update(sendingListVO.toPO());
+				SendingListVO sendingListVO = this.list.get(indexes[i]);
+				
 				
 				LogisticsVO logisticsVO = this.logistics.find(sendingListVO.getShippingId());
+				if(logisticsVO==null){
+					return false;
+				}
+				sendingListVO.setState(State.PASS);
+				re = re &&this.sendingListDataGetter.update(sendingListVO.toPO());
+				this.list.remove(indexes[i]);
 				logisticsVO.setLocation("开始派件，派件员:"+sendingListVO.getSendMember());
+				logisticsVO.addLocationAndTime("开始派件，派件员:"+sendingListVO.getSendMember(),
+						DateTransferHelper.getString(new Date()));
 				re = re &&this.logistics.update(logisticsVO);
 			}
 		}catch(RemoteException e){
-			
+			e.printStackTrace();
 		}
 		return re;
 	}

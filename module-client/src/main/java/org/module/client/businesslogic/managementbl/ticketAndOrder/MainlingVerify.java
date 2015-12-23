@@ -52,7 +52,7 @@ public class MainlingVerify implements TicketAndorderVerify{
 			String[] time = {""+DateTransferHelper.getString(new Date())};
 			 re = re && this.logistics.creat(new LogisticsVO(
 					vo.getId(),
-					vo.getSenderCity(),
+					vo.getSenderCity()+vo.getReceivePosition(),
 					vo.getReceiveCity()+vo.getReceivePosition(),
 					"订单已受理",
 					location,

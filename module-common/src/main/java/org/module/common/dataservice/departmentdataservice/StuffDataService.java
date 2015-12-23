@@ -17,7 +17,7 @@ public interface StuffDataService extends Remote{
 	/**
 	 * 前置：无
 	 * 后置：返回所有的员工PO信息
-	 * @return
+	 * @return 
 	 */
 	public MyList<StuffPO> getAll()throws RemoteException;
 	/**
@@ -48,7 +48,12 @@ public interface StuffDataService extends Remote{
 	 * @return
 	 */
 	public boolean update(StuffPO one)throws RemoteException;
-	
+	/**
+	 * 模糊匹配查找
+	 * @param key
+	 * @return
+	 * @throws RemoteException
+	 */
 	public MyList<StuffPO> fuzzusearch(String key)throws RemoteException;
 	
 }

@@ -12,7 +12,12 @@ public class Login implements UserLoginService {
 	private UserDataService user = new RmiClient().get(UserDataService.class);
 	public boolean login(UserVO u) {
 		try {
-			
+			if(u.getRole().equals("用户")){
+				u.setAuthority("0");
+				u.setDepartmeny("0");
+				u.setName("用户");
+				return true;
+			}
 			UserPO po = user.find(u.getId());
 			if(po==null) return false;
 			if(po.getPassword().equals(u.getPassword()) &&  po.getRole().equals(u.getRole())){

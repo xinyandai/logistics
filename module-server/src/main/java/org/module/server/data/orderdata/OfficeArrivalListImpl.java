@@ -56,7 +56,7 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 		MyList<OfficeArrivalListPO> oal = this.getAll();
 		MyList<OfficeArrivalListPO> newone = new MyList<OfficeArrivalListPO>();
 		for(OfficeArrivalListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

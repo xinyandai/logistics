@@ -57,7 +57,7 @@ public class SendingListImpl extends UnicastRemoteObject implements SendingListS
 		MyList<SendingListPO> oal = this.getAll();
 		MyList<SendingListPO> newone = new MyList<SendingListPO>();
 		for(SendingListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

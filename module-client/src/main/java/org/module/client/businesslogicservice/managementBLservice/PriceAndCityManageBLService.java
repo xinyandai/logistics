@@ -31,15 +31,15 @@ public interface PriceAndCityManageBLService {
 	public boolean addCity(String city,String id);
 
 	/**
-	 * 
+	 * 根据city id删除城市
 	 * @param id
 	 * @return
 	 */
 	public boolean deleteCity(String id);
 	/**
 	 * 
-	 * @param city
-	 * @param id
+	 * @param city 城市名（城市名必须是唯一的）
+	 * @param id 城市唯一标示号
 	 * @return
 	 */
 	public boolean modifyCity(String city,String id);
@@ -64,7 +64,7 @@ public interface PriceAndCityManageBLService {
 	public PriceAndCityVO getDiretionAndPrice(int cityA, int cityB);
 	
 	/**
-	 * 
+	 * 返回所有城市的数组
 	 * @return
 	 */
 	public String[] getAllCitiesArray();

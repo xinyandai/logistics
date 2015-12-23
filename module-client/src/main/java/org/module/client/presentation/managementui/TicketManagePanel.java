@@ -43,14 +43,20 @@ public class TicketManagePanel extends JPanel {
 		this.font = new FontFactory();
 		this.typeArray = this.controller.getTypes();
 		init();
+		/**
+		 * 默认取所有的寄件单据
+		 */
 		this.listCell = this.controller.getAll(typeArray[0]);
 		if(!this.listCell.isEmpty()){
 			table = new Table(this.listCell,this.listCell.get(0).names());
-			JTable t = new JTable(this.table);
-			t.setFont(font.getTableElementFont());
-			t.getTableHeader().setFont(font.getTabelNameInput());
-			scrollPane.setViewportView(t);
+			
+		}else{
+			table = new Table(this.listCell,new String[]{"empty"});
 		}
+		JTable t = new JTable(this.table);
+		t.setFont(font.getTableElementFont());
+		t.getTableHeader().setFont(font.getTabelNameInput());
+		scrollPane.setViewportView(t);
 		addListeners();
 	}
 	

@@ -41,9 +41,9 @@ public class DeparmentPanel extends JPanel {
 	private JButton refresh;
 	
 	public DeparmentPanel() {
-
-		setLayout(new BorderLayout(0, 0));
 		font = new FontFactory();
+		
+		setLayout(new BorderLayout(0, 0));
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		add(panel, BorderLayout.NORTH);

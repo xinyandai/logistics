@@ -14,6 +14,8 @@ import javax.swing.event.CaretEvent;
 import org.module.client.presentation.Numeric;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class NewCityInputFrame extends JFrame {
 
@@ -41,35 +43,24 @@ public class NewCityInputFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("城市名");
 		label.setFont(new Font("楷体", Font.PLAIN, 16));
-		label.setBounds(100, 41, 71, 19);
-		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("城市代码");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 16));
-		label_1.setBounds(100, 85, 71, 19);
-		contentPane.add(label_1);
 		
 		city = new JTextField();
 		
 		city.setFont(new Font("楷体", Font.PLAIN, 16));
-		city.setBounds(198, 41, 154, 21);
-		contentPane.add(city);
 		city.setColumns(10);
 		
 		id = new JTextField();
 		
 		id.setFont(new Font("楷体", Font.PLAIN, 16));
 		id.setColumns(10);
-		id.setBounds(198, 85, 154, 21);
-		contentPane.add(id);
 		
 		confirm = new JButton("确定");
-		confirm.setBounds(142, 145, 71, 23);
-		contentPane.add(confirm);
 		
 		JButton cancel = new JButton("取消");
 		cancel.addMouseListener(new MouseAdapter() {
@@ -78,12 +69,52 @@ public class NewCityInputFrame extends JFrame {
 				dispose();
 			}
 		});
-		cancel.setBounds(253, 145, 71, 23);
-		contentPane.add(cancel);
 		
 		state = new JLabel("");
-		state.setBounds(81, 10, 300, 15);
-		contentPane.add(state);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(76)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(95)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(27)
+					.addComponent(city, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+					.addGap(77))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(95)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(27)
+					.addComponent(id, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+					.addGap(77))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(137)
+					.addComponent(confirm, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+					.addGap(40)
+					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+					.addGap(105))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+					.addGap(16)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label)
+						.addComponent(city, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(23)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1)
+						.addComponent(id, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(39)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(confirm)
+						.addComponent(cancel)))
+		);
+		contentPane.setLayout(gl_contentPane);
 		
 		city.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {

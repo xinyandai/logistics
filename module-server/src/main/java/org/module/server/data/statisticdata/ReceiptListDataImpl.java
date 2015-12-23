@@ -74,7 +74,7 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 		ArrayList<String>    strs = dh.read();
 		for (String string : strs) {
 			ReceiptPO temp = new ReceiptPO(string);
-			if(temp.getState().toString().equals(state.toString())){
+			if(temp.getState()==state){
 				re .add(temp);
 			}
 		}

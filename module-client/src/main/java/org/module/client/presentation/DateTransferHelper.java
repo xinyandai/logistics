@@ -13,6 +13,11 @@ public class DateTransferHelper {
 		return dateString;
 	}
 	
+	/**
+	 * yyyy-MM-dd HH:mm:ss形如此的各式转换
+	 * @param str
+	 * @return
+	 */
 	public static Date getDate(String str){
 		Date date = new Date();
 		try {    

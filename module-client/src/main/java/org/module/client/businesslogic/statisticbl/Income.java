@@ -9,7 +9,6 @@ import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.ReceiptVO;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.po.ReceiptPO;
-import org.module.common.po.State;
 
 public class Income implements IncomeService {
 

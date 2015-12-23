@@ -35,11 +35,15 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	public boolean pass(int[] indexes){
 		boolean re = true;
 		for(int i = indexes.length - 1; i>=0; i--){
-			OfficeLoadingListVO officeLoadingListVO = this.list.remove(indexes[i]);
-			officeLoadingListVO.setState(State.PASS);
+			OfficeLoadingListVO officeLoadingListVO = this.list.get(indexes[i]);
+			
 			try {
-				re = re && this.loadingListService.update(officeLoadingListVO.toPO());
-				this.updateLogistics(officeLoadingListVO);
+				if(this.updateLogistics(officeLoadingListVO)){
+					this.list.remove(indexes[i]);
+					officeLoadingListVO.setState(State.PASS);
+					re = re && this.loadingListService.update(officeLoadingListVO.toPO());
+				}
+				
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
@@ -47,17 +51,24 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 		return re;
 	}
 	
-	private void updateLogistics(OfficeLoadingListVO officeLoadingListVO){
+	private boolean updateLogistics(OfficeLoadingListVO officeLoadingListVO){
 		String[] s = officeLoadingListVO.getShippingId();
 		String date = new Date().toString();
 		String currentCity = officeLoadingListVO.getCity();
 		String location = officeLoadingListVO.getLocation();
+		boolean re = true;
 		for (String id : s) {
 			LogisticsVO logisticsVO = this.logistics.find(id);
-			logisticsVO.addLocationAndTime(location, date);
-			logisticsVO.setLocation(currentCity);
-			this.logistics.update(logisticsVO);
+			if(logisticsVO!=null){
+				logisticsVO.addLocationAndTime(location, date);
+			    logisticsVO.setLocation(currentCity);
+			    re = re&&this.logistics.update(logisticsVO);
+			}else{
+				re = false;
+			}
+			
 		}
+		return re;
 		
 	}
 	

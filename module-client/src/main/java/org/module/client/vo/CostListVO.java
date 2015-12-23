@@ -131,5 +131,8 @@ public class CostListVO extends AbstractVO{
 		};
 	    return s;
 	}
+	public State getState() {
+		return state;
+	}
 
 }

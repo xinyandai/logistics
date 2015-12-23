@@ -53,7 +53,7 @@ public class OfficeLoadingListImpl extends UnicastRemoteObject implements Office
 		MyList<OfficeLoadingListPO> oal = this.getAll();
 		MyList<OfficeLoadingListPO> newone = new MyList<OfficeLoadingListPO>();
 		for(OfficeLoadingListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

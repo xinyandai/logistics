@@ -361,7 +361,7 @@ public class NewTransportListInputFrame extends JFrame {
 	}
 	
 	public boolean isDataUsable(){
-		if((!Numeric.isRealNumber(trucksID.getText()))||trucksID.getText().length()!=9){
+		if((!Numeric.isNumeric(trucksID.getText()))||trucksID.getText().length()!=9){
 			state.setText("！车辆代号必须是9位数值");
 			return false;
 		}else if((!Numeric.isRealNumber(transportList.getText()))||transportList.getText().length()!=21){

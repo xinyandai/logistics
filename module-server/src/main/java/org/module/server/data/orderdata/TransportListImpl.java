@@ -53,7 +53,7 @@ public class TransportListImpl extends UnicastRemoteObject implements TransportL
 		MyList<TransportListPO> oal = this.getAll();
 		MyList<TransportListPO> newone = new MyList<TransportListPO>();
 		for(TransportListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

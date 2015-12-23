@@ -54,7 +54,7 @@ public class ReceiveListImpl extends UnicastRemoteObject implements ReceiveListS
 		MyList<ReceivingListPO> oal = this.getAll();
 		MyList<ReceivingListPO> newone = new MyList<ReceivingListPO>();
 		for(ReceivingListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

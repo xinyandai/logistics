@@ -19,13 +19,11 @@ public class ListTableForTransport extends ListTableForAll{
 	protected void initData() {
 		this.controller = new  TransportController();
 		this.listCell = this.controller.getAll();
-		if(this.listCell.size()>0){
-			this.typeArray = new String[]{
-					"运送方式","装车日期","中转单号","车次",
-					"出发地","目的地","货柜号","监装员",
-					"物流单号","价格","状态"
-			};
-		}
+		this.typeArray = new String[]{
+				"运送方式","装车日期","中转单号","车次",
+				"出发地","目的地","货柜号","监装员",
+				"物流单号","价格","状态"
+		};
 	}
 
 	@Override

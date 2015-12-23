@@ -207,8 +207,8 @@ public class ReceiveListPanel extends JPanel {
 	
 	public boolean isDataUsable(){
 		if(!Numeric.isNumeric(ID.getText()) 
-				|| ID.getText().length()!=9){
-					state.setText("!ID必须是9位数字");
+				|| ID.getText().length()!=10){
+					state.setText("!派件单号必须是10位数字");
 		}else if ( receiver.getText().trim().equals("") ){
 			state.setText("!收件人不能为空");
 		}else{

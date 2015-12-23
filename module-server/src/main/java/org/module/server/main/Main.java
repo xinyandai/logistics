@@ -14,7 +14,13 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 import org.module.server.javaRMI.RmiServer;
-
+/**
+ * 启动类
+ * 注册RMI
+ * 创建系统托盘
+ * @author yan
+ *
+ */
 public class Main {
 
     private SystemTray systemTray;  
@@ -34,6 +40,10 @@ public class Main {
 		rmi.rebind();
 		this.creatTray();
 	}
+	/**
+	 * 系统托盘的显示
+	 * @throws AWTException
+	 */
 	private void creatTray() throws AWTException{
 		if (SystemTray.isSupported()) { 
 			

@@ -32,7 +32,6 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 	}
 
 	public boolean add(TranCenterArrivalListPO o)  throws RemoteException{
-		// TODO 自动生成的方法存根
 		
 		return this.help.add(o);
 	}
@@ -55,7 +54,7 @@ public class TranCenterArrivalListImpl extends UnicastRemoteObject implements Tr
 		MyList<TranCenterArrivalListPO> oal = this.getAll();
 		MyList<TranCenterArrivalListPO> newone = new MyList<TranCenterArrivalListPO>();
 		for(TranCenterArrivalListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

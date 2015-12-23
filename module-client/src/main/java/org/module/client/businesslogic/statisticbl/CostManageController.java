@@ -34,7 +34,17 @@ public class CostManageController implements CostManageBLService {
 	}
 
 	public boolean update(CostListVO vo) {
-		
+		for (CostListVO costListVO : list) {
+			if(costListVO.getID().equals(vo.getID())){
+				costListVO.setAccout(vo.getAccout());
+				costListVO.setDate(vo.getDate());
+				costListVO.setEntry(vo.getEntry());
+				costListVO.setMoney(vo.getMoney());
+				costListVO.setNote(vo.getNote());
+				costListVO.setPeople(vo.getPeople());
+				costListVO.setState(vo.getState());
+			}
+		}
 		return this.cost.update(vo);
 	}
 

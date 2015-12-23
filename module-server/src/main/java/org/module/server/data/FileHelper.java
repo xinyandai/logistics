@@ -11,7 +11,11 @@ import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 
-
+/**
+ * 文件读写
+ * @author yan
+ *
+ */
 public class FileHelper {
 
 	private  String charsetName = "UTF-8";
@@ -20,7 +24,11 @@ public class FileHelper {
 
 		this.file = file;
 	}
-	
+	/**
+	 * 按行读出
+	 * 返回序列化的arraylist
+	 * @return
+	 */
 	public MyList<String> read(){
 		MyList<String> re =  new MyList<String>();		
 		try {
@@ -41,7 +49,13 @@ public class FileHelper {
 		}
 		return re;
 	}
-
+ 
+	/**
+	 * 重新写入文件内容
+	 * 按行写入
+	 * @param os 传入的每行数据存储于arraylist中 
+	 * @return
+	 */
 	public boolean rewrite(ArrayList<? extends Object> os){	
 		try {
 			OutputStreamWriter br = new OutputStreamWriter(new FileOutputStream(file),this.charsetName);

@@ -39,10 +39,14 @@ public class CostVerify  implements TicketAndorderVerify{
 		}
 		try {
 			for (int i = ids.length-1; i>=0 ; i--) {
-				CostListVO vo = this.list.remove(ids[i]);
-			    vo.setState(State.PASS);
-			    re = re && this.data.update(vo.toPO())
-			    		&& this.account.pay(vo.getAccout(), vo.getMoney());
+				CostListVO vo = this.list.get(ids[i]);
+				//付款，更新卡余额
+			    if(this.account.pay(vo.getAccout(), vo.getMoney())){
+			    	vo.setState(State.PASS);
+			    	this.data.update(vo.toPO());
+			    }else{
+			    	return re = false;
+			    }
 		    }
 		} catch (RemoteException e) {
 			e.printStackTrace();

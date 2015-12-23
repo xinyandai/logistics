@@ -21,7 +21,6 @@ public class DriversManageController implements DriversManageBLService{
 	}
 	
 	public ArrayList<DriverVO> showAll() {
-		// TODO Auto-generated method stub
 		return list =  driver.showAll();
 	}
 
@@ -37,22 +36,18 @@ public class DriversManageController implements DriversManageBLService{
 
 	public boolean modify(String id, String name, String birthday,
 			String idcard, String phone, String gender, String date) {
-		// TODO Auto-generated method stub
 		return driver.modify(new DriverVO(id,name,birthday,idcard,phone, gender, date));
 	}
 
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
 		return driver.delete(id);
 	}
 
 	public boolean delete(MyList<String> id) {
-		// TODO Auto-generated method stub
 		return driver.delete(id);
 	}
 
 	public ArrayList<DriverVO> fuzzySearch(String s) {
-		// TODO Auto-generated method stub
 		return driver.fuzzySearch(s);
 	}
 

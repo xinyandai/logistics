@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.ReceivingListVO;
 import org.module.common.dataservice.MyList;
@@ -35,15 +36,22 @@ public class ReceivingVerify  implements TicketAndorderVerify{
 		
 		boolean re = true;
 		try {
-			for(int i = indexes.length-1; i>=0; i++){
-				ReceivingListVO vo = this.list.remove(indexes[i]);
-				vo.setState(State.PASS);
-				re = re &&this.receiveListDataGetter.update(vo.toPO());
+			for(int i = indexes.length-1; i>=0; i--){
+				ReceivingListVO vo = this.list.get(indexes[i]);
+				
+				
 				
 				LogisticsVO logisticsVO = this.logistics.find(vo.getOrderId());
+				if(logisticsVO==null){
+					return false;
+				}
+				vo.setState(State.PASS);
+				re = re &&this.receiveListDataGetter.update(vo.toPO());
+				this.list.remove(indexes[i]);
+				
 				logisticsVO.setCompleted(true);
 				logisticsVO.setLocation("订单已签收");
-				logisticsVO.addLocationAndTime(vo.getReceiver()+"已经签收", new Date().toString());
+				logisticsVO.addLocationAndTime(vo.getReceiver()+"已经签收", DateTransferHelper.getString(new Date()));
 				re  = re &&this.logistics.update(logisticsVO);
 			}
 		} catch (RemoteException e) {

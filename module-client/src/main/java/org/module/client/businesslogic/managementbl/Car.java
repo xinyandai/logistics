@@ -21,7 +21,6 @@ public class Car implements CarsManageService{
 				vos.add(new CarVO(carPO.getId(), carPO.getLicense(), carPO.getTime()));
 		    }
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -33,7 +32,6 @@ public class Car implements CarsManageService{
 		try {
 			return data.add(new CarPO(carVO.getId(), carVO.getLicense(), carVO.getTime()));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -43,7 +41,6 @@ public class Car implements CarsManageService{
 		try {
 			return this.data.update( new CarPO(carVO.getId(), carVO.getLicense(), carVO.getTime()));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -60,18 +57,15 @@ public class Car implements CarsManageService{
 	}
 
 	public boolean delete(MyList<String> id) {
-		// TODO Auto-generated method stub
 		try {
 			return this.data.delete(id);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public ArrayList<CarVO> fuzzySearch(String s) {
-		
 		return null;
 	}
 

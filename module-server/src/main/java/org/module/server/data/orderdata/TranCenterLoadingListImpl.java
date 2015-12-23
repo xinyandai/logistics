@@ -53,7 +53,7 @@ public class TranCenterLoadingListImpl extends UnicastRemoteObject  implements T
 		MyList<TranCenterLoadingListPO> oal = this.getAll();
 		MyList<TranCenterLoadingListPO> newone = new MyList<TranCenterLoadingListPO>();
 		for(TranCenterLoadingListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState()==s){
 				newone.add(a);
 			}
 		}

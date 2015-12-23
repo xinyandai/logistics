@@ -12,6 +12,7 @@ import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
 import org.module.common.dataservice.orderdataservice.TransportListService;
 import org.module.common.po.OfficeArrivalListPO;
 import org.module.common.po.State;
+import org.module.common.po.TransportListPO;
 
 public class OfficeArrivalVerify  implements TicketAndorderVerify{
 	
@@ -68,16 +69,19 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 		boolean re = true;
 		try {
 			for(int i = index.length-1;  i>=0; i--){
-				OfficeArrivalListVO officeArrivalListVO = this.list.remove(index[i]);
-				//单据状态更新
-				re = re && this.officeArrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
+				OfficeArrivalListVO officeArrivalListVO = this.list.get(index[i]);
 				//更新物流
-				this.updateLogistics(officeArrivalListVO);
+				re = re && this.updateLogistics(officeArrivalListVO);
+				if(re){
+					//单据状态更新
+					this.list.remove(index[i]);
+					re = re && this.officeArrivalListDataGetter.update(officeArrivalListVO.toPO(State.PASS));
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return re;
 		
 	}
 	
@@ -85,7 +89,7 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 	 * 更新物流信息
 	 * @param officeArrivalListVO
 	 */
-	private void updateLogistics(OfficeArrivalListVO officeArrivalListVO){
+	private boolean updateLogistics(OfficeArrivalListVO officeArrivalListVO){
 		
 		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getDepartmentId() );
 		String departmentLocation = this.departmentFinder.getLocationById( officeArrivalListVO.getDepartmentId() );
@@ -94,16 +98,28 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 			//默认为中转单
 			//根据中转单查找所有物流单号
 			//更新物流
-			String[] allOrders = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId()).getShippingId();
+			boolean re = true;
+			TransportListPO vo = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId());
+			if(vo==null){
+				return false;
+			}
+			String[] allOrders = vo.getShippingId();
 			for (String order : allOrders) {
 				LogisticsVO logisticsVO = this.logistics.find(order);
-				logisticsVO.addLocationAndTime( departmentName, date);
-				logisticsVO.setLocation(departmentLocation);
-				this.logistics.update(logisticsVO);
+				if(logisticsVO!=null){
+					logisticsVO.addLocationAndTime( "快递已到达"+departmentName, date);
+					logisticsVO.setLocation(departmentLocation);
+					this.logistics.update(logisticsVO);
+				}else{
+					re = false;
+				}
+				
 			}
+			return re;
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
+		return true;
 		
 		
 	}

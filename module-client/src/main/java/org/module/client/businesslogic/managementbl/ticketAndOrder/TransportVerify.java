@@ -1,9 +1,11 @@
 package org.module.client.businesslogic.managementbl.ticketAndOrder;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.TransportListVO;
 import org.module.common.dataservice.MyList;
@@ -36,9 +38,11 @@ public class TransportVerify  implements TicketAndorderVerify{
 		try{
 			for(int i = index.length-1; i>=0; i--){
 				TransportListVO transportListVO = this.list.get(index[i]);
-				transportListVO.setState(State.PASS);
 				
-				this.updateLogistics(transportListVO);
+				if(this.updateLogistics(transportListVO)){
+					this.list.remove(index[i]);
+					transportListVO.setState(State.PASS);
+				}
 				
 				re = re &&this.transport.update(transportListVO.toPO());
 			}
@@ -49,13 +53,21 @@ public class TransportVerify  implements TicketAndorderVerify{
 	}
 	
 	
-	private void updateLogistics(TransportListVO transportListVO){
+	private boolean updateLogistics(TransportListVO transportListVO){
 		String[] ordersArray = transportListVO.getShippingId();
+		boolean re = true;
 		for (String order : ordersArray) {
 			LogisticsVO logisticsVO = this.logistics.find(order);
-			logisticsVO.setLocation("正在中转");
-			this.logistics.update(logisticsVO);
+			if(logisticsVO!=null){
+				logisticsVO.setLocation("正在中转");
+				logisticsVO.addLocationAndTime("正在中转,准备发往"+transportListVO.getArrival(), DateTransferHelper.getString(new Date()));
+			    this.logistics.update(logisticsVO);
+			}else{
+				re = false;
+			}
+			
 		}
+		return re;
 		
 	}
 	

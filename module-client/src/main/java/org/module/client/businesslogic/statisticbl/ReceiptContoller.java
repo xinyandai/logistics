@@ -3,10 +3,11 @@ package org.module.client.businesslogic.statisticbl;
 import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.statistic.IncomeService;
+import org.module.client.businesslogicservice.statisticBLservice.ReceiptBLService;
 import org.module.client.main.Main;
 import org.module.client.vo.ReceiptVO;
 
-public class ReceiptContoller {
+public class ReceiptContoller implements ReceiptBLService{
 	private IncomeService income;
 	private Receipt receipt;
 	private ArrayList<ReceiptVO> list  ;

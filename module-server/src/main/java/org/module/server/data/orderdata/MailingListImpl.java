@@ -61,7 +61,7 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 		MyList<MailingListPO> oal = this.getAll();
 		MyList<MailingListPO> newone = new MyList<MailingListPO>();
 		for(MailingListPO a : oal){
-			if(a.getState().toString().equals(s.toString())){
+			if(a.getState() == s){
 				newone.add(a);
 			}
 		}

@@ -35,6 +35,11 @@ public interface Logisticsdataservice  extends Remote{
 		 */
 		public boolean updata(LogisticsPO newone)throws RemoteException;
 		
-
+		/**
+		 * 创建新的可查询的物流
+		 * @param newone
+		 * @return
+		 * @throws RemoteException
+		 */
 		public boolean add(LogisticsPO newone)throws RemoteException;
 }

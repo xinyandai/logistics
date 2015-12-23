@@ -19,6 +19,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.event.CaretListener;
 import javax.swing.event.CaretEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.SwingConstants;
 
 public class NewStuffInputFrame extends JFrame {
 
@@ -58,73 +61,114 @@ public class NewStuffInputFrame extends JFrame {
 
 	private void init(){ 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(400, 200, 450, 300);
+		setBounds(400, 200, 450, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		state = new JLabel("");
-		state.setBounds(78, 10, 308, 15);
-		contentPane.add(state);
+		state.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel label = new JLabel("年龄");
 		label.setFont(new Font("楷体", Font.PLAIN, 16));
-		label.setBounds(60, 43, 54, 18);
-		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("姓名");
 		label_1.setFont(new Font("楷体", Font.PLAIN, 16));
-		label_1.setBounds(60, 71, 54, 18);
-		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("员工号");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 16));
-		label_2.setBounds(219, 46, 54, 18);
-		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("工作类别");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 16));
-		label_3.setBounds(219, 74, 69, 18);
-		contentPane.add(label_3);
 		
 		age = new JTextField();
 		
 		age.setFont(new Font("楷体", Font.PLAIN, 16));
-		age.setBounds(109, 43, 66, 21);
-		contentPane.add(age);
 		age.setColumns(10);
 		
 		name = new JTextField();
 		
 		name.setFont(new Font("楷体", Font.PLAIN, 16));
 		name.setColumns(10);
-		name.setBounds(109, 71, 66, 21);
-		contentPane.add(name);
 		
 		id = new JTextField();
 		
 		id.setFont(new Font("楷体", Font.PLAIN, 16));
 		id.setColumns(10);
-		id.setBounds(298, 43, 66, 21);
-		contentPane.add(id);
 		
 		type = new JComboBox(array);
 		type.setFont(new Font("楷体", Font.PLAIN, 16));
-		//type.setColumns(10);
-		type.setBounds(298, 71, 109, 21);
-		contentPane.add(type);
 		
 		comfirm = new JButton("确定");
 		comfirm.setFont(new Font("方正姚体", Font.PLAIN, 15));
-		comfirm.setBounds(136, 146, 66, 23);
-		contentPane.add(comfirm);
 		
 		cancel = new JButton("取消");
 		
 		cancel.setFont(new Font("方正姚体", Font.PLAIN, 15));
-		cancel.setBounds(222, 146, 66, 23);
-		contentPane.add(cancel);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(73)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(55)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(49)
+							.addComponent(age, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)))
+					.addGap(14)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addGap(25)
+					.addComponent(id, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+					.addGap(22))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(55)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(49)
+							.addComponent(name, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
+					.addGap(14)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(type, 0, 109, Short.MAX_VALUE)
+					.addGap(22))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(131)
+					.addComponent(comfirm, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(20)
+					.addComponent(cancel, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+					.addGap(141))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(state, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
+						.addComponent(age, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+						.addComponent(id, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(name, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(3)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+						.addComponent(type, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(54)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(comfirm, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
+		);
+		contentPane.setLayout(gl_contentPane);
 		
 		
 	}

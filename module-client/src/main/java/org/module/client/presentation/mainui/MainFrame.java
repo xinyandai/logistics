@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -16,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -142,6 +143,8 @@ public class MainFrame extends JFrame {
 		
 		textField = new JTextField();
 		textField.setBounds(140, 156, 119, 21);
+		textField.setText("客户可直接登录");
+		textField.setEditable(false);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -151,6 +154,17 @@ public class MainFrame extends JFrame {
 		
 		comboBox = new JComboBox<String>(array);
 		comboBox.setBounds(140, 125, 100, 21);
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(comboBox.getSelectedItem().toString().equals("用户")){
+					textField.setText("客户可直接登录");
+					textField.setEditable(false);
+				}else{
+					textField.setText("");
+					textField.setEditable(true);
+				}
+			}
+		});
 		contentPane.add(comboBox);
 		
 		closeBtn = new CloseButton();

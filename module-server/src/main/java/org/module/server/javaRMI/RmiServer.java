@@ -9,7 +9,11 @@ import java.rmi.registry.LocateRegistry;
 import org.module.common.dataservice.DataFactotyService;
 import org.module.server.data.DataFactoty;
 
-
+/**
+ * rmi注册
+ * @author 
+ *
+ */
 public class RmiServer {
 
 	private DataFactotyService factory = new DataFactoty();
@@ -20,6 +24,9 @@ public class RmiServer {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 注册接口
+	 */
 	public void rebind(){
 		try {
 			
@@ -62,6 +69,12 @@ public class RmiServer {
 		}
 	}
 	
+	/**
+	 * 根据类名注册接口
+	 * @param s 类名
+	 * @throws RemoteException
+	 * @throws MalformedURLException
+	 */
 	private void regist(String s) throws RemoteException, MalformedURLException{
 		Object obj = factory.creatDataObject(s);
 		Naming.rebind("rmi://127.0.0.1/"+obj.getClass().getInterfaces()[0].getName(), (Remote)obj);

@@ -19,6 +19,7 @@ import org.module.client.presentation.Button;
 import org.module.client.presentation.ResultFrame;
 import org.module.client.presentation.Table;
 import org.module.client.vo.CostListVO;
+import org.module.common.po.State;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -126,6 +127,10 @@ public class CostPanel extends JPanel {
 		if(index.length!=1) {
 			return ;
 		}
+		if(this.listData.get(index[0]).getState() == State.PASS){
+			new ResultFrame(false);
+			return;
+		}
 		final NewCostListInputFrame frame = new NewCostListInputFrame( this.listData.get(index[0]) );
 		frame.setVisible(true);
 		frame.getComfirm().addMouseListener(new MouseAdapter() {
@@ -136,7 +141,7 @@ public class CostPanel extends JPanel {
 						frame.dispose();
 						new ResultFrame(true);
 					}else{
-						new ResultFrame(true);
+						new ResultFrame(false);
 					}
 					table.fireTableDataChanged();
 					

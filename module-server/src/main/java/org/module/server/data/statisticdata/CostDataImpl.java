@@ -31,7 +31,7 @@ public class CostDataImpl extends UnicastRemoteObject implements CostDataService
 			if(re.get(i).getID().equals(newone.getID())){
 				re.remove(i);
 				re.add(newone);
-				return true;
+				return this.helper.rewrite(re);
 			}
 		}
 		
@@ -57,7 +57,7 @@ public class CostDataImpl extends UnicastRemoteObject implements CostDataService
 		ArrayList<String> strs = this.helper.read();
 		for (String string : strs) {
 			CostListPO temp = new CostListPO(string);
-			if(temp.getState().toString().equals(state.toString())){
+			if(temp.getState()==state){
 				re.add(temp);
 			}
 		}

@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import org.module.client.businesslogic.statisticbl.Account;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.businesslogicservice.statistic.AccountService;
+import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.ReceiptVO;
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.statisticdataservice.ReceiptListService;
@@ -16,7 +17,12 @@ public class IncomeVerify  implements TicketAndorderVerify{
 
 	private MyList<ReceiptVO> list ;
 	private AccountService account = new Account();
-	private ReceiptListService data;
+	private ReceiptListService data = new RmiClient().get(ReceiptListService.class);
+	
+	public IncomeVerify(){
+		
+	}
+	
 	public MyList<ReceiptVO> getAll() {
 		this.list = new MyList<ReceiptVO>();
 		try {

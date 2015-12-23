@@ -39,7 +39,7 @@ public class ManagerFrame extends FatherFrame {
 		label.setFont(font.getStateFont());
 		panel.add(label);
 		
-		JTabbedPane tabbedPane = new InOutPane();
+		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.setFont(font.getTabbeFont());
 		tabbedPane.setOpaque(false);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);

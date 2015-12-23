@@ -1,7 +1,6 @@
 package org.module.client.presentation.logisticsui;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -30,7 +29,7 @@ public class LogisticsPanel extends JPanel {
 	private FontFactory font = new FontFactory();
 	
 	public LogisticsPanel() {
-		
+		this.setOpaque(false);
 		setBorder(new CompoundBorder());
 		setLayout(new BorderLayout(0, 0));
 		
@@ -68,7 +67,7 @@ public class LogisticsPanel extends JPanel {
 
 	protected void search() {
 		
-		if(!Numeric.isWholeNumber(this.ID.getText()) || this.ID.getText().length() != 9){
+		if(!Numeric.isNumeric(this.ID.getText()) || this.ID.getText().length() != 10){
 			new ResultFrame(false);
 			return;
 		}

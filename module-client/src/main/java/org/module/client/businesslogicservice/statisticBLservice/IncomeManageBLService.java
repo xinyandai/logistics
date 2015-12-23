@@ -6,6 +6,7 @@ import org.module.client.vo.ReceiptVO;
 
 /**
  * 收款单统计
+ * 用于财务人员查看所有收款单
  * @author 
  *
  */

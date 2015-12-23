@@ -74,6 +74,9 @@ public class Account implements AccountService {
 	private boolean change(String id, double b){
 		try {
 			AccountPO po = this.data.findById(id);
+			if(po == null){
+				return false;
+			}
 			if( Double.parseDouble(po.getMoney())+b<0){
 				return false;
 			}
