@@ -105,7 +105,7 @@ public class NewLoadingrListInputFrame extends JFrame {
 		JLabel label_2 = new JLabel("监装员");
 		label_2.setFont(new Font("楷体", Font.PLAIN, 16));
 		
-		JLabel label_3 = new JLabel("目的地");
+		JLabel label_3 = new JLabel("出发地");
 		label_3.setFont(new Font("楷体", Font.PLAIN, 16));
 		
 		department = new JTextField();

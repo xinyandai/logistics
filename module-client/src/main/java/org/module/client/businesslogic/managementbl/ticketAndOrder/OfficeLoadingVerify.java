@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.OfficeLoadingListVO;
 import org.module.common.dataservice.MyList;
@@ -53,7 +54,7 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 	
 	private boolean updateLogistics(OfficeLoadingListVO officeLoadingListVO){
 		String[] s = officeLoadingListVO.getShippingId();
-		String date = new Date().toString();
+		String date = DateTransferHelper.getString( new Date() );
 		String currentCity = officeLoadingListVO.getCity();
 		String location = officeLoadingListVO.getLocation();
 		boolean re = true;
