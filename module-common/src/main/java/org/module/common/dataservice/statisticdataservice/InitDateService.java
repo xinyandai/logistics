@@ -20,35 +20,40 @@ public interface InitDateService extends Remote{
 	 */
 	public boolean init()throws RemoteException;
 	/**
-	 * 前置：选择查看期初信息
+	 * 前置：无
+	 * 选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
 	public MyList<CarPO> getInitCar()throws RemoteException;
 	/**
-	 * 前置：选择查看期初信息
+	 * 前置：无
+	 * 选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
 	public MyList<StuffPO> getInitStuff()throws RemoteException;
 	/**
-	 * 前置：选择查看期初信息
+	 * 前置：无
+	 * 选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
 	public MyList<DepartmentPO> getInitDepartment()throws RemoteException;
 	/**
-	 * 前置：选择查看期初信息
+	 * 前置：无
+	 * 选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return
 	 */
 	public MyList<AccountPO> getInitAccount()throws RemoteException;
 	/**
-	 * 前置：选择查看期初信息
+	 * 前置：无
+	 * 选择查看期初信息
 	 * 后置：返回一个arraylist
 	 * 依赖：*dataService.getAll返回所有单据  
 	 * @return

@@ -6,8 +6,8 @@ public abstract class AbstractLoadingListVO  extends AbstractVO{
 	protected String LoadingDate;
 	protected String OfficeId;
 	protected String trucksId;
-	protected String city;
-	protected String location;
+	protected String origin;
+	protected String target;
 	protected String carId;
 	protected String Supervision;
 	protected String escort;
@@ -45,16 +45,16 @@ public abstract class AbstractLoadingListVO  extends AbstractVO{
 	}
 	
 	public String getCity() {
-		return city;
+		return origin;
 	}
 	public void setCity(String city) {
-		this.city = city;
+		this.origin = city;
 	}
 	public String getLocation() {
-		return location;
+		return target;
 	}
 	public void setLocation(String location) {
-		this.location = location;
+		this.target = location;
 	}
 	public String[] getShippingIds() {
 		return shippingIds;

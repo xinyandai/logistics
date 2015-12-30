@@ -1,8 +1,9 @@
-package org.module.client.businesslogic.managementbl.ticketAndOrder;
+package org.module.client.businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.Date;
 
+import org.module.client.businesslogic.logisticsbl.LogisticsState;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.presentation.DateTransferHelper;
@@ -61,7 +62,7 @@ public class OfficeLoadingVerify  implements TicketAndorderVerify{
 		for (String id : s) {
 			LogisticsVO logisticsVO = this.logistics.find(id);
 			if(logisticsVO!=null){
-				logisticsVO.addLocationAndTime(location, date);
+				logisticsVO.addLocationAndTime("已到达："+currentCity+" 正在发往："+location, date);
 			    logisticsVO.setLocation(currentCity);
 			    re = re&&this.logistics.update(logisticsVO);
 			}else{

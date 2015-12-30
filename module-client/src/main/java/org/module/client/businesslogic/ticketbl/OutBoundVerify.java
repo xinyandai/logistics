@@ -1,7 +1,8 @@
-package org.module.client.businesslogic.managementbl.warehouseTicket;
+package org.module.client.businesslogic.ticketbl;
 
 import java.rmi.RemoteException;
 
+import org.module.client.businesslogic.managementbl.WarehouseAdjust;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.vo.OutBoundListVO;

@@ -1,4 +1,4 @@
-package org.module.client.businesslogic.managementbl.warehouseTicket;
+package org.module.client.businesslogic.managementbl;
 
 import java.rmi.RemoteException;
 

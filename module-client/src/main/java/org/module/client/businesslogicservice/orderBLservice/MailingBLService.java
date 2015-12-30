@@ -3,7 +3,6 @@ package org.module.client.businesslogicservice.orderBLservice;
 import java.util.ArrayList;
 
 import org.module.client.vo.MailingListVO;
-import org.module.common.po.State;
 
 
 
@@ -14,8 +13,8 @@ import org.module.common.po.State;
 public interface MailingBLService {
 
 	/**
-	 * 前置：订单输入
-	 * 后置：显示价格
+	 * 前置：订单输入参数合法，enderCity，receiveCity是当前城市列表中的索引，不能越界，costOfDecoration是数值
+	 * 后置：计算参考价格并返回
 	 * 依赖：PriceAndCityDataService.getAll 得到所有城市间价格
 	 *
 	 * @return
@@ -26,8 +25,8 @@ public interface MailingBLService {
 			);
 
 	/**
-	 * 前置：订单输入
-	 * 后置：显示估计时间
+	 * 前置：订单输入合法，enderCity，receiveCity是当前城市列表中的索引，不能越界
+	 * 后置：计算估计时间并返回
 	 * 依赖：MailingListService.getAll 得到所有PO
 	 * @param m
 	 * @return
@@ -61,8 +60,8 @@ public interface MailingBLService {
 			String  id);*/
 	
 	/**
-	 * 前置：新建寄件单
-	 * 后置：更新信息
+	 * 前置： 该收据相同的ID未存在于当前列表中， 而且VO中的属性值符合规范
+	 * 后置： 更新当前列表项，增加一个持久化对象，根据操作结果返回
 	 * 依赖：MailingListService.add 增加一个PO
 	 * @param o
 	 * @return
@@ -70,20 +69,26 @@ public interface MailingBLService {
 	public boolean handleMailingList(MailingListVO mailingListVO);
 	
 	/**
-	 * 前置：选择查看所有订单
-	 * 后置：显示所有订单
-	 * 依赖：MailingListService.getAll 返回所有PO
+	 * 前置： 当前用户已经有效登录（后续要根据订单填写人查找ticket）
+	 * 后置： 查找并返回属于当前用户拥有权限的订单
+	 * 依赖：MailingListService.getAll(String w) 返回所有PO
 	 * @return
 	 */
 	public ArrayList<MailingListVO> getAll();
 	/**
 	 * 所有的有服务覆盖的城市
+	 * 前置：无
+	 * 后置：查找所有城市列表，更新当前列表，返回
+	 * 依赖：PriceAndCityDataService.getCity()
 	 * @return
 	 */
 	public String[] getAllCitiesArray();
 	
 	/**
-	 * 
+	 * 前置：相同iD值的ticket已存在于当前列表，但审批不通过或者未审批，
+	 *       若相同ID值的ticket不存在返回false
+	 * 后置： 更新当前列表项，更新持久化对象，根据操作结果返回
+	 * 依赖：MailingListService.update(MailingListPO newone)
 	 * @param vo
 	 * @return
 	 */

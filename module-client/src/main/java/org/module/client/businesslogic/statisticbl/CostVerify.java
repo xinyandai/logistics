@@ -1,8 +1,7 @@
-package org.module.client.businesslogic.managementbl.ticketAndOrder;
+package org.module.client.businesslogic.statisticbl;
 
 import java.rmi.RemoteException;
 
-import org.module.client.businesslogic.statisticbl.Account;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.businesslogicservice.statistic.AccountService;
 import org.module.client.javaRMI.RmiClient;

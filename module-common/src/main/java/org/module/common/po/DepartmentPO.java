@@ -9,13 +9,14 @@ public class DepartmentPO implements Serializable{
 	private String name;
 	private String category;
 	private String location;
+	private String identity;
 	public String getIdentity() {
 		return identity;
 	}
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
-	private String identity;
+	
 	
 	public DepartmentPO(String name, String category, String location, String identity) {
 		super();

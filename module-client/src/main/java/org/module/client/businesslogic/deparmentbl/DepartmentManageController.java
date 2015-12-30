@@ -2,6 +2,7 @@ package org.module.client.businesslogic.deparmentbl;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogic.managementbl.WarehouseInit;
 import org.module.client.businesslogicservice.department.DepartmentService;
 import org.module.client.businesslogicservice.departmentBLservice.DepartmentManageBLService;
 import org.module.client.vo.DepartmentVO;

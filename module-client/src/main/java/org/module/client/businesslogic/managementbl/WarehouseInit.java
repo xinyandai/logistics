@@ -1,4 +1,4 @@
-package org.module.client.businesslogic.deparmentbl;
+package org.module.client.businesslogic.managementbl;
 
 import java.rmi.RemoteException;
 

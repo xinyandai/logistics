@@ -1,9 +1,10 @@
 
-package org.module.client.businesslogic.managementbl.ticketAndOrder;
+package org.module.client.businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.Date;
 
+import org.module.client.businesslogic.logisticsbl.LogisticsState;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
 import org.module.client.presentation.DateTransferHelper;

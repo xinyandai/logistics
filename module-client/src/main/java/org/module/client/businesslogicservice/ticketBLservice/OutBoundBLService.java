@@ -2,7 +2,6 @@ package org.module.client.businesslogicservice.ticketBLservice;
 
 import java.util.ArrayList;
 
-import org.module.client.vo.AbstractVO;
 import org.module.client.vo.OutBoundListVO;
 
 /**

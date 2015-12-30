@@ -1,4 +1,4 @@
-package org.module.client.businesslogic.managementbl.ticketAndOrder;
+package org.module.client.businesslogic.deparmentbl;
 
 import java.rmi.RemoteException;
 

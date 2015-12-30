@@ -25,15 +25,15 @@ public class OfficeLoadingListVO extends AbstractLoadingListVO{
 	
 	
 	public OfficeLoadingListVO(String loadingDate, String officeId,
-			String trucksId, String city,String location, String carId, String supervision,
+			String trucksId, String origin,String target, String carId, String supervision,
 			String escort, String[] shippingId, String price,State state,
 			String w) {
 		super();
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
 		this.trucksId = trucksId;
-		this.city = city;
-		this.location = location;
+		this.origin = origin;
+		this.target = target;
 		this.carId = carId;
 		Supervision = supervision;
 		this.escort = escort;

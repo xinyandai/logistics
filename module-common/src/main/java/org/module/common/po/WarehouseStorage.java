@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class WarehouseStorage implements Serializable {
 
-	private static final long serialVersionUID = 691408033266114598L;
+	/*private static final long serialVersionUID = 691408033266114598L;
 
 	
 	
@@ -13,13 +13,13 @@ public class WarehouseStorage implements Serializable {
 	private String pai;
 	private String jia;
 	private String wei;
-	/**
+	*//**
 	 * 所属仓库
-	 */
+	 *//*
 	private String warehouseOfWhichTranCenter;
-	/**
+	*//**
 	 * 每一个位置均有一个唯一ID
-	 */
+	 *//*
 	private String id;
 	
 	
@@ -88,5 +88,5 @@ public class WarehouseStorage implements Serializable {
 	}
 	public String getWarehouseOfWhichTranCenter() {
 		return warehouseOfWhichTranCenter;
-	}
+	}*/
 }

@@ -28,8 +28,8 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 		LoadingDate = loadingDate;
 		OfficeId = officeId;
 		this.trucksId = trucksId;
-		this.city = city;
-		this.location = location;
+		this.origin = city;
+		this.target = location;
 		this.carId = carId;
 		Supervision = supervision;
 		this.escort = escort;
@@ -59,8 +59,8 @@ public class TranCenterLoadingListVO  extends AbstractLoadingListVO{
 				LoadingDate ,
 				OfficeId ,
 				this.trucksId ,
-				this.city ,
-				this.location ,
+				this.origin ,
+				this.target ,
 				this.carId ,
 				Supervision ,
 				this.escort ,

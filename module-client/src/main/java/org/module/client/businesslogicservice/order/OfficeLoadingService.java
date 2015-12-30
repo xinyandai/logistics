@@ -3,7 +3,6 @@ package org.module.client.businesslogicservice.order;
 import java.util.ArrayList;
 
 import org.module.client.vo.OfficeLoadingListVO;
-import org.module.common.po.State;
 
 
 public interface OfficeLoadingService {

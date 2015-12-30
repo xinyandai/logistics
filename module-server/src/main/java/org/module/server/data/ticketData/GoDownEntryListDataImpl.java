@@ -12,9 +12,7 @@ import org.module.common.po.State;
 import org.module.server.data.FileHelper;
 
 public class GoDownEntryListDataImpl extends UnicastRemoteObject  implements GoDownEntryListService{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	public GoDownEntryListDataImpl() throws RemoteException {
@@ -32,7 +30,18 @@ public class GoDownEntryListDataImpl extends UnicastRemoteObject  implements GoD
 		}
 		return re;
 	}
-	
+     public MyList<GoDownEntryListPO> getAll(String trancenterID) throws RemoteException {
+		
+		MyList<GoDownEntryListPO> re = new MyList<GoDownEntryListPO>();
+		ArrayList<String> strs = this.helper.read();
+		for (String string : strs) {
+			GoDownEntryListPO po = new GoDownEntryListPO(string);
+			if(po.getWarehouseOfWhichTranCenter().equals(trancenterID)){
+				re.add(po);
+			}
+		}
+		return re;
+	}
 	public boolean add(GoDownEntryListPO ticket) throws RemoteException {
 		return this.helper.add(ticket);
 	}

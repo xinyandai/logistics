@@ -29,7 +29,17 @@ public class OutBoundListDataImpl extends UnicastRemoteObject implements OutBoun
 		}
 		return re;
 	}
-
+	public MyList<OutBoundListPO> getAll(String trancenterID) {
+		MyList<OutBoundListPO> re = new MyList<OutBoundListPO>();
+		ArrayList<String> strs = this.helper.read();
+		for (String string : strs) {
+			OutBoundListPO po = (new OutBoundListPO(string));
+			if(po.getWarehouseOfWhichTranCenter().equals(trancenterID)){
+				re.add(po);
+			}
+		}
+		return re;
+	}
 	public boolean add(OutBoundListPO ticket) {
 		return this.helper.add(ticket);
 	}
