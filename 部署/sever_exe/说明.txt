@@ -1,0 +1,5 @@
+服务端：三部分缺一不可，从exe执行即可
+
+  1.运行程序：logistics_server.exe
+  2.jre环境： java.jre
+  3.文件：    file

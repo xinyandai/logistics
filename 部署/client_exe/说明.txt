@@ -1,0 +1,5 @@
+客户端： 两部分部分缺一不可，EXE文件开始执行
+    EXE：logistics_client.exe
+    配置文件：config
+  如果已经安装javajre环境，那么下面可选：
+    环境：java.jre
