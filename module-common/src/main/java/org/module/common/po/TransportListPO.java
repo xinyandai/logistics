@@ -3,7 +3,7 @@ package org.module.common.po;
 
 import java.io.Serializable;
 
-public class TransportListPO implements Serializable{
+public class TransportListPO extends AbstractPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -93,7 +93,11 @@ public class TransportListPO implements Serializable{
 		}
 		final private String spt = ":%:%:";
 		final private String inlinespt = "&&&&&&&";
-		
+		@Override
+		public String getBelongsToPersonOrDepartment() {
+			// TODO Auto-generated method stub
+			return this.writer;
+		}
 		public String getCar() {
 			return car;
 		}
@@ -129,5 +133,11 @@ public class TransportListPO implements Serializable{
 		}
 		public String getWriter() {
 			return this.writer;
+		}
+
+		@Override
+		public String getNniqueID() {
+			// TODO Auto-generated method stub
+			return this.transListId;
 		}		
 }

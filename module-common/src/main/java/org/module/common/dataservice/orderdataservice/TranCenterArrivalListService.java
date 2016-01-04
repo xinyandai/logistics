@@ -9,7 +9,7 @@ import org.module.common.po.TranCenterArrivalListPO;
 
 
 
-public interface TranCenterArrivalListService extends Remote{
+public interface TranCenterArrivalListService extends Remote,AbstractOrderDataService<TranCenterArrivalListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表

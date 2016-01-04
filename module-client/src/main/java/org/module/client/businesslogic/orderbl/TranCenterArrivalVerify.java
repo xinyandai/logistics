@@ -7,6 +7,7 @@ import org.module.client.businesslogic.deparmentbl.DepartmentFinder;
 import org.module.client.businesslogic.logisticsbl.LogisticsState;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.TranCenterArrivalListVO;
 import org.module.common.dataservice.MyList;
@@ -98,7 +99,7 @@ public class TranCenterArrivalVerify  implements TicketAndorderVerify{
 		
 		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getDepartmentId() );
 		String departmentLocation = this.departmentFinder.getLocationById( officeArrivalListVO.getDepartmentId() );
-		String date = new Date().toString();
+		String date = DateTransferHelper.getString(new Date());
 		boolean re = true;
 		try {
 			TransportListPO po = this.transportListDataGetter.findById(officeArrivalListVO.getTransportListId());

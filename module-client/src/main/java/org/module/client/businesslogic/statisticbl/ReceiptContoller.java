@@ -28,7 +28,7 @@ public class ReceiptContoller implements ReceiptBLService{
 		return list;
 	}
 	
-	public boolean add(ReceiptVO vo) {
+	public boolean creat(ReceiptVO vo) {
 		for (ReceiptVO receiptVO : list) {
 			if(receiptVO.getID().equals(vo.getID())){
 				return false;

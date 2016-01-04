@@ -31,6 +31,7 @@ public abstract class ListTableForAll extends JPanel {
 	protected Table table;
 	protected JScrollPane scrollPane;
 	protected FontFactory font;
+//	protected OrderService<? extends AbstractVO>  controller ;
 	
 	public ListTableForAll() {
 		font = new FontFactory();
@@ -48,11 +49,30 @@ public abstract class ListTableForAll extends JPanel {
 
 	
 
+	/**
+	 * 初始化界面列表中需要显示的数据
+	 */
 	protected  abstract void initData() ;
+	
+	/**
+	 * 刷新按钮接听的具体实现
+	 */
 	protected  abstract void refresh();
+	/**
+	 * 修改按钮接听的具体实现
+	 */
 	protected abstract  void modify() ;
+	/**
+	 * 增加按钮接听的具体实现
+	 */
 	protected abstract void add(); 
 
+	
+	
+	
+	/***
+	 * 初始化界面  包括按钮的接听
+	 */
 	protected void init(){
 		setLayout(new BorderLayout(0, 0));
 		this.setOpaque(false);

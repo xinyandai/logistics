@@ -14,7 +14,7 @@ import org.module.common.po.TransportListPO;
  * @author 
  *
  */
-public interface TransportListService extends Remote{
+public interface TransportListService extends Remote,AbstractOrderDataService<TransportListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表

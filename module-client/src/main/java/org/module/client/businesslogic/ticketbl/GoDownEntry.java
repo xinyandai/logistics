@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.ticket.GoDownEntryService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.GoDownEntryVO;
 import org.module.common.dataservice.ticketdataservice.GoDownEntryListService;
@@ -32,7 +33,7 @@ public class GoDownEntry implements GoDownEntryService {
 	public ArrayList<GoDownEntryVO> getAll(long start , long end) {
 		ArrayList<GoDownEntryVO> re = new ArrayList<GoDownEntryVO>();
 		try {
-			ArrayList<GoDownEntryListPO> pos = this.data.getAll();
+			ArrayList<GoDownEntryListPO> pos = this.data.getAll(Main.currentUser.getDepartmeny());
 			for (GoDownEntryListPO goDownEntryListPO : pos) {
 				/**
 				 * 把时间转换为毫秒比较

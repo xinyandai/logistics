@@ -53,15 +53,9 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 		map.put("付款单", new CostVerify());
 		map.put("收款单", new IncomeVerify());
 	}
-	
-	public String[] getTypes(){
-		return types;
-	}
-	
 	public boolean hasTicketToVerify(){
 		return true;
 	}
-	
 	public ArrayList<? extends AbstractVO> getAll(String type){
 		return this.map.get(type).getAll();
 	}
@@ -72,5 +66,12 @@ public class TicketAndOrderManageController implements TicketAndOrderManageBLSer
 	
 	public boolean unpass(int[] indexes,String type){
 		return this.map.get(type).unpass(indexes);
+	}
+	
+	
+	
+	
+	public String[] getTypes(){
+		return types;
 	}
 }

@@ -2,7 +2,7 @@ package org.module.common.po;
 
 import java.io.Serializable;
 
-public class OutBoundListPO implements Serializable{
+public class OutBoundListPO extends AbstractPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -97,6 +97,18 @@ public class OutBoundListPO implements Serializable{
 
 	public String getWarehouseOfWhichTranCenter() {
 		return warehouseOfWhichTranCenter;
+	}
+
+	@Override
+	public String getNniqueID() {
+		// TODO Auto-generated method stub
+		return this.getId();
+	}
+
+	@Override
+	public String getBelongsToPersonOrDepartment() {
+		// TODO Auto-generated method stub
+		return this.getWarehouseOfWhichTranCenter();
 	}
 	
 	

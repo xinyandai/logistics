@@ -7,6 +7,7 @@ import org.module.client.businesslogic.deparmentbl.DepartmentFinder;
 import org.module.client.businesslogic.logisticsbl.LogisticsState;
 import org.module.client.businesslogicservice.management.TicketAndorderVerify;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.LogisticsVO;
 import org.module.client.vo.OfficeArrivalListVO;
 import org.module.common.dataservice.MyList;
@@ -95,7 +96,7 @@ public class OfficeArrivalVerify  implements TicketAndorderVerify{
 		
 		String departmentName = departmentFinder.getNameById( officeArrivalListVO.getDepartmentId() );
 		String departmentLocation = this.departmentFinder.getLocationById( officeArrivalListVO.getDepartmentId() );
-		String date = new Date().toString();
+		String date = DateTransferHelper.getString(new Date());
 		try {
 			//默认为中转单
 			//根据中转单查找所有物流单号

@@ -10,7 +10,7 @@ import org.module.client.vo.TranCenterArrivalListVO;
  * @author 华硕
  *
  */
-public interface TranCenterArrivalBLService {
+public interface TranCenterArrivalBLService extends OrderService<TranCenterArrivalListVO>{
 	/**
 	 * 前置： 该收据相同的ID未存在于当前列表中， 而且VO中的属性值符合规范
 	 * 后置： 更新当前列表项，增加一个持久化对象，根据操作结果返回

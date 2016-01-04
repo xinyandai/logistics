@@ -4,12 +4,13 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import org.module.common.dataservice.MyList;
+import org.module.common.dataservice.orderdataservice.AbstractOrderDataService;
 import org.module.common.po.GoDownEntryListPO;
 import org.module.common.po.State;
 
 
 
-public interface GoDownEntryListService extends Remote{
+public interface GoDownEntryListService extends Remote,AbstractOrderDataService<GoDownEntryListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表

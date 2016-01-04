@@ -15,7 +15,7 @@ public class AccountantSalaryPO implements Serializable{
 	 * 收益提成
 	 */
 	private double bonus;
-	private String split=":%:%:";
+private String split=":%:%:";
 	
 	@Override
 	public String toString(){

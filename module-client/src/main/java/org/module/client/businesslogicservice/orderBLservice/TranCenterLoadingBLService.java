@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.module.client.vo.TranCenterLoadingListVO;
 
 
-public interface TranCenterLoadingBLService {
+public interface TranCenterLoadingBLService extends OrderService<TranCenterLoadingListVO>{
 
 	/**
 	 * 前置： 该收据相同的ID未存在于当前列表中， 而且VO中的属性值符合规范

@@ -4,10 +4,11 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import org.module.common.dataservice.MyList;
+import org.module.common.dataservice.orderdataservice.AbstractOrderDataService;
 import org.module.common.po.OutBoundListPO;
 import org.module.common.po.State;
 
-public interface OutBoundListService extends Remote{
+public interface OutBoundListService extends Remote,AbstractOrderDataService<OutBoundListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表

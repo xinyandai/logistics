@@ -3,7 +3,7 @@ package org.module.common.po;
 import java.io.Serializable;
 
 
-public class ReceivingListPO implements Serializable{
+public class ReceivingListPO extends AbstractPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -46,7 +46,11 @@ public class ReceivingListPO implements Serializable{
 		this.writer = w;
 	}
 	
-	
+	@Override
+	public String getBelongsToPersonOrDepartment() {
+		// TODO Auto-generated method stub
+		return this.writer;
+	}
 	public String getDate() {
 		return date;
 	}
@@ -63,5 +67,10 @@ public class ReceivingListPO implements Serializable{
 	}
 	public String getWriter() {
 		return this.writer;
+	}
+	@Override
+	public String getNniqueID() {
+		// TODO Auto-generated method stub
+		return this.getOrderId();
 	}
 }

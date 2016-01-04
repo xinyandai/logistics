@@ -9,7 +9,7 @@ import org.module.common.po.State;
 
 
 
-public interface SendingListService extends Remote{
+public interface SendingListService extends Remote,AbstractOrderDataService<SendingListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO

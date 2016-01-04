@@ -76,7 +76,7 @@ public class MailingControl implements MailingBLService{
 		return this.cityVOs.get(i).getId();
 	}
 	
-	public boolean handleMailingList(MailingListVO mailingListVO) {
+	public boolean creat(MailingListVO mailingListVO) {
 		
 		if(this.list == null){
 			this.getAll();

@@ -9,7 +9,6 @@ import org.module.client.main.Main;
 import org.module.client.vo.SendingListVO;
 import org.module.common.dataservice.orderdataservice.SendingListService;
 import org.module.common.po.SendingListPO;
-import org.module.common.po.State;
 
 
 public class Sending implements SendingService {

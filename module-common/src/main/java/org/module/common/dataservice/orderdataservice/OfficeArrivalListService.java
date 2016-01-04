@@ -9,19 +9,19 @@ import org.module.common.po.OfficeArrivalListPO;
 import org.module.common.po.State;
 
 
-public interface OfficeArrivalListService extends Remote{
+public interface OfficeArrivalListService extends Remote,AbstractOrderDataService<OfficeArrivalListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表
 	 * @return
 	 */
-	public ArrayList<OfficeArrivalListPO> getAll()  throws RemoteException;
+	public MyList<OfficeArrivalListPO> getAll()  throws RemoteException;
 	/**
 	 * 前置：w所指定的订单填写人有已填写订单
 	 * 后置：查找并返回所有PO组成的序列化列表
 	 * @return
 	 */
-	public ArrayList<OfficeArrivalListPO> getAll(String w)  throws RemoteException;
+	public MyList<OfficeArrivalListPO> getAll(String w)  throws RemoteException;
 	/**
 	 * 前置：不存在相同ID的寄件单
 	 * 后置：增加一个PO，根据操作结果返回

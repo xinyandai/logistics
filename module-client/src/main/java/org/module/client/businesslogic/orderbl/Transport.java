@@ -8,7 +8,6 @@ import org.module.client.javaRMI.RmiClient;
 import org.module.client.main.Main;
 import org.module.client.vo.TransportListVO;
 import org.module.common.dataservice.orderdataservice.TransportListService;
-import org.module.common.po.State;
 import org.module.common.po.TransportListPO;
 
 public class Transport implements TransportService {

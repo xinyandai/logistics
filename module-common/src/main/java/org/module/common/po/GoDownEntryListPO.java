@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 
  *库存入库单（快递编号、入库日期、目的地、区号、排号、架号、位号）
  */
-public class GoDownEntryListPO implements Serializable{
+public class GoDownEntryListPO extends AbstractPO implements Serializable{
 	
 	/**
 	 * 
@@ -123,6 +123,18 @@ public class GoDownEntryListPO implements Serializable{
 
 	public State getState() {
 		return state;
+	}
+
+	@Override
+	public String getNniqueID() {
+		// TODO Auto-generated method stub
+		return this.getId();
+	}
+
+	@Override
+	public String getBelongsToPersonOrDepartment() {
+		// TODO Auto-generated method stub
+		return this.getWarehouseOfWhichTranCenter();
 	}
 	
 	

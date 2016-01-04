@@ -10,7 +10,7 @@ import org.module.client.vo.MailingListVO;
  * 寄件
  * @author 
  */
-public interface MailingBLService {
+public interface MailingBLService extends OrderService<MailingListVO>{
 
 	/**
 	 * 前置：订单输入参数合法，enderCity，receiveCity是当前城市列表中的索引，不能越界，costOfDecoration是数值
@@ -66,7 +66,7 @@ public interface MailingBLService {
 	 * @param o
 	 * @return
 	 */
-	public boolean handleMailingList(MailingListVO mailingListVO);
+	public boolean creat(MailingListVO mailingListVO);
 	
 	/**
 	 * 前置： 当前用户已经有效登录（后续要根据订单填写人查找ticket）

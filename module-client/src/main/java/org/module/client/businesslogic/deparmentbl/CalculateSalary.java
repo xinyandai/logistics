@@ -1,8 +1,6 @@
 package org.module.client.businesslogic.deparmentbl;
 
 import java.rmi.RemoteException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,7 +15,6 @@ import org.module.common.dataservice.statisticdataservice.ReceiptListService;
 import org.module.common.dataservice.statisticdataservice.SalarySettingDateService;
 import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.ReceiptPO;
-import org.module.common.po.State;
 import org.module.common.po.TranCenterLoadingListPO;
 import org.module.common.po.salary.AccountantSalaryPO;
 import org.module.common.po.salary.CourierSalaryPO;

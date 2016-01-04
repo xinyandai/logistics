@@ -5,7 +5,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -26,7 +25,7 @@ public class ResultFrame extends JFrame {
 	private int h ; 
 	
 	public ResultFrame(boolean isSuccess,Component c) {
-		   this.path = "pic"+File.separator +
+		   this.path = "pic/" +
 				(isSuccess? "success" : "fail" ) + ".png";
 		   InputStream stream = this.getClass().getClassLoader().getResourceAsStream(path);
 		   
@@ -73,7 +72,7 @@ public class ResultFrame extends JFrame {
 		this.start();
 	}
 	public ResultFrame(boolean isSuccess) {
-		   this.path = "pic"+File.separator +
+		   this.path = "pic/"+
 				(isSuccess? "success" : "fail" ) + ".png";
 		
 		   background = new ImageIcon(path);// 背景图片
@@ -84,6 +83,7 @@ public class ResultFrame extends JFrame {
 					this.background.setImage(img);
 				}
 			} catch (IOException e) {
+				
 				e.printStackTrace();
 			}
 		   JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面

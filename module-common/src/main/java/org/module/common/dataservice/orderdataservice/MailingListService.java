@@ -2,8 +2,8 @@ package org.module.common.dataservice.orderdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.MailingListPO;
 import org.module.common.po.State;
 
@@ -13,7 +13,7 @@ import org.module.common.po.State;
  * @author 
  *
  */
-public interface MailingListService extends Remote{
+public interface MailingListService extends Remote,AbstractOrderDataService<MailingListPO>{
  
 	/**
 	 * 前置：无
@@ -21,14 +21,14 @@ public interface MailingListService extends Remote{
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public ArrayList<MailingListPO> getAll() throws RemoteException;
+	public MyList<MailingListPO> getAll() throws RemoteException;
 	/**
 	 * 前置：w所指定的订单填写人有已填写订单
 	 * 后置：查找并返回所有PO组成的序列化列表
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public ArrayList<MailingListPO> getAll(String w) throws RemoteException;
+	public MyList<MailingListPO> getAll(String w) throws RemoteException;
 	/**
 	 * 前置：文件中不存在相同ID的寄件单
 	 * 后置：增加一个PO，根据操作结果返回
@@ -50,7 +50,7 @@ public interface MailingListService extends Remote{
      * @param s
      * @return
      */
-	public ArrayList<MailingListPO> getByState(State s)   throws RemoteException;
+	public MyList<MailingListPO> getByState(State s)   throws RemoteException;
   
 }
 

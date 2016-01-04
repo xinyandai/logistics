@@ -32,7 +32,10 @@ public class RmiClient {
 		} 
 		return null;
 	}
-	
+	/**
+	 * just to read out the ip
+	 * @return
+	 */
 	public String read(){
 		String re = "127.0.0.1";
 		try {

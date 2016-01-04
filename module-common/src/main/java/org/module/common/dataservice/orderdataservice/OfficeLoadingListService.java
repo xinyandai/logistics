@@ -8,7 +8,7 @@ import org.module.common.po.OfficeLoadingListPO;
 import org.module.common.po.State;
 
 
-public interface OfficeLoadingListService extends Remote{
+public interface OfficeLoadingListService extends Remote,AbstractOrderDataService<OfficeLoadingListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO

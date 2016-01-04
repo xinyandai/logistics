@@ -74,7 +74,7 @@ public class ListTableForReiceipt extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					if( controller.add(frame.getVO())){
+					if( controller.creat(frame.getVO())){
 						frame.dispose();
 						new ResultFrame(true);
 					}else{

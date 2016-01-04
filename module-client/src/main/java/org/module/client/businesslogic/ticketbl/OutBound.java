@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.module.client.businesslogicservice.ticket.OutBoundService;
 import org.module.client.javaRMI.RmiClient;
+import org.module.client.main.Main;
 import org.module.client.presentation.DateTransferHelper;
 import org.module.client.vo.OutBoundListVO;
 import org.module.common.dataservice.ticketdataservice.OutBoundListService;
@@ -43,7 +44,7 @@ public class OutBound implements OutBoundService {
 	public ArrayList<OutBoundListVO> getAll(long start , long end) {
 		ArrayList<OutBoundListVO> re = new ArrayList<OutBoundListVO>();
 		try {
-			ArrayList<OutBoundListPO> pos = this.data.getAll();
+			ArrayList<OutBoundListPO> pos = this.data.getAll(Main.currentUser.getDepartmeny());
 			for (OutBoundListPO goDownEntryListPO : pos) {
 				/**
 				 * 把时间转换为毫秒比较

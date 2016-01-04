@@ -61,7 +61,7 @@ public class ReceiptListDataImpl extends UnicastRemoteObject implements ReceiptL
 			if(re.get(i).getID().equals(newone.getID())){
 				re.remove(i);
 				re.add(newone);
-				return true;
+				return this.dh.rewrite(re);
 			}
 		}
 		

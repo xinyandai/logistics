@@ -13,7 +13,7 @@ public class ListTableForMailingList extends ListTableForAll {
 
 	private static final long serialVersionUID = 83627053089339309L;
 	protected ArrayList<MailingListVO> listCell;
-	private MailingBLService controller ;
+	protected MailingBLService controller ;
 	
 	@Override
 	protected void initData() {
@@ -68,7 +68,7 @@ public class ListTableForMailingList extends ListTableForAll {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(frame.isDataUsable()){
-					if(controller.handleMailingList(frame.getVO())){
+					if(controller.creat(frame.getVO())){
 						frame.dispose();
 						new ResultFrame(true);
 					}else{

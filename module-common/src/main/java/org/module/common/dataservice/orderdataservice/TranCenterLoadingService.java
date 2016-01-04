@@ -2,27 +2,27 @@ package org.module.common.dataservice.orderdataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+import org.module.common.dataservice.MyList;
 import org.module.common.po.State;
 import org.module.common.po.TranCenterLoadingListPO;
 
 
 
-public interface TranCenterLoadingService extends Remote{
+public interface TranCenterLoadingService extends Remote,AbstractOrderDataService<TranCenterLoadingListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表
 	 * @return
 	 */
-	public ArrayList<TranCenterLoadingListPO> getAll() throws RemoteException;
+	public MyList<TranCenterLoadingListPO> getAll() throws RemoteException;
 	
 	/**
 	 * 前置：w所指定的订单填写人有已填写订单
 	 * 后置：查找并返回所有PO组成的序列化列表
 	 * @return
 	 */
-	public ArrayList<TranCenterLoadingListPO> getAll(String w) throws RemoteException;
+	public MyList<TranCenterLoadingListPO> getAll(String w) throws RemoteException;
 	
 	/**
 	 * 前置：不存在相同ID的寄件单
@@ -44,5 +44,5 @@ public interface TranCenterLoadingService extends Remote{
      * @param s
      * @return
      */
-	public ArrayList<TranCenterLoadingListPO> getByState(State s)throws RemoteException;
+	public MyList<TranCenterLoadingListPO> getByState(State s)throws RemoteException;
 }

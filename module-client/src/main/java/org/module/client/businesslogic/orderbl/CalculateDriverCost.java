@@ -77,6 +77,7 @@ public class CalculateDriverCost implements CalculateDriverCostService {
 	 * @param i
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private String indexesToID(int i){
 		return this.cityVOs.get(i).getId();
 	}

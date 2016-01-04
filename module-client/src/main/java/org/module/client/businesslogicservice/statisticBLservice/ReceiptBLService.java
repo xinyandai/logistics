@@ -2,13 +2,14 @@ package org.module.client.businesslogicservice.statisticBLservice;
 
 import java.util.ArrayList;
 
+import org.module.client.businesslogicservice.orderBLservice.OrderService;
 import org.module.client.vo.ReceiptVO;
 /**
  * 
  * @author 
  *
  */
-public interface ReceiptBLService {
+public interface ReceiptBLService extends OrderService<ReceiptVO>{
 	
 	/**
 	 * 前置： 当前用户已经有效登录（后续要根据订单填写人查找ticket）
@@ -26,7 +27,7 @@ public interface ReceiptBLService {
 	 * @param vo
 	 * @return
 	 */
-	public boolean add(ReceiptVO vo);
+	public boolean creat(ReceiptVO vo);
 	/**
 	 * 对已存在的一个收据进行修改
 	 * 前置：相同iD值的ticket已存在于当前列表，但审批不通过或者未审批，

@@ -3,7 +3,6 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.MailingListService;
@@ -26,7 +25,6 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 	public MailingListImpl() throws RemoteException{
 		
 	}
-	//觉得有问题
 	
 	
 	public MyList<MailingListPO> getAll() throws RemoteException{
@@ -34,7 +32,6 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 		MyList<MailingListPO> re = new MyList<MailingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {
-			//String[] temp = string.split(":%:%:");
 			re.add(new MailingListPO(string));
 		}
 		return re;
@@ -68,7 +65,7 @@ public class MailingListImpl extends UnicastRemoteObject implements MailingListS
 		return newone;
 		
 	}
-	public ArrayList<MailingListPO> getAll(String w) throws RemoteException {
+	public MyList<MailingListPO> getAll(String w) throws RemoteException {
 		MyList<MailingListPO> re = new MyList<MailingListPO>();
 		MyList<String>    strs = help.read();
 		for (String string : strs) {

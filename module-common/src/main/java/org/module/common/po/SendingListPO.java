@@ -2,7 +2,7 @@ package org.module.common.po;
 
 import java.io.Serializable;
 
-public class SendingListPO implements Serializable{
+public class SendingListPO extends AbstractPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -43,6 +43,11 @@ public class SendingListPO implements Serializable{
 					this.SendMember + this.spt +
 					this.state.toString()+this.spt + this.writer;
 		}
+		@Override
+		public String getBelongsToPersonOrDepartment() {
+			// TODO Auto-generated method stub
+			return this.writer;
+		}
 		public String getDate() {
 			return date;
 		}
@@ -57,6 +62,12 @@ public class SendingListPO implements Serializable{
 		}
 		public String getWriter() {
 			return this.writer;
+		}
+
+		@Override
+		public String getNniqueID() {
+			// TODO Auto-generated method stub
+			return this.getShippingId();
 		}
 
 }

@@ -3,7 +3,6 @@ package org.module.server.data.orderdata;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 import org.module.common.dataservice.MyList;
 import org.module.common.dataservice.orderdataservice.OfficeArrivalListService;
@@ -62,7 +61,7 @@ public class OfficeArrivalListImpl extends UnicastRemoteObject implements Office
 		}
 		return newone;
 	}
-	public ArrayList<OfficeArrivalListPO> getAll(String w)
+	public MyList<OfficeArrivalListPO> getAll(String w)
 			throws RemoteException {
 		MyList<OfficeArrivalListPO> re = new MyList<OfficeArrivalListPO>();
 		MyList<String>    strs = help.read();

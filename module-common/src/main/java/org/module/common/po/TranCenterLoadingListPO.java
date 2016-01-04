@@ -2,7 +2,7 @@ package org.module.common.po;
 
 import java.io.Serializable;
 
-public class TranCenterLoadingListPO implements Serializable{
+public class TranCenterLoadingListPO extends AbstractPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -91,6 +91,12 @@ public class TranCenterLoadingListPO implements Serializable{
 		this.state = state;
 		this.writer = w;
 	}
+	
+	@Override
+	public String getBelongsToPersonOrDepartment() {
+		// TODO Auto-generated method stub
+		return this.writer;
+	}
 	/*public OfficeLoadingListPO(String[] a){
 	}*/
 	public String getLoadingDate() {
@@ -146,6 +152,11 @@ public class TranCenterLoadingListPO implements Serializable{
 	}
 	public String getWriter() {
 		return this.writer;
+	}
+	@Override
+	public String getNniqueID() {
+		// TODO Auto-generated method stub
+		return this.getTrucksId();
 	}
 	
 	

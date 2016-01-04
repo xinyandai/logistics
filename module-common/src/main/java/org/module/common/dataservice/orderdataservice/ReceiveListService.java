@@ -13,7 +13,7 @@ import org.module.common.po.State;
  * @author 
  *
  */
-public interface ReceiveListService extends Remote{
+public interface ReceiveListService extends Remote,AbstractOrderDataService<ReceivingListPO>{
 	/**
 	 * 前置：无
 	 * 后置：返回所有PO组成的序列化列表

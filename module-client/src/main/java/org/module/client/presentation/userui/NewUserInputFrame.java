@@ -62,7 +62,7 @@ public class NewUserInputFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblState = new JLabel("state");
+		JLabel lblState = new JLabel("");
 		
 		JLabel lblNewLabel = new JLabel("ID");
 		lblNewLabel.setFont(new Font("楷体", Font.PLAIN, 15));
